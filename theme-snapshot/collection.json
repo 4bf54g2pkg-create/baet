@@ -1,0 +1,612 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs_Gxg9wp": {
+      "type": "breadcrumbs",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "start",
+        "padding_top": 16,
+        "padding_bottom": 20
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "blocks": {
+        "collection_info_zUNyKV": {
+          "type": "collection_info",
+          "disabled": true,
+          "settings": {
+            "heading_size": "h1",
+            "heading_tag": "h1",
+            "show_description": true,
+            "padding_top": 40,
+            "padding_bottom": 40
+          }
+        }
+      },
+      "block_order": [
+        "collection_info_zUNyKV"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-4",
+        "text_alignment": "left",
+        "show_collection_image": true,
+        "image_overlay_opacity": 0,
+        "image_position": "right",
+        "image_height": "extra-small",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "image_height_mobile": "auto",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "collection_list_slider_JiW9t4": {
+      "type": "collection-list-slider",
+      "blocks": {
+        "featured_collection_7myDMy": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "cta_link": "",
+            "title": "Sale Items"
+          }
+        },
+        "featured_collection_tTXGhG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "cta_link": "",
+            "title": "Press Tables"
+          }
+        },
+        "featured_collection_eTmenR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "cta_link": "",
+            "title": "Lighting"
+          }
+        },
+        "featured_collection_NqmiBp": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "cta_link": "",
+            "title": "Spoke Sofa"
+          }
+        },
+        "featured_collection_cwXGef": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "cta_link": "",
+            "title": "Storage"
+          }
+        },
+        "featured_collection_tnVfbN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "cta_link": "",
+            "title": "Turn Chairs"
+          }
+        },
+        "featured_collection_Tk8fAX": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "cta_link": "",
+            "title": "Longe Chairs"
+          }
+        },
+        "featured_collection_zMCcHU": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "cta_link": "",
+            "title": "Curve Coat"
+          }
+        },
+        "featured_collection_8gXBqF": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "cta_link": "",
+            "title": "Bend Chairs"
+          }
+        },
+        "featured_collection_bKtVPN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "cta_link": "",
+            "title": "Accessories"
+          }
+        },
+        "featured_collection_FXHYwn": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "cta_link": "",
+            "title": "Cross Tables"
+          }
+        },
+        "featured_collection_y8fDzC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "",
+            "cta_link": "",
+            "title": "Bar Chairs"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_7myDMy",
+        "featured_collection_tTXGhG",
+        "featured_collection_eTmenR",
+        "featured_collection_NqmiBp",
+        "featured_collection_cwXGef",
+        "featured_collection_tnVfbN",
+        "featured_collection_Tk8fAX",
+        "featured_collection_zMCcHU",
+        "featured_collection_8gXBqF",
+        "featured_collection_bKtVPN",
+        "featured_collection_FXHYwn",
+        "featured_collection_y8fDzC"
+      ],
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "card_color_scheme": "",
+        "card_style": "standard",
+        "card_heading_size": "text-base",
+        "card_image_ratio": "1/1",
+        "card_image_width": "medium",
+        "card_image_padding": "none",
+        "rounded_card_image": true,
+        "mobile_layout": "vertical",
+        "carousel_item_size": "auto",
+        "columns_desktop": 6,
+        "carousel_control_color_scheme": "",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "1776172216db02e6b5": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_7wrCpx": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_6RdCKG": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ collection.title }}",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h2"
+          }
+        },
+        "text_gNkCRx": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Geef jouw interieur een luxe en moderne uitstraling met wandpanelen met een sterke bamboekern.Deze duurzame panelen combineren stijl, kwaliteit en een natuurlijke uitstraling.Perfect voor elke ruimte en eenvoudig te installeren voor een elegante afwerking.</p>",
+            "text_size": "text-base",
+            "text_line_limit": "none",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "button_xqEwxp": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_6RdCKG",
+        "text_gNkCRx",
+        "button_xqEwxp"
+      ],
+      "custom_css": [],
+      "name": "t:sections.rich-text.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "use_color_scheme_in_container": false,
+        "content_spacing": "standard",
+        "content_alignment": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "177617209328d663e4": {
+      "type": "apps",
+      "blocks": {
+        "product_samples_sample_item_BKqEiT": {
+          "type": "shopify://apps/product-samples/blocks/sample-item/4f181f24-29df-48f7-859c-60e47224d06d",
+          "settings": {
+            "product": "",
+            "collection": "accessoires",
+            "start_new_row": false,
+            "heading": "",
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_samples_sample_item_BKqEiT"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "image_card_mwkyJy": {
+          "type": "image_card",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "image_position": 1,
+            "image_ratio": "adapt",
+            "image_overlay_opacity": 10,
+            "content_position": "split-bottom-button",
+            "content_alignment": "center",
+            "content_spacing": "small",
+            "content_gap": "fitted",
+            "card_link": "",
+            "subheading": "Home & Decor",
+            "subheading_style": "",
+            "heading": "Saving $30 for Lighting",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "text_size": "text-base",
+            "button_label": "Shop Now",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "enable_preload_image": false
+          }
+        }
+      },
+      "block_order": [
+        "image_card_mwkyJy"
+      ],
+      "custom_css": [
+        ".f-column.product-column {border: 1px solid #d4d4d4; padding: 10px; border-radius: 4px;}",
+        "p#ProductCount {display: none;}",
+        "span.reversed-link__text {padding: 0px 10px;}",
+        ".f-price {padding: 0px 10px;}",
+        "button.add-to-cart-btn.ajax-add-to-cart {background: #55884d;}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-1",
+        "products_per_page": 20,
+        "columns_desktop": 4,
+        "column_gap": "medium",
+        "row_gap": "large",
+        "pagination": "infinite",
+        "enable_filtering": true,
+        "enable_color_swatch": true,
+        "filter_type": "drawer",
+        "expand_filter_groups": "Availability, Price, Color, Size, Category,Formaat",
+        "enable_sorting": false,
+        "enable_layout_switching": true,
+        "columns_mobile": "1",
+        "padding_top": 28,
+        "padding_bottom": 60,
+        "show_section_divider": true,
+        "divider_width": "fixed"
+      }
+    },
+    "rich_text_dgPtDV": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_kVf6qj": {
+          "type": "heading",
+          "settings": {
+            "heading": "Wandpanelen: alles wat je moet weten",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3"
+          }
+        },
+        "text_xtLQE8": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>Wat betekent naadloos wandpaneel monteren?</h3><p>Een naadloos wandpaneel is ontworpen met een click-verbindingssysteem waarbij de panelen strak op elkaar aansluiten, zonder zichtbare kit- of voegranden. Dit geeft een rustig, egaal wandbeeld — vergelijkbaar met een gestucte muur, maar met de duurzaamheid en isolatiewaarde van een bamboekern-paneel. Onze 8mm-naadloze lijn is speciaal ontwikkeld voor wie een strak, minimalistisch resultaat wil zonder zichtbare naden tussen de panelen.</p><h3>Welk wandpaneel past bij jouw ruimte?</h3><ul><li><strong>Houtlook</strong>: warm en natuurlijk, geschikt voor woonkamer en slaapkamer.</li><li><strong>Marmerlook</strong>: luxe uitstraling, populair in badkamer en keuken.</li><li><strong>Japandi (Japanse stof)</strong>: rustig, minimalistisch, past bij een Japandi- of Scandinavisch interieur.</li><li><strong>Leerlook</strong>: warme, tactiele uitstraling voor accentwanden.</li><li><strong>Metaallook & Art-panelen</strong>: modern en industrieel, geschikt als statement-wand.</li></ul><p>Twijfel je welk paneel het beste bij je past? <a href=\"/pages/type-form\">Vraag gratis advies aan</a> of <a href=\"/pages/showroom\">maak een showroomafspraak</a> op onze showroom aan de Nijverheidsdwarsstraat 2, 6914 AX Herwen.</p><h3>Veelgestelde vragen</h3><p><strong>Hoe monteer ik wandpanelen zonder zichtbare naden?</strong><br/>Onze naadloze panelen (8mm-lijn) zijn voorzien van een click-verbindingssysteem dat panelen strak op elkaar laat aansluiten. <a href=\"/pages/type-form\">Vraag gratis advies aan</a> voor een montage-instructie op maat.</p><p><strong>Kan ik eerst een sample bestellen voordat ik een volledig paneel koop?</strong><br/>Ja, via onze <a href=\"/pages/sample\">sample-pagina</a> kun je materiaalstalen bestellen voordat je een definitieve keuze maakt.</p><p><strong>Wat is de levertijd van PureDeco wandpanelen?</strong><br/>Bij voorraad lever je binnen 3-6 werkdagen.</p><p><strong>Bieden jullie garantie op de wandpanelen?</strong><br/>Ja, op al onze wandpanelen geldt 3 jaar garantie.</p><p><strong>Kan ik de wandpanelen ook in het echt bekijken?</strong><br/>Zeker, je bent welkom in onze showroom aan de Nijverheidsdwarsstraat 2, 6914 AX Herwen. <a href=\"/pages/showroom\">Maak hier een afspraak</a>.</p>",
+            "text_size": "text-base",
+            "text_line_limit": "5-lines",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_kVf6qj",
+        "text_xtLQE8"
+      ],
+      "custom_css": [],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-10",
+        "use_color_scheme_in_container": true,
+        "content_spacing": "standard",
+        "content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "buttons_with_icon_MjeR8i": {
+      "type": "buttons-with-icon",
+      "blocks": {
+        "button_item_BiWcgC": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Living Room",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_cMN9jF": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Planters",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_brEqap": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Gravel Rug",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_cdXxtW": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Table Mirror",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_JJW7dr": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Table Wears",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_BACqy3": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Dining Decor",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_LxTaHn": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Ray Table Lamp",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_EqXp3Y": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Chairs",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_7tzdU9": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Living Room",
+            "button_link": "",
+            "icon": "check"
+          }
+        },
+        "button_item_idaFU3": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Planters",
+            "button_link": "",
+            "icon": "check"
+          }
+        }
+      },
+      "block_order": [
+        "button_item_BiWcgC",
+        "button_item_cMN9jF",
+        "button_item_brEqap",
+        "button_item_cdXxtW",
+        "button_item_JJW7dr",
+        "button_item_BACqy3",
+        "button_item_LxTaHn",
+        "button_item_EqXp3Y",
+        "button_item_7tzdU9",
+        "button_item_idaFU3"
+      ],
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Popular Search",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "item_alignment": "left",
+        "item_button_style": "btn--icon",
+        "item_button_font": "button",
+        "enable_slider": true,
+        "swipe_on_mobile": true,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "scrolling_promotion_Fy9Yhn": {
+      "type": "scrolling-promotion",
+      "blocks": {
+        "text_gijz7Q": {
+          "type": "text",
+          "settings": {
+            "text_link": "",
+            "text": "8mm naadloze wandpanelen",
+            "text_size": "h4",
+            "text_opacity": 100,
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "text_3TVCPg": {
+          "type": "text",
+          "settings": {
+            "text_link": "",
+            "text": "90 dagen bedenktijd",
+            "text_size": "h4",
+            "text_opacity": 100,
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "text_iD6689": {
+          "type": "text",
+          "settings": {
+            "text_link": "",
+            "text": "Veilige betaling",
+            "text_size": "h4",
+            "text_opacity": 100,
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "text_CtJBtL": {
+          "type": "text",
+          "settings": {
+            "text_link": "",
+            "text": "",
+            "text_size": "h4",
+            "text_opacity": 100,
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "text_dGmg9m": {
+          "type": "text",
+          "settings": {
+            "text_link": "",
+            "text": "Duurzame materialen",
+            "text_size": "h4",
+            "text_opacity": 100,
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "text_gijz7Q",
+        "text_3TVCPg",
+        "text_iD6689",
+        "text_CtJBtL",
+        "text_dGmg9m"
+      ],
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "direction": "left",
+        "pause_on_hover": true,
+        "speed": 0.2,
+        "h_spacing": 80,
+        "show_section_divider": false,
+        "padding_top": 22,
+        "padding_bottom": 22
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_Gxg9wp",
+    "banner",
+    "collection_list_slider_JiW9t4",
+    "1776172216db02e6b5",
+    "rich_text_7wrCpx",
+    "177617209328d663e4",
+    "product-grid",
+    "rich_text_dgPtDV",
+    "buttons_with_icon_MjeR8i",
+    "scrolling_promotion_Fy9Yhn"
+  ]
+}
