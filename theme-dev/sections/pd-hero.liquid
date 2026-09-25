@@ -1,0 +1,217 @@
+{% comment %}
+  PUREDECO HERO
+  Vervangt de slideshow op de homepage. Redenen (uit de audit):
+  - de slideshow rendert de kop hardcoded als <h2>, waardoor de homepage
+    geen enkele <h1> had;
+  - slides 2 t/m 4 stonden uitgeschakeld en een carrousel kost LCP;
+  - er was maar ruimte voor één CTA, terwijl B2C en B2B allebei een
+    ingang nodig hebben.
+  Eén beeld, een echte <h1>, twee CTA's, expliciete afmetingen tegen CLS.
+{% endcomment %}
+
+{%- liquid
+  assign img = section.settings.image
+  assign img_mobile = section.settings.image_mobile | default: img
+  assign tag = section.settings.heading_tag | default: 'h1'
+-%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .pd-hero {
+    position: relative;
+    display: flex;
+    align-items: {{ section.settings.content_position }};
+    min-height: {{ section.settings.height_desktop }}px;
+    overflow: hidden;
+  }
+  #shopify-section-{{ section.id }} .pd-hero__media,
+  #shopify-section-{{ section.id }} .pd-hero__media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  #shopify-section-{{ section.id }} .pd-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: #1A1A18;
+    opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+  }
+  #shopify-section-{{ section.id }} .pd-hero__inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 64px 0;
+  }
+  #shopify-section-{{ section.id }} .pd-hero__content {
+    max-width: {{ section.settings.content_width }}px;
+    text-align: {{ section.settings.text_alignment }};
+  }
+  #shopify-section-{{ section.id }} .pd-hero__eyebrow {
+    display: block;
+    margin: 0 0 16px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  #shopify-section-{{ section.id }} .pd-hero__heading {
+    margin: 0;
+    text-wrap: balance;
+  }
+  #shopify-section-{{ section.id }} .pd-hero__text {
+    margin: 20px 0 0;
+    max-width: 52ch;
+  }
+  #shopify-section-{{ section.id }} .pd-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 36px;
+  }
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .pd-hero {
+      min-height: {{ section.settings.height_mobile }}px;
+    }
+    #shopify-section-{{ section.id }} .pd-hero__inner {
+      padding: 40px 0;
+    }
+    #shopify-section-{{ section.id }} .pd-hero__content {
+      max-width: none;
+    }
+  }
+{%- endstyle -%}
+
+<div class="pd-hero color-{{ section.settings.color_scheme }}">
+  {%- if img != blank -%}
+    <picture class="pd-hero__media">
+      <source
+        media="(max-width: 749px)"
+        srcset="
+          {{ img_mobile | image_url: width: 750 }} 750w,
+          {{ img_mobile | image_url: width: 1100 }} 1100w
+        "
+        width="{{ img_mobile.width }}"
+        height="{{ img_mobile.height }}"
+      >
+      {{
+        img
+        | image_url: width: 2400
+        | image_tag:
+          loading: 'eager',
+          fetchpriority: 'high',
+          sizes: '100vw',
+          widths: '750,1100,1500,1800,2200,2400',
+          width: img.width,
+          height: img.height,
+          alt: section.settings.image_alt
+      }}
+    </picture>
+    {%- if section.settings.overlay_opacity > 0 -%}
+      <div class="pd-hero__overlay"></div>
+    {%- endif -%}
+  {%- endif -%}
+
+  <div class="pd-hero__inner page-width page-width--fixed">
+    <div class="pd-hero__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="pd-hero__eyebrow">{{ section.settings.eyebrow | escape }}</span>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <{{ tag }} class="pd-hero__heading {{ section.settings.heading_size }}">
+          {{- section.settings.heading | escape -}}
+        </{{ tag }}>
+      {%- endif -%}
+
+      {%- if section.settings.description != blank -%}
+        <div class="pd-hero__text rte text-subtext">{{ section.settings.description }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank or section.settings.button_label_2 != blank -%}
+        <div class="pd-hero__actions">
+          {%- if section.settings.button_label != blank -%}
+            {% render 'button',
+              button_style: 'btn--primary',
+              button_link: section.settings.button_link,
+              button_label: section.settings.button_label
+            %}
+          {%- endif -%}
+          {%- if section.settings.button_label_2 != blank -%}
+            {% render 'button',
+              button_style: 'btn--secondary',
+              button_link: section.settings.button_link_2,
+              button_label: section.settings.button_label_2
+            %}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "PureDeco hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Kleurenschema", "default": "scheme-inverse" },
+    { "type": "image_picker", "id": "image", "label": "Afbeelding (desktop)" },
+    { "type": "image_picker", "id": "image_mobile", "label": "Afbeelding (mobiel)" },
+    { "type": "text", "id": "image_alt", "label": "Alt-tekst van de afbeelding", "info": "Beschrijf wat er te zien is. Laat leeg als het beeld puur decoratief is." },
+    { "type": "range", "id": "overlay_opacity", "min": 0, "max": 80, "step": 5, "unit": "%", "label": "Donkere laag over het beeld", "default": 30 },
+    { "type": "header", "content": "Inhoud" },
+    { "type": "text", "id": "eyebrow", "label": "Label boven de kop" },
+    { "type": "text", "id": "heading", "label": "Kop" },
+    {
+      "type": "select", "id": "heading_tag", "label": "HTML-tag van de kop",
+      "info": "Op de homepage hoort dit h1 te zijn. Elke pagina heeft precies één h1.",
+      "options": [
+        { "value": "h1", "label": "h1" },
+        { "value": "h2", "label": "h2" }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "select", "id": "heading_size", "label": "Grootte van de kop",
+      "options": [
+        { "value": "h2", "label": "Normaal" },
+        { "value": "h1", "label": "Groot" },
+        { "value": "hd2", "label": "Zeer groot" },
+        { "value": "hd1", "label": "Maximaal" }
+      ],
+      "default": "hd2"
+    },
+    { "type": "richtext", "id": "description", "label": "Tekst onder de kop" },
+    { "type": "header", "content": "Knoppen" },
+    { "type": "text", "id": "button_label", "label": "Primaire knop" },
+    { "type": "url", "id": "button_link", "label": "Link primaire knop" },
+    { "type": "text", "id": "button_label_2", "label": "Secundaire knop" },
+    { "type": "url", "id": "button_link_2", "label": "Link secundaire knop" },
+    { "type": "header", "content": "Opmaak" },
+    {
+      "type": "select", "id": "content_position", "label": "Verticale positie",
+      "options": [
+        { "value": "flex-start", "label": "Boven" },
+        { "value": "center", "label": "Midden" },
+        { "value": "flex-end", "label": "Onder" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select", "id": "text_alignment", "label": "Uitlijning",
+      "options": [
+        { "value": "left", "label": "Links" },
+        { "value": "center", "label": "Gecentreerd" }
+      ],
+      "default": "left"
+    },
+    { "type": "range", "id": "content_width", "min": 400, "max": 900, "step": 20, "unit": "px", "label": "Breedte tekstblok", "default": 640 },
+    { "type": "range", "id": "height_desktop", "min": 400, "max": 900, "step": 20, "unit": "px", "label": "Hoogte desktop", "default": 640 },
+    { "type": "range", "id": "height_mobile", "min": 320, "max": 800, "step": 20, "unit": "px", "label": "Hoogte mobiel", "default": 520 }
+  ],
+  "presets": [{ "name": "PureDeco hero" }]
+}
+{% endschema %}
