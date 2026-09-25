@@ -1,0 +1,329 @@
+/* ==========================================================================
+   PUREDECO SURFACE SYSTEM
+   Design-systeemlaag boven theme.css.
+   Wordt ná theme.css geladen en overschrijft uitsluitend design-tokens
+   en presentatie. Geen layout- of functionele wijzigingen.
+   ========================================================================== */
+
+:root {
+  /* --- Fundament ------------------------------------------------------- */
+  --pd-charcoal:        #1A1A18;
+  --pd-charcoal-soft:   #3A3A36;
+  --pd-warm-white:      #F7F5F0;
+  --pd-stone:           #E8E3DA;
+  --pd-taupe:           #A89F91;   /* alleen niet-tekstueel: 2,40:1 */
+  --pd-text-secondary:  #6B6459;   /* 5,37:1 op warm wit - AA        */
+  --pd-line:            #DDD8CE;
+
+  /* --- Merk-accent ----------------------------------------------------- */
+  --pd-green:           #375832;   /* 7,40:1 op warm wit - AAA       */
+  --pd-green-soft:      #EAEFE7;
+
+  /* --- Functioneel ----------------------------------------------------- */
+  --pd-error:           #8C2F22;   /* 7,57:1 op warm wit - AAA       */
+  --pd-focus:           #1A1A18;
+
+  /* --- Spacing --------------------------------------------------------- */
+  --pd-space-3xs: 4px;
+  --pd-space-2xs: 8px;
+  --pd-space-xs:  12px;
+  --pd-space-sm:  16px;
+  --pd-space-md:  24px;
+  --pd-space-lg:  40px;
+  --pd-space-xl:  64px;
+  --pd-space-2xl: 96px;
+  --pd-space-3xl: 140px;
+
+  /* --- Radius: één systeem --------------------------------------------- */
+  --pd-radius:        2px;
+  --pd-radius-modal:  4px;
+
+  /* --- Motion ---------------------------------------------------------- */
+  --pd-ease:        cubic-bezier(.4, 0, .2, 1);
+  --pd-ease-media:  cubic-bezier(.22, 1, .36, 1);
+  --pd-dur:         200ms;
+  --pd-dur-media:   600ms;
+}
+
+/* ==========================================================================
+   1. RADIUS - één systeem in plaats van vier
+   ========================================================================== */
+:root {
+  --buttons-radius: var(--pd-radius);
+  --inputs-radius: var(--pd-radius);
+  --textareas-radius: var(--pd-radius);
+  --badges-radius: var(--pd-radius);
+  --blocks-radius: var(--pd-radius);
+  --medium-blocks-radius: var(--pd-radius);
+  --small-blocks-radius: var(--pd-radius);
+  --pcard-radius: var(--pd-radius);
+  --pcard-inner-radius: var(--pd-radius);
+}
+
+/* ==========================================================================
+   2. TYPOGRAFIE - rust door ruimte en contrast, niet door gewicht
+   ========================================================================== */
+.h0, .h1, .h2, .h3, .hd1, .hd2,
+h1, h2, h3 {
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.h4, .h5, .h6, h4, h5, h6 {
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Eyebrow / label - het enige element dat uppercase mag zijn */
+.text-subheading,
+.rich-text__subheading {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pd-text-secondary);
+}
+
+/* Leesbaarheid van lopende tekst */
+.rte p,
+.rich-text__text p {
+  max-width: 68ch;
+  line-height: 1.65;
+}
+
+/* Gecentreerde tekstkolommen blijven gecentreerd */
+.text-center .rte p,
+.text-center .rich-text__text p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==========================================================================
+   3. BUTTONS - één systeem, duidelijke hiërarchie
+   ========================================================================== */
+.btn,
+.button,
+.shopify-challenge__button,
+.customer button {
+  border-radius: var(--pd-radius);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  /* Corrigeert buttons_transform: capitalize -> "Bekijk De Collectie" */
+  text-transform: none;
+  box-shadow: none;
+  transition: background-color var(--pd-dur) var(--pd-ease),
+              color var(--pd-dur) var(--pd-ease),
+              border-color var(--pd-dur) var(--pd-ease);
+}
+
+.btn:hover,
+.button:hover {
+  box-shadow: none;
+}
+
+/* Tertiair: tekstlink met verfijnde underline */
+.btn--underline,
+.btn--plain {
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+.btn--with-icon .btn__icon,
+.btn--underline .btn__icon {
+  transition: transform var(--pd-dur) var(--pd-ease);
+}
+
+.btn--with-icon:hover .btn__icon,
+.btn--underline:hover .btn__icon {
+  transform: translateX(4px);
+}
+
+/* Disabled */
+.btn[disabled],
+.btn[aria-disabled='true'],
+.button[disabled] {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   4. FOCUS STATES - altijd zichtbaar (WCAG 2.4.7)
+   ========================================================================== */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.btn:focus-visible,
+.button:focus-visible {
+  outline: 2px solid var(--pd-focus);
+  outline-offset: 2px;
+  border-radius: var(--pd-radius);
+}
+
+/* Op donkere vlakken moet de ring licht zijn */
+.color-scheme-inverse a:focus-visible,
+.color-scheme-inverse button:focus-visible,
+.color-scheme-3 a:focus-visible,
+.color-scheme-3 button:focus-visible {
+  outline-color: var(--pd-warm-white);
+}
+
+/* ==========================================================================
+   5. FORMULIEREN
+   ========================================================================== */
+.form-control,
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+input[type='search'],
+input[type='number'],
+input[type='password'],
+select,
+textarea {
+  border-radius: var(--pd-radius);
+  border-color: var(--pd-line);
+}
+
+.form-control:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--pd-charcoal);
+}
+
+.form-message--error,
+.form__message--error,
+.errors {
+  color: var(--pd-error);
+}
+
+/* ==========================================================================
+   6. KAARTEN - rust, geen schaduw
+   ========================================================================== */
+.f-product-card,
+.product-card,
+.card,
+.collection-card {
+  box-shadow: none;
+}
+
+.f-product-card__media img,
+.product-card__media img,
+.card__media img {
+  transition: transform var(--pd-dur-media) var(--pd-ease-media);
+}
+
+.f-product-card:hover .f-product-card__media img,
+.product-card:hover .product-card__media img,
+.card:hover .card__media img {
+  transform: scale(1.03);
+}
+
+/* ==========================================================================
+   7. SECTIERITME - ruimte is het belangrijkste luxe-instrument
+   ========================================================================== */
+@media screen and (min-width: 1024px) {
+  .section--padding {
+    --section-padding-top: max(var(--section-padding-top, 0px), 96px);
+    --section-padding-bottom: max(var(--section-padding-bottom, 0px), 96px);
+  }
+}
+
+/* ==========================================================================
+   8. .pd-btn - maatwerkknoppen uit de bestaande pagina's
+   Klassenamen blijven staan zodat bestaande opmaak blijft werken;
+   alleen de vormgeving volgt nu het designsysteem
+   (was: border-radius 999px, font-weight 700, hardcoded #55884d).
+   ========================================================================== */
+.pd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 32px;
+  border-radius: var(--pd-radius);
+  border: 1px solid var(--pd-charcoal);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: none;
+  transition: background-color var(--pd-dur) var(--pd-ease),
+              color var(--pd-dur) var(--pd-ease),
+              border-color var(--pd-dur) var(--pd-ease);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.pd-btn-primary {
+  background: var(--pd-charcoal);
+  color: var(--pd-warm-white);
+}
+
+.pd-btn-primary:hover {
+  background: var(--pd-charcoal-soft);
+  border-color: var(--pd-charcoal-soft);
+  color: var(--pd-warm-white);
+}
+
+.pd-btn-secondary {
+  background: transparent;
+  color: var(--pd-charcoal);
+}
+
+.pd-btn-secondary:hover {
+  background: var(--pd-charcoal);
+  color: var(--pd-warm-white);
+}
+
+.pd-icon svg {
+  width: 22px;
+  height: auto;
+  stroke: currentColor;
+}
+
+@media screen and (max-width: 749px) {
+  .pd-btn {
+    min-height: 48px;
+    padding: 0 24px;
+  }
+}
+
+/* ==========================================================================
+   9. SAMITA VOLUMEPRIJSTABEL OP PRODUCTKAARTEN
+   Verving een setTimeout van 15 seconden die dit element pas na
+   15s verborg. Nu direct, zonder JavaScript.
+   ========================================================================== */
+.product-card__wrapper .samitaWS-volumeTable-widget-wrapper {
+  display: none !important;
+}
+
+/* Voorraadmelding-app: volle breedte (was inline <style> in theme.liquid) */
+.rez-button-wrapper {
+  width: 100% !important;
+}
+
+/* ==========================================================================
+   10. MOTION - respecteer gebruikersvoorkeur
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .f-product-card:hover .f-product-card__media img,
+  .product-card:hover .product-card__media img,
+  .card:hover .card__media img {
+    transform: none;
+  }
+}

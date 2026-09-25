@@ -1,0 +1,360 @@
+{% liquid
+  assign enable_rtl = settings.enable_rtl
+  assign language_support_rtl = settings.language_support_rtl
+  if enable_rtl and language_support_rtl != blank
+    assign shop_locale = localization.language.iso_code
+    assign language_support_rtl_list = language_support_rtl | split: ','
+    assign is_rtl = language_support_rtl_list | where: shop_locale
+    if is_rtl.size > 0
+      assign enable_rtl = true
+    else
+      assign enable_rtl = false
+    endif
+  endif
+%}
+<!doctype html>
+<html
+  class="no-js{% if cart != empty %} cart-has-items{% endif %}"
+  lang="{{ request.locale.iso_code }}"
+  {% if enable_rtl %}
+    dir="rtl"
+  {% endif %}
+>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#1A1A18">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" sizes="48x48" href="{{ settings.favicon | image_url: width: 48, height: 48 }}">
+      <link rel="icon" type="image/png" sizes="96x96" href="{{ settings.favicon | image_url: width: 96, height: 96 }}">
+      <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 48, height: 48 }}">
+      <link rel="apple-touch-icon" sizes="180x180" href="{{ settings.favicon | image_url: width: 180, height: 180 }}">
+    {%- endif -%}
+
+    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    <title>
+      {{- page_title -}}
+      {%- if current_tags -%}
+        {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+      {%- endif -%}
+      {%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif -%}
+      {%- if template == 'password' -%}
+        {{- shop.name -}}
+      {%- else -%}
+        {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- endif -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {%- liquid
+      render 'meta-tags'
+      render 'css-variables'
+
+      echo 'vendor.css' | asset_url | stylesheet_tag: preload: true
+      echo 'theme.css' | asset_url | stylesheet_tag: preload: true
+
+      comment
+        PureDeco Surface System - designsysteemlaag. Moet NA theme.css laden.
+      endcomment
+      echo 'puredeco-design-system.css' | asset_url | stylesheet_tag: preload: true
+
+      if settings.enable_product_compare
+        echo 'compare.css' | asset_url | stylesheet_tag: preload: true
+      endif
+
+      if enable_rtl
+        echo 'rtl.css' | asset_url | stylesheet_tag: preload: true
+      endif
+    -%}
+
+    {{ content_for_header }}
+    <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+
+    {%- if request.page_type contains 'customers/' -%}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    <script>
+      if (Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
+      }
+    </script>
+
+    {%- if request.design_mode -%}
+      <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {%- render 'js-variables' -%}
+
+    {% comment %} Custom metafield for head tag like GTag tracking {% endcomment %}
+    {{ shop.metafields.foxtheme.code_head.value }}
+    {% comment %} End custom metafield for head tag like GTag tracking {% endcomment %}
+    {% capture t %}{% render 'samita-custom' %}{% endcapture %}{% unless t contains 'Liquid error' %}{{ t }}{% endunless %}
+  </head>
+{% if template.suffix == 'showroom' %}
+  {% style %}
+    .cta_remove_ctagrairb .cta_top_icon_text a.top_cta_icon:nth-child(2) {
+      display: none;
+    }
+  {% endstyle %}
+{% endif %}
+  <body
+    class="{{ request.page_type }}-template {{ template.suffix }} blocks-corner--{{ settings.blocks_corner_radius }}{% if request.design_mode %} shopify-design-mode{% endif %} {% if template.suffix == 'showroom' %} cta_remove_ctagrairb {% endif %}"
+    data-initializing
+  >
+    {% comment %} Custom metafield for body tag like GTag tracking {% endcomment %}
+    {{ shop.metafields.foxtheme.code_body.value }}
+    {% comment %} End custom metafield for body tab like GTag tracking {% endcomment %}
+
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+
+    {%- liquid
+      if settings.enable_page_transition
+        render 'page-transition'
+      endif
+    -%}
+
+    <div class="site-wrapper min-height-screen">
+      {% sections 'header-group' %}
+
+      <main id="MainContent" class="main-content content-for-layout focus-none" role="main" tabindex="-1">
+        {{ content_for_layout }}
+      </main>
+
+      {% sections 'footer-group' %}
+    </div>
+
+    {% sections 'overlay-group' %}
+    {%- liquid
+      if settings.enable_back_to_top
+        render 'back-to-top'
+      endif
+    -%}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+      <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+    </ul>
+
+    {% if settings.pcard_show_quickview_button or settings.pcard_choose_options_actions == 'open_popup' %}
+      <script src="{{ 'quick-view.js' | asset_url }}" defer="defer"></script>
+    {% endif %}
+
+    {%- if settings.enable_product_compare -%}
+      <script src="{{ 'compare.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {% comment %}
+      ------------------------------------------------------------------
+      PUREDECO MAATWERK
+      Samengevoegd tot één script. Wijzigingen t.o.v. de vorige versie:
+      - alert('yes')-debugcode verwijderd (stond live in productie)
+      - null-checks toegevoegd op alle querySelector-resultaten
+      - setTimeout van 2s/5s/15s vervangen door een MutationObserver
+        respectievelijk door CSS in puredeco-design-system.css
+      - booking-CTA valt nu terug op normale navigatie wanneer de
+        BookEasy-widget niet aanwezig is (voorheen een dode klik)
+      ------------------------------------------------------------------
+    {% endcomment %}
+    <script>
+      (function () {
+        'use strict';
+
+        /* ---------------------------------------------------------------
+           Hulpfunctie: wacht tot een door een app geïnjecteerd element
+           bestaat en voer dan één keer een actie uit. Vervangt de vaste
+           setTimeout-vertragingen, waardoor de aanpassing direct gebeurt
+           zodra het element er is in plaats van na 2, 5 of 15 seconden.
+        --------------------------------------------------------------- */
+        function whenPresent(selector, callback, timeoutMs) {
+          var existing = document.querySelector(selector);
+          if (existing) {
+            callback(existing);
+            return;
+          }
+
+          var observer = new MutationObserver(function () {
+            var el = document.querySelector(selector);
+            if (el) {
+              observer.disconnect();
+              callback(el);
+            }
+          });
+
+          observer.observe(document.documentElement, { childList: true, subtree: true });
+          window.setTimeout(function () {
+            observer.disconnect();
+          }, timeoutMs || 20000);
+        }
+
+        /* ---------------------------------------------------------------
+           BookEasy: afspraak-CTA's openen de boekingswidget.
+           Wanneer de widget niet op de pagina staat, volgt de link
+           gewoon zijn eigen href in plaats van niets te doen.
+        --------------------------------------------------------------- */
+        document.addEventListener('click', function (e) {
+          var trigger = e.target.closest(
+            'button.booking_cta, .booking_cta a, a.pd-btn.pd-btn-primary'
+          );
+          if (!trigger) return;
+
+          var widgetBtn = document.querySelector('.bookeasy-btn');
+          if (!widgetBtn) return; /* geen widget: laat de link normaal werken */
+
+          e.preventDefault();
+          widgetBtn.click();
+        });
+
+        /* ---------------------------------------------------------------
+           Aantalkiezer en AJAX toevoegen aan winkelwagen
+           op maatwerk-productkaarten.
+        --------------------------------------------------------------- */
+        document.addEventListener(
+          'click',
+          function (e) {
+            var plusBtn = e.target.closest('.plus');
+            var minusBtn = e.target.closest('.minus');
+            var cartBtn = e.target.closest('.add-to-cart-btn');
+
+            function stepQuantity(button, direction) {
+              var box = button.closest('.qty-box');
+              if (!box) return false;
+
+              var input = box.querySelector('input[type="number"]');
+              if (!input) return false;
+
+              e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation();
+
+              var current = parseInt(input.value, 10);
+              if (isNaN(current) || current < 1) current = 1;
+
+              input.value = direction > 0 ? current + 1 : Math.max(1, current - 1);
+              input.dispatchEvent(new Event('change', { bubbles: true }));
+              return true;
+            }
+
+            if (plusBtn && stepQuantity(plusBtn, 1)) return;
+            if (minusBtn && stepQuantity(minusBtn, -1)) return;
+
+            if (!cartBtn) return;
+
+            var variantId = cartBtn.dataset.variantId;
+            if (!variantId) return;
+
+            var wrapper = cartBtn.closest('.custom-card-actions');
+            var qtyInput = wrapper ? wrapper.querySelector('.qty-box input[type="number"]') : null;
+            var quantity = qtyInput ? parseInt(qtyInput.value, 10) || 1 : 1;
+
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+
+            document.body.classList.add('modal-show');
+
+            var loader = cartBtn.querySelector('.btn-loader');
+            var text = cartBtn.querySelector('.btn-text');
+
+            cartBtn.disabled = true;
+            if (text) text.style.display = 'none';
+            if (loader) loader.style.display = 'inline-block';
+
+            fetch('/cart/add.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+              body: JSON.stringify({ id: variantId, quantity: quantity })
+            })
+              .then(function (res) {
+                if (!res.ok) {
+                  return res.json().then(function (err) {
+                    throw err;
+                  });
+                }
+                return res.json();
+              })
+              .then(function () {
+                document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+                document.dispatchEvent(new CustomEvent('cart:open', { bubbles: true }));
+                document.dispatchEvent(new CustomEvent('open:cart-drawer', { bubbles: true }));
+
+                var cartDrawer = document.querySelector('#CartDrawer');
+                if (cartDrawer) {
+                  cartDrawer.classList.add('active', 'open');
+                  cartDrawer.setAttribute('open', 'true');
+                  cartDrawer.setAttribute('active', '');
+                  cartDrawer.removeAttribute('hidden');
+                }
+              })
+              .catch(function (err) {
+                console.error('Cart error:', err);
+              })
+              .finally(function () {
+                cartBtn.disabled = false;
+                if (text) text.style.display = 'inline-block';
+                if (loader) loader.style.display = 'none';
+              });
+          },
+          true
+        );
+
+        /* Handmatige invoer in de aantalkiezer nooit onder 1 */
+        document.addEventListener('input', function (e) {
+          var input = e.target.closest('.qty-box input[type="number"]');
+          if (!input) return;
+
+          var val = parseInt(input.value, 10);
+          if (isNaN(val) || val < 1) input.value = 1;
+        });
+
+        /* Maatwerk-sampleknop delegeert naar de knop van de samples-app */
+        document.addEventListener('click', function (e) {
+          var customBtn = e.target.closest('.custom-product-samples .custom-sample-btn');
+          if (!customBtn) return;
+
+          var wrapper = customBtn.closest('.custom-product-samples');
+          var realBtn = wrapper ? wrapper.querySelector('[product-samples-button]') : null;
+          if (!realBtn) return;
+
+          e.preventDefault();
+          realBtn.click();
+        });
+
+        /* Winkelwagenmodal tonen bij toevoegen vanaf de productpagina */
+        document.addEventListener('click', function (e) {
+          if (e.target.closest('.product-form__submit')) {
+            document.body.classList.add('modal-show');
+          }
+        });
+
+        /* ---------------------------------------------------------------
+           Nederlandse labels op door apps geïnjecteerde knoppen.
+           Voorheen na 5s respectievelijk 2s; nu zodra het element bestaat.
+        --------------------------------------------------------------- */
+        whenPresent('.action.submit.classic-button', function (btn) {
+          var textNode = btn.childNodes[btn.childNodes.length - 1];
+          if (textNode && textNode.nodeType === Node.TEXT_NODE) {
+            textNode.nodeValue = ' Verzenden';
+          }
+        });
+
+        whenPresent('.rez-stock-notification-button', function (btn) {
+          btn.textContent = 'Houd mij op de hoogte';
+        });
+      })();
+    </script>
+  </body>
+</html>
