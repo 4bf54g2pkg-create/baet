@@ -98,4 +98,4 @@ Klopt iets niet of oogt het anders dan bedoeld: het staat allemaal in `theme-h1/
 3. **Hero met zichtbare kop** in HTML in plaats van tekst in het beeld. Daarvoor is een beeld zonder ingebakken tekst nodig.
 4. **Productkaarten**: één beeldverhouding (4:5) en het kortingspercentage-label weg.
 5. **Engelse restteksten** in de theme-instellingen ("Not sure where to start?").
-6. **WhatsApp-nummer**: homepage en productpagina gebruiken verschillende nummers (`31316700214` vs `31850870490`). Welk nummer klopt?
+6. ~~**WhatsApp-nummer**~~ — opgelost: productpagina gebruikte `wa.me/31850870490`; nu overal **0316 700214** (`wa.me/31316700214`), op aanwijzing van de opdrachtgever.
