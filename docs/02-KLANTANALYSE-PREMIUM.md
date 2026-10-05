@@ -56,7 +56,7 @@ Dit is wat een bezoeker op de homepage achter elkaar te zien krijgt, gereconstru
 |---|---|---|
 | 1 | **Topbar** met drie wisselende berichten: *"Gratis verzending vanaf 600,-"* · *"Klanten beoordelen ons gemiddeld met een 9,4 op 10."* · *"Betaal later met Klarna"*. Plus e-mail en telefoonnummer. | "Een webshop die op prijs en betaalgemak verkoopt." `600,-` is marktkraam-notatie, geen merknotatie. |
 | 2 | **Header** met twee CTA-knoppen (*Showroomafspraak*, *Gratis advies*) en een menu dat begint met **ACTIE**. "Wandpanelen" twinkelt met een sterretje-animatie. | Drie dingen roepen tegelijk om aandacht. Het eerste woord in het menu is korting. |
-| 3 | **Hero**: één beeld (`ChatGPT_Image_8_sep_2026…png`, AI) waarin de tekst is ingebakken, plus de knop *Bekijk de collectie*. Er is geen kop in HTML. | Mooi plaatje, maar wat is PureDeco? De belofte is niet scanbaar, niet vertaalbaar en op mobiel klein. |
+| 3 | **Hero**: één beeld (`ChatGPT_Image_8_sep_2026…png`, AI) waarin de tekst is ingebakken, plus de knop *Bekijk de collectie*. De enige `<h1>` is het logo (alt-tekst = winkelnaam); de belofte zelf staat niet in HTML. | Mooi plaatje, maar wat is PureDeco? De belofte is niet scanbaar, niet vertaalbaar en op mobiel klein. |
 | 4 | **USP-balk**, als eerste: *"Betaal flexibel met Klarna"*, daarna *"Naadloze afwerking"*, *"Snelle levering"*, *"90 dagen retourbeleid"*. | Het eerste argument van het merk is gespreid betalen. Bij een product van € 100–600 zegt dat "duur, maar je kunt het afbetalen". |
 | 5 | Slider *"Breed assortiment wandpanelen"* met Hout, Japandi, Leer en Marmer. Die linken naar filter-URL's op `/collections/all`. | Werkt, maar landt op een generieke "alle producten"-pagina. |
 | 6 | *"Alle voordelen van bamboepanelen op een rij"*: zes claims (waterafstotend, E0, buigbaar, UV, B1, montage). | Interessant, maar geen bewijs: geen certificaat, geen test, geen foto. |
@@ -136,7 +136,7 @@ Legenda perceptie: 🔴 goedkoop · 🟡 normale webshop · 🟢 premium
 
 ### 5.1 Homepage 🔴🟡
 - **12 secties**, waarvan 2× een slideshow, 2× een featured collection met placeholder-instellingen (*"Collections"*, *"Button label"*), een Instagram-feed met de tekst *"…wie weet staat jouw foto binnenkort op onze website!!"* (dubbel uitroepteken).
-- **Geen `<h1>`.** De belofte zit in het hero-beeld.
+- **De `<h1>` is het logo** (`sections/header.liquid` wikkelt het logo op de homepage in een `<h1>`; de tekst is dus de alt-tekst, vermoedelijk "PureDeco"). De belofte zit in het hero-beeld. *(Correctie op `01-AUDIT-RAPPORT.md`, dat "geen H1" meldde.)*
 - De sectie *"Wandpanelen specialist voor interieur & projecten"* claimt projecten voor *"hotels, ziekenhuizen en overheidsinstanties"*. Er is nergens één project te zien. Een claim zonder bewijs verzwakt het merk meer dan dat hij helpt.
 - De homepage-feature card *"Dé wandpanelen specialist van Nederland"* is een superlatief zonder onderbouwing.
 - Typografie in die sectie: `heading_weight 700`, `title_weight 800`, zwart op wit. Zwaar en schreeuwend.
@@ -298,7 +298,7 @@ Gevolg: in zoekresultaten en "alle producten" ziet een klant hetzelfde paneel tw
 
 ### 5.19 SEO 🟡
 **Sterk verbeterd sinds september:** 13 van 16 collecties hebben nu een SEO-titel en meta-description, met goede zoekwoorden. Blijft open:
-- Geen `<h1>` op home en collecties (live).
+- Homepage-`<h1>` is alleen het logo; collecties hebben geen `<h1>` (live). Het theme "H1-test" pakt beide aan, zie `03-H1-TEST-REVIEW.md`.
 - Kannibalisatie *wandpanelen* vs *bamboepanelen-samples*; *akupanelen* dubbel; *actie* vs *sale*.
 - Homepage linkt naar filter-URL's in plaats van naar de echte materiaalcollecties (`/collections/hout-1`, `/japandi`, `/leer`, `/doorlopend-marmer`, `/kunst`).
 - Producten: **4 van 42** hebben een eigen SEO-titel/description; `productType` is overal leeg.
