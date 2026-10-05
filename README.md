@@ -21,6 +21,7 @@ Werkrepository voor de digitale transformatie van **puredeco.nl** (Shopify).
 |---|---|
 | `docs/00-THEME-REGISTER.md` | Theme-register + integriteitscontrole (MD5 live vs. development) |
 | `docs/01-AUDIT-RAPPORT.md` | Geïntegreerd audit- en redesignvoorstel (secties A–R, prioritering P0–P3) |
+| `docs/02-KLANTANALYSE-PREMIUM.md` | Volledige analyse vanuit klantperspectief (5 okt 2026): eerste indruk, tegenstrijdige beloftes, catalogusdata, premium-benchmark, beslissingen vóór fase 2 |
 | `theme-snapshot/` | Read-only snapshot van de belangrijkste live-theme templates, als referentie |
 
 ## Status
