@@ -45,3 +45,9 @@ templates/robots.txt.liquid  79fe39ff3f6c96eb3ef97395ad254787  = OK
 - Geen automatische deployment naar production geconfigureerd.
 - Shopify MCP blokkeert bovendien technisch: theme publishing, theme deletion,
   en theme file writes naar het MAIN theme.
+
+## WIJZIGINGEN LIVE THEME (door opdrachtgever)
+- 2026-10-05 13:33 UTC — templates/product.json: WhatsApp-link contactblok
+  van wa.me/31850870490 naar wa.me/31316700214 (handmatig in theme-editor,
+  door opdrachtgever; door Claude gecontroleerd). Nieuw controlepunt live
+  updatedAt: 2026-10-05T13:33:36Z.
