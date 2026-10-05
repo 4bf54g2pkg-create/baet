@@ -418,7 +418,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  document.querySelectorAll("a.pd-btn.pd-btn-primary").forEach(function(btn) {
+  /* PureDeco 5 okt 2026: alleen afspraakknoppen (href="javascript:...") openen BookX; gewone links navigeren weer */
+  document.querySelectorAll('a.pd-btn[href^="javascript"]').forEach(function(btn) {
 
     btn.addEventListener("click", function(e) {
       e.preventDefault();

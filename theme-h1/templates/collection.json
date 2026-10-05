@@ -535,7 +535,7 @@
           "type": "text",
           "settings": {
             "text_link": "",
-            "text": "90 dagen bedenktijd",
+            "text": "30 dagen bedenktijd",
             "text_size": "h4",
             "text_opacity": 100,
             "use_custom_color": false,
@@ -593,7 +593,8 @@
         "show_section_divider": false,
         "padding_top": 22,
         "padding_bottom": 22
-      }
+      },
+      "disabled": true
     }
   },
   "order": [

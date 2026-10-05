@@ -374,7 +374,8 @@
             "text": "garace - where design meet function -",
             "image": "shopify://shop_images/sample-icon-text.svg",
             "position_mobile": "right"
-          }
+          },
+          "disabled": true
         },
         "heading_pKj8kP": {
           "type": "heading",
@@ -517,7 +518,8 @@
         "padding_bottom": 50,
         "show_section_divider": false,
         "divider_width": "fixed"
-      }
+      },
+      "disabled": true
     }
   },
   "order": [

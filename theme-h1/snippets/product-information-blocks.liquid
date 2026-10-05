@@ -88,11 +88,13 @@
             {%- else -%}
               <h1 class="product__title {{ block.settings.heading_size }}">{{ product.title | escape }}</h1>
             {%- endif -%}
+            {%- if show_details_link == true -%}
             <a href="{{ product.url }}" class="product__title">
               <h2 class="h1">
                 {{ product.title | escape }}
               </h2>
             </a>
+            {%- endif -%}
           </div>
         {%- when 'price' -%}
           <div class="{{ block_classes }}" {{ block.shopify_attributes }}>
@@ -428,7 +430,7 @@
                       {% else %}
                         <a href="{{ sibling_ref.url }}" class="sibling-products__item">
                           {% if sibling_ref.featured_image %}
-                            <img style="width:30px;height:30px; border-radius:50%;" src="{{ sibling_ref.featured_image | img_url: 'master' }}" alt="{{ sibling_ref.title }}">
+                            <img style="width:30px;height:30px; border-radius:50%;" src="{{ sibling_ref.featured_image | image_url: width: 90 }}" width="30" height="30" loading="lazy" alt="{{ sibling_ref.title | escape }}">
                           {% endif %}
                           <span style="display:none;">{{ sibling_ref.title }}</span>
                         </a>

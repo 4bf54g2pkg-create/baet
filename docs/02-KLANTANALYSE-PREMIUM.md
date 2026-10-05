@@ -185,7 +185,7 @@ Legenda perceptie: 🔴 goedkoop · 🟡 normale webshop · 🟢 premium
 **Daarnaast:**
 - 4 iconen met 2 foutieve/inconsistente beloftes (*90 dagen*, *Leverbaar binnen 3-6 werkdagen*).
 - Klarna-blok met berekening "Betaal in 3 delen" direct onder de prijs: koopkracht-framing.
-- Betaaliconen: Maestro · Mastercard · PayPal · Visa. **iDEAL ontbreekt in de iconen**, terwijl dat in Nederland de dominante betaalmethode is *(verifiëren of iDEAL actief is in de checkout)*.
+- Betaaliconen: iDEAL staat er wel bij (eigen SVG), naast Maestro · Mastercard · PayPal · Visa. *(Correctie: eerder stond hier dat iDEAL ontbrak.)* Het blok staat in een grijze kaart met afgeronde hoeken die niet bij de rest past.
 - Contactblok op de PDP linkt naar `https://puredeco-3.myshopify.com/faqs` (ander domein én dode link).
 - Variantkiezer heeft het label `size_title: color` (Engels).
 
@@ -471,7 +471,7 @@ Omdat `puredeco.nl` en de Shopify-CDN vanuit deze omgeving geblokkeerd zijn:
 - [ ] Geeft de ChatGPT-HTML op `/collections/nieuwe-collectie` (`h-svh w-screen`) lege ruimte of een layoutbreuk? En op `/collections/actie`, `/collections/bamboepanelen-samples`?
 - [ ] Mobiele weergave van de hero, topbar en header (hoogte boven de vouw).
 - [ ] Core Web Vitals (LCP, CLS, INP) via PageSpeed Insights voor home, collectie en PDP.
-- [ ] Staat iDEAL in de checkout, en bovenaan?
+- [ ] Staat iDEAL in de checkout bovenaan?
 - [ ] Wat ziet een Belgische bezoeker in de topbar en de cart?
 - [ ] Opent een `pd-btn`-knop de afsprakenmodule in plaats van te navigeren?
 - [ ] Is de foto van *Japandi 620* inmiddels gecorrigeerd?

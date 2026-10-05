@@ -17,7 +17,7 @@
         "text_YYJRm3": {
           "type": "text",
           "settings": {
-            "text": "Gratis verzending vanaf 600,-",
+            "text": "Gratis bezorging in Nederland vanaf € 600",
             "position": "center",
             "highlight_text": "",
             "highlight_text_style": "button",
@@ -28,7 +28,7 @@
         "text_kwEfnk": {
           "type": "text",
           "settings": {
-            "text": "Klanten beoordelen ons gemiddeld met een 9,4 op 10.",
+            "text": "3 jaar garantie op alle wandpanelen",
             "position": "center",
             "highlight_text": "",
             "highlight_text_style": "button",
@@ -39,8 +39,7 @@
         "text_4WYCgn": {
           "type": "text",
           "settings": {
-            "img_cta_icona": "shopify://shop_images/2024-06-15-AltPayments-site-desktop-mobile-2060-us-header-image-klarna.avif",
-            "text": "Betaal later met Klarna",
+            "text": "Showroom in Herwen · persoonlijk advies op afspraak",
             "position": "center",
             "highlight_text": "",
             "highlight_text_style": "button",
@@ -52,8 +51,8 @@
           "type": "language_country",
           "settings": {
             "top_email_text": "info@puredeco.nl",
-            "top_phone_text": "0316 700214",
-            "top_phone_link": "0316 700214",
+            "top_phone_text": "0316 700 214",
+            "top_phone_link": "+31316700214",
             "top_bar_background": "rgba(0,0,0,0)",
             "top_bar_text_color": "#ffffff",
             "top_bar_icon_color": "#ffffff",
@@ -73,7 +72,7 @@
             "top_bar_font_weight": 400,
             "top_bar_icon_size": 17,
             "mobile_top_bar_icon_size": 15,
-            "show_language_selector": true,
+            "show_language_selector": false,
             "show_country_selector": true,
             "position": "right"
           }
@@ -90,8 +89,8 @@
           "settings": {
             "show_facebook": true,
             "show_instagram": true,
-            "show_twitter": true,
-            "show_tiktok": true,
+            "show_twitter": false,
+            "show_tiktok": false,
             "show_pinterest": false,
             "show_snapchat": false,
             "show_tumblr": false,
@@ -118,28 +117,12 @@
         "container": "full",
         "color_scheme": "scheme-11",
         "show_separator_line": false,
-        "padding_top": 16,
-        "padding_bottom": 18
+        "padding_top": 8,
+        "padding_bottom": 8
       }
     },
     "header": {
       "type": "header",
-      "blocks": {
-        "hightlight_link_98a9yC": {
-          "type": "hightlight_link",
-          "settings": {
-            "hl_link_title": "wandpanelen",
-            "hl_link_style": "star_twinkle",
-            "hl_link_color": "#55884d"
-          }
-        }
-      },
-      "block_order": [
-        "hightlight_link_98a9yC"
-      ],
-      "custom_css": [
-        "button.add-to-cart-btn.ajax-add-to-cart {background: #55884d;}"
-      ],
       "settings": {
         "cta_one-text": "Showroomafspraak",
         "cta_one": "shopify://pages/showroom",
@@ -156,7 +139,7 @@
         "show_sperator_line": true,
         "customer_account_style": "icon-only",
         "show_social_media_icons": true,
-        "enable_language_selector": true,
+        "enable_language_selector": false,
         "enable_country_selector": true,
         "header_top_padding_top": 20,
         "header_top_padding_bottom": 20,

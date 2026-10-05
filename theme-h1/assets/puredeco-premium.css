@@ -189,3 +189,144 @@ h1, h2, h3, .h1, .h2, .h3 {
   padding: 0 !important;
   overflow: hidden !important;
 }
+
+/* =========================================================
+   Batch 2 (5 okt 2026): uitstraling & vertrouwen
+   ========================================================= */
+
+/* ---------- 9. Typografie: rust in plaats van gewicht ---------- */
+:root {
+  --font-heading-weight: 500;
+  --font-body-weight-bolder: 500;
+}
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.hd1, .hd2, .hd3 {
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.rte p, .rte li {
+  text-wrap: pretty;
+}
+
+/* ---------- 10. Topbar: één rustige regel ---------- */
+.topbar-section .topbar__text,
+.topbar-section .topbar__text p {
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+.topbar-section li.topbar__menu-item a {
+  font-size: 1.25rem;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+.topbar-section li.topbar__menu-item a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- 11. Header-knoppen: van groene pillen naar stille knoppen ----------
+   "Showroomafspraak" = secundair (rand), "Gratis advies" = tekstlink. */
+body a.top_cta_icon {
+  width: auto;
+  min-height: 4.2rem;
+  padding: 0 1.8rem;
+  border-radius: 0.2rem;
+  background: transparent;
+  color: rgb(var(--pd-ink));
+  border: 1px solid rgb(var(--pd-ink));
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: background-color 240ms cubic-bezier(.2,.7,.2,1), color 240ms cubic-bezier(.2,.7,.2,1);
+}
+body a.top_cta_icon:hover {
+  background: rgb(var(--pd-ink));
+  color: #fff;
+}
+body a.top_cta_icon + a.top_cta_icon {
+  border-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+body a.top_cta_icon + a.top_cta_icon:hover {
+  background: transparent;
+  color: rgb(var(--pd-ink));
+  text-decoration-thickness: 2px;
+}
+
+/* ---------- 12. Prijzen: geen rood, korting ingetogen ---------- */
+.f-price--on-sale .f-price-item--sale {
+  color: rgb(var(--pd-ink));
+}
+.f-price--on-sale .f-price-item--regular {
+  color: rgb(var(--pd-stone-600));
+}
+.f-price__badge-sale {
+  background: transparent !important;
+  color: rgb(var(--pd-stone-600)) !important;
+  border: 1px solid rgb(var(--pd-stone-300));
+}
+
+/* ---------- 13. Productkaarten: titel rustig, prijs leesbaar ---------- */
+.product-card__title,
+.product-card__title a {
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.product-card .f-price-item {
+  font-weight: 500;
+}
+.product-card img {
+  transition: transform 700ms cubic-bezier(.22,1,.36,1);
+}
+@media (hover: hover) {
+  .product-card:hover img {
+    transform: scale(1.03);
+  }
+}
+
+/* ---------- 14. Productpagina: levertijd, Klarna, garanties ---------- */
+.pd-delivery {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+.pd-delivery__dot {
+  flex: none;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-top: 0.6rem;
+  border-radius: 50%;
+}
+.pd-delivery__dot--in { background: #3e6b3a; }
+.pd-delivery__dot--later { background: rgb(var(--pd-bronze)); }
+.pd-klarna {
+  margin: -0.4rem 0 0;
+  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.7);
+}
+.product__block--icon-with-text .icon-with-text__heading,
+.product__block--icon-with-text h3,
+.product__block--icon-with-text p {
+  font-weight: 400;
+}
+
+/* ---------- 15. Footer: rustig en volledig ---------- */
+.footer .rte a,
+.footer a {
+  text-underline-offset: 3px;
+}
+.footer .rte p {
+  margin: 0 0 0.6rem;
+}
