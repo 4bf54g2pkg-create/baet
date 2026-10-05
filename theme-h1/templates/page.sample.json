@@ -1,0 +1,531 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_overlay_9E3VM7": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_4nMpyD": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "subheading": "Add a tagline"
+          }
+        },
+        "heading_brMHb9": {
+          "type": "heading",
+          "settings": {
+            "heading": "PureDeco Samplebox",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_qqtifR": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Eerst testen? Bestel eenvoudig samples van je favoriete wandpanelen en ervaar zelf onze kwaliteit.</p>",
+            "text_size": "text-base"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_4nMpyD",
+        "heading_brMHb9",
+        "text_qqtifR"
+      ],
+      "custom_css": [
+        ".relative.z-1.rich-text.text-left.md\\:text-left {max-width: 590px;}",
+        "@media screen and (min-width: 1300px) {.image-with-text-ovelay__content-wrapper {padding: 0 10.5rem; }}"
+      ],
+      "name": "t:sections.image-with-text-overlay.name",
+      "settings": {
+        "container": "full",
+        "image": "shopify://shop_images/Banner_1.png",
+        "desktop_height": "small",
+        "overlay_opacity": 25,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "mobile_height": "auto",
+        "content_position_mobile": "middle-center-mobile",
+        "content_alignment_mobile": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "enable_preload_image": false
+      }
+    },
+    "multicolumn_icon_me7KwJ": {
+      "type": "multicolumn-icon",
+      "blocks": {
+        "column_aeJ7bY": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/usp-3_1.svg",
+            "max_width": 48,
+            "max_width_mb": 28,
+            "title": "Duurzame materialen",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_K8GyRk": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/usp-7_1.svg",
+            "max_width": 48,
+            "max_width_mb": 28,
+            "title": "Eenvoudige installatie",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_HGzaxE": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/ico-onderhoudsvriendelijk.svg",
+            "max_width": 48,
+            "max_width_mb": 28,
+            "title": "Onderhoudsvriendelijk",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_Gm9ytW": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/ico-veelzijdigDesign.svg",
+            "max_width": 48,
+            "max_width_mb": 28,
+            "title": "Veelzijdig design",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_L3tbNM": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/ico-langeLevensduur-1.svg",
+            "max_width": 48,
+            "max_width_mb": 28,
+            "title": "Lange levensduur",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_qAwQGy": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/ico-energyEfficient.svg",
+            "max_width": 48,
+            "max_width_mb": 28,
+            "title": "Energie-efficiëntie",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_gDGJ6W": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/usp-6.svg",
+            "max_width": 28,
+            "max_width_mb": 28,
+            "title": "Geluidsdempend materiaal",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h6",
+            "heading_font": "heading",
+            "text": "",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "column_aeJ7bY",
+        "column_K8GyRk",
+        "column_HGzaxE",
+        "column_Gm9ytW",
+        "column_L3tbNM",
+        "column_qAwQGy",
+        "column_gDGJ6W"
+      ],
+      "custom_css": [
+        ".multicolumn-card__image.shrink-0 img {object-fit: contain;}",
+        ".multicolumn-card__image.shrink-0 {width: 48px; height: 48px;}",
+        "@media (min-width: 1024px) {.swipe-mobile__inner.multicolumn__items {display: grid !important; grid-template-columns: repeat(7, 1fr) !important; gap: 20px; }}"
+      ],
+      "name": "t:sections.multicolumn-with-icon.name",
+      "settings": {
+        "cta_custom": false,
+        "container": "fixed",
+        "color_scheme": "",
+        "header_layout": "vertical",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "De voordelen van onze wandpanelen",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h3",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "enable_sticky": false,
+        "card_color_scheme": "",
+        "content_alignment": "center",
+        "image_position": "top",
+        "icon_color": "#1d349a",
+        "columns_desktop": 6,
+        "column_gap": "small",
+        "row_gap": "inherit",
+        "show_divider_col": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 64,
+        "padding_bottom": 50
+      }
+    },
+    "product_samples_selector_bj6VrY": {
+      "type": "product-samples-selector",
+      "blocks": {
+        "slider_image_PpFDCq": {
+          "type": "slider_image",
+          "settings": {
+            "image": "shopify://shop_images/bamboepanelen-solide-kleuren-659-piano-black-6-1-1024x989.jpg",
+            "alt_text": "Slider image"
+          }
+        },
+        "slider_image_mnUqwd": {
+          "type": "slider_image",
+          "settings": {
+            "image": "shopify://shop_images/tips-onderhouden-bamboepanelen.png",
+            "alt_text": "Slider image"
+          }
+        },
+        "sample_product_4N3KGf": {
+          "type": "sample_product",
+          "settings": {
+            "sample_product": "602-hout-wood-classic"
+          }
+        },
+        "sample_product_HXgqMx": {
+          "type": "sample_product",
+          "settings": {
+            "sample_product": "607-hout-wood-white-oak"
+          }
+        },
+        "sample_product_EJFCia": {
+          "type": "sample_product",
+          "settings": {
+            "sample_product": "615-hout-wood-radiata"
+          }
+        },
+        "sample_product_dGGUxQ": {
+          "type": "sample_product",
+          "settings": {
+            "sample_product": "642-leer-iron-grey"
+          }
+        }
+      },
+      "block_order": [
+        "slider_image_PpFDCq",
+        "slider_image_mnUqwd",
+        "sample_product_4N3KGf",
+        "sample_product_HXgqMx",
+        "sample_product_EJFCia",
+        "sample_product_dGGUxQ"
+      ],
+      "name": "Product samples selector",
+      "settings": {
+        "heading": "Samples",
+        "subheading": "<p>Selecteer hieronder meerdere voorbeelden.</p>",
+        "selected_heading": "U hebt de volgende voorbeelden geselecteerd:",
+        "empty_text": "Er zijn nog geen voorbeelden geselecteerd.",
+        "count_suffix": "geselecteerde artikelen",
+        "total_label": "Totaal:",
+        "include_main_product": false,
+        "main_product_note": "Het huidige product wordt ook aan de winkelwagen toegevoegd.",
+        "button_label": "Voeg toe aan winkelwagen",
+        "redirect_to_cart": false,
+        "success_message": "Artikelen succesvol toegevoegd aan winkelwagen.",
+        "error_message": "Er is iets misgegaan. Probeer het opnieuw.",
+        "no_item_message": "Selecteer ten minste één item.",
+        "show_zero_price_text": false,
+        "zero_price_text": "+ €0,00 inc. BTW",
+        "slider_bg": "#171717",
+        "slider_radius": 14,
+        "arrow_bg": "#f3f0eb",
+        "arrow_color": "#111111",
+        "button_bg": "#5b8f4c",
+        "button_text_color": "#ffffff",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "image_with_text_Nr7UQi": {
+      "type": "image-with-text",
+      "blocks": {
+        "badge_bLtcDA": {
+          "type": "badge",
+          "settings": {
+            "color_scheme": "scheme-3",
+            "badge_link": "shopify://pages/sample",
+            "text": "garace - where design meet function -",
+            "image": "shopify://shop_images/sample-icon-text.svg",
+            "position_mobile": "right"
+          }
+        },
+        "heading_pKj8kP": {
+          "type": "heading",
+          "settings": {
+            "heading": "Waarom kiezen voor een samplebox?",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h2"
+          }
+        },
+        "text_fpHMiM": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Met een samplebox van PureDeco kun je de textuur en kleur van onze wandpanelen eerst thuis ervaren, zodat je zeker weet dat ze perfect passen bij jouw interieur. Je ontvangt de samples gratis binnen 2 werkdagen, zodat je snel een weloverwogen keuze kunt maken. Kies uit diverse afwerkingen, zoals hout, leer of Japanse stof, en ontdek welke stijl het beste bij jouw ruimte past.</p>",
+            "subtext_color": true
+          }
+        }
+      },
+      "block_order": [
+        "badge_bLtcDA",
+        "heading_pKj8kP",
+        "text_fpHMiM"
+      ],
+      "custom_css": [
+        ".image-with-text__content {max-width: 60rem; --text-margin-top: 2rem;}",
+        ".badge__icon img {object-fit: contain !important; width: fit-content !important; width: 30px !important; margin: 0 auto;}",
+        "@media screen and (max-width: 750px) {.image-with-text__media {padding: 0 !important; }}"
+      ],
+      "settings": {
+        "cutom_cta_enable_form": false,
+        "allow_icon": false,
+        "container": "fixed",
+        "color_scheme": "",
+        "image": "shopify://shop_images/puredeco-wandpanelen-homepage-header-1-618x320.png",
+        "image_position": "left",
+        "image_width": 50,
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "inherit",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "testimonials_CJrwjK": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_EQ9hED": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "heading": "Testimonials",
+            "text": "<p><strong>\"Topkwaliteit en snelle service!\"</strong><br/><br/>Overal zie je marmer panelen, maar dit bedrijf heeft ze in zoveel stijlen – echt wow! <br/></p>",
+            "author": "- Thomas",
+            "bio": "",
+            "product": ""
+          }
+        },
+        "testimonial_X9DtpL": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "heading": "Testimonials",
+            "text": "<p>Geweldige kwaliteit en super eenvoudig te monteren. Zeer tevreden!</p>",
+            "author": "- Sanne",
+            "bio": "",
+            "product": ""
+          }
+        },
+        "testimonial_aaCeqP": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "heading": "Testimonials",
+            "text": "<p>Ik heb veel samples van verschillende webshops geprobeerd, maar deze wandpanelen staken er met kop en schouders bovenuit! Zeker een aanrader!</p>",
+            "author": "- OBE Accounting",
+            "bio": "",
+            "product": ""
+          }
+        },
+        "testimonial_KHBWtQ": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "heading": "Testimonials",
+            "text": "<p>Goed geholpen voor het inrichten van ons bedrijfspand en tevreden met het resultaat.</p>",
+            "author": "- - Maxibedden Uw slaapspecialist",
+            "bio": "",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_EQ9hED",
+        "testimonial_X9DtpL",
+        "testimonial_aaCeqP",
+        "testimonial_KHBWtQ"
+      ],
+      "custom_css": [
+        ".testimonial__wrapper.false {background: #f0f0f0; padding: 20px; height: 240px; border-radius: 9px;}",
+        ".testimonial__inner {display: flex; flex-direction: column; justify-content: center;}",
+        ".testimonial__icon svg {color: #ffad00; width: 19px;}"
+      ],
+      "name": "t:sections.testimonials.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Dit vinden onze klanten van ons",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-base",
+        "layout": "standard",
+        "card_color_scheme": "",
+        "card_content_color_scheme": "",
+        "card_image_ratio": "adapt",
+        "card_heading_size": "h4",
+        "card_text_size": "text-base",
+        "author_info_layout": "vertical",
+        "card_trigger_behavior": "click",
+        "show_image": false,
+        "show_author_image": false,
+        "columns_desktop": 3,
+        "column_gap": "medium",
+        "row_gap": "medium",
+        "enable_slider": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_progress_bar": true,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_9E3VM7",
+    "multicolumn_icon_me7KwJ",
+    "product_samples_selector_bj6VrY",
+    "image_with_text_Nr7UQi",
+    "testimonials_CJrwjK"
+  ]
+}

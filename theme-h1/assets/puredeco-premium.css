@@ -1,0 +1,191 @@
+/* =========================================================
+   PureDeco premium-laag, batch 1 (5 okt 2026)
+   Alleen in kopie-thema "Hyper kopie 5 okt (H1-test)".
+   Terugdraaien: regel met 'puredeco-premium.css' uit
+   layout/theme.liquid halen (of dit bestand leegmaken).
+   ========================================================= */
+
+/* ---------- 1. Design tokens ---------- */
+:root {
+  --pd-ink: 20, 20, 20;          /* #141414 */
+  --pd-ink-hover: 46, 46, 46;    /* #2e2e2e */
+  --pd-paper: 247, 245, 241;     /* #f7f5f1 */
+  --pd-stone-300: 207, 200, 190; /* #cfc8be */
+  --pd-stone-600: 111, 104, 95;  /* #6f685f */
+  --pd-bronze: 140, 106, 74;     /* #8c6a4a */
+  --pd-green: #141414;           /* oude groene pill-knoppen -> inkt */
+
+  /* Vormen: strak in plaats van pill/rond */
+  --buttons-radius: 0.2rem;
+  --inputs-radius: 0.2rem;
+  --textareas-radius: 0.2rem;
+  --badges-radius: 0;
+  --pcard-radius: 0;
+  --pcard-inner-radius: 0;
+  --blocks-radius: 0.2rem;
+  --blocks-radius-mobile: 0.2rem;
+  --medium-blocks-radius: 0.2rem;
+  --small-blocks-radius: 0.2rem;
+
+  /* Knoppen: rustiger typografie, geen Hoofdletter Per Woord */
+  --buttons-transform: none;
+  --buttons-letter-spacing: 0.02em;
+  --font-button-weight: 600;
+  --buttons-height: 5.2rem;
+
+  /* Badges: stil en monochroom in plaats van rood/groen */
+  --color-badge-sale: #141414;
+  --color-badge-sale-text: #ffffff;
+  --color-badge-new: #f7f5f1;
+  --color-badge-new-text: #141414;
+  --color-badge-hot: #141414;
+  --color-badge-hot-text: #ffffff;
+  --color-cart-bubble: #141414;
+
+  /* Koppen iets strakker */
+  --font-heading-letter-spacing: -0.01em;
+}
+
+/* ---------- 2. Kleurschema's: groene knoppen -> zwart/wit ----------
+   Lichte schema's (wit / lichtgrijs): zwarte primaire knop,
+   witte secundaire knop met zwarte rand. */
+:root,
+.color-scheme-1,
+.color-scheme-10,
+body .desktop-color-scheme-1,
+body .mobile-color-scheme-1,
+body .desktop-color-scheme-10,
+body .mobile-color-scheme-10 {
+  --color-button: var(--pd-ink);
+  --color-button-text: 255, 255, 255;
+  --color-button-before: #2e2e2e;
+  --color-secondary-button: 255, 255, 255;
+  --color-secondary-button-border: var(--pd-ink);
+  --color-secondary-button-text: var(--pd-ink);
+  --color-primary: var(--pd-bronze);
+  --color-progress-bar: var(--pd-ink);
+}
+
+/* Donkere/groene vlakken (scheme-2, scheme-3, zwart schema):
+   groen vlak wordt diep inkt, knop wordt wit met zwarte tekst. */
+.color-scheme-2,
+.color-scheme-3,
+body .desktop-color-scheme-2,
+body .mobile-color-scheme-2,
+body .desktop-color-scheme-3,
+body .mobile-color-scheme-3 {
+  --color-background: var(--pd-ink);
+  --color-button: 255, 255, 255;
+  --color-button-text: var(--pd-ink);
+  --color-button-before: #e9e5df;
+  --color-secondary-button: var(--pd-ink);
+  --color-secondary-button-border: 255, 255, 255;
+  --color-secondary-button-text: 255, 255, 255;
+}
+.color-scheme-9069f5b2-d6e3-4473-b704-eda4403eed8c,
+body .desktop-color-scheme-9069f5b2-d6e3-4473-b704-eda4403eed8c,
+body .mobile-color-scheme-9069f5b2-d6e3-4473-b704-eda4403eed8c {
+  --color-button: 255, 255, 255;
+  --color-button-text: var(--pd-ink);
+  --color-button-before: #e9e5df;
+}
+
+/* ---------- 3. Knoppen ---------- */
+.btn,
+button.btn,
+a.btn {
+  transition: background-color 240ms cubic-bezier(.2,.7,.2,1),
+              color 240ms cubic-bezier(.2,.7,.2,1),
+              border-color 240ms cubic-bezier(.2,.7,.2,1);
+}
+.btn:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgb(var(--pd-bronze));
+  outline-offset: 2px;
+}
+
+/* Eigen pill-knoppen in layout (.pd-btn) en kaart-knoppen */
+body .pd-btn {
+  border-radius: 0.2rem;
+  border-color: rgb(var(--pd-ink));
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+body .pd-btn-primary {
+  background: rgb(var(--pd-ink));
+  color: #fff;
+}
+body .pd-btn-primary:hover {
+  background: rgb(var(--pd-ink-hover));
+}
+body .add-to-cart-btn {
+  border-radius: 0.2rem;
+  background: rgb(var(--pd-ink));
+  border-color: rgb(var(--pd-ink));
+  color: #fff;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+body .add-to-cart-btn:hover {
+  background: rgb(var(--pd-ink-hover));
+}
+body .qty-box {
+  border-radius: 0.2rem;
+}
+
+/* App-knoppen die nog groen/pill waren */
+body button.product-samples-widget__trigger {
+  border-radius: 0.2rem !important;
+  border-color: rgb(var(--pd-ink)) !important;
+  color: rgb(var(--pd-ink)) !important;
+  background: #fff !important;
+}
+body .rez-stock-notification-button {
+  border-radius: 0.2rem !important;
+}
+
+/* ---------- 4. Badges ---------- */
+.f-badge {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.8rem;
+  line-height: 1.2;
+}
+.f-badge--new {
+  border: 1px solid rgb(var(--pd-stone-300));
+}
+
+/* ---------- 6. Typografie ---------- */
+h1, h2, h3, .h1, .h2, .h3 {
+  letter-spacing: -0.01em;
+}
+
+/* ---------- 7. Beweging respecteren ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- 8. BookX-sectie in header verbergen ----------
+   De BookX-app-sectie moet in de header staan zodat
+   "Showroomafspraak"/"Plan je afspraak" de (verborgen) BookX-knop
+   kunnen aanklikken. Live verbergt hem via een regel met het
+   section-group-ID van het live thema; deze regel werkt in elk thema.
+   Geen display:none, zodat een (fixed) BookX-popup zichtbaar blijft. */
+[id$="__177684431293c0c63a"] {
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}

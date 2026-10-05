@@ -1,0 +1,839 @@
+{% liquid
+  assign position = 'left,center,right' | split: ','
+%}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+              {% style %}
+              .vertical-swiper {
+                height: 25px; /* visible area */
+              }
+
+              .vertical-swiper .swiper-slide {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+
+              .slide-text {
+                display: flex;
+                align-items: center;
+                gap: 11px;
+              }
+
+              .slide-text img {
+                width: 35px;
+                height: 35px;
+                object-fit: contain;
+              }
+              .topbar__column  .vertical-swiper{
+                display:none;
+              }
+              .topbar__column  .vertical-swiper:nth-child(1){
+                display:block !important;
+              }
+              @media screen and (min-width:1300px){
+                .topbar__column {
+                    flex-wrap: unset;
+                }
+                button.disclosure__toggle.btn--plain.text-normal.font-body {
+                      font-size: 14px;
+                  }
+              }
+              {% endstyle %}
+<div
+  class="topbar section--padding color-{{ section.settings.color_scheme }} page-width page-width--{{ section.settings.container }}{% if section.settings.show_separator_line %} topbar--show-separator-line{% endif %}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <div class="topbar__inner grid items-center">
+    {% for pos in position %}
+      <div class="topbar__column topbar__{{ pos }}{% unless pos == 'center' %} hidden{% else %} flex{% endunless %} lg:flex flex-wrap flex-col lg:flex-row items-center lg:justify-{{ pos | replace: 'left','start' | replace: 'right','end' }} text-center lg:text-{{ pos }}">
+       
+        {% for block in section.blocks %}
+          {% unless block.settings.position == pos %}
+            {% continue %}
+          {% endunless %}
+          {%- case block.type -%}
+            {% when 'link_list' %}
+              <ul class="topbar__menu flex flex-wrap items-center justify-center lg:justify-{{ pos | replace: 'left','start' | replace: 'right','end' }}">
+                {% for link in linklists[block.settings.menu].links %}
+                  <li class="topbar__menu-item">
+                    <a href="{{ link.url }}" class="block reversed-link">{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% when 'text' %}
+
+              <div class="swiper vertical-swiper">
+  <div class="swiper-wrapper cta_swipe_announcent_bar">
+
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'text' %}
+          <div class="swiper-slide" {{ block.shopify_attributes }}>
+            
+            <div class="topbar__text rte" style="--highlight-text-color: {{ block.settings.highlight_text_color }}; --highlight-text-background-color: {{ block.settings.highlight_text_background_color }};">
+              
+              {% if block.settings.highlight_text != blank %}
+                <p class="highlight-text highlight-text--{{ block.settings.highlight_text_style }}">
+                  {{- block.settings.highlight_text -}}
+                </p>
+              {% endif %}
+
+              <p class="slide-text">
+                {% if block.settings.img_cta_icon != blank %}
+                  <img src="{{ block.settings.img_cta_icon | img_url: 'master' }}">
+                {% endif %}
+
+                {{- block.settings.text -}}
+
+                {% if block.settings.img_cta_icona != blank %}
+                  <img src="{{ block.settings.img_cta_icona | img_url: 'master' }}">
+                {% endif %}
+              </p>
+
+            </div>
+
+          </div>
+      {% endcase %}
+    {% endfor %}
+
+  </div>
+</div>
+              {% comment %} <div class="topbar__text rte" style="--highlight-text-color: {{ block.settings.highlight_text_color }}; --highlight-text-background-color: {{ block.settings.highlight_text_background_color }};">
+                {% if block.settings.highlight_text != blank %}
+
+                  <p class="highlight-text highlight-text--{{ block.settings.highlight_text_style }}" >
+                    {{- block.settings.highlight_text -}}
+                  </p>
+                {% endif %}
+                <p style="display: flex;
+                  align-items: center;
+                  gap: 11px;">
+                                                        {% if block.settings.img_cta_icon != blank %}
+                  <img style="width:30px;height:30px;object-fit: contain; border-radius: 0;" src="{{ block.settings.img_cta_icon | img_url:"master" }}">
+                  {% endif %}
+                  {{- block.settings.text -}}
+                                                        {% if block.settings.img_cta_icona != blank %}
+                  <img style="width:30px;height:30px;object-fit: contain;border-radius: 0;" src="{{ block.settings.img_cta_icona | img_url:"master" }}">
+                  {% endif %}
+                </p>
+              </div> {% endcomment %}
+            {% when 'language_country' %}
+              
+              {% comment %} additional code here {% endcomment %}
+              {% style %}
+              .custom-top-contact-bar {
+                  background: {{ block.settings.top_bar_background }};
+                  padding-top: {{ block.settings.top_bar_padding_top }}px;
+                  padding-bottom: {{ block.settings.top_bar_padding_bottom }}px;
+                }
+
+                .custom-top-contact-bar__inner {
+                  display: flex;
+                  align-items: center;
+                  justify-content: {{ block.settings.top_bar_alignment }};
+                  gap: {{ block.settings.top_bar_gap }}px;
+                }
+
+                .custom-top-contact-bar__item {
+                  display: inline-flex;
+                  align-items: center;
+                  gap: {{ block.settings.top_bar_icon_gap }}px;
+                  color: {{ block.settings.top_bar_text_color }};
+                  text-decoration: none;
+                  font-size: {{ block.settings.top_bar_font_size }}px;
+                  font-weight: {{ block.settings.top_bar_font_weight }};
+                  line-height: 1;
+                  white-space: nowrap;
+                }
+
+                .custom-top-contact-bar__item:hover {
+                  color: {{ block.settings.top_bar_hover_color }};
+                }
+
+                .custom-top-contact-bar__icon {
+                  width: {{ block.settings.top_bar_icon_size }}px;
+                  height: {{ block.settings.top_bar_icon_size }}px;
+                  min-width: {{ block.settings.top_bar_icon_size }}px;
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: {{ block.settings.top_bar_icon_color }};
+                }
+
+                .custom-top-contact-bar__icon svg {
+                  width: 100%;
+                  height: 100%;
+                  fill: currentColor;
+                  display: block;
+                }
+
+                @media screen and (max-width: 749px) {
+                  .custom-top-contact-bar {
+                    padding-top: {{ block.settings.mobile_top_bar_padding_top }}px;
+                    padding-bottom: {{ block.settings.mobile_top_bar_padding_bottom }}px;
+                  }
+
+                  .custom-top-contact-bar__inner {
+                    justify-content: {{ block.settings.mobile_top_bar_alignment }};
+                    gap: {{ block.settings.mobile_top_bar_gap }}px;
+                    flex-wrap: wrap;
+                  }
+
+                  .custom-top-contact-bar__item {
+                    font-size: {{ block.settings.mobile_top_bar_font_size }}px;
+                    gap: {{ block.settings.mobile_top_bar_icon_gap }}px;
+                  }
+
+                  .custom-top-contact-bar__icon {
+                    width: {{ block.settings.mobile_top_bar_icon_size }}px;
+                    height: {{ block.settings.mobile_top_bar_icon_size }}px;
+                    min-width: {{ block.settings.mobile_top_bar_icon_size }}px;
+                  }
+                }
+              {% endstyle %}
+              <div class="custom-top-contact-bar">
+                <div class="custom-top-contact-bar__inner">
+                  {% if block.settings.top_email_text != blank %}
+                    <a
+                      class="custom-top-contact-bar__item"
+                      href="mailto:{{ block.settings.top_email_text | escape }}"
+                    >
+                      <span class="custom-top-contact-bar__icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M3 5h18v14H3V5Zm2 2v.4l7 4.38 7-4.38V7H5Zm14 10V9.77l-7 4.38-7-4.38V17h14Z"/>
+                        </svg>
+                      </span>
+                      <span>{{ block.settings.top_email_text }}</span>
+                    </a>
+                  {% endif %}
+
+                  {% if block.settings.top_phone_text != blank %}
+                    <a
+                      class="custom-top-contact-bar__item"
+                      href="tel:{{ block.settings.top_phone_link | default: block.settings.top_phone_text | remove: ' ' }}"
+                    >
+                      <span class="custom-top-contact-bar__icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.32.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z"/>
+                        </svg>
+                      </span>
+                      <span>{{ block.settings.top_phone_text }}</span>
+                    </a>
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="topbar__country flex items-center gap-4">
+                {% liquid
+                  if block.settings.show_language_selector
+                    render 'language-selector', plain: true, class: 'flex', form_id: block.id
+                  endif
+                  if block.settings.show_country_selector
+                    render 'country-selector', plain: true, class: 'flex', form_id: block.id
+                  endif
+                %}
+              </div>
+            {% when 'social_links' %}
+              {% liquid
+                assign socials = 'facebook,instagram,youtube,tiktok,twitter,pinterest,snapchat,tumblr,vimeo' | split: ','
+                assign show_social = false
+                for social in socials
+                  assign social_setting = 'show_' | append: social
+                  assign social_link = 'social_' | append: social | append: '_link'
+                  if block.settings[social_setting] and settings[social_link] != blank
+                    assign show_social = true
+                    break
+                  endif
+                endfor
+              %}
+              {% if show_social %}
+                {% render 'social-icons',
+                  class: 'topbar__social',
+                  size: 'medium',
+                  show_facebook: block.settings.show_facebook,
+                  show_instagram: block.settings.show_instagram,
+                  show_tiktok: block.settings.show_tiktok,
+                  show_twitter: block.settings.show_twitter,
+                  show_pinterest: block.settings.show_pinterest,
+                  show_snapchat: block.settings.show_snapchat,
+                  show_tumblr: block.settings.show_tumblr,
+                  show_youtube: block.settings.show_youtube,
+                  show_vimeo: block.settings.show_vimeo
+                %}
+              {% endif %}
+          {%- endcase -%}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  new Swiper(".vertical-swiper", {
+    
+    direction: "vertical",
+    loop: true,
+
+    slidesPerView: 1,        // ✅ ONLY ONE SLIDE
+    slidesPerGroup: 1,       // ✅ move one by one
+
+    spaceBetween: 0,
+
+    autoplay: {
+      delay: 2500,           // ⏱ ruknay ka time
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true
+    },
+
+    speed: 800,
+
+    allowTouchMove: true,
+
+  });
+});
+</script>
+{% schema %}
+{
+  "name": "t:sections.top-bar.name",
+  "class": "topbar-section z-31",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:general.general.name"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "t:general.container.label",
+      "default": "fixed",
+      "options": [
+        {
+          "value": "fixed",
+          "label": "t:general.container.options__fixed.label"
+        },
+        {
+          "value": "full",
+          "label": "t:general.container.options__full.label"
+        }
+      ]
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:general.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_separator_line",
+      "label": "t:general.show_separator_line.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:general.padding.section_heading.content"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:general.padding.top.label",
+      "min": 0,
+      "max": 120,
+      "unit": "px",
+      "step": 2,
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:general.padding.bottom.label",
+      "min": 0,
+      "max": 120,
+      "unit": "px",
+      "step": 2,
+      "default": 12
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": "t:sections.top-bar.blocks.linklist.name",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "t:general.menu.label",
+          "default": "main-menu"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "t:general.position.label",
+          "options": [
+            {
+              "value": "left",
+              "label": "t:general.content_alignment.options__1.label"
+            },
+            {
+              "value": "center",
+              "label": "t:general.content_alignment.options__2.label"
+            },
+            {
+              "value": "right",
+              "label": "t:general.content_alignment.options__3.label"
+            }
+          ],
+          "default": "left"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:general.text.name",
+      "settings": [
+                {
+          "type": "image_picker",
+          "id": "img_cta_icon",
+          "label": "Add left icon"
+        },
+                        {
+          "type": "image_picker",
+          "id": "img_cta_icona",
+          "label": "Add right icon"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "t:general.text.label",
+          "default": "Welcome to our store"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "t:general.position.label",
+          "options": [
+            {
+              "value": "left",
+              "label": "t:general.content_alignment.options__1.label"
+            },
+            {
+              "value": "center",
+              "label": "t:general.content_alignment.options__2.label"
+            },
+            {
+              "value": "right",
+              "label": "t:general.content_alignment.options__3.label"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.top-bar.blocks.highlight_text.content"
+        },
+        {
+          "type": "text",
+          "id": "highlight_text",
+          "label": "t:sections.top-bar.blocks.highlight_text.label"
+        },
+        {
+          "type": "select",
+          "id": "highlight_text_style",
+          "label": "t:sections.top-bar.blocks.highlight_text.highlight_text_style.label",
+          "options": [
+            {
+              "value": "button",
+              "label": "t:sections.top-bar.blocks.highlight_text.highlight_text_style.options__1.label"
+            },
+            {
+              "value": "text-color",
+              "label": "t:sections.top-bar.blocks.highlight_text.highlight_text_style.options__2.label"
+            }
+          ],
+          "default": "button"
+        },
+        {
+          "type": "color",
+          "id": "highlight_text_color",
+          "label": "t:sections.top-bar.blocks.highlight_text.highlight_text_color.label",
+          "info": "t:sections.top-bar.blocks.highlight_text.highlight_text_color.info"
+        },
+        {
+          "type": "color",
+          "id": "highlight_text_background_color",
+          "label": "t:sections.top-bar.blocks.highlight_text.highlight_text_background_color.label",
+          "info": "t:sections.top-bar.blocks.highlight_text.highlight_text_background_color.info",
+          "visible_if": "{{ block.settings.highlight_text_style == 'button' }}"
+        }
+      ]
+    },
+    {
+      "type": "social_links",
+      "name": "t:general.social_links.name",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_facebook",
+          "label": "t:general.social_links.show_facebook.label",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_instagram",
+          "label": "t:general.social_links.show_instagram.label",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_twitter",
+          "label": "t:general.social_links.show_x.label",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_tiktok",
+          "label": "t:general.social_links.show_tiktok.label",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_pinterest",
+          "label": "t:general.social_links.show_pinterest.label",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_snapchat",
+          "label": "t:general.social_links.show_snapchat.label",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_tumblr",
+          "label": "t:general.social_links.show_tumblr.label",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_youtube",
+          "label": "t:general.social_links.show_youtube.label",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_vimeo",
+          "label": "t:general.social_links.show_vimeo.label",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "t:general.position.label",
+          "options": [
+            {
+              "value": "left",
+              "label": "t:general.content_alignment.options__1.label"
+            },
+            {
+              "value": "center",
+              "label": "t:general.content_alignment.options__2.label"
+            },
+            {
+              "value": "right",
+              "label": "t:general.content_alignment.options__3.label"
+            }
+          ],
+          "default": "right"
+        }
+      ]
+    },
+    {
+      "type": "language_country",
+      "name": "t:sections.top-bar.blocks.language_country.name",
+      "limit": 1,
+      "settings": [
+        {
+            "type": "header",
+            "content": "Top contact bar"
+          },
+          {
+            "type": "text",
+            "id": "top_email_text",
+            "label": "Email text",
+            "default": "Klantenservice@Thuispaneel.nl"
+          },
+          {
+            "type": "text",
+            "id": "top_phone_text",
+            "label": "Phone text",
+            "default": "+31 522 225 000"
+          },
+          {
+            "type": "text",
+            "id": "top_phone_link",
+            "label": "Phone link",
+            "default": "+31522225000"
+          },
+          {
+            "type": "color",
+            "id": "top_bar_background",
+            "label": "Background color",
+            "default": "#e5e5e5"
+          },
+          {
+            "type": "color",
+            "id": "top_bar_text_color",
+            "label": "Text color",
+            "default": "#3f3f3f"
+          },
+          {
+            "type": "color",
+            "id": "top_bar_icon_color",
+            "label": "Icon color",
+            "default": "#111111"
+          },
+          {
+            "type": "color",
+            "id": "top_bar_hover_color",
+            "label": "Hover color",
+            "default": "#000000"
+          },
+          {
+            "type": "select",
+            "id": "top_bar_alignment",
+            "label": "Desktop alignment",
+            "options": [
+              {
+                "value": "flex-start",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "flex-end",
+                "label": "Right"
+              },
+              {
+                "value": "space-between",
+                "label": "Space between"
+              }
+            ],
+            "default": "center"
+          },
+          {
+            "type": "select",
+            "id": "mobile_top_bar_alignment",
+            "label": "Mobile alignment",
+            "options": [
+              {
+                "value": "flex-start",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "flex-end",
+                "label": "Right"
+              },
+              {
+                "value": "space-between",
+                "label": "Space between"
+              }
+            ],
+            "default": "center"
+          },
+          {
+            "type": "range",
+            "id": "top_bar_gap",
+            "label": "Desktop gap between items",
+            "min": 8,
+            "max": 80,
+            "step": 2,
+            "unit": "px",
+            "default": 42
+          },
+          {
+            "type": "range",
+            "id": "mobile_top_bar_gap",
+            "label": "Mobile gap between items",
+            "min": 6,
+            "max": 40,
+            "step": 2,
+            "unit": "px",
+            "default": 20
+          },
+          {
+            "type": "range",
+            "id": "top_bar_icon_gap",
+            "label": "Desktop gap between icon and text",
+            "min": 4,
+            "max": 24,
+            "step": 1,
+            "unit": "px",
+            "default": 10
+          },
+          {
+            "type": "range",
+            "id": "mobile_top_bar_icon_gap",
+            "label": "Mobile gap between icon and text",
+            "min": 4,
+            "max": 18,
+            "step": 1,
+            "unit": "px",
+            "default": 8
+          },
+          {
+            "type": "range",
+            "id": "top_bar_padding_top",
+            "label": "Desktop padding top",
+            "min": 0,
+            "max": 40,
+            "step": 1,
+            "unit": "px",
+            "default": 13
+          },
+          {
+            "type": "range",
+            "id": "top_bar_padding_bottom",
+            "label": "Desktop padding bottom",
+            "min": 0,
+            "max": 40,
+            "step": 1,
+            "unit": "px",
+            "default": 13
+          },
+          {
+            "type": "range",
+            "id": "mobile_top_bar_padding_top",
+            "label": "Mobile padding top",
+            "min": 0,
+            "max": 32,
+            "step": 1,
+            "unit": "px",
+            "default": 10
+          },
+          {
+            "type": "range",
+            "id": "mobile_top_bar_padding_bottom",
+            "label": "Mobile padding bottom",
+            "min": 0,
+            "max": 32,
+            "step": 1,
+            "unit": "px",
+            "default": 10
+          },
+          {
+            "type": "range",
+            "id": "top_bar_font_size",
+            "label": "Desktop font size",
+            "min": 10,
+            "max": 24,
+            "step": 1,
+            "unit": "px",
+            "default": 13
+          },
+          {
+            "type": "range",
+            "id": "mobile_top_bar_font_size",
+            "label": "Mobile font size",
+            "min": 10,
+            "max": 20,
+            "step": 1,
+            "unit": "px",
+            "default": 12
+          },
+          {
+            "type": "range",
+            "id": "top_bar_font_weight",
+            "label": "Font weight",
+            "min": 300,
+            "max": 900,
+            "step": 100,
+            "default": 400
+          },
+          {
+            "type": "range",
+            "id": "top_bar_icon_size",
+            "label": "Desktop icon size",
+            "min": 10,
+            "max": 28,
+            "step": 1,
+            "unit": "px",
+            "default": 17
+          },
+          {
+            "type": "range",
+            "id": "mobile_top_bar_icon_size",
+            "label": "Mobile icon size",
+            "min": 10,
+            "max": 24,
+            "step": 1,
+            "unit": "px",
+            "default": 15
+          },
+        {
+          "type": "checkbox",
+          "id": "show_language_selector",
+          "label": "t:general.show_language_selector.label",
+          "info": "t:general.show_language_selector.info",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_country_selector",
+          "label": "t:general.show_country_selector.label",
+          "info": "t:general.show_country_selector.info",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "t:general.position.label",
+          "options": [
+            {
+              "value": "left",
+              "label": "t:general.content_alignment.options__1.label"
+            },
+            {
+              "value": "center",
+              "label": "t:general.content_alignment.options__2.label"
+            },
+            {
+              "value": "right",
+              "label": "t:general.content_alignment.options__3.label"
+            }
+          ],
+          "default": "right"
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "presets": [
+    {
+      "name": "t:sections.top-bar.name",
+      "blocks": [
+        {
+          "type": "link_list"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "language_country"
+        },
+        {
+          "type": "social_links"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

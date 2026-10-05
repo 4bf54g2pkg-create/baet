@@ -1,0 +1,439 @@
+{% liquid
+  assign enable_rtl = settings.enable_rtl
+  assign language_support_rtl = settings.language_support_rtl
+  if enable_rtl and language_support_rtl != blank
+    assign shop_locale = localization.language.iso_code
+    assign language_support_rtl_list = language_support_rtl | split: ','
+    assign is_rtl = language_support_rtl_list | where: shop_locale
+    if is_rtl.size > 0
+      assign enable_rtl = true
+    else
+      assign enable_rtl = false
+    endif 
+  endif
+%}
+<!doctype html>
+<html
+  class="no-js{% if cart != empty %} cart-has-items{% endif %}"
+  lang="{{ request.locale.iso_code }}"
+  {% if enable_rtl %}
+    dir="rtl"
+  {% endif %}
+>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    
+    {%- if settings.favicon != blank -%}
+  <link rel="icon" type="image/png" sizes="48x48" href="{{ settings.favicon | image_url: width: 48, height: 48 }}">
+  <link rel="icon" type="image/png" sizes="96x96" href="{{ settings.favicon | image_url: width: 96, height: 96 }}">
+  <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 48, height: 48 }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ settings.favicon | image_url: width: 180, height: 180 }}">
+{%- endif -%}
+
+    {% comment %} {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%} {% endcomment %}
+
+    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    <title>
+      {{- page_title -}}
+      {%- if current_tags -%}
+        {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+      {%- endif -%}
+      {%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif -%}
+      {%- if template == 'password' -%}
+        {{- shop.name -}}
+      {%- else -%}
+        {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- endif -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {%- liquid
+      render 'meta-tags'
+      render 'css-variables'
+
+      echo 'vendor.css' | asset_url | stylesheet_tag: preload: true
+      echo 'theme.css' | asset_url | stylesheet_tag: preload: true
+
+      if settings.enable_product_compare
+        echo 'compare.css' | asset_url | stylesheet_tag: preload: true
+      endif
+
+      if enable_rtl 
+        echo 'rtl.css' | asset_url | stylesheet_tag: preload: true
+      endif
+    -%}
+
+    {{ content_for_header }}
+    <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+
+    {%- if request.page_type contains 'customers/' -%}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    <script>
+      if (Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
+      }
+    </script>
+
+    {%- if request.design_mode -%}
+      <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {%- render 'js-variables' -%}
+
+    {% comment %} Custom metafield for head tag like GTag tracking {% endcomment %}
+    {{ shop.metafields.foxtheme.code_head.value }}
+    {% comment %} End custom metafield for head tag like GTag tracking {% endcomment %}
+    {% capture t %}{% render 'samita-custom' %}{% endcapture %}{% unless t contains 'Liquid error' %}{{ t }}{% endunless %}
+    {{ 'puredeco-premium.css' | asset_url | stylesheet_tag }}
+  </head>
+{% if template.suffix == 'showroom' %}
+  {% style %}
+  .cta_remove_ctagrairb .cta_top_icon_text a.top_cta_icon:nth-child(2) {
+    display: none;
+}
+
+  {% endstyle %}
+{% endif %}
+{% style %}
+.pd-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 0 28px;
+    border-radius: 999px;
+    border: 1px solid var(--pd-green);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    transition: 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.pd-btn-primary {
+    background: #55884d;
+    color: #fff;
+}
+.pd-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    width: 22px;
+}
+{% endstyle %}
+  <body
+    class="{{ request.page_type }}-template {{ template.suffix }} blocks-corner--{{ settings.blocks_corner_radius }}{% if request.design_mode %} shopify-design-mode{% endif %} {% if template.suffix == 'showroom' %} cta_remove_ctagrairb {% endif %}"
+    data-initializing
+  >
+    {% comment %} Custom metafield for body tag like GTag tracking {% endcomment %}
+    {{ shop.metafields.foxtheme.code_body.value }}
+    {% comment %} End custom metafield for body tab like GTag tracking {% endcomment %}
+
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+
+    {%- liquid
+      if settings.enable_page_transition
+        render 'page-transition'
+      endif
+    -%}
+
+    <div class="site-wrapper min-height-screen">
+      {% sections 'header-group' %}
+
+      <main id="MainContent" class="main-content content-for-layout focus-none" role="main" tabindex="-1">
+        {{ content_for_layout }}
+      </main>
+
+      {% sections 'footer-group' %}
+    </div>
+
+    {% sections 'overlay-group' %}
+    {%- liquid
+      if settings.enable_back_to_top
+        render 'back-to-top'
+      endif
+    -%}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+      <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+    </ul>
+
+    {% if settings.pcard_show_quickview_button or settings.pcard_choose_options_actions == 'open_popup' %}
+      <script src="{{ 'quick-view.js' | asset_url }}" defer="defer"></script>
+    {% endif %}
+
+    {%- if settings.enable_product_compare -%}
+      <script src="{{ 'compare.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    <script>
+      /* PureDeco fix 5 okt 2026: null-checks, voorkomt JS-fout op pagina's zonder BookX-knop */
+      (function () {
+        var bookingBtn = document.querySelector("button.booking_cta");
+        if (bookingBtn) {
+          bookingBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            var btn = document.querySelector(".bookeasy-btn");
+            if (btn) {
+              btn.click();
+            }
+          });
+        }
+        var bookingLink = document.querySelector(".booking_cta a");
+        if (bookingLink) {
+          bookingLink.addEventListener("click", function(e) {
+            e.preventDefault();
+            var btn = document.querySelector(".bookeasy-btn");
+            if (btn) {
+              btn.click();
+            }
+          });
+        }
+      })();
+    </script>
+
+
+<script>
+  document.addEventListener('click', function(e) {
+    const plusBtn = e.target.closest('.plus');
+    const minusBtn = e.target.closest('.minus');
+    const cartBtn = e.target.closest('.add-to-cart-btn');
+
+    /* QTY PLUS */
+    if (plusBtn && plusBtn.closest('.qty-box')) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+
+      const box = plusBtn.closest('.qty-box');
+      const input = box.querySelector('input[type="number"]');
+
+      let current = parseInt(input.value, 10);
+      if (isNaN(current) || current < 1) current = 1;
+
+      input.value = current + 1;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+      return false;
+    }
+
+    /* QTY MINUS */
+    if (minusBtn && minusBtn.closest('.qty-box')) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+
+      const box = minusBtn.closest('.qty-box');
+      const input = box.querySelector('input[type="number"]');
+
+      let current = parseInt(input.value, 10);
+      if (isNaN(current) || current < 1) current = 1;
+
+      input.value = current > 1 ? current - 1 : 1;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+      return false;
+    }
+
+    /* AJAX ADD TO CART */
+    if (cartBtn) {
+      document.body.classList.add("modal-show");
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+
+      const wrapper = cartBtn.closest('.custom-card-actions');
+      const qtyInput = wrapper.querySelector('.qty-box input[type="number"]');
+      const quantity = parseInt(qtyInput.value, 10) || 1;
+      const variantId = cartBtn.dataset.variantId;
+
+      const loader = cartBtn.querySelector('.btn-loader');
+      const text = cartBtn.querySelector('.btn-text');
+
+      if (!variantId) return false;
+
+      cartBtn.disabled = true;
+      if (text) text.style.display = 'none';
+      if (loader) loader.style.display = 'inline-block';
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          id: variantId,
+          quantity: quantity
+        })
+      })
+      .then(function(res) {
+        if (!res.ok) {
+          return res.json().then(function(err) { throw err; });
+        }
+        return res.json();
+      })
+      .then(function() {
+        document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+        document.dispatchEvent(new CustomEvent('cart:open', { bubbles: true }));
+        document.dispatchEvent(new CustomEvent('open:cart-drawer', { bubbles: true }));
+
+        const cartDrawer = document.querySelector('#CartDrawer');
+
+        if (cartDrawer) {
+          cartDrawer.classList.add('active', 'open');
+          cartDrawer.setAttribute('open', 'true');
+          cartDrawer.setAttribute('active', '');
+          cartDrawer.removeAttribute('hidden');
+          {% comment %} document.body.classList.add('drawer-open', 'overflow-hidden'); {% endcomment %}
+        }
+      })
+      .catch(function(err) {
+        console.error('Cart error:', err);
+      })
+      .finally(function() {
+        cartBtn.disabled = false;
+        if (text) text.style.display = 'inline-block';
+        if (loader) loader.style.display = 'none';
+      });
+
+      return false;
+    }
+  }, true);
+
+  /* manual input fix */
+  document.addEventListener('input', function(e) {
+    const input = e.target.closest('.qty-box input[type="number"]');
+    if (!input) return;
+
+    let val = parseInt(input.value, 10);
+    if (isNaN(val) || val < 1) {
+      input.value = 1;
+    }
+  });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  document.querySelectorAll(".custom-product-samples").forEach(function(wrapper){
+
+    const customBtn = wrapper.querySelector(".custom-sample-btn");
+    const realBtn = wrapper.querySelector("[product-samples-button]");
+
+    if (!customBtn || !realBtn) return;
+
+    customBtn.addEventListener("click", function(e){
+      e.preventDefault();
+
+      // 🔥 Trigger real app button
+      realBtn.click();
+    });
+
+  });
+
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  setTimeout(function () {
+    const btn = document.querySelector(".action.submit.classic-button");
+
+    if (btn) {
+      const textNode = btn.childNodes[btn.childNodes.length - 1];
+      if (textNode) textNode.nodeValue = " Verzenden";
+    }
+  }, 5000);
+});
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".product-form__submit").forEach(function(btna) {
+    btna.addEventListener("click", function() {
+      document.body.classList.add("modal-show");
+    });
+  });
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  setTimeout(function () {
+    const preorderBtn = document.querySelector('.rez-stock-notification-button');
+
+    if (preorderBtn) {
+      preorderBtn.textContent = 'Houd mij op de hoogte';
+    }
+  }, 2000);
+});
+</script>
+<style>
+  .rez-button-wrapper {
+    width: 100%!important;
+  }
+</style>
+<script>
+  setTimeout(function () {
+    var style = document.createElement('style');
+
+    style.innerHTML = `
+      .product-card__wrapper .samitaWS-volumeTable-widget-wrapper {
+        display: none !important;
+      }
+    `;
+
+    document.head.appendChild(style);
+  }, 15000);
+</script>
+
+<script>
+  /* PureDeco fix 5 okt 2026: alert('yes') verwijderd en null-checks toegevoegd; verder zelfde gedrag */
+  document.addEventListener('DOMContentLoaded', function() {
+    var form = document.querySelector('form');
+    if (!form) return;
+    form.addEventListener('submit', function() {
+      // Change '/' to any other path if needed
+      var returnTo = document.querySelector('input[name="return_to"]');
+      if (returnTo) returnTo.value = '/';
+    });
+  });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  document.querySelectorAll("a.pd-btn.pd-btn-primary").forEach(function(btn) {
+
+    btn.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      let btne = document.querySelector(".bookeasy-btn");
+
+      if (btne) {
+        btne.click();
+      }
+    });
+
+  });
+
+});
+</script>
+  </body>
+</html>
