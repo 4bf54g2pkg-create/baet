@@ -85,6 +85,13 @@
       "w": 390,
       "x": 3510,
       "y": 10700
+    },
+    "Beeldset.dc.html": {
+      "h": 4300,
+      "title": "Beeldset · banners en foto’s (voorstel)",
+      "w": 1440,
+      "x": 0,
+      "y": 13820
     }
   },
   "createdOnFiles": {
@@ -111,6 +118,14 @@
       "w": 240,
       "x": 0,
       "y": 10480
+    },
+    "beeld": {
+      "kind": "title1",
+      "maxW": 3900,
+      "text": "Ronde 8 · beeldset uit de eigen catalogus · voorstel, nog niet geplaatst",
+      "w": 240,
+      "x": 0,
+      "y": 13600
     }
   },
   "order": [
@@ -125,7 +140,8 @@
     "Footer.dc.html",
     "FooterMobile.dc.html",
     "PdpRefine.dc.html",
-    "PdpMobileRefine.dc.html"
+    "PdpMobileRefine.dc.html",
+    "Beeldset.dc.html"
   ],
   "pages": [],
   "title": "The Puredeco Finish"
