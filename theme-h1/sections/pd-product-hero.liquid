@@ -176,8 +176,8 @@
                               assign fk = 'sig'
                             else
                               assign fn = 'Linea'
-                              assign fs = '5 mm · stompe aansluiting · strakke lijn'
-                              assign fd = 'Voor een ritmische, architecturale uitstraling.'
+                              assign fs = '5 mm · stompe aansluiting · zichtbare naad'
+                              assign fd = 'Standaarduitvoering, geschikt voor badkamer en keuken.'
                               assign fk = 'lin'
                             endif
                           -%}
@@ -185,6 +185,7 @@
                             <input type="radio" name="pdh-o{{ forloop.parentloop.parentloop.index0 }}" value="{{ v | escape }}"{% if v.selected %} checked{% endif %}>
                             <span class="pdh__finish-swatch" style="background-image: url('{{ pdh_pack | image_url: width: 800 }}');" aria-hidden="true"><i></i></span>
                             <span class="pdh__finish-text">
+                              {%- if fk == 'sig' -%}<span class="pdh__finish-badge">Ons paradepaardje</span>{%- endif -%}
                               <span class="pdh__finish-name">{{ fn }}</span>
                               <span class="pdh__finish-spec">{{ fs }}</span>
                               <span class="pdh__finish-desc">{{ fd }}</span>
@@ -328,6 +329,8 @@
   var walls = [{ w: '4,20', h: '2,60', example: true }], active = 0;
   function num(v) { var n = parseFloat(String(v).replace(',', '.')); return n > 0 ? n : 0; }
   function fmt(n, d) { return n.toFixed(d).replace('.', ','); }
+  /* De calculator rekent altijd met panelen van 280 cm lang. */
+  function panel() { var d = dims(current); return { h: 2.8, w: (d && d.w) || 1.22 }; }
   function wallCalc(wl, d) {
     var W = num(wl.w), H = num(wl.h);
     if (!W || !H) return null;
@@ -336,7 +339,7 @@
   }
   function drawTabs() {
     var tabs = pdc.querySelector('[data-pdc-tabs]');
-    var d = dims(current) || { h: 2.8, w: 1.22 };
+    var d = panel();
     var html = '';
     walls.forEach(function (wl, i) {
       var r = wallCalc(wl, d);
@@ -366,7 +369,7 @@
   }
   function calc(fromInput) {
     if (!pdc || !current) return;
-    var d = dims(current) || { h: 2.8, w: 1.22 };
+    var d = panel();
     var fk = finishKey(current);
     var n = 0, m2 = 0, tooHigh = false, filled = 0;
     walls.forEach(function (wl) {
@@ -519,7 +522,7 @@
     var fk = finishKey(v);
     root.setAttribute('data-finish', fk || '');
     var cap = root.querySelector('[data-pdh-joint-caption]');
-    if (cap) cap.textContent = fk === 'lin' ? 'Illustratie · Linea: een bewuste, strakke lijn tussen de panelen' : 'Signature · naadloos op een vlakke, rechte ondergrond';
+    if (cap) cap.textContent = fk === 'lin' ? 'Linea · stompe aansluiting, de naad blijft zichtbaar' : 'Signature · naadloos op een vlakke, rechte ondergrond';
     total();
     root.dispatchEvent(new CustomEvent('pdh:variant', { detail: { price: v.price, options: v.options } }));
     if (push) {
@@ -552,6 +555,11 @@
         return finishKey(v) === 'sig' && v.available && v.options.every(function (x, i) { var t = x.toLowerCase().replace(/\s/g, ''); return t.indexOf('mm') > -1 || x === start.options[i]; });
       }) || variants.find(function (v) { return finishKey(v) === 'sig' && v.available; });
       if (sig) start = sig;
+    }
+    /* Standaard het formaat van 280 cm, binnen dezelfde Finish */
+    if (start.options.join(' ').indexOf('280') === -1) {
+      var f280 = variants.find(function (v) { return v.available && finishKey(v) === finishKey(start) && v.options.join(' ').indexOf('280') > -1; });
+      if (f280) start = f280;
     }
   }
   render(start, false);

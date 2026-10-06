@@ -1,6 +1,8 @@
 # MERKPLATFORM — THE PUREDECO FINISH
 **Datum:** 6 oktober 2026 · **Ontwerpcanvas:** https://claude.ai/artifact/2q9TQh1QgMePeRvU9wX9kR (bronbestanden in `docs/ontwerp-puredeco-finish/`)
 
+> **Besluit 6 okt (opdrachtgever, laatst):** Signature (8 mm) is het paradepaardje. Linea (5 mm) is de standaarduitvoering: neutraal beschrijven ("stompe aansluiting, zichtbare naad, geschikt voor badkamer en keuken"), niet aanprijzen. Calculator rekent altijd met panelen van 280 cm; standaardselectie Signature · 280 cm.
+
 > **Besluit 6 okt (opdrachtgever, later):** Signature wordt **naadloos** getoond (geen naad in beelden, calculator of close-ups), altijd met de voorwaarde erbij: *"Naadloos op een vlakke, rechte ondergrond. Hoe vlakker de wand, hoe strakker het resultaat."* Dit vervangt de eerdere regel "nooit naadloos, alleen vrijwel naadloos".
 
 > **Besluit 6 okt (opdrachtgever):** namen **Signature** en **Linea** definitief na vergelijking met alternatieven (dikte als naam, Puredeco 8/5, Vlak/Lijn-accent). Kleur op maat: vanaf 150 m², levertijd 10–14 weken.

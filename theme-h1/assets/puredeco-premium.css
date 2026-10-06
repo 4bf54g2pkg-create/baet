@@ -1497,3 +1497,19 @@ body,
 .pdc.is-example .pdc__stats dd { color: #6E675E; }
 .pdc__stats dt { letter-spacing: 0.12em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .pdc__stats > div { min-width: 0; }
+
+/* ===== Signature = paradepaardje, Linea = standaard ===== */
+.pdh__finishes { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); align-items: start; }
+.pdh__finish-badge {
+  align-self: flex-start;
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8C6A4A;
+}
+.pdh__finish[data-finish="lin"] .pdh__finish-swatch { aspect-ratio: 4 / 3; }
+.pdh__finish[data-finish="lin"] .pdh__finish-name { font-size: 1.9rem; }
+.pdh__finish[data-finish="lin"] .pdh__finish-desc { font-family: var(--font-body-family); font-style: normal; font-size: 1.25rem; }
+.pdh__finish[data-finish="lin"] .pdh__finish-text { padding-top: 1.2rem; }
+.pd-card__badge { display: block; margin-top: 0.6rem; font-family: var(--font-body-family); font-style: normal; font-size: 1.1rem; letter-spacing: 0.18em; text-transform: uppercase; color: #8C6A4A; }
