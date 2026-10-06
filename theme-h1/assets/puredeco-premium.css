@@ -1013,3 +1013,50 @@ body.product-template,
   font-size: 1.5rem;
 }
 .pd-studio__btn:hover { background: #FFFFFF; color: #151413; }
+
+/* ===== Productpagina · verfijning na eerste schermcontrole ===== */
+/* Witte packshots versmelten met het papier: wit wordt papierkleur, het paneel blijft gelijk */
+.product-template .product__media-wrapper,
+.product-template .product__media-container {
+  background-color: rgb(245, 242, 236);
+}
+.product-template .product__media-wrapper *:not(img):not(video):not(button):not(svg):not(path) {
+  background-color: transparent !important;
+}
+.product-template .product__media-wrapper img {
+  mix-blend-mode: multiply;
+}
+/* Formaat: gekozen waarde onderstreept, nooit een groen vlak */
+.product__info-wrapper .product-form__input--button:not(.pd-finish) input[type="radio"] + label,
+.product__info-wrapper .product-form__input--button:not(.pd-finish) input[type="radio"]:checked + label {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-top: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-radius: 0 !important;
+}
+.product__info-wrapper .product-form__input--button:not(.pd-finish) input[type="radio"] + label {
+  color: #6E675E !important;
+  border-bottom: 1px solid transparent !important;
+}
+.product__info-wrapper .product-form__input--button:not(.pd-finish) input[type="radio"]:checked + label {
+  color: #151413 !important;
+  border-bottom: 1px solid #151413 !important;
+}
+.product__info-wrapper .product-form__input--button:not(.pd-finish) input[type="radio"] + label::before,
+.product__info-wrapper .product-form__input--button:not(.pd-finish) input[type="radio"] + label::after {
+  display: none !important;
+}
+/* Montagestappen genummerd */
+.pd-film__steps {
+  list-style: decimal outside !important;
+}
+.pd-film__steps li {
+  display: list-item;
+  padding-left: 0.6rem;
+}
+.pd-film__steps li::marker {
+  color: #8C6A4A;
+  font-variant-numeric: tabular-nums;
+}

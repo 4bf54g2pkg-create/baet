@@ -86,7 +86,13 @@
         {%- if section.settings.video != blank -%}
           {{ section.settings.video | video_tag: controls: true, preload: 'none', playsinline: true, image_size: '1600x' }}
         {%- else -%}
-          {%- assign pd_still = section.settings.still | default: product.featured_image -%}
+          {%- liquid
+            assign pd_all_imgs = product.media | where: 'media_type', 'image'
+            assign pd_still = section.settings.still
+            if pd_still == blank and pd_all_imgs.size > 1
+              assign pd_still = pd_all_imgs.last
+            endif
+          -%}
           {%- if pd_still != blank -%}
             {{ pd_still | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1600', sizes: '(min-width: 990px) 60vw, 100vw', alt: pd_full }}
           {%- endif -%}
