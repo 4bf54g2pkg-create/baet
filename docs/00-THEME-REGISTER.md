@@ -60,3 +60,9 @@ templates/robots.txt.liquid  79fe39ff3f6c96eb3ef97395ad254787  = OK
 - Bestand (Shopify Files): `puredeco-montage-v2.mp4`, Video `gid://shopify/Video/51238636093706` (36 s, 5 stappen incl. op maat maken, 1080p, illustratie). Vorige versie `puredeco-montage.mp4` (51238562988298) niet meer gekoppeld.
 - Winkel-metafield `puredeco.montage_video` (file_reference) verwijst ernaar; alleen H1-test leest dit (secties pd-product-hero en pd-product-details). Een sectie-instelling "Montagefilm" of een productvideo gaat voor.
 - Bron: `media/film.html` (beeld-voor-beeld gerenderd met Playwright, gecodeerd met ffmpeg).
+
+## Ronde 7 (6 okt 2026) · alleen H1-test
+- Footer: nieuwe sectie `pd-footer` in `footer-group.json` (oude nieuwsbrief met 5%-welkomstkorting en oude footer uitgeschakeld, niet verwijderd). Menu's `pd-footer-collecties`, `pd-footer-service`, `pd-footer-zakelijk`.
+- Productpagina: samples-paneel "The Puredeco Edit" (rechts op desktop, onderblad op mobiel) met het Product Samples-appblok als knop; collectiekaarten "Meer uit de …collectie"; vragenblok "Goed om te weten"; Studio Herwen met foto (instelling `studio_image`, anders laatste productfoto) en Route-knop; achtergrondritme papier/zand.
+- Montagefilm laadt pas als het blok in beeld komt. Mobiel: staande film 4:5 (`shop.metafields.puredeco.montage_video_mobile` → Video 51239725170954, bron `media/puredeco-montage-staand.mp4`) en hoofdstukken als swipe-rij.
+- Let op: de bestaande pagina `/pages/sample` voegt volledige panelen toe aan de winkelmand (sectie `product-samples-selector` met gewone producten). Nog niet aangepast.

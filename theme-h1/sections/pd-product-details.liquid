@@ -1,6 +1,6 @@
 {%- comment -%}
   Puredeco · productverhaal onder de koopkolom, volgens het ontwerp "The Puredeco Finish".
-  Keuzehulp Signature/Linea · montage · alles over het decor · 4 stappen · interieur · ook in · Studio Herwen.
+  Keuzehulp Signature/Linea · montage · alles over het decor · interieur · meer uit de collectie · vragen · Studio Herwen.
 {%- endcomment -%}
 {%- liquid
   capture pd_code
@@ -81,7 +81,8 @@
 
   {%- comment -%} 2 · Montage: film met meelopende hoofdstukken {%- endcomment -%}
   {%- assign pd_film = section.settings.video | default: shop.metafields.puredeco.montage_video.value -%}
-  <section class="pd-s pd-mont" data-pd-mont>
+  {%- assign pd_film_m = section.settings.video_mobile | default: shop.metafields.puredeco.montage_video_mobile.value -%}
+  <section class="pd-s pd-mont{% if pd_film_m != blank %} has-portrait{% endif %}" data-pd-mont>
     <div class="pd-wrap">
       <header class="pd-mont__head">
         <div>
@@ -93,7 +94,16 @@
 
       <div class="pd-mont__frame">
         {%- if pd_film != blank -%}
-          {{ pd_film | video_tag: muted: true, playsinline: true, preload: 'metadata', image_size: '1920x', class: 'pd-mont__video' }}
+          {%- if pd_film.preview_image -%}
+            {{ pd_film.preview_image | image_url: width: 1920 | image_tag: loading: 'lazy', widths: '960, 1440, 1920', sizes: '(min-width: 990px) 80vw, 100vw', alt: '', class: 'pd-mont__video pd-mont__poster pd-mont__poster--land' }}
+          {%- endif -%}
+          <template data-pd-film="land">{{ pd_film | video_tag: muted: true, playsinline: true, preload: 'auto', class: 'pd-mont__video' }}</template>
+          {%- if pd_film_m != blank -%}
+            {%- if pd_film_m.preview_image -%}
+              {{ pd_film_m.preview_image | image_url: width: 1080 | image_tag: loading: 'lazy', widths: '540, 810, 1080', sizes: '100vw', alt: '', class: 'pd-mont__video pd-mont__poster pd-mont__poster--port' }}
+            {%- endif -%}
+            <template data-pd-film="port">{{ pd_film_m | video_tag: muted: true, playsinline: true, preload: 'auto', class: 'pd-mont__video' }}</template>
+          {%- endif -%}
           <button type="button" class="pd-mont__play" data-pd-mont-play aria-label="Film afspelen">
             <span class="pd-mont__play-icon" aria-hidden="true"></span>
             <span class="pd-mont__play-text" data-pd-mont-play-text>Bekijk de montage · 0:36</span>
@@ -120,6 +130,7 @@
         <li><button type="button" data-pd-chapter data-start="19.8" data-end="27.2"><span class="pd-mont__bar"><i></i></span><span class="pd-mont__n">04</span><strong>Plaatsen en aansluiten</strong><span class="pd-mont__t">Eerste paneel waterpas. Signature klikt naadloos in elkaar; Linea wordt stomp geplaatst.</span></button></li>
         <li><button type="button" data-pd-chapter data-start="27.2" data-end="31.4"><span class="pd-mont__bar"><i></i></span><span class="pd-mont__n">05</span><strong>Afwerken</strong><span class="pd-mont__t">Profielen op hoeken en randen. Klaar, zonder stof en stucwerk.</span></button></li>
       </ol>
+      <p class="pd-mont__swipe" aria-hidden="true">← swipe door de stappen →</p>
     </div>
   </section>
 
@@ -165,40 +176,74 @@
     </section>
   {%- endif -%}
 
-  {%- comment -%} 6 · Ook in {%- endcomment -%}
+  {%- comment -%} 6 · Meer uit de collectie {%- endcomment -%}
   {%- liquid
     assign pd_more = product.metafields.custom.sibling_products.value
-    assign pd_more_title = 'Verwante decors'
+    assign pd_more_count = pd_more.size
+    capture pd_eyebrow
+      render 'pd-decor', product: product, part: 'eyebrow'
+    endcapture
+    assign pd_eyebrow_lc = pd_eyebrow | strip | downcase
+    capture pd_crumb
+      render 'pd-crumb-collection', product: product
+    endcapture
+    assign pd_crumb_parts = pd_crumb | strip | split: '||'
+    assign pd_all_url = pd_crumb_parts.last
     if pd_more == blank
       for c in product.collections
         if c.handle != 'all' and c.products_count > 1
           assign pd_more = c.products
-          assign pd_more_title = 'Ook in ' | append: c.title
+          assign pd_more_count = c.products_count
+          if pd_all_url == blank
+            assign pd_all_url = c.url
+          endif
           break
         endif
       endfor
     endif
-    capture pd_eyebrow
-      render 'pd-decor', product: product, part: 'eyebrow'
-    endcapture
-    if pd_eyebrow != blank and product.metafields.custom.sibling_products.value != blank
-      assign pd_eyebrow_lc = pd_eyebrow | downcase
-      assign pd_more_title = 'Ook in ' | append: pd_eyebrow_lc
+    if pd_eyebrow_lc != blank
+      assign pd_more_title = 'Meer uit de ' | append: pd_eyebrow_lc | append: 'collectie'
+    else
+      assign pd_more_title = 'Verwante decors'
     endif
   -%}
   {%- if pd_more != blank -%}
     <section class="pd-s pd-more">
       <div class="pd-wrap">
-        <h2 class="pd-h2">{{ pd_more_title }}</h2>
+        <div class="pd-more__head">
+          <h2 class="pd-h2">{{ pd_more_title }}</h2>
+          {%- if pd_all_url != blank -%}<a class="pd-more__all" href="{{ pd_all_url }}">Bekijk alle {{ pd_more_count }} decors →</a>{%- endif -%}
+        </div>
         <div class="pd-more__grid">
           {%- assign pd_shown = 0 -%}
           {%- for p in pd_more -%}
             {%- if p.handle != product.handle and pd_shown < 4 -%}
               {%- assign pd_shown = pd_shown | plus: 1 -%}
+              {%- liquid
+                assign ps = false
+                assign pl = false
+                for o in p.options_with_values
+                  for v in o.values
+                    assign k = v | downcase | remove: ' ' | slice: 0, 3
+                    if k == '8mm'
+                      assign ps = true
+                    elsif k == '5mm'
+                      assign pl = true
+                    endif
+                  endfor
+                endfor
+              -%}
               <a class="pd-more__item" href="{{ p.url }}">
-                <span class="pd-more__img">{%- if p.featured_image -%}{{ p.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300, 500, 800', sizes: '(min-width: 990px) 22vw, 45vw', alt: p.title }}{%- endif -%}</span>
+                <span class="pd-more__img">
+                  {%- if p.featured_image -%}{{ p.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300, 500, 800', sizes: '(min-width: 990px) 22vw, 45vw', alt: p.title }}{%- endif -%}
+                  {%- if ps or pl -%}<span class="pd-more__tag">{% if ps %}Signature{% endif %}{% if ps and pl %} · {% endif %}{% if pl %}Linea{% endif %}</span>{%- endif -%}
+                </span>
                 {%- capture pc -%}{% render 'pd-decor', product: p, part: 'code' %}{%- endcapture -%}
-                <span class="pd-more__name">{% if pc != blank %}<span>{{ pc }}</span> {% endif %}{% render 'pd-decor', product: p, part: 'name' %}</span>
+                <span class="pd-more__row">
+                  <span class="pd-more__name">{% if pc != blank %}<span>{{ pc | strip }}</span> {% endif %}<em>{% render 'pd-decor', product: p, part: 'name' %}</em></span>
+                  <span class="pd-more__price">{% if p.price_varies %}vanaf {% endif %}{{ p.price_min | money }}</span>
+                </span>
+                {%- if p.title contains 'Wandpaneel' -%}<span class="pd-more__meta">per paneel · 280 × 122 cm</span>{%- endif -%}
               </a>
             {%- endif -%}
           {%- endfor -%}
@@ -207,11 +252,59 @@
     </section>
   {%- endif -%}
 
-  {%- comment -%} 7 · Studio Herwen {%- endcomment -%}
-  <section class="pd-s pd-studio">
-    <div class="pd-wrap pd-studio__row">
-      <p class="pd-h2 pd-h2--light">{{ pd_ref }} in het echt zien? Studio Herwen.</p>
-      <a class="pd-studio__btn" href="{{ section.settings.studio_url | default: '/pages/showroom' }}">Plan een afspraak</a>
+  {%- comment -%} 7 · Goed om te weten {%- endcomment -%}
+  <section class="pd-s pd-faq">
+    <div class="pd-wrap pd-faq__grid">
+      <div>
+        <h2 class="pd-h2">Goed om te weten</h2>
+        <p class="pd-faq__lead">Staat je vraag er niet bij? <a href="https://wa.me/31316700214?text={{ 'Hallo Puredeco, ik heb een vraag over ' | append: pd_ref | url_encode }}" target="_blank" rel="noopener">App ons</a>, we reageren dezelfde dag.</p>
+      </div>
+      <div class="pd-faq__list">
+        <details class="pd-faq__item" open>
+          <summary>Kan ik de panelen zelf monteren?</summary>
+          <p>Ja. Met een fijne cirkelzaag of een stanleymes, montagekit en een waterpas zet je in één dag een complete wand. Geen stucwerk, geen vakman nodig.</p>
+        </details>
+        <details class="pd-faq__item">
+          <summary>Op welke ondergrond kan het?</summary>
+          <p>Op een vlakke, droge en schone wand: stucwerk, gipsplaat, beton of bestaande tegels. Hoe vlakker de ondergrond, hoe strakker het resultaat. Signature is naadloos op een vlakke, rechte ondergrond.</p>
+        </details>
+        <details class="pd-faq__item">
+          <summary>Is het geschikt voor badkamer en keuken?</summary>
+          <p>Ja, de panelen zijn waterbestendig en geschikt voor badkamer en keuken. Linea, met zichtbare naad, is daar de standaardkeuze.</p>
+        </details>
+        <details class="pd-faq__item">
+          <summary>Hoe zaag of snijd ik een paneel op maat?</summary>
+          <p>Met een fijne cirkelzaag, of met een stanleymes: kras een paar keer langs een rei, buig het paneel en breek het af. In de montagefilm hierboven zie je hoe.</p>
+        </details>
+        <details class="pd-faq__item">
+          <summary>Hoeveel panelen moet ik bestellen?</summary>
+          <p>Vul bovenaan de breedte en hoogte van je wand in; de calculator rekent met panelen van 280 × 122 cm en laat ook de rest zien. Twijfel je? Stuur ons een foto van je wand.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} 8 · Studio Herwen {%- endcomment -%}
+  {%- liquid
+    assign pd_studio_img = section.settings.studio_image
+    if pd_studio_img == blank and pd_imgs.size > 1
+      assign pd_studio_img = pd_imgs.last
+    endif
+  -%}
+  <section class="pd-studio">
+    <div class="pd-studio__img">
+      {%- if pd_studio_img != blank -%}
+        {{ pd_studio_img | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1600', sizes: '(min-width: 990px) 55vw, 100vw', alt: '' }}
+      {%- endif -%}
+    </div>
+    <div class="pd-studio__body">
+      <p class="pd-studio__k">Studio Herwen</p>
+      <h2 class="pd-h2 pd-h2--light">{{ pd_ref }} in het echt zien?</h2>
+      <p class="pd-studio__t">Voel de panelen, vergelijk Signature en Linea naast elkaar en krijg advies voor jouw wand.<br>Nijverheidsdwarsstraat 2, Herwen · op afspraak</p>
+      <div class="pd-studio__btns">
+        <a class="pd-studio__btn" href="{{ section.settings.studio_url | default: '/pages/showroom' }}">Plan een afspraak</a>
+        <a class="pd-studio__btn pd-studio__btn--line" href="https://www.google.com/maps/dir/?api=1&destination=Nijverheidsdwarsstraat+2,+6914+AX+Herwen" target="_blank" rel="noopener">Route</a>
+      </div>
     </div>
   </section>
 </div>
@@ -219,8 +312,33 @@
 <script>
   (function () {
     var box = document.querySelector('[data-pd-mont]');
-    var v = box && box.querySelector('video');
-    if (!v) return;
+    if (!box) return;
+    var frame = box.querySelector('.pd-mont__frame');
+    var tplPort = box.querySelector('template[data-pd-film="port"]');
+    var tplLand = box.querySelector('template[data-pd-film="land"]');
+    if (!tplLand) return;
+    /* Film pas laden als het blok bijna in beeld is; op mobiel de staande versie */
+    var mobile = window.matchMedia('(max-width: 749px)').matches;
+    var tpl = (mobile && tplPort) ? tplPort : tplLand;
+    box.classList.toggle('is-portrait', tpl === tplPort);
+    function load() {
+      if (box.dataset.loaded) return;
+      box.dataset.loaded = '1';
+      var v = tpl.content.querySelector('video').cloneNode(true);
+      frame.insertBefore(v, frame.firstChild);
+      v.addEventListener('loadeddata', function () { box.classList.add('is-ready'); });
+      pdMontSetup(v);
+    }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (e) {
+        if (e[0].isIntersecting) { io.disconnect(); load(); }
+      }, { rootMargin: '600px 0px' });
+      io.observe(box);
+    } else { load(); }
+    box.querySelector('[data-pd-mont-play]').addEventListener('click', load);
+  })();
+  function pdMontSetup(v) {
+    var box = document.querySelector('[data-pd-mont]');
     var play = box.querySelector('[data-pd-mont-play]');
     var playText = box.querySelector('[data-pd-mont-play-text]');
     var chapters = [].slice.call(box.querySelectorAll('[data-pd-chapter]'));
@@ -256,7 +374,17 @@
         else if (!v.paused) { box.dataset.offscreen = '1'; v.pause(); }
       }, { threshold: [0, 0.5] }).observe(v);
     }
-  })();
+    /* Mobiel: actieve stap meeschuiven in de swipe-rij */
+    var row = box.querySelector('.pd-mont__chapters');
+    var lastActive = null;
+    v.addEventListener('timeupdate', function () {
+      var a = row.querySelector('.is-active');
+      if (a && a !== lastActive && row.scrollWidth > row.clientWidth) {
+        lastActive = a;
+        row.scrollTo({ left: row.scrollLeft + a.getBoundingClientRect().left - row.getBoundingClientRect().left - 20, behavior: 'smooth' });
+      }
+    });
+  }
   (function () {
     var root = document.querySelector('[data-pd-choice]');
     if (!root) return;
@@ -277,6 +405,8 @@
   "class": "pd-story-section",
   "settings": [
     { "type": "video", "id": "video", "label": "Montagefilm" },
+    { "type": "video", "id": "video_mobile", "label": "Montagefilm staand (mobiel, 4:5)" },
+    { "type": "image_picker", "id": "studio_image", "label": "Foto Studio Herwen" },
     { "type": "image_picker", "id": "still", "label": "Stilstaand beeld montage (als er nog geen film is)" },
     { "type": "url", "id": "studio_url", "label": "Link afspraak Studio Herwen" }
   ],

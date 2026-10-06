@@ -32,20 +32,22 @@ variants=[{'id':52941931446538+i,'price':p,'compare_at_price':0,'available':a,'i
 product={'title':'Wandpaneel Hout 811 Walnut Classic 8 mm Naadloos','handle':'811-hout-walnut-classic','url':'#','description':'<p>Beschrijving…</p>',
  'media':media,'featured_image':pack,'images':media,'variants':variants,'selected_or_first_available_variant':variants[0],'has_only_default_variant':False,
  'options_with_values':[{'name':'Formaat','values':[Val('260 cm x 122 cm',True),Val('280 cm x 122 cm')]},{'name':'Afwerking','values':[Val('5mm Stomp',True),Val('8mm Naadloos')]}],
- 'metafields':{'custom':{},'reviews':{}},
- 'collections':[{'handle':'hout-1','title':'Hout','products_count':6,'url':'#','products':[{'title':'Wandpaneel Hout 810 Noir Oak','handle':'810','url':'#','featured_image':{'src':'wood.svg'}},{'title':'Wandpaneel Hout 812 Walnut Deep','handle':'812','url':'#','featured_image':{'src':'wood.svg'}},{'title':'Wandpaneel Hout 602 Wood Classic','handle':'602','url':'#','featured_image':{'src':'wood.svg'}},{'title':'Wandpaneel Hout 607 Wood White Oak','handle':'607','url':'#','featured_image':{'src':'wood.svg'}}]}]}
-shop={'enabled_payment_types':['ideal','klarna','visa','master','apple_pay','paypal'],'metafields':{'puredeco':{'montage_video':{'value':'film.mp4'}}}}
+ 'metafields':{'custom':{'sibling_products':{'value':None}},'reviews':{}},
+ 'collections':[{'handle':'hout-1','title':'Hout','products_count':6,'url':'#','products':[{'title':'Wandpaneel Hout 810 Noir Oak','handle':'810','url':'#','featured_image':{'src':'wood.svg'},'price_min':13995,'price_varies':True,'options_with_values':[{'name':'Afwerking','values':['5mm Stomp','8mm Naadloos']}]},{'title':'Wandpaneel Hout 812 Walnut Deep','handle':'812','url':'#','featured_image':{'src':'wood.svg'},'price_min':13995,'price_varies':True,'options_with_values':[{'name':'Afwerking','values':['5mm Stomp','8mm Naadloos']}]},{'title':'Wandpaneel Hout 602 Wood Classic','handle':'602','url':'#','featured_image':{'src':'wood.svg'},'price_min':13995,'price_varies':True,'options_with_values':[{'name':'Afwerking','values':['5mm Stomp','8mm Naadloos']}]},{'title':'Wandpaneel Hout 607 Wood White Oak','handle':'607','url':'#','featured_image':{'src':'wood.svg'},'price_min':13995,'price_varies':True,'options_with_values':[{'name':'Afwerking','values':['5mm Stomp','8mm Naadloos']}]}]}]}
+product['metafields']['custom']['sibling_products']={'value':product['collections'][0]['products']}
+shop={'enabled_payment_types':['ideal','klarna','visa','master','apple_pay','paypal'],'metafields':{'puredeco':{'montage_video':{'value':'film.mp4'},'montage_video_mobile':{'value':'filmp.mp4'}}}}
 ctx=dict(product=product, shop=shop, all_products={'eindprofielen':{'url':'#','price_min':2395}}, collection=None)
 def prep(src):
     src=re.sub(r'\{%\s*schema\s*%\}.*?\{%\s*endschema\s*%\}','',src,flags=re.S)
     src=re.sub(r"\{%-?\s*form 'product'[^%]*-?%\}",'<form id="pdh-form-S1" class="pdh__form" novalidate>',src)
     src=re.sub(r"\{%-?\s*form 'customer'[^%]*-?%\}",'<form class="pdf__form">',src)
     src=re.sub(r'\{%-?\s*endform\s*-?%\}','</form>',src)
+    src=re.sub(r'\{%-?\s*render block\s*-?%\}','<button class="pde__cta" style="width:100%;border:0">[Product Samples-app] Sample aanvragen</button>',src)
     return src
 out=''
 for sec in ['pd-product-hero','pd-product-details']:
     src=prep(open(TH+f'sections/{sec}.liquid').read())
-    out+=env.from_string(src).render(section={'id':'S1' if sec=='pd-product-hero' else 'S2','settings':{}}, **ctx)
+    out+=env.from_string(src).render(section={'id':'S1' if sec=='pd-product-hero' else 'S2','settings':{},'blocks':[{'type':'@app'}]}, **ctx)
 def defaults(sec):
     s=json.loads(re.search(r'\{%\s*schema\s*%\}(.*?)\{%\s*endschema\s*%\}',open(TH+f'sections/{sec}.liquid').read(),re.S).group(1))
     return {x['id']:x.get('default','') for x in s.get('settings',[]) if 'id' in x}

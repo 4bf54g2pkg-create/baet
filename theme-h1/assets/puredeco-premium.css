@@ -1815,3 +1815,152 @@ body,
 .pdf__pay { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; filter: grayscale(1); opacity: 0.8; }
 .pdf__pay svg { display: block; width: 3.8rem; height: 2.4rem; }
 @media (max-width: 749px) { .pdf__bottom-in { flex-direction: column; align-items: flex-start; } }
+
+/* ===== Ronde 7 · The Puredeco Edit (samples-paneel) ===== */
+.pde { position: fixed; inset: 0; z-index: 1000; }
+.pde[hidden] { display: none; }
+.pde__scrim { position: absolute; inset: 0; background: rgba(21, 20, 19, 0.38); opacity: 0; transition: opacity 0.3s ease; }
+.pde__panel {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: min(52rem, 100%); overflow-y: auto;
+  padding: 2.8rem; background: #FFFFFF; color: #151413;
+  border-left: 1px solid #DDD6CA;
+  box-shadow: 0 30px 60px -40px rgba(21, 20, 19, 0.4);
+  transform: translateX(100%); transition: transform 0.32s cubic-bezier(.2,.7,.2,1);
+  outline: none;
+}
+.pde.is-open .pde__scrim { opacity: 1; }
+.pde.is-open .pde__panel { transform: none; }
+.pde__grip { display: none; }
+.pde__head { display: flex; justify-content: space-between; align-items: flex-start; }
+.pde__title { margin: 0; font-family: var(--font-heading-family); font-weight: 500; font-size: 3rem; line-height: 1.1; color: #151413; }
+.pde__x { padding: 0 !important; border: 0 !important; background: none !important; font-size: 2.4rem !important; line-height: 1 !important; color: #6E675E !important; cursor: pointer; height: auto !important; min-height: 0 !important; box-shadow: none !important; }
+.pde__sub { margin: 0.6rem 0 0; font-size: 1.4rem; color: #3A3733; }
+.pde__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; }
+.pde__tile { display: block; color: #6E675E; text-decoration: none; font-size: 1.2rem; line-height: 1.35; }
+.pde__tile.is-on { color: #151413; }
+.pde__sw { display: block; aspect-ratio: 1; background: #6A4E3A center / 520% no-repeat; }
+.pde__tile.is-on .pde__sw { outline: 2px solid #151413; outline-offset: 3px; }
+a.pde__tile:hover .pde__sw { outline: 1px solid #6E675E; outline-offset: 3px; }
+.pde__lbl { display: block; margin-top: 0.8rem; }
+.pde__row { display: flex; justify-content: space-between; gap: 1.6rem; margin-top: 1.6rem; padding-top: 1.4rem; border-top: 1px solid #EFEAE1; font-size: 1.3rem; color: #6E675E; }
+.pde__row a { flex: none; color: #6E675E; text-decoration: none; border-bottom: 1px solid #6E675E; }
+.pde__action { margin-top: 1.6rem; }
+.pde__cta { display: block; padding: 1.5rem; background: #151413; color: #F5F2EC; text-align: center; text-decoration: none; font-size: 1.5rem; }
+.pde__cta:hover { background: #000; color: #FFFFFF; }
+.pde__note { margin: 1.4rem 0 0; font-size: 1.3rem; color: #6E675E; }
+.pde__note a { color: #151413; text-decoration: none; border-bottom: 1px solid #151413; }
+@media (max-width: 749px) {
+  .pde__panel {
+    top: auto; left: 0; width: 100%; max-height: 88vh;
+    padding: 1.6rem 2rem 2.4rem;
+    border-left: 0; border-top: 1px solid #DDD6CA;
+    box-shadow: 0 -20px 40px -30px rgba(21, 20, 19, 0.4);
+    transform: translateY(100%);
+  }
+  .pde__grip { display: block; width: 4rem; height: 0.4rem; margin: 0 auto 1.4rem; border-radius: 2px; background: #DDD6CA; }
+  .pde__title { font-size: 2.6rem; }
+  .pde__sub { font-size: 1.3rem; }
+  .pde__grid { gap: 0.8rem; margin-top: 1.4rem; }
+  .pde__tile.is-on .pde__sw { outline-offset: 2px; }
+}
+
+/* ===== Ronde 7 · één ritme van achtergronden: papier / zand, alleen Studio donker ===== */
+.pd-choice { background: #EFEAE1; }
+.pd-mont { background: #F5F2EC; }
+.pd-specs, .pd-room { background: #EFEAE1; }
+.pd-specs + .pd-room { padding-top: 0; }
+.pd-more { background: #F5F2EC; }
+.pd-faq { background: #EFEAE1; }
+
+/* Montage: film laadt pas in beeld; poster tot de film klaarstaat */
+.pd-mont__frame { background: #F5F2EC; }
+.pd-mont__poster { position: absolute; inset: 0; z-index: 0; }
+.pd-mont__frame video { position: relative; z-index: 1; }
+.pd-mont.is-ready .pd-mont__poster { display: none; }
+.pd-mont__poster--port { display: none; }
+.pd-mont.is-portrait .pd-mont__poster--land { display: none; }
+.pd-mont.is-portrait .pd-mont__poster--port { display: block; }
+.pd-mont__play { z-index: 2; }
+.pd-mont__swipe { display: none; }
+@media (max-width: 749px) {
+  .pd-mont__lead { display: none; }
+  .pd-mont__head { gap: 0; }
+  .pd-mont__eyebrow { margin-bottom: 1rem; }
+  .pd-mont.is-portrait .pd-mont__frame {
+    aspect-ratio: 4 / 5;
+    margin: 2.4rem -2rem 0;
+    border-top: 1px solid #DDD6CA;
+    border-bottom: 1px solid #DDD6CA;
+    box-shadow: none;
+  }
+  .pd-mont.is-portrait .pd-mont__video { object-fit: cover; }
+  /* Hoofdstukken als swipe-rij */
+  .pd-mont__chapters {
+    display: flex !important;
+    gap: 1.6rem;
+    margin: 1.8rem -2rem 0;
+    padding: 0 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 2rem;
+    scrollbar-width: none;
+  }
+  .pd-mont__chapters::-webkit-scrollbar { display: none; }
+  .pd-mont__chapters li { flex: 0 0 20rem; scroll-snap-align: start; }
+  .pd-mont__chapters li:last-child { grid-column: auto; }
+  .pd-mont__chapters .pd-mont__t { display: none !important; }
+  .pd-mont__chapters strong { font-size: 2.2rem; }
+  .pd-mont__bar { margin-bottom: 1.2rem; }
+  .pd-mont__swipe { display: block; margin: 1.4rem 0 0; font-size: 1.2rem; color: #6E675E; }
+}
+
+/* Meer uit de collectie */
+.pd-more__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1.6rem; }
+.pd-more__all { font-size: 1.4rem; color: #151413; text-decoration: none; border-bottom: 1px solid #151413; padding-bottom: 0.3rem; }
+.pd-more__grid { margin-top: 3.2rem; }
+.pd-more__item { gap: 0; }
+.pd-more__img { position: relative; }
+.pd-more__tag { position: absolute; left: 1.2rem; top: 1.2rem; padding: 0.4rem 0.8rem; background: #F5F2EC; font-size: 1.1rem; letter-spacing: 0.06em; color: #151413; }
+.pd-more__row { display: flex; justify-content: space-between; align-items: baseline; gap: 1.2rem; margin-top: 1.4rem; }
+.pd-more__name { font-size: 1.5rem; }
+.pd-more__name > span { color: #6E675E; }
+.pd-more__name em { font-style: normal; font-family: var(--font-heading-family); font-weight: 500; font-size: 2.2rem; line-height: 1.1; }
+.pd-more__price { flex: none; font-size: 1.4rem; }
+.pd-more__meta { margin-top: 0.4rem; font-size: 1.2rem; color: #6E675E; }
+@media (max-width: 749px) {
+  .pd-more__row { flex-direction: column; gap: 0.2rem; }
+  .pd-more__name em { font-size: 1.9rem; }
+  .pd-more__tag { left: 0.8rem; top: 0.8rem; font-size: 1rem; }
+}
+
+/* Goed om te weten */
+.pd-faq__grid { display: grid; gap: 2.4rem; }
+@media (min-width: 990px) { .pd-faq__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 7.2rem; } }
+.pd-faq__lead { margin: 1.6rem 0 0; font-size: 1.5rem; line-height: 1.6; color: #3A3733; }
+.pd-faq__lead a { color: #151413; text-decoration: none; border-bottom: 1px solid #151413; }
+.pd-faq__list { border-bottom: 1px solid #DDD6CA; }
+.pd-faq__item { border-top: 1px solid #DDD6CA; }
+.pd-faq__item summary {
+  display: flex; justify-content: space-between; align-items: center; gap: 2rem;
+  padding: 2rem 0; list-style: none; cursor: pointer; font-size: 1.7rem; color: #151413;
+}
+.pd-faq__item summary::-webkit-details-marker { display: none; }
+.pd-faq__item summary::after { content: "+"; flex: none; font-size: 1.8rem; color: #6E675E; }
+.pd-faq__item[open] summary::after { content: "−"; }
+.pd-faq__item p { margin: -0.8rem 0 0; padding-bottom: 2rem; max-width: 62rem; font-size: 1.5rem; line-height: 1.65; color: #3A3733; }
+@media (max-width: 749px) { .pd-faq__item summary { padding: 1.8rem 0; font-size: 1.5rem; } }
+
+/* Studio Herwen: foto links, donker rechts */
+.pd-studio { display: grid; padding: 0 !important; background: #151413; }
+@media (min-width: 990px) { .pd-studio { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); min-height: 56rem; } }
+.pd-studio__img { position: relative; min-height: 32rem; background: #57412F; overflow: hidden; }
+.pd-studio__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.pd-studio__body { display: flex; flex-direction: column; justify-content: center; gap: 2rem; padding: 5.6rem 2rem; color: #F5F2EC; }
+@media (min-width: 990px) { .pd-studio__body { padding: 8rem 9.6rem 8rem 7.2rem; } }
+.pd-studio__k { margin: 0; font-size: 1.1rem; letter-spacing: 0.22em; text-transform: uppercase; color: #B9AE9F; }
+.pd-studio__t { margin: 0; font-size: 1.5rem; line-height: 1.65; color: #D8D0C4; }
+.pd-studio__btns { display: flex; flex-wrap: wrap; gap: 1.4rem; margin-top: 0.8rem; }
+.pd-studio__btn { padding: 1.5rem 2.4rem; border: 1px solid #F5F2EC; }
+.pd-studio__btn--line { background: transparent; color: #F5F2EC; }
+.pd-studio__btn--line:hover { background: #F5F2EC; color: #151413; }
