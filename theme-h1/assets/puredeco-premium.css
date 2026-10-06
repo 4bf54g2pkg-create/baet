@@ -1513,3 +1513,38 @@ body,
 .pdh__finish[data-finish="lin"] .pdh__finish-desc { font-family: var(--font-body-family); font-style: normal; font-size: 1.25rem; }
 .pdh__finish[data-finish="lin"] .pdh__finish-text { padding-top: 1.2rem; }
 .pd-card__badge { display: block; margin-top: 0.6rem; font-family: var(--font-body-family); font-style: normal; font-size: 1.1rem; letter-spacing: 0.18em; text-transform: uppercase; color: #8C6A4A; }
+
+/* ===== Productpagina · commerciële laag (betalen, Klarna, levering, advies) ===== */
+.pdh__rating { display: inline-flex; align-items: baseline; gap: 0.6rem; margin-top: 1.4rem; font-size: 1.3rem; color: var(--pdh-ink); text-decoration: none; }
+.pdh__stars { position: relative; display: inline-block; letter-spacing: 0.12em; color: #DDD6CA; font-size: 1.3rem; }
+.pdh__stars::before { content: "★★★★★"; position: absolute; inset: 0; width: var(--pct, 100%); overflow: hidden; color: #151413; letter-spacing: 0.12em; }
+.pdh__rating-n { color: var(--pdh-stone); text-decoration: underline; text-underline-offset: 0.3rem; text-decoration-color: var(--pdh-line); }
+.pdh__klarna { margin: 1.4rem 0 0; font-size: 1.35rem; line-height: 1.5; color: #3A3733; }
+.pdh__klarna strong { font-weight: 500; color: var(--pdh-ink); font-variant-numeric: tabular-nums; }
+.pdh__klarna-logo { display: inline-block; padding: 0.1rem 0.6rem; border-radius: 0.4rem; background: #FFB3C7; color: #0B051D; font-weight: 700; font-size: 1.15rem; letter-spacing: -0.01em; }
+.pdh__sample {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.6rem !important;
+  padding: 1.6rem 2rem;
+  border: 1px solid var(--pdh-ink);
+  text-align: left !important;
+  text-decoration: none !important;
+  font-size: 1.4rem;
+  color: var(--pdh-ink);
+  transition: background 0.2s, color 0.2s;
+}
+.pdh__sample:hover { background: var(--pdh-ink); color: var(--pdh-paper); }
+.pdh__usps { list-style: none; margin: 2.4rem 0 0; padding: 0; display: grid; gap: 0.9rem; }
+.pdh__usp { position: relative; padding-left: 2.2rem; font-size: 1.35rem; line-height: 1.45; color: #3A3733; }
+.pdh__usp::before { content: ""; position: absolute; left: 0.2rem; top: 0.45em; width: 1rem; height: 0.55rem; border-left: 1.5px solid var(--pdh-ink); border-bottom: 1.5px solid var(--pdh-ink); transform: rotate(-45deg); }
+.pdh__usp--lead { color: var(--pdh-ink); font-weight: 500; }
+.pdh__usp--lead::before { width: 0.7rem; height: 0.7rem; border: 0; border-radius: 50%; background: #151413; transform: none; top: 0.45em; left: 0.35rem; }
+.pdh__pay { margin-top: 2.4rem; padding-top: 2rem; border-top: 1px solid var(--pdh-line); }
+.pdh__pay-label { display: block; font-size: 1.1rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pdh-stone); }
+.pdh__pay-list { list-style: none; margin: 1.2rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.pdh__pay-icon { display: block; width: 3.8rem; height: 2.4rem; }
+.pdh__advice { display: grid; gap: 0.2rem; margin-top: 2rem; padding: 1.6rem 0 0; border-top: 1px solid var(--pdh-line); font-size: 1.35rem; color: var(--pdh-ink); text-decoration: none; }
+.pdh__advice-k { font-size: 1.1rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pdh-stone); }
+.pdh__advice:hover span:last-child { text-decoration: underline; text-underline-offset: 0.3rem; }

@@ -126,6 +126,16 @@
             {%- if pdh_code != blank -%}<span>{{ pdh_code }}</span>{%- endif -%}
           </p>
           <h1 class="pdh__title">{% if pdh_code != blank %}<span class="visually-hidden">Wandpaneel {{ pdh_code }} </span>{% endif %}{{ pdh_name }}</h1>
+          {%- assign pdh_rating = product.metafields.reviews.rating.value -%}
+          {%- assign pdh_rcount = product.metafields.reviews.rating_count.value | default: 0 -%}
+          {%- if pdh_rating != blank and pdh_rcount > 0 -%}
+            {%- assign pdh_pct = pdh_rating.rating | divided_by: pdh_rating.scale_max | times: 100.0 -%}
+            <a class="pdh__rating" href="#judgeme_product_reviews" aria-label="Beoordeeld met {{ pdh_rating.rating | round: 1 }} van de {{ pdh_rating.scale_max }}, {{ pdh_rcount }} reviews">
+              <span class="pdh__stars" style="--pct: {{ pdh_pct }}%" aria-hidden="true">★★★★★</span>
+              <span>{{ pdh_rating.rating | round: 1 | replace: '.', ',' }}</span>
+              <span class="pdh__rating-n">· {{ pdh_rcount }} {% if pdh_rcount == 1 %}review{% else %}reviews{% endif %}</span>
+            </a>
+          {%- endif -%}
           {%- if pdh_is_panel -%}
             <p class="pdh__intro">{{ product.metafields.custom.intro | default: 'Op een kern van bamboe: stevig, vormvast en gemaakt om te blijven.' }}</p>
           {%- endif -%}
@@ -267,8 +277,35 @@
         {%- endform -%}
 
         <p class="pdh__error" data-pdh-error hidden></p>
-        <a class="pdh__sample" href="/pages/sample">Voel eerst de kwaliteit · gratis sample</a>
-        <p class="pdh__meta" data-pdh-meta></p>
+        <p class="pdh__klarna">Of betaal in 3 renteloze termijnen van <strong data-pdh-klarna>{{ pdh_variant.price | divided_by: 3 | money }}</strong> met <span class="pdh__klarna-logo">Klarna.</span></p>
+
+        <a class="pdh__sample" href="/pages/sample">
+          <span>Eerst voelen? Vraag een gratis sample aan</span>
+          <span aria-hidden="true">→</span>
+        </a>
+
+        <ul class="pdh__usps">
+          <li class="pdh__usp pdh__usp--lead" data-pdh-meta>Op voorraad · geleverd in 3–6 werkdagen</li>
+          <li class="pdh__usp">Gratis bezorgd in Nederland vanaf € 600</li>
+          <li class="pdh__usp">30 dagen bedenktijd</li>
+          <li class="pdh__usp">3 jaar garantie op de panelen</li>
+        </ul>
+
+        {%- if shop.enabled_payment_types.size > 0 -%}
+          <div class="pdh__pay" aria-label="Betaalmethodes">
+            <span class="pdh__pay-label">Veilig betalen met</span>
+            <ul class="pdh__pay-list" role="list">
+              {%- for type in shop.enabled_payment_types -%}
+                <li>{{ type | payment_type_svg_tag: class: 'pdh__pay-icon' }}</li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        <a class="pdh__advice" href="https://wa.me/31316700214" target="_blank" rel="noopener">
+          <span class="pdh__advice-k">Persoonlijk advies</span>
+          <span>App of bel 0316 700 214 · ma–za 10–16 uur</span>
+        </a>
 
         {%- if pdh_is_panel -%}
           <div class="pdh__rows">
@@ -325,6 +362,8 @@
     var q = Math.max(1, parseInt(qtyIn.value, 10) || 1);
     var el = root.querySelector('[data-pdh-total]');
     if (el && current.price) el.textContent = money(current.price * q);
+    var kl = root.querySelector('[data-pdh-klarna]');
+    if (kl && current.price) kl.textContent = money(Math.ceil(current.price * q / 3));
   }
   var walls = [{ w: '4,20', h: '2,60', example: true }], active = 0;
   function num(v) { var n = parseFloat(String(v).replace(',', '.')); return n > 0 ? n : 0; }
@@ -512,13 +551,13 @@
     var cmp = root.querySelector('[data-pdh-compare]');
     if (v.compare > v.price) { cmp.hidden = false; cmp.textContent = money(v.compare); } else { cmp.hidden = true; }
     var d = dims(v);
-    root.querySelector('[data-pdh-unit]').textContent = 'per paneel' + (d ? ' · ' + String(d.h * 100) + ' × ' + String(Math.round(d.w * 100)) + ' cm · ' + (d.h * d.w).toFixed(2).replace('.', ',') + ' m²' : '');
+    root.querySelector('[data-pdh-unit]').textContent = 'per paneel' + (d ? ' · ' + String(Math.round(d.h * 100)) + ' × ' + String(Math.round(d.w * 100)) + ' cm · ' + money(Math.round(v.price / (d.h * d.w))) + ' per m²' : '');
     var cta = root.querySelector('[data-pdh-cta]');
     cta.disabled = !v.available;
     root.querySelector('[data-pdh-cta-text]').textContent = v.available ? 'In winkelmand' : 'Niet beschikbaar';
     root.querySelector('[data-pdh-bar-price]').textContent = money(v.price);
     var meta = root.querySelector('[data-pdh-meta]');
-    meta.textContent = (v.stock ? 'Op voorraad · geleverd in 3–6 werkdagen' : 'Op bestelling · levertijd tot 10 weken, we bevestigen de datum') + ' · 3 jaar garantie · achteraf betalen met Klarna';
+    meta.textContent = v.stock ? 'Op voorraad · ' + deliveryWindow() : 'Op bestelling · levertijd tot 10 weken, we bevestigen de datum';
     var fk = finishKey(v);
     root.setAttribute('data-finish', fk || '');
     var cap = root.querySelector('[data-pdh-joint-caption]');
@@ -535,6 +574,17 @@
     if (!current) return;
     var q = Math.max(1, parseInt(qtyIn.value, 10) || 1);
     root.querySelector('[data-pdh-total]').textContent = money(current.price * q);
+    var kl = root.querySelector('[data-pdh-klarna]');
+    if (kl) kl.textContent = money(Math.ceil(current.price * q / 3));
+  }
+  function deliveryWindow() {
+    var add = function (n) {
+      var d = new Date(); var c = 0;
+      while (c < n) { d.setDate(d.getDate() + 1); var w = d.getDay(); if (w !== 0 && w !== 6) c++; }
+      return d;
+    };
+    var f = function (d) { return d.toLocaleDateString('nl-NL', { weekday: 'short', day: 'numeric', month: 'short' }).replace('.', ''); };
+    return 'bestel vandaag, in huis tussen ' + f(add(3)) + ' en ' + f(add(6));
   }
   fieldsets.forEach(function (f) {
     f.addEventListener('change', function () {
