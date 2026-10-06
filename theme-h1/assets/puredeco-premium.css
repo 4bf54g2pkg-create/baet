@@ -1565,3 +1565,8 @@ body,
 .pdh__wa:hover svg { color: var(--pdh-paper); }
 .pdh__tel { font-size: 1.4rem; color: var(--pdh-ink); text-decoration: underline; text-underline-offset: 0.4rem; text-decoration-color: var(--pdh-line); }
 .pdh__tel:hover { text-decoration-color: var(--pdh-ink); }
+
+/* Montagefilm: altijd volledig in beeld (geen uitsnede), op papierkleur */
+.pdh__view[data-view="film"] { background: #F5F2EC; }
+.pdh__view[data-view="film"] video { object-fit: contain; background: #F5F2EC; }
+.pd-film__media video { object-fit: contain; background: #F5F2EC; }

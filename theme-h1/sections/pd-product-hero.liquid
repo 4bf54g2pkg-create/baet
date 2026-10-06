@@ -27,6 +27,7 @@
   assign pdh_ext = product.media | where: 'media_type', 'external_video' | first
   assign pdh_interiors = pdh_imgs.size | minus: 1
 
+  assign pdh_film = section.settings.video | default: shop.metafields.puredeco.montage_video.value
   assign pdh_variant = product.selected_or_first_available_variant
   assign pdh_form_id = 'pdh-form-' | append: section.id
 -%}
@@ -92,10 +93,10 @@
           </div>
         {%- endif -%}
 
-        {%- if pdh_video or pdh_ext or section.settings.video != blank -%}
+        {%- if pdh_video or pdh_ext or pdh_film != blank -%}
           <div class="pdh__view" data-view="film">
-            {%- if section.settings.video != blank -%}
-              {{ section.settings.video | video_tag: controls: true, muted: true, playsinline: true, loop: true, preload: 'none', image_size: '1600x' }}
+            {%- if pdh_film != blank -%}
+              {{ pdh_film | video_tag: controls: true, muted: true, playsinline: true, preload: 'metadata', image_size: '1600x' }}
             {%- elsif pdh_video -%}
               {{ pdh_video | video_tag: controls: true, muted: true, playsinline: true, loop: true, preload: 'none', image_size: '1600x' }}
             {%- else -%}
@@ -112,7 +113,7 @@
           <button type="button" data-pdh-view="structuur">Structuur</button>
           <button type="button" data-pdh-view="aansluiting">Aansluiting</button>
         {%- endif -%}
-        {%- if pdh_video or pdh_ext or section.settings.video != blank -%}<button type="button" data-pdh-view="film">Film</button>{%- endif -%}
+        {%- if pdh_video or pdh_ext or pdh_film != blank -%}<button type="button" data-pdh-view="film">Montage</button>{%- endif -%}
       </nav>
     </div>
 

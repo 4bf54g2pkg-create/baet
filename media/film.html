@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="nl"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'Cormorant';src:url(cormorant.woff2) format('woff2');font-weight:300 700;font-display:block}
+@font-face{font-family:'Instrument Sans';src:url(instrument.woff2) format('woff2');font-weight:400 700;font-display:block}
+</style>
+<style>
+:root{--paper:#F5F2EC;--ink:#151413;--stone:#6E675E;--line:#DDD6CA;--bronze:#8C6A4A}
+*{box-sizing:border-box}
+html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:var(--paper);font-family:'Instrument Sans',Helvetica,Arial,sans-serif;color:var(--ink)}
+.layer{position:absolute;inset:0;opacity:0}
+.eyebrow{font-size:20px;letter-spacing:.24em;text-transform:uppercase;color:var(--stone)}
+.serif{font-family:'Cormorant',Georgia,serif;font-weight:500}
+.cap{position:absolute;left:150px;top:150px;width:520px}
+.cap .num{font-family:'Cormorant',Georgia,serif;font-size:120px;line-height:.9;color:var(--bronze)}
+.cap h2{margin:18px 0 0;font-family:'Cormorant',Georgia,serif;font-weight:500;font-size:64px;line-height:1.02}
+.cap p{margin:26px 0 0;font-size:24px;line-height:1.55;color:#3A3733}
+.stage{position:absolute;left:760px;top:150px;width:1010px;height:780px}
+.badge{position:absolute;right:48px;bottom:40px;font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
+.logo{font-size:30px;font-weight:600;letter-spacing:-.01em}
+.logo span{font-weight:400}
+svg{overflow:visible}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.11 0.0035" numOctaves="3" seed="8" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.42  0 0 0 0 0.27  0 0 0 0 0.18  0 0 0 1.4 -0.35" result="c"/>
+      <feComposite in="c" in2="SourceGraphic" operator="in"/>
+    </filter>
+    <pattern id="woodbase" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="#7A4F36"/></pattern>
+  </defs>
+</svg>
+
+<!-- 0 Titel -->
+<div class="layer" id="s0">
+  <div style="position:absolute;left:0;right:0;top:400px;text-align:center">
+    <div class="eyebrow">Montage in 4 stappen</div>
+    <div class="serif" style="font-size:96px;line-height:1;margin-top:28px">Zo ontstaat een Puredeco-wand</div>
+  </div>
+</div>
+
+<!-- 1 Voorbereiden -->
+<div class="layer" id="s1">
+  <div class="cap"><div class="num">1</div><h2>Voorbereiden</h2><p>Een vlakke, droge en schone wand. Hoe vlakker de ondergrond, hoe strakker het resultaat.</p></div>
+  <svg class="stage" viewBox="0 0 1010 780">
+    <rect x="80" y="60" width="850" height="600" fill="#ECE6DB"/>
+    <line x1="40" y1="660" x2="970" y2="660" stroke="#151413" stroke-width="2"/>
+    <g id="s1level">
+      <rect x="0" y="0" width="420" height="34" rx="4" fill="#151413"/>
+      <rect x="170" y="8" width="80" height="18" rx="9" fill="#F5F2EC"/>
+      <circle id="s1bubble" cx="210" cy="17" r="6" fill="#8C6A4A"/>
+    </g>
+    <line id="s1dim" x1="80" y1="710" x2="80" y2="710" stroke="#151413" stroke-width="1.5"/>
+    <line x1="80" y1="698" x2="80" y2="722" stroke="#151413" stroke-width="1.5"/>
+    <line id="s1dimend" x1="930" y1="698" x2="930" y2="722" stroke="#151413" stroke-width="1.5" opacity="0"/>
+    <text id="s1dimtxt" x="505" y="752" text-anchor="middle" font-size="22" fill="#6E675E" opacity="0">4,20 m</text>
+  </svg>
+</div>
+
+<!-- 2 Kit -->
+<div class="layer" id="s2">
+  <div class="cap"><div class="num">2</div><h2>Kit aanbrengen</h2><p>Montagekit in verticale banen op de achterkant van het paneel.</p></div>
+  <svg class="stage" viewBox="0 0 1010 780">
+    <rect x="300" y="40" width="410" height="680" fill="#D9C9A3"/>
+    <rect x="300" y="40" width="410" height="680" fill="none" stroke="#151413" stroke-width="2"/>
+    <text x="505" y="760" text-anchor="middle" font-size="20" fill="#6E675E" letter-spacing="3" font-family="Instrument Sans">ACHTERKANT PANEEL</text>
+    <g id="s2beads" stroke="#3A3733" stroke-width="10" stroke-linecap="round" stroke-dasharray="24 22" fill="none">
+      <line x1="370" y1="90" x2="370" y2="670" pathLength="1000"/>
+      <line x1="455" y1="90" x2="455" y2="670" pathLength="1000"/>
+      <line x1="555" y1="90" x2="555" y2="670" pathLength="1000"/>
+      <line x1="640" y1="90" x2="640" y2="670" pathLength="1000"/>
+    </g>
+    <g id="s2gun">
+      <rect x="-30" y="-150" width="60" height="150" rx="8" fill="#151413"/>
+      <path d="M-8 0 L8 0 L2 34 L-2 34 Z" fill="#151413"/>
+    </g>
+  </svg>
+</div>
+
+<!-- 3 Plaatsen -->
+<div class="layer" id="s3">
+  <div class="cap"><div class="num">3</div><h2>Plaatsen en aansluiten</h2><p id="s3txt">Eerste paneel waterpas. Signature klikt naadloos in elkaar.*</p><p style="font-size:17px;color:#6E675E;margin-top:18px">* Op een vlakke, rechte ondergrond.</p></div>
+  <svg class="stage" viewBox="0 0 1010 780">
+    <rect x="80" y="60" width="850" height="600" fill="#ECE6DB"/>
+    <clipPath id="wallclip"><rect x="80" y="60" width="850" height="600"/></clipPath>
+    <g clip-path="url(#wallclip)">
+      <g id="p1"><rect x="80" y="60" width="244" height="600" fill="#7A4F36"/><rect x="80" y="60" width="244" height="600" filter="url(#grain)" fill="#000"/></g>
+      <g id="p2"><rect x="324" y="60" width="244" height="600" fill="#7A4F36"/><rect x="324" y="60" width="244" height="600" filter="url(#grain)" fill="#000"/></g>
+      <g id="p3"><rect x="568" y="60" width="244" height="600" fill="#7A4F36"/><rect x="568" y="60" width="244" height="600" filter="url(#grain)" fill="#000"/></g>
+      <g id="p4"><rect x="812" y="60" width="244" height="600" fill="#7A4F36"/><rect x="812" y="60" width="244" height="600" filter="url(#grain)" fill="#000"/></g>
+      <line id="seam1" x1="324" y1="60" x2="324" y2="660" stroke="#F5F2EC" stroke-width="2" opacity="0"/>
+      <line id="seam2" x1="568" y1="60" x2="568" y2="660" stroke="#F5F2EC" stroke-width="2" opacity="0"/>
+      <line id="seam3" x1="812" y1="60" x2="812" y2="660" stroke="#F5F2EC" stroke-width="2" opacity="0"/>
+    </g>
+    <line x1="40" y1="660" x2="970" y2="660" stroke="#151413" stroke-width="2"/>
+    <g id="s3click" opacity="0"><circle cx="324" cy="360" r="38" fill="none" stroke="#F5F2EC" stroke-width="2"/><text x="324" y="420" text-anchor="middle" font-size="20" fill="#F5F2EC" letter-spacing="3">KLIK</text></g>
+  </svg>
+</div>
+
+<!-- 4 Afwerken -->
+<div class="layer" id="s4">
+  <div class="cap"><div class="num">4</div><h2>Afwerken</h2><p>Profielen op hoeken en randen. Klaar, zonder stof en stucwerk.</p></div>
+  <svg class="stage" viewBox="0 0 1010 780">
+    <rect x="80" y="60" width="850" height="600" fill="#7A4F36"/>
+    <rect x="80" y="60" width="850" height="600" filter="url(#grain)" fill="#000"/>
+    <line x1="40" y1="660" x2="970" y2="660" stroke="#151413" stroke-width="2"/>
+    <rect id="prof1" x="70" y="60" width="12" height="600" fill="#A07850"/>
+    <rect id="prof2" x="928" y="60" width="12" height="600" fill="#A07850"/>
+    <rect id="prof3" x="70" y="50" width="870" height="12" fill="#A07850"/>
+  </svg>
+</div>
+
+<!-- 5 Slot -->
+<div class="layer" id="s5">
+  <svg style="position:absolute;left:0;top:0" width="1920" height="1080" viewBox="0 0 1920 1080">
+    <rect x="0" y="0" width="1920" height="1080" fill="#F5F2EC"/>
+    <rect x="360" y="90" width="1200" height="720" fill="#7A4F36"/>
+    <rect x="360" y="90" width="1200" height="720" filter="url(#grain)" fill="#000"/>
+    <rect x="0" y="810" width="1920" height="270" fill="#E4DCCD"/>
+    <g stroke="#151413" stroke-width="2">
+      <path d="M620 810 L620 700 Q620 670 650 670 L1010 670 Q1040 670 1040 700 L1040 810 Z" fill="#E9E3D8"/>
+      <path d="M600 810 L600 735 L1060 735 L1060 810 Z" fill="#DDD5C7"/>
+      <line x1="1240" y1="810" x2="1240" y2="745"/><ellipse cx="1240" cy="740" rx="50" ry="8" fill="#F5F2EC"/>
+    </g>
+  </svg>
+  <div style="position:absolute;left:0;right:0;bottom:88px;text-align:center">
+    <div class="logo">Pure<span>Deco</span></div>
+    <div style="margin-top:12px;font-size:20px;color:#3A3733">Signature · 8 mm · naadloos op een vlakke, rechte ondergrond</div>
+  </div>
+</div>
+
+<div class="badge" id="badge">Illustratie</div>
+
+<script>
+const L = id => document.getElementById(id);
+const clamp = (x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ease = x => x<.5 ? 4*x*x*x : 1-Math.pow(-2*x+2,3)/2;
+const p = (t,a,b)=>ease(clamp((t-a)/(b-a)));
+// scènes: [id, start, end]
+const S = [['s0',0,3.4],['s1',3.4,8.6],['s2',8.6,13.8],['s3',13.8,21.2],['s4',21.2,25.4],['s5',25.4,30]];
+function fade(id,a,b,t){ const fi=p(t,a,a+.6), fo=1-p(t,b-.5,b); const el=L(id); el.style.opacity=Math.min(fi,b>=30?1:fo); return t>=a&&t<=b; }
+function render(t){
+  S.forEach(([id,a,b])=>fade(id,a,b,t));
+  // titel: lichte omhoogbeweging
+  L('s0').firstElementChild.style.transform=`translateY(${(1-p(t,0,1.2))*24}px)`;
+  // 1 waterpas + maatlijn
+  const lv=p(t,4.0,6.0); L('s1level').setAttribute('transform',`translate(${80+430*lv-0} ${330})`);
+  L('s1bubble').setAttribute('cx', 210 + Math.sin(t*6)*(1-p(t,4,6.2))*22);
+  const dm=p(t,5.6,7.4); L('s1dim').setAttribute('x2',80+850*dm);
+  L('s1dimend').setAttribute('opacity',dm>.98?1:0); L('s1dimtxt').setAttribute('opacity',p(t,7.0,7.6));
+  // 2 kitbanen
+  const beads=[...document.querySelectorAll('#s2beads line')];
+  beads.forEach((l,i)=>{ const q=p(t,9.4+i*.9,10.2+i*.9); l.setAttribute('stroke-dasharray',`${q*1000} 1000`); l.style.strokeDasharray=''; l.setAttribute('pathLength',1000);
+    l.setAttribute('stroke-dasharray', q>0 ? (q*1000)+' 1000' : '0 1000'); });
+  const gi = clamp(Math.floor((t-9.4)/.9),0,3), gq=p(t,9.4+gi*.9,10.2+gi*.9);
+  const gx=[370,455,555,640][gi], gy=90+580*gq;
+  L('s2gun').setAttribute('transform',`translate(${gx} ${gy-40})`); L('s2gun').style.opacity = t>9.2&&t<13.0?1:0;
+  // 3 panelen schuiven in
+  ['p1','p2','p3','p4'].forEach((id,i)=>{ const q=p(t,14.4+i*1.1,15.4+i*1.1); L(id).setAttribute('transform',`translate(${(1-q)*1100} ${(1-q)*-20})`); L(id).style.opacity=q>0?1:0; });
+  // naad: Signature eerst zichtbaar als haarlijn die verdwijnt (naadloos)
+  [1,2,3].forEach(i=>{ const shown=p(t,15.3+(i-1)*1.1,15.5+(i-1)*1.1), gone=p(t,15.6+(i-1)*1.1,16.3+(i-1)*1.1); L('seam'+i).setAttribute('opacity',Math.max(0,shown-gone)*.9); });
+  const ck = Math.max(0, p(t,15.2,15.5)-p(t,15.9,16.4)); L('s3click').setAttribute('opacity',ck); L('s3click').setAttribute('transform',`translate(0 0) scale(1)`);
+  // 4 profielen
+  L('prof1').setAttribute('transform',`translate(0 ${(1-p(t,21.8,22.8))*-700})`);
+  L('prof2').setAttribute('transform',`translate(0 ${(1-p(t,22.3,23.3))*-700})`);
+  L('prof3').setAttribute('transform',`translate(${(1-p(t,22.8,23.8))*-1000} 0)`);
+  // 5 slot: zachte zoom
+  const z=1.06-0.06*p(t,25.4,30); L('s5').firstElementChild.style.transform=`scale(${z})`; L('s5').firstElementChild.style.transformOrigin='50% 45%';
+  L('badge').style.opacity = t>3.4 ? 1 : 0;
+}
+window.render=render; render(0);
+</script>
+</body></html>

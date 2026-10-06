@@ -55,3 +55,8 @@ templates/robots.txt.liquid  79fe39ff3f6c96eb3ef97395ad254787  = OK
 ## 6 okt 2026 · winkelbrede objecten aangemaakt voor H1-test
 - Menu `pd-hoofdmenu` (Wandpanelen · Akupanelen · Accessoires · Inspiratie · Studio Herwen) en `pd-mobiel` (idem + Samples · Zakelijk · Veelgestelde vragen · Contact).
 - Alleen gekoppeld in H1-test (`sections/header-group.json`). Het live theme gebruikt nog `main-menu-1` / `mobile-menu`; die zijn niet gewijzigd.
+
+## 6 okt 2026 · montage-animatie
+- Bestand (Shopify Files): `puredeco-montage.mp4`, Video `gid://shopify/Video/51238562988298` (30 s, 1080p, illustratie).
+- Winkel-metafield `puredeco.montage_video` (file_reference) verwijst ernaar; alleen H1-test leest dit (secties pd-product-hero en pd-product-details). Een sectie-instelling "Montagefilm" of een productvideo gaat voor.
+- Bron: `media/film.html` (beeld-voor-beeld gerenderd met Playwright, gecodeerd met ffmpeg).

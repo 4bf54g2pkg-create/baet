@@ -83,8 +83,9 @@
   <section class="pd-s pd-film">
     <div class="pd-wrap pd-film__grid">
       <div class="pd-film__media">
-        {%- if section.settings.video != blank -%}
-          {{ section.settings.video | video_tag: controls: true, preload: 'none', playsinline: true, image_size: '1600x' }}
+        {%- assign pd_film = section.settings.video | default: shop.metafields.puredeco.montage_video.value -%}
+        {%- if pd_film != blank -%}
+          {{ pd_film | video_tag: controls: true, muted: true, preload: 'metadata', playsinline: true, image_size: '1600x' }}
         {%- else -%}
           {%- liquid
             assign pd_all_imgs = product.media | where: 'media_type', 'image'
