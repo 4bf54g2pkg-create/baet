@@ -1548,3 +1548,20 @@ body,
 .pdh__advice { display: grid; gap: 0.2rem; margin-top: 2rem; padding: 1.6rem 0 0; border-top: 1px solid var(--pdh-line); font-size: 1.35rem; color: var(--pdh-ink); text-decoration: none; }
 .pdh__advice-k { font-size: 1.1rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--pdh-stone); }
 .pdh__advice:hover span:last-child { text-decoration: underline; text-underline-offset: 0.3rem; }
+.pdh__advice-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem 2.4rem; margin-top: 1.2rem; }
+.pdh__wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 1.8rem;
+  border: 1px solid var(--pdh-ink);
+  color: var(--pdh-ink);
+  text-decoration: none;
+  font-size: 1.4rem;
+  transition: background 0.2s, color 0.2s;
+}
+.pdh__wa svg { color: #25D366; transition: color 0.2s; }
+.pdh__wa:hover { background: var(--pdh-ink); color: var(--pdh-paper); }
+.pdh__wa:hover svg { color: var(--pdh-paper); }
+.pdh__tel { font-size: 1.4rem; color: var(--pdh-ink); text-decoration: underline; text-underline-offset: 0.4rem; text-decoration-color: var(--pdh-line); }
+.pdh__tel:hover { text-decoration-color: var(--pdh-ink); }
