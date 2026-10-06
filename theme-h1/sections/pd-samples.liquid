@@ -5,7 +5,7 @@
 {%- liquid
   assign s = section.settings
   assign src = s.collection | default: collections['wandpanelen']
-  assign max = s.max | default: 3
+  assign max = s.max | default: 5
   assign groups = 'Hout|Japandi|Leer|Art|Marmer|Steen' | split: '|'
 -%}
 <div class="ph pse" data-pse data-max="{{ max }}" data-prop="{{ s.property | default: 'Voorbeeld van' | escape }}">
@@ -16,11 +16,11 @@
         <h1 class="ph-h2 pse__h">Voel de kwaliteit zelf</h1>
       </div>
       <div>
-        <p class="ph-lead">Kies tot {{ max }} decors. Je krijgt een staal thuisgestuurd: buig het, leg het naast een ander paneel en bekijk het in je eigen licht. Stalen zijn gratis, je betaalt alleen {{ s.shipping }} verzending.</p>
+        <p class="ph-lead">Kies tot {{ max }} decors. Je krijgt een staal thuisgestuurd: buig het, leg het naast een ander paneel en bekijk het in je eigen licht. Stalen zijn gratis, je betaalt alleen {{ s.shipping }} verzending. {{ s.delivery | capitalize }}.</p>
         <ol class="pse__steps">
           <li><span>1</span>Kies tot {{ max }} decors</li>
           <li><span>2</span>Gratis staal, {{ s.shipping }} verzending</li>
-          <li><span>3</span>Thuis vergelijken bij je eigen licht</li>
+          <li><span>3</span>{{ s.delivery | capitalize }}</li>
         </ol>
       </div>
     </div>
@@ -90,7 +90,7 @@
   <div class="pse__bar" data-pse-bar aria-live="polite">
     <div class="ph-wrap pse__bar-in">
       <ul class="pse__chosen" data-pse-chosen role="list"></ul>
-      <p class="pse__count"><strong data-pse-count>0</strong> van {{ max }} gekozen · verzending {{ s.shipping }}</p>
+      <p class="pse__count"><strong data-pse-count>0</strong> van {{ max }} gekozen · verzending {{ s.shipping }} · {{ s.delivery }}</p>
       <button type="button" class="pse__go" data-pse-go disabled>Samples aanvragen</button>
     </div>
     <p class="pse__msg" data-pse-msg hidden></p>
@@ -164,8 +164,9 @@
   "class": "pd-samples-section",
   "settings": [
     { "type": "collection", "id": "collection", "label": "Collectie met alle decors", "info": "Standaard: Wandpanelen." },
-    { "type": "range", "id": "max", "label": "Maximaal aantal stalen", "min": 1, "max": 6, "step": 1, "default": 3 },
+    { "type": "range", "id": "max", "label": "Maximaal aantal stalen", "min": 1, "max": 6, "step": 1, "default": 5 },
     { "type": "text", "id": "shipping", "label": "Verzendkosten stalen", "default": "€ 6,95" },
+    { "type": "text", "id": "delivery", "label": "Levertijd stalen", "default": "binnen 3–5 werkdagen in huis" },
     { "type": "text", "id": "property", "label": "Eigenschap in winkelmand", "default": "Voorbeeld van", "info": "Moet gelijk zijn aan wat de Product Samples-app gebruikt." }
   ],
   "presets": [{ "name": "Puredeco samples" }],

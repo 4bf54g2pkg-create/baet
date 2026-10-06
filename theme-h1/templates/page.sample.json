@@ -529,9 +529,10 @@
       "type": "pd-samples",
       "settings": {
         "collection": "wandpanelen",
-        "max": 3,
+        "max": 5,
         "shipping": "€ 6,95",
-        "property": "Voorbeeld van"
+        "property": "Voorbeeld van",
+        "delivery": "binnen 3–5 werkdagen in huis"
       }
     }
   },
