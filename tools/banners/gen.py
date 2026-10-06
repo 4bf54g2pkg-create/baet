@@ -67,3 +67,15 @@ page('social-story-851',1080,1920,f'''<div style="position:relative;height:100%"
 <div style="font-family:C;font-weight:500;font-size:128px;line-height:.95;margin-top:24px">Eén wand.<br>Eén geheel.</div>
 <div style="margin-top:40px;font-size:30px;opacity:.9">Vraag gratis stalen aan · puredeco.nl</div></div></div>''')
 print('klaar')
+
+# Ronde 8b · homepage-hero met hout (615 Wood Radiata, catalogusbeeld 2560 px) en merkverhaalbeeld (811 Walnut Classic, echte productfoto)
+page('home-hero-hout-desktop',2400,1200,f'''<img class="cover g" src="{BB}hout-1.jpg" style="object-position:50% 62%;filter:sepia(.16) saturate(1.05) contrast(1.04) brightness(.97)">''')
+page('home-hero-hout-mobile',1080,1600,f'''<img class="cover g" src="{BB}hout-1.jpg" style="object-position:46% 60%;filter:sepia(.16) saturate(1.05) contrast(1.04) brightness(.97)">''')
+page('merkverhaal-811',1200,1500,f'''<div class="tex" style="width:100%;height:100%;{tex('811-0.jpg','50% 50%','330%')}"></div>''')
+
+# Ronde 8c · homepage-hero hout: warm walnootinterieur (catalogusbeeld "Wandpaneel hout") naast een rustig tekstvlak
+page('home-hero-hout-desktop',2400,1200,f'''<div style="display:grid;grid-template-columns:900px 1fr;height:100%">
+<div style="background:linear-gradient(180deg,#2E2119,#241A14)"></div>
+<div style="position:relative"><img class="cover g" src="{BB}hout-2.png" style="object-position:62% 55%">
+<div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(36,26,20,.6),rgba(36,26,20,0) 20%)"></div></div></div>''')
+page('home-hero-hout-mobile',1080,1600,f'''<img class="cover g" src="{BB}hout-2.png" style="object-position:58% 50%">''')

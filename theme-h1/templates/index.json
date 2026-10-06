@@ -1270,9 +1270,16 @@
     "pd_home": {
       "type": "pd-home",
       "settings": {
-        "hero_image": "shopify://shop_images/ChatGPT_Image_8_sep_2026_11_25_14.png",
-        "hero_image_mobile": "shopify://shop_images/ChatGPT_Image_8_sep_2026_11_22_33.png",
-        "sector_visual": true
+        "hero_image": "shopify://shop_images/pd-home-hero-hout.jpg",
+        "hero_image_mobile": "shopify://shop_images/pd-home-hero-hout-mobiel.jpg",
+        "sector_visual": true,
+        "hero_caption": "Hout · visualisatie",
+        "story_image": "shopify://shop_images/pd-merkverhaal-811.jpg",
+        "story_caption": "811 Walnut Classic · Signature",
+        "sector_image_1": "shopify://shop_images/pd-sector-hotels.jpg",
+        "sector_image_2": "shopify://shop_images/pd-sector-horeca.jpg",
+        "sector_image_3": "shopify://shop_images/pd-sector-kantoren.jpg",
+        "sector_image_4": "shopify://shop_images/pd-sector-retail.jpg"
       }
     },
     "pd_home_cta": {

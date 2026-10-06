@@ -2270,3 +2270,13 @@ body a.top_cta_icon { border-color: transparent; text-decoration: none; padding:
 body a.top_cta_icon:hover { background: transparent; color: rgb(var(--pd-ink)); text-decoration: underline; text-underline-offset: 4px; }
 body a.top_cta_icon + a.top_cta_icon { border-color: rgb(var(--pd-ink)); text-decoration: none; padding: 0 1.8rem; }
 body a.top_cta_icon + a.top_cta_icon:hover { background: rgb(var(--pd-ink)); color: #fff; text-decoration: none; }
+
+/* Homepage · merkverhaal met beeld, gebouwd om te blijven met intro */
+.ph-story__side { display: flex; flex-direction: column; gap: 2.4rem; }
+.ph-story__img { margin: 0; }
+.ph-story__img img { aspect-ratio: 4 / 5; height: auto; }
+.ph-story__img figcaption { margin-top: 1rem; font-size: 1.2rem; color: #6E675E; }
+@media (min-width: 990px) { .ph-story__grid { align-items: start; } .ph-story__main { padding-top: 4rem; } }
+@media (max-width: 989px) { .ph-story__img { max-width: 36rem; } }
+.ph-built__head { display: grid; gap: 2rem; align-items: end; }
+@media (min-width: 990px) { .ph-built__head { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 7.2rem; } }

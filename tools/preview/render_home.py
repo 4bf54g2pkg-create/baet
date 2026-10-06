@@ -39,7 +39,7 @@ def prep2(src):
 if len(sys.argv)>1 and sys.argv[1]=='projects':
     out=env.from_string(prep2(open(TH+'sections/pd-projects.liquid').read())).render(section={'settings':defaults('pd-projects')},all_products=all_products,form={})
 else:
-    hs=defaults('pd-home'); hs['hero_image']={'src':'room.svg'}
+    hs=defaults('pd-home'); hs['hero_image']={'src':'hero.jpg'}; hs['story_image']={'src':'story.jpg'}
     out=env.from_string(prep(open(TH+'sections/pd-home.liquid').read())).render(section={'settings':hs},all_products=all_products,collections=cols,images=images,shop=shop)
     out+='<div style="padding:80px 96px;font:28px serif">[Instafeed: Bij klanten en in projecten]</div>'
     out+=env.from_string(prep(open(TH+'sections/pd-home-cta.liquid').read())).render(section={'settings':defaults('pd-home-cta')})
