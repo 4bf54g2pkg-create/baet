@@ -1,0 +1,16 @@
+{%- if product.title contains 'Wandpaneel' -%}
+  {%- assign pd_prof = all_products['eindprofielen'] -%}
+  <div class="pd-rows">
+    {%- if pd_prof != blank -%}
+      <a class="pd-row" href="{{ pd_prof.url }}">
+        <span class="pd-row__swatches" aria-hidden="true"><i style="background:#3A3A3A"></i><i style="background:#151413"></i><i style="background:#F2F0EB"></i><i style="background:#A07850"></i><i style="background:#C9A55C"></i></span>
+        <span class="pd-row__text"><span class="pd-row__label">Maak de wand af</span>Eindprofielen in vijf kleuren</span>
+        <span class="pd-row__end">vanaf {{ pd_prof.price_min | money }}</span>
+      </a>
+    {%- endif -%}
+    <a class="pd-row" href="/pages/contact">
+      <span class="pd-row__text"><span class="pd-row__label">Puredeco Projects</span>Projectprijs, en vanaf 150 m² je eigen kleur.</span>
+      <span class="pd-row__end pd-row__link">Projectofferte</span>
+    </a>
+  </div>
+{%- endif -%}

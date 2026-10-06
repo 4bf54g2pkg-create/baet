@@ -1,0 +1,59 @@
+{%- if product.title contains 'Wandpaneel' -%}
+<div class="pd-calc" data-pd-calc>
+  <p class="pd-label">Jouw wand</p>
+  <div class="pd-calc__row">
+    <label class="pd-calc__field"><input type="text" inputmode="decimal" placeholder="4,20" data-pd-w aria-label="Breedte van de wand in meter"><span>m breed</span></label>
+    <label class="pd-calc__field"><input type="text" inputmode="decimal" placeholder="2,60" data-pd-h aria-label="Hoogte van de wand in meter"><span>m hoog</span></label>
+    <span class="pd-calc__result" data-pd-result aria-live="polite"></span>
+  </div>
+  <p class="pd-calc__note" data-pd-note>Vul je wandmaat in, dan rekenen we het aantal panelen uit.</p>
+  <script type="application/json" data-pd-variants>[{%- for v in product.variants -%}{"id":{{ v.id }},"price":{{ v.price }},"opts":{{ v.options | json }}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]</script>
+</div>
+<script>
+(function () {
+  var root = document.currentScript.previousElementSibling;
+  if (!root || root.dataset.pdReady) return;
+  root.dataset.pdReady = '1';
+  var variants = JSON.parse(root.querySelector('[data-pd-variants]').textContent);
+  var wIn = root.querySelector('[data-pd-w]'), hIn = root.querySelector('[data-pd-h]');
+  var out = root.querySelector('[data-pd-result]'), note = root.querySelector('[data-pd-note]');
+  var form = root.closest('form') || document.querySelector('form[id^="product-form-"]');
+  function num(v) { return parseFloat(String(v).replace(',', '.')); }
+  function eur(c) { return (c / 100).toLocaleString('nl-NL', { style: 'currency', currency: 'EUR' }); }
+  function currentVariant() {
+    var idEl = document.querySelector('form[id^="product-form-"] input[name="id"], form[id^="product-form-"] select[name="id"]');
+    var id = idEl ? Number(idEl.value) : variants[0].id;
+    for (var i = 0; i < variants.length; i++) if (variants[i].id === id) return variants[i];
+    return variants[0];
+  }
+  function panelSize(v) {
+    var txt = v.opts.join(' ');
+    var m = txt.match(/(\d{3})\s*(?:cm)?\s*[x×]\s*(\d{2,3})/i);
+    if (m) return { h: Number(m[1]) / 100, w: Number(m[2]) / 100 };
+    return { h: 2.8, w: 1.22 };
+  }
+  function run(setQty) {
+    var W = num(wIn.value), H = num(hIn.value);
+    if (!(W > 0) || !(H > 0)) { out.textContent = ''; note.textContent = 'Vul je wandmaat in, dan rekenen we het aantal panelen uit.'; return; }
+    var v = currentVariant(), s = panelSize(v);
+    var n = Math.ceil(W / s.w) * Math.ceil(H / s.h);
+    var total = n * v.price;
+    out.textContent = n + (n === 1 ? ' paneel · ' : ' panelen · ') + eur(total);
+    var rest = 60000 - total;
+    note.textContent = (H > s.h ? 'Je wand is hoger dan één paneel; we rekenen met een extra rij. ' : '') +
+      (rest > 0 ? 'Nog ' + eur(rest) + ' tot gratis bezorging in Nederland.' : 'Gratis bezorgd in Nederland.');
+    if (setQty) {
+      document.querySelectorAll('input.quantity__input[name="quantity"]').forEach(function (q) {
+        q.value = n;
+        q.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    }
+  }
+  wIn.addEventListener('input', function () { run(true); });
+  hIn.addEventListener('input', function () { run(true); });
+  document.addEventListener('change', function (e) {
+    if (e.target && e.target.closest && e.target.closest('variant-selects')) setTimeout(function () { run(false); }, 400);
+  });
+})();
+</script>
+{%- endif -%}

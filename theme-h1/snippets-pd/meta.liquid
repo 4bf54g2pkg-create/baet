@@ -1,0 +1,11 @@
+{%- assign pd_variant = product.selected_or_first_available_variant -%}
+<p class="pd-meta">
+  {%- if product.metafields.custom.expected_delivery_date != blank -%}
+    {{ product.metafields.custom.expected_delivery_date }}
+  {%- elsif pd_variant.inventory_management == blank or pd_variant.inventory_quantity > 0 -%}
+    Op voorraad · geleverd in 3–6 werkdagen · 3 jaar garantie
+  {%- else -%}
+    Op bestelling · levertijd tot 10 weken, we bevestigen de datum · 3 jaar garantie
+  {%- endif -%}
+  <br>Achteraf of in 3 termijnen betalen met Klarna
+</p>
