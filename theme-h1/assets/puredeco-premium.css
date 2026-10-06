@@ -1570,3 +1570,73 @@ body,
 .pdh__view[data-view="film"] { background: #F5F2EC; }
 .pdh__view[data-view="film"] video { object-fit: contain; background: #F5F2EC; }
 .pd-film__media video { object-fit: contain; background: #F5F2EC; }
+
+/* ===== Montageblok: licht, filmisch, met meelopende hoofdstukken ===== */
+.pd-mont { background: #EFEAE1; }
+.pd-mont__head { display: grid; gap: 2rem; align-items: end; }
+@media (min-width: 990px) { .pd-mont__head { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 7.2rem; } }
+.pd-mont__eyebrow { margin: 0 0 1.4rem; font-size: 1.1rem; letter-spacing: 0.22em; text-transform: uppercase; color: #6E675E; }
+.pd-mont__lead { margin: 0; max-width: 42ch; font-size: 1.6rem; line-height: 1.6; color: #3A3733; }
+.pd-mont__frame {
+  position: relative;
+  margin-top: 4rem;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #F5F2EC;
+  box-shadow: 0 1px 0 rgba(21, 20, 19, 0.06), 0 40px 80px -48px rgba(21, 20, 19, 0.35);
+}
+.pd-mont__video { display: block; width: 100%; height: 100%; object-fit: contain; background: #F5F2EC; cursor: pointer; }
+.pd-mont__play {
+  position: absolute;
+  left: 2.4rem;
+  bottom: 2.4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 0.8rem 1.8rem 0.8rem 0.8rem;
+  border: 0;
+  border-radius: 99rem;
+  background: rgba(21, 20, 19, 0.88);
+  color: #F5F2EC;
+  font: inherit;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: opacity 0.35s ease, transform 0.35s ease, background 0.2s;
+}
+.pd-mont__play:hover { background: #151413; }
+.pd-mont__play-icon { position: relative; width: 3.6rem; height: 3.6rem; border-radius: 50%; background: #F5F2EC; }
+.pd-mont__play-icon::before { content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-35%, -50%); border-style: solid; border-width: 0.7rem 0 0.7rem 1.1rem; border-color: transparent transparent transparent #151413; }
+.pd-mont.is-playing .pd-mont__play { opacity: 0; transform: translateY(0.8rem); pointer-events: none; }
+.pd-mont.is-playing .pd-mont__frame:hover .pd-mont__play { opacity: 1; transform: none; pointer-events: auto; }
+.pd-mont.is-playing .pd-mont__play-icon::before { width: 1rem; height: 1.2rem; border: 0; border-left: 3px solid #151413; border-right: 3px solid #151413; transform: translate(-50%, -50%); }
+.pd-mont__soon { position: absolute; left: 2.4rem; bottom: 2.4rem; padding: 0.8rem 1.4rem; background: rgba(245, 242, 236, 0.92); font-size: 1.3rem; }
+.pd-mont__chapters { list-style: none; margin: 3.2rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.8rem 2rem; }
+@media (min-width: 990px) { .pd-mont__chapters { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3.2rem; } }
+.pd-mont__chapters button {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  font: inherit;
+  color: #6E675E;
+  cursor: pointer;
+  transition: color 0.25s;
+}
+.pd-mont__chapters button:hover,
+.pd-mont__chapters button.is-active { color: #151413; }
+.pd-mont__bar { display: block; height: 2px; margin-bottom: 1.4rem; background: #DDD6CA; overflow: hidden; }
+.pd-mont__bar i { display: block; height: 100%; background: #151413; transform: scaleX(0); transform-origin: left; transition: transform 0.25s linear; }
+.pd-mont__n { font-size: 1.1rem; letter-spacing: 0.2em; font-variant-numeric: tabular-nums; }
+.pd-mont__chapters strong { font-family: var(--font-heading-family); font-weight: 500; font-size: 2.4rem; line-height: 1.1; color: inherit; }
+.pd-mont__t { font-size: 1.4rem; line-height: 1.55; color: #3A3733; }
+@media (max-width: 749px) {
+  .pd-mont__play { left: 1.2rem; bottom: 1.2rem; font-size: 1.3rem; }
+  .pd-mont__play-icon { width: 3rem; height: 3rem; }
+  .pd-mont__chapters strong { font-size: 2rem; }
+}
+@media (min-width: 990px) { .pd-mont__chapters { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 2.8rem; } .pd-mont__chapters strong { font-size: 2.2rem; } }
+@media (max-width: 989px) { .pd-mont__chapters li:last-child { grid-column: 1 / -1; } }

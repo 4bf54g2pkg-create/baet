@@ -79,13 +79,25 @@
     </div>
   </section>
 
-  {%- comment -%} 2 · Montage {%- endcomment -%}
-  <section class="pd-s pd-film">
-    <div class="pd-wrap pd-film__grid">
-      <div class="pd-film__media">
-        {%- assign pd_film = section.settings.video | default: shop.metafields.puredeco.montage_video.value -%}
+  {%- comment -%} 2 · Montage: film met meelopende hoofdstukken {%- endcomment -%}
+  {%- assign pd_film = section.settings.video | default: shop.metafields.puredeco.montage_video.value -%}
+  <section class="pd-s pd-mont" data-pd-mont>
+    <div class="pd-wrap">
+      <header class="pd-mont__head">
+        <div>
+          <p class="pd-mont__eyebrow">Montage in 5 stappen · zelf te doen</p>
+          <h2 class="pd-h2">Zo monteer je zelf een Puredeco-wand</h2>
+        </div>
+        <p class="pd-mont__lead">Geen vakman nodig: met gewoon gereedschap zet je in één dag een complete wand, zonder stof en stucwerk. Klik op een stap om er direct naartoe te gaan.</p>
+      </header>
+
+      <div class="pd-mont__frame">
         {%- if pd_film != blank -%}
-          {{ pd_film | video_tag: controls: true, muted: true, preload: 'metadata', playsinline: true, image_size: '1600x' }}
+          {{ pd_film | video_tag: muted: true, playsinline: true, preload: 'metadata', image_size: '1920x', class: 'pd-mont__video' }}
+          <button type="button" class="pd-mont__play" data-pd-mont-play aria-label="Film afspelen">
+            <span class="pd-mont__play-icon" aria-hidden="true"></span>
+            <span class="pd-mont__play-text" data-pd-mont-play-text>Bekijk de montage · 0:36</span>
+          </button>
         {%- else -%}
           {%- liquid
             assign pd_all_imgs = product.media | where: 'media_type', 'image'
@@ -95,22 +107,19 @@
             endif
           -%}
           {%- if pd_still != blank -%}
-            {{ pd_still | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1600', sizes: '(min-width: 990px) 60vw, 100vw', alt: pd_full }}
+            {{ pd_still | image_url: width: 1920 | image_tag: loading: 'lazy', widths: '800, 1200, 1600, 1920', sizes: '(min-width: 990px) 80vw, 100vw', alt: pd_full, class: 'pd-mont__video' }}
           {%- endif -%}
-          <span class="pd-film__soon">Montagefilm volgt</span>
+          <span class="pd-mont__soon">Montagefilm volgt</span>
         {%- endif -%}
       </div>
-      <div class="pd-film__text">
-        <h2 class="pd-h2 pd-h2--light">Zo ontstaat een Puredeco-wand</h2>
-        <ol class="pd-film__steps">
-          <li>De wand voorbereiden</li>
-          <li>Kit aanbrengen</li>
-          <li>Het eerste paneel plaatsen</li>
-          <li>Aansluiten en aandrukken</li>
-          <li>Afwerken met profielen</li>
-          <li>De afgewerkte ruimte</li>
-        </ol>
-      </div>
+
+      <ol class="pd-mont__chapters">
+        <li><button type="button" data-pd-chapter data-start="3.6" data-end="8.6"><span class="pd-mont__bar"><i></i></span><span class="pd-mont__n">01</span><strong>Voorbereiden</strong><span class="pd-mont__t">Een vlakke, droge en schone wand. Hoe vlakker, hoe strakker het resultaat.</span></button></li>
+        <li><button type="button" data-pd-chapter data-start="8.6" data-end="14.6"><span class="pd-mont__bar"><i></i></span><span class="pd-mont__n">02</span><strong>Op maat maken</strong><span class="pd-mont__t">Met een fijne cirkelzaag of een stanleymes: kras langs een rei, buig en breek af.</span></button></li>
+        <li><button type="button" data-pd-chapter data-start="14.6" data-end="19.8"><span class="pd-mont__bar"><i></i></span><span class="pd-mont__n">03</span><strong>Kit aanbrengen</strong><span class="pd-mont__t">Montagekit in verticale banen op de achterkant van het paneel.</span></button></li>
+        <li><button type="button" data-pd-chapter data-start="19.8" data-end="27.2"><span class="pd-mont__bar"><i></i></span><span class="pd-mont__n">04</span><strong>Plaatsen en aansluiten</strong><span class="pd-mont__t">Eerste paneel waterpas. Signature klikt naadloos in elkaar; Linea wordt stomp geplaatst.</span></button></li>
+        <li><button type="button" data-pd-chapter data-start="27.2" data-end="31.4"><span class="pd-mont__bar"><i></i></span><span class="pd-mont__n">05</span><strong>Afwerken</strong><span class="pd-mont__t">Profielen op hoeken en randen. Klaar, zonder stof en stucwerk.</span></button></li>
+      </ol>
     </div>
   </section>
 
@@ -136,19 +145,6 @@
           </details>
         {%- endif -%}
       </div>
-    </div>
-  </section>
-
-  {%- comment -%} 4 · Montage in 4 stappen {%- endcomment -%}
-  <section class="pd-s pd-steps">
-    <div class="pd-wrap pd-steps__grid">
-      <h2 class="pd-h2">Zo plaats je {{ pd_ref }}</h2>
-      <ol class="pd-steps__list">
-        <li><span class="pd-steps__tile" style="--t:#E4DCCD"><b>1</b></span><strong>Voorbereiden</strong><span>Een vlakke, droge en schone wand. Hoe vlakker, hoe strakker het resultaat.</span></li>
-        <li><span class="pd-steps__tile" style="--t:#D6CAB5"><b>2</b></span><strong>Plaatsen</strong><span>Kit in banen op het paneel, het eerste paneel waterpas tegen de wand.</span></li>
-        <li><span class="pd-steps__tile" style="--t:#8C6A4A"><b>3</b></span><strong>Aansluiten</strong><span>Signature klikt naadloos in elkaar; Linea wordt stomp tegen elkaar geplaatst.</span></li>
-        <li><span class="pd-steps__tile" style="--t:#5E4534"><b>4</b></span><strong>Puredeco Finish</strong><span>Profielen op hoeken en randen. Klaar, zonder stof en stucwerk.</span></li>
-      </ol>
     </div>
   </section>
 
@@ -220,6 +216,46 @@
 </div>
 
 <script>
+  (function () {
+    var box = document.querySelector('[data-pd-mont]');
+    var v = box && box.querySelector('video');
+    if (!v) return;
+    var play = box.querySelector('[data-pd-mont-play]');
+    var playText = box.querySelector('[data-pd-mont-play-text]');
+    var chapters = [].slice.call(box.querySelectorAll('[data-pd-chapter]'));
+    v.removeAttribute('controls');
+    v.loop = false;
+    function start(t) {
+      if (typeof t === 'number') { try { v.currentTime = t; } catch (e) {} }
+      var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+    }
+    play.addEventListener('click', function () { if (v.paused) { start(v.ended ? 0 : undefined); } else { v.pause(); } });
+    v.addEventListener('click', function () { if (v.paused) start(); else v.pause(); });
+    v.addEventListener('play', function () { box.classList.add('is-playing'); play.setAttribute('aria-label', 'Film pauzeren'); });
+    v.addEventListener('pause', function () { box.classList.remove('is-playing'); play.setAttribute('aria-label', 'Film afspelen'); playText.textContent = v.ended ? 'Opnieuw bekijken' : 'Verder kijken'; });
+    v.addEventListener('ended', function () { playText.textContent = 'Opnieuw bekijken'; });
+    chapters.forEach(function (c) {
+      c.addEventListener('click', function () { start(parseFloat(c.getAttribute('data-start'))); });
+    });
+    v.addEventListener('timeupdate', function () {
+      var t = v.currentTime;
+      chapters.forEach(function (c) {
+        var a = parseFloat(c.getAttribute('data-start')), b = parseFloat(c.getAttribute('data-end'));
+        var q = Math.max(0, Math.min(1, (t - a) / (b - a)));
+        c.querySelector('.pd-mont__bar i').style.transform = 'scaleX(' + q + ')';
+        c.classList.toggle('is-active', t >= a && t < b);
+      });
+    });
+    /* Speelt vanzelf (zonder geluid) zodra het blok in beeld komt, pauzeert daarbuiten */
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var auto = true;
+      v.addEventListener('pause', function () { if (!box.dataset.offscreen) auto = false; });
+      new IntersectionObserver(function (e) {
+        if (e[0].isIntersecting && e[0].intersectionRatio > 0.5) { delete box.dataset.offscreen; if (auto && v.paused && !v.ended) start(); }
+        else if (!v.paused) { box.dataset.offscreen = '1'; v.pause(); }
+      }, { threshold: [0, 0.5] }).observe(v);
+    }
+  })();
   (function () {
     var root = document.querySelector('[data-pd-choice]');
     if (!root) return;
