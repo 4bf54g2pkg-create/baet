@@ -90,3 +90,9 @@ templates/robots.txt.liquid  79fe39ff3f6c96eb3ef97395ad254787  = OK
 - Samplepagina: groep "Beton ciré en travertin" op plek 2.
 - Menu's pd-hoofdmenu, pd-mobiel en pd-footer-collecties (alleen H1-test): "Beton ciré" en "Travertin" na Hout, met link naar de productpagina's (er is geen collectie voor).
 - Checksums: pd-home db3c9cd7… · index.json 502dd7df… · css 76622467… · pd-samples 458b1401….
+
+## Sectorbeeld hotel: 810 Noir Oak met LED — H1-test
+- Bron: door de klant aangeleverde hotelfoto (`media/sector/hotel-bron.jpg`). **Bron/licentie nog bevestigen vóór publiceren.**
+- Bewerking (`tools/sector/hotel.py 810led`, `tools/sector/vloer.py`): wand achter het bed = 2 panelen 810 Noir Oak (244 cm, symmetrisch achter het hoofdbord), LED aan beide uiteinden, kunstwerk weggelaten, blauw tapijt → warm greige.
+- Shopify Files: `pd-sector-hotels-810-led.jpg` (1200×1200). Gebruikt als sector_image_1 op de homepage (index.json) en Projecten (page.btbcta.json; daar ook sector 2–4 gezet). pd-projects toont nu ook het label "Visualisatie" bij ingestelde sectorbeelden.
+- Checksums: pd-projects 44bfbb18… · page.btbcta.json 76b65ee5… · index.json 2ffbfea1….

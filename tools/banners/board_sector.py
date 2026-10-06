@@ -2,7 +2,7 @@
 import json, subprocess
 C = '/tmp/claude-0/-home-user-baet/20c8e88a-a0d2-5581-8005-f8ed232319d0/scratchpad/canvas/project/'
 M = '/home/user/baet/media/sector/'
-for f in ['hotel-bron', 'hotel-678', 'hotel-811', 'hotel-810led']:
+for f in ['hotel-bron', 'hotel-678', 'hotel-811', 'hotel-810led-vloer']:
     subprocess.run(['ffmpeg', '-loglevel', 'error', '-y', '-i', M + f + '.jpg', '-vf', 'scale=1400:-2', '-q:v', '3', C + 'beeld/sector-' + f + '.jpg'], check=True)
 
 
@@ -18,8 +18,8 @@ body = ('<div class="tag" style="left:24px;top:20px">Sectorbeelden · test hotel
         '<div class="s" style="font-size:64px;line-height:1">Hotels: jullie wand in een echte hotelkamer</div>'
         '<div style="font-size:16px;line-height:1.7;color:#3A3733;margin-top:14px;max-width:1080px">De wand achter het bed is vervangen door het echte oppervlak van het decor, '
         'in perspectief en op ware grootte (panelen van 122 cm breed, gemeten aan het bed). Licht, kleur van het daglicht, hanglampen en hoofdbord komen uit de foto zelf. '
-        'Het kunstwerk aan de wand is weggelaten. Twee panelen (244 cm) staan symmetrisch achter het hoofdbord; aan beide uiteinden zit een LED-lijn die over het hout en de wand ernaast strijkt. Op de site staat bij dit beeld altijd “Visualisatie”, want het is een bewerkte foto en geen geplaatst project.</div>'
-        '<div style="margin-top:48px">' + card('hotel-810led', '810 Noir Oak met LED', '2 panelen achter het hoofdbord · LED aan beide uiteinden', 'Visualisatie') + '</div>'
+        'Het kunstwerk aan de wand is weggelaten en het blauwe tapijt is warm greige gemaakt, passend bij het hout. Twee panelen (244 cm) staan symmetrisch achter het hoofdbord; aan beide uiteinden zit een LED-lijn die over het hout en de wand ernaast strijkt. Op de site staat bij dit beeld altijd “Visualisatie”, want het is een bewerkte foto en geen geplaatst project.</div>'
+        '<div style="margin-top:48px">' + card('hotel-810led-vloer', '810 Noir Oak met LED', '2 panelen achter het hoofdbord · LED aan beide uiteinden · vloer warm greige', 'Visualisatie') + '</div>'
         '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:48px">' +
         card('hotel-678', '678 marmer', 'eerdere variant', 'Visualisatie') +
         card('hotel-811', '811 hout', 'eerdere variant', 'Visualisatie') +

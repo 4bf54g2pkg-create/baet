@@ -57,6 +57,7 @@
           <div class="ph-pro__card">
             <span class="ph-pro__img pp-sectors__img{% if tex %} ph-pro__img--tex{% endif %}">
               {%- if simg != blank -%}{{ simg | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400, 700, 900', sizes: '(min-width: 990px) 22vw, 45vw', alt: t }}{%- endif -%}
+              {%- unless tex -%}<span class="ph-tag">Visualisatie</span>{%- endunless -%}
             </span>
             <span class="ph-h3">{{ t }}</span>
             <span class="ph-t">{{ texts[forloop.index0] }}</span>

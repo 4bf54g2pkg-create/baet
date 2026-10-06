@@ -368,7 +368,11 @@
     "pd_projects": {
       "type": "pd-projects",
       "settings": {
-        "hero_is_visual": true
+        "hero_is_visual": true,
+        "sector_image_1": "shopify://shop_images/pd-sector-hotels-810-led.jpg",
+        "sector_image_2": "shopify://shop_images/pd-sector-horeca.jpg",
+        "sector_image_3": "shopify://shop_images/pd-sector-kantoren.jpg",
+        "sector_image_4": "shopify://shop_images/pd-sector-retail.jpg"
       }
     }
   },
