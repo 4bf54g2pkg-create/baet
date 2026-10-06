@@ -2,7 +2,7 @@
 import json, subprocess
 C = '/tmp/claude-0/-home-user-baet/20c8e88a-a0d2-5581-8005-f8ed232319d0/scratchpad/canvas/project/'
 M = '/home/user/baet/media/sector/'
-for f in ['hotel-bron', 'hotel-678', 'hotel-811', 'hotel-810led-vloer']:
+for f in ['hotel-bron', 'hotel-678', 'hotel-811', 'hotel-810led-vloer', 'horeca-bron', 'horeca-812led', 'horeca-691led']:
     subprocess.run(['ffmpeg', '-loglevel', 'error', '-y', '-i', M + f + '.jpg', '-vf', 'scale=1400:-2', '-q:v', '3', C + 'beeld/sector-' + f + '.jpg'], check=True)
 
 
@@ -31,6 +31,22 @@ body = ('<div class="tag" style="left:24px;top:20px">Sectorbeelden · test hotel
         '<div style="margin-top:6px">2. <b>LED-profielen:</b> komen binnenkort online. Daarna linken we vanaf dit beeld naar de LED en noemen we hem in het bijschrift.</div>'
         '<div style="margin-top:6px">3. De tweede aangeleverde foto heeft een signatuur “k/r” op het hoofdbord. Die gebruiken we niet zonder toestemming van de maker.</div>'
         '<div style="margin-top:6px">4. Daarna volgen horeca, kantoren en retail op dezelfde manier.</div></div>'
+        '<div style="margin-top:110px;border-top:1px solid #DDD6CA;padding-top:56px">'
+        '<div class="k">Horeca · keuze</div>'
+        '<div class="s" style="font-size:56px;line-height:1;margin-top:10px">Horeca: twee richtingen op de bakstenen wand</div>'
+        '<div style="font-size:16px;line-height:1.7;color:#3A3733;margin-top:14px;max-width:1080px">Een vlak van ruim drie panelen breed (ca. 3,8 m) van de bar tot vóór de waterski’s, met LED aan beide uiteinden. '
+        'De wand is hoger dan 280 cm, dus er staat een tweede rij met een strakke horizontale naad. Lampen, tafel, stoelen en bar staan ervoor; onder de tafel valt de schaduw op het paneel. '
+        'Rechts van het vlak blijft de baksteen, zodat het paneel als een bewuste wand leest.</div>'
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px">' +
+        card('horeca-812led', '812 Walnut Deep met LED', 'warm hout bij gloeilampen', 'Visualisatie') +
+        card('horeca-691led', '691 Concrete Smoke met LED', 'beton ciré-look, industrieel', 'Visualisatie') +
+        '</div>'
+        '<div style="display:grid;grid-template-columns:420px 1fr;gap:40px;margin-top:40px;align-items:start">' + card('horeca-bron', 'Origineel', 'aangeleverde foto', '') +
+        '<div style="font-size:15px;line-height:1.7;color:#3A3733"><div class="k">Nodig</div>'
+        '<div style="margin-top:10px">1. <b>Keuze:</b> 812 hout of 691 beton.</div>'
+        '<div style="margin-top:6px">2. <b>Bron:</b> de link naar deze foto (Unsplash/Pexels).</div>'
+        '<div style="margin-top:6px">Let op: achter de tafel zijn dunne stoelpoten deels weggevallen; op kaartformaat valt dat niet op, maar voor een grote banner zou ik een foto zonder meubels vóór de wand kiezen.</div></div></div>'
+        '</div>'
         '</div>')
 
 page = ('<!doctype html>\n<html lang="nl">\n<head>\n<meta charset="utf-8">\n<title>Sectorbeelden</title>\n<script src="./support.js"></script>\n</head>\n<body>\n<x-dc>\n<helmet>\n'
@@ -38,13 +54,13 @@ page = ('<!doctype html>\n<html lang="nl">\n<head>\n<meta charset="utf-8">\n<tit
         '<style>\nbody{margin:0}\n.s{font-family:\'Cormorant\',Georgia,serif;font-weight:500}\n'
         '.k{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8C6A4A}\nimg{display:block;width:100%}\n'
         '.tag{position:absolute;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:#E9E3D8;color:#6E675E;padding:4px 8px;z-index:3}\n</style>\n</helmet>\n'
-        '<div style="width:1440px;height:1860px;position:relative;overflow:hidden;background:#F5F2EC;color:#151413;font-family:\'Instrument Sans\',\'Helvetica Neue\',Arial,sans-serif">\n'
+        '<div style="width:1440px;height:3050px;position:relative;overflow:hidden;background:#F5F2EC;color:#151413;font-family:\'Instrument Sans\',\'Helvetica Neue\',Arial,sans-serif">\n'
         + body +
-        '\n</div>\n</x-dc>\n<script type="text/x-dc" data-dc-script data-props=\'{"$preview":{"width":1440,"height":1860}}\'>\n'
+        '\n</div>\n</x-dc>\n<script type="text/x-dc" data-dc-script data-props=\'{"$preview":{"width":1440,"height":3050}}\'>\n'
         'class Component extends DCLogic {\n  renderVals() {\n    return {};\n  }\n}\n</script>\n</body>\n</html>\n')
 open(C + 'Sectorbeelden.dc.html', 'w').write(page)
 d = json.load(open(C + 'canvas.json'))
-d['boards']['Sectorbeelden.dc.html'] = {'h': 1860, 'title': 'Sectorbeelden · hotel (test)', 'w': 1440, 'x': 3040, 'y': 13820}
+d['boards']['Sectorbeelden.dc.html'] = {'h': 3050, 'title': 'Sectorbeelden · hotel (test)', 'w': 1440, 'x': 3040, 'y': 13820}
 if 'Sectorbeelden.dc.html' not in d['order']:
     d['order'].append('Sectorbeelden.dc.html')
 json.dump(d, open(C + 'canvas.json', 'w'), ensure_ascii=False, indent=2)
