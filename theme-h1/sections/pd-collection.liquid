@@ -1,0 +1,351 @@
+{%- comment -%}
+  Puredeco · collectiepagina in de huisstijl.
+  Hero met de SEO-H1 (metafield custom.seo_h1, anders de collectietitel), collectienavigatie met interne links,
+  filters en sortering (nofollow), productkaarten zonder winkelwagenknop (Bekijk en bereken + Sample),
+  echte paginalinks i.p.v. oneindig scrollen, opgeschoonde collectietekst, veelgestelde vragen en structured data.
+  URL's van collecties en producten blijven ongewijzigd.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign h1 = collection.metafields.custom.seo_h1.value | default: collection.title
+  capture clean
+    render 'pd-clean-html', html: collection.description
+  endcapture
+  assign paras = clean | split: '</p>'
+  assign intro = paras.first | strip_html | strip
+  assign body = clean | remove_first: paras.first | remove_first: '</p>' | strip
+  if s.intro_from_text == false
+    assign intro = ''
+    assign body = clean
+  endif
+  assign hero_img = collection.image
+  if hero_img == blank
+    assign hero_img = collection.products.first.media[1] | default: collection.products.first.featured_image
+  endif
+  assign per_page = s.per_page | default: 24
+  assign sample_max = s.sample_max | default: 5
+-%}
+
+<div class="ph pc" data-pc data-max="{{ sample_max }}" data-prop="Voorbeeld van">
+
+  {%- comment -%} Hero {%- endcomment -%}
+  <section class="pc-hero">
+    <div class="ph-wrap pc-hero__in">
+      <div class="pc-hero__txt">
+        <p class="ph-k ph-k--bronze">{{ s.eyebrow | default: 'Wandpanelen met bamboekern' }} · {{ collection.products_count }} {% if collection.products_count == 1 %}decor{% else %}decors{% endif %}</p>
+        <h1 class="pc-hero__h">{{ h1 }}</h1>
+        {%- if intro != blank -%}<p class="ph-lead pc-hero__lead">{{ intro }}</p>{%- endif -%}
+        <ul class="pc-usp" role="list">
+          <li><strong>Gratis samples</strong> tot 5 decors · € 6,95 verzending</li>
+          <li><strong>3 jaar garantie</strong> op alle panelen</li>
+          <li><strong>Op voorraad</strong> binnen 3–6 werkdagen geleverd</li>
+        </ul>
+      </div>
+      {%- if hero_img != blank -%}
+        <figure class="pc-hero__img">
+          {{ hero_img | image_url: width: 1600 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600, 900, 1200, 1600', sizes: '(min-width: 990px) 46vw, 100vw', alt: h1 }}
+          {%- if s.hero_visual -%}<span class="ph-tag ph-tag--corner">Visualisatie</span>{%- endif -%}
+        </figure>
+      {%- endif -%}
+    </div>
+  </section>
+
+  {%- comment -%} Collectienavigatie: interne links met beschrijvende ankertekst {%- endcomment -%}
+  {%- assign nav = s.nav | newline_to_br | split: '<br />' -%}
+  <nav class="pc-nav" aria-label="Collecties">
+    <div class="ph-wrap">
+      <ul class="pc-nav__list" role="list">
+        {%- for line in nav -%}
+          {%- assign pair = line | strip | split: '|' -%}
+          {%- if pair.size == 2 -%}
+            {%- assign nh = pair[0] | strip -%}
+            {%- assign nl = pair[1] | strip -%}
+            <li><a href="/collections/{{ nh }}"{% if nh == collection.handle %} aria-current="page" class="is-on"{% endif %}>{{ nl }}</a></li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </nav>
+
+  {%- paginate collection.products by per_page -%}
+  <section class="pc-shop" id="decors">
+    <div class="ph-wrap">
+
+      <div class="pc-bar">
+        <p class="pc-bar__count"><strong>{{ collection.products_count }}</strong> {% if collection.products_count == 1 %}decor{% else %}decors{% endif %}</p>
+        {%- if s.show_filters and collection.filters.size > 0 -%}
+          <div class="pc-filters">
+            {%- for filter in collection.filters -%}
+              {%- if filter.type == 'list' and filter.values.size > 1 -%}
+                <div class="pc-filter" role="group" aria-label="{{ filter.label | escape }}">
+                  <span class="pc-filter__l">{{ filter.label }}</span>
+                  {%- for v in filter.values -%}
+                    {%- if v.count > 0 or v.active -%}
+                      <a rel="nofollow" class="pc-chip{% if v.active %} is-on{% endif %}" href="{% if v.active %}{{ v.url_to_remove }}{% else %}{{ v.url_to_add }}{% endif %}#decors">{{ v.label }}</a>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+            {%- assign any_active = false -%}
+            {%- for filter in collection.filters -%}{%- if filter.active_values.size > 0 -%}{%- assign any_active = true -%}{%- endif -%}{%- endfor -%}
+            {%- if any_active -%}<a rel="nofollow" class="pc-clear" href="{{ collection.url }}?sort_by={{ collection.sort_by | default: collection.default_sort_by }}#decors">Wis filters</a>{%- endif -%}
+          </div>
+        {%- endif -%}
+        {%- if s.show_sort -%}
+          {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+          <label class="pc-sort">
+            <span>Sorteren</span>
+            <select data-pc-sort aria-label="Sorteren">
+              {%- for option in collection.sort_options -%}
+                <option value="{{ option.value }}"{% if option.value == sort_by %} selected{% endif %}>{{ option.name }}</option>
+              {%- endfor -%}
+            </select>
+          </label>
+        {%- endif -%}
+      </div>
+
+      <h2 class="pc-vh">Alle decors in {{ h1 | downcase }}</h2>
+      <ul class="pc-grid" role="list">
+        {%- for p in collection.products -%}
+          {%- liquid
+            capture code
+              render 'pd-decor', product: p, part: 'code'
+            endcapture
+            capture name
+              render 'pd-decor', product: p, part: 'name'
+            endcapture
+            capture eyebrow
+              render 'pd-decor', product: p, part: 'eyebrow'
+            endcapture
+            assign code = code | strip
+            assign name = name | strip
+            assign eyebrow = eyebrow | strip
+            assign room = p.media[1] | default: p.featured_image
+            assign panel = p.featured_image
+            assign v = p.selected_or_first_available_variant
+            assign finishes = ''
+            assign size = ''
+            for o in p.options_with_values
+              assign on = o.name | downcase
+              if on contains 'afwerking'
+                assign finishes = o.values | join: ' / ' | replace: 'mm', ' mm' | replace: '  ', ' ' | downcase
+              elsif on contains 'formaat'
+                assign size = o.values | last | replace: ' cm x ', ' × ' | replace: ' x ', ' × '
+              endif
+            endfor
+            assign is_seamless = false
+            if finishes contains '8 mm'
+              assign is_seamless = true
+            endif
+            assign label = code | append: ' ' | append: name | strip
+            assign alt_room = eyebrow | append: ' wandpaneel ' | append: label | append: ' · sfeerbeeld' | strip
+            assign alt_panel = eyebrow | append: ' wandpaneel ' | append: label | append: ' · paneel' | strip
+          -%}
+          <li class="pc-card">
+            <a class="pc-card__media" href="{{ p.url }}" tabindex="-1" aria-hidden="true">
+              {%- if room != blank -%}
+                {{ room | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 990px) 30vw, 48vw', alt: alt_room, class: 'pc-card__room' }}
+              {%- endif -%}
+              {%- if panel != blank and panel != room -%}
+                {{ panel | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 990px) 30vw, 48vw', alt: alt_panel, class: 'pc-card__panel' }}
+              {%- endif -%}
+              {%- if room != panel -%}<span class="pc-card__vis">Visualisatie</span>{%- endif -%}
+              {%- if is_seamless -%}<span class="pc-card__badge">8 mm naadloos</span>{%- endif -%}
+            </a>
+            <div class="pc-card__body">
+              <p class="pc-card__eyebrow">{{ eyebrow | default: 'Wandpaneel' }}</p>
+              <h3 class="pc-card__name"><a href="{{ p.url }}"><span>{{ code }}</span> {{ name }}</a></h3>
+              <p class="pc-card__spec">{% if size != blank %}{{ size }}{% endif %}{% if finishes != blank %} · {{ finishes }}{% endif %}</p>
+              <p class="pc-card__price">
+                {%- if p.price_varies -%}vanaf {% endif -%}
+                <strong>{{ p.price_min | money }}</strong>
+                {%- if p.compare_at_price_max > p.price_min -%} <s>{{ p.compare_at_price_max | money }}</s>{%- endif -%}
+                <span>per paneel</span>
+              </p>
+              <div class="pc-card__act">
+                <a class="pc-card__go" href="{{ p.url }}">Bekijk en bereken</a>
+                {%- if v and code != blank -%}
+                  <button type="button" class="pc-card__smp" data-pc-sample data-id="{{ v.id }}" data-title="{{ p.title | escape }}" data-label="{{ label | escape }}" data-img="{{ panel | image_url: width: 200 }}" aria-pressed="false">
+                    <span class="off">+ Sample</span><span class="on">✓ Sample</span>
+                  </button>
+                {%- endif -%}
+              </div>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      {%- if paginate.pages > 1 -%}
+        <nav class="pc-pages" aria-label="Pagina's">
+          {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}" rel="prev">← Vorige</a>{%- endif -%}
+          {%- for part in paginate.parts -%}
+            {%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>{%- elsif part.title == paginate.current_page -%}<span aria-current="page">{{ part.title }}</span>{%- else -%}<span>{{ part.title }}</span>{%- endif -%}
+          {%- endfor -%}
+          {%- if paginate.next -%}<a href="{{ paginate.next.url }}" rel="next">Volgende →</a>{%- endif -%}
+        </nav>
+      {%- endif -%}
+    </div>
+  </section>
+
+  {%- comment -%} ItemList: de producten op deze pagina {%- endcomment -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": {{ h1 | json }},
+      "url": {{ canonical_url | json }},
+      {%- if page_description != blank %}"description": {{ page_description | json }},{% endif %}
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": {{ collection.products_count }},
+        "itemListElement": [
+          {%- for p in collection.products -%}
+            { "@type": "ListItem", "position": {{ paginate.current_offset | plus: forloop.index }}, "url": {{ request.origin | append: p.url | json }}, "name": {{ p.title | json }} }{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        ]
+      }
+    }
+  </script>
+  {%- endpaginate -%}
+
+  {%- comment -%} Samples-balk {%- endcomment -%}
+  <div class="pc-toast" data-pc-toast hidden aria-live="polite">
+    <span data-pc-toast-t></span>
+    <a href="/pages/sample">Bekijk je samples →</a>
+  </div>
+
+  {%- comment -%} Tekst over de collectie {%- endcomment -%}
+  {%- if body != blank -%}
+    <section class="ph-s pc-about">
+      <div class="ph-wrap pc-about__in">
+        <h2 class="ph-h2">Over {{ h1 | downcase }}</h2>
+        <div class="pc-rte">{{ body }}</div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} Veelgestelde vragen (blokken; optioneel per collectie) {%- endcomment -%}
+  {%- capture faq_items -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'faq' -%}
+        {%- assign only = block.settings.only | strip -%}
+        {%- assign show = true -%}
+        {%- if only != blank -%}
+          {%- assign only_list = only | split: ',' -%}
+          {%- assign show = false -%}
+          {%- for oh in only_list -%}{%- assign oh2 = oh | strip -%}{%- if oh2 == collection.handle -%}{%- assign show = true -%}{%- endif -%}{%- endfor -%}
+        {%- endif -%}
+        {%- if show and block.settings.q != blank -%}<!--faq-->{{ block.id }}{%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  {%- assign faq_ids = faq_items | split: '<!--faq-->' -%}
+  {%- if faq_ids.size > 1 -%}
+    <section class="ph-s pc-faq">
+      <div class="ph-wrap pc-faq__in">
+        <h2 class="ph-h2">Veelgestelde vragen</h2>
+        <div class="pc-faq__list">
+          {%- for block in section.blocks -%}
+            {%- if faq_ids contains block.id -%}
+              <details class="pc-faq__item" {{ block.shopify_attributes }}>
+                <summary>{{ block.settings.q }}</summary>
+                <div class="pc-rte">{{ block.settings.a }}</div>
+              </details>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {%- assign first = true -%}
+          {%- for block in section.blocks -%}
+            {%- if faq_ids contains block.id -%}
+              {% unless first %},{% endunless %}{ "@type": "Question", "name": {{ block.settings.q | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.a | strip_html | json }} } }
+              {%- assign first = false -%}
+            {%- endif -%}
+          {%- endfor -%}
+        ]
+      }
+    </script>
+  {%- endif -%}
+
+  {%- comment -%} Afsluiter: advies en samples {%- endcomment -%}
+  <section class="ph-s pc-end">
+    <div class="ph-wrap pc-end__in">
+      <div>
+        <p class="ph-k ph-k--bronze">Twijfel je tussen decors?</p>
+        <p class="ph-h2 pc-end__h">Leg ze naast elkaar, in je eigen licht.</p>
+      </div>
+      <div class="pc-end__btns">
+        <a class="ph-btn ph-btn--ink" href="/pages/sample">Kies gratis samples</a>
+        <a class="ph-btn ph-btn--line" href="/pages/showroom">Bezoek de studio in Herwen</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  var root = document.querySelector('[data-pc]');
+  if (!root) return;
+  var sel = root.querySelector('[data-pc-sort]');
+  if (sel) sel.addEventListener('change', function () {
+    var u = new URL(window.location.href); u.searchParams.set('sort_by', sel.value); u.searchParams.delete('page'); u.hash = 'decors'; window.location.href = u.toString();
+  });
+  var KEY = 'pd-edit', MAX = parseInt(root.dataset.max, 10) || 5;
+  var toast = root.querySelector('[data-pc-toast]'), tt = root.querySelector('[data-pc-toast-t]'), timer;
+  function get() { try { return JSON.parse(localStorage.getItem(KEY) || '[]') || []; } catch (e) { return []; } }
+  function put(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} }
+  var btns = [].slice.call(root.querySelectorAll('[data-pc-sample]'));
+  function paint() {
+    var c = get();
+    btns.forEach(function (b) { var on = c.some(function (x) { return x.id === b.dataset.id; }); b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+  }
+  function say(t) { tt.textContent = t; toast.hidden = false; clearTimeout(timer); timer = setTimeout(function () { toast.hidden = true; }, 4000); }
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var c = get(), i = c.findIndex(function (x) { return x.id === b.dataset.id; });
+      if (i > -1) { c.splice(i, 1); put(c); paint(); say(b.dataset.label + ' verwijderd · ' + c.length + ' van ' + MAX + ' gekozen'); return; }
+      if (c.length >= MAX) { say('Je hebt al ' + MAX + ' samples gekozen'); return; }
+      c.push({ id: b.dataset.id, title: b.dataset.title, label: b.dataset.label, img: b.dataset.img }); put(c); paint();
+      say(b.dataset.label + ' toegevoegd · ' + c.length + ' van ' + MAX + ' gekozen');
+    });
+  });
+  paint();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Puredeco collectie",
+  "tag": "div",
+  "class": "pd-collection-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Regel boven de titel", "default": "Wandpanelen met bamboekern" },
+    { "type": "checkbox", "id": "intro_from_text", "label": "Eerste alinea van de collectietekst als intro", "default": true },
+    { "type": "checkbox", "id": "hero_visual", "label": "Collectiebeeld is een visualisatie", "default": true },
+    { "type": "textarea", "id": "nav", "label": "Collectienavigatie", "info": "Eén per regel: handle|tekst. De tekst is de ankertekst voor Google.", "default": "wandpanelen|Alle wandpanelen\nhout-1|Houten wandpanelen\n8mm-naadloos|Naadloze wandpanelen\njapandi|Japandi wandpanelen\nleer|Leerlook\nkunst|Art\ndoorlopend-marmer|Marmerlook\nakupanelen|Akupanelen\naccessoires|Accessoires" },
+    { "type": "range", "id": "per_page", "label": "Producten per pagina", "min": 12, "max": 48, "step": 4, "default": 24 },
+    { "type": "checkbox", "id": "show_filters", "label": "Filters tonen", "default": true },
+    { "type": "checkbox", "id": "show_sort", "label": "Sorteren tonen", "default": true },
+    { "type": "range", "id": "sample_max", "label": "Maximaal aantal samples", "min": 1, "max": 6, "step": 1, "default": 5 }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Vraag",
+      "settings": [
+        { "type": "text", "id": "q", "label": "Vraag" },
+        { "type": "richtext", "id": "a", "label": "Antwoord" },
+        { "type": "text", "id": "only", "label": "Alleen tonen bij collectie(s)", "info": "Handles, komma-gescheiden. Leeg = bij alle collecties." }
+      ]
+    }
+  ],
+  "enabled_on": { "templates": ["collection"] }
+}
+{% endschema %}

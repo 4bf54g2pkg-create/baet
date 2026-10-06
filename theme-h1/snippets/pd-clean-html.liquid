@@ -1,0 +1,44 @@
+{%- comment -%}
+  Puredeco: maakt beschrijvings-HTML schoon voor weergave en zoekmachines.
+  Houdt alleen eenvoudige tekstopmaak over (p, ul, ol, li, strong, em, a, h2, h3, br) zonder klassen of data-attributen;
+  al het andere (div, section, form, opgeplakte opmaak uit chatprogramma's) valt weg, de tekst blijft staan.
+  Gebruik: {% render 'pd-clean-html', html: collection.description %}
+{%- endcomment -%}
+{%- liquid
+  assign pc_allowed = '|p|ul|ol|li|strong|b|em|i|a|h2|h3|br|'
+  assign pc_parts = html | split: '<'
+  assign pc_out = pc_parts.first
+  for pc_part in pc_parts offset: 1
+    assign pc_tag = pc_part | split: '>' | first
+    assign pc_rest = pc_part | remove_first: pc_tag | remove_first: '>'
+    assign pc_first = pc_tag | slice: 0
+    assign pc_close = false
+    if pc_first == '/'
+      assign pc_close = true
+    endif
+    assign pc_name = pc_tag | remove_first: '/' | split: ' ' | first | split: '/' | first | downcase | strip
+    assign pc_key = '|' | append: pc_name | append: '|'
+    if pc_allowed contains pc_key
+      if pc_name == 'b'
+        assign pc_name = 'strong'
+      endif
+      if pc_close
+        unless pc_name == 'br'
+          assign pc_out = pc_out | append: '</' | append: pc_name | append: '>'
+        endunless
+      elsif pc_name == 'a'
+        assign pc_href = pc_tag | split: 'href="' | last | split: '"' | first
+        unless pc_tag contains 'href="'
+          assign pc_href = pc_tag | split: "href='" | last | split: "'" | first
+        endunless
+        assign pc_href = pc_href | replace: '\', ''
+        assign pc_out = pc_out | append: '<a href="' | append: pc_href | append: '">'
+      else
+        assign pc_out = pc_out | append: '<' | append: pc_name | append: '>'
+      endif
+    endif
+    assign pc_out = pc_out | append: pc_rest
+  endfor
+  assign pc_out = pc_out | replace: '<p></p>', '' | replace: '<p> </p>', '' | strip
+  echo pc_out
+-%}

@@ -97,3 +97,22 @@ templates/robots.txt.liquid  79fe39ff3f6c96eb3ef97395ad254787  = OK
 - Bewerking (`tools/sector/hotel.py 810led`, `tools/sector/vloer.py`): wand achter het bed = 2 panelen 810 Noir Oak (244 cm, symmetrisch achter het hoofdbord), LED aan beide uiteinden, kunstwerk weggelaten, blauw tapijt → warm greige.
 - Shopify Files: `pd-sector-hotels-810-led.jpg` (1200×1200). Gebruikt als sector_image_1 op de homepage (index.json) en Projecten (page.btbcta.json; daar ook sector 2–4 gezet). pd-projects toont nu ook het label "Visualisatie" bij ingestelde sectorbeelden.
 - Checksums: pd-projects 44bfbb18… · page.btbcta.json 76b65ee5… · index.json 2ffbfea1….
+
+## Collectiepagina in de huisstijl + SEO — H1-test
+- Nieuw: `sections/pd-collection.liquid`, `snippets/pd-clean-html.liquid`. `templates/collection.json`: breadcrumbs → pd_collection → apps; oude H1-rich-text en product-grid uitgezet (staan nog in het template). Groene winkelwagenknop (custom CSS #55884d in product-grid) is daarmee weg.
+- Hero met H1 = metafield custom.seo_h1 (anders collectietitel), intro = eerste alinea van de opgeschoonde beschrijving, USP's (samples, 3 jaar garantie, 3–6 werkdagen), collectiebeeld (gemarkeerd als visualisatie).
+- Collectienavigatie met ankerteksten (instelbaar: handle|tekst per regel). Filters (list-filters) en sorteren met rel="nofollow". 24 per pagina met echte paginalinks (geen oneindig scrollen).
+- Kaarten: sfeerbeeld (visualisatie) met paneel bij hover, code + naam (h3), maat en uitvoering uit de opties, prijs per paneel, "Bekijk en bereken" + "+ Sample" (zelfde lijst als /pages/sample, max 5).
+- Onder de grid: "Over …" met opgeschoonde collectietekst (div/section/form en data-attributen uit opgeplakte ChatGPT-opmaak vallen weg), FAQ-blokken (optioneel per collectie-handle), afsluiter met samples/studio.
+- Structured data: CollectionPage + ItemList (producten op de pagina), FAQPage (alleen zichtbare vragen); BreadcrumbList kwam al uit sections/breadcrumbs.liquid.
+- Geen URL's gewijzigd; geen redirects nodig.
+- Horeca-sectorbeeld: `pd-sector-horeca-691-led.jpg` als sector_image_2 op homepage en Projecten. Bron nog aanleveren.
+- Checksums: pd-collection 16735971… · pd-clean-html f4926a0b… · collection.json e5d08e55… · css 57714e6b… · index.json ec197b6a… · page.btbcta.json d1fadbef….
+
+### SEO-advies dat winkeldata raakt (nog niet gedaan, toestemming nodig)
+1. Collectiebeschrijvingen opschonen in de admin (bamboepanelen-samples, akupanelen-samples, actie, nieuwe-collectie bevatten opgeplakte chat-opmaak incl. leeg formulier; de theme-weergave schoont het al op, maar de admin-tekst blijft vuil).
+2. custom.seo_h1 invullen voor japandi en akupanelen.
+3. Tegenstrijdige retourbelofte: SEO-beschrijving Hout zegt "90 dagen retour", elders "30 dagen bedenktijd".
+4. "4,9 van 5 op Google Reviews" in de beschrijving van Wandpanelen controleren of onderbouwen.
+5. Productafbeeldingen met alt-tekst "Renderique Photo 1" herschrijven.
+6. Dubbele collecties (akupanelen / akupanelen-samples, wandpanelen / bamboepanelen-samples) concurreren op dezelfde zoekwoorden: eentje noindex of de beschrijvingen duidelijk anders maken. URL's blijven staan.
