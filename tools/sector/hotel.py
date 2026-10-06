@@ -6,7 +6,8 @@ src=cv2.imread(S+'src.jpg').astype(np.float32)/255
 h,w=src.shape[:2]
 QUAD=np.float32([[0,-220],[812,262],[812,603],[0,600]])   # wand: plafondlijn, hoek, bovenkant houten band
 W_CM,H_CM,PX=270,165,6
-SEAMS=[]                                     # zichtbare wand in cm, 6 px per cm in de textuur
+SEAMS=[]
+SECTION=(8,252)                                            # 2 panelen (244 cm) symmetrisch achter het hoofdbord (28-232 cm)                                     # zichtbare wand in cm, 6 px per cm in de textuur
 
 def bbox(img):
     g=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY); ys,xs=np.where(g<235)
@@ -26,10 +27,8 @@ def canvas(decor):
         pan=cv2.resize(tex,(122*PX,280*PX))
         row=np.concatenate([pan if i%2==0 else cv2.flip(pan,0) for i in range(5)],1).astype(np.float32)
         for i in range(1,5): row[:, i*122*PX-1:i*122*PX+1]*=0.8
-        Hi=cv2.getPerspectiveTransform(QUAD,np.float32([[0,0],[W_CM,0],[W_CM,H_CM],[0,H_CM]]))
-        ax=float(cv2.perspectiveTransform(np.float32([[[470,600]]]),Hi)[0,0,0])
-        start=int((2.5*122-ax)*PX)          # paneel 3 (midden) gecentreerd op het bed
-        SEAMS[:]=[ax-61,ax+61]
+        start=int((122-SECTION[0])*PX)      # paneelrand op het linker uiteinde van de wandsectie
+        SEAMS[:]=list(SECTION)               # LED aan beide uiteinden
         c=row[:Hp, start:start+Wp]
     return c.astype(np.float32)/255
 
@@ -38,9 +37,13 @@ def run(decor,out,led=False):
     Hm=cv2.getPerspectiveTransform(np.float32([[0,0],[c.shape[1],0],[c.shape[1],c.shape[0]],[0,c.shape[0]]]),QUAD)
     warped=cv2.warpPerspective(c,Hm,(w,h),flags=cv2.INTER_AREA)
     poly=np.zeros((h,w),np.uint8); cv2.fillPoly(poly,[QUAD.astype(np.int32)],1)
+    full=poly.copy()
+    if decor!='678':
+        sec=np.zeros(c.shape[:2],np.float32); sec[:,int(SECTION[0]*PX):int(SECTION[1]*PX)]=1
+        poly=(cv2.warpPerspective(sec,Hm,(w,h),flags=cv2.INTER_LINEAR)>0.5).astype(np.uint8)
     # belichting van de oorspronkelijke wand: lichtsterkte en lichtkleur uit de geverfde wand (albedo ~0,82)
     lum=cv2.cvtColor((src*255).astype(np.uint8),cv2.COLOR_BGR2GRAY).astype(np.float32)/255
-    wallpx=((lum>0.55)&(poly>0)).astype(np.float32)
+    wallpx=((lum>0.55)&(full>0)).astype(np.float32)
     k=(0,0); sig=40
     den=cv2.GaussianBlur(wallpx,k,sig)+1e-4
     light=np.dstack([cv2.GaussianBlur(src[...,i]*wallpx,k,sig)/den for i in range(3)])
@@ -56,7 +59,7 @@ def run(decor,out,led=False):
         L=np.zeros((1,Wp),np.float32); line=np.zeros((1,Wp),np.float32)
         for us in SEAMS:
             d=np.abs(u-us)
-            L+=1.6*np.exp(-d/9)+0.45*np.exp(-d/35)
+            L+=2.1*np.exp(-d/10)+0.6*np.exp(-d/40)
             line+=(d<0.8).astype(np.float32)
         L=np.broadcast_to(L,(Hp,Wp)).astype(np.float32); line=np.broadcast_to(line,(Hp,Wp)).astype(np.float32)
         Lw_=cv2.warpPerspective(L,Hm,(w,h),flags=cv2.INTER_LINEAR)
@@ -84,6 +87,12 @@ def run(decor,out,led=False):
     fg=np.where(a[...,None]>0.8,src,np.float32([0.12,0.12,0.13]))
     new=src*(1-poly[...,None])+comp*poly[...,None]
     res=new*(1-a[...,None]*poly[...,None])+fg*(a[...,None]*poly[...,None])
+    if led:
+        # LED-licht valt ook op de geverfde wand naast de panelen; de LED-lijn zelf ligt op de rand van de sectie
+        outw=(full*(1-poly)).astype(np.float32)[...,None]*(1-a[...,None])
+        res=res+outw*src*Lw_[...,None]*warm*0.55
+        lit=np.clip(Ln*1.4,0,1)[...,None]*(full[...,None])*(1-a[...,None])
+        res=np.maximum(res,lit*np.float32([0.82,0.94,1.0]))+glow[...,None]*warm*0.25*full[...,None]
     # contactschaduw onder plafond en bij de hoek
     cv2.imwrite(out,(np.clip(res,0,1)*255).astype(np.uint8),[cv2.IMWRITE_JPEG_QUALITY,93])
 
