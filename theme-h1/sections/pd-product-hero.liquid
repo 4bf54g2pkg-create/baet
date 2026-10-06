@@ -1,0 +1,434 @@
+{%- comment -%}
+  Puredeco · bovenkant productpagina als één compositie.
+  Beeld (Interieur · Specimen · Structuur · Aansluiting · Film) + titel, prijs, Finish, formaat, aantal en koopknop.
+  Toevoegen aan winkelmand via het theme-formulier (is="product-form"), dus de winkelmandlade werkt zoals altijd.
+{%- endcomment -%}
+{%- liquid
+  capture pdh_code
+    render 'pd-decor', product: product, part: 'code'
+  endcapture
+  capture pdh_name
+    render 'pd-decor', product: product, part: 'name'
+  endcapture
+  capture pdh_eyebrow
+    render 'pd-decor', product: product, part: 'eyebrow'
+  endcapture
+  assign pdh_code = pdh_code | strip
+  assign pdh_name = pdh_name | strip
+  assign pdh_eyebrow = pdh_eyebrow | strip
+  assign pdh_is_panel = false
+  if product.title contains 'Wandpaneel'
+    assign pdh_is_panel = true
+  endif
+
+  assign pdh_imgs = product.media | where: 'media_type', 'image'
+  assign pdh_pack = pdh_imgs.first
+  assign pdh_video = product.media | where: 'media_type', 'video' | first
+  assign pdh_ext = product.media | where: 'media_type', 'external_video' | first
+  assign pdh_interiors = pdh_imgs.size | minus: 1
+
+  assign pdh_variant = product.selected_or_first_available_variant
+  assign pdh_form_id = 'pdh-form-' | append: section.id
+-%}
+
+<div class="pdh" data-pdh data-section="{{ section.id }}">
+  <div class="pdh__grid">
+
+    {%- comment -%} ===== Beeld ===== {%- endcomment -%}
+    <div class="pdh__media">
+      <div class="pdh__stage" data-pdh-stage>
+
+        {%- if pdh_interiors > 0 -%}
+          <div class="pdh__view is-active" data-view="interieur">
+            <div class="pdh__strip" data-pdh-strip>
+              {%- for m in pdh_imgs offset: 1 -%}
+                {%- liquid
+                  assign ld = 'lazy'
+                  if forloop.first
+                    assign ld = 'eager'
+                  endif
+                -%}
+                <figure class="pdh__slide">
+                  {{ m | image_url: width: 2400 | image_tag:
+                    loading: ld,
+                    widths: '750, 1100, 1500, 1900, 2400',
+                    sizes: '(min-width: 1100px) 60vw, 100vw',
+                    alt: m.alt | default: pdh_name
+                  }}
+                </figure>
+              {%- endfor -%}
+            </div>
+            {%- if pdh_interiors > 1 -%}
+              <div class="pdh__stripnav">
+                <button type="button" data-pdh-prev aria-label="Vorige foto">←</button>
+                <span data-pdh-count>1 / {{ pdh_interiors }}</span>
+                <button type="button" data-pdh-next aria-label="Volgende foto">→</button>
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if pdh_pack -%}
+          <div class="pdh__view{% if pdh_interiors == 0 %} is-active{% endif %}" data-view="specimen">
+            <div class="pdh__specimen">
+              {{ pdh_pack | image_url: width: 1800 | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1800', sizes: '(min-width: 1100px) 50vw, 100vw', alt: pdh_name }}
+            </div>
+            <p class="pdh__caption">{% if pdh_code != blank %}{{ pdh_code }} · {% endif %}{{ pdh_name }} · één paneel</p>
+          </div>
+
+          {%- assign pdh_tex = pdh_pack | image_url: width: 2400 -%}
+          <div class="pdh__view" data-view="structuur">
+            <div class="pdh__texture pdh__texture--close" style="background-image: url('{{ pdh_tex }}');" role="img" aria-label="Structuur van {{ pdh_name }} van dichtbij"></div>
+            <p class="pdh__caption">Structuur van dichtbij · uit de productfoto</p>
+          </div>
+
+          <div class="pdh__view" data-view="aansluiting">
+            <div class="pdh__joint" data-pdh-joint>
+              <div class="pdh__texture pdh__texture--joint" style="background-image: url('{{ pdh_tex }}');"></div>
+              <div class="pdh__texture pdh__texture--joint pdh__texture--b" style="background-image: url('{{ pdh_tex }}');"></div>
+              <span class="pdh__seam" aria-hidden="true"></span>
+            </div>
+            <p class="pdh__caption" data-pdh-joint-caption>Illustratie · zo oogt de aansluiting bij Signature op een vlakke wand</p>
+          </div>
+        {%- endif -%}
+
+        {%- if pdh_video or pdh_ext or section.settings.video != blank -%}
+          <div class="pdh__view" data-view="film">
+            {%- if section.settings.video != blank -%}
+              {{ section.settings.video | video_tag: controls: true, muted: true, playsinline: true, loop: true, preload: 'none', image_size: '1600x' }}
+            {%- elsif pdh_video -%}
+              {{ pdh_video | video_tag: controls: true, muted: true, playsinline: true, loop: true, preload: 'none', image_size: '1600x' }}
+            {%- else -%}
+              {{ pdh_ext | external_video_tag: loading: 'lazy' }}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <nav class="pdh__views" aria-label="Bekijk {{ pdh_name }}">
+        {%- if pdh_interiors > 0 -%}<button type="button" class="is-active" data-pdh-view="interieur">Interieur</button>{%- endif -%}
+        {%- if pdh_pack -%}
+          <button type="button"{% if pdh_interiors == 0 %} class="is-active"{% endif %} data-pdh-view="specimen">Paneel</button>
+          <button type="button" data-pdh-view="structuur">Structuur</button>
+          <button type="button" data-pdh-view="aansluiting">Aansluiting</button>
+        {%- endif -%}
+        {%- if pdh_video or pdh_ext or section.settings.video != blank -%}<button type="button" data-pdh-view="film">Film</button>{%- endif -%}
+      </nav>
+    </div>
+
+    {%- comment -%} ===== Koopkolom ===== {%- endcomment -%}
+    <div class="pdh__info">
+      <div class="pdh__inner">
+        <header class="pdh__head">
+          <p class="pdh__eyebrow">
+            {%- if pdh_eyebrow != blank -%}<span>{{ pdh_eyebrow }}</span>{%- endif -%}
+            {%- if pdh_eyebrow != blank and pdh_code != blank -%}<span class="pdh__dot" aria-hidden="true"></span>{%- endif -%}
+            {%- if pdh_code != blank -%}<span>{{ pdh_code }}</span>{%- endif -%}
+          </p>
+          <h1 class="pdh__title">{% if pdh_code != blank %}<span class="visually-hidden">Wandpaneel {{ pdh_code }} </span>{% endif %}{{ pdh_name }}</h1>
+          {%- if pdh_is_panel -%}
+            <p class="pdh__intro">{{ product.metafields.custom.intro | default: 'Op een kern van bamboe: stevig, vormvast en gemaakt om te blijven.' }}</p>
+          {%- endif -%}
+        </header>
+
+        <div class="pdh__price" aria-live="polite">
+          <span class="pdh__amount" data-pdh-price>{{ pdh_variant.price | money }}</span>
+          <s class="pdh__compare" data-pdh-compare{% unless pdh_variant.compare_at_price > pdh_variant.price %} hidden{% endunless %}>{{ pdh_variant.compare_at_price | money }}</s>
+          <span class="pdh__unit" data-pdh-unit>per paneel</span>
+        </div>
+
+        {%- form 'product', product, id: pdh_form_id, class: 'pdh__form', novalidate: 'novalidate', data-type: 'add-to-cart-form', is: 'product-form' -%}
+          <input type="hidden" name="id" value="{{ pdh_variant.id }}" data-pdh-id>
+
+          {%- unless product.has_only_default_variant -%}
+            {%- for option in product.options_with_values -%}
+              {%- liquid
+                assign pdh_is_finish = false
+                for v in option.values
+                  assign k = v | downcase | remove: ' ' | slice: 0, 3
+                  if k == '8mm' or k == '5mm'
+                    assign pdh_is_finish = true
+                  endif
+                endfor
+              -%}
+              {%- if pdh_is_finish -%}
+                <fieldset class="pdh__opt pdh__opt--finish" data-pdh-option="{{ forloop.index0 }}">
+                  <legend class="pdh__label">Finish</legend>
+                  <div class="pdh__finishes">
+                                        {%- for pass in (1..2) -%}
+                      {%- for v in option.values -%}
+                        {%- assign k = v | downcase | remove: ' ' | slice: 0, 3 -%}
+                        {%- liquid
+                          assign show = false
+                          if pass == 1 and k == '8mm'
+                            assign show = true
+                          endif
+                          if pass == 2 and k != '8mm'
+                            assign show = true
+                          endif
+                        -%}
+                        {%- if show -%}
+                          {%- liquid
+                            if k == '8mm'
+                              assign fn = 'Signature'
+                              assign fs = '8 mm · kliksysteem · vrijwel naadloos'
+                              assign fd = 'Voor een wand die als één geheel oogt.'
+                              assign fk = 'sig'
+                            else
+                              assign fn = 'Linea'
+                              assign fs = '5 mm · stompe aansluiting · strakke lijn'
+                              assign fd = 'Voor een ritmische, architecturale uitstraling.'
+                              assign fk = 'lin'
+                            endif
+                          -%}
+                          <label class="pdh__finish" data-finish="{{ fk }}">
+                            <input type="radio" name="pdh-o{{ forloop.parentloop.parentloop.index0 }}" value="{{ v | escape }}"{% if v.selected %} checked{% endif %}>
+                            <span class="pdh__finish-swatch" style="background-image: url('{{ pdh_pack | image_url: width: 800 }}');" aria-hidden="true"><i></i></span>
+                            <span class="pdh__finish-text">
+                              <span class="pdh__finish-name">{{ fn }}</span>
+                              <span class="pdh__finish-spec">{{ fs }}</span>
+                              <span class="pdh__finish-desc">{{ fd }}</span>
+                            </span>
+                          </label>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    {%- endfor -%}
+                  </div>
+                </fieldset>
+              {%- else -%}
+                <fieldset class="pdh__opt" data-pdh-option="{{ forloop.index0 }}">
+                  <legend class="pdh__label">{{ option.name }}</legend>
+                  <div class="pdh__segs">
+                    {%- for v in option.values -%}
+                      <label class="pdh__seg">
+                        <input type="radio" name="pdh-o{{ forloop.parentloop.index0 }}" value="{{ v | escape }}"{% if v.selected %} checked{% endif %}>
+                        {%- assign oname = option.name | downcase -%}
+                        <span>{% if oname contains 'formaat' or oname contains 'afmeting' %}{{ v | replace: ' cm x ', ' × ' | replace: 'x', ' × ' | replace: '  ', ' ' }}{% else %}{{ v }}{% endif %}</span>
+                      </label>
+                    {%- endfor -%}
+                  </div>
+                </fieldset>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endunless -%}
+
+          {%- if pdh_is_panel -%}
+            <details class="pdh__calc" data-pdh-calc>
+              <summary>Hoeveel panelen heb ik nodig?</summary>
+              <div class="pdh__calc-body">
+                <label><input type="text" inputmode="decimal" placeholder="4,20" data-pdh-w aria-label="Breedte van de wand in meter"><span>m breed</span></label>
+                <label><input type="text" inputmode="decimal" placeholder="2,60" data-pdh-h aria-label="Hoogte van de wand in meter"><span>m hoog</span></label>
+                <p class="pdh__calc-out" data-pdh-calc-out aria-live="polite">Vul je wandmaat in.</p>
+              </div>
+            </details>
+          {%- endif -%}
+
+          <div class="pdh__buy">
+            <div class="pdh__qty">
+              <button type="button" data-pdh-minus aria-label="Eén minder">−</button>
+              <input type="number" name="quantity" value="1" min="1" inputmode="numeric" data-pdh-qty aria-label="Aantal panelen">
+              <button type="button" data-pdh-plus aria-label="Eén meer">+</button>
+            </div>
+            <button type="submit" name="add" class="pdh__cta" data-pdh-cta{% unless pdh_variant.available %} disabled{% endunless %}>
+              <span class="btn__text" data-pdh-cta-text>{% if pdh_variant.available %}In winkelmand{% else %}Niet beschikbaar{% endif %}</span>
+              <span class="pdh__cta-total" data-pdh-total>{{ pdh_variant.price | money }}</span>
+            </button>
+          </div>
+          <div class="product-form__error-message pdh__error" role="alert" hidden></div>
+        {%- endform -%}
+
+        <a class="pdh__sample" href="/pages/sample">Voel eerst de kwaliteit · gratis sample</a>
+        <p class="pdh__meta" data-pdh-meta></p>
+
+        {%- if pdh_is_panel -%}
+          <div class="pdh__rows">
+            {%- assign pdh_prof = all_products['eindprofielen'] -%}
+            {%- if pdh_prof != blank -%}
+              <a class="pdh__row" href="{{ pdh_prof.url }}">
+                <span class="pdh__row-sw" aria-hidden="true"><i style="background:#3A3A3A"></i><i style="background:#151413"></i><i style="background:#F2F0EB"></i><i style="background:#A07850"></i><i style="background:#C9A55C"></i></span>
+                <span><span class="pdh__row-k">Maak de wand af</span>Eindprofielen in vijf kleuren</span>
+                <span class="pdh__row-end">vanaf {{ pdh_prof.price_min | money }}</span>
+              </a>
+            {%- endif -%}
+            <a class="pdh__row" href="/pages/form">
+              <span class="pdh__row-sw pdh__row-sw--blank" aria-hidden="true"></span>
+              <span><span class="pdh__row-k">Puredeco Projects</span>Projectprijs, en vanaf 150 m² je eigen kleur</span>
+              <span class="pdh__row-end">Offerte →</span>
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="pdh__bar" data-pdh-bar aria-hidden="true">
+    <span class="pdh__bar-name">{% if pdh_code != blank %}<span>{{ pdh_code }}</span> {% endif %}{{ pdh_name }}</span>
+    <span class="pdh__bar-price" data-pdh-bar-price>{{ pdh_variant.price | money }}</span>
+    <button type="submit" form="{{ pdh_form_id }}" class="pdh__bar-cta" tabindex="-1">In winkelmand</button>
+  </div>
+
+  <script type="application/json" data-pdh-variants>
+    [{%- for v in product.variants -%}{"id":{{ v.id }},"options":{{ v.options | json }},"price":{{ v.price }},"compare":{{ v.compare_at_price | default: 0 }},"available":{{ v.available | json }},"stock":{% if v.inventory_management == blank or v.inventory_quantity > 0 or v.inventory_policy == 'continue' %}true{% else %}false{% endif %}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+  </script>
+</div>
+
+<script type="application/ld+json">{{ product | structured_data }}</script>
+
+<script>
+(function () {
+  var root = document.querySelector('[data-pdh][data-section="{{ section.id }}"]');
+  if (!root || root.dataset.ready) return;
+  root.dataset.ready = '1';
+  var variants = JSON.parse(root.querySelector('[data-pdh-variants]').textContent);
+  var form = root.querySelector('form');
+  var idIn = root.querySelector('[data-pdh-id]');
+  var qtyIn = root.querySelector('[data-pdh-qty]');
+  var money = function (c) { return (c / 100).toLocaleString('nl-NL', { style: 'currency', currency: 'EUR' }); };
+  var current = null;
+
+  /* ---- Beeld: weergaven ---- */
+  var views = root.querySelectorAll('[data-view]');
+  root.querySelectorAll('[data-pdh-view]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var k = b.getAttribute('data-pdh-view');
+      root.querySelectorAll('[data-pdh-view]').forEach(function (x) { x.classList.toggle('is-active', x === b); });
+      views.forEach(function (v) {
+        var on = v.getAttribute('data-view') === k;
+        v.classList.toggle('is-active', on);
+        var vid = v.querySelector('video');
+        if (vid) { if (on) { vid.play && vid.play().catch(function () {}); } else { vid.pause && vid.pause(); } }
+      });
+    });
+  });
+  var strip = root.querySelector('[data-pdh-strip]');
+  if (strip) {
+    var count = root.querySelector('[data-pdh-count]');
+    var total = strip.children.length;
+    var at = function () { return Math.round(strip.scrollLeft / strip.clientWidth); };
+    var go = function (d) { strip.scrollTo({ left: (at() + d) * strip.clientWidth, behavior: 'smooth' }); };
+    var prev = root.querySelector('[data-pdh-prev]'), next = root.querySelector('[data-pdh-next]');
+    prev && prev.addEventListener('click', function () { go(-1); });
+    next && next.addEventListener('click', function () { go(1); });
+    strip.addEventListener('scroll', function () { if (count) count.textContent = Math.min(at() + 1, total) + ' / ' + total; }, { passive: true });
+  }
+
+  /* ---- Varianten ---- */
+  var fieldsets = root.querySelectorAll('[data-pdh-option]');
+  function selected() {
+    var o = [];
+    fieldsets.forEach(function (f) {
+      var c = f.querySelector('input:checked');
+      o[Number(f.getAttribute('data-pdh-option'))] = c ? c.value : null;
+    });
+    return o;
+  }
+  function match(opts, changedIdx) {
+    var exact = variants.find(function (v) { return v.options.every(function (x, i) { return opts[i] == null || opts[i] === x; }); });
+    if (exact) return exact;
+    var fallback = variants.find(function (v) { return changedIdx == null || v.options[changedIdx] === opts[changedIdx]; });
+    return fallback || variants[0];
+  }
+  function dims(v) {
+    var m = v.options.join(' ').match(/(\d{3})\s*(?:cm)?\s*[x×]\s*(\d{2,3})/i);
+    return m ? { h: Number(m[1]) / 100, w: Number(m[2]) / 100 } : null;
+  }
+  function finishKey(v) {
+    var t = v.options.join(' ').toLowerCase().replace(/\s/g, '');
+    return t.indexOf('8mm') > -1 ? 'sig' : (t.indexOf('5mm') > -1 ? 'lin' : null);
+  }
+  function render(v, push) {
+    current = v;
+    idIn.value = v.id;
+    fieldsets.forEach(function (f) {
+      var i = Number(f.getAttribute('data-pdh-option'));
+      f.querySelectorAll('input').forEach(function (inp) { inp.checked = inp.value === v.options[i]; });
+    });
+    root.querySelector('[data-pdh-price]').textContent = money(v.price);
+    var cmp = root.querySelector('[data-pdh-compare]');
+    if (v.compare > v.price) { cmp.hidden = false; cmp.textContent = money(v.compare); } else { cmp.hidden = true; }
+    var d = dims(v);
+    root.querySelector('[data-pdh-unit]').textContent = 'per paneel' + (d ? ' · ' + String(d.h * 100) + ' × ' + String(Math.round(d.w * 100)) + ' cm · ' + (d.h * d.w).toFixed(2).replace('.', ',') + ' m²' : '');
+    var cta = root.querySelector('[data-pdh-cta]');
+    cta.disabled = !v.available;
+    root.querySelector('[data-pdh-cta-text]').textContent = v.available ? 'In winkelmand' : 'Niet beschikbaar';
+    root.querySelector('[data-pdh-bar-price]').textContent = money(v.price);
+    var meta = root.querySelector('[data-pdh-meta]');
+    meta.textContent = (v.stock ? 'Op voorraad · geleverd in 3–6 werkdagen' : 'Op bestelling · levertijd tot 10 weken, we bevestigen de datum') + ' · 3 jaar garantie · achteraf betalen met Klarna';
+    var fk = finishKey(v);
+    root.setAttribute('data-finish', fk || '');
+    var cap = root.querySelector('[data-pdh-joint-caption]');
+    if (cap) cap.textContent = fk === 'lin' ? 'Illustratie · Linea: een bewuste, strakke lijn tussen de panelen' : 'Illustratie · Signature: op een vlakke wand oogt de aansluiting als één geheel';
+    total();
+    if (push) {
+      var u = new URL(location.href);
+      u.searchParams.set('variant', v.id);
+      history.replaceState(null, '', u.toString());
+    }
+  }
+  function total() {
+    if (!current) return;
+    var q = Math.max(1, parseInt(qtyIn.value, 10) || 1);
+    root.querySelector('[data-pdh-total]').textContent = money(current.price * q);
+  }
+  fieldsets.forEach(function (f) {
+    f.addEventListener('change', function () {
+      render(match(selected(), Number(f.getAttribute('data-pdh-option'))), true);
+    });
+  });
+  root.querySelector('[data-pdh-minus]').addEventListener('click', function () { qtyIn.value = Math.max(1, (parseInt(qtyIn.value, 10) || 1) - 1); total(); });
+  root.querySelector('[data-pdh-plus]').addEventListener('click', function () { qtyIn.value = (parseInt(qtyIn.value, 10) || 1) + 1; total(); });
+  qtyIn.addEventListener('input', total);
+
+  /* ---- Calculator ---- */
+  var cw = root.querySelector('[data-pdh-w]'), ch = root.querySelector('[data-pdh-h]'), co = root.querySelector('[data-pdh-calc-out]');
+  function calc() {
+    var W = parseFloat(String(cw.value).replace(',', '.')), H = parseFloat(String(ch.value).replace(',', '.'));
+    if (!(W > 0 && H > 0)) { co.textContent = 'Vul je wandmaat in.'; return; }
+    var d = dims(current) || { h: 2.8, w: 1.22 };
+    var n = Math.ceil(W / d.w) * Math.ceil(H / d.h);
+    qtyIn.value = n; total();
+    var rest = 60000 - n * current.price;
+    co.textContent = n + (n === 1 ? ' paneel' : ' panelen') + ' · ' + money(n * current.price) + ' — staat klaar in je bestelling.' + (rest > 0 ? ' Nog ' + money(rest) + ' tot gratis bezorging.' : ' Gratis bezorgd in Nederland.');
+  }
+  if (cw) { cw.addEventListener('input', calc); ch.addEventListener('input', calc); }
+
+  /* ---- Start: Signature standaard als er geen variant in de URL staat ---- */
+  var params = new URLSearchParams(location.search);
+  var start = variants.find(function (v) { return String(v.id) === params.get('variant'); });
+  if (!start) {
+    start = variants.find(function (v) { return v.id === Number(idIn.value); }) || variants[0];
+    if (finishKey(start) === 'lin') {
+      var sig = variants.find(function (v) {
+        return finishKey(v) === 'sig' && v.available && v.options.every(function (x, i) { var t = x.toLowerCase().replace(/\s/g, ''); return t.indexOf('mm') > -1 || x === start.options[i]; });
+      }) || variants.find(function (v) { return finishKey(v) === 'sig' && v.available; });
+      if (sig) start = sig;
+    }
+  }
+  render(start, false);
+
+  /* ---- Vaste koopbalk zodra de koopknop uit beeld is ---- */
+  var bar = root.querySelector('[data-pdh-bar]');
+  var cta = root.querySelector('[data-pdh-cta]');
+  if ('IntersectionObserver' in window && bar && cta) {
+    new IntersectionObserver(function (e) {
+      var show = !e[0].isIntersecting && e[0].boundingClientRect.top < 0;
+      bar.classList.toggle('is-on', show);
+      bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+      bar.querySelector('button').tabIndex = show ? 0 : -1;
+    }).observe(cta);
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Puredeco product",
+  "tag": "section",
+  "class": "pd-hero-section",
+  "settings": [
+    { "type": "video", "id": "video", "label": "Film voor alle decors (optioneel)", "info": "Een productvideo van het decor zelf gaat voor." }
+  ],
+  "presets": [{ "name": "Puredeco product" }],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}

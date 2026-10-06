@@ -280,7 +280,8 @@
         "enable_video_looping": true,
         "padding_top": 0,
         "padding_bottom": 60
-      }
+      },
+      "disabled": true
     },
     "tabs_content_8rnbnj": {
       "type": "tabs-content",
@@ -1428,11 +1429,16 @@
       "settings": {
         "studio_url": "/pages/showroom"
       }
+    },
+    "pd_hero": {
+      "type": "pd-product-hero",
+      "settings": {}
     }
   },
   "order": [
     "breadcrumbs",
     "main",
+    "pd_hero",
     "1776772920f290a3f7",
     "pd_story",
     "tabs_content_8rnbnj",
