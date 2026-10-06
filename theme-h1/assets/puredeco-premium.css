@@ -330,3 +330,25 @@ body a.top_cta_icon + a.top_cta_icon:hover {
 .footer .rte p {
   margin: 0 0 0.6rem;
 }
+
+/* =========================================================
+   Ronde 2 (6 okt 2026): serif voor de grote koppen
+   Koppen (h1-h3, hd1-hd3) in Cormorant via de theme-instelling
+   "Koppen"; kleine koppen, navigatie, knoppen, productkaarten
+   en prijzen blijven Instrument Sans.
+   ========================================================= */
+h1, h2, h3, .h1, .h2, .h3, .hd1, .hd2, .hd3 {
+  letter-spacing: -0.005em;
+  line-height: 1.12;
+}
+h4, h5, h6, .h4, .h5, .h6 {
+  font-family: var(--font-body-family);
+  letter-spacing: 0;
+}
+/* Kleine titels in blokken (iconen, USP's, FAQ) leesbaar houden */
+.icon-with-text__heading,
+.multicolumn-card__title,
+.collapsible__heading,
+.accordion__title {
+  font-family: var(--font-body-family);
+}
