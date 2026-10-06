@@ -215,7 +215,7 @@
           {%- endunless -%}
 
           {%- if pdh_is_panel -%}
-            <div class="pdc" data-pdc style="--pdc-tex: url('{{ pdh_pack | image_url: width: 1600 }}');">
+            <div class="pdc" data-pdc data-price="{{ pdh_variant.price }}" data-options="{{ pdh_variant.options | join: ' ' | escape }}" style="--pdc-tex: url('{{ pdh_pack | image_url: width: 1600 }}');">
               <div class="pdc__head">
                 <span class="pdh__label">Jouw wand</span>
                 <span class="pdc__hint">Meet van hoek tot hoek, in meters</span>
@@ -240,7 +240,7 @@
               </div>
               <dl class="pdc__stats">
                 <div><dt>Panelen</dt><dd data-pdc-n>–</dd></div>
-                <div><dt>Wandoppervlak</dt><dd data-pdc-m2>–</dd></div>
+                <div><dt>Oppervlak</dt><dd data-pdc-m2>–</dd></div>
                 <div><dt>Totaal</dt><dd data-pdc-sum>–</dd></div>
               </dl>
               <p class="pdc__note" data-pdc-note aria-live="polite">Vul de maat van je wand in. We rekenen per wand met hele panelen en zetten het aantal klaar in je bestelling.</p>
@@ -265,6 +265,7 @@
           <div class="product-form__error-message pdh__error" role="alert" hidden></div>
         {%- endform -%}
 
+        <p class="pdh__error" data-pdh-error hidden></p>
         <a class="pdh__sample" href="/pages/sample">Voel eerst de kwaliteit · gratis sample</a>
         <p class="pdh__meta" data-pdh-meta></p>
 
@@ -300,62 +301,17 @@
   </script>
 </div>
 
-<script type="application/ld+json">{{ product | structured_data }}</script>
-
 <script>
+/* Puredeco calculator · werkt zelfstandig; luistert naar variantwissels van de productsectie */
 (function () {
   var root = document.querySelector('[data-pdh][data-section="{{ section.id }}"]');
-  if (!root || root.dataset.ready) return;
-  root.dataset.ready = '1';
-  var variants = JSON.parse(root.querySelector('[data-pdh-variants]').textContent);
-  var form = root.querySelector('form');
-  var idIn = root.querySelector('[data-pdh-id]');
+  var pdc = root && root.querySelector('[data-pdc]');
+  if (!pdc || pdc.dataset.ready) return;
+  pdc.dataset.ready = '1';
+  try {
   var qtyIn = root.querySelector('[data-pdh-qty]');
   var money = function (c) { return (c / 100).toLocaleString('nl-NL', { style: 'currency', currency: 'EUR' }); };
-  var current = null;
-
-  /* ---- Beeld: weergaven ---- */
-  var views = root.querySelectorAll('[data-view]');
-  root.querySelectorAll('[data-pdh-view]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var k = b.getAttribute('data-pdh-view');
-      root.querySelectorAll('[data-pdh-view]').forEach(function (x) { x.classList.toggle('is-active', x === b); });
-      views.forEach(function (v) {
-        var on = v.getAttribute('data-view') === k;
-        v.classList.toggle('is-active', on);
-        var vid = v.querySelector('video');
-        if (vid) { if (on) { vid.play && vid.play().catch(function () {}); } else { vid.pause && vid.pause(); } }
-      });
-    });
-  });
-  var strip = root.querySelector('[data-pdh-strip]');
-  if (strip) {
-    var count = root.querySelector('[data-pdh-count]');
-    var total = strip.children.length;
-    var at = function () { return Math.round(strip.scrollLeft / strip.clientWidth); };
-    var go = function (d) { strip.scrollTo({ left: (at() + d) * strip.clientWidth, behavior: 'smooth' }); };
-    var prev = root.querySelector('[data-pdh-prev]'), next = root.querySelector('[data-pdh-next]');
-    prev && prev.addEventListener('click', function () { go(-1); });
-    next && next.addEventListener('click', function () { go(1); });
-    strip.addEventListener('scroll', function () { if (count) count.textContent = Math.min(at() + 1, total) + ' / ' + total; }, { passive: true });
-  }
-
-  /* ---- Varianten ---- */
-  var fieldsets = root.querySelectorAll('[data-pdh-option]');
-  function selected() {
-    var o = [];
-    fieldsets.forEach(function (f) {
-      var c = f.querySelector('input:checked');
-      o[Number(f.getAttribute('data-pdh-option'))] = c ? c.value : null;
-    });
-    return o;
-  }
-  function match(opts, changedIdx) {
-    var exact = variants.find(function (v) { return v.options.every(function (x, i) { return opts[i] == null || opts[i] === x; }); });
-    if (exact) return exact;
-    var fallback = variants.find(function (v) { return changedIdx == null || v.options[changedIdx] === opts[changedIdx]; });
-    return fallback || variants[0];
-  }
+  var current = { price: Number(pdc.getAttribute('data-price')) || 0, options: [pdc.getAttribute('data-options') || ''] };
   function dims(v) {
     var m = v.options.join(' ').match(/(\d{3})\s*(?:cm)?\s*[x×]\s*(\d{2,3})/i);
     return m ? { h: Number(m[1]) / 100, w: Number(m[2]) / 100 } : null;
@@ -364,52 +320,11 @@
     var t = v.options.join(' ').toLowerCase().replace(/\s/g, '');
     return t.indexOf('8mm') > -1 ? 'sig' : (t.indexOf('5mm') > -1 ? 'lin' : null);
   }
-  function render(v, push) {
-    current = v;
-    idIn.value = v.id;
-    fieldsets.forEach(function (f) {
-      var i = Number(f.getAttribute('data-pdh-option'));
-      f.querySelectorAll('input').forEach(function (inp) { inp.checked = inp.value === v.options[i]; });
-    });
-    root.querySelector('[data-pdh-price]').textContent = money(v.price);
-    var cmp = root.querySelector('[data-pdh-compare]');
-    if (v.compare > v.price) { cmp.hidden = false; cmp.textContent = money(v.compare); } else { cmp.hidden = true; }
-    var d = dims(v);
-    root.querySelector('[data-pdh-unit]').textContent = 'per paneel' + (d ? ' · ' + String(d.h * 100) + ' × ' + String(Math.round(d.w * 100)) + ' cm · ' + (d.h * d.w).toFixed(2).replace('.', ',') + ' m²' : '');
-    var cta = root.querySelector('[data-pdh-cta]');
-    cta.disabled = !v.available;
-    root.querySelector('[data-pdh-cta-text]').textContent = v.available ? 'In winkelmand' : 'Niet beschikbaar';
-    root.querySelector('[data-pdh-bar-price]').textContent = money(v.price);
-    var meta = root.querySelector('[data-pdh-meta]');
-    meta.textContent = (v.stock ? 'Op voorraad · geleverd in 3–6 werkdagen' : 'Op bestelling · levertijd tot 10 weken, we bevestigen de datum') + ' · 3 jaar garantie · achteraf betalen met Klarna';
-    var fk = finishKey(v);
-    root.setAttribute('data-finish', fk || '');
-    var cap = root.querySelector('[data-pdh-joint-caption]');
-    if (cap) cap.textContent = fk === 'lin' ? 'Illustratie · Linea: een bewuste, strakke lijn tussen de panelen' : 'Signature · naadloos op een vlakke, rechte ondergrond';
-    total();
-    calc(true);
-    if (push) {
-      var u = new URL(location.href);
-      u.searchParams.set('variant', v.id);
-      history.replaceState(null, '', u.toString());
-    }
-  }
   function total() {
-    if (!current) return;
     var q = Math.max(1, parseInt(qtyIn.value, 10) || 1);
-    root.querySelector('[data-pdh-total]').textContent = money(current.price * q);
+    var el = root.querySelector('[data-pdh-total]');
+    if (el && current.price) el.textContent = money(current.price * q);
   }
-  fieldsets.forEach(function (f) {
-    f.addEventListener('change', function () {
-      render(match(selected(), Number(f.getAttribute('data-pdh-option'))), true);
-    });
-  });
-  root.querySelector('[data-pdh-minus]').addEventListener('click', function () { qtyIn.value = Math.max(1, (parseInt(qtyIn.value, 10) || 1) - 1); total(); });
-  root.querySelector('[data-pdh-plus]').addEventListener('click', function () { qtyIn.value = (parseInt(qtyIn.value, 10) || 1) + 1; total(); });
-  qtyIn.addEventListener('input', total);
-
-  /* ---- Calculator: meerdere wanden, live wandvoorbeeld ---- */
-  var pdc = root.querySelector('[data-pdc]');
   var walls = [{ w: '4,20', h: '2,60', example: true }], active = 0;
   function num(v) { var n = parseFloat(String(v).replace(',', '.')); return n > 0 ? n : 0; }
   function fmt(n, d) { return n.toFixed(d).replace('.', ','); }
@@ -508,6 +423,125 @@
     });
   }
 
+  root.addEventListener('pdh:variant', function (e) { current = e.detail; calc(true); });
+  calc(true);
+  } catch (err) {
+    console.error('Puredeco calculator', err);
+    var n = pdc.querySelector('[data-pdc-note]');
+    if (n) n.textContent = 'Technische melding (alleen zichtbaar in test): ' + err.message;
+  }
+})();
+</script>
+
+<script type="application/ld+json">{{ product | structured_data }}</script>
+
+<script>
+(function () {
+  var root = document.querySelector('[data-pdh][data-section="{{ section.id }}"]');
+  if (!root || root.dataset.ready) return;
+  root.dataset.ready = '1';
+  try {
+  var variants = JSON.parse(root.querySelector('[data-pdh-variants]').textContent);
+  var form = root.querySelector('form');
+  var idIn = root.querySelector('[data-pdh-id]');
+  var qtyIn = root.querySelector('[data-pdh-qty]');
+  var money = function (c) { return (c / 100).toLocaleString('nl-NL', { style: 'currency', currency: 'EUR' }); };
+  var current = null;
+
+  /* ---- Beeld: weergaven ---- */
+  var views = root.querySelectorAll('[data-view]');
+  root.querySelectorAll('[data-pdh-view]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var k = b.getAttribute('data-pdh-view');
+      root.querySelectorAll('[data-pdh-view]').forEach(function (x) { x.classList.toggle('is-active', x === b); });
+      views.forEach(function (v) {
+        var on = v.getAttribute('data-view') === k;
+        v.classList.toggle('is-active', on);
+        var vid = v.querySelector('video');
+        if (vid) { if (on) { vid.play && vid.play().catch(function () {}); } else { vid.pause && vid.pause(); } }
+      });
+    });
+  });
+  var strip = root.querySelector('[data-pdh-strip]');
+  if (strip) {
+    var count = root.querySelector('[data-pdh-count]');
+    var slideCount = strip.children.length;
+    var at = function () { return Math.round(strip.scrollLeft / strip.clientWidth); };
+    var go = function (d) { strip.scrollTo({ left: (at() + d) * strip.clientWidth, behavior: 'smooth' }); };
+    var prev = root.querySelector('[data-pdh-prev]'), next = root.querySelector('[data-pdh-next]');
+    prev && prev.addEventListener('click', function () { go(-1); });
+    next && next.addEventListener('click', function () { go(1); });
+    strip.addEventListener('scroll', function () { if (count) count.textContent = Math.min(at() + 1, slideCount) + ' / ' + slideCount; }, { passive: true });
+  }
+
+  /* ---- Varianten ---- */
+  var fieldsets = root.querySelectorAll('[data-pdh-option]');
+  function selected() {
+    var o = [];
+    fieldsets.forEach(function (f) {
+      var c = f.querySelector('input:checked');
+      o[Number(f.getAttribute('data-pdh-option'))] = c ? c.value : null;
+    });
+    return o;
+  }
+  function match(opts, changedIdx) {
+    var exact = variants.find(function (v) { return v.options.every(function (x, i) { return opts[i] == null || opts[i] === x; }); });
+    if (exact) return exact;
+    var fallback = variants.find(function (v) { return changedIdx == null || v.options[changedIdx] === opts[changedIdx]; });
+    return fallback || variants[0];
+  }
+  function dims(v) {
+    var m = v.options.join(' ').match(/(\d{3})\s*(?:cm)?\s*[x×]\s*(\d{2,3})/i);
+    return m ? { h: Number(m[1]) / 100, w: Number(m[2]) / 100 } : null;
+  }
+  function finishKey(v) {
+    var t = v.options.join(' ').toLowerCase().replace(/\s/g, '');
+    return t.indexOf('8mm') > -1 ? 'sig' : (t.indexOf('5mm') > -1 ? 'lin' : null);
+  }
+  function render(v, push) {
+    current = v;
+    idIn.value = v.id;
+    fieldsets.forEach(function (f) {
+      var i = Number(f.getAttribute('data-pdh-option'));
+      f.querySelectorAll('input').forEach(function (inp) { inp.checked = inp.value === v.options[i]; });
+    });
+    root.querySelector('[data-pdh-price]').textContent = money(v.price);
+    var cmp = root.querySelector('[data-pdh-compare]');
+    if (v.compare > v.price) { cmp.hidden = false; cmp.textContent = money(v.compare); } else { cmp.hidden = true; }
+    var d = dims(v);
+    root.querySelector('[data-pdh-unit]').textContent = 'per paneel' + (d ? ' · ' + String(d.h * 100) + ' × ' + String(Math.round(d.w * 100)) + ' cm · ' + (d.h * d.w).toFixed(2).replace('.', ',') + ' m²' : '');
+    var cta = root.querySelector('[data-pdh-cta]');
+    cta.disabled = !v.available;
+    root.querySelector('[data-pdh-cta-text]').textContent = v.available ? 'In winkelmand' : 'Niet beschikbaar';
+    root.querySelector('[data-pdh-bar-price]').textContent = money(v.price);
+    var meta = root.querySelector('[data-pdh-meta]');
+    meta.textContent = (v.stock ? 'Op voorraad · geleverd in 3–6 werkdagen' : 'Op bestelling · levertijd tot 10 weken, we bevestigen de datum') + ' · 3 jaar garantie · achteraf betalen met Klarna';
+    var fk = finishKey(v);
+    root.setAttribute('data-finish', fk || '');
+    var cap = root.querySelector('[data-pdh-joint-caption]');
+    if (cap) cap.textContent = fk === 'lin' ? 'Illustratie · Linea: een bewuste, strakke lijn tussen de panelen' : 'Signature · naadloos op een vlakke, rechte ondergrond';
+    total();
+    root.dispatchEvent(new CustomEvent('pdh:variant', { detail: { price: v.price, options: v.options } }));
+    if (push) {
+      var u = new URL(location.href);
+      u.searchParams.set('variant', v.id);
+      history.replaceState(null, '', u.toString());
+    }
+  }
+  function total() {
+    if (!current) return;
+    var q = Math.max(1, parseInt(qtyIn.value, 10) || 1);
+    root.querySelector('[data-pdh-total]').textContent = money(current.price * q);
+  }
+  fieldsets.forEach(function (f) {
+    f.addEventListener('change', function () {
+      render(match(selected(), Number(f.getAttribute('data-pdh-option'))), true);
+    });
+  });
+  root.querySelector('[data-pdh-minus]').addEventListener('click', function () { qtyIn.value = Math.max(1, (parseInt(qtyIn.value, 10) || 1) - 1); total(); });
+  root.querySelector('[data-pdh-plus]').addEventListener('click', function () { qtyIn.value = (parseInt(qtyIn.value, 10) || 1) + 1; total(); });
+  qtyIn.addEventListener('input', total);
+
   /* ---- Start: Signature standaard als er geen variant in de URL staat ---- */
   var params = new URLSearchParams(location.search);
   var start = variants.find(function (v) { return String(v.id) === params.get('variant'); });
@@ -532,6 +566,11 @@
       bar.setAttribute('aria-hidden', show ? 'false' : 'true');
       bar.querySelector('button').tabIndex = show ? 0 : -1;
     }).observe(cta);
+  }
+  } catch (err) {
+    console.error('Puredeco product', err);
+    var n = root.querySelector('[data-pdh-error]');
+    if (n) { n.hidden = false; n.textContent = 'Technische melding (alleen zichtbaar in test): ' + err.message; }
   }
 })();
 </script>

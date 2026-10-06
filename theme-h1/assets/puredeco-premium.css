@@ -1495,3 +1495,5 @@ body,
 .pd-card__foot small { display: block; margin-top: 0.6rem; font-weight: 400; font-size: 1.2rem; color: #6E675E; }
 .pdc.is-example .pdc__input input { color: #8C6A4A; }
 .pdc.is-example .pdc__stats dd { color: #6E675E; }
+.pdc__stats dt { letter-spacing: 0.12em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pdc__stats > div { min-width: 0; }
