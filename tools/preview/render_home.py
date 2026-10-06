@@ -11,7 +11,7 @@ env=Environment(loader=CachingFileSystemLoader('snips', ext='.liquid'), autoesca
 def image_url(img, width=None, **k):
     if img is None: return ''
     return img['src'] if isinstance(img,dict) else str(img)
-env.add_filter('image_url', image_url)
+env.add_filter('image_url', image_url); env.add_filter('handle', lambda s: str(s).lower().replace(' ','-')); env.add_filter('url_encode', lambda s: str(s).replace(' ','+'))
 env.add_filter('image_tag', lambda u, **k: Markup(f'<img src="{u}" alt="{k.get("alt","")}" loading="lazy">'))
 env.add_filter('video_tag', lambda v, **k: Markup(f'<video src="{v}" class="{k.get("class","")}" muted playsinline></video>'))
 SW={'811':'#6A4E3A','810':'#2E2622','824':'#A79A86','851':'#D8CCB4','843':'#8E8A84','830':'#9C8268'}
@@ -36,7 +36,13 @@ def prep2(src):
     src=prep(src)
     src=re.sub(r"\{%-?\s*form 'contact'[^%]*-?%\}",'<form class="pp-form__form">',src)
     return re.sub(r'\{%-?\s*endform\s*-?%\}','</form>',src)
-if len(sys.argv)>1 and sys.argv[1]=='projects':
+if len(sys.argv)>1 and sys.argv[1]=='samples':
+    BB='/home/user/baet/media/beeldbank/'
+    titles=[('Wandpaneel Hout 811 Walnut Classic 8 mm Naadloos','811-0.jpg'),('Wandpaneel Hout 812 Walnut Deep','812-0.jpg'),('Wandpaneel Hout 810 Noir Oak','810-0.jpg'),('Wandpaneel Japandi 824 Taupe','824-0.jpg'),('Wandpaneel Japandi 823 Taupe Dark','823-0.jpg'),('Wandpaneel Leer 830 Taupe','830-0.jpg'),('Wandpaneel Art 843 Stucco Shadow','843-0.jpg'),('Wandpaneel Marmer 670 Pandora Slate','670-0.jpg'),('Wandpaneel Marmer Doorlopend 678 Italian Gold Slate','678-0.jpg'),('Wandpaneel Travertine Ivory 851 | Travertinlook | Puredeco','851-0.png'),('Wandpaneel Concrete Smoke 691 | Betonlook | Puredeco','691-0.png')]
+    prods=[{'title':ti,'url':'#','featured_image':{'src':BB+im},'selected_or_first_available_variant':{'id':1000+i}} for i,(ti,im) in enumerate(titles)]
+    ss=defaults('pd-samples'); ss['collection']={'products':prods}
+    out=env.from_string(prep(open(TH+'sections/pd-samples.liquid').read())).render(section={'settings':ss},collections={})
+elif len(sys.argv)>1 and sys.argv[1]=='projects':
     out=env.from_string(prep2(open(TH+'sections/pd-projects.liquid').read())).render(section={'settings':defaults('pd-projects')},all_products=all_products,form={})
 else:
     hs=defaults('pd-home'); hs['hero_image']={'src':'hero.jpg'}; hs['story_image']={'src':'story.jpg'}

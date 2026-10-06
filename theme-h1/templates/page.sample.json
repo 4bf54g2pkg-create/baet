@@ -74,7 +74,8 @@
         "padding_top": 0,
         "padding_bottom": 0,
         "enable_preload_image": false
-      }
+      },
+      "disabled": true
     },
     "multicolumn_icon_me7KwJ": {
       "type": "multicolumn-icon",
@@ -284,7 +285,8 @@
         "divider_width": "fixed",
         "padding_top": 64,
         "padding_bottom": 50
-      }
+      },
+      "disabled": true
     },
     "product_samples_selector_bj6VrY": {
       "type": "product-samples-selector",
@@ -361,7 +363,8 @@
         "button_text_color": "#ffffff",
         "padding_top": 32,
         "padding_bottom": 32
-      }
+      },
+      "disabled": true
     },
     "image_with_text_Nr7UQi": {
       "type": "image-with-text",
@@ -421,7 +424,8 @@
         "divider_width": "fixed",
         "padding_top": 60,
         "padding_bottom": 60
-      }
+      },
+      "disabled": true
     },
     "testimonials_CJrwjK": {
       "type": "testimonials",
@@ -520,9 +524,19 @@
         "divider_width": "fixed"
       },
       "disabled": true
+    },
+    "pd_samples": {
+      "type": "pd-samples",
+      "settings": {
+        "collection": "wandpanelen",
+        "max": 3,
+        "shipping": "€ 6,95",
+        "property": "Voorbeeld van"
+      }
     }
   },
   "order": [
+    "pd_samples",
     "main",
     "image_with_text_overlay_9E3VM7",
     "multicolumn_icon_me7KwJ",
