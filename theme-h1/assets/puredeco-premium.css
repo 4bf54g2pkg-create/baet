@@ -1964,3 +1964,30 @@ a.pde__tile:hover .pde__sw { outline: 1px solid #6E675E; outline-offset: 3px; }
 .pd-studio__btn { padding: 1.5rem 2.4rem; border: 1px solid #F5F2EC; }
 .pd-studio__btn--line { background: transparent; color: #F5F2EC; }
 .pd-studio__btn--line:hover { background: #F5F2EC; color: #151413; }
+
+/* ===== Productbeeld · In de praktijk (video uit een echt project) ===== */
+.pdh__proj { position: absolute; inset: 0; display: flex; background: #E9E3D8; }
+.pdh__proj-film { position: relative; height: 100%; flex: 0 0 60%; overflow: hidden; background: #E9E3D8; }
+.pdh__proj-film video, .pdh__proj-film img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.pdh__proj-text { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 1.6rem; padding: 4rem clamp(2.4rem, 3vw, 5.6rem); }
+.pdh__proj-k { margin: 0; font-size: 1.1rem; letter-spacing: 0.22em; text-transform: uppercase; color: #6E675E; }
+.pdh__proj-h { margin: 0; font-family: var(--font-heading-family); font-weight: 500; font-size: clamp(2.4rem, 2vw, 3.4rem); line-height: 1.1; color: #151413; }
+.pdh__proj-steps { list-style: none; margin: 1.2rem 0 0; padding: 0; border-bottom: 1px solid #DDD6CA; }
+.pdh__proj-steps li { display: flex; align-items: baseline; gap: 1.4rem; padding: 1.4rem 0; border-top: 1px solid #DDD6CA; font-size: 1.6rem; color: #8F877C; transition: color 0.3s ease; }
+.pdh__proj-steps li span { font-size: 1.1rem; letter-spacing: 0.2em; font-variant-numeric: tabular-nums; }
+.pdh__proj-steps li.is-on { color: #151413; }
+.pdh__proj-note { margin: 0; font-size: 1.3rem; color: #6E675E; }
+.pdh__proj-pill { display: none; }
+@media (max-width: 749px) {
+  .pdh__proj-film { flex: 0 0 100%; }
+  .pdh__proj-text { display: none; }
+  .pdh__proj-pill {
+    display: inline-flex; gap: 0.8rem; align-items: center;
+    position: absolute; left: 1.2rem; bottom: 1.2rem; margin: 0;
+    padding: 0.7rem 1.2rem; background: rgba(245, 242, 236, 0.92);
+    font-size: 1.2rem; color: #151413;
+  }
+  .pdh__proj-pill span { color: #6E675E; }
+  .pdh__proj-pill b { font-weight: 500; }
+  .pdh__proj-pill b:empty { display: none; }
+}

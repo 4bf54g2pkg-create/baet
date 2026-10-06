@@ -28,6 +28,13 @@
   assign pdh_interiors = pdh_imgs.size | minus: 1
 
   assign pdh_film = section.settings.video | default: shop.metafields.puredeco.montage_video.value
+  assign pdh_proj = product.metafields.puredeco.project_video.value
+  assign pdh_first = 'interieur'
+  if pdh_proj != blank
+    assign pdh_first = 'praktijk'
+  elsif pdh_interiors == 0
+    assign pdh_first = 'specimen'
+  endif
   assign pdh_variant = product.selected_or_first_available_variant
   assign pdh_form_id = 'pdh-form-' | append: section.id
 -%}
@@ -39,8 +46,33 @@
     <div class="pdh__media">
       <div class="pdh__stage" data-pdh-stage>
 
+        {%- if pdh_proj != blank -%}
+          {%- assign pdh_steps = product.metafields.puredeco.project_steps.value | split: '|' -%}
+          <div class="pdh__view is-active" data-view="praktijk">
+            <div class="pdh__proj" data-pdh-proj>
+              <div class="pdh__proj-film">
+                {{ pdh_proj | video_tag: autoplay: true, muted: true, playsinline: true, loop: true, preload: 'auto', image_size: '1080x', class: 'pdh__proj-video' }}
+              </div>
+              <div class="pdh__proj-text">
+                <p class="pdh__proj-k">In de praktijk</p>
+                <p class="pdh__proj-h">{% if pdh_code != blank %}{{ pdh_code }} {% endif %}{{ pdh_name }}<br>{{ product.metafields.puredeco.project_caption.value | default: 'in een echt project' }}</p>
+                {%- if pdh_steps.size > 0 -%}
+                  <ol class="pdh__proj-steps">
+                    {%- for s in pdh_steps -%}
+                      {%- assign sp = s | split: '@' -%}
+                      <li data-s="{{ sp.last | strip }}"><span>{{ forloop.index | prepend: '0' }}</span>{{ sp.first | strip }}</li>
+                    {%- endfor -%}
+                  </ol>
+                {%- endif -%}
+                <p class="pdh__proj-note">Zelf geplaatst · zonder stof en stucwerk</p>
+              </div>
+              <p class="pdh__proj-pill" aria-hidden="true"><span>In de praktijk</span><b data-pdh-proj-step></b></p>
+            </div>
+          </div>
+        {%- endif -%}
+
         {%- if pdh_interiors > 0 -%}
-          <div class="pdh__view is-active" data-view="interieur">
+          <div class="pdh__view{% if pdh_first == 'interieur' %} is-active{% endif %}" data-view="interieur">
             <div class="pdh__strip" data-pdh-strip>
               {%- for m in pdh_imgs offset: 1 -%}
                 {%- liquid
@@ -70,7 +102,7 @@
         {%- endif -%}
 
         {%- if pdh_pack -%}
-          <div class="pdh__view{% if pdh_interiors == 0 %} is-active{% endif %}" data-view="specimen">
+          <div class="pdh__view{% if pdh_first == 'specimen' %} is-active{% endif %}" data-view="specimen">
             <div class="pdh__specimen">
               {{ pdh_pack | image_url: width: 1800 | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1800', sizes: '(min-width: 1100px) 50vw, 100vw', alt: pdh_name }}
             </div>
@@ -107,9 +139,10 @@
       </div>
 
       <nav class="pdh__views" aria-label="Bekijk {{ pdh_name }}">
-        {%- if pdh_interiors > 0 -%}<button type="button" class="is-active" data-pdh-view="interieur">Interieur</button>{%- endif -%}
+        {%- if pdh_proj != blank -%}<button type="button" class="is-active" data-pdh-view="praktijk">In de praktijk</button>{%- endif -%}
+        {%- if pdh_interiors > 0 -%}<button type="button"{% if pdh_first == 'interieur' %} class="is-active"{% endif %} data-pdh-view="interieur">Interieur</button>{%- endif -%}
         {%- if pdh_pack -%}
-          <button type="button"{% if pdh_interiors == 0 %} class="is-active"{% endif %} data-pdh-view="specimen">Paneel</button>
+          <button type="button"{% if pdh_first == 'specimen' %} class="is-active"{% endif %} data-pdh-view="specimen">Paneel</button>
           <button type="button" data-pdh-view="structuur">Structuur</button>
           <button type="button" data-pdh-view="aansluiting">Aansluiting</button>
         {%- endif -%}
@@ -553,6 +586,24 @@
   var qtyIn = root.querySelector('[data-pdh-qty]');
   var money = function (c) { return (c / 100).toLocaleString('nl-NL', { style: 'currency', currency: 'EUR' }); };
   var current = null;
+
+  /* ---- Beeld: video uit een echt project, met meelopende stappen ---- */
+  var proj = root.querySelector('[data-pdh-proj]');
+  if (proj) {
+    var pv = proj.querySelector('video');
+    var steps = [].slice.call(proj.querySelectorAll('[data-s]'));
+    var pill = proj.querySelector('[data-pdh-proj-step]');
+    if (pv) {
+      pv.removeAttribute('controls');
+      pv.addEventListener('timeupdate', function () {
+        var t = pv.currentTime, cur = null;
+        steps.forEach(function (s) { if (t >= parseFloat(s.getAttribute('data-s'))) cur = s; });
+        steps.forEach(function (s) { s.classList.toggle('is-on', s === cur); });
+        if (pill) pill.textContent = cur ? cur.textContent.replace(/^\d+/, '') : '';
+      });
+      var pr = pv.play && pv.play(); if (pr && pr.catch) pr.catch(function () {});
+    }
+  }
 
   /* ---- Beeld: weergaven ---- */
   var views = root.querySelectorAll('[data-view]');
