@@ -53,7 +53,7 @@
       <div class="pd-choice__cards">
         <article class="pd-card is-active" data-pd-card="sig">
           <header class="pd-card__head"><h3 class="pd-card__name">Signature <em class="pd-card__badge">Ons paradepaardje</em></h3><span>8 mm · klik</span></header>
-          <div class="pd-xsec pd-xsec--sig" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b></div>
+          <div class="pd-xsvg" aria-hidden="true"><svg viewBox="0 0 316 64"><rect x="16" y="22" width="248" height="3.5" fill="#7A4F36"/><g fill="none" stroke="#151413" stroke-width="1" stroke-linejoin="round"><path d="M16 22 H140 V28 H150 V36 H140 V42 H16 Z"/><path d="M140 22 H264 V42 H140 V36 H150 V28 H140"/></g><g stroke="#151413" stroke-width="0.8"><line x1="278" y1="22" x2="278" y2="42"/><line x1="274" y1="22" x2="282" y2="22"/><line x1="274" y1="42" x2="282" y2="42"/></g><text x="286" y="35" font-size="9" fill="#151413">8 mm</text><text x="140" y="58" font-size="8" fill="#6E675E" text-anchor="middle" letter-spacing="1.5">KLIK · NAADLOOS</text></svg></div>
           <p class="pd-card__small">Doorsnede: toplaag · gerecycled PVC · bamboekern · onderlaag. De klikverbinding trekt de panelen naadloos tegen elkaar.</p>
           <dl class="pd-card__rows">
             <dt>Uitstraling</dt><dd>Naadloos: één doorlopende wand, zonder zichtbare naad*</dd>
@@ -65,7 +65,7 @@
         </article>
         <article class="pd-card" data-pd-card="lin">
           <header class="pd-card__head"><h3 class="pd-card__name">Linea</h3><span>5 mm · stomp</span></header>
-          <div class="pd-xsec pd-xsec--lin" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b></div>
+          <div class="pd-xsvg" aria-hidden="true"><svg viewBox="0 0 316 64"><rect x="16" y="25" width="126.5" height="2.5" fill="#7A4F36"/><rect x="145.5" y="25" width="118.5" height="2.5" fill="#7A4F36"/><g fill="none" stroke="#151413" stroke-width="1"><rect x="16" y="25" width="126.5" height="12.5"/><rect x="145.5" y="25" width="118.5" height="12.5"/></g><rect x="142.5" y="25" width="3" height="12.5" fill="#151413"/><g stroke="#151413" stroke-width="0.8"><line x1="278" y1="25" x2="278" y2="37.5"/><line x1="274" y1="25" x2="282" y2="25"/><line x1="274" y1="37.5" x2="282" y2="37.5"/></g><text x="286" y="34.5" font-size="9" fill="#151413">5 mm</text><text x="144" y="58" font-size="8" fill="#6E675E" text-anchor="middle" letter-spacing="1.5">STOMP · ZICHTBARE NAAD</text></svg></div>
           <p class="pd-card__small">Doorsnede: dunner paneel, stomp tegen elkaar geplaatst. De naad tussen de panelen blijft zichtbaar.</p>
           <dl class="pd-card__rows">
             <dt>Uitstraling</dt><dd>Zichtbare naad tussen de panelen</dd>
@@ -182,7 +182,8 @@
       render 'pd-decor', product: product, part: 'eyebrow'
     endcapture
     if pd_eyebrow != blank and product.metafields.custom.sibling_products.value != blank
-      assign pd_more_title = 'Ook in ' | append: pd_eyebrow | downcase
+      assign pd_eyebrow_lc = pd_eyebrow | downcase
+      assign pd_more_title = 'Ook in ' | append: pd_eyebrow_lc
     endif
   -%}
   {%- if pd_more != blank -%}

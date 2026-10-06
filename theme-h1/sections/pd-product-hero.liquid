@@ -224,7 +224,7 @@
                               </span>
                             </span>
                             <span class="pdh__finish-text">
-                              {%- if fk == 'sig' -%}<span class="pdh__finish-badge">Ons paradepaardje</span>{%- endif -%}
+                              <span class="pdh__finish-badge{% if fk != 'sig' %} pdh__finish-badge--std{% endif %}">{% if fk == 'sig' %}Ons paradepaardje{% else %}Standaard{% endif %}</span>
                               <span class="pdh__finish-name">{{ fn }}</span>
                               <span class="pdh__finish-spec">{{ fs }}</span>
                               <span class="pdh__finish-desc">{{ fd }}</span>
@@ -248,14 +248,13 @@
                       </label>
                     {%- endfor -%}
                   </div>
-                  <p class="pdh__finish-note">* Naadloos op een vlakke, rechte ondergrond. Hoe vlakker de wand, hoe strakker het resultaat.</p>
                 </fieldset>
               {%- endif -%}
             {%- endfor -%}
           {%- endunless -%}
 
           {%- if pdh_is_panel -%}
-            <div class="pdc" data-pdc data-price="{{ pdh_variant.price }}" data-options="{{ pdh_variant.options | join: ' ' | escape }}" style="--pdc-tex: url('{{ pdh_pack | image_url: width: 1600 }}');">
+            <div class="pdc" data-pdc data-tex="{{ pdh_pack | image_url: width: 1600 }}" data-price="{{ pdh_variant.price }}" data-options="{{ pdh_variant.options | join: ' ' | escape }}" style="--pdc-tex: url('{{ pdh_pack | image_url: width: 1600 }}');">
               <div class="pdc__head">
                 <span class="pdh__label">Jouw wand</span>
                 <span class="pdc__hint">Meet van hoek tot hoek, in meters</span>
@@ -272,11 +271,7 @@
                 </label>
               </div>
               <div class="pdc__preview" aria-hidden="true">
-                <div class="pdc__stage">
-                  <div class="pdc__wall" data-pdc-wall></div>
-                  <span class="pdc__dim pdc__dim--w" data-pdc-dw></span>
-                  <span class="pdc__dim pdc__dim--h" data-pdc-dh></span>
-                </div>
+                <svg class="pdc__svg" data-pdc-svg role="img" aria-label="Maattekening van je wand"></svg>
               </div>
               <dl class="pdc__stats">
                 <div><dt>Panelen</dt><dd data-pdc-n>–</dd></div>
@@ -425,22 +420,55 @@
     tabs.innerHTML = html;
   }
   function drawWall(r, d, fk) {
-    var wall = pdc.querySelector('[data-pdc-wall]');
-    var dw = pdc.querySelector('[data-pdc-dw]'), dh = pdc.querySelector('[data-pdc-dh]');
-    var W = r ? r.W : 4.2, H = r ? r.H : 2.6;
-    var ratio = Math.max(0.5, Math.min(4, W / H));
-    wall.style.aspectRatio = ratio;
-    wall.classList.toggle('is-empty', !r);
-    var cols = Math.ceil(W / d.w - 1e-9), html = '';
-    for (var c = 0; c < cols; c++) {
-      var left = (c * d.w / W) * 100, width = (d.w / W) * 100;
-      html += '<i style="left:' + left + '%;width:' + width + '%;background-position:' + (38 + (c % 5) * 6) + '% ' + (30 + (c % 3) * 15) + '%"></i>';
+    var svg = pdc.querySelector('[data-pdc-svg]');
+    var tex = pdc.getAttribute('data-tex');
+    var W = (r ? r.W : 4.2) * 100, H = (r ? r.H : 2.6) * 100, pw = d.w * 100, ph = d.h * 100;
+    var cols = Math.ceil(W / pw - 1e-9), over = cols * pw - W;
+    var u = Math.max(W, H) / 46;                       /* tekeneenheid voor lijnen en tekst */
+    var mL = 10 * u, mR = Math.max(4 * u, over + 3 * u), mT = 6 * u, mB = 11 * u;
+    var vbW = mL + W + mR, vbH = mT + H + mB, x0 = mL, y0 = mT;
+    var fs = 2.6 * u, sw = 0.12 * u, id = 'p' + Math.random().toString(36).slice(2, 7);
+    var o = [];
+    o.push('<defs>');
+    /* decor: packshot zo geschaald dat het paneelvlak (± 38% van de foto) één paneelbreedte vult */
+    var iw = pw / 0.38;
+    o.push('<pattern id="' + id + 't" patternUnits="userSpaceOnUse" x="' + x0 + '" y="' + y0 + '" width="' + pw + '" height="' + ph + '"><image href="' + tex + '" x="' + (-(iw - pw) / 2) + '" y="' + (-(iw - ph) / 2) + '" width="' + iw + '" height="' + iw + '" preserveAspectRatio="xMidYMid slice"/></pattern>');
+    o.push('<pattern id="' + id + 'h" patternUnits="userSpaceOnUse" width="' + 1.6 * u + '" height="' + 1.6 * u + '" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="' + 1.6 * u + '" stroke="#B9AE9F" stroke-width="' + sw + '"/></pattern>');
+    o.push('<clipPath id="' + id + 'c"><rect x="' + x0 + '" y="' + y0 + '" width="' + W + '" height="' + H + '"/></clipPath>');
+    o.push('</defs>');
+    /* vloer */
+    o.push('<line x1="' + (x0 - 3 * u) + '" y1="' + (y0 + H) + '" x2="' + (x0 + W + mR - u) + '" y2="' + (y0 + H) + '" stroke="#151413" stroke-width="' + sw * 1.6 + '"/>');
+    /* restant buiten de wand */
+    if (over > 0.5) {
+      o.push('<rect x="' + (x0 + W) + '" y="' + y0 + '" width="' + over + '" height="' + Math.min(H, ph) + '" fill="url(#' + id + 'h)" stroke="#B9AE9F" stroke-width="' + sw + '" stroke-dasharray="' + u * 0.6 + ' ' + u * 0.4 + '"/>');
+      o.push('<text x="' + (x0 + W + over / 2) + '" y="' + (y0 + H + 2.6 * u) + '" font-size="' + fs * 0.8 + '" text-anchor="middle" fill="#6E675E">rest ' + Math.round(over) + ' cm</text>');
     }
-    if (H > d.h) html += '<b class="pdc__hseam" style="bottom:' + (d.h / H * 100) + '%"></b>';
-    wall.innerHTML = html;
-    wall.setAttribute('data-finish', fk || '');
-    dw.textContent = fmt(W, 2) + ' m';
-    dh.textContent = fmt(H, 2) + ' m';
+    /* wandvlak in het decor */
+    o.push('<g clip-path="url(#' + id + 'c)"><rect x="' + x0 + '" y="' + y0 + '" width="' + W + '" height="' + H + '" fill="url(#' + id + 't)"/>');
+    if (H > ph) o.push('<line x1="' + x0 + '" y1="' + (y0 + H - ph) + '" x2="' + (x0 + W) + '" y2="' + (y0 + H - ph) + '" stroke="#F5F2EC" stroke-width="' + sw * 2 + '"/>');
+    for (var c = 1; c < cols; c++) {
+      var x = x0 + c * pw;
+      if (fk === 'lin') o.push('<line x1="' + x + '" y1="' + y0 + '" x2="' + x + '" y2="' + (y0 + H) + '" stroke="#151413" stroke-opacity=".75" stroke-width="' + sw * 2.2 + '"/>');
+      else o.push('<line x1="' + x + '" y1="' + y0 + '" x2="' + x + '" y2="' + (y0 + H) + '" stroke="#FFFFFF" stroke-opacity=".45" stroke-width="' + sw + '" stroke-dasharray="' + u * 0.5 + ' ' + u * 0.5 + '"/>');
+    }
+    o.push('</g><rect x="' + x0 + '" y="' + y0 + '" width="' + W + '" height="' + H + '" fill="none" stroke="#151413" stroke-width="' + sw * 1.4 + '"/>');
+    /* paneelnummers */
+    for (var k = 0; k < cols; k++) o.push('<text x="' + (x0 + k * pw + Math.min(pw, W - k * pw + (k === cols - 1 ? over : 0)) / 2) + '" y="' + (y0 - 1.6 * u) + '" font-size="' + fs * 0.85 + '" text-anchor="middle" fill="#151413">' + (k + 1) + '</text>');
+    /* maatlijnen met architectuur-tikjes */
+    var dy = y0 + H + 7 * u, dx = x0 - 5.5 * u, tk = 0.9 * u;
+    o.push('<g stroke="#151413" stroke-width="' + sw + '">');
+    o.push('<line x1="' + x0 + '" y1="' + dy + '" x2="' + (x0 + W) + '" y2="' + dy + '"/>');
+    o.push('<line x1="' + (x0 - tk) + '" y1="' + (dy + tk) + '" x2="' + (x0 + tk) + '" y2="' + (dy - tk) + '"/><line x1="' + (x0 + W - tk) + '" y1="' + (dy + tk) + '" x2="' + (x0 + W + tk) + '" y2="' + (dy - tk) + '"/>');
+    o.push('<line x1="' + dx + '" y1="' + y0 + '" x2="' + dx + '" y2="' + (y0 + H) + '"/>');
+    o.push('<line x1="' + (dx - tk) + '" y1="' + (y0 + tk) + '" x2="' + (dx + tk) + '" y2="' + (y0 - tk) + '"/><line x1="' + (dx - tk) + '" y1="' + (y0 + H + tk) + '" x2="' + (dx + tk) + '" y2="' + (y0 + H - tk) + '"/>');
+    o.push('</g>');
+    var lw = fmt(W / 100, 2) + ' m', lh = fmt(H / 100, 2) + ' m';
+    o.push('<rect x="' + (x0 + W / 2 - fs * 2.6) + '" y="' + (dy - fs * 0.75) + '" width="' + fs * 5.2 + '" height="' + fs * 1.5 + '" fill="#F5F2EC"/>');
+    o.push('<text x="' + (x0 + W / 2) + '" y="' + (dy + fs * 0.35) + '" font-size="' + fs + '" text-anchor="middle" fill="#151413">' + lw + '</text>');
+    o.push('<g transform="translate(' + dx + ' ' + (y0 + H / 2) + ') rotate(-90)"><rect x="' + (-fs * 2.6) + '" y="' + (-fs * 0.75) + '" width="' + fs * 5.2 + '" height="' + fs * 1.5 + '" fill="#F5F2EC"/><text x="0" y="' + fs * 0.35 + '" font-size="' + fs + '" text-anchor="middle" fill="#151413">' + lh + '</text></g>');
+    svg.setAttribute('viewBox', '0 0 ' + vbW + ' ' + vbH);
+    svg.innerHTML = o.join('');
+    svg.classList.toggle('is-empty', !r);
   }
   function calc(fromInput) {
     if (!pdc || !current) return;
