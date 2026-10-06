@@ -1,0 +1,241 @@
+{%- comment -%}
+  Puredeco Projects · pagina voor architecten, interieurbouwers, aannemers en hospitality.
+  Volgens het ontwerp "Professionals". Alleen feiten die kloppen; placeholders worden niet getoond.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign hero = s.hero_image | default: all_products['843-art-stucco-light-shadow'].media[1]
+  assign sec_fallback = '811-hout-walnut-classic|843-art-stucco-light-shadow|824-japanse-stof-japandi-taupe-dark|830-leer-leather-taup' | split: '|'
+-%}
+<div class="ph pp">
+
+  {%- comment -%} Hero {%- endcomment -%}
+  <section class="pp-hero">
+    <div class="pp-hero__text">
+      <p class="ph-k ph-k--light">Puredeco Projects</p>
+      <h1 class="pp-hero__h">Wanden voor projecten die moeten blijven staan.</h1>
+      <p class="pp-hero__t">Voor architecten, interieurbouwers, aannemers en hospitality. Grote vlakken, snel en strak geplaatst, in een materiaal dat tegen intensief gebruik kan.</p>
+      <div class="ph-btns">
+        <a class="ph-btn ph-btn--paper" href="#pp-form">Bespreek je project</a>
+        <a class="ph-btn ph-btn--line-light" href="{{ s.samples_url | default: '/pages/sample' }}">Vraag projectsamples aan</a>
+      </div>
+    </div>
+    <div class="pp-hero__img">
+      {%- if hero != blank -%}{{ hero | image_url: width: 1600 | image_tag: loading: 'eager', widths: '700, 1000, 1300, 1600', sizes: '(min-width: 990px) 50vw, 100vw', alt: '' }}{%- endif -%}
+      {%- if s.hero_is_visual -%}<span class="ph-tag">Visualisatie · wordt vervangen door ons eerste project</span>{%- endif -%}
+    </div>
+  </section>
+
+  <div class="pp-facts">
+    <div class="ph-wrap pp-facts__row">
+      <p><span>Jouw kleur</span>toplaag naar wens, vanaf 150 m²</p>
+      <p><span>280 cm</span>van vloer tot plafond, per baan</p>
+      <p><span>Bamboe</span>stevige, hernieuwbare kern</p>
+      <p><span>3 jaar</span>garantie op de panelen</p>
+    </div>
+  </div>
+
+  {%- comment -%} Per sector {%- endcomment -%}
+  <section class="ph-s pp-sectors">
+    <div class="ph-wrap">
+      <h2 class="ph-h2">Per sector een ander antwoord</h2>
+      <div class="ph-pro__grid pp-sectors__grid">
+        {%- liquid
+          assign titles = 'Hotels|Horeca|Kantoren|Retail en showrooms' | split: '|'
+          assign texts = 'Dezelfde wand in elke kamer, geplaatst in een korte sluitingsperiode. Levering per verdieping.|Sfeer bij avondlicht, onderhoud met een vochtige doek, snel weer open.|Representatieve ontvangst, vergaderruimtes, combineren met akupanelen voor akoestiek.|Snel ombouwen, strak resultaat, eigen toplaag in huisstijl mogelijk.' | split: '|'
+        -%}
+        {%- for t in titles -%}
+          {%- liquid
+            assign key = 'sector_image_' | append: forloop.index
+            assign simg = s[key]
+            assign tex = false
+            if simg == blank
+              assign simg = all_products[sec_fallback[forloop.index0]].media.first
+              assign tex = true
+            endif
+          -%}
+          <div class="ph-pro__card">
+            <span class="ph-pro__img pp-sectors__img{% if tex %} ph-pro__img--tex{% endif %}">
+              {%- if simg != blank -%}{{ simg | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400, 700, 900', sizes: '(min-width: 990px) 22vw, 45vw', alt: t }}{%- endif -%}
+            </span>
+            <span class="ph-h3">{{ t }}</span>
+            <span class="ph-t">{{ texts[forloop.index0] }}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Maatwerk: eigen kleur {%- endcomment -%}
+  <section class="ph-s pp-color">
+    <div class="ph-wrap pp-color__grid">
+      <div>
+        <p class="ph-k ph-k--light">Maatwerk voor projecten</p>
+        <h2 class="ph-h2 ph-light pp-color__h">Jouw kleur. Onze kern.</h2>
+        <p class="pp-color__t">Vanaf 150 m² bepaal je zelf de kleur van de toplaag: afgestemd op de huisstijl, het ontwerp of een kleurstaal. De bamboekern en de kwaliteit blijven precies hetzelfde.</p>
+        <ol class="pp-color__steps">
+          <li><span>1</span>Je levert een kleurcode of staal aan</li>
+          <li><span>2</span>Je keurt een proefpaneel goed</li>
+          <li><span>3</span>Productie en levering in 10–14 weken</li>
+        </ol>
+      </div>
+      <div class="pp-color__sw" aria-label="Voorbeelden van kleuren voor de toplaag">
+        <figure><span style="background:#2F4B40"></span><figcaption>Huisstijlgroen</figcaption></figure>
+        <figure><span style="background:#B5835A"></span><figcaption>Terracotta</figcaption></figure>
+        <figure><span style="background:#E3DCCB"></span><figcaption>Kalkwit</figcaption></figure>
+        <figure><span style="background:#3A3D46"></span><figcaption>Leisteen</figcaption></figure>
+        <figure><span class="pp-color__own">Jouw kleur</span><figcaption>Op aanvraag</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Waarom {%- endcomment -%}
+  <section class="ph-s pp-why">
+    <div class="ph-wrap pp-why__grid">
+      <h2 class="ph-h2">Waarom aannemers en architecten voor Puredeco kiezen</h2>
+      <div class="pp-why__list">
+        <div><h3>Snel geplaatst</h3><p>Eén paneel van 280 cm per baan, verlijmd op een vlakke wand. Geen stucwerk, korte stilstand.</p></div>
+        <div><h3>Sterk en vormvast</h3><p>Meerlaags opgebouwd rond een stevige bamboekern. Vraag projectsamples aan en vergelijk zelf.</p></div>
+        <div><h3>Een hernieuwbare kern</h3><p>Bamboe groeit snel terug. Materiaalgegevens voor je duurzaamheidsdossier sturen we op aanvraag mee.</p></div>
+        <div><h3>Direct contact met de oprichter</h3><p>Korte lijnen, snelle beslissingen. Je project krijgt onze volle aandacht, van tekening tot oplevering.</p></div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Samenwerking {%- endcomment -%}
+  <section class="ph-s pp-flow">
+    <div class="ph-wrap">
+      <h2 class="ph-h2">Zo werken we samen</h2>
+      <ol class="pp-flow__row">
+        <li><span>1</span><strong>Kennismaking</strong>Je tekening of ruimte, je planning.</li>
+        <li><span>2</span><strong>Samples en advies</strong>Stalen voor je presentatie, advies over ondergrond.</li>
+        <li><span>3</span><strong>Offerte</strong>Projectprijs per m², met profielen en kit.</li>
+        <li><span>4</span><strong>Levering</strong>In één keer of in fases, afgestemd op de bouw.</li>
+        <li><span>5</span><strong>Nazorg</strong>Bijbestellen uit dezelfde serie, 3 jaar garantie.</li>
+      </ol>
+    </div>
+  </section>
+
+  {%- comment -%} Eerste project {%- endcomment -%}
+  <section class="ph-s pp-first">
+    <div class="ph-wrap pp-first__grid">
+      <div class="pp-first__tiles">
+        {%- for lbl in (1..3) -%}
+          {%- liquid
+            assign key = 'first_image_' | append: lbl
+            assign fimg = s[key]
+            if lbl == 1
+              assign fl = 'Voor'
+            elsif lbl == 2
+              assign fl = 'Tijdens'
+            else
+              assign fl = 'Na'
+            endif
+          -%}
+          <figure>
+            <span class="pp-first__img pp-first__img--{{ lbl }}">{%- if fimg != blank -%}{{ fimg | image_url: width: 700 | image_tag: loading: 'lazy', widths: '350, 700', sizes: '(min-width: 990px) 16vw, 30vw', alt: fl }}{%- endif -%}</span>
+            <figcaption class="ph-k ph-k--bronze">{{ fl }}</figcaption>
+          </figure>
+        {%- endfor -%}
+      </div>
+      <div>
+        <p class="ph-k ph-k--bronze">{{ s.first_label | default: 'In voorbereiding' }}</p>
+        <h2 class="ph-h2 pp-first__h">Ons eerste grote project, van tekening tot oplevering</h2>
+        <p class="ph-lead">Binnenkort starten we met een groot project. We leggen het vast zoals het gaat: de ruimte vooraf, de montage, het resultaat. Geen gelikte showcase, maar het echte werk.</p>
+        <p class="ph-lead pp-first__t2">Wil je een van de volgende zijn? Als jong projectmerk geven we elk project persoonlijke aandacht.</p>
+        <a class="ph-link" href="#pp-form">Bespreek je project →</a>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Documentatie: alleen tonen wat echt bestaat {%- endcomment -%}
+  {%- if s.doc_1_url != blank or s.doc_2_url != blank or s.doc_3_url != blank or s.doc_4_url != blank -%}
+    <section class="ph-s pp-docs">
+      <div class="ph-wrap pp-why__grid">
+        <div>
+          <h2 class="ph-h2">Documentatie</h2>
+          <p class="ph-note">We tonen alleen documenten die echt bestaan.</p>
+        </div>
+        <div class="pp-docs__list">
+          {%- for n in (1..4) -%}
+            {%- liquid
+              assign uk = 'doc_' | append: n | append: '_url'
+              assign tk = 'doc_' | append: n | append: '_title'
+            -%}
+            {%- if s[uk] != blank -%}<a href="{{ s[uk] }}" target="_blank" rel="noopener"><span>{{ s[tk] }}</span><span>PDF</span></a>{%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} Aanvraag {%- endcomment -%}
+  <section class="ph-s pp-form" id="pp-form">
+    <div class="ph-wrap pp-form__grid">
+      <div>
+        <h2 class="ph-h2">Bespreek je project</h2>
+        <p class="ph-lead pp-form__lead">Stuur je vraag en een paar gegevens over de ruimte. Je krijgt een reactie van je vaste aanspreekpunt{% if s.response != blank %} {{ s.response }}{% endif %}.</p>
+        <div class="pp-form__person">
+          <span class="pp-form__avatar">{%- if s.contact_image != blank -%}{{ s.contact_image | image_url: width: 160 | image_tag: alt: s.contact_name }}{%- endif -%}</span>
+          <p><strong>{{ s.contact_name | default: 'Je vaste aanspreekpunt' }}</strong>Projectadviseur · <a href="tel:+31316700214">0316 700 214</a> · <a href="https://wa.me/31316700214" target="_blank" rel="noopener">WhatsApp</a></p>
+        </div>
+      </div>
+      {%- form 'contact', id: 'pp-contact', class: 'pp-form__form' -%}
+        <input type="hidden" name="contact[Onderwerp]" value="Projectaanvraag Puredeco Projects">
+        {%- if form.posted_successfully? -%}
+          <p class="pp-form__ok">Dank je. We hebben je projectaanvraag ontvangen en nemen snel contact met je op.</p>
+        {%- else -%}
+          {%- if form.errors -%}<p class="pp-form__err">Controleer de velden: {{ form.errors | default_errors }}</p>{%- endif -%}
+          <label><span>Bedrijf</span><input type="text" name="contact[Bedrijf]" autocomplete="organization"></label>
+          <label><span>Naam</span><input type="text" name="contact[name]" autocomplete="name" required></label>
+          <label><span>E-mail</span><input type="email" name="contact[email]" autocomplete="email" required></label>
+          <label><span>Telefoon</span><input type="tel" name="contact[phone]" autocomplete="tel"></label>
+          <label><span>Type project</span>
+            <select name="contact[Type project]">
+              <option>Hotel</option><option>Horeca</option><option>Kantoor</option><option>Retail of showroom</option><option>Woningbouw</option><option>Anders</option>
+            </select>
+          </label>
+          <label><span>Ongeveer hoeveel m²?</span><input type="text" name="contact[m2]" inputmode="numeric"></label>
+          <label class="pp-form__wide"><span>Gewenste decors en planning</span><textarea name="contact[body]" rows="5"></textarea></label>
+          <p class="pp-form__wide pp-form__files">Tekening of foto's? Stuur ze na je aanvraag naar <a href="mailto:info@puredeco.nl">info@puredeco.nl</a> of via <a href="https://wa.me/31316700214" target="_blank" rel="noopener">WhatsApp</a>.</p>
+          <button type="submit" class="pp-form__submit pp-form__wide">Verstuur projectaanvraag</button>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Puredeco Projects",
+  "tag": "div",
+  "class": "pd-projects-section",
+  "settings": [
+    { "type": "image_picker", "id": "hero_image", "label": "Beeld hero" },
+    { "type": "checkbox", "id": "hero_is_visual", "label": "Hero is een visualisatie", "default": true },
+    { "type": "url", "id": "samples_url", "label": "Link projectsamples" },
+    { "type": "image_picker", "id": "sector_image_1", "label": "Beeld hotels" },
+    { "type": "image_picker", "id": "sector_image_2", "label": "Beeld horeca" },
+    { "type": "image_picker", "id": "sector_image_3", "label": "Beeld kantoren" },
+    { "type": "image_picker", "id": "sector_image_4", "label": "Beeld retail" },
+    { "type": "text", "id": "first_label", "label": "Label eerste project", "default": "In voorbereiding" },
+    { "type": "image_picker", "id": "first_image_1", "label": "Eerste project · voor" },
+    { "type": "image_picker", "id": "first_image_2", "label": "Eerste project · tijdens" },
+    { "type": "image_picker", "id": "first_image_3", "label": "Eerste project · na" },
+    { "type": "header", "content": "Documentatie (alleen als het document bestaat)" },
+    { "type": "text", "id": "doc_1_title", "label": "Document 1", "default": "Technisch productblad" },
+    { "type": "url", "id": "doc_1_url", "label": "Link document 1" },
+    { "type": "text", "id": "doc_2_title", "label": "Document 2", "default": "Montagehandleiding" },
+    { "type": "url", "id": "doc_2_url", "label": "Link document 2" },
+    { "type": "text", "id": "doc_3_title", "label": "Document 3", "default": "Onderhoudsvoorschrift" },
+    { "type": "url", "id": "doc_3_url", "label": "Link document 3" },
+    { "type": "text", "id": "doc_4_title", "label": "Document 4", "default": "Brandklasse-certificaat" },
+    { "type": "url", "id": "doc_4_url", "label": "Link document 4" },
+    { "type": "header", "content": "Contact" },
+    { "type": "text", "id": "contact_name", "label": "Naam projectadviseur" },
+    { "type": "image_picker", "id": "contact_image", "label": "Foto projectadviseur" },
+    { "type": "text", "id": "response", "label": "Reactietijd", "info": "Bijvoorbeeld: binnen 1 werkdag. Leeg = niet tonen." }
+  ],
+  "presets": [{ "name": "Puredeco Projects" }]
+}
+{% endschema %}

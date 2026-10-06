@@ -32,10 +32,17 @@ def prep(src): return re.sub(r'\{%\s*schema\s*%\}.*?\{%\s*endschema\s*%\}','',sr
 def defaults(sec):
     s=json.loads(re.search(r'\{%\s*schema\s*%\}(.*?)\{%\s*endschema\s*%\}',open(TH+f'sections/{sec}.liquid').read(),re.S).group(1))
     return {x['id']:x.get('default') for x in s.get('settings',[]) if 'id' in x and x.get('default') is not None}
-hs=defaults('pd-home'); hs['hero_image']={'src':'room.svg'}
-out=env.from_string(prep(open(TH+'sections/pd-home.liquid').read())).render(section={'settings':hs},all_products=all_products,collections=cols,images=images,shop=shop)
-out+='<div style="padding:80px 96px;font:28px serif">[Instafeed: Bij klanten en in projecten]</div>'
-out+=env.from_string(prep(open(TH+'sections/pd-home-cta.liquid').read())).render(section={'settings':defaults('pd-home-cta')})
+def prep2(src):
+    src=prep(src)
+    src=re.sub(r"\{%-?\s*form 'contact'[^%]*-?%\}",'<form class="pp-form__form">',src)
+    return re.sub(r'\{%-?\s*endform\s*-?%\}','</form>',src)
+if len(sys.argv)>1 and sys.argv[1]=='projects':
+    out=env.from_string(prep2(open(TH+'sections/pd-projects.liquid').read())).render(section={'settings':defaults('pd-projects')},all_products=all_products,form={})
+else:
+    hs=defaults('pd-home'); hs['hero_image']={'src':'room.svg'}
+    out=env.from_string(prep(open(TH+'sections/pd-home.liquid').read())).render(section={'settings':hs},all_products=all_products,collections=cols,images=images,shop=shop)
+    out+='<div style="padding:80px 96px;font:28px serif">[Instafeed: Bij klanten en in projecten]</div>'
+    out+=env.from_string(prep(open(TH+'sections/pd-home-cta.liquid').read())).render(section={'settings':defaults('pd-home-cta')})
 css=open(TH+'assets/puredeco-premium.css').read()
 html=f'''<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <style>@font-face{{font-family:'Cormorant';src:url(../film/cormorant.woff2);font-weight:300 700}}@font-face{{font-family:'Instrument Sans';src:url(../film/instrument.woff2);font-weight:400 700}}
