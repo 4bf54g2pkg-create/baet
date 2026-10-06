@@ -1,6 +1,8 @@
 # MERKPLATFORM — THE PUREDECO FINISH
 **Datum:** 6 oktober 2026 · **Ontwerpcanvas:** https://claude.ai/artifact/2q9TQh1QgMePeRvU9wX9kR (bronbestanden in `docs/ontwerp-puredeco-finish/`)
 
+> **Besluit 6 okt (opdrachtgever, later):** Signature wordt **naadloos** getoond (geen naad in beelden, calculator of close-ups), altijd met de voorwaarde erbij: *"Naadloos op een vlakke, rechte ondergrond. Hoe vlakker de wand, hoe strakker het resultaat."* Dit vervangt de eerdere regel "nooit naadloos, alleen vrijwel naadloos".
+
 > **Besluit 6 okt (opdrachtgever):** namen **Signature** en **Linea** definitief na vergelijking met alternatieven (dikte als naam, Puredeco 8/5, Vlak/Lijn-accent). Kleur op maat: vanaf 150 m², levertijd 10–14 weken.
 
 > **Update 6 okt (2):** namen nu **Signature** (8 mm klik) en **Linea** (5 mm stomp); "Continu/Lijn" afgewezen, "Classic" botst met decornamen (Walnut Classic, Wood Classic). "Geen herhaling" geschrapt. Nieuwe pijlers: **kwaliteit die je voelt** ("vergelijk zelf", geen ongestaafde vergelijkende claim), **kern van bamboe** (snelgroeiend, hernieuwbaar) en **Puredeco Projects** (B2B als tweede pijler: projectenblok hoog op de homepage, projectofferte op de productpagina, eigen Professionals-pagina). Actie uit het hoofdmenu (akkoord).

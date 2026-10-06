@@ -1477,3 +1477,19 @@ body,
   .pdc__input input { font-size: 2.8rem; }
   .pdc__stats dd { font-size: 2.2rem; }
 }
+
+/* ===== Signature = naadloos (op een vlakke, rechte ondergrond): nergens een naad tekenen ===== */
+.pdh[data-finish="sig"] .pdh__seam { width: 0; background: transparent; box-shadow: none; }
+.pdh[data-finish="sig"] .pdh__texture--joint { right: 0; background-position: 50% 44%; }
+.pdh[data-finish="sig"] .pdh__texture--b { display: none; }
+.pdh__finish[data-finish="sig"] .pdh__finish-swatch i { display: none; }
+.pdh__finish-note { margin: 1.4rem 0 0; font-size: 1.2rem; line-height: 1.5; color: var(--pdh-stone, #6E675E); }
+.pdc__wall[data-finish="sig"] {
+  background-image: var(--pdc-tex);
+  background-size: 1100% auto;
+  background-position: 50% 40%;
+  background-repeat: no-repeat;
+}
+.pdc__wall[data-finish="sig"] i { background: none !important; box-shadow: none !important; }
+.pd-xsec--sig b { display: none; }
+.pd-card__foot small { display: block; margin-top: 0.6rem; font-weight: 400; font-size: 1.2rem; color: #6E675E; }

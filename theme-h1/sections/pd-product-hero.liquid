@@ -88,7 +88,7 @@
               <div class="pdh__texture pdh__texture--joint pdh__texture--b" style="background-image: url('{{ pdh_tex }}');"></div>
               <span class="pdh__seam" aria-hidden="true"></span>
             </div>
-            <p class="pdh__caption" data-pdh-joint-caption>Illustratie · zo oogt de aansluiting bij Signature op een vlakke wand</p>
+            <p class="pdh__caption" data-pdh-joint-caption>Signature · naadloos op een vlakke, rechte ondergrond</p>
           </div>
         {%- endif -%}
 
@@ -171,8 +171,8 @@
                           {%- liquid
                             if k == '8mm'
                               assign fn = 'Signature'
-                              assign fs = '8 mm · kliksysteem · vrijwel naadloos'
-                              assign fd = 'Voor een wand die als één geheel oogt.'
+                              assign fs = '8 mm · kliksysteem · naadloos*'
+                              assign fd = 'Eén doorlopende wand, zonder zichtbare naad.'
                               assign fk = 'sig'
                             else
                               assign fn = 'Linea'
@@ -194,6 +194,7 @@
                       {%- endfor -%}
                     {%- endfor -%}
                   </div>
+                  <p class="pdh__finish-note">* Naadloos op een vlakke, rechte ondergrond. Hoe vlakker de wand, hoe strakker het resultaat.</p>
                 </fieldset>
               {%- else -%}
                 <fieldset class="pdh__opt" data-pdh-option="{{ forloop.index0 }}">
@@ -207,6 +208,7 @@
                       </label>
                     {%- endfor -%}
                   </div>
+                  <p class="pdh__finish-note">* Naadloos op een vlakke, rechte ondergrond. Hoe vlakker de wand, hoe strakker het resultaat.</p>
                 </fieldset>
               {%- endif -%}
             {%- endfor -%}
@@ -383,7 +385,7 @@
     var fk = finishKey(v);
     root.setAttribute('data-finish', fk || '');
     var cap = root.querySelector('[data-pdh-joint-caption]');
-    if (cap) cap.textContent = fk === 'lin' ? 'Illustratie · Linea: een bewuste, strakke lijn tussen de panelen' : 'Illustratie · Signature: op een vlakke wand oogt de aansluiting als één geheel';
+    if (cap) cap.textContent = fk === 'lin' ? 'Illustratie · Linea: een bewuste, strakke lijn tussen de panelen' : 'Signature · naadloos op een vlakke, rechte ondergrond';
     total();
     calc();
     if (push) {
