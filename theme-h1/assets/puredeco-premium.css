@@ -1493,3 +1493,5 @@ body,
 .pdc__wall[data-finish="sig"] i { background: none !important; box-shadow: none !important; }
 .pd-xsec--sig b { display: none; }
 .pd-card__foot small { display: block; margin-top: 0.6rem; font-weight: 400; font-size: 1.2rem; color: #6E675E; }
+.pdc.is-example .pdc__input input { color: #8C6A4A; }
+.pdc.is-example .pdc__stats dd { color: #6E675E; }
