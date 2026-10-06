@@ -2246,3 +2246,27 @@ a.pde__tile:hover .pde__sw { outline: 1px solid #6E675E; outline-offset: 3px; }
 .pp-form__submit:hover { background: #000 !important; }
 .pp-form__ok { grid-column: 1 / -1; margin: 0; padding: 2.4rem; background: #F5F2EC; font-size: 1.6rem; }
 .pp-form__err { grid-column: 1 / -1; margin: 0; color: #8C2F1E; font-size: 1.4rem; }
+
+/* ===================================================================
+   Header · één regel: menu links, logo midden, Professionals + Samples rechts
+   =================================================================== */
+.pd-hnav { display: none; }
+@media (min-width: 1024px) {
+  .pd-hnav { display: block; margin-right: 2.4rem; }
+  .header__top--logo-center + .header__bottom,
+  .header .header__bottom { display: none !important; }
+  .pd-hnav__list { display: flex; gap: 3.2rem; margin: 0; padding: 0; list-style: none; }
+  .pd-hnav__item { position: relative; }
+  .pd-hnav__item > a { display: block; padding: 1rem 0; font-size: 1.5rem; color: #151413; text-decoration: none; white-space: nowrap; border-bottom: 1px solid transparent; }
+  .pd-hnav__item > a:hover, .pd-hnav__item > a[aria-current] { border-bottom-color: #151413; }
+  .pd-hnav__sub { position: absolute; left: -2rem; top: 100%; z-index: 20; min-width: 24rem; margin: 0; padding: 1.6rem 2rem; list-style: none; background: #F5F2EC; border: 1px solid #DDD6CA; box-shadow: 0 24px 48px -32px rgba(21, 20, 19, 0.35); opacity: 0; visibility: hidden; transform: translateY(0.4rem); transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s; }
+  .pd-hnav__item:hover .pd-hnav__sub, .pd-hnav__item:focus-within .pd-hnav__sub { opacity: 1; visibility: visible; transform: none; transition: opacity 0.2s ease, transform 0.2s ease; }
+  .pd-hnav__sub a { display: block; padding: 0.7rem 0; font-size: 1.45rem; color: #3A3733; text-decoration: none; }
+  .pd-hnav__sub a:hover { color: #151413; }
+  .pd-hnav__sub li:last-child a { margin-top: 0.6rem; padding-top: 1.2rem; border-top: 1px solid #DDD6CA; color: #151413; }
+}
+/* Professionals als tekstlink, Samples als omlijnde knop (zoals het ontwerp) */
+body a.top_cta_icon { border-color: transparent; text-decoration: none; padding: 0 1.2rem; }
+body a.top_cta_icon:hover { background: transparent; color: rgb(var(--pd-ink)); text-decoration: underline; text-underline-offset: 4px; }
+body a.top_cta_icon + a.top_cta_icon { border-color: rgb(var(--pd-ink)); text-decoration: none; padding: 0 1.8rem; }
+body a.top_cta_icon + a.top_cta_icon:hover { background: rgb(var(--pd-ink)); color: #fff; text-decoration: none; }
