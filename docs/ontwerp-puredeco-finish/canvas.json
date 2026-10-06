@@ -92,6 +92,13 @@
       "w": 1440,
       "x": 0,
       "y": 13820
+    },
+    "HeroOpties.dc.html": {
+      "h": 2700,
+      "title": "Homepage-hero · 3 opties (811 / 812)",
+      "w": 1440,
+      "x": 1520,
+      "y": 13820
     }
   },
   "createdOnFiles": {
@@ -141,7 +148,8 @@
     "FooterMobile.dc.html",
     "PdpRefine.dc.html",
     "PdpMobileRefine.dc.html",
-    "Beeldset.dc.html"
+    "Beeldset.dc.html",
+    "HeroOpties.dc.html"
   ],
   "pages": [],
   "title": "The Puredeco Finish"

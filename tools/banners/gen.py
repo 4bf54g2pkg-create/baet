@@ -79,3 +79,18 @@ page('home-hero-hout-desktop',2400,1200,f'''<div style="display:grid;grid-templa
 <div style="position:relative"><img class="cover g" src="{BB}hout-2.png" style="object-position:62% 55%">
 <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(36,26,20,.6),rgba(36,26,20,0) 20%)"></div></div></div>''')
 page('home-hero-hout-mobile',1080,1600,f'''<img class="cover g" src="{BB}hout-2.png" style="object-position:58% 50%">''')
+
+# Ronde 9 · drie hero-richtingen met 811 Walnut Classic / 812 Walnut Deep (alleen beeld; tekst staat live op de site)
+W='filter:sepia(.08) saturate(1.02) contrast(1.04) brightness(.98)'
+page('hero-a-licht',1440,1200,f'''<img class="cover" src="{BB}812-1.png" style="object-position:55% 40%;{W}">''')
+page('hero-a-licht-mobiel',1080,1200,f'''<img class="cover" src="{BB}812-1.png" style="object-position:62% 40%;{W}">''')
+page('hero-b-materiaal',2880,1280,f'''<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);height:100%;gap:0">
+<div style="position:relative;background:url({BB}811-0.jpg) 50% 45%/330% no-repeat">
+<div style="position:absolute;inset:0;background:linear-gradient(105deg,rgba(255,214,170,.22),rgba(255,214,170,0) 45%),linear-gradient(0deg,rgba(28,18,12,.55),rgba(28,18,12,.15) 60%,rgba(28,18,12,.05))"></div></div>
+<img class="cover" src="{BB}811-1.png" style="object-position:50% 55%;{W}"></div>''')
+page('hero-b-materiaal-mobiel',1080,1600,f'''<div style="position:relative;height:100%;background:url({BB}811-0.jpg) 50% 45%/520% no-repeat">
+<div style="position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,214,170,.22),rgba(255,214,170,0) 50%),linear-gradient(0deg,rgba(28,18,12,.6),rgba(28,18,12,.1) 65%)"></div></div>''')
+page('hero-c-sfeer',2880,1280,f'''<div style="position:relative;height:100%"><img class="cover" src="{BB}812-1.png" style="object-position:50% 42%;{W}">
+<div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,17,11,.78),rgba(26,17,11,.45) 30%,rgba(26,17,11,0) 52%)"></div></div>''')
+page('hero-c-sfeer-mobiel',1080,1600,f'''<div style="position:relative;height:100%"><img class="cover" src="{BB}812-1.png" style="object-position:58% 50%;{W}">
+<div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(26,17,11,.75),rgba(26,17,11,0) 55%)"></div></div>''')
