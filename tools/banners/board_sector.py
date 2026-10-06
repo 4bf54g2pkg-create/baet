@@ -26,9 +26,9 @@ body = ('<div class="tag" style="left:24px;top:20px">Sectorbeelden · test hotel
         card('hotel-bron', 'Origineel', 'aangeleverde foto', '') +
         '</div>'
         '<div style="margin-top:56px;max-width:1000px;font-size:15px;line-height:1.7;color:#3A3733">'
-        '<div class="k">Voor dit live gaat</div>'
-        '<div style="margin-top:10px">1. <b>Bron en licentie:</b> stuur de link naar de foto (Unsplash/Pexels of de fotograaf). Zonder bron zetten we hem niet live.</div>'
-        '<div style="margin-top:6px">2. <b>LED:</b> nieuw in het assortiment. Zodra de LED-productpagina er is, linken we vanaf dit beeld naar de LED en noemen we hem in het bijschrift.</div>'
+        '<div class="k">Status</div>'
+        '<div style="margin-top:10px">1. <b>Bron:</b> Unsplash, foto EPuN25MPwAU (“Modern hotel room with a large bed and city view”), Unsplash-licentie: commercieel gebruik en bewerken toegestaan. Gekozen: 810 Noir Oak met LED voor Hotels.</div>'
+        '<div style="margin-top:6px">2. <b>LED-profielen:</b> komen binnenkort online. Daarna linken we vanaf dit beeld naar de LED en noemen we hem in het bijschrift.</div>'
         '<div style="margin-top:6px">3. De tweede aangeleverde foto heeft een signatuur “k/r” op het hoofdbord. Die gebruiken we niet zonder toestemming van de maker.</div>'
         '<div style="margin-top:6px">4. Daarna volgen horeca, kantoren en retail op dezelfde manier.</div></div>'
         '</div>')
