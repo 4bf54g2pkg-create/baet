@@ -1,0 +1,30 @@
+{%- comment -%} Puredeco · afsluitende oproep voor particulier en zakelijk {%- endcomment -%}
+<section class="ph ph-s ph-cta">
+  <div class="ph-wrap ph-cta__grid">
+    <div>
+      <h2 class="ph-h2">{{ section.settings.heading }}</h2>
+      <p class="ph-lead">{{ section.settings.text }}</p>
+    </div>
+    <div class="ph-cta__btns">
+      <a class="ph-btn ph-btn--ink ph-btn--block" href="{{ section.settings.url_1 | default: '/pages/showroom' }}">Plan een afspraak in de studio</a>
+      <a class="ph-btn ph-btn--line ph-btn--block" href="{{ section.settings.url_2 | default: '/pages/form' }}">Projectaanvraag voor professionals</a>
+      <p class="ph-cta__tel">Of bel en app: <a href="tel:+31316700214">0316 700 214</a> · <a href="https://wa.me/31316700214" target="_blank" rel="noopener">WhatsApp</a> · {{ section.settings.hours }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Puredeco afsluiter",
+  "tag": "div",
+  "class": "pd-home-cta-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Titel", "default": "Kom het verschil voelen in Herwen" },
+    { "type": "textarea", "id": "text", "label": "Tekst", "default": "Alle decors op ware grootte. Neem je maten of je bouwtekening mee; we rekenen je wand of je project voor je uit." },
+    { "type": "url", "id": "url_1", "label": "Link afspraak" },
+    { "type": "url", "id": "url_2", "label": "Link projectaanvraag" },
+    { "type": "text", "id": "hours", "label": "Openingstijden", "default": "ma–za 10–16 uur" }
+  ],
+  "presets": [{ "name": "Puredeco afsluiter" }]
+}
+{% endschema %}

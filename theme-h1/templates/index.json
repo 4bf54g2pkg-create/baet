@@ -136,7 +136,8 @@
         "show_text_below": false,
         "text_alignment_mobile": "left",
         "accessibility_info": "Slideshow about our brand"
-      }
+      },
+      "disabled": true
     },
     "multicolumn_icon_tctFa3": {
       "type": "multicolumn-icon",
@@ -275,7 +276,8 @@
         "divider_width": "fixed",
         "padding_top": 32,
         "padding_bottom": 32
-      }
+      },
+      "disabled": true
     },
     "collection_list_slider_3Pzh6g": {
       "type": "collection-list-slider",
@@ -406,7 +408,8 @@
         "padding_bottom": 50,
         "show_section_divider": false,
         "divider_width": "fixed"
-      }
+      },
+      "disabled": true
     },
     "multicolumn_icon_kzjyJG": {
       "type": "multicolumn-icon",
@@ -593,7 +596,8 @@
         "divider_width": "fixed",
         "padding_top": 0,
         "padding_bottom": 50
-      }
+      },
+      "disabled": true
     },
     "featured_collection_RPMNph": {
       "type": "featured-collection",
@@ -671,7 +675,8 @@
         "padding_bottom": 50,
         "show_section_divider": false,
         "divider_width": "fixed"
-      }
+      },
+      "disabled": true
     },
     "slideshow_Yhg6df": {
       "type": "slideshow",
@@ -721,7 +726,8 @@
         "show_text_below": false,
         "text_alignment_mobile": "center",
         "accessibility_info": "Slideshow about our brand"
-      }
+      },
+      "disabled": true
     },
     "custom_content_MKp9pC": {
       "type": "custom-content",
@@ -821,7 +827,8 @@
         "padding_bottom": 40,
         "show_section_divider": false,
         "divider_width": "fixed"
-      }
+      },
+      "disabled": true
     },
     "featured_collection_9V7btT": {
       "type": "featured-collection",
@@ -892,7 +899,8 @@
         "padding_bottom": 50,
         "show_section_divider": false,
         "divider_width": "fixed"
-      }
+      },
+      "disabled": true
     },
     "image_with_text_qAV3bq": {
       "type": "image-with-text",
@@ -971,7 +979,8 @@
         "divider_width": "fixed",
         "padding_top": 60,
         "padding_bottom": 60
-      }
+      },
+      "disabled": true
     },
     "177555588295d44ad4": {
       "type": "apps",
@@ -979,16 +988,16 @@
         "instafeed_app_block_RegcTW": {
           "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
           "settings": {
-            "title": "Deel je wand met #puredeco.nl — de mooiste projecten tonen we hier.",
-            "title_color": "",
+            "title": "Bij klanten en in projecten",
+            "title_color": "#151413",
             "title_size_v2": 0,
             "alignment": "left",
             "instafeed_margin_top": 0,
             "instafeed_margin_bottom": 0,
             "instafeed_margin_sides": 0,
-            "show_instagram_link": false,
+            "show_instagram_link": true,
             "link_alignment": "left",
-            "link_color": "#000000",
+            "link_color": "#151413",
             "background_color": "",
             "feed_id": "ss",
             "html_area": ""
@@ -1116,7 +1125,8 @@
         "mobile_text_size": 16,
         "text_weight": "400",
         "text_letter_spacing": 0
-      }
+      },
+      "disabled": true
     },
     "contact_help_section_cWkrh6": {
       "type": "contact-help-section",
@@ -1254,10 +1264,26 @@
         "mobile_label_size": 18,
         "mobile_value_size": 17,
         "mobile_arrow_size": 24
+      },
+      "disabled": true
+    },
+    "pd_home": {
+      "type": "pd-home",
+      "settings": {
+        "hero_image": "shopify://shop_images/ChatGPT_Image_8_sep_2026_11_25_14.png",
+        "hero_image_mobile": "shopify://shop_images/ChatGPT_Image_8_sep_2026_11_22_33.png",
+        "sector_visual": true
       }
+    },
+    "pd_home_cta": {
+      "type": "pd-home-cta",
+      "settings": {}
     }
   },
   "order": [
+    "pd_home",
+    "177555588295d44ad4",
+    "pd_home_cta",
     "slideshow_q3U4Jn",
     "multicolumn_icon_tctFa3",
     "collection_list_slider_3Pzh6g",
@@ -1267,7 +1293,6 @@
     "custom_content_MKp9pC",
     "featured_collection_9V7btT",
     "image_with_text_qAV3bq",
-    "177555588295d44ad4",
     "feature_cards_with_icons_yQa399",
     "contact_help_section_cWkrh6"
   ]

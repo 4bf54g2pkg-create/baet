@@ -1991,3 +1991,177 @@ a.pde__tile:hover .pde__sw { outline: 1px solid #6E675E; outline-offset: 3px; }
   .pdh__proj-pill b { font-weight: 500; }
   .pdh__proj-pill b:empty { display: none; }
 }
+
+/* ===================================================================
+   Homepage · The Puredeco Finish (pd-home, pd-home-cta)
+   =================================================================== */
+.ph { color: #151413; font-family: var(--font-body-family); }
+.ph *, .ph *::before, .ph *::after { box-sizing: border-box; }
+.ph-wrap { max-width: 144rem; margin: 0 auto; padding: 0 2rem; }
+@media (min-width: 990px) { .ph-wrap { padding: 0 9.6rem; } }
+.ph-s { padding: 6.4rem 0; }
+@media (min-width: 990px) { .ph-s { padding: 9.6rem 0; } }
+.ph-k { margin: 0; font-size: 1.1rem; letter-spacing: 0.22em; text-transform: uppercase; color: #6E675E; }
+.ph-k--bronze { color: #8C6A4A; }
+.ph-k--light { color: rgba(245, 242, 236, 0.85); }
+.ph-h2 { margin: 0; font-family: var(--font-heading-family); font-weight: 500; font-size: 3.6rem; line-height: 1.04; letter-spacing: -0.005em; color: #151413; }
+@media (min-width: 990px) { .ph-h2 { font-size: 5.6rem; } .ph-h2--xl { font-size: 7.6rem; line-height: 1; } }
+.ph-light { color: #F5F2EC; }
+.ph-h3 { display: block; margin: 0; font-family: var(--font-heading-family); font-weight: 500; font-size: 2.6rem; line-height: 1.12; color: #151413; }
+.ph-t { display: block; margin: 0; font-size: 1.4rem; line-height: 1.6; color: #3A3733; }
+.ph-lead { margin: 0; font-size: 1.6rem; line-height: 1.75; color: #3A3733; max-width: 56ch; }
+.ph-note { margin: 2.4rem 0 0; font-size: 1.3rem; color: #6E675E; }
+.ph-link { font-size: 1.4rem; color: #151413; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 0.3rem; white-space: nowrap; }
+.ph-link--light { color: #F5F2EC; }
+.ph-linkbtn { background: none !important; border: 0 !important; border-bottom: 1px solid #151413 !important; border-radius: 0 !important; padding: 0 0 0.3rem !important; height: auto !important; min-height: 0 !important; font: inherit; font-size: 1.4rem !important; color: #151413 !important; cursor: pointer; box-shadow: none !important; }
+.ph-headrow { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1.6rem 3.2rem; }
+.ph-btns { display: flex; flex-wrap: wrap; gap: 1.4rem; margin-top: 3.2rem; }
+.ph-btn { display: inline-flex; align-items: center; justify-content: center; padding: 1.6rem 2.8rem; font-size: 1.5rem; line-height: 1.2; text-decoration: none; border: 1px solid transparent; transition: background 0.2s ease, color 0.2s ease; }
+.ph-btn--paper { background: #F5F2EC; color: #151413; }
+.ph-btn--paper:hover { background: #FFFFFF; color: #151413; }
+.ph-btn--line-light { border-color: rgba(245, 242, 236, 0.9); color: #F5F2EC; }
+.ph-btn--line-light:hover { background: #F5F2EC; color: #151413; }
+.ph-btn--ink { background: #151413; color: #F5F2EC; }
+.ph-btn--ink:hover { background: #000; color: #FFFFFF; }
+.ph-btn--line { border-color: #151413; color: #151413; }
+.ph-btn--line:hover { background: #151413; color: #F5F2EC; }
+.ph-btn--block { display: flex; width: 100%; }
+.ph-tag { position: absolute; left: 1.2rem; bottom: 1.2rem; padding: 0.5rem 1rem; background: #F5F2EC; color: #151413; font-size: 1.1rem; letter-spacing: 0.04em; }
+.ph-tag--corner { left: auto; right: 1.2rem; top: 1.2rem; bottom: auto; font-size: 1rem; color: #6E675E; background: rgba(245, 242, 236, 0.9); }
+.ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* Swipe-rijen op mobiel */
+@media (max-width: 749px) {
+  .ph-swipe { display: flex !important; gap: 1.2rem !important; margin-left: -2rem; margin-right: -2rem; padding: 0 2rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: 2rem; scrollbar-width: none; }
+  .ph-swipe::-webkit-scrollbar { display: none; }
+  .ph-swipe > * { flex: 0 0 78%; scroll-snap-align: start; }
+}
+
+/* 1 · Hero */
+.ph-hero { position: relative; display: flex; align-items: flex-end; min-height: min(88vh, 86rem); background: #3A2C22; color: #F5F2EC; overflow: hidden; }
+@media (min-width: 990px) { .ph-hero { align-items: center; min-height: min(82vh, 82rem); } }
+.ph-hero__img { position: absolute; inset: 0; }
+.ph-hero__img picture, .ph-hero__img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ph-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(21, 20, 19, 0.55) 0%, rgba(21, 20, 19, 0.25) 45%, rgba(21, 20, 19, 0) 70%); pointer-events: none; }
+@media (max-width: 749px) { .ph-hero::after { background: linear-gradient(0deg, rgba(21, 20, 19, 0.65) 0%, rgba(21, 20, 19, 0.2) 55%, rgba(21, 20, 19, 0) 80%); } }
+.ph-hero__in { position: relative; z-index: 1; width: 100%; padding-top: 12rem; padding-bottom: 5.6rem; }
+.ph-hero__h { margin: 2rem 0 0; font-family: var(--font-heading-family); font-weight: 500; font-size: clamp(5.6rem, 9vw, 13.6rem); line-height: 0.95; letter-spacing: -0.015em; color: #F5F2EC; }
+.ph-hero__cap { position: absolute; z-index: 1; right: 2rem; bottom: 2rem; margin: 0; font-size: 1.2rem; color: rgba(245, 242, 236, 0.8); }
+@media (min-width: 990px) { .ph-hero__cap { right: 9.6rem; bottom: 3.2rem; } }
+@media (max-width: 749px) { .ph-hero .ph-btns { flex-direction: column; } .ph-hero .ph-btn { width: 100%; } }
+
+/* 2 · Merkverhaal */
+.ph-story { background: #F5F2EC; }
+.ph-story__grid { display: grid; gap: 2rem; }
+@media (min-width: 990px) { .ph-story__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 4.8rem; } }
+.ph-story__h { margin: 0; font-family: var(--font-heading-family); font-weight: 500; font-size: clamp(3rem, 3.6vw, 5.2rem); line-height: 1.1; color: #151413; }
+.ph-story__t { margin: 2.8rem 0 0; max-width: 66ch; font-size: 1.6rem; line-height: 1.8; color: #3A3733; }
+.ph-story__sig { margin: 2.4rem 0 0; font-size: 1.4rem; color: #6E675E; }
+
+/* 3 · Gebouwd om te blijven */
+.ph-built { background: #EFEAE1; }
+.ph-built__row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4.8rem; margin-top: 4.8rem; }
+.ph-built__card { display: flex; flex-direction: column; gap: 1.2rem; }
+.ph-built__art { aspect-ratio: 384 / 240; margin-bottom: 1.2rem; background: #F5F2EC; }
+.ph-built__art svg { display: block; width: 100%; height: 100%; }
+
+/* 4 · Van ver / van dichtbij */
+.ph-near { background: #151413; color: #F5F2EC; }
+.ph-near__head { display: grid; gap: 2.4rem; align-items: end; }
+@media (min-width: 990px) { .ph-near__head { grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: 4.8rem; } }
+.ph-near__lead { margin: 0; font-size: 1.6rem; line-height: 1.7; color: #D8D0C4; }
+.ph-near__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 1.6rem; margin-top: 4.8rem; }
+.ph-near__item { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; background: #2A2724; color: #F5F2EC; text-decoration: none; }
+.ph-near__item--wall { aspect-ratio: auto; }
+.ph-near__item img { transition: transform 0.9s cubic-bezier(.2,.7,.2,1); }
+.ph-near__item:hover img { transform: scale(1.03); }
+.ph-near__cap { position: absolute; left: 1.6rem; bottom: 1.6rem; padding: 0.5rem 1rem; background: rgba(21, 20, 19, 0.7); font-size: 1.2rem; color: #F5F2EC; }
+.ph-near__foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 1.6rem 4rem; margin-top: 3.2rem; }
+.ph-near__foot p { margin: 0; max-width: 80ch; font-size: 1.5rem; line-height: 1.6; color: #D8D0C4; }
+@media (max-width: 749px) { .ph-near__item--wall { aspect-ratio: 4 / 5; } }
+
+/* 5 · Puredeco Projects */
+.ph-pro { background: #F5F2EC; }
+.ph-pro__head { display: grid; gap: 2.4rem; align-items: end; }
+.ph-pro__head .ph-h2 { margin-top: 1.6rem; }
+@media (min-width: 990px) { .ph-pro__head { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 7.2rem; } }
+.ph-pro__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3.2rem 1.6rem; margin-top: 4.8rem; }
+@media (min-width: 990px) { .ph-pro__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; } }
+.ph-pro__card { display: flex; flex-direction: column; gap: 1rem; color: #151413; text-decoration: none; }
+.ph-pro__img { position: relative; display: block; aspect-ratio: 1 / 1; overflow: hidden; background: #DDD6CA; margin-bottom: 0.6rem; }
+.ph-pro__img--tex img { transform: scale(2.2); }
+.ph-pro__card:hover .ph-pro__img--tex img { transform: scale(2.3); }
+.ph-pro__img img { transition: transform 0.9s cubic-bezier(.2,.7,.2,1); }
+.ph-pro__facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; align-items: center; margin-top: 4.8rem; padding-top: 3.2rem; border-top: 1px solid #DDD6CA; }
+@media (min-width: 990px) { .ph-pro__facts { grid-template-columns: repeat(4, minmax(0, 1fr)) auto; } }
+.ph-pro__facts p { margin: 0; font-size: 1.4rem; line-height: 1.35; color: #3A3733; }
+.ph-pro__facts strong { display: block; font-weight: 600; color: #151413; }
+@media (max-width: 989px) { .ph-pro__facts .ph-btn { grid-column: 1 / -1; } }
+
+/* 6 · Collecties */
+.ph-coll { background: #EFEAE1; }
+.ph-coll__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3.2rem 1.6rem; margin-top: 4rem; }
+@media (min-width: 990px) { .ph-coll__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4.8rem 2.8rem; } }
+.ph-coll__item { display: block; color: #151413; text-decoration: none; }
+.ph-coll__img { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: #DDD6CA; }
+.ph-coll__img img { transition: transform 0.9s cubic-bezier(.2,.7,.2,1); }
+.ph-coll__item:hover img { transform: scale(1.03); }
+.ph-coll__row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.4rem 1.6rem; margin-top: 1.4rem; }
+.ph-coll__name { font-family: var(--font-heading-family); font-weight: 500; font-size: 3.2rem; line-height: 1.05; }
+.ph-coll__meta { font-size: 1.2rem; letter-spacing: 0.06em; color: #6E675E; font-variant-numeric: tabular-nums; }
+@media (max-width: 749px) { .ph-coll__img { aspect-ratio: 1 / 1; } .ph-coll__name { font-size: 2.4rem; } .ph-coll__meta { font-size: 1.1rem; letter-spacing: 0.02em; } }
+
+/* 7 · In het interieur */
+.ph-insp { background: #F5F2EC; }
+.ph-insp__grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: repeat(2, minmax(0, 24rem)); gap: 1.6rem; margin-top: 4rem; }
+@media (min-width: 1200px) { .ph-insp__grid { grid-template-rows: repeat(2, minmax(0, 26rem)); } }
+.ph-insp__item { position: relative; display: block; overflow: hidden; background: #DDD6CA; color: #151413; text-decoration: none; }
+.ph-insp__item--big { grid-row: 1 / span 2; }
+.ph-insp__item img { transition: transform 0.9s cubic-bezier(.2,.7,.2,1); }
+.ph-insp__item:hover img { transform: scale(1.03); }
+.ph-insp__cap { position: absolute; left: 1.2rem; bottom: 1.2rem; padding: 0.8rem 1.2rem; background: #F5F2EC; font-size: 1.3rem; }
+.ph-insp__cap strong { font-weight: 600; }
+@media (max-width: 749px) { .ph-insp__grid { grid-template-rows: none; } .ph-insp__item { aspect-ratio: 4 / 5; } .ph-insp__item--big { grid-row: auto; } }
+
+/* 8 · Montage */
+.ph-mont { background: #EFEAE1; }
+.ph-mont__row { list-style: none; margin: 4rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 2rem; }
+.ph-mont__step { display: flex; flex-direction: column; gap: 0.8rem; }
+.ph-mont__img { display: block; aspect-ratio: 4 / 3; overflow: hidden; background: #F5F2EC; margin-bottom: 0.8rem; }
+.ph-mont__step .ph-h3 { font-size: 2.2rem; }
+@media (min-width: 750px) and (max-width: 989px) { .ph-mont__row { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.ph-film { width: min(120rem, 94vw); max-height: 92vh; padding: 0; border: 0; background: #F5F2EC; }
+.ph-film.is-port { width: min(48rem, 94vw); }
+.ph-film::backdrop { background: rgba(21, 20, 19, 0.6); }
+.ph-film__v { display: block; width: 100%; height: auto; max-height: 92vh; background: #F5F2EC; }
+.ph-film__x { position: absolute; right: 1rem; top: 1rem; z-index: 2; width: 4rem; height: 4rem; padding: 0 !important; border: 0 !important; border-radius: 50% !important; background: rgba(21, 20, 19, 0.8) !important; color: #F5F2EC !important; font-size: 2.2rem !important; line-height: 1 !important; cursor: pointer; min-height: 0 !important; }
+
+/* 9 · The Puredeco Edit */
+.ph-edit { background: #E9E3D8; }
+.ph-edit__grid { display: grid; gap: 4.8rem; align-items: center; }
+@media (min-width: 990px) { .ph-edit__grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 8rem; } }
+.ph-edit .ph-h2 { margin: 1.6rem 0 2rem; }
+.ph-edit__chips { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.8rem; }
+.ph-chip { padding: 1rem 1.4rem; background: #151413; color: #F5F2EC; font-size: 1.3rem; text-decoration: none; border: 1px solid #151413; }
+.ph-chip:hover { background: #000; color: #FFFFFF; }
+.ph-chip--line { background: transparent; color: #151413; }
+.ph-chip--line:hover { background: #151413; color: #F5F2EC; }
+.ph-edit__box { position: relative; aspect-ratio: 384 / 290; max-width: 48rem; width: 100%; margin-top: 4rem; background: #F5F2EC; border: 1px solid #DDD6CA; }
+.ph-edit__sw { position: absolute; top: -10%; width: 30%; aspect-ratio: 110 / 155; background: #6A4E3A center / 520% no-repeat; box-shadow: 0 18px 30px -18px rgba(21, 20, 19, 0.45); }
+.ph-edit__sw--1 { left: 8%; transform: rotate(-4deg); }
+.ph-edit__sw--2 { left: 35%; top: -4%; transform: rotate(2deg); }
+.ph-edit__sw--3 { left: 62%; top: -12%; transform: rotate(-2deg); }
+.ph-edit__name { position: absolute; left: 8%; bottom: 10%; font-family: var(--font-heading-family); font-weight: 500; font-size: 2.6rem; }
+@media (max-width: 749px) { .ph-edit__box { margin: 2.4rem auto 0; } }
+
+/* 11 · Afsluiter */
+.ph-cta { background: #F5F2EC; }
+.ph-cta__grid { display: grid; gap: 3.2rem; align-items: center; }
+@media (min-width: 990px) { .ph-cta__grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 8rem; } }
+.ph-cta .ph-lead { margin-top: 2.4rem; }
+.ph-cta__btns { display: flex; flex-direction: column; gap: 1.4rem; }
+.ph-cta__tel { margin: 0.6rem 0 0; text-align: center; font-size: 1.4rem; color: #6E675E; }
+.ph-cta__tel a { color: #151413; text-decoration: none; border-bottom: 1px solid #DDD6CA; }
+
+/* Instagram-blok (app) op de homepage rustig op papier */
+.template-index .shopify-app-block, .index-template .shopify-app-block { background: transparent; }
