@@ -1669,3 +1669,38 @@ body,
 .pd-mont__chapters .pd-mont__n { letter-spacing: 0.2em; }
 .pd-mont__chapters button::before, .pd-mont__chapters button::after { content: none !important; }
 .pdh__views button { letter-spacing: 0.16em; text-transform: uppercase; }
+
+/* ===== Finish-materiaalkaart: echt decor + technische doorsnede (vervangt de fotokrop) ===== */
+.pdh__finish .pdh__finish-swatch {
+  display: flex !important;
+  flex-direction: column;
+  aspect-ratio: auto !important;
+  background: #FFFFFF !important;
+  background-image: none !important;
+  border: 1px solid #DDD6CA;
+  outline: 1px solid transparent;
+  outline-offset: 3px;
+  filter: none !important;
+  overflow: hidden;
+}
+.pdh__finish .pdh__finish-swatch > i { display: none !important; }
+.pdh__fs-face {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  background-color: #6A4E3A;
+  background-repeat: no-repeat;
+  background-size: 520% auto;
+  background-position: 50% 42%;
+}
+.pdh__finish[data-finish="lin"] .pdh__fs-face { background-position: 50% 58%; }
+.pdh__fs-face i { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; transform: translateX(-50%); background: rgba(20, 15, 10, 0.7); box-shadow: 1px 0 0 rgba(255, 255, 255, 0.06); }
+.pdh__finish[data-finish="sig"] .pdh__fs-face i { display: none; }
+.pdh__fs-sec { display: block; padding: 0.8rem 1.2rem 0.6rem; border-top: 1px solid #EFEAE1; background: #FBFAF7; }
+.pdh__fs-sec svg { display: block; width: 100%; height: auto; font-family: var(--font-body-family); }
+.pdh__finish:has(input:checked) .pdh__finish-swatch { border-color: #151413; outline-color: #151413; }
+.pdh__finish:hover .pdh__finish-swatch { border-color: #B9AE9F; }
+.pdh__finish[data-finish="lin"] .pdh__finish-swatch { aspect-ratio: auto !important; }
+.pdh__finish .pdh__finish-swatch { outline: 0 !important; transition: border-color 0.2s, box-shadow 0.2s; }
+.pdh__finish:has(input:checked) .pdh__finish-swatch { border-color: #151413; box-shadow: 0 0 0 1px #151413; }
+.pdh__finish:has(input:focus-visible) .pdh__finish-swatch { box-shadow: 0 0 0 2px #151413; }

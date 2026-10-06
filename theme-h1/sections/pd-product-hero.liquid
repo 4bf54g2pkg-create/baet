@@ -194,7 +194,35 @@
                           -%}
                           <label class="pdh__finish" data-finish="{{ fk }}">
                             <input type="radio" name="pdh-o{{ forloop.parentloop.parentloop.index0 }}" value="{{ v | escape }}"{% if v.selected %} checked{% endif %}>
-                            <span class="pdh__finish-swatch" style="background-image: url('{{ pdh_pack | image_url: width: 800 }}');" aria-hidden="true"><i></i></span>
+                            <span class="pdh__finish-swatch" aria-hidden="true">
+                              <span class="pdh__fs-face" style="background-image: url('{{ pdh_pack | image_url: width: 2400 }}');"><i></i></span>
+                              <span class="pdh__fs-sec">
+                                {%- if fk == 'sig' -%}
+                                  <svg viewBox="0 0 316 64" preserveAspectRatio="xMidYMid meet">
+                                    <rect x="16" y="22" width="248" height="3.5" fill="#7A4F36"/>
+                                    <g fill="none" stroke="#151413" stroke-width="1" stroke-linejoin="round">
+                                      <path d="M16 22 H140 V28 H150 V36 H140 V42 H16 Z"/>
+                                      <path d="M140 22 H264 V42 H140 V36 H150 V28 H140"/>
+                                    </g>
+                                    <g stroke="#6E675E" stroke-width="0.6" opacity=".55">
+                                      <line x1="16" y1="32" x2="140" y2="32" stroke-dasharray="2 3"/><line x1="150" y1="32" x2="264" y2="32" stroke-dasharray="2 3"/>
+                                    </g>
+                                    <g stroke="#151413" stroke-width="0.8"><line x1="278" y1="22" x2="278" y2="42"/><line x1="274" y1="22" x2="282" y2="22"/><line x1="274" y1="42" x2="282" y2="42"/></g>
+                                    <text x="286" y="35" font-size="9" fill="#151413" font-family="inherit">8 mm</text>
+                                    <text x="140" y="58" font-size="8" fill="#6E675E" text-anchor="middle" letter-spacing="1.5" font-family="inherit">KLIK · NAADLOOS</text>
+                                  </svg>
+                                {%- else -%}
+                                  <svg viewBox="0 0 316 64" preserveAspectRatio="xMidYMid meet">
+                                    <rect x="16" y="25" width="126.5" height="2.5" fill="#7A4F36"/><rect x="145.5" y="25" width="118.5" height="2.5" fill="#7A4F36"/>
+                                    <g fill="none" stroke="#151413" stroke-width="1"><rect x="16" y="25" width="126.5" height="12.5"/><rect x="145.5" y="25" width="118.5" height="12.5"/></g>
+                                    <rect x="142.5" y="25" width="3" height="12.5" fill="#151413"/>
+                                    <g stroke="#151413" stroke-width="0.8"><line x1="278" y1="25" x2="278" y2="37.5"/><line x1="274" y1="25" x2="282" y2="25"/><line x1="274" y1="37.5" x2="282" y2="37.5"/></g>
+                                    <text x="286" y="34.5" font-size="9" fill="#151413" font-family="inherit">5 mm</text>
+                                    <text x="144" y="58" font-size="8" fill="#6E675E" text-anchor="middle" letter-spacing="1.5" font-family="inherit">STOMP · ZICHTBARE NAAD</text>
+                                  </svg>
+                                {%- endif -%}
+                              </span>
+                            </span>
                             <span class="pdh__finish-text">
                               {%- if fk == 'sig' -%}<span class="pdh__finish-badge">Ons paradepaardje</span>{%- endif -%}
                               <span class="pdh__finish-name">{{ fn }}</span>
