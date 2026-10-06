@@ -1,6 +1,8 @@
 # MERKPLATFORM — THE PUREDECO FINISH
 **Datum:** 6 oktober 2026 · **Ontwerpcanvas:** https://claude.ai/artifact/2q9TQh1QgMePeRvU9wX9kR (bronbestanden in `docs/ontwerp-puredeco-finish/`)
 
+> **Update 6 okt (2):** namen nu **Signature** (8 mm klik) en **Linea** (5 mm stomp); "Continu/Lijn" afgewezen, "Classic" botst met decornamen (Walnut Classic, Wood Classic). "Geen herhaling" geschrapt. Nieuwe pijlers: **kwaliteit die je voelt** ("vergelijk zelf", geen ongestaafde vergelijkende claim), **kern van bamboe** (snelgroeiend, hernieuwbaar) en **Puredeco Projects** (B2B als tweede pijler: projectenblok hoog op de homepage, projectofferte op de productpagina, eigen Professionals-pagina). Actie uit het hoofdmenu (akkoord).
+
 ## Kernidee
 "We verkopen geen panelen. We verkopen de wand." Het eindresultaat heet **de Puredeco Finish**.
 Hero-belofte: **Eén wand. Eén geheel.**
@@ -10,10 +12,10 @@ Hero-belofte: **Eén wand. Eén geheel.**
 ## Twee Finishes
 | Finish | Techniek | Belofte | Decors (volgens catalogus 5 okt 2026) |
 |---|---|---|---|
-| **Continu** | 8 mm klik | Oogt als één geheel; vrijwel onzichtbare aansluiting op een vlakke wand | Hout 810–812, Japandi 619/620/821–824, Leer 830/831, Art 840–843, Travertin 851 |
-| **Lijn** | 5 mm stomp | Een bewuste, strakke lijn met profiel | Marmer (alle), Beton 691, Hout 602/607/615, Japandi 621, Leer 646 (en 5 mm-varianten van de rest) |
+| **Signature** | 8 mm klik | Oogt als één geheel; vrijwel onzichtbare aansluiting op een vlakke wand | Hout 810–812, Japandi 619/620/821–824, Leer 830/831, Art 840–843, Travertin 851 |
+| **Linea** | 5 mm stomp | Een bewuste, strakke lijn met profiel | Marmer (alle), Beton 691, Hout 602/607/615, Japandi 621, Leer 646 (en 5 mm-varianten van de rest) |
 
-Regel: "geen naad" nooit gebruiken. Marmer (alleen Lijn) wordt verteld als "echte platen hebben ook een lijn".
+Regel: "geen naad" nooit gebruiken. Marmer (alleen Linea) wordt verteld als "echte platen hebben ook een lijn".
 
 ## Eigen merkassets
 1. **Eén wand. Eén geheel.** — vaste belofte; beeld eerst de hele wand op normale kijkafstand, dan het detail.
