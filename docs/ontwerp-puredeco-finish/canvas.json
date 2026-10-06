@@ -99,6 +99,13 @@
       "w": 1440,
       "x": 1520,
       "y": 13820
+    },
+    "Sectorbeelden.dc.html": {
+      "h": 1280,
+      "title": "Sectorbeelden · hotel (test)",
+      "w": 1440,
+      "x": 3040,
+      "y": 13820
     }
   },
   "createdOnFiles": {
@@ -149,7 +156,8 @@
     "PdpRefine.dc.html",
     "PdpMobileRefine.dc.html",
     "Beeldset.dc.html",
-    "HeroOpties.dc.html"
+    "HeroOpties.dc.html",
+    "Sectorbeelden.dc.html"
   ],
   "pages": [],
   "title": "The Puredeco Finish"
