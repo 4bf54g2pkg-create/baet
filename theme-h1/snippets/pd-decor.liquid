@@ -1,0 +1,58 @@
+{%- comment -%}
+  Puredeco: haalt decorcode, naam en categorie uit een producttitel.
+  "Wandpaneel Hout 811 Walnut Classic 8 mm Naadloos" -> code 811, naam Walnut Classic, categorie Hout
+  "Wandpaneel Concrete Smoke 691 | Betonlook | Puredeco" -> code 691, naam Concrete Smoke, categorie Betonlook
+  Gebruik: {% render 'pd-decor', product: product, part: 'code' %}  (part: code | name | eyebrow | full)
+{%- endcomment -%}
+{%- liquid
+  assign pd_title_parts = product.title | split: ' | '
+  assign pd_t = pd_title_parts.first | replace: ' 8 mm Naadloos', '' | replace: ' 5 mm Stomp', '' | strip
+  assign pd_t = pd_t | remove_first: 'Wandpaneel ' | strip
+  assign pd_words = pd_t | split: ' '
+  assign pd_code = ''
+  assign pd_before = ''
+  assign pd_after = ''
+  assign pd_found = false
+  for pd_w in pd_words
+    if pd_found
+      assign pd_after = pd_after | append: ' ' | append: pd_w
+    else
+      assign pd_n = pd_w | plus: 0
+      if pd_w.size == 3 and pd_n > 99
+        assign pd_code = pd_w
+        assign pd_found = true
+      else
+        assign pd_before = pd_before | append: ' ' | append: pd_w
+      endif
+    endif
+  endfor
+  assign pd_before = pd_before | strip
+  assign pd_after = pd_after | strip
+  assign pd_eyebrow = ''
+  assign pd_name = product.title
+  if pd_found
+    if pd_after != blank
+      assign pd_eyebrow = pd_before
+      assign pd_name = pd_after
+    else
+      assign pd_name = pd_before
+      if pd_title_parts.size > 1
+        assign pd_eyebrow = pd_title_parts[1]
+      endif
+    endif
+  endif
+  case part
+    when 'code'
+      echo pd_code
+    when 'name'
+      echo pd_name
+    when 'eyebrow'
+      echo pd_eyebrow
+    else
+      if pd_found
+        echo pd_code | append: ' ' | append: pd_name
+      else
+        echo pd_name
+      endif
+  endcase
+-%}

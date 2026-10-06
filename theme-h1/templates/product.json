@@ -92,7 +92,8 @@
         },
         "sibling_product_KY6dQ4": {
           "type": "sibling_product",
-          "settings": {}
+          "settings": {},
+          "disabled": true
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -271,9 +272,9 @@
         "color_scheme": "scheme-1",
         "use_color_scheme_in_container": false,
         "enable_sticky_info": true,
-        "media_size": "medium",
-        "gallery_layout": "vertical-carousel",
-        "mobile_thumbnails": "show",
+        "media_size": "large",
+        "gallery_layout": "grid-mix",
+        "mobile_thumbnails": "hide",
         "show_image_border": false,
         "enable_image_zoom": true,
         "enable_video_looping": true,
@@ -801,7 +802,8 @@
         "padding_bottom": 0,
         "show_section_divider": false,
         "divider_width": "fixed"
-      }
+      },
+      "disabled": true
     },
     "collapsible_tabs_VhHC8f": {
       "type": "collapsible-tabs",
@@ -905,7 +907,8 @@
         "padding_bottom": 50,
         "show_section_divider": false,
         "divider_width": "fixed"
-      }
+      },
+      "disabled": true
     },
     "1776772920f290a3f7": {
       "type": "apps",
@@ -1132,7 +1135,8 @@
         "padding_bottom": 50,
         "show_section_divider": false,
         "divider_width": "fixed"
-      }
+      },
+      "disabled": true
     },
     "related-products": {
       "type": "related-products",
@@ -1416,15 +1420,23 @@
         "mobile_label_size": 18,
         "mobile_value_size": 17,
         "mobile_arrow_size": 24
+      },
+      "disabled": true
+    },
+    "pd_story": {
+      "type": "pd-product-details",
+      "settings": {
+        "studio_url": "/pages/showroom"
       }
     }
   },
   "order": [
     "breadcrumbs",
     "main",
+    "1776772920f290a3f7",
+    "pd_story",
     "tabs_content_8rnbnj",
     "collapsible_tabs_VhHC8f",
-    "1776772920f290a3f7",
     "testimonials_PbBNaQ",
     "featured_collection_Y9FYEM",
     "related-products",

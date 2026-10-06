@@ -1,0 +1,242 @@
+{%- comment -%}
+  Puredeco · productverhaal onder de koopkolom, volgens het ontwerp "The Puredeco Finish".
+  Keuzehulp Signature/Linea · montage · alles over het decor · 4 stappen · interieur · ook in · Studio Herwen.
+{%- endcomment -%}
+{%- liquid
+  capture pd_code
+    render 'pd-decor', product: product, part: 'code'
+  endcapture
+  capture pd_full
+    render 'pd-decor', product: product, part: 'full'
+  endcapture
+  assign pd_ref = pd_code | default: pd_full
+
+  assign pd_has_sig = false
+  assign pd_has_lin = false
+  assign pd_formats = ''
+  for option in product.options_with_values
+    for value in option.values
+      assign key = value | downcase | remove: ' ' | slice: 0, 3
+      if key == '8mm'
+        assign pd_has_sig = true
+      elsif key == '5mm'
+        assign pd_has_lin = true
+      endif
+    endfor
+    assign oname = option.name | downcase
+    if oname == 'formaat' or oname == 'afmeting'
+      assign pd_formats = option.values | join: ' · '
+    endif
+  endfor
+  if pd_has_sig == false and pd_has_lin == false
+    if product.title contains '8 mm'
+      assign pd_has_sig = true
+    else
+      assign pd_has_lin = true
+    endif
+  endif
+  assign pd_variant = product.selected_or_first_available_variant
+-%}
+
+<div class="pd-story">
+
+  {%- comment -%} 1 · Keuzehulp {%- endcomment -%}
+  <section class="pd-s pd-choice" data-pd-choice>
+    <div class="pd-wrap">
+      <div class="pd-choice__top">
+        <h2 class="pd-h2">Welke Puredeco Finish past bij jouw wand?</h2>
+        <div class="pd-choice__toggle" role="group" aria-label="Kies wat je zoekt">
+          <button type="button" class="is-active" data-pd-pick="sig">Ik wil één rustig vlak</button>
+          <button type="button" data-pd-pick="lin">Een strakke lijn mag</button>
+        </div>
+      </div>
+      <div class="pd-choice__cards">
+        <article class="pd-card is-active" data-pd-card="sig">
+          <header class="pd-card__head"><h3 class="pd-card__name">Signature</h3><span>8 mm · klik</span></header>
+          <div class="pd-xsec pd-xsec--sig" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b></div>
+          <p class="pd-card__small">Doorsnede: toplaag · gerecycled PVC · bamboekern · onderlaag. De klikverbinding trekt de panelen strak tegen elkaar.</p>
+          <dl class="pd-card__rows">
+            <dt>Uitstraling</dt><dd>Oogt als één geheel; op een vlakke wand is de aansluiting nauwelijks te zien</dd>
+            <dt>Montage</dt><dd>Panelen klikken in elkaar, op een vlakke, egale wand</dd>
+            <dt>Ideaal voor</dt><dd>Accentwand, slaapkamer, entree, hotelkamer</dd>
+            <dt>Decors</dt><dd>Hout 810–812 · Japandi · Leer · Art · Travertin</dd>
+          </dl>
+          <p class="pd-card__foot">{% if pd_has_sig %}Beschikbaar voor {{ pd_ref }}. {% endif %}Aanbevolen als je de Puredeco-look zoekt.</p>
+        </article>
+        <article class="pd-card" data-pd-card="lin">
+          <header class="pd-card__head"><h3 class="pd-card__name">Linea</h3><span>5 mm · stomp</span></header>
+          <div class="pd-xsec pd-xsec--lin" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b></div>
+          <p class="pd-card__small">Doorsnede: dunner paneel, stomp aangesloten. Een tussenprofiel of kit maakt van de aansluiting een bewuste lijn.</p>
+          <dl class="pd-card__rows">
+            <dt>Uitstraling</dt><dd>Strak ritme van panelen, zoals natuursteen in platen</dd>
+            <dt>Montage</dt><dd>Panelen stomp tegen elkaar, profiel of kit in de lijn</dd>
+            <dt>Ideaal voor</dt><dd>Marmer, badkamer, keuken, grote vlakken met ritme</dd>
+            <dt>Decors</dt><dd>Marmer · Beton · Hout 602–615 · Japandi · Leer 646</dd>
+          </dl>
+          <p class="pd-card__foot">{% if pd_has_lin %}Beschikbaar voor {{ pd_ref }}. {% endif %}Aanbevolen voor marmer en steen: echte platen hebben ook een lijn.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} 2 · Montage {%- endcomment -%}
+  <section class="pd-s pd-film">
+    <div class="pd-wrap pd-film__grid">
+      <div class="pd-film__media">
+        {%- if section.settings.video != blank -%}
+          {{ section.settings.video | video_tag: controls: true, preload: 'none', playsinline: true, image_size: '1600x' }}
+        {%- else -%}
+          {%- assign pd_still = section.settings.still | default: product.featured_image -%}
+          {%- if pd_still != blank -%}
+            {{ pd_still | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1600', sizes: '(min-width: 990px) 60vw, 100vw', alt: pd_full }}
+          {%- endif -%}
+          <span class="pd-film__soon">Montagefilm volgt</span>
+        {%- endif -%}
+      </div>
+      <div class="pd-film__text">
+        <h2 class="pd-h2 pd-h2--light">Zo ontstaat een Puredeco-wand</h2>
+        <ol class="pd-film__steps">
+          <li>De wand voorbereiden</li>
+          <li>Kit aanbrengen</li>
+          <li>Het eerste paneel plaatsen</li>
+          <li>Aansluiten en aandrukken</li>
+          <li>Afwerken met profielen</li>
+          <li>De afgewerkte ruimte</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} 3 · Alles over {%- endcomment -%}
+  <section class="pd-s pd-specs">
+    <div class="pd-wrap pd-specs__grid">
+      <h2 class="pd-h2">Alles over {{ pd_ref }}</h2>
+      <div>
+        <dl class="pd-specs__table">
+          <dt>Decorcode</dt><dd>{{ pd_full }}</dd>
+          <dt>Finish</dt><dd>{% if pd_has_sig %}Signature 8 mm klik{% endif %}{% if pd_has_sig and pd_has_lin %} · {% endif %}{% if pd_has_lin %}Linea 5 mm stomp{% endif %}</dd>
+          {%- if pd_formats != blank -%}<dt>Formaat</dt><dd>{{ pd_formats }}</dd>{%- endif -%}
+          <dt>Opbouw</dt><dd>Toplaag · gerecycled PVC · bamboekern (snelgroeiend, hernieuwbaar) · gerecyclede onderlaag</dd>
+          <dt>Toepassing</dt><dd>Wonen, slapen, badkamer en keuken · waterbestendig</dd>
+          <dt>Onderhoud</dt><dd>Zachte, licht vochtige doek; geen schurende middelen</dd>
+          <dt>Garantie</dt><dd>3 jaar</dd>
+          {%- if pd_variant.sku != blank -%}<dt>Artikelnummer</dt><dd>{{ pd_variant.sku }}</dd>{%- endif -%}
+        </dl>
+        {%- if product.description != blank -%}
+          <details class="pd-specs__more">
+            <summary>Productbeschrijving</summary>
+            <div class="rte">{{ product.description }}</div>
+          </details>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} 4 · Montage in 4 stappen {%- endcomment -%}
+  <section class="pd-s pd-steps">
+    <div class="pd-wrap pd-steps__grid">
+      <h2 class="pd-h2">Zo plaats je {{ pd_ref }}</h2>
+      <ol class="pd-steps__list">
+        <li><span class="pd-steps__tile" style="--t:#E4DCCD"><b>1</b></span><strong>Voorbereiden</strong><span>Een vlakke, droge en schone wand. Hoe vlakker, hoe strakker het resultaat.</span></li>
+        <li><span class="pd-steps__tile" style="--t:#D6CAB5"><b>2</b></span><strong>Plaatsen</strong><span>Kit in banen op het paneel, het eerste paneel waterpas tegen de wand.</span></li>
+        <li><span class="pd-steps__tile" style="--t:#8C6A4A"><b>3</b></span><strong>Aansluiten</strong><span>Signature klikt in elkaar; Linea sluit stomp aan met profiel of kit.</span></li>
+        <li><span class="pd-steps__tile" style="--t:#5E4534"><b>4</b></span><strong>Puredeco Finish</strong><span>Profielen op hoeken en randen. Klaar, zonder stof en stucwerk.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  {%- comment -%} 5 · In het interieur {%- endcomment -%}
+  {%- assign pd_imgs = product.media | where: 'media_type', 'image' -%}
+  {%- if pd_imgs.size > 1 -%}
+    <section class="pd-s pd-room">
+      <div class="pd-wrap">
+        <h2 class="pd-h2">{{ pd_ref }} in het interieur</h2>
+        <div class="pd-room__grid">
+          {%- for m in pd_imgs offset: 1 limit: 3 -%}
+            <figure class="pd-room__item">
+              {{ m | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '400, 800, 1200', sizes: '(min-width: 990px) 30vw, 90vw', alt: pd_full }}
+            </figure>
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} 6 · Ook in {%- endcomment -%}
+  {%- liquid
+    assign pd_more = product.metafields.custom.sibling_products.value
+    assign pd_more_title = 'Verwante decors'
+    if pd_more == blank
+      for c in product.collections
+        if c.handle != 'all' and c.products_count > 1
+          assign pd_more = c.products
+          assign pd_more_title = 'Ook in ' | append: c.title
+          break
+        endif
+      endfor
+    endif
+    capture pd_eyebrow
+      render 'pd-decor', product: product, part: 'eyebrow'
+    endcapture
+    if pd_eyebrow != blank and product.metafields.custom.sibling_products.value != blank
+      assign pd_more_title = 'Ook in ' | append: pd_eyebrow | downcase
+    endif
+  -%}
+  {%- if pd_more != blank -%}
+    <section class="pd-s pd-more">
+      <div class="pd-wrap">
+        <h2 class="pd-h2">{{ pd_more_title }}</h2>
+        <div class="pd-more__grid">
+          {%- assign pd_shown = 0 -%}
+          {%- for p in pd_more -%}
+            {%- if p.handle != product.handle and pd_shown < 4 -%}
+              {%- assign pd_shown = pd_shown | plus: 1 -%}
+              <a class="pd-more__item" href="{{ p.url }}">
+                <span class="pd-more__img">{%- if p.featured_image -%}{{ p.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300, 500, 800', sizes: '(min-width: 990px) 22vw, 45vw', alt: p.title }}{%- endif -%}</span>
+                {%- capture pc -%}{% render 'pd-decor', product: p, part: 'code' %}{%- endcapture -%}
+                <span class="pd-more__name">{% if pc != blank %}<span>{{ pc }}</span> {% endif %}{% render 'pd-decor', product: p, part: 'name' %}</span>
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} 7 · Studio Herwen {%- endcomment -%}
+  <section class="pd-s pd-studio">
+    <div class="pd-wrap pd-studio__row">
+      <p class="pd-h2 pd-h2--light">{{ pd_ref }} in het echt zien? Studio Herwen.</p>
+      <a class="pd-studio__btn" href="{{ section.settings.studio_url | default: '/pages/showroom' }}">Plan een afspraak</a>
+    </div>
+  </section>
+</div>
+
+<script>
+  (function () {
+    var root = document.querySelector('[data-pd-choice]');
+    if (!root) return;
+    root.querySelectorAll('[data-pd-pick]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var k = b.getAttribute('data-pd-pick');
+        root.querySelectorAll('[data-pd-pick]').forEach(function (x) { x.classList.toggle('is-active', x === b); });
+        root.querySelectorAll('[data-pd-card]').forEach(function (c) { c.classList.toggle('is-active', c.getAttribute('data-pd-card') === k); });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Puredeco productverhaal",
+  "tag": "div",
+  "class": "pd-story-section",
+  "settings": [
+    { "type": "video", "id": "video", "label": "Montagefilm" },
+    { "type": "image_picker", "id": "still", "label": "Stilstaand beeld montage (als er nog geen film is)" },
+    { "type": "url", "id": "studio_url", "label": "Link afspraak Studio Herwen" }
+  ],
+  "presets": [{ "name": "Puredeco productverhaal" }],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}

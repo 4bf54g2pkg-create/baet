@@ -354,58 +354,71 @@ h4, h5, h6, .h4, .h5, .h6 {
 }
 
 /* ===== Puredeco Finish: Signature (8 mm) / Linea (5 mm) op de productpagina =====
-   Rustig en typografisch: regels met een haarlijn, een klein rondje als keuze, geen vakken. */
+   Rustig en typografisch: regels met een haarlijn, een klein rondje als keuze, geen vakken.
+   Signature staat altijd bovenaan; de Finish-keuze komt vóór het formaat. */
+.product__info-wrapper variant-selects {
+  display: flex;
+  flex-direction: column;
+}
+.product__info-wrapper variant-selects .pd-finish {
+  order: -1;
+}
 .product-form__input.pd-finish {
-  display: block;
+  display: flex !important;
+  flex-direction: column;
+  gap: 0 !important;
 }
-.product-form__input.pd-finish .form__label {
-  font-size: 1.1rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #6E675E;
-  padding-bottom: 1.2rem;
-}
-.product-form__input.pd-finish .form__label .font-body-bolder {
-  font-weight: 400;
-}
+.product-form__input.pd-finish > legend { order: 0; }
+.product-form__input.pd-finish input:has(+ .pd-finish__option--signature),
+.product-form__input.pd-finish .pd-finish__option--signature { order: 1; }
+.product-form__input.pd-finish input:has(+ .pd-finish__option--linea),
+.product-form__input.pd-finish .pd-finish__option--linea { order: 2; }
+.product-form__input.pd-finish .pd-finish__note { order: 3; }
 .product-form__input.pd-finish input[type="radio"] + label.pd-finish__option {
-  display: grid;
+  display: grid !important;
   grid-template-columns: 1.4rem auto minmax(0, 1fr);
   align-items: center;
   column-gap: 1.6rem;
   width: 100%;
-  height: auto;
-  min-height: 0;
+  height: auto !important;
+  min-height: 0 !important;
   margin: 0;
-  padding: 1.6rem 0;
-  border: 0;
-  border-top: 1px solid #DDD6CA;
-  border-radius: 0;
-  background: transparent;
+  padding: 1.6rem 0 !important;
+  border: 0 !important;
+  border-top: 1px solid #DDD6CA !important;
+  border-radius: 0 !important;
+  background: transparent !important;
   color: #6E675E;
   text-align: left;
   line-height: 1;
   white-space: normal;
-  box-shadow: none;
+  box-shadow: none !important;
 }
-.product-form__input.pd-finish input[type="radio"] + label.pd-finish__option::before {
-  content: "";
+.product-form__input.pd-finish input[type="radio"] + label.pd-finish__option::before,
+.product-form__input.pd-finish input[type="radio"] + label.pd-finish__option::after {
+  content: none !important;
+  display: none !important;
+}
+.pd-finish__dot {
+  position: relative;
   width: 1.4rem;
   height: 1.4rem;
   box-sizing: border-box;
   border-radius: 50%;
   border: 1px solid #B9AE9F;
-  background: transparent;
 }
 .product-form__input.pd-finish input[type="radio"]:checked + label.pd-finish__option {
   color: #151413;
-  background: transparent;
-  border-color: #DDD6CA;
-  box-shadow: none;
 }
-.product-form__input.pd-finish input[type="radio"]:checked + label.pd-finish__option::before {
+.product-form__input.pd-finish input[type="radio"]:checked + label .pd-finish__dot {
   border-color: #151413;
-  background: radial-gradient(circle, #151413 0 0.3rem, transparent 0.32rem);
+}
+.product-form__input.pd-finish input[type="radio"]:checked + label .pd-finish__dot::after {
+  content: "";
+  position: absolute;
+  inset: 0.3rem;
+  border-radius: 50%;
+  background: #151413;
 }
 .product-form__input.pd-finish input[type="radio"] + label.pd-finish__option:hover {
   color: #151413;
@@ -649,10 +662,10 @@ h4, h5, h6, .h4, .h5, .h6 {
 .product__info-wrapper .product-form__submit {
   flex: 1 1 auto;
   min-height: 5.8rem;
-  border-radius: 0;
-  background: #151413;
-  border-color: #151413;
-  color: #F5F2EC;
+  border-radius: 0 !important;
+  background: #151413 !important;
+  border-color: #151413 !important;
+  color: #F5F2EC !important;
   font-size: 1.5rem;
   font-weight: 400;
   letter-spacing: 0.02em;
@@ -726,3 +739,277 @@ h4, h5, h6, .h4, .h5, .h6 {
   text-decoration: underline;
   text-underline-offset: 0.4rem;
 }
+
+/* ===== Productpagina · warm papier als achtergrond, zoals het ontwerp ===== */
+body.product-template,
+.product-template .color-scheme-1,
+.product-template .desktop-color-scheme-1,
+.product-template .mobile-color-scheme-1 {
+  --color-background: 245, 242, 236;
+  background-color: rgb(245, 242, 236);
+}
+.product-template .product__media img,
+.product-template .media img {
+  background-color: transparent;
+}
+
+/* ===== Productverhaal (sections/pd-product-details.liquid) ===== */
+.pd-story {
+  --pd-ink-hex: #151413;
+  --pd-stone-hex: #6E675E;
+  --pd-line-hex: #DDD6CA;
+  color: #151413;
+  font-family: var(--font-body-family);
+}
+.pd-wrap {
+  max-width: 144rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+@media (min-width: 990px) {
+  .pd-wrap { padding: 0 9.6rem; }
+}
+.pd-s {
+  padding: 6.4rem 0;
+}
+@media (min-width: 990px) {
+  .pd-s { padding: 9.6rem 0; }
+}
+.pd-h2 {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-weight: 500;
+  font-size: 3.6rem;
+  line-height: 1.02;
+  letter-spacing: -0.005em;
+  color: #151413;
+}
+@media (min-width: 990px) {
+  .pd-h2 { font-size: 5.6rem; }
+}
+.pd-h2--light { color: #F5F2EC; }
+
+/* Keuzehulp */
+.pd-choice { background: #F5F2EC; }
+.pd-choice__top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2.4rem;
+}
+.pd-choice__top .pd-h2 { max-width: 68rem; }
+.pd-choice__toggle { display: flex; gap: 0.8rem; }
+.pd-choice__toggle button {
+  padding: 1.2rem 1.8rem;
+  border: 1px solid #151413;
+  border-radius: 0;
+  background: transparent;
+  color: #151413;
+  font: inherit;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.pd-choice__toggle button.is-active { background: #151413; color: #F5F2EC; }
+.pd-choice__cards {
+  margin-top: 4rem;
+  display: grid;
+  gap: 2.4rem;
+}
+@media (min-width: 750px) {
+  .pd-choice__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.pd-card {
+  background: #FFFFFF;
+  border: 1px solid #DDD6CA;
+  padding: 3.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  transition: border-color 0.2s;
+}
+.pd-card.is-active { border: 2px solid #151413; padding: calc(3.2rem - 1px); }
+.pd-card__head { display: flex; justify-content: space-between; align-items: baseline; gap: 1.6rem; }
+.pd-card__head span { font-size: 1.4rem; color: #6E675E; }
+.pd-card__name {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-weight: 500;
+  font-size: 3.6rem;
+  line-height: 1;
+}
+.pd-xsec {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 9rem;
+  justify-content: center;
+}
+.pd-xsec i { display: block; }
+.pd-xsec i:nth-child(1) { height: 0.8rem; background: #5E4534; }
+.pd-xsec i:nth-child(2) { height: 0.6rem; background: #B9AE9F; }
+.pd-xsec i:nth-child(3) { height: 2.6rem; background: #D9C9A3; background-image: repeating-linear-gradient(90deg, rgba(140,106,74,0.18) 0 1px, transparent 1px 9px); }
+.pd-xsec i:nth-child(4) { height: 0.6rem; background: #B9AE9F; }
+.pd-xsec--lin i:nth-child(3) { height: 1.4rem; }
+.pd-xsec b {
+  position: absolute;
+  left: 50%;
+  top: 1.2rem;
+  bottom: 1.2rem;
+  width: 0;
+}
+.pd-xsec--sig b { border-left: 1.5px solid #F5F2EC; transform: skewX(-22deg); }
+.pd-xsec--lin b { width: 0.4rem; margin-left: -0.2rem; background: #151413; }
+.pd-card__small { margin: 0; font-size: 1.3rem; line-height: 1.55; color: #6E675E; }
+.pd-card__rows {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  gap: 1.2rem 1.6rem;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+.pd-card__rows dt { color: #6E675E; }
+.pd-card__rows dd { margin: 0; }
+.pd-card__foot {
+  margin: auto 0 0;
+  padding-top: 1.6rem;
+  border-top: 1px solid #DDD6CA;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+/* Montage */
+.pd-film { background: #151413; color: #F5F2EC; }
+.pd-film__grid { display: grid; gap: 4rem; align-items: center; }
+@media (min-width: 990px) {
+  .pd-film__grid { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 7.2rem; }
+}
+.pd-film__media { position: relative; aspect-ratio: 16 / 9; background: #574030; overflow: hidden; }
+.pd-film__media img,
+.pd-film__media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pd-film__soon {
+  position: absolute;
+  left: 1.6rem;
+  bottom: 1.6rem;
+  padding: 0.6rem 1rem;
+  background: rgba(245, 242, 236, 0.92);
+  color: #151413;
+  font-size: 1.2rem;
+}
+.pd-film__steps {
+  margin: 2.4rem 0 0;
+  padding-left: 2rem;
+  display: grid;
+  gap: 1rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: #D8D0C4;
+}
+
+/* Alles over */
+.pd-specs { background: #F5F2EC; }
+.pd-specs__grid { display: grid; gap: 3.2rem; }
+@media (min-width: 990px) {
+  .pd-specs__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 7.2rem; }
+}
+.pd-specs__table {
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(10rem, 1fr) minmax(0, 2fr);
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+.pd-specs__table dt,
+.pd-specs__table dd { margin: 0; padding: 1.4rem 0; border-top: 1px solid #DDD6CA; }
+.pd-specs__table dt { color: #6E675E; }
+.pd-specs__more { border-top: 1px solid #DDD6CA; border-bottom: 1px solid #DDD6CA; }
+.pd-specs__more summary {
+  padding: 1.6rem 0;
+  cursor: pointer;
+  font-size: 1.5rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+.pd-specs__more summary::-webkit-details-marker { display: none; }
+.pd-specs__more summary::after { content: "+"; }
+.pd-specs__more[open] summary::after { content: "−"; }
+.pd-specs__more .rte { padding-bottom: 2rem; font-size: 1.5rem; line-height: 1.7; color: #3A3733; }
+
+/* 4 stappen */
+.pd-steps { background: #E9E3D8; }
+.pd-steps__grid { display: grid; gap: 3.2rem; }
+@media (min-width: 990px) {
+  .pd-steps__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: 5.6rem; }
+}
+.pd-steps__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.4rem 1.6rem;
+}
+@media (min-width: 990px) {
+  .pd-steps__list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.pd-steps__list li { display: flex; flex-direction: column; gap: 0.8rem; font-size: 1.4rem; line-height: 1.5; }
+.pd-steps__list li > span:last-child { color: #3A3733; }
+.pd-steps__tile {
+  aspect-ratio: 4 / 3;
+  background: var(--t);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+.pd-steps__tile b {
+  font-family: var(--font-heading-family);
+  font-weight: 500;
+  font-size: 3.6rem;
+  line-height: 1;
+  color: rgba(21, 20, 19, 0.55);
+}
+.pd-steps__list li:nth-child(n+3) .pd-steps__tile b { color: rgba(245, 242, 236, 0.8); }
+
+/* Interieur en verwante decors */
+.pd-room { background: #F5F2EC; }
+.pd-room__grid,
+.pd-more__grid {
+  margin-top: 3.2rem;
+  display: grid;
+  gap: 1.6rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (min-width: 990px) {
+  .pd-room__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.4rem; }
+  .pd-more__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2.4rem; }
+}
+.pd-room__item { margin: 0; aspect-ratio: 4 / 3; overflow: hidden; background: #DDD6CA; }
+.pd-room__item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pd-more { background: #FFFFFF; }
+.pd-more__item { display: flex; flex-direction: column; gap: 1.2rem; color: #151413; text-decoration: none; }
+.pd-more__img { display: block; aspect-ratio: 4 / 5; overflow: hidden; background: #DDD6CA; }
+.pd-more__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+.pd-more__item:hover img { transform: scale(1.03); }
+.pd-more__name { font-size: 1.4rem; }
+.pd-more__name > span { color: #6E675E; }
+
+/* Studio Herwen */
+.pd-studio { background: #151413; }
+.pd-studio__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2.4rem;
+}
+.pd-studio__btn {
+  padding: 1.6rem 2.6rem;
+  background: #F5F2EC;
+  color: #151413;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+.pd-studio__btn:hover { background: #FFFFFF; color: #151413; }
