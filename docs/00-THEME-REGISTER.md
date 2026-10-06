@@ -76,3 +76,9 @@ templates/robots.txt.liquid  79fe39ff3f6c96eb3ef97395ad254787  = OK
 - `media/banners/`: nieuwe beeldset (hero desktop/mobiel, 6 collectiebanners + kaarten, Projects-hero + 4 sectoren, Edit-samplebox, praktijk-670, social posts/story). Generator: `tools/banners/gen.py`; artboard `docs/ontwerp-puredeco-finish/Beeldset.dc.html`.
 - Let op: de huidige heldenfoto's (ChatGPT_Image_8_sep_2026_*) hebben tekst in het beeld.
 - Samplepagina (alleen H1-test): `sections/pd-samples.liquid` bovenaan `templates/page.sample.json` (/pages/sample), oude secties uit. Alle decors uit collectie Wandpanelen per soort, "+ Sample · € 0", max. 3, vaste balk; toevoegen via /cart/add.js met eigenschap "Voorbeeld van" (zoals de Product Samples-app). Te testen: €0-prijs in de kassa.
+
+## Homepage-hero optie B gekozen (811 · Materiaal) — H1-test
+- Beelden in Shopify Files: `pd-home-hero-811.jpg` (desktop 2:1, links echt 811-oppervlak, rechts interieur-visualisatie) en `pd-home-hero-811-mobiel.jpg` (alleen het oppervlak).
+- `pd-home`: nieuwe instelling `hero_caption_photo` (bijschrift links). Staat die ingevuld, dan krijgt `hero_caption` de klasse `ph-hero__cap--d`: op desktop een licht label rechtsonder, op mobiel verborgen (daar staat alleen het echte oppervlak in beeld).
+- `index.json`: hero_caption "811 Walnut Classic · interieur: visualisatie", hero_caption_photo "811 Walnut Classic · Signature · echte productfoto".
+- Checksums: pd-home 367414288dbb07169c27681b7ef45006 · index.json 38e247336322f297c7544ddd2926446a · puredeco-premium.css f815561d99a8db0dca77e7eb48e3e387.

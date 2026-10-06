@@ -1270,10 +1270,11 @@
     "pd_home": {
       "type": "pd-home",
       "settings": {
-        "hero_image": "shopify://shop_images/pd-home-hero-hout.jpg",
-        "hero_image_mobile": "shopify://shop_images/pd-home-hero-hout-mobiel.jpg",
+        "hero_image": "shopify://shop_images/pd-home-hero-811.jpg",
+        "hero_image_mobile": "shopify://shop_images/pd-home-hero-811-mobiel.jpg",
         "sector_visual": true,
-        "hero_caption": "Hout · visualisatie",
+        "hero_caption": "811 Walnut Classic · interieur: visualisatie",
+        "hero_caption_photo": "811 Walnut Classic · Signature · echte productfoto",
         "story_image": "shopify://shop_images/pd-merkverhaal-811.jpg",
         "story_caption": "811 Walnut Classic · Signature",
         "sector_image_1": "shopify://shop_images/pd-sector-hotels.jpg",

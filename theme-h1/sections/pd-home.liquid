@@ -49,7 +49,8 @@
         <a class="ph-btn ph-btn--line-light" href="{{ s.hero_url_2 | default: '/pages/form' }}">Voor projecten</a>
       </div>
     </div>
-    {%- if s.hero_caption != blank -%}<p class="ph-hero__cap">{{ s.hero_caption }}</p>{%- endif -%}
+    {%- if s.hero_caption_photo != blank -%}<p class="ph-hero__cap ph-hero__cap--l">{{ s.hero_caption_photo }}</p>{%- endif -%}
+    {%- if s.hero_caption != blank -%}<p class="ph-hero__cap{% if s.hero_caption_photo != blank %} ph-hero__cap--d{% endif %}">{{ s.hero_caption }}</p>{%- endif -%}
   </section>
 
   {%- comment -%} 2 · Merkverhaal {%- endcomment -%}
@@ -362,6 +363,7 @@
     { "type": "image_picker", "id": "hero_image_mobile", "label": "Beeld mobiel" },
     { "type": "text", "id": "hero_eyebrow", "label": "Regel boven de titel", "default": "Wandpanelen met bamboekern · voor wonen en projecten" },
     { "type": "text", "id": "hero_caption", "label": "Bijschrift (decor in beeld)", "info": "Bijvoorbeeld: 811 Walnut Classic · Signature. Leeg = geen bijschrift." },
+    { "type": "text", "id": "hero_caption_photo", "label": "Bijschrift links (echte productfoto)", "info": "Voor een beeld met links het echte oppervlak. Op mobiel staat alleen dit bijschrift, omdat daar alleen het oppervlak in beeld is." },
     { "type": "url", "id": "hero_url_1", "label": "Link collecties" },
     { "type": "url", "id": "hero_url_2", "label": "Link projecten" },
     { "type": "header", "content": "Merkverhaal" },

@@ -2340,3 +2340,7 @@ body a.top_cta_icon + a.top_cta_icon:hover { background: rgb(var(--pd-ink)); col
 .pse__gh:first-child { margin-top: 0; border-top: 0; padding-top: 0; }
 .pse__gh[hidden] { display: none; }
 .pse__gh .s { font-family: var(--font-heading-family); font-weight: 500; font-size: 3.2rem; line-height: 1; color: #151413; }
+
+/* Hero B · 811: twee bijschriften, op mobiel alleen het echte oppervlak */
+@media (max-width: 989px) { .ph-hero__cap--d { display: none; } }
+@media (min-width: 990px) { .ph-hero__cap--l { right: auto; left: max(9.6rem, calc((100vw - 144rem) / 2 + 9.6rem)); } .ph-hero__cap--d { right: 2rem; bottom: 2rem; padding: 0.6rem 1rem; background: rgba(245, 242, 236, 0.92); color: #151413; } }
