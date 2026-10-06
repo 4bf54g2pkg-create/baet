@@ -1,0 +1,18 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-10-06T07:20:00Z"},
+  "title": "PureDeco Homepage Opties",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1200, "h": 1720, "title": "Merkverhaal & strategie"},
+    "OptieA.dc.html": {"x": 0, "y": 2063, "w": 1200, "h": 6100, "title": "Optie A · Materiaal eerst (advies)"},
+    "OptieB.dc.html": {"x": 1280, "y": 2063, "w": 1200, "h": 6100, "title": "Optie B · Verhaal eerst"},
+    "OptieC.dc.html": {"x": 2560, "y": 2063, "w": 1200, "h": 6100, "title": "Optie C · Shop eerst"}
+  },
+  "order": ["Main.dc.html", "OptieA.dc.html", "OptieB.dc.html", "OptieC.dc.html"],
+  "notes": {
+    "opties": {"x": 0, "y": 1840, "text": "Drie homepage-volgordes · alle 12 bestaande secties blijven", "kind": "title1", "maxW": 3760}
+  },
+  "designSystems": []
+}
