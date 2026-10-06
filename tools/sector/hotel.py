@@ -5,7 +5,8 @@ S='/tmp/claude-0/-home-user-baet/20c8e88a-a0d2-5581-8005-f8ed232319d0/scratchpad
 src=cv2.imread(S+'src.jpg').astype(np.float32)/255
 h,w=src.shape[:2]
 QUAD=np.float32([[0,-220],[812,262],[812,603],[0,600]])   # wand: plafondlijn, hoek, bovenkant houten band
-W_CM,H_CM,PX=270,165,6                                     # zichtbare wand in cm, 6 px per cm in de textuur
+W_CM,H_CM,PX=270,165,6
+SEAMS=[]                                     # zichtbare wand in cm, 6 px per cm in de textuur
 
 def bbox(img):
     g=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY); ys,xs=np.where(g<235)
@@ -23,12 +24,16 @@ def canvas(decor):
         c=row[:Hp, start:start+Wp]
     else:                                  # hout: panelen van 122 cm met naad
         pan=cv2.resize(tex,(122*PX,280*PX))
-        row=np.concatenate([pan if i%2==0 else cv2.flip(pan,0) for i in range(4)],1).astype(np.float32)
-        for i in range(1,4): row[:, i*122*PX-1:i*122*PX+1]*=0.8
-        c=row[:Hp,:Wp]
+        row=np.concatenate([pan if i%2==0 else cv2.flip(pan,0) for i in range(5)],1).astype(np.float32)
+        for i in range(1,5): row[:, i*122*PX-1:i*122*PX+1]*=0.8
+        Hi=cv2.getPerspectiveTransform(QUAD,np.float32([[0,0],[W_CM,0],[W_CM,H_CM],[0,H_CM]]))
+        ax=float(cv2.perspectiveTransform(np.float32([[[470,600]]]),Hi)[0,0,0])
+        start=int((2.5*122-ax)*PX)          # paneel 3 (midden) gecentreerd op het bed
+        SEAMS[:]=[ax-61,ax+61]
+        c=row[:Hp, start:start+Wp]
     return c.astype(np.float32)/255
 
-def run(decor,out):
+def run(decor,out,led=False):
     c=canvas(decor)
     Hm=cv2.getPerspectiveTransform(np.float32([[0,0],[c.shape[1],0],[c.shape[1],c.shape[0]],[0,c.shape[0]]]),QUAD)
     warped=cv2.warpPerspective(c,Hm,(w,h),flags=cv2.INTER_AREA)
@@ -45,6 +50,22 @@ def run(decor,out):
     warped=cv2.GaussianBlur(warped,(0,0),0.7)
     comp=warped*E*tint
     rng=np.random.default_rng(1); comp+=rng.normal(0,0.008,comp.shape).astype(np.float32)
+    if led:
+        # LED aan de zijkant van het paneel: verticale lichtlijnen in de naden naast het middelste paneel, strijklicht opzij over het hout
+        Hp,Wp=c.shape[:2]; u=np.arange(Wp,dtype=np.float32)[None,:]/PX
+        L=np.zeros((1,Wp),np.float32); line=np.zeros((1,Wp),np.float32)
+        for us in SEAMS:
+            d=np.abs(u-us)
+            L+=1.6*np.exp(-d/9)+0.45*np.exp(-d/35)
+            line+=(d<0.8).astype(np.float32)
+        L=np.broadcast_to(L,(Hp,Wp)).astype(np.float32); line=np.broadcast_to(line,(Hp,Wp)).astype(np.float32)
+        Lw_=cv2.warpPerspective(L,Hm,(w,h),flags=cv2.INTER_LINEAR)
+        warm=np.float32([0.52,0.78,1.0])
+        detail=warped-cv2.GaussianBlur(warped,(0,0),3)
+        comp=comp*0.9+(warped+detail*2.5)*Lw_[...,None]*warm
+        Ln=cv2.warpPerspective(line,Hm,(w,h),flags=cv2.INTER_LINEAR)
+        glow=cv2.GaussianBlur(Ln,(0,0),4)
+        comp=np.maximum(comp,np.clip(Ln*1.4,0,1)[...,None]*np.float32([0.82,0.94,1.0]))+glow[...,None]*warm*0.45
     # zachte schaduw langs plafond en hoek
     edge=np.zeros((h,w),np.float32); cv2.polylines(edge,[QUAD[:2].astype(np.int32)],False,1,6); cv2.line(edge,(812,262),(812,603),1,8)
     comp*=1-0.12*cv2.GaussianBlur(edge,(0,0),6)[...,None]
@@ -67,4 +88,5 @@ def run(decor,out):
     cv2.imwrite(out,(np.clip(res,0,1)*255).astype(np.uint8),[cv2.IMWRITE_JPEG_QUALITY,93])
 
 for d in sys.argv[1:]:
-    run(d,S+f'hotel-{d}.jpg')
+    led=d.endswith('led'); dec=d.replace('led','')
+    run(dec,S+f'hotel-{d}.jpg',led)
