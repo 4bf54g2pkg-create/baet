@@ -1,0 +1,125 @@
+{%- comment -%}
+  Puredeco · footer (ronde 7). Eén rustige, architectonische afsluiting voor alle pagina's.
+{%- endcomment -%}
+<footer class="pdf" role="contentinfo">
+  <div class="pdf__wrap">
+    <div class="pdf__top">
+      <div>
+        <p class="pdf__claim">{{ section.settings.claim }}</p>
+        <p class="pdf__studio">{{ section.settings.studio_text }} <a href="{{ section.settings.studio_url | default: '/pages/showroom' }}">Plan een bezoek →</a></p>
+      </div>
+      <div class="pdf__news">
+        <p class="pdf__k">Nieuwsbrief</p>
+        <p class="pdf__news-h">{{ section.settings.news_heading }}</p>
+        {%- form 'customer', id: 'pdf-newsletter', class: 'pdf__form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          {%- if form.posted_successfully? -%}
+            <p class="pdf__ok">Dank je, je bent aangemeld.</p>
+          {%- else -%}
+            <label class="visually-hidden" for="pdf-email">E-mailadres</label>
+            <input id="pdf-email" type="email" name="contact[email]" placeholder="je@email.nl" autocomplete="email" required>
+            <button type="submit">Aanmelden</button>
+            {%- if form.errors -%}<p class="pdf__err">Controleer je e-mailadres.</p>{%- endif -%}
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+    </div>
+
+    <div class="pdf__contact-m">
+      <a class="pdf__btn" href="https://wa.me/{{ section.settings.whatsapp }}" target="_blank" rel="noopener"><span class="pdf__wa" aria-hidden="true">●</span> WhatsApp</a>
+      <a class="pdf__btn" href="tel:{{ section.settings.phone_link }}">Bel ons</a>
+      <p>{{ section.settings.hours }} · <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></p>
+    </div>
+
+    <div class="pdf__cols">
+      {%- for m in (1..3) -%}
+        {%- liquid
+          if m == 1
+            assign menu = linklists[section.settings.menu_1]
+            assign title = section.settings.title_1
+          elsif m == 2
+            assign menu = linklists[section.settings.menu_2]
+            assign title = section.settings.title_2
+          else
+            assign menu = linklists[section.settings.menu_3]
+            assign title = section.settings.title_3
+          endif
+        -%}
+        <details class="pdf__col" data-pdf-col>
+          <summary class="pdf__k">{{ title }}<span aria-hidden="true">+</span></summary>
+          <ul>
+            {%- for link in menu.links -%}<li><a href="{{ link.url }}">{{ link.title }}</a></li>{%- endfor -%}
+          </ul>
+        </details>
+      {%- endfor -%}
+      <div class="pdf__col pdf__col--contact">
+        <p class="pdf__k">Contact</p>
+        <ul>
+          <li><a href="https://wa.me/{{ section.settings.whatsapp }}" target="_blank" rel="noopener">WhatsApp {{ section.settings.phone }}</a></li>
+          <li><a href="tel:{{ section.settings.phone_link }}">Bel {{ section.settings.phone }}</a></li>
+          <li><a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></li>
+          <li class="pdf__muted">{{ section.settings.hours }}<br>Studio Herwen op afspraak</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdf__bottom">
+    <div class="pdf__wrap pdf__bottom-in">
+      <div class="pdf__legal">
+        <a class="pdf__logo" href="{{ routes.root_url }}">Pure<span>Deco</span></a>
+        <span>© {{ 'now' | date: '%Y' }} PureDeco B.V. · KvK 97720925 · Herwen</span>
+      </div>
+      <nav class="pdf__links" aria-label="Juridisch en social">
+        <a href="/policies/terms-of-service">Voorwaarden</a>
+        <a href="/policies/privacy-policy">Privacy</a>
+        <a href="/policies/refund-policy">Retourneren</a>
+        {%- if settings.social_instagram_link != blank -%}<a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener">Instagram</a>{%- endif -%}
+        {%- if settings.social_pinterest_link != blank -%}<a href="{{ settings.social_pinterest_link }}" target="_blank" rel="noopener">Pinterest</a>{%- endif -%}
+        {%- if settings.social_facebook_link != blank -%}<a href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener">Facebook</a>{%- endif -%}
+      </nav>
+      {%- if shop.enabled_payment_types.size > 0 -%}
+        <ul class="pdf__pay" role="list" aria-label="Betaalmethodes">
+          {%- for type in shop.enabled_payment_types -%}<li>{{ type | payment_type_svg_tag }}</li>{%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var cols = document.querySelectorAll('[data-pdf-col]');
+    var mq = window.matchMedia('(min-width: 750px)');
+    function sync() { cols.forEach(function (d) { d.open = mq.matches; }); }
+    sync();
+    if (mq.addEventListener) mq.addEventListener('change', sync);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Puredeco footer",
+  "tag": "div",
+  "class": "pd-footer-section",
+  "enabled_on": { "groups": ["footer"] },
+  "settings": [
+    { "type": "text", "id": "claim", "label": "Slotregel", "default": "Eén wand. Eén geheel." },
+    { "type": "text", "id": "studio_text", "label": "Studio-regel", "default": "Studio Herwen · Nijverheidsdwarsstraat 2 · op afspraak" },
+    { "type": "url", "id": "studio_url", "label": "Link afspraak" },
+    { "type": "text", "id": "news_heading", "label": "Nieuwsbrief-kop", "default": "Nieuwe decors en projecten, vier keer per jaar." },
+    { "type": "text", "id": "title_1", "label": "Kolom 1", "default": "Collecties" },
+    { "type": "link_list", "id": "menu_1", "label": "Menu kolom 1" },
+    { "type": "text", "id": "title_2", "label": "Kolom 2", "default": "Service" },
+    { "type": "link_list", "id": "menu_2", "label": "Menu kolom 2" },
+    { "type": "text", "id": "title_3", "label": "Kolom 3", "default": "Zakelijk" },
+    { "type": "link_list", "id": "menu_3", "label": "Menu kolom 3" },
+    { "type": "text", "id": "phone", "label": "Telefoon (weergave)", "default": "0316 700 214" },
+    { "type": "text", "id": "phone_link", "label": "Telefoon (link)", "default": "+31316700214" },
+    { "type": "text", "id": "whatsapp", "label": "WhatsApp-nummer", "default": "31316700214" },
+    { "type": "text", "id": "email", "label": "E-mail", "default": "info@puredeco.nl" },
+    { "type": "text", "id": "hours", "label": "Openingstijden", "default": "Ma–za 10–16 uur" }
+  ],
+  "presets": [{ "name": "Puredeco footer" }]
+}
+{% endschema %}

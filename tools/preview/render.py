@@ -39,12 +39,22 @@ ctx=dict(product=product, shop=shop, all_products={'eindprofielen':{'url':'#','p
 def prep(src):
     src=re.sub(r'\{%\s*schema\s*%\}.*?\{%\s*endschema\s*%\}','',src,flags=re.S)
     src=re.sub(r"\{%-?\s*form 'product'[^%]*-?%\}",'<form id="pdh-form-S1" class="pdh__form" novalidate>',src)
+    src=re.sub(r"\{%-?\s*form 'customer'[^%]*-?%\}",'<form class="pdf__form">',src)
     src=re.sub(r'\{%-?\s*endform\s*-?%\}','</form>',src)
     return src
 out=''
 for sec in ['pd-product-hero','pd-product-details']:
     src=prep(open(TH+f'sections/{sec}.liquid').read())
     out+=env.from_string(src).render(section={'id':'S1' if sec=='pd-product-hero' else 'S2','settings':{}}, **ctx)
+def defaults(sec):
+    s=json.loads(re.search(r'\{%\s*schema\s*%\}(.*?)\{%\s*endschema\s*%\}',open(TH+f'sections/{sec}.liquid').read(),re.S).group(1))
+    return {x['id']:x.get('default','') for x in s.get('settings',[]) if 'id' in x}
+L=lambda *n:{'links':[{'title':x,'url':'#'} for x in n]}
+linklists={'pd-footer-collecties':L('Hout','Japandi','Leer','Art','Doorlopend marmer','Akupanelen','Accessoires'),
+ 'pd-footer-service':L('Gratis samples','Veelgestelde vragen','Bezorging en retour','Studio Herwen','Contact'),
+ 'pd-footer-zakelijk':L('Puredeco Projects','Zakelijk account','Inloggen zakelijk','Verkooppartners')}
+fs=defaults('pd-footer'); fs.update(menu_1='pd-footer-collecties',menu_2='pd-footer-service',menu_3='pd-footer-zakelijk')
+out+=env.from_string(prep(open(TH+'sections/pd-footer.liquid').read())).render(section={'id':'F1','settings':fs},linklists=linklists,form={},settings={'social_instagram_link':'#','social_pinterest_link':'#'},routes={'root_url':'/'},**ctx)
 css=open(TH+'assets/puredeco-premium.css').read()
 html=f'''<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <style>@font-face{{font-family:'Cormorant';src:url(../film/cormorant.woff2);font-weight:300 700}}@font-face{{font-family:'Instrument Sans';src:url(../film/instrument.woff2);font-weight:400 700}}
