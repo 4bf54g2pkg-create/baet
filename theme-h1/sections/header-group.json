@@ -17,7 +17,7 @@
         "text_YYJRm3": {
           "type": "text",
           "settings": {
-            "text": "Gratis bezorging in Nederland vanaf € 600",
+            "text": "Gratis bezorgd in Nederland vanaf € 600",
             "position": "center",
             "highlight_text": "",
             "highlight_text_style": "button",
@@ -39,7 +39,7 @@
         "text_4WYCgn": {
           "type": "text",
           "settings": {
-            "text": "Showroom in Herwen · persoonlijk advies op afspraak",
+            "text": "Studio Herwen · op afspraak",
             "position": "center",
             "highlight_text": "",
             "highlight_text_style": "button",
@@ -75,14 +75,16 @@
             "show_language_selector": false,
             "show_country_selector": true,
             "position": "right"
-          }
+          },
+          "disabled": true
         },
         "link_list_xMVJVE": {
           "type": "link_list",
           "settings": {
             "menu": "footer",
             "position": "left"
-          }
+          },
+          "disabled": true
         },
         "social_links_BcFqP9": {
           "type": "social_links",
@@ -97,7 +99,8 @@
             "show_youtube": false,
             "show_vimeo": false,
             "position": "left"
-          }
+          },
+          "disabled": true
         }
       },
       "block_order": [
@@ -124,15 +127,15 @@
     "header": {
       "type": "header",
       "settings": {
-        "cta_one-text": "Showroomafspraak",
-        "cta_one": "shopify://pages/showroom",
-        "cta_two-text": "Gratis advies",
-        "cta_two": "shopify://pages/type-form",
+        "cta_one-text": "Samples",
+        "cta_one": "shopify://pages/sample",
+        "cta_two-text": "Zakelijk",
+        "cta_two": "shopify://pages/form",
         "container": "fixed",
         "color_scheme": "scheme-1",
-        "menu": "main-menu-1",
-        "menu_mobile": "mobile-menu",
-        "header_layout": "logo-left",
+        "menu": "pd-hoofdmenu",
+        "menu_mobile": "pd-mobiel",
+        "header_layout": "logo-center",
         "menu_trigger": "hover",
         "sticky_header": "always",
         "enable_collapse_on_scroll": true,
@@ -146,7 +149,7 @@
         "navigation_color_scheme": "",
         "navigation_content_alignment": "center",
         "navigation_padding_top": 0,
-        "navigation_padding_bottom": 12
+        "navigation_padding_bottom": 14
       }
     },
     "177684431293c0c63a": {

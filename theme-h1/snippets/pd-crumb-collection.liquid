@@ -1,0 +1,71 @@
+{%- comment -%}
+  Puredeco: kiest de collectie voor de broodkruimel van een product.
+  Volgorde: vaste metafield > collectie uit de URL > collectie met de categorienaam (bijv. Hout) > eerste gewone collectie.
+  Actie-, sale- en bestsellercollecties worden overgeslagen. Uitvoer: "titel||url".
+{%- endcomment -%}
+{%- liquid
+  assign pdc_primary = product.metafields.breadcrumb.primary_collection
+  assign pdc_title = ''
+  assign pdc_url = ''
+  assign pdc_skip = 'actie,sale,aanbieding,bestseller,bestsellers,all,frontpage,alle-producten,nieuw'
+  capture pdc_eyebrow
+    render 'pd-decor', product: product, part: 'eyebrow'
+  endcapture
+  assign pdc_eyebrow = pdc_eyebrow | strip | downcase | split: ' ' | first
+
+  if pdc_primary != blank
+    assign pdc_title = pdc_primary.value.title
+    assign pdc_url = pdc_primary.value.url
+  endif
+
+  if pdc_title == blank and collection.url != blank
+    assign pdc_h = collection.handle | downcase
+    assign pdc_bad = false
+    assign pdc_list = pdc_skip | split: ','
+    for s in pdc_list
+      if pdc_h contains s
+        assign pdc_bad = true
+      endif
+    endfor
+    unless pdc_bad
+      assign pdc_title = collection.title
+      assign pdc_url = collection.url
+    endunless
+  endif
+
+  if pdc_title == blank
+    assign pdc_list = pdc_skip | split: ','
+    assign pdc_first_title = ''
+    assign pdc_first_url = ''
+    for c in product.collections
+      assign pdc_h = c.handle | downcase
+      assign pdc_bad = false
+      for s in pdc_list
+        if pdc_h contains s
+          assign pdc_bad = true
+        endif
+      endfor
+      unless pdc_bad
+        assign pdc_ct = c.title | downcase
+        if pdc_eyebrow != blank and pdc_ct contains pdc_eyebrow and pdc_title == blank
+          assign pdc_title = c.title
+          assign pdc_url = c.url
+        endif
+        if pdc_first_title == blank
+          assign pdc_first_title = c.title
+          assign pdc_first_url = c.url
+        endif
+      endunless
+    endfor
+    if pdc_title == blank
+      assign pdc_title = pdc_first_title
+      assign pdc_url = pdc_first_url
+    endif
+  endif
+
+  if pdc_title == blank
+    assign pdc_title = 'general.breadcrumbs.collections' | t
+    assign pdc_url = routes.all_products_collection_url
+  endif
+  echo pdc_title | append: '||' | append: pdc_url
+-%}

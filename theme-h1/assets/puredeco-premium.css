@@ -741,10 +741,11 @@ h4, h5, h6, .h4, .h5, .h6 {
 }
 
 /* ===== Productpagina · warm papier als achtergrond, zoals het ontwerp ===== */
-body.product-template,
-.product-template .color-scheme-1,
-.product-template .desktop-color-scheme-1,
-.product-template .mobile-color-scheme-1 {
+/* Papier als basis op de hele site (punt 3) */
+body,
+.color-scheme-1,
+.desktop-color-scheme-1,
+.mobile-color-scheme-1 {
   --color-background: 245, 242, 236;
   background-color: rgb(245, 242, 236);
 }
@@ -1059,4 +1060,48 @@ body.product-template,
 .pd-film__steps li::marker {
   color: #8C6A4A;
   font-variant-numeric: tabular-nums;
+}
+
+
+/* ===== Hele site · witte packshots in productkaarten versmelten met papier ===== */
+[class*="pcard"] img,
+.card img {
+  mix-blend-mode: multiply;
+}
+[class*="pcard"] [class*="media"],
+.card [class*="media"] {
+  background-color: transparent !important;
+}
+
+/* ===== Header · één rustige regel (punt 2) ===== */
+.header .menu-item > a,
+.header [class*="navigation"] a,
+.header nav a {
+  text-transform: none !important;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+}
+.header input[type="search"],
+.header .search__input {
+  background: transparent !important;
+}
+
+/* ===== Vaste koopbalk · rustig (punt 6) ===== */
+.sticky-atc-bar {
+  background: rgb(245, 242, 236) !important;
+  border-top: 1px solid #DDD6CA;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.sticky-atc-bar__product-title {
+  font-family: var(--font-heading-family);
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+.sticky-atc-bar .product-form__submit {
+  border-radius: 0 !important;
+  background: #151413 !important;
+  border-color: #151413 !important;
+  color: #F5F2EC !important;
+  font-weight: 400;
 }

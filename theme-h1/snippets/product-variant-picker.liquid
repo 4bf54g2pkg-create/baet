@@ -199,6 +199,18 @@
       {{ product.selected_or_first_available_variant | json }}
     </script>
   </variant-selects>
+  <script>
+    // Puredeco: zonder gekozen variant in de URL staat Signature (8 mm) standaard aan.
+    (function () {
+      var vs = document.currentScript.previousElementSibling;
+      if (!vs || /[?&]variant=/.test(location.search)) return;
+      customElements.whenDefined('variant-selects').then(function () {
+        var label = vs.querySelector('.pd-finish__option--signature');
+        var input = label && document.getElementById(label.getAttribute('for'));
+        if (input && !input.checked && !input.classList.contains('disabled')) input.click();
+      });
+    })();
+  </script>
   {%- if size_chart_content != blank -%}
     <div id="SizeChart-{{ section.id }}">
       <basic-modal id="{{ size_chart_modal_id }}" class="drawer modal" style="--modal-width: 77rem;">

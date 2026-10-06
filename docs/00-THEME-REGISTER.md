@@ -51,3 +51,7 @@ templates/robots.txt.liquid  79fe39ff3f6c96eb3ef97395ad254787  = OK
   van wa.me/31850870490 naar wa.me/31316700214 (handmatig in theme-editor,
   door opdrachtgever; door Claude gecontroleerd). Nieuw controlepunt live
   updatedAt: 2026-10-05T13:33:36Z.
+
+## 6 okt 2026 · winkelbrede objecten aangemaakt voor H1-test
+- Menu `pd-hoofdmenu` (Wandpanelen · Akupanelen · Accessoires · Inspiratie · Studio Herwen) en `pd-mobiel` (idem + Samples · Zakelijk · Veelgestelde vragen · Contact).
+- Alleen gekoppeld in H1-test (`sections/header-group.json`). Het live theme gebruikt nog `main-menu-1` / `mobile-menu`; die zijn niet gewijzigd.
