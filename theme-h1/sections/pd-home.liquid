@@ -1,6 +1,6 @@
 {%- comment -%}
   Puredeco · homepage volgens het ontwerp "The Puredeco Finish".
-  Hero · merkverhaal · gebouwd om te blijven · van ver / van dichtbij · Puredeco Projects ·
+  Hero · beton ciré en travertin · merkverhaal · gebouwd om te blijven · van ver / van dichtbij · Puredeco Projects ·
   collecties · in het interieur · montage · The Puredeco Edit.
   Beelden: instelbaar in de editor; zonder keuze worden bestaande productbeelden gebruikt.
 {%- endcomment -%}
@@ -9,6 +9,7 @@
   assign p810 = all_products['810-hout-noir-oak']
   assign p824 = all_products['824-japanse-stof-japandi-taupe-dark']
   assign p851 = all_products['wandpaneel-travertine-ivory-851']
+  assign p691 = all_products['concrete-smoke-691-betonlook']
   assign p843 = all_products['843-art-stucco-light-shadow']
   assign p830 = all_products['830-leer-leather-taup']
 
@@ -53,12 +54,66 @@
     {%- if s.hero_caption != blank -%}<p class="ph-hero__cap{% if s.hero_caption_photo != blank %} ph-hero__cap--d{% endif %}">{{ s.hero_caption }}</p>{%- endif -%}
   </section>
 
+  {%- comment -%} 1b · Uitgelicht: beton ciré en travertin {%- endcomment -%}
+  {%- if s.show_stone -%}
+  <section class="ph-s ph-stone" id="beton-travertin">
+    <div class="ph-wrap">
+      <div class="ph-stone__head">
+        <div>
+          <p class="ph-k ph-k--light">Uitgelicht · steenlook</p>
+          <h2 class="ph-h2 ph-stone__h">Beton ciré en travertin</h2>
+        </div>
+        <p class="ph-lead ph-stone__lead">De rust van beton ciré en de warmte van travertin, als wandpaneel met een kern van bamboe. Zonder stucwerk en zonder zware natuursteen. Waterbestendig, dus ook voor de badkamer.</p>
+      </div>
+      <div class="ph-stone__grid">
+        {%- liquid
+          assign st_p = 'concrete-smoke-691-betonlook|wandpaneel-travertine-ivory-851' | split: '|'
+          assign st_n = 'Beton ciré|Travertin' | split: '|'
+          assign st_c = '691 Concrete Smoke|851 Travertine Ivory' | split: '|'
+          assign st_t = 'De look van beton ciré in rokerig grijs. 5 mm dun en buigbaar, dus ook voor ronde wanden.|De look van travertin in warm ivoor. 8 mm met kliksysteem, de panelen sluiten vrijwel naadloos aan.' | split: '|'
+          assign st_room = '1|1' | split: '|'
+          assign st_tex = '2|3' | split: '|'
+        -%}
+        {%- for h in st_p -%}
+          {%- liquid
+            assign ix = forloop.index0
+            assign sp = all_products[h]
+            assign ri = st_room[ix] | plus: 0
+            assign ti = st_tex[ix] | plus: 0
+            assign room = sp.media[ri] | default: sp.featured_image
+            assign texture = sp.media[ti]
+            assign st_alt = st_n[ix] | append: ' · ' | append: st_c[ix]
+          -%}
+          {%- if sp != blank -%}
+          <article class="ph-stone__item">
+            <a class="ph-stone__img" href="{{ sp.url }}" aria-label="{{ st_c[ix] }} bekijken">
+              {%- if room != blank -%}{{ room | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '500, 900, 1400', sizes: '(min-width: 990px) 42vw, 92vw', alt: st_alt }}{%- endif -%}
+              <span class="ph-tag ph-tag--corner">Visualisatie</span>
+              {%- if texture != blank -%}<span class="ph-stone__sw">{{ texture | image_url: width: 400 | image_tag: loading: 'lazy', alt: '' }}</span>{%- endif -%}
+            </a>
+            <div class="ph-stone__row">
+              <h3 class="ph-stone__name">{{ st_n[ix] }}</h3>
+              <span class="ph-stone__code">{{ st_c[ix] }}</span>
+            </div>
+            <p class="ph-stone__t">{{ st_t[ix] }}</p>
+            <div class="ph-stone__btns">
+              <a class="ph-btn ph-btn--paper" href="{{ sp.url }}">Bekijk {{ st_c[ix] | split: ' ' | first }}</a>
+              <a class="ph-link ph-link--light" href="/pages/sample">Gratis sample →</a>
+            </div>
+          </article>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+
   {%- comment -%} 2 · Merkverhaal {%- endcomment -%}
   <section class="ph-s ph-story">
     <div class="ph-wrap ph-story__grid">
       <div class="ph-story__side">
         <p class="ph-k ph-k--bronze">Waarom Puredeco</p>
-        {%- assign story_img = s.story_image | default: images['pd-merkverhaal-811.jpg'] -%}
+        {%- assign story_img = s.story_image | default: images['pd-merkverhaal-812.jpg'] -%}
         {%- if story_img != blank -%}
           <figure class="ph-story__img">
             {{ story_img | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400, 700, 1000', sizes: '(min-width: 990px) 28vw, 80vw', alt: s.story_caption }}
@@ -192,10 +247,10 @@
       </div>
       <div class="ph-coll__grid">
         {%- liquid
-          assign c_names = 'Hout|Japandi|Leer|Art|Marmer|Steen' | split: '|'
-          assign c_handles = 'hout-1|japandi|leer|kunst|doorlopend-marmer|' | split: '|'
-          assign c_meta = '602 – 812 · Signature · Linea|619 – 824 · Signature · Linea|646 – 831 · Signature · Linea|840 – 843 · Signature|632 – 689 · Linea|691 Beton · 851 Travertin' | split: '|'
-          assign c_prod = '811-hout-walnut-classic|824-japanse-stof-japandi-taupe-dark|830-leer-leather-taup|843-art-stucco-light-shadow||wandpaneel-travertine-ivory-851' | split: '|'
+          assign c_names = 'Hout|Beton ciré en travertin|Japandi|Leer|Art|Marmer' | split: '|'
+          assign c_handles = 'hout-1||japandi|leer|kunst|doorlopend-marmer' | split: '|'
+          assign c_meta = '602 – 812 · Signature · Linea|691 Concrete Smoke · 851 Travertine Ivory|619 – 824 · Signature · Linea|646 – 831 · Signature · Linea|840 – 843 · Signature|632 – 689 · Linea' | split: '|'
+          assign c_prod = '811-hout-walnut-classic|wandpaneel-travertine-ivory-851|824-japanse-stof-japandi-taupe-dark|830-leer-leather-taup|843-art-stucco-light-shadow|' | split: '|'
         -%}
         {%- for n in c_names -%}
           {%- liquid
@@ -217,6 +272,13 @@
                 assign url = cp.url
               endif
             endif
+            if ix == 1
+              assign url = '#beton-travertin'
+              assign cimg = p851.media[2] | default: cimg
+              if s.show_stone == false
+                assign url = p851.url
+              endif
+            endif
           -%}
           <a class="ph-coll__item" href="{{ url }}">
             <span class="ph-coll__img">{%- if cimg != blank -%}{{ cimg | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400, 700, 1000', sizes: '(min-width: 990px) 28vw, 45vw', alt: n }}{%- endif -%}</span>
@@ -233,7 +295,7 @@
       <h2 class="ph-h2">Puredeco in het interieur</h2>
       <div class="ph-insp__grid ph-swipe">
         {%- liquid
-          assign insp = '810-hout-noir-oak:1|824-japanse-stof-japandi-taupe-dark:2|wandpaneel-travertine-ivory-851:2|843-art-stucco-light-shadow:1|830-leer-leather-taup:1' | split: '|'
+          assign insp = '810-hout-noir-oak:1|824-japanse-stof-japandi-taupe-dark:2|812-hout-walnut-deep:2|843-art-stucco-light-shadow:1|830-leer-leather-taup:1' | split: '|'
         -%}
         {%- for it in insp -%}
           {%- liquid
@@ -368,8 +430,9 @@
     { "type": "url", "id": "hero_url_2", "label": "Link projecten" },
     { "type": "header", "content": "Merkverhaal" },
     { "type": "text", "id": "founder", "label": "Naam oprichter", "info": "Leeg = alleen 'Studio Herwen'." },
+    { "type": "checkbox", "id": "show_stone", "label": "Toon blok beton ciré en travertin onder de hero", "default": true },
     { "type": "image_picker", "id": "story_image", "label": "Beeld merkverhaal" },
-    { "type": "text", "id": "story_caption", "label": "Bijschrift beeld merkverhaal", "default": "811 Walnut Classic · Signature" },
+    { "type": "text", "id": "story_caption", "label": "Bijschrift beeld merkverhaal", "default": "812 Walnut Deep · visualisatie" },
     { "type": "header", "content": "Van ver / van dichtbij" },
     { "type": "product", "id": "wall_product", "label": "Decor" },
     { "type": "image_picker", "id": "wall_image", "label": "Beeld hele wand" },

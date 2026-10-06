@@ -94,3 +94,6 @@ page('hero-c-sfeer',2880,1280,f'''<div style="position:relative;height:100%"><im
 <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,17,11,.78),rgba(26,17,11,.45) 30%,rgba(26,17,11,0) 52%)"></div></div>''')
 page('hero-c-sfeer-mobiel',1080,1600,f'''<div style="position:relative;height:100%"><img class="cover" src="{BB}812-1.png" style="object-position:58% 50%;{W}">
 <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(26,17,11,.75),rgba(26,17,11,0) 55%)"></div></div>''')
+
+# Ronde 10 · merkverhaal met 812 Walnut Deep (catalogusbeeld slaapkamer; hero toont al 811)
+page('merkverhaal-812',960,1200,f'''<img class="cover" src="{BB}812-1.png" style="object-position:56% 45%;{W}">''')

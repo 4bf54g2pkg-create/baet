@@ -82,3 +82,11 @@ templates/robots.txt.liquid  79fe39ff3f6c96eb3ef97395ad254787  = OK
 - `pd-home`: nieuwe instelling `hero_caption_photo` (bijschrift links). Staat die ingevuld, dan krijgt `hero_caption` de klasse `ph-hero__cap--d`: op desktop een licht label rechtsonder, op mobiel verborgen (daar staat alleen het echte oppervlak in beeld).
 - `index.json`: hero_caption "811 Walnut Classic · interieur: visualisatie", hero_caption_photo "811 Walnut Classic · Signature · echte productfoto".
 - Checksums: pd-home 367414288dbb07169c27681b7ef45006 · index.json 38e247336322f297c7544ddd2926446a · puredeco-premium.css f815561d99a8db0dca77e7eb48e3e387.
+
+## Beton ciré en travertin naar voren + merkverhaal 812 — H1-test
+- `pd-home`: nieuw blok 1b "Beton ciré en travertin" direct onder de hero (donker, id `#beton-travertin`, instelling `show_stone`). 691 Concrete Smoke (badkamer = media[1], staal = media[2]) en 851 Travertine Ivory (badkamer = media[1], staal = media[3]); interieurs gemarkeerd als visualisatie; tekst alleen uit de productbeschrijvingen (5 mm buigbaar / 8 mm kliksysteem, waterbestendig).
+- Collecties: kaart "Beton ciré en travertin" op plek 2 (link naar het blok, beeld 851 woonkamer). "In het interieur": 851 vervangen door 812 (media[2]) om dubbel beeld te voorkomen.
+- Merkverhaal: `pd-merkverhaal-812.jpg` (812 Walnut Deep, slaapkamer, visualisatie).
+- Samplepagina: groep "Beton ciré en travertin" op plek 2.
+- Menu's pd-hoofdmenu, pd-mobiel en pd-footer-collecties (alleen H1-test): "Beton ciré" en "Travertin" na Hout, met link naar de productpagina's (er is geen collectie voor).
+- Checksums: pd-home db3c9cd7… · index.json 502dd7df… · css 76622467… · pd-samples 458b1401….

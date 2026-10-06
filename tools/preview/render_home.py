@@ -24,6 +24,11 @@ ps=[P('811-hout-walnut-classic','Wandpaneel Hout 811 Walnut Classic 8 mm Naadloo
     P('843-art-stucco-light-shadow','Wandpaneel Art 843 Stucco Shadow',6),P('830-leer-leather-taup','Wandpaneel Leer 830 Taupe',3)]
 for code,c in SW.items(): open(f'sw-{code}.svg','w').write(f'<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><rect width="400" height="400" fill="{c}"/></svg>')
 all_products={p['handle']:p for p in ps}
+BBK='/home/user/baet/media/beeldbank/'
+for h,t_,fs in [('concrete-smoke-691-betonlook','Wandpaneel Concrete Smoke 691',['691-0.png','691-1.png','691-2.jpg']),
+                ('wandpaneel-travertine-ivory-851','Wandpaneel Travertine Ivory 851',['851-0.png','851-1.png','851-2.png','851-3.png','851-4.png']),
+                ('812-hout-walnut-deep','Wandpaneel Hout 812 Walnut Deep',['812-0.jpg','812-1.png','812-2.png','812-3.jpg'])]:
+    m=[{'src':BBK+f} for f in fs]; all_products[h]={'handle':h,'title':t_,'url':'#','media':m,'featured_image':m[0]}
 cols={h:{'url':'#','products_count':5,'image':{'src':'room.svg'},'products':[ps[0]]} for h in ['hout-1','japandi','kunst','doorlopend-marmer']}
 cols['leer']={'url':'#','products_count':3,'image':None,'products':[ps[5]]}
 images={f'pd-montage-stap-{i}.jpg':{'src':f'/tmp/claude-0/-home-user-baet/20c8e88a-a0d2-5581-8005-f8ed232319d0/scratchpad/steps/pd-montage-stap-{i}.jpg'} for i in range(1,6)}
@@ -45,7 +50,7 @@ if len(sys.argv)>1 and sys.argv[1]=='samples':
 elif len(sys.argv)>1 and sys.argv[1]=='projects':
     out=env.from_string(prep2(open(TH+'sections/pd-projects.liquid').read())).render(section={'settings':defaults('pd-projects')},all_products=all_products,form={})
 else:
-    hs=defaults('pd-home'); hs['hero_image']={'src':'hero.jpg'}; hs['story_image']={'src':'story.jpg'}; hs['hero_caption']='811 Walnut Classic · interieur: visualisatie'; hs['hero_caption_photo']='811 Walnut Classic · Signature · echte productfoto'
+    hs=defaults('pd-home'); hs['hero_image']={'src':'hero.jpg'}; hs['story_image']={'src':'story.jpg'}; hs['show_stone']=True; hs['story_caption']='812 Walnut Deep · visualisatie'; hs['hero_caption']='811 Walnut Classic · interieur: visualisatie'; hs['hero_caption_photo']='811 Walnut Classic · Signature · echte productfoto'
     out=env.from_string(prep(open(TH+'sections/pd-home.liquid').read())).render(section={'settings':hs},all_products=all_products,collections=cols,images=images,shop=shop)
     out+='<div style="padding:80px 96px;font:28px serif">[Instafeed: Bij klanten en in projecten]</div>'
     out+=env.from_string(prep(open(TH+'sections/pd-home-cta.liquid').read())).render(section={'settings':defaults('pd-home-cta')})

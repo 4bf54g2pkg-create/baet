@@ -1,12 +1,12 @@
 {%- comment -%}
-  Puredeco · The Puredeco Edit: alle decors met "+ Sample", tot 3 stalen, vaste balk onderin.
+  Puredeco · The Puredeco Edit: alle decors met "+ Sample", tot 5 stalen, vaste balk onderin.
   Stalen gaan in de winkelmand zoals de Product Samples-app het doet: het echte decor met de eigenschap "Voorbeeld van".
 {%- endcomment -%}
 {%- liquid
   assign s = section.settings
   assign src = s.collection | default: collections['wandpanelen']
   assign max = s.max | default: 5
-  assign groups = 'Hout|Japandi|Leer|Art|Marmer|Steen' | split: '|'
+  assign groups = 'Hout|Beton ciré en travertin|Japandi|Leer|Art|Marmer' | split: '|'
 -%}
 <div class="ph pse" data-pse data-max="{{ max }}" data-prop="{{ s.property | default: 'Voorbeeld van' | escape }}">
   <section class="pse__head">
@@ -62,7 +62,7 @@
             elsif t contains ' art '
               assign grp = 'Art'
             elsif t contains 'travertin' or t contains 'beton' or t contains 'concrete' or t contains 'steen'
-              assign grp = 'Steen'
+              assign grp = 'Beton ciré en travertin'
             endif
             if grp != g
               continue
@@ -101,7 +101,7 @@
 (function () {
   var root = document.querySelector('[data-pse]');
   if (!root) return;
-  var MAX = parseInt(root.dataset.max, 10) || 3, PROP = root.dataset.prop, KEY = 'pd-edit';
+  var MAX = parseInt(root.dataset.max, 10) || 5, PROP = root.dataset.prop, KEY = 'pd-edit';
   var chosen = [];
   try { chosen = JSON.parse(localStorage.getItem(KEY) || '[]') || []; } catch (e) {}
   var btns = [].slice.call(root.querySelectorAll('[data-pse-add]'));
