@@ -75,6 +75,10 @@
           -%}
           <div class="pc-filters">
             {%- for filter in collection.filters -%}
+              {%- comment -%} Dikte (optie "Afwerking") is in de productdata op meerdere manieren gespeld; Shopify combineert die waarden
+                als "en", dus een samengevoegde knop geeft te weinig resultaten. Verborgen tot de optiewaarden gelijk zijn;
+                de collectie Naadloze wandpanelen staat in de navigatie. {%- endcomment -%}
+              {%- if filter.type == 'list' and filter.values.size > 1 and filter.label contains 'fwerking' -%}{%- continue -%}{%- endif -%}
               {%- if filter.type == 'list' and filter.values.size > 1 -%}
                 {%- liquid
                   assign keys = ''
@@ -123,9 +127,24 @@
                       endfor
                       assign q = active_q
                       if grp_on
-                        assign parts = grp_q | split: '¦'
-                        for part in parts
-                          assign q = q | remove: part
+                        assign q = ''
+                        for f2 in collection.filters
+                          if f2.type == 'list'
+                            for av in f2.active_values
+                              assign k2 = av.label | downcase | remove: ' ' | remove: '(' | remove: ')'
+                              if k2 contains '8mm'
+                                assign k2 = '8 mm naadloos'
+                              elsif k2 contains '5mm'
+                                assign k2 = '5 mm stomp'
+                              else
+                                assign k2 = av.label | strip
+                              endif
+                              unless f2.param_name == filter.param_name and k2 == kname
+                                assign ev = av.value | url_param_escape
+                                assign q = q | append: '&' | append: av.param_name | append: '=' | append: ev
+                              endunless
+                            endfor
+                          endif
                         endfor
                       else
                         assign q = q | append: grp_q
