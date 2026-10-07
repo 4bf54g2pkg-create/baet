@@ -336,10 +336,12 @@
         <p class="pdh__error" data-pdh-error hidden></p>
         <p class="pdh__klarna">Of betaal in 3 renteloze termijnen van <strong data-pdh-klarna>{{ pdh_variant.price | divided_by: 3 | money }}</strong> met <span class="pdh__klarna-logo">Klarna.</span></p>
 
-        <a class="pdh__sample" href="/pages/sample" data-pde-open aria-haspopup="dialog">
-          <span>Eerst voelen? Vraag een gratis sample aan</span>
-          <span aria-hidden="true">→</span>
-        </a>
+        {%- capture pdh_sw -%}{% render 'pd-swatch', product: product, width: 160 %}{%- endcapture -%}
+        <button type="button" class="pdh-smp" data-pde-add data-pde-main data-id="{{ pdh_variant.id }}" data-title="{{ product.title | escape }}" data-label="{% if pdh_code != blank %}{{ pdh_code }} {% endif %}{{ pdh_name | escape }}" data-img="{{ pdh_sw | strip }}" aria-haspopup="dialog">
+          <img class="pdh-smp__sw" src="{{ pdh_sw | strip }}" alt="" width="80" height="80" loading="lazy">
+          <span class="pdh-smp__t"><strong>Eerst voelen? Gratis staal</strong><small>€ 6,95 verzending · binnen 3–5 werkdagen</small></span>
+          <span class="pdh-smp__plus" aria-hidden="true">+</span>
+        </button>
 
         <ul class="pdh__usps">
           <li class="pdh__usp pdh__usp--lead" data-pdh-meta>Op voorraad · geleverd in 3–6 werkdagen</li>
@@ -748,9 +750,12 @@
 })();
 </script>
 
-{%- comment -%} ===== The Puredeco Edit: samples kiezen zonder de pagina te verlaten ===== {%- endcomment -%}
+{%- comment -%} ===== Samplebox: staal toevoegen zonder de pagina te verlaten (zelfde box als /pages/sample en de collectiekaarten) ===== {%- endcomment -%}
 {%- liquid
-  assign pde_list = product.metafields.custom.sibling_products.value
+  assign pde_list = product.metafields.custom.sample_pairs.value
+  if pde_list == blank
+    assign pde_list = product.metafields.custom.sibling_products.value
+  endif
   if pde_list == blank
     for c in product.collections
       if c.handle != 'all' and c.products_count > 1
@@ -759,75 +764,110 @@
       endif
     endfor
   endif
-  assign pde_apps = section.blocks | where: 'type', '@app'
-  assign pde_tex = pdh_pack | image_url: width: 1200
 -%}
-<div class="pde" data-pde hidden>
+<div class="pde" data-pde data-max="5" hidden>
   <div class="pde__scrim" data-pde-close></div>
   <div class="pde__panel" role="dialog" aria-modal="true" aria-labelledby="pde-title" tabindex="-1">
     <span class="pde__grip" aria-hidden="true"></span>
     <div class="pde__head">
-      <h2 id="pde-title" class="pde__title">The Puredeco Edit</h2>
+      <h2 id="pde-title" class="pde__title" data-pde-title>Je samplebox</h2>
       <button type="button" class="pde__x" data-pde-close aria-label="Sluiten">×</button>
     </div>
-    <p class="pde__sub">Gratis stalen · € 6,95 verzending · binnen 3–5 werkdagen in huis</p>
+    <ol class="pde__slots" data-pde-slots role="list"></ol>
+    <p class="pde__status" data-pde-status></p>
 
-    <div class="pde__grid">
-      <div class="pde__tile is-on">
-        <span class="pde__sw"{% if pde_tex != blank %} style="background-image:url('{{ pde_tex }}')"{% endif %}></span>
-        <span class="pde__lbl">✓ {% if pdh_code != blank %}{{ pdh_code }} {% endif %}{{ pdh_name }}</span>
-      </div>
-      {%- assign pde_n = 0 -%}
+    {%- assign pde_n = 0 -%}
+    {%- capture pde_pairs -%}
       {%- for p in pde_list -%}
-        {%- if p.handle != product.handle and pde_n < 2 -%}
-          {%- assign pde_n = pde_n | plus: 1 -%}
+        {%- if p.handle != product.handle and pde_n < 3 and p.available -%}
           {%- capture pc -%}{% render 'pd-decor', product: p, part: 'code' %}{%- endcapture -%}
-          {%- capture pn -%}{% render 'pd-decor', product: p, part: 'name' %}{%- endcapture -%}
-          <a class="pde__tile" href="{{ p.url }}#samples">
-            <span class="pde__sw"{% if p.featured_image %} style="background-image:url('{{ p.featured_image | image_url: width: 1200 }}')"{% endif %}></span>
-            <span class="pde__lbl">{% if pc != blank %}{{ pc | strip }} {% endif %}{{ pn | strip }}</span>
-          </a>
+          {%- assign pc = pc | strip -%}
+          {%- if pc != blank -%}
+            {%- assign pde_n = pde_n | plus: 1 -%}
+            {%- capture pn -%}{% render 'pd-decor', product: p, part: 'name' %}{%- endcapture -%}
+            {%- capture psw -%}{% render 'pd-swatch', product: p, width: 400 %}{%- endcapture -%}
+            {%- capture psm -%}{% render 'pd-swatch', product: p, width: 160 %}{%- endcapture -%}
+            {%- capture pz -%}{% render 'pd-swatch', product: p, part: 'zoom' %}{%- endcapture -%}
+            <li class="pde__pair">
+              <button type="button" class="pde__pair-btn{% if pz contains '1' %} is-zoom{% endif %}" data-pde-add data-id="{{ p.selected_or_first_available_variant.id }}" data-title="{{ p.title | escape }}" data-label="{{ pc }} {{ pn | strip | escape }}" data-img="{{ psm | strip }}" aria-pressed="false">
+                <img src="{{ psw | strip }}" alt="" loading="lazy" width="400" height="400">
+              </button>
+              <p class="pde__pair-name"><strong>{{ pc }}</strong> {{ pn | strip }}</p>
+              <a class="pde__pair-link" href="{{ p.url }}">Bekijk decor</a>
+            </li>
+          {%- endif -%}
         {%- endif -%}
       {%- endfor -%}
-    </div>
+    {%- endcapture -%}
+    {%- if pde_n > 0 -%}
+      <p class="pde__k">Past hierbij</p>
+      <ul class="pde__pairs" role="list">{{ pde_pairs }}</ul>
+    {%- endif -%}
 
-    <div class="pde__row">
-      <span>{% if pdh_code != blank %}{{ pdh_code }}{% else %}Dit decor{% endif %} staat klaar · kies er tot 5 op de samplepagina</span>
-      <a href="/pages/sample">Meer decors</a>
+    <div class="pde__actions">
+      <button type="button" class="pde__more" data-pde-close>Verder kijken</button>
+      <a class="pde__cta" href="/pages/sample#box">Samples aanvragen</a>
     </div>
-
-    <div class="pde__action">
-      {%- if pde_apps.size > 0 -%}
-        {%- for block in pde_apps -%}{% render block %}{%- endfor -%}
-      {%- else -%}
-        <a class="pde__cta" href="/pages/sample">Samples aanvragen</a>
-      {%- endif -%}
-    </div>
-    <p class="pde__note">Liever eerst advies? <a href="https://wa.me/31316700214?text={{ 'Hallo Puredeco, ik wil graag stalen van ' | append: pdh_code | append: ' ' | append: pdh_name | url_encode }}" target="_blank" rel="noopener">App ons</a>, we reageren dezelfde dag.</p>
+    <p class="pde__note">Gratis stalen · € 6,95 verzending · binnen 3–5 werkdagen in huis. Liever eerst advies? <a href="https://wa.me/31316700214?text={{ 'Hallo Puredeco, ik wil graag stalen van ' | append: pdh_code | append: ' ' | append: pdh_name | url_encode }}" target="_blank" rel="noopener">App ons</a>.</p>
   </div>
 </div>
 <script>
 (function () {
   var d = document.querySelector('[data-pde]');
   if (!d) return;
+  var KEY = 'pd-edit', MAX = parseInt(d.dataset.max, 10) || 5;
   var panel = d.querySelector('.pde__panel'), last = null;
-  function open(e) {
-    if (e) e.preventDefault();
-    last = document.activeElement;
-    d.hidden = false;
+  var slots = d.querySelector('[data-pde-slots]'), status = d.querySelector('[data-pde-status]'), title = d.querySelector('[data-pde-title]');
+  function get() { try { return JSON.parse(localStorage.getItem(KEY) || '[]') || []; } catch (e) { return []; } }
+  function put(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} }
+  var btns = [].slice.call(document.querySelectorAll('[data-pde-add]'));
+  function render(note) {
+    var c = get();
+    slots.innerHTML = '';
+    for (var k = 0; k < MAX; k++) {
+      var li = document.createElement('li');
+      if (c[k]) { li.className = 'is-on'; li.innerHTML = '<img alt="" src="' + c[k].img + '">'; li.title = c[k].label; }
+      slots.appendChild(li);
+    }
+    var free = MAX - c.length;
+    status.textContent = note || (c.length + ' van ' + MAX + (free > 0 ? ' · nog ' + free + (free === 1 ? ' vak' : ' vakken') + ' vrij' : ' · je box is vol'));
+    btns.forEach(function (b) {
+      var on = c.some(function (x) { return x.id === b.dataset.id; });
+      b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      var plus = b.querySelector('.pdh-smp__plus'); if (plus) plus.textContent = on ? '✓' : '+';
+    });
+  }
+  function toggle(b, onlyAdd) {
+    var c = get(), i = c.findIndex(function (x) { return x.id === b.dataset.id; });
+    if (i > -1) { if (!onlyAdd) { c.splice(i, 1); put(c); } return 'ok'; }
+    if (c.length >= MAX) return 'full';
+    c.push({ id: b.dataset.id, title: b.dataset.title, label: b.dataset.label, img: b.dataset.img }); put(c); return 'added';
+  }
+  function open() {
+    last = document.activeElement; d.hidden = false;
     requestAnimationFrame(function () { d.classList.add('is-open'); panel.focus(); });
     document.documentElement.style.overflow = 'hidden';
   }
   function close() {
-    d.classList.remove('is-open');
-    document.documentElement.style.overflow = '';
+    d.classList.remove('is-open'); document.documentElement.style.overflow = '';
     setTimeout(function () { d.hidden = true; }, 320);
     if (last && last.focus) last.focus();
   }
-  document.querySelectorAll('[data-pde-open]').forEach(function (a) { a.addEventListener('click', open); });
+  btns.forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.preventDefault();
+      var main = b.hasAttribute('data-pde-main');
+      var r = toggle(b, main);
+      if (main) { title.textContent = r === 'added' ? 'Toegevoegd aan je samplebox' : 'Je samplebox'; open(); }
+      render(r === 'full' ? 'Je samplebox is vol (' + MAX + '). Haal er eerst een staal uit op de samplepagina.' : '');
+    });
+  });
+  document.querySelectorAll('[data-pde-open]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); title.textContent = 'Je samplebox'; render(); open(); }); });
   d.querySelectorAll('[data-pde-close]').forEach(function (b) { b.addEventListener('click', close); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !d.hidden) close(); });
-  if (location.hash === '#samples') open();
+  window.addEventListener('storage', function () { render(); });
+  render();
+  if (location.hash === '#samples') { render(); open(); }
 })();
 </script>
 

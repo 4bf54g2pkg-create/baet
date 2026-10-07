@@ -124,3 +124,10 @@ templates/robots.txt.liquid  79fe39ff3f6c96eb3ef97395ad254787  = OK
 - 51 alt-teksten van productfoto's van actieve producten (o.a. "Renderique Photo 1" → "Houten wandpaneel 811 Walnut Classic, sfeerbeeld (visualisatie)").
 - Niet gedaan, bewust: noindex op dubbele collecties. Het live hoofdmenu linkt "Wandpanelen" naar /collections/bamboepanelen-samples; zonder Search Console-data kan noindex een rankende pagina kosten. Eerst in Search Console kijken welke URL rankt.
 - Open: Algemene voorwaarden bevatten nog "90 DAGEN TEVREDENHEIDSGARANTIE" (juridisch document, niet aangepast). Product 620 Light Brown toont als eerste foto het 619 Jade-beeld.
+
+## Samples A + B (7 okt) — H1-test
+- Stalen: 24 uitsneden `pd-staal-<code>.jpg` in Bestanden (bron: media/stalen, tools/banners/stalen.py) + `pd-edit-samplebox.jpg`. Snippet `pd-swatch` kiest het staal uit Bestanden, anders de productfoto (dan ingezoomd). Nieuw decor? Upload `pd-staal-<code>.jpg`.
+- A · `pd-samples` herbouwd als stalenkaart: hero met samplebox-foto, filters met aantallen, groepen (Hout, Beton en travertin, Japandi, Leer, Art, Marmer), stalen met interieur bij hover (visualisatie), genummerde keuze 1–5, samplebox met 5 vakken rechts (desktop) / balk onderin (mobiel). Aanvragen zoals voorheen (cart/add met "Voorbeeld van").
+- B · productpagina: knop "Eerst voelen? Gratis staal" met staal onder "In winkelmand"; voegt toe en opent het paneel "Toegevoegd aan je samplebox" met 5 vakken, "Past hierbij" (3 decors: metafield custom.sample_pairs, anders custom.sibling_products, anders de collectie) en "Samples aanvragen" → /pages/sample#box. Collectiekaarten gebruiken hetzelfde staal.
+- Eén gedeelde keuze (localStorage pd-edit, max 5) op samplepagina, productpagina en collectiekaarten.
+- Checksums: pd-swatch 3b7ab0f2… · pd-samples b56985e7… · pd-product-hero 36379f12… · pd-collection 2219cee2… · css c8b5fa32….

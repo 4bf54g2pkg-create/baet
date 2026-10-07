@@ -34,9 +34,13 @@ product={'title':'Wandpaneel Hout 811 Walnut Classic 8 mm Naadloos','handle':'81
  'options_with_values':[{'name':'Formaat','values':[Val('260 cm x 122 cm',True),Val('280 cm x 122 cm')]},{'name':'Afwerking','values':[Val('5mm Stomp',True),Val('8mm Naadloos')]}],
  'metafields':{'custom':{'sibling_products':{'value':None}},'reviews':{},'puredeco':{'project_video':{'value':'proj.mp4'},'project_steps':{'value':'Op maat zagen@0|Plaatsen@2|Klaar@6.2'},'project_caption':{'value':'in een toilet'}}},
  'collections':[{'handle':'hout-1','title':'Hout','products_count':6,'url':'#','products':[{'title':'Wandpaneel Hout 810 Noir Oak','handle':'810','url':'#','featured_image':{'src':'wood.svg'},'price_min':13995,'price_varies':True,'options_with_values':[{'name':'Afwerking','values':['5mm Stomp','8mm Naadloos']}]},{'title':'Wandpaneel Hout 812 Walnut Deep','handle':'812','url':'#','featured_image':{'src':'wood.svg'},'price_min':13995,'price_varies':True,'options_with_values':[{'name':'Afwerking','values':['5mm Stomp','8mm Naadloos']}]},{'title':'Wandpaneel Hout 602 Wood Classic','handle':'602','url':'#','featured_image':{'src':'wood.svg'},'price_min':13995,'price_varies':True,'options_with_values':[{'name':'Afwerking','values':['5mm Stomp','8mm Naadloos']}]},{'title':'Wandpaneel Hout 607 Wood White Oak','handle':'607','url':'#','featured_image':{'src':'wood.svg'},'price_min':13995,'price_varies':True,'options_with_values':[{'name':'Afwerking','values':['5mm Stomp','8mm Naadloos']}]}]}]}
-product['metafields']['custom']['sibling_products']={'value':product['collections'][0]['products']}
+product['metafields']['custom']['sibling_products']={'value':product['collections'][0]['products']}; product['metafields']['custom']['sample_pairs']={'value':''}
 shop={'enabled_payment_types':['ideal','klarna','visa','master','apple_pay','paypal'],'metafields':{'puredeco':{'montage_video':{'value':'film.mp4'},'montage_video_mobile':{'value':'filmp.mp4'}}}}
-ctx=dict(product=product, shop=shop, all_products={'eindprofielen':{'url':'#','price_min':2395}}, collection=None)
+import glob as _g
+for _i,_p in enumerate(product['collections'][0]['products']):
+    _p.setdefault('available',True); _p.setdefault('selected_or_first_available_variant',{'id':900+_i})
+_imgs={os.path.basename(f).replace('staal-','pd-staal-'):{'src':f,'width':600} for f in _g.glob('/home/user/baet/media/stalen/staal-*.jpg')}
+ctx=dict(product=product, shop=shop, all_products={'eindprofielen':{'url':'#','price_min':2395}}, collection=None, images=_imgs)
 def prep(src):
     src=re.sub(r'\{%\s*schema\s*%\}.*?\{%\s*endschema\s*%\}','',src,flags=re.S)
     src=re.sub(r"\{%-?\s*form 'product'[^%]*-?%\}",'<form id="pdh-form-S1" class="pdh__form" novalidate>',src)

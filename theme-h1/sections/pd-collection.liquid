@@ -166,7 +166,7 @@
               <div class="pc-card__act">
                 <a class="pc-card__go" href="{{ p.url }}">Bekijk en bereken</a>
                 {%- if v and code != blank -%}
-                  <button type="button" class="pc-card__smp" data-pc-sample data-id="{{ v.id }}" data-title="{{ p.title | escape }}" data-label="{{ label | escape }}" data-img="{{ panel | image_url: width: 200 }}" aria-pressed="false">
+                  <button type="button" class="pc-card__smp" data-pc-sample data-id="{{ v.id }}" data-title="{{ p.title | escape }}" data-label="{{ label | escape }}" data-img="{% render 'pd-swatch', product: p, width: 160 %}" aria-pressed="false">
                     <span class="off">+ Sample</span><span class="on">✓ Sample</span>
                   </button>
                 {%- endif -%}

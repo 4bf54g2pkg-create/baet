@@ -1,99 +1,166 @@
 {%- comment -%}
-  Puredeco · The Puredeco Edit: alle decors met "+ Sample", tot 5 stalen, vaste balk onderin.
-  Stalen gaan in de winkelmand zoals de Product Samples-app het doet: het echte decor met de eigenschap "Voorbeeld van".
+  Puredeco · The Puredeco Edit als stalenkaart.
+  Echte stalen per decor (pd-swatch), gegroepeerd per collectie met filters, interieur bij hover,
+  samplebox met vijf vakjes (desktop vast rechts, mobiel als balk onderin).
+  De keuze staat in localStorage 'pd-edit' en wordt gedeeld met de productpagina en de collectiekaarten.
+  Aanvragen: het echte decor in de winkelmand met de eigenschap "Voorbeeld van" (zoals de Product Samples-app).
 {%- endcomment -%}
 {%- liquid
   assign s = section.settings
   assign src = s.collection | default: collections['wandpanelen']
   assign max = s.max | default: 5
-  assign groups = 'Hout|Beton ciré en travertin|Japandi|Leer|Art|Marmer' | split: '|'
+  assign groups = 'Hout|Beton en travertin|Japandi|Leer|Art|Marmer' | split: '|'
+  assign hero = s.image | default: images['pd-edit-samplebox.jpg']
+
+  assign g_list = ''
+  assign total = 0
+  for p in src.products
+    capture code
+      render 'pd-decor', product: p, part: 'code'
+    endcapture
+    assign code = code | strip
+    if code == blank
+      continue
+    endif
+    assign t = p.title | downcase
+    assign grp = 'Overig'
+    if t contains 'marmer'
+      assign grp = 'Marmer'
+    elsif t contains 'hout'
+      assign grp = 'Hout'
+    elsif t contains 'japandi' or t contains 'japanse'
+      assign grp = 'Japandi'
+    elsif t contains 'leer'
+      assign grp = 'Leer'
+    elsif t contains ' art '
+      assign grp = 'Art'
+    elsif t contains 'travertin' or t contains 'beton' or t contains 'concrete' or t contains 'steen'
+      assign grp = 'Beton en travertin'
+    endif
+    assign g_list = g_list | append: '|' | append: grp
+    assign total = total | plus: 1
+  endfor
+  assign g_all = g_list | split: '|'
 -%}
 <div class="ph pse" data-pse data-max="{{ max }}" data-prop="{{ s.property | default: 'Voorbeeld van' | escape }}">
-  <section class="pse__head">
-    <div class="ph-wrap pse__head-in">
+
+  <section class="pse-hero">
+    <div class="ph-wrap pse-hero__in">
       <div>
         <p class="ph-k ph-k--bronze">The Puredeco Edit</p>
-        <h1 class="ph-h2 pse__h">Voel de kwaliteit zelf</h1>
-      </div>
-      <div>
-        <p class="ph-lead">Kies tot {{ max }} decors. Je krijgt een staal thuisgestuurd: buig het, leg het naast een ander paneel en bekijk het in je eigen licht. Stalen zijn gratis, je betaalt alleen {{ s.shipping }} verzending. {{ s.delivery | capitalize }}.</p>
-        <ol class="pse__steps">
-          <li><span>1</span>Kies tot {{ max }} decors</li>
-          <li><span>2</span>Gratis staal, {{ s.shipping }} verzending</li>
+        <h1 class="pse-hero__h">Voel het verschil.<br>Tot {% if max == 5 %}vijf{% else %}{{ max }}{% endif %} stalen, gratis.</h1>
+        <p class="ph-lead pse-hero__lead">Kies je decors op kleur en structuur. Je krijgt echte stalen van het paneel thuis: leg ze naast je vloer en bekijk ze bij daglicht en ’s avonds.</p>
+        <ol class="pse-steps">
+          <li><span>1</span>Kies tot {{ max }} stalen</li>
+          <li><span>2</span>{{ s.shipping }} verzending</li>
           <li><span>3</span>{{ s.delivery | capitalize }}</li>
         </ol>
       </div>
+      {%- if hero != blank -%}
+        <figure class="pse-hero__img">{{ hero | image_url: width: 1400 | image_tag: loading: 'eager', widths: '600, 900, 1400', sizes: '(min-width: 990px) 46vw, 100vw', alt: 'Drie stalen van Puredeco-wandpanelen' }}</figure>
+      {%- endif -%}
     </div>
   </section>
 
-  <section class="pse__body">
+  <section class="pse-lib" id="stalen">
     <div class="ph-wrap">
-      <div class="pse__filters" role="tablist" aria-label="Filter op collectie">
-        <button type="button" class="is-on" data-pse-filter="all">Alles</button>
-        {%- for g in groups -%}<button type="button" data-pse-filter="{{ g | handle }}">{{ g }}</button>{%- endfor -%}
+      <div class="pse-tabs" role="tablist" aria-label="Filter op collectie">
+        <button type="button" class="is-on" data-pse-filter="all">Alle <span>{{ total }}</span></button>
+        {%- for g in groups -%}
+          {%- assign n = 0 -%}{%- for x in g_all -%}{%- if x == g -%}{%- assign n = n | plus: 1 -%}{%- endif -%}{%- endfor -%}
+          {%- if n > 0 -%}<button type="button" data-pse-filter="{{ g | handle }}">{{ g }} <span>{{ n }}</span></button>{%- endif -%}
+        {%- endfor -%}
       </div>
 
-      <ul class="pse__grid" role="list">
-        {%- for g in groups -%}
-        <li class="pse__gh" data-group="{{ g | handle }}"><span class="s">{{ g }}</span></li>
-        {%- for p in src.products -%}
-          {%- liquid
-            capture code
-              render 'pd-decor', product: p, part: 'code'
-            endcapture
-            assign code = code | strip
-            if code == blank
-              continue
-            endif
-            capture name
-              render 'pd-decor', product: p, part: 'name'
-            endcapture
-            assign name = name | strip
-            assign t = p.title | downcase
-            assign grp = ''
-            if t contains 'marmer'
-              assign grp = 'Marmer'
-            elsif t contains 'hout'
-              assign grp = 'Hout'
-            elsif t contains 'japandi' or t contains 'japanse'
-              assign grp = 'Japandi'
-            elsif t contains 'leer'
-              assign grp = 'Leer'
-            elsif t contains ' art '
-              assign grp = 'Art'
-            elsif t contains 'travertin' or t contains 'beton' or t contains 'concrete' or t contains 'steen'
-              assign grp = 'Beton ciré en travertin'
-            endif
-            if grp != g
-              continue
-            endif
-            assign v = p.selected_or_first_available_variant
-          -%}
-          {%- if v -%}
-            <li class="pse__item" data-group="{{ grp | handle }}">
-              <a class="pse__sw" href="{{ p.url }}" style="background-image:url('{{ p.featured_image | image_url: width: 900 }}')" aria-label="{{ code }} {{ name }} bekijken"></a>
-              <div class="pse__meta">
-                <p class="pse__name"><span>{{ code }}</span> {{ name }}</p>
-              </div>
-              <button type="button" class="pse__add" data-pse-add data-id="{{ v.id }}" data-title="{{ p.title | escape }}" data-label="{{ code }} {{ name | escape }}" data-img="{{ p.featured_image | image_url: width: 200 }}">
-                <span class="pse__add-off">+ Sample · € 0</span><span class="pse__add-on">✓ Gekozen</span>
-              </button>
-            </li>
-          {%- endif -%}
-        {%- endfor -%}
-        {%- endfor -%}
-      </ul>
-      <p class="ph-note">Zie je een decor niet? <a href="https://wa.me/31316700214?text={{ 'Hallo Puredeco, ik zoek een staal van ' | url_encode }}" target="_blank" rel="noopener">App ons</a>, dan kijken we mee.</p>
+      <div class="pse-lib__in">
+        <div class="pse-groups">
+          {%- for g in groups -%}
+            {%- assign n = 0 -%}{%- for x in g_all -%}{%- if x == g -%}{%- assign n = n | plus: 1 -%}{%- endif -%}{%- endfor -%}
+            {%- if n > 0 -%}
+            <div class="pse-group" data-group="{{ g | handle }}">
+              <h2 class="pse-group__h">{{ g }} <span>{{ n }} {% if n == 1 %}decor{% else %}decors{% endif %}</span></h2>
+              <ul class="pse-grid" role="list">
+                {%- for p in src.products -%}
+                  {%- liquid
+                    capture code
+                      render 'pd-decor', product: p, part: 'code'
+                    endcapture
+                    assign code = code | strip
+                    if code == blank
+                      continue
+                    endif
+                    assign t = p.title | downcase
+                    assign grp = 'Overig'
+                    if t contains 'marmer'
+                      assign grp = 'Marmer'
+                    elsif t contains 'hout'
+                      assign grp = 'Hout'
+                    elsif t contains 'japandi' or t contains 'japanse'
+                      assign grp = 'Japandi'
+                    elsif t contains 'leer'
+                      assign grp = 'Leer'
+                    elsif t contains ' art '
+                      assign grp = 'Art'
+                    elsif t contains 'travertin' or t contains 'beton' or t contains 'concrete' or t contains 'steen'
+                      assign grp = 'Beton en travertin'
+                    endif
+                    if grp != g
+                      continue
+                    endif
+                    capture name
+                      render 'pd-decor', product: p, part: 'name'
+                    endcapture
+                    assign name = name | strip
+                    capture sw
+                      render 'pd-swatch', product: p, width: 600
+                    endcapture
+                    capture zoom
+                      render 'pd-swatch', product: p, part: 'zoom'
+                    endcapture
+                    capture thumb
+                      render 'pd-swatch', product: p, width: 160
+                    endcapture
+                    assign room = p.media[1]
+                    assign v = p.selected_or_first_available_variant
+                  -%}
+                  {%- if v -%}
+                  <li class="pse-item" data-group="{{ g | handle }}">
+                    <button type="button" class="pse-tile{% if zoom contains '1' %} pse-tile--zoom{% endif %}" data-pse-add data-id="{{ v.id }}" data-title="{{ p.title | escape }}" data-label="{{ code }} {{ name | escape }}" data-img="{{ thumb | strip }}" aria-pressed="false" aria-label="Staal {{ code }} {{ name | escape }} kiezen">
+                      <img class="pse-tile__sw" src="{{ sw | strip }}" alt="" loading="lazy" width="600" height="600">
+                      {%- if room != blank -%}<img class="pse-tile__room" src="{{ room | image_url: width: 600 }}" alt="" loading="lazy" width="600" height="600"><span class="pse-tile__vis">In een interieur · visualisatie</span>{%- endif -%}
+                      <span class="pse-tile__badge" data-pse-n aria-hidden="true">+</span>
+                    </button>
+                    <p class="pse-item__name"><strong>{{ code }}</strong> {{ name }}</p>
+                    <a class="pse-item__link" href="{{ p.url }}">Bekijk decor</a>
+                  </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            </div>
+            {%- endif -%}
+          {%- endfor -%}
+          <p class="ph-note">Zie je een decor niet? <a href="https://wa.me/31316700214?text={{ 'Hallo Puredeco, ik zoek een staal van ' | url_encode }}" target="_blank" rel="noopener">App ons</a>, dan kijken we mee.</p>
+        </div>
+
+        <aside class="pse-box" id="box" data-pse-box aria-live="polite">
+          <p class="ph-k ph-k--bronze">Je samplebox</p>
+          <p class="pse-box__h"><span data-pse-count>0</span> van {{ max }} gekozen</p>
+          <ol class="pse-box__slots" data-pse-slots role="list"></ol>
+          <dl class="pse-box__sum">
+            <div><dt>Stalen</dt><dd>gratis</dd></div>
+            <div><dt>Verzending</dt><dd>{{ s.shipping }}</dd></div>
+          </dl>
+          <p class="pse-box__note">{{ s.delivery | capitalize }}</p>
+          <button type="button" class="pse-box__go" data-pse-go disabled>Samples aanvragen</button>
+          <p class="pse-box__msg" data-pse-msg hidden></p>
+        </aside>
+      </div>
     </div>
   </section>
 
-  <div class="pse__bar" data-pse-bar aria-live="polite">
-    <div class="ph-wrap pse__bar-in">
-      <ul class="pse__chosen" data-pse-chosen role="list"></ul>
-      <p class="pse__count"><strong data-pse-count>0</strong> van {{ max }} gekozen · verzending {{ s.shipping }} · {{ s.delivery }}</p>
-      <button type="button" class="pse__go" data-pse-go disabled>Samples aanvragen</button>
-    </div>
-    <p class="pse__msg" data-pse-msg hidden></p>
+  <div class="pse-bar" data-pse-bar>
+    <ol class="pse-bar__slots" data-pse-bar-slots role="list"></ol>
+    <a class="pse-bar__go" href="#box">Aanvragen →</a>
   </div>
 </div>
 
@@ -105,26 +172,37 @@
   var chosen = [];
   try { chosen = JSON.parse(localStorage.getItem(KEY) || '[]') || []; } catch (e) {}
   var btns = [].slice.call(root.querySelectorAll('[data-pse-add]'));
-  var list = root.querySelector('[data-pse-chosen]'), count = root.querySelector('[data-pse-count]');
-  var go = root.querySelector('[data-pse-go]'), bar = root.querySelector('[data-pse-bar]'), msg = root.querySelector('[data-pse-msg]');
-  chosen = chosen.filter(function (c) { return btns.some(function (b) { return b.dataset.id === c.id; }); });
+  var known = {}; btns.forEach(function (b) { known[b.dataset.id] = b; });
+  chosen = chosen.filter(function (c) { return known[c.id]; }).slice(0, MAX);
+  chosen.forEach(function (c) { c.img = known[c.id].dataset.img; c.label = known[c.id].dataset.label; });
+  var slots = root.querySelector('[data-pse-slots]'), bslots = root.querySelector('[data-pse-bar-slots]');
+  var count = root.querySelector('[data-pse-count]'), go = root.querySelector('[data-pse-go]'), msg = root.querySelector('[data-pse-msg]');
+  var bar = root.querySelector('[data-pse-bar]');
   function save() { try { localStorage.setItem(KEY, JSON.stringify(chosen)); } catch (e) {} }
   function say(t) { msg.hidden = !t; msg.textContent = t || ''; }
+  function remove(id) { chosen = chosen.filter(function (x) { return x.id !== id; }); save(); render(); }
   function render() {
     btns.forEach(function (b) {
-      var on = chosen.some(function (c) { return c.id === b.dataset.id; });
-      b.classList.toggle('is-on', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
-      b.disabled = !on && chosen.length >= MAX;
+      var i = chosen.findIndex(function (c) { return c.id === b.dataset.id; });
+      b.classList.toggle('is-on', i > -1);
+      b.classList.toggle('is-full', i < 0 && chosen.length >= MAX);
+      b.setAttribute('aria-pressed', i > -1 ? 'true' : 'false');
+      b.querySelector('[data-pse-n]').textContent = i > -1 ? (i + 1) : '+';
     });
-    list.innerHTML = '';
-    chosen.forEach(function (c) {
-      var li = document.createElement('li');
-      li.innerHTML = '<span class="pse__chip-img" style="background-image:url(\'' + c.img + '\')"></span><span></span><button type="button" aria-label="Verwijder">×</button>';
-      li.children[1].textContent = c.label;
-      li.querySelector('button').addEventListener('click', function () { chosen = chosen.filter(function (x) { return x.id !== c.id; }); save(); render(); });
-      list.appendChild(li);
-    });
+    slots.innerHTML = ''; bslots.innerHTML = '';
+    for (var k = 0; k < MAX; k++) {
+      var c = chosen[k], li = document.createElement('li'), bi = document.createElement('li');
+      if (c) {
+        li.className = 'is-on';
+        li.innerHTML = '<img alt="" src="' + c.img + '"><span></span><button type="button" aria-label="Verwijder">×</button>';
+        li.querySelector('span').textContent = c.label;
+        (function (id) { li.querySelector('button').addEventListener('click', function () { remove(id); }); })(c.id);
+        bi.innerHTML = '<img alt="" src="' + c.img + '">';
+      } else {
+        li.innerHTML = '<i></i><span>Vak ' + (k + 1) + ' · nog vrij</span>';
+      }
+      slots.appendChild(li); bslots.appendChild(bi);
+    }
     count.textContent = chosen.length;
     go.disabled = chosen.length === 0;
     bar.classList.toggle('is-on', chosen.length > 0);
@@ -134,6 +212,7 @@
       var i = chosen.findIndex(function (c) { return c.id === b.dataset.id; });
       if (i > -1) chosen.splice(i, 1);
       else if (chosen.length < MAX) chosen.push({ id: b.dataset.id, title: b.dataset.title, label: b.dataset.label, img: b.dataset.img });
+      else { say('Je samplebox is vol. Haal er eerst een staal uit.'); return; }
       say(''); save(); render();
     });
   });
@@ -141,7 +220,7 @@
     f.addEventListener('click', function () {
       var g = f.dataset.pseFilter;
       root.querySelectorAll('[data-pse-filter]').forEach(function (x) { x.classList.toggle('is-on', x === f); });
-      root.querySelectorAll('.pse__item, .pse__gh').forEach(function (it) { it.hidden = g !== 'all' && it.dataset.group !== g; });
+      root.querySelectorAll('.pse-group').forEach(function (it) { it.hidden = g !== 'all' && it.dataset.group !== g; });
     });
   });
   go.addEventListener('click', function () {
@@ -164,6 +243,7 @@
   "class": "pd-samples-section",
   "settings": [
     { "type": "collection", "id": "collection", "label": "Collectie met alle decors", "info": "Standaard: Wandpanelen." },
+    { "type": "image_picker", "id": "image", "label": "Beeld bovenaan", "info": "Standaard: pd-edit-samplebox.jpg uit Bestanden." },
     { "type": "range", "id": "max", "label": "Maximaal aantal stalen", "min": 1, "max": 6, "step": 1, "default": 5 },
     { "type": "text", "id": "shipping", "label": "Verzendkosten stalen", "default": "€ 6,95" },
     { "type": "text", "id": "delivery", "label": "Levertijd stalen", "default": "binnen 3–5 werkdagen in huis" },

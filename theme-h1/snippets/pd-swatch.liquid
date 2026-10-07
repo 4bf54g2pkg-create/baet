@@ -1,0 +1,28 @@
+{%- comment -%}
+  Puredeco: URL van het staal van een decor.
+  Eerst het uitgesneden staal uit Bestanden (pd-staal-<code>.jpg), anders de productfoto (paneel op wit).
+  Gebruik: {% render 'pd-swatch', product: p, width: 600 %}  → URL
+  Met part: 'zoom' komt "1" terug als er geen uitgesneden staal is (dan moet de weergave inzoomen op het paneel).
+{%- endcomment -%}
+{%- liquid
+  capture sw_code
+    render 'pd-decor', product: product, part: 'code'
+  endcapture
+  assign sw_code = sw_code | strip
+  assign sw_name = 'pd-staal-' | append: sw_code | append: '.jpg'
+  assign sw_img = blank
+  if sw_code != blank
+    assign sw_img = images[sw_name]
+  endif
+  if part == 'zoom'
+    if sw_img == blank or sw_img.width == blank
+      echo '1'
+    endif
+  else
+    if sw_img != blank and sw_img.width != blank
+      echo sw_img | image_url: width: width
+    else
+      echo product.featured_image | image_url: width: width
+    endif
+  endif
+-%}
