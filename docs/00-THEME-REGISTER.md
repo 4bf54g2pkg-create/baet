@@ -158,3 +158,4 @@ templates/robots.txt.liquid  79fe39ff3f6c96eb3ef97395ad254787  = OK
 - 'Plan je bezoek' opent BookX (.bookeasy-btn uit header-app); zonder BookX → WhatsApp. Getest: agenda opent.
 - page.showroom.json: pd_studio bovenaan, oude puredeco_showroom_page alleen uitgezet (terugdraaien = aanzetten). URL ongewijzigd.
 - md5 pd-studio fbd13d82…, css 12e686c1…, template 9f645fc2….
+- Showroomfoto bewerkt (uitsnede zonder plafond, warmer licht, tv uit, 2x opgeschaald) → Bestanden: pd-studio-herwen.jpg (1600×998); visit_image in page.showroom.json. Script: tools/studio-foto-bewerken.py. Template md5 a974ac84….
