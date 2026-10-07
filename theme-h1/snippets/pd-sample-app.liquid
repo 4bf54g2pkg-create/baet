@@ -1,38 +1,38 @@
 {%- comment -%}
-  Puredeco: geeft een staal door aan de Product Samples-app.
-  De app maakt zelf de bestelling aan (stalen € 0 + verzending via conceptorder); de gewone winkelmand rekent
-  de paneelprijs. We drukken daarom de echte app-knop ([product-samples-button]) in, net als de live-site doet;
-  de app opent dan zijn eigen venster. Staat de knop niet op deze pagina, dan gaan we naar de productpagina
-  van het eerste gekozen decor (#pd-sample) en drukken hem daar in.
-  Gebruik: {% render 'pd-sample-app' %} op de samplepagina én de productpagina;
-  daarna window.pdSampleApp.add(['/products/...']).
+  Puredeco: zet gekozen stalen in de samplebox van de Product Samples-app (logica "separated-sample-box").
+  De app bewaart zijn lijst in localStorage onder "product_samples" als { variant-id: product-JSON } en
+  rekent zelf af via een conceptorder (stalen € 0 + verzending). De gewone winkelmand rekent de paneelprijs,
+  dus daar komen stalen nooit in. Na het vullen laten we de app zijn lijst opnieuw lezen en openen
+  (events reInitWidget / renderWidget op <body>, zoals de app zelf doet).
+  Gebruik: {% render 'pd-sample-app' %}; daarna window.pdSampleApp.add([{ id: variant-id, url: '/products/...' }]).
 {%- endcomment -%}
 <script>
 window.pdSampleApp = window.pdSampleApp || (function () {
-  var BTN = '[product-samples-button]', HASH = '#pd-sample';
-  function wait(fn, ms) {
-    return new Promise(function (ok, no) {
-      var t0 = Date.now();
-      (function tick() { var r; try { r = fn(); } catch (e) {} if (r) return ok(r); if (Date.now() - t0 > ms) return no(); setTimeout(tick, 150); })();
-    });
+  var KEY = 'product_samples';
+  function read() { try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { return {}; } }
+  function fire(name) { try { document.body.dispatchEvent(new CustomEvent(name, { bubbles: true, detail: {} })); } catch (e) {} }
+  function product(url) {
+    return fetch(url.split('#')[0].split('?')[0] + '.js', { headers: { 'Accept': 'application/json' } })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
   }
-  function press() {
-    return wait(function () { return document.querySelector(BTN); }, 8000).then(function (b) { b.click(); return true; });
-  }
-  function boot() {
-    if (location.hash !== HASH) return;
-    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
-    press().catch(function () {});
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
   return {
-    add: function (urls) {
-      urls = (urls || []).filter(Boolean);
-      if (document.querySelector(BTN)) return press();
-      if (!urls.length) return Promise.reject(new Error('none'));
-      location.href = urls[0].split('#')[0] + HASH;
-      return Promise.resolve(true);
-    }
+    add: function (items) {
+      items = (items || []).filter(function (x) { return x && x.id && x.url; });
+      if (!items.length) return Promise.reject(new Error('none'));
+      return Promise.all(items.map(function (x) {
+        return product(x.url).then(function (p) { return { id: String(x.id), p: p }; }, function () { return null; });
+      })).then(function (list) {
+        var box = read(), n = 0;
+        list.forEach(function (x) { if (x && x.p && x.p.variants) { box[x.id] = x.p; n++; } });
+        if (!n) throw new Error('none');
+        try { localStorage.setItem(KEY, JSON.stringify(box)); } catch (e) { throw new Error('storage'); }
+        fire('reInitWidget.productSamples');
+        fire('showWidget.productSamples');
+        fire('renderWidget.productSamples');
+        return n;
+      });
+    },
+    opened: function () { return document.body.classList.contains('product-samples-widget--active'); }
   };
 })();
 </script>

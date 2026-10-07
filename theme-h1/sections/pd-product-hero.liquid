@@ -875,11 +875,11 @@
   window.addEventListener('storage', function () { render(); });
   var go = d.querySelector('[data-pde-go]');
   if (go) go.addEventListener('click', function () {
-    var c = get(), urls = c.map(function (x) { return x.url; }).filter(Boolean);
-    if (!urls.length || !window.pdSampleApp) { render('Kies eerst een staal.'); return; }
-    close();
-    window.pdSampleApp.add(urls)
-      .then(function () {})
+    var c = get().filter(function (x) { return x.url; });
+    if (!c.length || !window.pdSampleApp) { render('Kies eerst een staal.'); return; }
+    go.disabled = true; go.textContent = 'Even geduld…';
+    window.pdSampleApp.add(c.map(function (x) { return { id: x.id, url: x.url }; }))
+      .then(function () { go.disabled = false; go.textContent = 'Samples aanvragen'; close(); })
       .catch(function () { go.disabled = false; go.textContent = 'Samples aanvragen'; render('Dat lukte niet. Probeer het opnieuw of app ons.'); });
   });
   render();

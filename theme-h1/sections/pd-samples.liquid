@@ -132,7 +132,6 @@
                     </button>
                     <p class="pse-item__name"><strong>{{ code }}</strong> {{ name }}</p>
                     <a class="pse-item__link" href="{{ p.url }}">Bekijk decor</a>
-                    <div class="pse-app" data-pse-app="{{ v.id }}" aria-hidden="true">{%- form 'product', p -%}<div class="js-product-samples" data-sample="{{ p | json | url_encode }}"></div>{%- endform -%}</div>
                   </li>
                   {%- endif -%}
                 {%- endfor -%}
@@ -229,20 +228,13 @@
     if (!chosen.length) return;
     go.disabled = true;
     go.textContent = 'Even geduld…';
-    var queue = chosen.slice(), done = 0;
-    function appBtn(c) { var w = root.querySelector('[data-pse-app="' + c.id + '"]'); return w && w.querySelector('[product-samples-button]'); }
-    if (!queue.some(appBtn)) {
-      var urls = chosen.map(function (c) { return c.url; }).filter(Boolean);
-      if (window.pdSampleApp && urls.length) { window.pdSampleApp.add(urls); return; }
-      go.disabled = false; go.textContent = 'Samples aanvragen'; say('Dat lukte niet. Probeer het opnieuw of app ons.'); return;
-    }
-    (function next() {
-      var c = queue.shift();
-      if (c) { var b = appBtn(c); if (b) { b.click(); done++; } return setTimeout(next, 700); }
-      go.disabled = false; go.textContent = 'Samples aanvragen';
-      var t = document.querySelector('.product-samples-widget__trigger');
-      if (t) t.click(); else say(done + (done === 1 ? ' staal staat' : ' stalen staan') + ' klaar in je samplelijst.');
-    })();
+    if (!window.pdSampleApp) { go.disabled = false; go.textContent = 'Samples aanvragen'; say('Dat lukte niet. Probeer het opnieuw of app ons.'); return; }
+    window.pdSampleApp.add(chosen.map(function (c) { return { id: c.id, url: c.url }; }))
+      .then(function (n) {
+        go.disabled = false; go.textContent = 'Samples aanvragen';
+        setTimeout(function () { if (!window.pdSampleApp.opened()) say(n + (n === 1 ? ' staal staat' : ' stalen staan') + ' in je samplelijst. Open hem via de knop rechtsonder.'); }, 2500);
+      })
+      .catch(function () { go.disabled = false; go.textContent = 'Samples aanvragen'; say('Dat lukte niet. Probeer het opnieuw of app ons.'); });
   });
   render();
 })();
