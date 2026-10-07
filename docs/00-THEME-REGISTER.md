@@ -131,3 +131,10 @@ templates/robots.txt.liquid  79fe39ff3f6c96eb3ef97395ad254787  = OK
 - B · productpagina: knop "Eerst voelen? Gratis staal" met staal onder "In winkelmand"; voegt toe en opent het paneel "Toegevoegd aan je samplebox" met 5 vakken, "Past hierbij" (3 decors: metafield custom.sample_pairs, anders custom.sibling_products, anders de collectie) en "Samples aanvragen" → /pages/sample#box. Collectiekaarten gebruiken hetzelfde staal.
 - Eén gedeelde keuze (localStorage pd-edit, max 5) op samplepagina, productpagina en collectiekaarten.
 - Checksums: pd-swatch 3b7ab0f2… · pd-samples b56985e7… · pd-product-hero 36379f12… · pd-collection 2219cee2… · css c8b5fa32….
+
+## 2026-10-07 — Stalen via de Product Samples-app (fix: volle paneelprijs bij afrekenen)
+- Oorzaak: stalenkaart en productlade deden `/cart/add.js`; de app werkt met een eigen conceptorder (stalen € 0 + € 6,95). Gewone winkelmand = paneelprijs.
+- Nieuw `snippets/pd-sample-app.liquid`: per gekozen decor wordt de productpagina onzichtbaar geladen en de echte app-knop `[product-samples-button]` ingedrukt; daarna herlaadt de pagina en opent de app-lijst (`.product-samples-widget__trigger`).
+- `pd-samples` (knop "Samples aanvragen") en `pd-product-hero` (lade, knop "Samples aanvragen") gebruiken dit. App-blok weer gerenderd in de lade (verborgen, nodig voor de koppeling).
+- Checksums: snippet 31cb9b91…, pd-samples f38a6b02…, pd-product-hero 8f4d92f5…, css 74f1c4f8…
+- Te testen in voorbeeld H1-test: 2–3 stalen kiezen → app-lijst moet die stalen tonen → afrekenen € 0 + € 6,95.

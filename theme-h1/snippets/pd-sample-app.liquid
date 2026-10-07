@@ -1,0 +1,52 @@
+{%- comment -%}
+  Puredeco: geeft gekozen stalen door aan de Product Samples-app.
+  De app maakt zelf de bestelling aan (stalen € 0 + verzending via conceptorder); de gewone winkelmand rekent
+  de paneelprijs. Daarom laden we per decor de productpagina onzichtbaar en drukken we daar op de echte
+  app-knop ([product-samples-button]). Daarna openen we de samplelijst van de app.
+  Gebruik: {% render 'pd-sample-app' %} één keer per pagina; daarna window.pdSampleApp.add(['/products/...']).
+{%- endcomment -%}
+<script>
+window.pdSampleApp = window.pdSampleApp || (function () {
+  var BTN = '[product-samples-button]', TRIGGER = '.product-samples-widget__trigger', FLAG = 'pd-sample-open';
+  function wait(fn, ms) {
+    return new Promise(function (ok, no) {
+      var t0 = Date.now();
+      (function tick() { var r; try { r = fn(); } catch (e) {} if (r) return ok(r); if (Date.now() - t0 > ms) return no(); setTimeout(tick, 150); })();
+    });
+  }
+  function one(url) {
+    return new Promise(function (ok, no) {
+      var f = document.createElement('iframe');
+      f.setAttribute('aria-hidden', 'true'); f.tabIndex = -1;
+      f.style.cssText = 'position:absolute;width:1px;height:1px;left:-9999px;top:0;border:0;opacity:0';
+      f.src = url.split('#')[0];
+      var done = function (good) { setTimeout(function () { f.remove(); }, 200); good ? ok() : no(); };
+      f.onload = function () {
+        wait(function () { return f.contentDocument && f.contentDocument.querySelector(BTN); }, 9000)
+          .then(function (b) { b.click(); setTimeout(function () { done(true); }, 1600); })
+          .catch(function () { done(false); });
+      };
+      document.body.appendChild(f);
+    });
+  }
+  function openList() {
+    var t = document.querySelector(TRIGGER);
+    if (t) { t.click(); return true; }
+    return false;
+  }
+  try { if (sessionStorage.getItem(FLAG)) { sessionStorage.removeItem(FLAG); wait(function () { return document.querySelector(TRIGGER); }, 6000).then(function (t) { t.click(); }).catch(function () {}); } } catch (e) {}
+  return {
+    add: function (urls) {
+      var n = 0, chain = Promise.resolve();
+      urls.forEach(function (u) { chain = chain.then(function () { return one(u).then(function () { n++; }, function () {}); }); });
+      return chain.then(function () {
+        if (!n) throw new Error('none');
+        try { sessionStorage.setItem(FLAG, '1'); } catch (e) {}
+        location.reload();
+        return n;
+      });
+    },
+    openList: openList
+  };
+})();
+</script>

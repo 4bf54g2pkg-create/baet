@@ -337,7 +337,7 @@
         <p class="pdh__klarna">Of betaal in 3 renteloze termijnen van <strong data-pdh-klarna>{{ pdh_variant.price | divided_by: 3 | money }}</strong> met <span class="pdh__klarna-logo">Klarna.</span></p>
 
         {%- capture pdh_sw -%}{% render 'pd-swatch', product: product, width: 160 %}{%- endcapture -%}
-        <button type="button" class="pdh-smp" data-pde-add data-pde-main data-id="{{ pdh_variant.id }}" data-title="{{ product.title | escape }}" data-label="{% if pdh_code != blank %}{{ pdh_code }} {% endif %}{{ pdh_name | escape }}" data-img="{{ pdh_sw | strip }}" aria-haspopup="dialog">
+        <button type="button" class="pdh-smp" data-pde-add data-pde-main data-id="{{ pdh_variant.id }}" data-url="{{ product.url }}" data-title="{{ product.title | escape }}" data-label="{% if pdh_code != blank %}{{ pdh_code }} {% endif %}{{ pdh_name | escape }}" data-img="{{ pdh_sw | strip }}" aria-haspopup="dialog">
           <img class="pdh-smp__sw" src="{{ pdh_sw | strip }}" alt="" width="80" height="80" loading="lazy">
           <span class="pdh-smp__t"><strong>Eerst voelen? Gratis staal</strong><small>€ 6,95 verzending · binnen 3–5 werkdagen</small></span>
           <span class="pdh-smp__plus" aria-hidden="true">+</span>
@@ -789,7 +789,7 @@
             {%- capture psm -%}{% render 'pd-swatch', product: p, width: 160 %}{%- endcapture -%}
             {%- capture pz -%}{% render 'pd-swatch', product: p, part: 'zoom' %}{%- endcapture -%}
             <li class="pde__pair">
-              <button type="button" class="pde__pair-btn{% if pz contains '1' %} is-zoom{% endif %}" data-pde-add data-id="{{ p.selected_or_first_available_variant.id }}" data-title="{{ p.title | escape }}" data-label="{{ pc }} {{ pn | strip | escape }}" data-img="{{ psm | strip }}" aria-pressed="false">
+              <button type="button" class="pde__pair-btn{% if pz contains '1' %} is-zoom{% endif %}" data-pde-add data-id="{{ p.selected_or_first_available_variant.id }}" data-url="{{ p.url }}" data-title="{{ p.title | escape }}" data-label="{{ pc }} {{ pn | strip | escape }}" data-img="{{ psm | strip }}" aria-pressed="false">
                 <img src="{{ psw | strip }}" alt="" loading="lazy" width="400" height="400">
               </button>
               <p class="pde__pair-name"><strong>{{ pc }}</strong> {{ pn | strip }}</p>
@@ -804,13 +804,20 @@
       <ul class="pde__pairs" role="list">{{ pde_pairs }}</ul>
     {%- endif -%}
 
+    {%- assign pde_apps = section.blocks | where: 'type', '@app' -%}
+    {%- if pde_apps.size > 0 -%}
+      <div class="pde__app" aria-hidden="true">
+        {%- for block in pde_apps -%}{% render block %}{%- endfor -%}
+      </div>
+    {%- endif -%}
     <div class="pde__actions">
       <button type="button" class="pde__more" data-pde-close>Verder kijken</button>
-      <a class="pde__cta" href="/pages/sample#box">Samples aanvragen</a>
+      <button type="button" class="pde__cta" data-pde-go>Samples aanvragen</button>
     </div>
     <p class="pde__note">Gratis stalen · € 6,95 verzending · binnen 3–5 werkdagen in huis. Liever eerst advies? <a href="https://wa.me/31316700214?text={{ 'Hallo Puredeco, ik wil graag stalen van ' | append: pdh_code | append: ' ' | append: pdh_name | url_encode }}" target="_blank" rel="noopener">App ons</a>.</p>
   </div>
 </div>
+{% render 'pd-sample-app' %}
 <script>
 (function () {
   var d = document.querySelector('[data-pde]');
@@ -841,7 +848,7 @@
     var c = get(), i = c.findIndex(function (x) { return x.id === b.dataset.id; });
     if (i > -1) { if (!onlyAdd) { c.splice(i, 1); put(c); } return 'ok'; }
     if (c.length >= MAX) return 'full';
-    c.push({ id: b.dataset.id, title: b.dataset.title, label: b.dataset.label, img: b.dataset.img }); put(c); return 'added';
+    c.push({ id: b.dataset.id, url: b.dataset.url, title: b.dataset.title, label: b.dataset.label, img: b.dataset.img }); put(c); return 'added';
   }
   function open() {
     last = document.activeElement; d.hidden = false;
@@ -866,6 +873,15 @@
   d.querySelectorAll('[data-pde-close]').forEach(function (b) { b.addEventListener('click', close); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !d.hidden) close(); });
   window.addEventListener('storage', function () { render(); });
+  var go = d.querySelector('[data-pde-go]');
+  if (go) go.addEventListener('click', function () {
+    var c = get(), urls = c.map(function (x) { return x.url; }).filter(Boolean);
+    if (!urls.length || !window.pdSampleApp) { render('Kies eerst een staal.'); return; }
+    go.disabled = true; go.textContent = 'Stalen klaarzetten… (' + urls.length + ')';
+    window.pdSampleApp.add(urls)
+      .then(function () { put([]); })
+      .catch(function () { go.disabled = false; go.textContent = 'Samples aanvragen'; render('Dat lukte niet. Probeer het opnieuw of app ons.'); });
+  });
   render();
   if (location.hash === '#samples') { render(); open(); }
 })();
