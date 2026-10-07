@@ -227,13 +227,9 @@
   go.addEventListener('click', function () {
     if (!chosen.length) return;
     go.disabled = true;
-    go.textContent = 'Even geduld…';
     if (!window.pdSampleApp) { go.disabled = false; go.textContent = 'Samples aanvragen'; say('Dat lukte niet. Probeer het opnieuw of app ons.'); return; }
-    window.pdSampleApp.add(chosen.map(function (c) { return { id: c.id, url: c.url }; }))
-      .then(function (n) {
-        go.disabled = false; go.textContent = 'Samples aanvragen';
-        setTimeout(function () { if (!window.pdSampleApp.opened()) say(n + (n === 1 ? ' staal staat' : ' stalen staan') + ' in je samplelijst. Open hem via de knop rechtsonder.'); }, 2500);
-      })
+    go.textContent = 'Doorsturen naar afrekenen…';
+    window.pdSampleApp.checkout(chosen.map(function (c) { return { id: c.id, url: c.url }; }))
       .catch(function () { go.disabled = false; go.textContent = 'Samples aanvragen'; say('Dat lukte niet. Probeer het opnieuw of app ons.'); });
   });
   render();
