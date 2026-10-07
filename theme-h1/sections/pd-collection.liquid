@@ -11,44 +11,27 @@
   capture clean
     render 'pd-clean-html', html: collection.description
   endcapture
-  assign paras = clean | split: '</p>'
-  assign intro = paras.first | strip_html | strip
-  assign body = clean | remove_first: paras.first | remove_first: '</p>' | strip
-  if s.intro_from_text == false
-    assign intro = ''
-    assign body = clean
-  endif
-  assign hero_img = collection.image
-  if hero_img == blank
-    assign hero_img = collection.products.first.media[1] | default: collection.products.first.featured_image
-  endif
+  assign body = clean
   assign per_page = s.per_page | default: 24
   assign sample_max = s.sample_max | default: 5
 -%}
 
 <div class="ph pc" data-pc data-max="{{ sample_max }}" data-prop="Voorbeeld van">
 
-  {%- comment -%} Hero {%- endcomment -%}
-  <section class="pc-hero">
-    <div class="ph-wrap pc-hero__in">
-      <div class="pc-hero__txt">
-        <p class="ph-k ph-k--bronze">{{ s.eyebrow | default: 'Wandpanelen met bamboekern' }} · {{ collection.products_count }} {% if collection.products_count == 1 %}decor{% else %}decors{% endif %}</p>
-        <h1 class="pc-hero__h">{{ h1 }}</h1>
-        {%- if intro != blank -%}<p class="ph-lead pc-hero__lead">{{ intro }}</p>{%- endif -%}
-        <ul class="pc-usp" role="list">
-          <li><strong>Gratis samples</strong> tot 5 decors · € 6,95 verzending</li>
-          <li><strong>3 jaar garantie</strong> op alle panelen</li>
-          <li><strong>Op voorraad</strong> binnen 3–6 werkdagen geleverd</li>
-        </ul>
+  {%- comment -%} Kop: compact, zodat de decors direct in beeld staan {%- endcomment -%}
+  <header class="pc-head">
+    <div class="ph-wrap pc-head__in">
+      <div class="pc-head__t">
+        <p class="ph-k ph-k--bronze">{{ s.eyebrow | default: 'Wandpanelen met bamboekern' }}</p>
+        <h1 class="pc-head__h">{{ h1 }}</h1>
       </div>
-      {%- if hero_img != blank -%}
-        <figure class="pc-hero__img">
-          {{ hero_img | image_url: width: 1600 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600, 900, 1200, 1600', sizes: '(min-width: 990px) 46vw, 100vw', alt: h1 }}
-          {%- if s.hero_visual -%}<span class="ph-tag ph-tag--corner">Visualisatie</span>{%- endif -%}
-        </figure>
-      {%- endif -%}
+      <ul class="pc-usp" role="list">
+        <li><strong>{{ collection.products_count }}</strong> {% if collection.products_count == 1 %}decor{% else %}decors{% endif %}</li>
+        <li>Gratis samples · € 6,95 verzending</li>
+        <li>3 jaar garantie</li>
+      </ul>
     </div>
-  </section>
+  </header>
 
   {%- comment -%} Collectienavigatie: interne links met beschrijvende ankertekst {%- endcomment -%}
   {%- assign nav = s.nav | newline_to_br | split: '<br />' -%}
@@ -74,22 +57,88 @@
       <div class="pc-bar">
         <p class="pc-bar__count"><strong>{{ collection.products_count }}</strong> {% if collection.products_count == 1 %}decor{% else %}decors{% endif %}</p>
         {%- if s.show_filters and collection.filters.size > 0 -%}
+          {%- comment -%}
+            Filterwaarden zijn in de productdata niet overal gelijk geschreven ("8mm Naadloos", "8mm (naadloos)", "5mm stomp").
+            We tonen per betekenis één knop; die zet of verwijdert alle bijbehorende waarden tegelijk.
+          {%- endcomment -%}
+          {%- liquid
+            assign active_q = ''
+            for filter in collection.filters
+              if filter.type == 'list'
+                for av in filter.active_values
+                  assign ev = av.value | url_param_escape
+                  assign active_q = active_q | append: '&' | append: av.param_name | append: '=' | append: ev | append: '¦'
+                endfor
+              endif
+            endfor
+            assign sort_q = collection.sort_by | default: collection.default_sort_by
+          -%}
           <div class="pc-filters">
             {%- for filter in collection.filters -%}
               {%- if filter.type == 'list' and filter.values.size > 1 -%}
+                {%- liquid
+                  assign keys = ''
+                  for v in filter.values
+                    if v.count > 0 or v.active
+                      assign k = v.label | downcase | remove: ' ' | remove: '(' | remove: ')'
+                      if k contains '8mm'
+                        assign k = '8 mm naadloos'
+                      elsif k contains '5mm'
+                        assign k = '5 mm stomp'
+                      else
+                        assign k = v.label | strip
+                      endif
+                      assign kk = '|' | append: k | append: '|'
+                      unless keys contains kk
+                        assign keys = keys | append: kk
+                      endunless
+                    endif
+                  endfor
+                  assign key_list = keys | remove_first: '|' | split: '||'
+                -%}
+                {%- if key_list.size > 1 -%}
                 <div class="pc-filter" role="group" aria-label="{{ filter.label | escape }}">
-                  <span class="pc-filter__l">{{ filter.label }}</span>
-                  {%- for v in filter.values -%}
-                    {%- if v.count > 0 or v.active -%}
-                      <a rel="nofollow" class="pc-chip{% if v.active %} is-on{% endif %}" href="{% if v.active %}{{ v.url_to_remove }}{% else %}{{ v.url_to_add }}{% endif %}#decors">{{ v.label }}</a>
-                    {%- endif -%}
+                  <span class="pc-filter__l">{% if filter.label contains 'fwerking' %}Dikte{% elsif filter.label == 'Wandpaneel' %}Look{% else %}{{ filter.label }}{% endif %}</span>
+                  {%- for key in key_list -%}
+                    {%- liquid
+                      assign kname = key | remove: '|'
+                      assign grp_q = ''
+                      assign grp_on = false
+                      for v in filter.values
+                        assign k = v.label | downcase | remove: ' ' | remove: '(' | remove: ')'
+                        if k contains '8mm'
+                          assign k = '8 mm naadloos'
+                        elsif k contains '5mm'
+                          assign k = '5 mm stomp'
+                        else
+                          assign k = v.label | strip
+                        endif
+                        if k == kname
+                          assign ev = v.value | url_param_escape
+                          assign grp_q = grp_q | append: '&' | append: v.param_name | append: '=' | append: ev | append: '¦'
+                          if v.active
+                            assign grp_on = true
+                          endif
+                        endif
+                      endfor
+                      assign q = active_q
+                      if grp_on
+                        assign parts = grp_q | split: '¦'
+                        for part in parts
+                          assign q = q | remove: part
+                        endfor
+                      else
+                        assign q = q | append: grp_q
+                      endif
+                      assign q = q | remove: '¦'
+                    -%}
+                    <a rel="nofollow" class="pc-chip{% if grp_on %} is-on{% endif %}" href="{{ collection.url }}?sort_by={{ sort_q }}{{ q }}#decors"{% if grp_on %} aria-current="true"{% endif %}>{{ kname }}</a>
                   {%- endfor -%}
                 </div>
+                {%- endif -%}
               {%- endif -%}
             {%- endfor -%}
-            {%- assign any_active = false -%}
-            {%- for filter in collection.filters -%}{%- if filter.active_values.size > 0 -%}{%- assign any_active = true -%}{%- endif -%}{%- endfor -%}
-            {%- if any_active -%}<a rel="nofollow" class="pc-clear" href="{{ collection.url }}?sort_by={{ collection.sort_by | default: collection.default_sort_by }}#decors">Wis filters</a>{%- endif -%}
+            {%- if active_q != blank -%}<a rel="nofollow" class="pc-clear" href="{{ collection.url }}?sort_by={{ sort_q }}#decors">Wis filters</a>{%- endif -%}
           </div>
         {%- endif -%}
         {%- if s.show_sort -%}
@@ -126,18 +175,36 @@
             assign v = p.selected_or_first_available_variant
             assign finishes = ''
             assign size = ''
+            assign f5 = false
+            assign f8 = false
             for o in p.options_with_values
               assign on = o.name | downcase
               if on contains 'afwerking'
-                assign finishes = o.values | join: ' / ' | replace: 'mm', ' mm' | replace: '  ', ' ' | downcase
+                for ov in o.values
+                  assign ok = ov | downcase | remove: ' '
+                  if ok contains '8mm'
+                    assign f8 = true
+                  elsif ok contains '5mm'
+                    assign f5 = true
+                  endif
+                endfor
               elsif on contains 'formaat'
-                assign size = o.values | last | replace: ' cm x ', ' × ' | replace: ' x ', ' × '
+                assign size = o.values | last | downcase | remove: 'cm' | remove: ' ' | replace: '×', 'x' | split: 'x' | join: ' × ' | append: ' cm'
               endif
             endfor
-            assign is_seamless = false
-            if finishes contains '8 mm'
-              assign is_seamless = true
+            if f5 and f8
+              assign finishes = '5 mm stomp of 8 mm naadloos'
+            elsif f8
+              assign finishes = '8 mm naadloos'
+            elsif f5
+              assign finishes = '5 mm stomp'
             endif
+            capture swatch
+              render 'pd-swatch', product: p, width: 240
+            endcapture
+            capture sw_zoom
+              render 'pd-swatch', product: p, part: 'zoom'
+            endcapture
             assign label = code | append: ' ' | append: name | strip
             assign alt_room = eyebrow | append: ' wandpaneel ' | append: label | append: ' · sfeerbeeld' | strip
             assign alt_panel = eyebrow | append: ' wandpaneel ' | append: label | append: ' · paneel' | strip
@@ -145,29 +212,25 @@
           <li class="pc-card">
             <a class="pc-card__media" href="{{ p.url }}" tabindex="-1" aria-hidden="true">
               {%- if room != blank -%}
-                {{ room | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 990px) 30vw, 48vw', alt: alt_room, class: 'pc-card__room' }}
-              {%- endif -%}
-              {%- if panel != blank and panel != room -%}
-                {{ panel | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 990px) 30vw, 48vw', alt: alt_panel, class: 'pc-card__panel' }}
+                {{ room | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 1200px) 23vw, (min-width: 990px) 30vw, 48vw', alt: alt_room, class: 'pc-card__room' }}
               {%- endif -%}
               {%- if room != panel -%}<span class="pc-card__vis">Visualisatie</span>{%- endif -%}
-              {%- if is_seamless -%}<span class="pc-card__badge">8 mm naadloos</span>{%- endif -%}
+              {%- if swatch != blank -%}<span class="pc-card__sw{% if sw_zoom contains '1' %} is-zoom{% endif %}"><img src="{{ swatch | strip }}" alt="" loading="lazy" width="240" height="240"></span>{%- endif -%}
             </a>
             <div class="pc-card__body">
               <p class="pc-card__eyebrow">{{ eyebrow | default: 'Wandpaneel' }}</p>
               <h3 class="pc-card__name"><a href="{{ p.url }}"><span>{{ code }}</span> {{ name }}</a></h3>
-              <p class="pc-card__spec">{% if size != blank %}{{ size }}{% endif %}{% if finishes != blank %} · {{ finishes }}{% endif %}</p>
-              <p class="pc-card__price">
-                {%- if p.price_varies -%}vanaf {% endif -%}
-                <strong>{{ p.price_min | money }}</strong>
-                {%- if p.compare_at_price_max > p.price_min -%} <s>{{ p.compare_at_price_max | money }}</s>{%- endif -%}
-                <span>per paneel</span>
-              </p>
-              <div class="pc-card__act">
-                <a class="pc-card__go" href="{{ p.url }}">Bekijk en bereken</a>
+              <p class="pc-card__spec">{% if size != blank %}<span class="pc-card__size">{{ size }}</span>{% endif %}{% if finishes != blank %}<span class="pc-card__fin">{{ finishes }}</span>{% endif %}</p>
+              <div class="pc-card__foot">
+                <p class="pc-card__price">
+                  {%- if p.price_varies -%}<span class="pc-card__from">vanaf</span> {% endif -%}
+                  <strong>{{ p.price_min | money }}</strong>
+                  {%- if p.compare_at_price_max > p.price_min -%} <s>{{ p.compare_at_price_max | money }}</s>{%- endif -%}
+                  <span class="pc-card__unit">per paneel</span>
+                </p>
                 {%- if v and code != blank -%}
-                  <button type="button" class="pc-card__smp" data-pc-sample data-id="{{ v.id }}" data-title="{{ p.title | escape }}" data-label="{{ label | escape }}" data-img="{% render 'pd-swatch', product: p, width: 160 %}" aria-pressed="false">
-                    <span class="off">+ Sample</span><span class="on">✓ Sample</span>
+                  <button type="button" class="pc-card__smp" data-pc-sample data-id="{{ v.id }}" data-url="{{ p.url }}" data-title="{{ p.title | escape }}" data-label="{{ label | escape }}" data-img="{{ swatch | strip }}" aria-pressed="false" aria-label="Staal van {{ label | escape }} toevoegen">
+                    <span class="off">+ Staal</span><span class="on">✓ Staal</span>
                   </button>
                 {%- endif -%}
               </div>
@@ -312,7 +375,7 @@
       var c = get(), i = c.findIndex(function (x) { return x.id === b.dataset.id; });
       if (i > -1) { c.splice(i, 1); put(c); paint(); say(b.dataset.label + ' verwijderd · ' + c.length + ' van ' + MAX + ' gekozen'); return; }
       if (c.length >= MAX) { say('Je hebt al ' + MAX + ' samples gekozen'); return; }
-      c.push({ id: b.dataset.id, title: b.dataset.title, label: b.dataset.label, img: b.dataset.img }); put(c); paint();
+      c.push({ id: b.dataset.id, url: b.dataset.url, title: b.dataset.title, label: b.dataset.label, img: b.dataset.img }); put(c); paint();
       say(b.dataset.label + ' toegevoegd · ' + c.length + ' van ' + MAX + ' gekozen');
     });
   });
