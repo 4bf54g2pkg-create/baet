@@ -1,0 +1,165 @@
+{%- comment -%}
+  Puredeco · verkooppartners (pagina /pages/verkoopparters) in de huisstijl.
+  Inhoud overgenomen uit de vorige versie van de pagina; aanmelden gaat via het Shopify-contactformulier op deze pagina
+  (de oude knop linkte naar het myshopify-domein).
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign wa = s.whatsapp | remove: ' ' | remove: '+'
+-%}
+<div class="ph vp">
+
+  {%- comment -%} Hero {%- endcomment -%}
+  <section class="st-hero vp-hero">
+    <div class="st-hero__text">
+      <p class="ph-k ph-k--light">Voor showrooms en vakhandel</p>
+      <h1 class="st-hero__h">Word verkooppartner<br>van Puredeco.</h1>
+      <p class="st-hero__t">{{ s.intro }}</p>
+      <div class="ph-btns">
+        <a class="ph-btn ph-btn--paper" href="#vp-form">Meld je aan</a>
+        <a class="ph-btn ph-btn--line-light" href="{{ s.studio_url | default: '/pages/showroom' }}">Kom eerst kijken in Herwen</a>
+      </div>
+      {%- if s.price_text != blank -%}
+        <dl class="st-hero__facts">
+          <div><dt>Showroompakket</dt><dd>{{ s.price_text }}</dd></div>
+          <div><dt>Regio</dt><dd>exclusief, beperkt aantal partners</dd></div>
+        </dl>
+      {%- endif -%}
+    </div>
+    <figure class="st-hero__img vp-hero__img">
+      {%- if s.hero_image != blank -%}
+        {{ s.hero_image | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600, 900, 1200, 1400', sizes: '(min-width: 990px) 50vw, 100vw', alt: 'Showroomdisplay met Puredeco-wandpanelen' }}
+        {%- if s.hero_is_visual -%}<span class="ph-tag">Visualisatie van het showroomdisplay</span>{%- endif -%}
+      {%- endif -%}
+    </figure>
+  </section>
+
+  {%- comment -%} Wat je krijgt {%- endcomment -%}
+  <section class="ph-s vp-get">
+    <div class="ph-wrap vp-get__in">
+      <div class="vp-get__head">
+        <p class="ph-k ph-k--bronze">Wat je krijgt</p>
+        <h2 class="ph-h2">Alles om direct te kunnen verkopen</h2>
+        <p class="ph-lead">{{ s.package_text }}</p>
+      </div>
+      <ul class="vp-get__list" role="list">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'benefit' -%}
+            <li {{ block.shopify_attributes }}><strong>{{ block.settings.title }}</strong>{% if block.settings.text != blank %}<span>{{ block.settings.text }}</span>{% endif %}</li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+
+  {%- comment -%} Voor wie {%- endcomment -%}
+  <section class="vp-who">
+    <div class="ph-wrap vp-who__in">
+      <p class="ph-k ph-k--bronze">Voor wie</p>
+      <ul class="vp-who__list" role="list">
+        {%- assign who = s.audience | newline_to_br | split: '<br />' -%}
+        {%- for w in who -%}{%- assign w2 = w | strip -%}{%- if w2 != blank -%}<li>{{ w2 }}</li>{%- endif -%}{%- endfor -%}
+      </ul>
+    </div>
+  </section>
+
+  {%- comment -%} Zo werkt het {%- endcomment -%}
+  <section class="ph-s st-steps vp-steps">
+    <div class="ph-wrap">
+      <div class="st-steps__head">
+        <p class="ph-k ph-k--bronze">Zo werkt het</p>
+        <h2 class="ph-h2">Van aanmelding tot display in je zaak</h2>
+      </div>
+      <ol class="st-steps__list" role="list">
+        <li><span class="st-steps__n">01</span><h3>Aanmelden</h3><p>Laat hieronder je gegevens achter. Kennismaken is vrijblijvend.</p></li>
+        <li><span class="st-steps__n">02</span><h3>Persoonlijk gesprek</h3><p>We bespreken je zaak en kijken of je regio nog beschikbaar is. We werken bewust met een klein netwerk van partners.</p></li>
+        <li><span class="st-steps__n">03</span><h3>Start in je regio</h3><p>Bij een match reserveren we je regio, ontvang je het showroompakket en kun je direct verkopen.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  {%- comment -%} Aanmelden {%- endcomment -%}
+  <section class="ph-s pp-form vp-form" id="vp-form">
+    <div class="ph-wrap pp-form__grid">
+      <div>
+        <p class="ph-k ph-k--bronze">Aanmelden</p>
+        <h2 class="ph-h2">Interesse in een partnership?</h2>
+        <p class="ph-lead pp-form__lead">Laat je gegevens achter, dan nemen we contact met je op voor een vrijblijvende kennismaking.</p>
+        <p class="vp-form__alt">Liever direct contact? Bel <a href="tel:{{ s.phone | remove: ' ' }}">{{ s.phone }}</a> of <a href="https://wa.me/{{ wa }}?text={{ 'Hallo Puredeco, ik heb interesse in een verkooppartnerschap.' | url_encode }}" target="_blank" rel="noopener">app ons</a>.</p>
+      </div>
+      {%- form 'contact', id: 'vp-contact', class: 'pp-form__form' -%}
+        <input type="hidden" name="contact[Onderwerp]" value="Aanmelding verkooppartner">
+        {%- if form.posted_successfully? -%}
+          <p class="pp-form__ok">Dank je. We hebben je aanmelding ontvangen en nemen snel contact met je op.</p>
+        {%- else -%}
+          {%- if form.errors -%}<p class="pp-form__err">Controleer de velden: {{ form.errors | default_errors }}</p>{%- endif -%}
+          <label><span>Bedrijf</span><input type="text" name="contact[Bedrijf]" autocomplete="organization" required></label>
+          <label><span>Naam</span><input type="text" name="contact[name]" autocomplete="name" required></label>
+          <label><span>E-mail</span><input type="email" name="contact[email]" autocomplete="email" required></label>
+          <label><span>Telefoon</span><input type="tel" name="contact[phone]" autocomplete="tel"></label>
+          <label><span>Plaats</span><input type="text" name="contact[Plaats]" autocomplete="address-level2"></label>
+          <label><span>Type bedrijf</span>
+            <select name="contact[Type bedrijf]">
+              <option value="">Kies…</option>
+              {%- for w in who -%}{%- assign w2 = w | strip -%}{%- if w2 != blank -%}<option>{{ w2 }}</option>{%- endif -%}{%- endfor -%}
+              <option>Anders</option>
+            </select>
+          </label>
+          <label class="pp-form__wide"><span>Vertel kort over je zaak (optioneel)</span><textarea name="contact[body]" rows="4"></textarea></label>
+          <button type="submit" class="pp-form__submit pp-form__wide">Verstuur aanmelding</button>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </section>
+
+  {%- comment -%} Veelgestelde vragen {%- endcomment -%}
+  {%- capture faq -%}{%- for block in section.blocks -%}{%- if block.type == 'faq' and block.settings.q != blank -%}x{%- endif -%}{%- endfor -%}{%- endcapture -%}
+  {%- if faq != blank -%}
+    <section class="ph-s pc-faq vp-faq">
+      <div class="ph-wrap pc-faq__in">
+        <h2 class="ph-h2">Veelgestelde vragen</h2>
+        <div class="pc-faq__list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'faq' and block.settings.q != blank -%}
+              <details class="pc-faq__item" {{ block.shopify_attributes }}>
+                <summary>{{ block.settings.q }}</summary>
+                <div class="pc-rte">{{ block.settings.a }}</div>
+              </details>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "Puredeco verkooppartners",
+  "tag": "section",
+  "class": "pd-partners-section",
+  "settings": [
+    { "type": "textarea", "id": "intro", "label": "Intro", "default": "Toon onze wandpanelen in je eigen zaak. Je krijgt een showroompakket, zakelijke prijzen en persoonlijke ondersteuning bij verkoop en advies." },
+    { "type": "text", "id": "price_text", "label": "Prijs showroompakket (leeg = verbergen)", "default": "vanaf € 199,95" },
+    { "type": "image_picker", "id": "hero_image", "label": "Beeld bovenaan" },
+    { "type": "checkbox", "id": "hero_is_visual", "label": "Beeld is een visualisatie (toont label)", "default": true },
+    { "type": "textarea", "id": "package_text", "label": "Tekst showroompakket", "default": "Je ontvangt een showroomdisplay met een selectie van onze populairste panelen. Zo geef je klanten direct een goede eerste indruk." },
+    { "type": "textarea", "id": "audience", "label": "Voor wie (één per regel)", "default": "Keukenzaken\nInterieurarchitecten\nInterieurwinkels\nBouw- en aannemersbedrijven\nTegel- en vloerspecialisten" },
+    { "type": "text", "id": "phone", "label": "Telefoon", "default": "0316 700 214" },
+    { "type": "text", "id": "whatsapp", "label": "WhatsApp (internationaal)", "default": "31316700214" },
+    { "type": "url", "id": "studio_url", "label": "Link studio" }
+  ],
+  "blocks": [
+    { "type": "benefit", "name": "Voordeel", "settings": [
+      { "type": "text", "id": "title", "label": "Titel" },
+      { "type": "text", "id": "text", "label": "Toelichting" }
+    ]},
+    { "type": "faq", "name": "Vraag", "settings": [
+      { "type": "text", "id": "q", "label": "Vraag" },
+      { "type": "richtext", "id": "a", "label": "Antwoord" }
+    ]}
+  ],
+  "presets": [{ "name": "Puredeco verkooppartners" }]
+}
+{% endschema %}

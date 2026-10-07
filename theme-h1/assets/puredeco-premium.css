@@ -2701,3 +2701,25 @@ body.product-samples-widget--active { overflow: auto !important; }
 .st-partner__list li:last-child { border-bottom: 1px solid rgba(245, 242, 236, 0.18); }
 .st-partner__list span { color: #F5F2EC; font-family: var(--font-heading-family); font-size: 2rem; line-height: 1.2; }
 @media (max-width: 749px) { .st-visit__list div, .st-partner__list li { grid-template-columns: 1fr; gap: 0.4rem; } }
+
+/* ── Verkooppartners ─────────────────────────────────────────────────── */
+.vp-hero__img { background: #2A2622; }
+.vp-hero__img img { object-position: 50% 45%; }
+.vp-get__in { display: grid; gap: 4rem; }
+@media (min-width: 990px) { .vp-get__in { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 8rem; align-items: start; } }
+.vp-get__head .ph-h2 { margin-top: 1.2rem; }
+.vp-get__head .ph-lead { margin-top: 2rem; }
+.vp-get__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+@media (min-width: 750px) { .vp-get__list { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3.2rem; } }
+.vp-get__list li { padding: 2rem 0; border-top: 1px solid #DDD6CA; }
+.vp-get__list strong { display: block; font-family: var(--font-heading-family); font-weight: 500; font-size: 2.2rem; line-height: 1.15; color: #151413; }
+.vp-get__list span { display: block; margin-top: 0.6rem; font-size: 1.4rem; line-height: 1.6; color: #6E675E; }
+.vp-who { background: #EFEAE1; padding: 3.2rem 0; }
+.vp-who__in { display: flex; flex-wrap: wrap; align-items: center; gap: 1.6rem 4rem; }
+.vp-who__list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 1rem 3.2rem; }
+.vp-who__list li { font-family: var(--font-heading-family); font-size: 2.2rem; color: #151413; }
+.vp-steps { border-bottom: 0; }
+.vp-form__alt { margin: 2.4rem 0 0; font-size: 1.5rem; color: #3A3733; }
+.vp-form__alt a { color: #151413; }
+@media (min-width: 990px) { .vp-form .pp-form__grid { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 8rem; } }
+@media (max-width: 749px) { .vp-who__list li { font-size: 1.8rem; } .vp-get__list strong { font-size: 2rem; } }

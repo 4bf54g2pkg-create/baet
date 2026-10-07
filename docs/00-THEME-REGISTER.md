@@ -159,3 +159,9 @@ templates/robots.txt.liquid  79fe39ff3f6c96eb3ef97395ad254787  = OK
 - page.showroom.json: pd_studio bovenaan, oude puredeco_showroom_page alleen uitgezet (terugdraaien = aanzetten). URL ongewijzigd.
 - md5 pd-studio fbd13d82…, css 12e686c1…, template 9f645fc2….
 - Showroomfoto bewerkt (uitsnede zonder plafond, warmer licht, tv uit, 2x opgeschaald) → Bestanden: pd-studio-herwen.jpg (1600×998); visit_image in page.showroom.json. Script: tools/studio-foto-bewerken.py. Template md5 a974ac84….
+
+## 7 okt — Verkooppartners (/pages/verkoopparters, H1-test)
+- Nieuwe sectie pd-partners in huisstijl: donkere split-hero met displaybeeld (label 'Visualisatie van het showroomdisplay'), 'Wat je krijgt' (6 voordelen, blokken), 'Voor wie'-band, 3 stappen, aanmeldformulier (Shopify contact, onderwerp 'Aanmelding verkooppartner'), FAQ (blokken).
+- Oude knop linkte naar puredeco-3.myshopify.com/pages/form → nu formulier op de pagina zelf.
+- Prijs 'vanaf € 199,95' overgenomen van actieve sectie (uitgeschakelde oude sectie noemde € 295,95 — laten bevestigen).
+- Template bevat alleen pd_partners; origineel staat nog in het live thema. md5 pd-partners e66be82c…, css 7de7508b…, template e3945ce7….

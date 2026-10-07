@@ -1,0 +1,104 @@
+{
+  "sections": {
+    "pd_partners": {
+      "type": "pd-partners",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Display met onze hardlopers",
+            "text": "Een selectie van onze populairste panelen, direct klaar voor je showroom."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Vermelding op onze website",
+            "text": "Als erkend verkooppunt, zodat klanten uit je regio je vinden."
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Scherpe B2B-prijzen",
+            "text": "Zakelijke prijzen en een interessant verdienmodel."
+          }
+        },
+        "benefit_4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Exclusief in je regio",
+            "text": "Geen interne concurrentie: een beperkt aantal partners per regio."
+          }
+        },
+        "benefit_5": {
+          "type": "benefit",
+          "settings": {
+            "title": "Inzicht in voorraad en levertijden",
+            "text": "Je ziet wat er op voorraad is en wanneer het geleverd wordt."
+          }
+        },
+        "benefit_6": {
+          "type": "benefit",
+          "settings": {
+            "title": "Persoonlijke ondersteuning",
+            "text": "Hulp bij verkoop, advies en je presentatie in de showroom."
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "q": "Hoe verloopt de samenwerking?",
+            "a": "<p>Na je aanmelding plannen we een persoonlijk gesprek. We kijken of jouw regio nog beschikbaar is, want we werken bewust met een select netwerk van showroompartners. Bij een match reserveren we exclusiviteit en stemmen we de samenwerking af op jouw markt.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "q": "Wat levert het partnership op?",
+            "a": "<ul><li>Een beperkt aantal partners per regio</li><li>Aantrekkelijke marges met groeipotentieel</li><li>De mogelijkheid om eigen exclusieve toplagen te ontwikkelen</li><li>Leads uit jouw regio</li><li>Ondersteuning in marketing en showroom</li></ul>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "q": "Wat zit er in het showroompakket?",
+            "a": "<p>Een showroomdisplay met een selectie van onze populairste panelen. In het kennismakingsgesprek bespreken we welke decors het beste bij jouw klanten passen.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "q": "Kan ik eerst vrijblijvend kennismaken?",
+            "a": "<p>Ja. Laat je gegevens achter via het formulier, of kom langs in Studio Herwen om de panelen in het echt te zien.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3",
+        "benefit_4",
+        "benefit_5",
+        "benefit_6",
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4"
+      ],
+      "settings": {
+        "intro": "Toon onze wandpanelen in je eigen zaak. Je krijgt een showroompakket, zakelijke prijzen en persoonlijke ondersteuning bij verkoop en advies.",
+        "price_text": "vanaf € 199,95",
+        "hero_image": "shopify://shop_images/puredeco.png",
+        "hero_is_visual": true,
+        "package_text": "Je ontvangt een showroomdisplay met een selectie van onze populairste panelen. Zo geef je klanten direct een goede eerste indruk.",
+        "audience": "Keukenzaken\nInterieurarchitecten\nInterieurwinkels\nBouw- en aannemersbedrijven\nTegel- en vloerspecialisten",
+        "phone": "0316 700 214",
+        "whatsapp": "31316700214"
+      }
+    }
+  },
+  "order": [
+    "pd_partners"
+  ]
+}
