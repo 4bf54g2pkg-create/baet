@@ -138,3 +138,4 @@ templates/robots.txt.liquid  79fe39ff3f6c96eb3ef97395ad254787  = OK
 - `pd-samples` (knop "Samples aanvragen") en `pd-product-hero` (lade, knop "Samples aanvragen") gebruiken dit. App-blok weer gerenderd in de lade (verborgen, nodig voor de koppeling).
 - Checksums: snippet 31cb9b91…, pd-samples f38a6b02…, pd-product-hero 8f4d92f5…, css 74f1c4f8…
 - Te testen in voorbeeld H1-test: 2–3 stalen kiezen → app-lijst moet die stalen tonen → afrekenen € 0 + € 6,95.
+- Update: iframe-methode bleef hangen (Shopify blokkeert inladen in frame). Nu: rij in sessionStorage, browser gaat per decor naar de productpagina, drukt de app-knop, en opent na het laatste decor de app-lijst. Voortgangsscherm "Stalen klaarzetten · x van n". Snippet md5 88b88095….

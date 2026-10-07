@@ -1,52 +1,73 @@
 {%- comment -%}
   Puredeco: geeft gekozen stalen door aan de Product Samples-app.
   De app maakt zelf de bestelling aan (stalen € 0 + verzending via conceptorder); de gewone winkelmand rekent
-  de paneelprijs. Daarom laden we per decor de productpagina onzichtbaar en drukken we daar op de echte
-  app-knop ([product-samples-button]). Daarna openen we de samplelijst van de app.
-  Gebruik: {% render 'pd-sample-app' %} één keer per pagina; daarna window.pdSampleApp.add(['/products/...']).
+  de paneelprijs. Daarom gaan we per decor naar de productpagina en drukken we daar op de echte app-knop
+  ([product-samples-button]). Een rij in sessionStorage houdt bij waar we zijn; na het laatste decor opent
+  de samplelijst van de app. (Onzichtbaar laden in een iframe kan niet: Shopify staat dat niet toe.)
+  Gebruik: {% render 'pd-sample-app' %} op elke pagina met samples (ook de productpagina);
+  daarna window.pdSampleApp.add(['/products/...']).
 {%- endcomment -%}
 <script>
 window.pdSampleApp = window.pdSampleApp || (function () {
-  var BTN = '[product-samples-button]', TRIGGER = '.product-samples-widget__trigger', FLAG = 'pd-sample-open';
+  var BTN = '[product-samples-button]', TRIGGER = '.product-samples-widget__trigger', Q = 'pd-sample-q';
+  function read() { try { return JSON.parse(sessionStorage.getItem(Q) || 'null'); } catch (e) { return null; } }
+  function write(q) { try { q ? sessionStorage.setItem(Q, JSON.stringify(q)) : sessionStorage.removeItem(Q); } catch (e) {} }
   function wait(fn, ms) {
     return new Promise(function (ok, no) {
       var t0 = Date.now();
       (function tick() { var r; try { r = fn(); } catch (e) {} if (r) return ok(r); if (Date.now() - t0 > ms) return no(); setTimeout(tick, 150); })();
     });
   }
-  function one(url) {
-    return new Promise(function (ok, no) {
-      var f = document.createElement('iframe');
-      f.setAttribute('aria-hidden', 'true'); f.tabIndex = -1;
-      f.style.cssText = 'position:absolute;width:1px;height:1px;left:-9999px;top:0;border:0;opacity:0';
-      f.src = url.split('#')[0];
-      var done = function (good) { setTimeout(function () { f.remove(); }, 200); good ? ok() : no(); };
-      f.onload = function () {
-        wait(function () { return f.contentDocument && f.contentDocument.querySelector(BTN); }, 9000)
-          .then(function (b) { b.click(); setTimeout(function () { done(true); }, 1600); })
-          .catch(function () { done(false); });
-      };
-      document.body.appendChild(f);
-    });
+  function path(u) { try { return new URL(u, location.href).pathname.replace(/\/$/, ''); } catch (e) { return u; } }
+  function veil(text, sub) {
+    var v = document.getElementById('pd-sq');
+    if (!v) {
+      v = document.createElement('div'); v.id = 'pd-sq'; v.setAttribute('role', 'status'); v.setAttribute('aria-live', 'polite');
+      v.style.cssText = 'position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;background:rgba(245,242,236,.94);font:15px/1.5 inherit;color:#151413;text-align:center;padding:24px';
+      v.innerHTML = '<div><p data-t style="margin:0 0 6px;font-size:22px;letter-spacing:-.01em"></p><p data-s style="margin:0;color:#6B655C"></p></div>';
+      (document.body || document.documentElement).appendChild(v);
+    }
+    v.querySelector('[data-t]').textContent = text; v.querySelector('[data-s]').textContent = sub || '';
+    return v;
   }
-  function openList() {
-    var t = document.querySelector(TRIGGER);
-    if (t) { t.click(); return true; }
-    return false;
+  function finish(q) {
+    write(null);
+    if (!q.n) {
+      var v = veil('Dat lukte niet', 'Probeer het opnieuw of app ons op 0316 700 214.');
+      setTimeout(function () { v.remove(); }, 4000);
+      return;
+    }
+    var v2 = veil(q.n + (q.n === 1 ? ' staal staat' : ' stalen staan') + ' klaar', 'Je samplelijst wordt geopend…');
+    wait(function () { return document.querySelector(TRIGGER); }, 6000)
+      .then(function (t) { v2.remove(); t.click(); })
+      .catch(function () { veil(q.n + (q.n === 1 ? ' staal staat' : ' stalen staan') + ' klaar', 'Open je samplelijst via de knop "Samples" rechtsonder.'); setTimeout(function () { v2.remove(); }, 3500); });
   }
-  try { if (sessionStorage.getItem(FLAG)) { sessionStorage.removeItem(FLAG); wait(function () { return document.querySelector(TRIGGER); }, 6000).then(function (t) { t.click(); }).catch(function () {}); } } catch (e) {}
+  function step() {
+    var q = read();
+    if (!q) return;
+    if (Date.now() - q.t > 180000 || path(q.urls[q.i]) !== path(location.href)) { write(null); return; }
+    veil('Stalen klaarzetten', (q.i + 1) + ' van ' + q.urls.length);
+    wait(function () { return document.querySelector(BTN); }, 8000)
+      .then(function (b) { b.click(); q.n++; })
+      .catch(function () {})
+      .then(function () {
+        setTimeout(function () {
+          q.i++; q.t = Date.now();
+          if (q.i < q.urls.length) { write(q); location.href = q.urls[q.i]; }
+          else finish(q);
+        }, 1500);
+      });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', step); else step();
   return {
     add: function (urls) {
-      var n = 0, chain = Promise.resolve();
-      urls.forEach(function (u) { chain = chain.then(function () { return one(u).then(function () { n++; }, function () {}); }); });
-      return chain.then(function () {
-        if (!n) throw new Error('none');
-        try { sessionStorage.setItem(FLAG, '1'); } catch (e) {}
-        location.reload();
-        return n;
-      });
-    },
-    openList: openList
+      urls = (urls || []).filter(Boolean);
+      if (!urls.length) return Promise.reject(new Error('none'));
+      write({ urls: urls, i: 0, n: 0, t: Date.now() });
+      veil('Stalen klaarzetten', '1 van ' + urls.length);
+      if (path(urls[0]) === path(location.href)) step(); else location.href = urls[0];
+      return Promise.resolve(urls.length);
+    }
   };
 })();
 </script>
