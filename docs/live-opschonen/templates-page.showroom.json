@@ -1,0 +1,904 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "puredeco_showroom_page_9W9eEn": {
+      "type": "puredeco-showroom-page",
+      "blocks": {
+        "hero_feature_aUXCKN": {
+          "type": "hero_feature",
+          "settings": {
+            "icon": "shield",
+            "title": "Premium kwaliteit",
+            "text": "8mm kliksysteem naadloos"
+          }
+        },
+        "hero_feature_WdWJha": {
+          "type": "hero_feature",
+          "settings": {
+            "icon": "leaf",
+            "title": "Duurzame materialen",
+            "text": "Bamboekern"
+          }
+        },
+        "hero_feature_aMtAkr": {
+          "type": "hero_feature",
+          "settings": {
+            "icon": "headset",
+            "title": "Persoonlijk advies",
+            "text": "Van echte specialisten"
+          }
+        },
+        "hero_feature_dABzDf": {
+          "type": "hero_feature",
+          "settings": {
+            "icon": "truck",
+            "title": "Snelle levering",
+            "text": "Binnen 3–6 werkdagen"
+          }
+        },
+        "contact_row_DWxxgG": {
+          "type": "contact_row",
+          "settings": {
+            "icon": "clock",
+            "label": "Ma – Vr",
+            "value": "08:30 – 17:00"
+          }
+        },
+        "contact_row_eh3tiX": {
+          "type": "contact_row",
+          "settings": {
+            "icon": "clock",
+            "label": "Zaterdag",
+            "value": "09:00 – 16:00"
+          }
+        },
+        "contact_row_UXc6fq": {
+          "type": "contact_row",
+          "settings": {
+            "icon": "x",
+            "label": "Zondag",
+            "value": "Gesloten"
+          }
+        },
+        "contact_row_94CfYf": {
+          "type": "contact_row",
+          "settings": {
+            "icon": "email",
+            "label": "E-mail",
+            "value": "info@puredeco.nl"
+          }
+        },
+        "contact_row_MdAXe9": {
+          "type": "contact_row",
+          "settings": {
+            "icon": "whatsapp",
+            "label": "WhatsApp",
+            "value": "+31316700214"
+          }
+        },
+        "partner_bullet_GUEjT4": {
+          "type": "partner_bullet",
+          "settings": {
+            "text": "Vermelding op onze website"
+          }
+        },
+        "partner_bullet_Xg3DUf": {
+          "type": "partner_bullet",
+          "settings": {
+            "text": "Ondersteuning en samples"
+          }
+        },
+        "partner_bullet_7eMeir": {
+          "type": "partner_bullet",
+          "settings": {
+            "text": "Uniek product in je showroom"
+          }
+        },
+        "partner_bullet_LWpDUc": {
+          "type": "partner_bullet",
+          "settings": {
+            "text": "Interessante marge"
+          }
+        },
+        "location_ct63at": {
+          "type": "location",
+          "settings": {
+            "flag": "shopify://shop_images/images_1.png",
+            "enable_cta_app": true,
+            "country": "Nederland",
+            "status": "Showroom in Herwen",
+            "address": "Nijverheidsdwarsstraat 2<br>6914 AX Herwen",
+            "button_label": "Plan je afspraak",
+            "button_link": "",
+            "button_style": "primary"
+          }
+        },
+        "location_HNVKie": {
+          "type": "location",
+          "settings": {
+            "flag": "shopify://shop_images/images_2.png",
+            "enable_cta_app": false,
+            "country": "België",
+            "status": "Showroompartner gezocht",
+            "address": "",
+            "button_label": "Meer informatie",
+            "button_link": "shopify://pages/contact",
+            "button_style": "secondary"
+          }
+        },
+        "location_gDfNTW": {
+          "type": "location",
+          "settings": {
+            "flag": "shopify://shop_images/Flag_of_Germany.svg",
+            "enable_cta_app": false,
+            "country": "Duitsland",
+            "status": "Showroompartner gezocht",
+            "address": "",
+            "button_label": "Meer informatie",
+            "button_link": "shopify://pages/contact",
+            "button_style": "secondary"
+          }
+        },
+        "bottom_feature_mdTh6z": {
+          "type": "bottom_feature",
+          "settings": {
+            "icon": "medal",
+            "title": "Hoogste kwaliteit",
+            "text": "Duurzaam & slijtvast",
+            "show_stars": false
+          }
+        },
+        "bottom_feature_N6BnDB": {
+          "type": "bottom_feature",
+          "settings": {
+            "icon": "leaf",
+            "title": "Makkelijk te monteren",
+            "text": "Bespaart tijd en kosten",
+            "show_stars": false
+          }
+        },
+        "bottom_feature_DzCmhm": {
+          "type": "bottom_feature",
+          "settings": {
+            "icon": "truck",
+            "title": "Snelle levering",
+            "text": "Binnen 3-6 werkdagen",
+            "show_stars": false
+          }
+        },
+        "bottom_feature_RMppWe": {
+          "type": "bottom_feature",
+          "settings": {
+            "icon": "star",
+            "title": "Klanten beoordelen ons",
+            "text": "4,8 / 5",
+            "show_stars": true
+          }
+        }
+      },
+      "block_order": [
+        "hero_feature_aUXCKN",
+        "hero_feature_WdWJha",
+        "hero_feature_aMtAkr",
+        "hero_feature_dABzDf",
+        "contact_row_DWxxgG",
+        "contact_row_eh3tiX",
+        "contact_row_UXc6fq",
+        "contact_row_94CfYf",
+        "contact_row_MdAXe9",
+        "partner_bullet_GUEjT4",
+        "partner_bullet_Xg3DUf",
+        "partner_bullet_7eMeir",
+        "partner_bullet_LWpDUc",
+        "location_ct63at",
+        "location_HNVKie",
+        "location_gDfNTW",
+        "bottom_feature_mdTh6z",
+        "bottom_feature_N6BnDB",
+        "bottom_feature_DzCmhm",
+        "bottom_feature_RMppWe"
+      ],
+      "name": "PureDeco showroom page",
+      "settings": {
+        "green": "#315f31",
+        "dark": "#111111",
+        "text": "#222222",
+        "muted": "#555555",
+        "background": "#ffffff",
+        "card_background": "#f6f4ef",
+        "border": "#ddd6cb",
+        "radius": 20,
+        "max_width": 1600,
+        "desktop_padding_y": 0,
+        "desktop_padding_x": 0,
+        "mobile_padding_y": 0,
+        "mobile_padding_x": 12,
+        "logo_text": "Pure[green]Deco[/green]",
+        "hero_title": "Ervaar [green]PureDeco[/green]\npanelen in het echt",
+        "hero_text": "Bekijk onze wandpanelen van dichtbij, voel de materialen en ontvang persoonlijk advies voor jouw interieurproject. Plan eenvoudig een showroomafspraak of neem contact met ons op.",
+        "hero_image": "shopify://shop_images/image_11.png",
+        "hero_button_1_label": "Plan je afspraak",
+        "hero_button_1_link": "",
+        "hero_button_2_label": "",
+        "hero_button_2_link": "",
+        "contact_title": "Telefonisch contact",
+        "showroom_title": "Bezoek onze showroom",
+        "showroom_address": "Nijverheidsdwarsstraat 2<br>6914 AX Herwen\n\n- Donderdag 10:00 - 15:00\n- Vrijdag        10:00 - 15:00\n- Zaterdag     10:00 - 15:00",
+        "showroom_image": "shopify://shop_images/WhatsApp_Image_2026-04-29_at_15.27.59.jpg",
+        "showroom_button_label": "Plan je afspraak",
+        "showroom_button_link": "",
+        "partner_title": "Word showroompartner",
+        "partner_text": "PureDeco groeit en zoekt showroompartners in Nederland, België en Duitsland. Toon onze panelen in jouw showroom en profiteer van:",
+        "map_image": "shopify://shop_images/map_with_shadow.png",
+        "partner_button_label": "Interesse? Neem contact op",
+        "partner_button_link": "https://puredeco.nl/pages/verkoopparters",
+        "locations_title": "PureDeco showroomlocaties",
+        "locations_subtitle": "",
+        "sample_image": "shopify://shop_images/IMG_4524-865x485_75e0fd2b-7033-48bd-adc0-6d43cb3c250f.jpg",
+        "sample_title": "Twijfel je over kleur of materiaal?",
+        "sample_text": "Bestel gratis samples en bekijk thuis welke panelen het beste passen bij jouw interieur.",
+        "sample_button_label": "",
+        "sample_button_link": ""
+      }
+    },
+    "wholse_seller_aqdtc4": {
+      "type": "wholse-seller",
+      "blocks": {
+        "feature_item_wgikat": {
+          "type": "feature_item",
+          "settings": {
+            "icon": "",
+            "text": "Vermelding op onze website"
+          }
+        },
+        "feature_item_itkwNH": {
+          "type": "feature_item",
+          "settings": {
+            "icon": "",
+            "text": "Ondersteuning en stalen"
+          }
+        },
+        "feature_item_3adha8": {
+          "type": "feature_item",
+          "settings": {
+            "icon": "",
+            "text": "Uniek product in je showroom"
+          }
+        }
+      },
+      "block_order": [
+        "feature_item_wgikat",
+        "feature_item_itkwNH",
+        "feature_item_3adha8"
+      ],
+      "disabled": true,
+      "name": "Showroom section",
+      "settings": {
+        "top_banner_image": "shopify://shop_images/WhatsApp_Image_2026-04-29_at_15.27.59.jpg",
+        "top_heading": "Ervaar het verschil in kwaliteit",
+        "top_text": "Ervaar onze wandpanelen zoals ze bedoeld zijn: in het echt. Ontdek materialen en afwerking van dichtbij.",
+        "top_button_text": "Plan je showroomafspraak",
+        "top_button_link": "",
+        "left_heading": "Bezoek onze showroom",
+        "left_text": "In onze showroom ontdek je de volledige collectie wandpanelen. Je ervaart direct het verschil in kwaliteit.",
+        "left_image": "shopify://shop_images/IMG_4524-865x485_75e0fd2b-7033-48bd-adc0-6d43cb3c250f.jpg",
+        "address_text": "Nijverheidsdwarsstraat 2\n6914 AX Herwen",
+        "left_button_text": "Plan je afspraak",
+        "left_button_link": "",
+        "cta-img-right": "shopify://shop_images/Map.png",
+        "right_heading": "Word showroompartner",
+        "right_text": "Puredeco groeit en bouwt aan een netwerk van showroompartners.",
+        "right_button_text": "Interesse? Neem contact op",
+        "right_button_link": "shopify://pages/form"
+      }
+    },
+    "multicolumn_icon_g4WCWE": {
+      "type": "multicolumn-icon",
+      "blocks": {
+        "column_9heccD": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/pin.png",
+            "max_width": 28,
+            "max_width_mb": 28,
+            "title": "Nederland",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "heading_font": "heading",
+            "text": "<p>Showroom partner gezocht</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--secondary",
+            "button_icon": "none"
+          }
+        },
+        "column_yWYEMd": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/pin.png",
+            "max_width": 28,
+            "max_width_mb": 28,
+            "title": "Duitsland",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "heading_font": "heading",
+            "text": "<p>Showroom-Partner gesucht</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--secondary",
+            "button_icon": "none"
+          }
+        },
+        "column_GM9CHM": {
+          "type": "column",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/pin.png",
+            "max_width": 28,
+            "max_width_mb": 28,
+            "title": "Belgie",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h4",
+            "heading_font": "heading",
+            "text": "<p>Showroom partner gezocht</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--secondary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "column_9heccD",
+        "column_yWYEMd",
+        "column_GM9CHM"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".multicolumn-card.multicolumn-card {border: 1px solid #e4e4e4; border-radius: 16px; background: #ffffff;}",
+        ".rich-text {flex-direction: column; align-items: baseline; gap: 20px;}"
+      ],
+      "name": "t:sections.multicolumn-with-icon.name",
+      "settings": {
+        "cta_custom": true,
+        "container": "fixed",
+        "color_scheme": "scheme-10",
+        "header_layout": "vertical",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Puredeco Showroom",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h3",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "button_icon": "none",
+        "enable_sticky": false,
+        "card_color_scheme": "",
+        "content_alignment": "left",
+        "image_position": "left",
+        "icon_color": "#1d349a",
+        "columns_desktop": 3,
+        "column_gap": "extra-small",
+        "row_gap": "inherit",
+        "show_divider_col": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 50,
+        "padding_bottom": 20
+      }
+    },
+    "custom_content_wQDyKd": {
+      "type": "custom-content",
+      "blocks": {
+        "image_MfgBcL": {
+          "type": "image",
+          "settings": {
+            "width": "50%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "text_yqCC3F": {
+          "type": "text",
+          "settings": {
+            "content_alignment": "left",
+            "subheading": "",
+            "heading": "Talk about your brand",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "description": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "text_size": "text-base",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "width": "50%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "text_4NtGnw": {
+          "type": "text",
+          "settings": {
+            "content_alignment": "left",
+            "subheading": "",
+            "heading": "Talk about your brand",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "description": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "text_size": "text-base",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "width": "50%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_MfgBcL",
+        "text_yqCC3F",
+        "text_4NtGnw"
+      ],
+      "disabled": true,
+      "name": "t:sections.custom-content.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "enable_sticky_column": false,
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Custom content",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "<p>Combine images with text and a stand-out offer</p>",
+        "text_size": "text-base",
+        "column_gap": "medium",
+        "row_gap": "large",
+        "swipe_on_mobile": false,
+        "columns_mobile": "1",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "appointment_booking_gc6gPr": {
+      "type": "appointment-booking",
+      "blocks": {
+        "point_TVqywE": {
+          "type": "point",
+          "settings": {
+            "text": "Hoogwaardige wandpanelen voor elk interieur"
+          }
+        },
+        "point_YPnPWm": {
+          "type": "point",
+          "settings": {
+            "text": "Persoonlijk advies voor stijl, materiaal en afwerking"
+          }
+        },
+        "point_UCkhed": {
+          "type": "point",
+          "settings": {
+            "text": "Professionele ondersteuning bij ontwerp en ruimteplanning"
+          }
+        }
+      },
+      "block_order": [
+        "point_TVqywE",
+        "point_YPnPWm",
+        "point_UCkhed"
+      ],
+      "disabled": true,
+      "name": "Appointment Booking custom",
+      "settings": {
+        "badge": "Maak een afspraak",
+        "heading": "Pure kwaliteit in wandpanelen en interieuradvies",
+        "text": "<p>Ontdek stijlvolle wandpanelen voor elke ruimte. Laat bezoekers direct zien dat uw website draait om hoogwaardige wandafwerking, persoonlijk interieuradvies en professionele ontwerpbegeleiding.</p>",
+        "button_label": "Afspraak maken",
+        "button_link": "#",
+        "open_in_new_tab": true,
+        "secondary_button_label": "",
+        "secondary_button_link": "",
+        "card_label": "",
+        "card_heading": "",
+        "cta_img_glob": "shopify://shop_images/task_01knp00zp2eakswabsj1bydz8j_1775633490_img_0.webp",
+        "calendly_embed_code": "",
+        "section_bg": "rgba(0,0,0,0)",
+        "content_bg": "#ffffff",
+        "card_bg": "#ffffff",
+        "accent_color": "#5e8f4f",
+        "heading_color": "#111111",
+        "text_color": "#4f4f4f",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "image_with_text_6YJ3EP": {
+      "type": "image-with-text",
+      "blocks": {
+        "badge_R79mNm": {
+          "type": "badge",
+          "settings": {
+            "color_scheme": "scheme-3",
+            "badge_link": "",
+            "text": "garace - where design meet function -",
+            "image": "shopify://shop_images/sample-icon-text.svg",
+            "position_mobile": "right"
+          }
+        },
+        "heading_aAedM4": {
+          "type": "heading",
+          "settings": {
+            "heading": "Wandpanelen met bamboekern: de perfecte mix van natuur en design",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h2"
+          }
+        },
+        "text_M6n4FA": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Deze innovatieve wandpanelen, gemaakt van bamboe en gerecycled pvc, zijn vocht- en weerbestendig. Perfect voor zowel droge als vochtige ruimtes, zoals badkamers, keukens en kelders. Ze zijn brandvertragend én eenvoudig te installeren. Onze wandpanelen bieden niet alleen een stijlvolle uitstraling, maar ook extra comfort en veiligheid in jouw interieur. Een praktische én mooie keuze voor elke ruimte.</p>",
+            "subtext_color": true
+          }
+        },
+        "button_jGr7n4": {
+          "type": "button",
+          "settings": {
+            "cta_btn_dot": "",
+            "button_label": "Shop wandpanelen",
+            "button_link": "shopify://collections",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "badge_R79mNm",
+        "heading_aAedM4",
+        "text_M6n4FA",
+        "button_jGr7n4"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".image-with-text__content {max-width: 60rem; --text-margin-top: 2rem;}",
+        ".badge__icon img {object-fit: contain !important; width: fit-content !important; width: 30px !important; margin: 0 auto;}",
+        "@media screen and (max-width: 750px) {.image-with-text__media {padding: 0 !important; }}"
+      ],
+      "settings": {
+        "pcard_image_ratio": "1/1",
+        "cutom_cta_enable_form": false,
+        "allow_icon": false,
+        "container": "fixed",
+        "color_scheme": "",
+        "image": "shopify://shop_images/akupanelen-driezijdig-301-white-oak-sfeerbeeld-2-768x768.png",
+        "image_position": "right",
+        "image_width": 50,
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "slideshow_K4mhmJ": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_UBANkM": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "background": "shopify://shop_images/Banner_1.png",
+            "background_mobile": "shopify://shop_images/Screenshot_2026-03-04_155012.png",
+            "image_overlay_opacity": 35,
+            "content_position": "middle-left",
+            "text_alignment": "left",
+            "subheading": "",
+            "title": "Word een PureDeco-Partner",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "description": "<p>Doe mee aan ons B2B-programma en bied uw klanten hoogwaardige wandpanelen aan. Profiteer van exclusieve prijzen, professionele ondersteuning en snelle levering.</p>",
+            "description_size": "text-base",
+            "button_label": "Aanmelden als Partner",
+            "button_link": "https://puredeco-3.myshopify.com/pages/form/#shopify-section-template--27429805621514__contact_form_it8mNq",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "enable_preload_image": true
+          }
+        }
+      },
+      "block_order": [
+        "slide_UBANkM"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "@media screen and (min-width: 1600px) and (max-width: 1920px) {.slideshow__content {padding: 0 10.5rem; }}",
+        "ul {padding-left: 3px !important;}",
+        "@media screen and (min-width: 1300px) and (max-width: 1600px) {.slideshow__content {padding: 0 4.5rem; }}",
+        "@media screen and (max-width: 750px) {ul {margin-top: 0 !important; } ul li {font-size: 15px; }}",
+        ".slideshow__text.rich-text.text-left.md\\:text-left {max-width: 679px;}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "slide_height": "adapt",
+        "show_controls": true,
+        "autoplay": true,
+        "autoplay_delay": 6,
+        "show_text_below": false,
+        "text_alignment_mobile": "center",
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "multicolumn_xHhFh7": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_jqzpnj": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/task_01knp00zp2eakswabsj1bydz8j_1775633490_img_0.webp",
+            "title": "Showroom",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "text": "<p>Telefonisch zijn we van maandag t/m zaterdag bereikbaar tussen 10.00u en 16.00u. </p><p>Daarnaast zijn we ook via WhatsApp bereikbaar voor vragen of bestellingen.</p><h6><a href=\"tel:+31 316 700 214\">+31 316 700 214</a></h6>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--underline",
+            "button_icon": "none"
+          }
+        },
+        "column_3FrWED": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/IMG_4524-865x485_6e45d6c2-3ce2-40d9-ba04-087e8424761a.jpg",
+            "title": "Reseller worden van PureDeco?",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h3",
+            "text": "<p>Onze wandpanelen bieden niet alleen een stijlvolle uitstraling, maar ook extra comfort en veiligheid in jouw interieur. Een praktische én mooie keuze voor elke ruimte.</p>",
+            "text_size": "text-base",
+            "button_label": "Wilt u showroompartner worden?",
+            "button_link": "shopify://pages/form",
+            "button_style": "btn--primary",
+            "button_icon": "none"
+          }
+        }
+      },
+      "block_order": [
+        "column_jqzpnj",
+        "column_3FrWED"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".section__container.page-width.page-width--fixed {max-width: 1200px;}",
+        ".multicolumn-card--image-full {background: #ffff; padding: 24px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06); border-radius: 18px;}",
+        "@media screen and (min-width: 1000px) {.multicolumn-card__image {height: 400px; } img.motion-reduce.absolute.hover-scale-up.inset-0.w-full.h-full.loaded {height: 400px; }}"
+      ],
+      "name": "t:sections.multicolumn.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-10",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "content_alignment": "left",
+        "show_col_count": false,
+        "show_image": true,
+        "columns_desktop": 2,
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "17756309469489e97b": {
+      "type": "apps",
+      "blocks": {
+        "bookx_app_blocks_tYcG84": {
+          "type": "shopify://apps/bookx/blocks/app-blocks/865cd10f-9515-4d8b-8e41-efece9c83f71",
+          "settings": {
+            "bookeasy-app-id": "o8UM2z9KGc6rxK5uyq8Nim",
+            "bookeasy-app-title": "",
+            "bookeasy-app-subtitle": "",
+            "bookeasy-app-description": "",
+            "bookeasy-app-alignment": "flex-start"
+          }
+        }
+      },
+      "block_order": [
+        "bookx_app_blocks_tYcG84"
+      ],
+      "disabled": true,
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "testimonials_gKMqWW": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_Nmijpd": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "heading": "Testimonials",
+            "text": "<p>Overal zie je marmer panelen, maar dit bedrijf heeft ze in zoveel stijlen – echt wow! </p>",
+            "author": "- Thomas",
+            "bio": "",
+            "product": ""
+          }
+        },
+        "testimonial_DeGGRG": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "heading": "Testimonials",
+            "text": "<p>Geweldige kwaliteit en super eenvoudig te monteren. Zeer tevreden!</p>",
+            "author": "- Sanne",
+            "bio": "",
+            "product": ""
+          }
+        },
+        "testimonial_bk7Cbw": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "heading": "Testimonials",
+            "text": "<p>Ik heb veel samples van verschillende webshops geprobeerd, maar deze wandpanelen staken er met kop en schouders bovenuit! Zeker een aanrader!</p>",
+            "author": "- OBE Accounting",
+            "bio": "",
+            "product": ""
+          }
+        },
+        "testimonial_yR3JEy": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "5-stars",
+            "heading": "Testimonials",
+            "text": "<p>Goed geholpen voor het inrichten van ons bedrijfspand en tevreden met het resultaat.</p>",
+            "author": "- - Maxibedden Uw slaapspecialist",
+            "bio": "",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_Nmijpd",
+        "testimonial_DeGGRG",
+        "testimonial_bk7Cbw",
+        "testimonial_yR3JEy"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".testimonial__wrapper.false {background: #f0f0f0; padding: 20px; height: 240px; border-radius: 9px;}",
+        ".testimonial__inner {display: flex; flex-direction: column; justify-content: center;}",
+        ".testimonial__icon svg {color: #ffad00; width: 19px;}"
+      ],
+      "name": "t:sections.testimonials.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Dit vinden onze klanten van ons",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-base",
+        "layout": "standard",
+        "card_color_scheme": "",
+        "card_content_color_scheme": "",
+        "card_image_ratio": "adapt",
+        "card_heading_size": "h4",
+        "card_text_size": "text-base",
+        "author_info_layout": "vertical",
+        "card_trigger_behavior": "click",
+        "show_image": false,
+        "show_author_image": false,
+        "columns_desktop": 3,
+        "column_gap": "medium",
+        "row_gap": "medium",
+        "enable_slider": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_progress_bar": true,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "puredeco_showroom_page_9W9eEn",
+    "wholse_seller_aqdtc4",
+    "multicolumn_icon_g4WCWE",
+    "custom_content_wQDyKd",
+    "appointment_booking_gc6gPr",
+    "image_with_text_6YJ3EP",
+    "slideshow_K4mhmJ",
+    "multicolumn_xHhFh7",
+    "17756309469489e97b",
+    "testimonials_gKMqWW"
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "center",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "verkooppartner_section_WWhFNH": {
+      "type": "verkooppartner-section",
+      "blocks": {
+        "dark_feature_3d6NMf": {
+          "type": "dark_feature",
+          "settings": {
+            "icon": "display",
+            "text": "Display met onze hardlopers"
+          }
+        },
+        "dark_feature_jdaYHw": {
+          "type": "dark_feature",
+          "settings": {
+            "icon": "website",
+            "text": "Vermelding als erkend verkooppunt op onze website"
+          }
+        },
+        "dark_feature_UNpx8R": {
+          "type": "dark_feature",
+          "disabled": true,
+          "settings": {
+            "icon": "panel",
+            "text": "Grote presentatiepanelen"
+          }
+        },
+        "dark_feature_MyXTkV": {
+          "type": "dark_feature",
+          "settings": {
+            "icon": "price",
+            "text": "Scherpe B2B-prijzen"
+          }
+        },
+        "dark_feature_UdTx9T": {
+          "type": "dark_feature",
+          "settings": {
+            "icon": "badge",
+            "text": "Exclusieve verkooprechten per regio (geen interne concurrentie)"
+          }
+        },
+        "dark_feature_pBwLqB": {
+          "type": "dark_feature",
+          "settings": {
+            "icon": "stock",
+            "text": "Inzicht in actuele voorraad en levertijden"
+          }
+        },
+        "dark_feature_WCfXEX": {
+          "type": "dark_feature",
+          "disabled": true,
+          "settings": {
+            "icon": "box",
+            "text": "Displaymateriaal voor een professionele uitstraling"
+          }
+        },
+        "dark_feature_mxaPVp": {
+          "type": "dark_feature",
+          "settings": {
+            "icon": "support",
+            "text": "Persoonlijke ondersteuning bij verkoop en advies"
+          }
+        },
+        "audience_item_nzFcVh": {
+          "type": "audience_item",
+          "settings": {
+            "icon": "kitchen",
+            "text": "Keukenzaken"
+          }
+        },
+        "audience_item_BDW3QC": {
+          "type": "audience_item",
+          "settings": {
+            "icon": "architect",
+            "text": "Interieurarchitecten"
+          }
+        },
+        "audience_item_rg4ABA": {
+          "type": "audience_item",
+          "settings": {
+            "icon": "chair",
+            "text": "Interieurwinkels"
+          }
+        },
+        "audience_item_TMHeNW": {
+          "type": "audience_item",
+          "settings": {
+            "icon": "hammer",
+            "text": "Bouw- en aannemersbedrijven"
+          }
+        },
+        "audience_item_LnXi9n": {
+          "type": "audience_item",
+          "settings": {
+            "icon": "tile",
+            "text": "Tegel- en vloerspecialisten"
+          }
+        },
+        "faq_item_gTtdV4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Hoe verloopt de samenwerking?",
+            "answer": "<p><br/>Na je aanvraag plannen we een persoonlijk gesprek in. We beoordelen of jouw regio nog beschikbaar is, aangezien we bewust met een select netwerk van showroompartners werken. Bij een match reserveren we exclusiviteit en ontwikkelen we een samenwerking die volledig aansluit op jouw markt.<br/><br/></p>"
+          }
+        },
+        "faq_item_fMpbBz": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Wat levert het partnership op?",
+            "answer": "<p>- Beperkt aantal partners per regio (select netwerk)<br/>- Aantrekkelijke marges met groeipotentieel<br/>- Ontwikkel je eigen exclusieve toplagen<br/>- Leads rechtstreeks uit jouw regio<br/>- Complete ondersteuning in marketing en showroom</p>"
+          }
+        },
+        "faq_item_BVck8f": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Eerst vrijblijvend kennismaken?",
+            "answer": "<p>Ja, laat je gegevens achter en wij nemen contact met je op voor een vrijblijvende kennismaking.</p>"
+          }
+        },
+        "bottom_benefit_dizAhH": {
+          "type": "bottom_benefit",
+          "settings": {
+            "icon": "shield",
+            "heading": "Kwaliteit die overtuigt",
+            "text": "Hoogwaardige panelen met een realistische uitstraling."
+          }
+        },
+        "bottom_benefit_BY3hdi": {
+          "type": "bottom_benefit",
+          "settings": {
+            "icon": "chart",
+            "heading": "Aantrekkelijke marges",
+            "text": "Scherpe B2B-prijzen en een interessant verdienmodel."
+          }
+        },
+        "bottom_benefit_eCtMCN": {
+          "type": "bottom_benefit",
+          "settings": {
+            "icon": "support",
+            "heading": "Ondersteuning op maat",
+            "text": "Persoonlijk advies en ondersteuning wanneer jij dat nodig hebt."
+          }
+        },
+        "bottom_benefit_pemLYA": {
+          "type": "bottom_benefit",
+          "settings": {
+            "icon": "truck",
+            "heading": "Betrouwbare levering",
+            "text": "Snelle levertijden en betrouwbare service."
+          }
+        }
+      },
+      "block_order": [
+        "dark_feature_3d6NMf",
+        "dark_feature_jdaYHw",
+        "dark_feature_UNpx8R",
+        "dark_feature_MyXTkV",
+        "dark_feature_UdTx9T",
+        "dark_feature_pBwLqB",
+        "dark_feature_WCfXEX",
+        "dark_feature_mxaPVp",
+        "audience_item_nzFcVh",
+        "audience_item_BDW3QC",
+        "audience_item_rg4ABA",
+        "audience_item_TMHeNW",
+        "audience_item_LnXi9n",
+        "faq_item_gTtdV4",
+        "faq_item_fMpbBz",
+        "faq_item_BVck8f",
+        "bottom_benefit_dizAhH",
+        "bottom_benefit_BY3hdi",
+        "bottom_benefit_eCtMCN",
+        "bottom_benefit_pemLYA"
+      ],
+      "name": "Verkooppartner landing",
+      "settings": {
+        "badge_text": "Word onze verkooppartner",
+        "heading": "<p>Wij zoeken verkooppartners</p>",
+        "subheading": "<p>Bied jouw klanten een sterk product met een professionele presentatie en profiteer van aantrekkelijke voordelen.</p>",
+        "price_text": "Compleet showroompakket vanaf €199,95",
+        "product_image": "shopify://shop_images/puredeco.png",
+        "product_image_alt": "Showroom display",
+        "dark_card_heading": "Complete start voor jouw showroom",
+        "dark_card_text": "<p>Met ons showroompakket presenteer je onze panelen op een stijlvolle en professionele manier in jouw showroom. Zo beschik je over alle middelen om klanten overtuigend te adviseren en de verkoop optimaal te ondersteunen.<br/><br/></p>",
+        "dark_card_bottom": "Voor showrooms die kwaliteit willen tonen en verkopen.",
+        "right_heading": "Groei mee als officieel verkooppunt",
+        "right_text": "<p>Als verkooppartner profiteer je van een sterke presentatie in jouw showroom, ondersteuning in verkoop en toegang tot onze zakelijke voordelen. Zo kun je snel starten en jouw klanten een onderscheidend assortiment bieden.</p>",
+        "audience_heading": "Geschikt voor vakgerichte ondernemers",
+        "audience_text": "<p>Ons concept sluit perfect aan bij bedrijven die werken aan interieur, afbouw en renovatie, zoals:<br/><br/></p>",
+        "package_heading": "Een presentatie die verkoopt",
+        "package_text": "<p>Je ontvangt een showroompakket  display met een selectie van onze populairste panelen. Ideaal om direct een goede eerste indruk te geven aan jouw klanten.</p>",
+        "cta_heading": "Interesse in een partnership?",
+        "cta_text": "<p>Laat je gegevens achter en we nemen snel contact met je op.</p>",
+        "cta_button_text": "Aanmelden als verkooppartner",
+        "cta_button_link": "https://puredeco-3.myshopify.com/pages/form#cta_data_fgh",
+        "container_width": 1440,
+        "side_padding": 24,
+        "mobile_side_padding": 18,
+        "padding_top": 36,
+        "padding_bottom": 28,
+        "mobile_padding_top": 28,
+        "mobile_padding_bottom": 28,
+        "column_gap": 38,
+        "product_image_width": 300,
+        "product_image_height": 380,
+        "mobile_product_image_height": 320,
+        "background_color": "#fbfaf7",
+        "heading_color": "#162520",
+        "text_color": "#162520",
+        "body_color": "#343a36",
+        "muted_color": "#736f69",
+        "accent_color": "#e9c89f",
+        "accent_light": "#ead9c8",
+        "card_color": "#ffffff",
+        "border_color": "#eadfd5",
+        "dark_card_color": "#1d2d27",
+        "dark_card_color_2": "#2b3b34",
+        "dark_text_color": "#f5f1eb",
+        "dark_muted_color": "#d8d2c8",
+        "icon_gray": "#807a72",
+        "cta_button_color": "#eac399",
+        "cta_button_text_color": "#17221e",
+        "bottom_bar_color": "#f1e9e1",
+        "badge_size": 13,
+        "heading_size": 42,
+        "mobile_heading_size": 35,
+        "heading_weight": 800,
+        "subheading_size": 16,
+        "mobile_subheading_size": 16,
+        "price_size": 16,
+        "mobile_price_size": 16,
+        "dark_heading_size": 25,
+        "mobile_dark_heading_size": 24,
+        "dark_text_size": 16,
+        "feature_size": 16,
+        "right_heading_size": 20,
+        "mobile_right_heading_size": 22,
+        "right_text_size": 16,
+        "mobile_body_size": 15,
+        "audience_size": 12,
+        "faq_size": 16,
+        "cta_heading_size": 18,
+        "bottom_heading_size": 15,
+        "bottom_text_size": 14,
+        "card_radius": 14,
+        "dark_card_radius": 10
+      }
+    }
+  },
+  "order": [
+    "main",
+    "verkooppartner_section_WWhFNH"
+  ]
+}

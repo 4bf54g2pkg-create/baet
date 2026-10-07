@@ -165,3 +165,9 @@ templates/robots.txt.liquid  79fe39ff3f6c96eb3ef97395ad254787  = OK
 - Oude knop linkte naar puredeco-3.myshopify.com/pages/form → nu formulier op de pagina zelf.
 - Prijs 'vanaf € 199,95' overgenomen van actieve sectie (uitgeschakelde oude sectie noemde € 295,95 — laten bevestigen).
 - Template bevat alleen pd_partners; origineel staat nog in het live thema. md5 pd-partners e66be82c…, css 7de7508b…, template e3945ce7….
+
+## 7 okt — Thuispaneel opgeschoond + display scherp
+- Scan (beide thema's, alle tekstbestanden + winkeldata + 78 live pagina's): live 0× zichtbaar; live code 8× (4 uitgeschakelde secties, 4 schema-defaults); H1-test 4× (defaults). Winkeldata schoon.
+- H1-test: showroom-partner.liquid en topbar.liquid defaults → PureDeco / info@puredeco.nl; menu-drawer myshopify-links → /pages/. md5 98908e5c… / 76cabe2d… / 93d8f242….
+- Live: schrijven geblokkeerd → kant-en-klare bestanden + instructie in docs/live-opschonen/.
+- Showroomdisplay: 2x opgeschaald, wazige 'puredeco'-letters vervangen door scherp PureDeco-logo (logo.svg) → Bestanden pd-showroomdisplay.jpg (2160×2700); template verkoopparters md5 f16015a9…. Oud puredeco.png niet aangeraakt (live).
