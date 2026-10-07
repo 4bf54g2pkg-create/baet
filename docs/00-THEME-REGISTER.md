@@ -116,3 +116,11 @@ templates/robots.txt.liquid  79fe39ff3f6c96eb3ef97395ad254787  = OK
 4. "4,9 van 5 op Google Reviews" in de beschrijving van Wandpanelen controleren of onderbouwen.
 5. Productafbeeldingen met alt-tekst "Renderique Photo 1" herschrijven.
 6. Dubbele collecties (akupanelen / akupanelen-samples, wandpanelen / bamboepanelen-samples) concurreren op dezelfde zoekwoorden: eentje noindex of de beschrijvingen duidelijk anders maken. URL's blijven staan.
+
+## SEO-winkeldata doorgevoerd (7 okt, met toestemming) — geen URL's/handles gewijzigd
+- Collectiebeschrijvingen opgeschoond (zelfde tekst, zonder opgeplakte chat-opmaak; interne links met ankertekst "houten wandpanelen" / "naadloze wandpanelen"): bamboepanelen-samples, akupanelen-samples, actie, nieuwe-collectie, sale, kunst, onze-bestsellers, 8mm-naadloos.
+- SEO-titel/-beschrijving toegevoegd: akupanelen-samples, sale. Hout: "90 dagen retour" → "30 dagen bedenktijd".
+- custom.seo_h1: japandi "Japandi wandpanelen", akupanelen "Akupanelen voor wand en plafond".
+- 51 alt-teksten van productfoto's van actieve producten (o.a. "Renderique Photo 1" → "Houten wandpaneel 811 Walnut Classic, sfeerbeeld (visualisatie)").
+- Niet gedaan, bewust: noindex op dubbele collecties. Het live hoofdmenu linkt "Wandpanelen" naar /collections/bamboepanelen-samples; zonder Search Console-data kan noindex een rankende pagina kosten. Eerst in Search Console kijken welke URL rankt.
+- Open: Algemene voorwaarden bevatten nog "90 DAGEN TEVREDENHEIDSGARANTIE" (juridisch document, niet aangepast). Product 620 Light Brown toont als eerste foto het 619 Jade-beeld.
