@@ -2576,3 +2576,4 @@ body a.top_cta_icon + a.top_cta_icon:hover { background: rgb(var(--pd-ink)); col
 .pde__app { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .pde__actions button.pde__cta { appearance: none; border: 0; border-radius: 0; font: inherit; font-size: 1.4rem; cursor: pointer; width: 100%; }
 .pde__actions button.pde__cta:disabled { opacity: .7; cursor: progress; }
+.pse-app { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
