@@ -1,0 +1,182 @@
+{%- comment -%}
+  Puredeco · Studio Herwen (pagina /pages/showroom) in de huisstijl.
+  Alleen echte foto's van de studio; tijden en gegevens komen uit de instellingen zodat ze overal gelijk blijven.
+  De afspraakknop opent BookX (het app-blok in de header rendert een verborgen .bookeasy-btn);
+  zonder BookX valt hij terug op WhatsApp.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign wa = s.whatsapp | remove: ' ' | remove: '+' | remove: '-'
+  assign tel = s.phone | remove: ' ' | remove: '-'
+  assign maps_q = s.address_line_1 | append: ', ' | append: s.address_line_2 | url_encode
+  assign wa_text = 'Hallo Puredeco, ik wil graag een afspraak in Studio Herwen.' | url_encode
+-%}
+<div class="ph st">
+
+  {%- comment -%} Hero {%- endcomment -%}
+  <section class="st-hero">
+    <div class="st-hero__text">
+      <p class="ph-k ph-k--light">Studio Herwen · op afspraak</p>
+      <h1 class="st-hero__h">{{ s.heading | default: 'Voel het verschil. In het echt.' | escape | replace: '. ', '.<br>' }}</h1>
+      <p class="st-hero__t">{{ s.intro }}</p>
+      <div class="ph-btns">
+        <a class="ph-btn ph-btn--paper" href="https://wa.me/{{ wa }}?text={{ wa_text }}" data-st-book>Plan je bezoek</a>
+        <a class="ph-btn ph-btn--line-light" href="tel:{{ tel }}">Bel {{ s.phone }}</a>
+      </div>
+      <dl class="st-hero__facts">
+        <div><dt>Studio</dt><dd>{{ s.studio_hours }}</dd></div>
+        <div><dt>Telefoon en WhatsApp</dt><dd>{{ s.phone_hours }}</dd></div>
+      </dl>
+    </div>
+    <figure class="st-hero__img">
+      {%- if s.hero_image != blank -%}
+        {{ s.hero_image | image_url: width: 1600 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600, 900, 1200, 1600', sizes: '(min-width: 990px) 50vw, 100vw', alt: 'Advies met stalen in Studio Herwen', style: s.hero_focus }}
+      {%- endif -%}
+    </figure>
+  </section>
+
+  {%- comment -%} Wat je in de studio doet {%- endcomment -%}
+  <section class="ph-s st-steps">
+    <div class="ph-wrap">
+      <div class="st-steps__head">
+        <p class="ph-k ph-k--bronze">Je bezoek</p>
+        <h2 class="ph-h2">Zo verloopt je bezoek</h2>
+      </div>
+      <ol class="st-steps__list" role="list">
+        <li>
+          <span class="st-steps__n">01</span>
+          <h3>Plan een moment</h3>
+          <p>Kies online een tijd die je past, dan staat er iemand voor je klaar.</p>
+        </li>
+        <li>
+          <span class="st-steps__n">02</span>
+          <h3>Zie en voel de panelen</h3>
+          <p>Bekijk de panelen op ware grootte, voel de structuur en vergelijk decors naast elkaar.</p>
+        </li>
+        <li>
+          <span class="st-steps__n">03</span>
+          <h3>Advies voor jouw wand</h3>
+          <p>Neem maten of foto's mee. We kijken samen naar decor, afwerking en hoeveel panelen je nodig hebt.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  {%- comment -%} Adres en contact {%- endcomment -%}
+  <section class="ph-s st-visit">
+    <div class="ph-wrap st-visit__in">
+      <figure class="st-visit__img">
+        {%- if s.visit_image != blank -%}
+          {{ s.visit_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '500, 800, 1200', sizes: '(min-width: 990px) 50vw, 100vw', alt: 'Studio Herwen met wandpanelen in marmer- en steenlook' }}
+        {%- endif -%}
+      </figure>
+      <div class="st-visit__txt">
+        <p class="ph-k ph-k--bronze">Adres</p>
+        <h2 class="ph-h2">Studio Herwen</h2>
+        <address class="st-visit__addr">{{ s.address_line_1 }}<br>{{ s.address_line_2 }}</address>
+        <a class="st-link" href="https://www.google.com/maps/search/?api=1&query={{ maps_q }}" target="_blank" rel="noopener">Routebeschrijving →</a>
+        <dl class="st-visit__list">
+          <div><dt>Studio</dt><dd>{{ s.studio_hours }}</dd></div>
+          <div><dt>Telefoon</dt><dd><a href="tel:{{ tel }}">{{ s.phone }}</a></dd></div>
+          <div><dt>WhatsApp</dt><dd><a href="https://wa.me/{{ wa }}" target="_blank" rel="noopener">{{ s.phone }}</a></dd></div>
+          <div><dt>E-mail</dt><dd><a href="mailto:{{ s.email }}">{{ s.email }}</a></dd></div>
+          <div><dt>Bereikbaar</dt><dd>{{ s.phone_hours }}</dd></div>
+        </dl>
+        <div class="ph-btns">
+          <a class="ph-btn ph-btn--ink" href="https://wa.me/{{ wa }}?text={{ wa_text }}" data-st-book>Plan je bezoek</a>
+        </div>
+        {%- if s.rating != blank -%}<p class="ph-note">{{ s.rating }}</p>{%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Liever thuis kijken {%- endcomment -%}
+  <section class="st-samples">
+    <div class="ph-wrap st-samples__in">
+      <div>
+        <p class="ph-k ph-k--bronze">Niet in de buurt?</p>
+        <p class="ph-h2 st-samples__h">Bekijk de stalen thuis, in je eigen licht.</p>
+      </div>
+      <div class="st-samples__r">
+        <p>Tot 5 stalen gratis, je betaalt alleen € 6,95 verzending.</p>
+        <a class="ph-btn ph-btn--ink" href="{{ s.samples_url | default: '/pages/sample' }}">Kies je stalen</a>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} Showroompartners {%- endcomment -%}
+  <section class="ph-s st-partner">
+    <div class="ph-wrap st-partner__in">
+      <div>
+        <p class="ph-k ph-k--light">Voor showrooms en dealers</p>
+        <h2 class="ph-h2 st-partner__h">Word showroompartner</h2>
+        <p class="st-partner__t">Puredeco zoekt showroompartners in Nederland, België en Duitsland. Toon onze panelen in jouw zaak.</p>
+        <a class="ph-btn ph-btn--paper" href="{{ s.partner_url | default: '/pages/verkoopparters' }}">Neem contact op</a>
+      </div>
+      <ul class="st-partner__list" role="list">
+        <li><span>Nederland</span>Studio Herwen · partners welkom</li>
+        <li><span>België</span>showroompartner gezocht</li>
+        <li><span>Duitsland</span>showroompartner gezocht</li>
+        <li><span>Wat je krijgt</span>vermelding op onze website, stalen en ondersteuning, een eigen marge</li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Puredeco Studio Herwen",
+  "url": {{ request.origin | append: request.path | json }},
+  {%- if s.hero_image != blank -%}"image": {{ s.hero_image | image_url: width: 1200 | prepend: 'https:' | json }},{%- endif -%}
+  "telephone": {{ tel | json }},
+  "email": {{ s.email | json }},
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": {{ s.address_line_1 | json }},
+    "postalCode": {{ s.address_line_2 | split: ' ' | slice: 0, 2 | join: ' ' | json }},
+    "addressLocality": "Herwen",
+    "addressCountry": "NL"
+  }
+}
+</script>
+
+<script>
+(function () {
+  /* Afspraakknop: open BookX als die op de pagina staat, anders gewoon de WhatsApp-link volgen */
+  document.querySelectorAll('[data-st-book]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var b = document.querySelector('.bookeasy-btn');
+      if (b) { e.preventDefault(); b.click(); }
+    });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Puredeco studio",
+  "tag": "section",
+  "class": "pd-studio-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Kop", "default": "Voel het verschil. In het echt." },
+    { "type": "textarea", "id": "intro", "label": "Intro", "default": "In onze studio in Herwen zie je de panelen op ware grootte, voel je de structuur en krijg je persoonlijk advies voor je wand." },
+    { "type": "image_picker", "id": "hero_image", "label": "Foto bovenaan (echte foto van de studio)" },
+    { "type": "text", "id": "hero_focus", "label": "Uitsnede foto bovenaan (CSS)", "default": "object-position: 50% 40%;" },
+    { "type": "image_picker", "id": "visit_image", "label": "Foto bij adres (echte foto van de studio)" },
+    { "type": "text", "id": "address_line_1", "label": "Adres", "default": "Nijverheidsdwarsstraat 2" },
+    { "type": "text", "id": "address_line_2", "label": "Postcode en plaats", "default": "6914 AX Herwen" },
+    { "type": "text", "id": "studio_hours", "label": "Openingstijden studio", "default": "Do, vr en za · 10–15 uur, op afspraak" },
+    { "type": "text", "id": "phone_hours", "label": "Bereikbaarheid telefoon/WhatsApp", "default": "Ma–za · 10–16 uur" },
+    { "type": "text", "id": "phone", "label": "Telefoon", "default": "0316 700 214" },
+    { "type": "text", "id": "whatsapp", "label": "WhatsApp (internationaal)", "default": "31316700214" },
+    { "type": "text", "id": "email", "label": "E-mail", "default": "info@puredeco.nl" },
+    { "type": "text", "id": "rating", "label": "Beoordeling (leeg = verbergen)", "default": "4,9 van 5 op Google Reviews" },
+    { "type": "url", "id": "samples_url", "label": "Link samples" },
+    { "type": "url", "id": "partner_url", "label": "Link showroompartners" }
+  ],
+  "presets": [{ "name": "Puredeco studio" }]
+}
+{% endschema %}

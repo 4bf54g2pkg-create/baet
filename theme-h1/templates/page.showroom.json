@@ -1,0 +1,268 @@
+{
+  "sections": {
+    "pd_studio": {
+      "type": "pd-studio",
+      "settings": {
+        "heading": "Voel het verschil. In het echt.",
+        "intro": "In onze studio in Herwen zie je de panelen op ware grootte, voel je de structuur en krijg je persoonlijk advies voor je wand.",
+        "hero_image": "shopify://shop_images/WhatsApp_Image_2026-04-29_at_15.27.59.jpg",
+        "hero_focus": "object-position: 50% 40%;",
+        "visit_image": "shopify://shop_images/IMG_4524-865x485_75e0fd2b-7033-48bd-adc0-6d43cb3c250f.jpg",
+        "address_line_1": "Nijverheidsdwarsstraat 2",
+        "address_line_2": "6914 AX Herwen",
+        "studio_hours": "Do, vr en za · 10–15 uur, op afspraak",
+        "phone_hours": "Ma–za · 10–16 uur",
+        "phone": "0316 700 214",
+        "whatsapp": "31316700214",
+        "email": "info@puredeco.nl",
+        "rating": "4,9 van 5 op Google Reviews",
+        "partner_url": "https://puredeco.nl/pages/verkoopparters"
+      }
+    },
+    "puredeco_showroom_page_9W9eEn": {
+      "type": "puredeco-showroom-page",
+      "disabled": true,
+      "blocks": {
+        "hero_feature_aUXCKN": {
+          "type": "hero_feature",
+          "settings": {
+            "icon": "shield",
+            "title": "Premium kwaliteit",
+            "text": "8mm kliksysteem naadloos"
+          }
+        },
+        "hero_feature_WdWJha": {
+          "type": "hero_feature",
+          "settings": {
+            "icon": "leaf",
+            "title": "Duurzame materialen",
+            "text": "Bamboekern"
+          }
+        },
+        "hero_feature_aMtAkr": {
+          "type": "hero_feature",
+          "settings": {
+            "icon": "headset",
+            "title": "Persoonlijk advies",
+            "text": "Van echte specialisten"
+          }
+        },
+        "hero_feature_dABzDf": {
+          "type": "hero_feature",
+          "settings": {
+            "icon": "truck",
+            "title": "Snelle levering",
+            "text": "Binnen 3–6 werkdagen"
+          }
+        },
+        "contact_row_DWxxgG": {
+          "type": "contact_row",
+          "settings": {
+            "icon": "clock",
+            "label": "Ma – Vr",
+            "value": "08:30 – 17:00"
+          }
+        },
+        "contact_row_eh3tiX": {
+          "type": "contact_row",
+          "settings": {
+            "icon": "clock",
+            "label": "Zaterdag",
+            "value": "09:00 – 16:00"
+          }
+        },
+        "contact_row_UXc6fq": {
+          "type": "contact_row",
+          "settings": {
+            "icon": "x",
+            "label": "Zondag",
+            "value": "Gesloten"
+          }
+        },
+        "contact_row_94CfYf": {
+          "type": "contact_row",
+          "settings": {
+            "icon": "email",
+            "label": "E-mail",
+            "value": "info@puredeco.nl"
+          }
+        },
+        "contact_row_MdAXe9": {
+          "type": "contact_row",
+          "settings": {
+            "icon": "whatsapp",
+            "label": "WhatsApp",
+            "value": "+31316700214"
+          }
+        },
+        "partner_bullet_GUEjT4": {
+          "type": "partner_bullet",
+          "settings": {
+            "text": "Vermelding op onze website"
+          }
+        },
+        "partner_bullet_Xg3DUf": {
+          "type": "partner_bullet",
+          "settings": {
+            "text": "Ondersteuning en samples"
+          }
+        },
+        "partner_bullet_7eMeir": {
+          "type": "partner_bullet",
+          "settings": {
+            "text": "Uniek product in je showroom"
+          }
+        },
+        "partner_bullet_LWpDUc": {
+          "type": "partner_bullet",
+          "settings": {
+            "text": "Interessante marge"
+          }
+        },
+        "location_ct63at": {
+          "type": "location",
+          "settings": {
+            "flag": "shopify://shop_images/images_1.png",
+            "enable_cta_app": true,
+            "country": "Nederland",
+            "status": "Showroom in Herwen",
+            "address": "Nijverheidsdwarsstraat 2<br>6914 AX Herwen",
+            "button_label": "Plan je afspraak",
+            "button_link": "",
+            "button_style": "primary"
+          }
+        },
+        "location_HNVKie": {
+          "type": "location",
+          "settings": {
+            "flag": "shopify://shop_images/images_2.png",
+            "enable_cta_app": false,
+            "country": "België",
+            "status": "Showroompartner gezocht",
+            "address": "",
+            "button_label": "Meer informatie",
+            "button_link": "shopify://pages/contact",
+            "button_style": "secondary"
+          }
+        },
+        "location_gDfNTW": {
+          "type": "location",
+          "settings": {
+            "flag": "shopify://shop_images/Flag_of_Germany.svg",
+            "enable_cta_app": false,
+            "country": "Duitsland",
+            "status": "Showroompartner gezocht",
+            "address": "",
+            "button_label": "Meer informatie",
+            "button_link": "shopify://pages/contact",
+            "button_style": "secondary"
+          }
+        },
+        "bottom_feature_mdTh6z": {
+          "type": "bottom_feature",
+          "settings": {
+            "icon": "medal",
+            "title": "Hoogste kwaliteit",
+            "text": "Duurzaam & slijtvast",
+            "show_stars": false
+          }
+        },
+        "bottom_feature_N6BnDB": {
+          "type": "bottom_feature",
+          "settings": {
+            "icon": "leaf",
+            "title": "Makkelijk te monteren",
+            "text": "Bespaart tijd en kosten",
+            "show_stars": false
+          }
+        },
+        "bottom_feature_DzCmhm": {
+          "type": "bottom_feature",
+          "settings": {
+            "icon": "truck",
+            "title": "Snelle levering",
+            "text": "Binnen 3-6 werkdagen",
+            "show_stars": false
+          }
+        },
+        "bottom_feature_RMppWe": {
+          "type": "bottom_feature",
+          "settings": {
+            "icon": "star",
+            "title": "Klanten beoordelen ons",
+            "text": "4,8 / 5",
+            "show_stars": true
+          }
+        }
+      },
+      "block_order": [
+        "hero_feature_aUXCKN",
+        "hero_feature_WdWJha",
+        "hero_feature_aMtAkr",
+        "hero_feature_dABzDf",
+        "contact_row_DWxxgG",
+        "contact_row_eh3tiX",
+        "contact_row_UXc6fq",
+        "contact_row_94CfYf",
+        "contact_row_MdAXe9",
+        "partner_bullet_GUEjT4",
+        "partner_bullet_Xg3DUf",
+        "partner_bullet_7eMeir",
+        "partner_bullet_LWpDUc",
+        "location_ct63at",
+        "location_HNVKie",
+        "location_gDfNTW",
+        "bottom_feature_mdTh6z",
+        "bottom_feature_N6BnDB",
+        "bottom_feature_DzCmhm",
+        "bottom_feature_RMppWe"
+      ],
+      "name": "PureDeco showroom page",
+      "settings": {
+        "green": "#315f31",
+        "dark": "#111111",
+        "text": "#222222",
+        "muted": "#555555",
+        "background": "#ffffff",
+        "card_background": "#f6f4ef",
+        "border": "#ddd6cb",
+        "radius": 20,
+        "max_width": 1600,
+        "desktop_padding_y": 0,
+        "desktop_padding_x": 0,
+        "mobile_padding_y": 0,
+        "mobile_padding_x": 12,
+        "logo_text": "Pure[green]Deco[/green]",
+        "hero_title": "Ervaar [green]PureDeco[/green]\npanelen in het echt",
+        "hero_text": "Bekijk onze wandpanelen van dichtbij, voel de materialen en ontvang persoonlijk advies voor jouw interieurproject. Plan eenvoudig een showroomafspraak of neem contact met ons op.",
+        "hero_image": "shopify://shop_images/image_11.png",
+        "hero_button_1_label": "Plan je afspraak",
+        "hero_button_1_link": "",
+        "hero_button_2_label": "",
+        "hero_button_2_link": "",
+        "contact_title": "Telefonisch contact",
+        "showroom_title": "Bezoek onze showroom",
+        "showroom_address": "Nijverheidsdwarsstraat 2<br>6914 AX Herwen\n\n- Donderdag 10:00 - 15:00\n- Vrijdag        10:00 - 15:00\n- Zaterdag     10:00 - 15:00",
+        "showroom_image": "shopify://shop_images/WhatsApp_Image_2026-04-29_at_15.27.59.jpg",
+        "showroom_button_label": "Plan je afspraak",
+        "showroom_button_link": "",
+        "partner_title": "Word showroompartner",
+        "partner_text": "PureDeco groeit en zoekt showroompartners in Nederland, België en Duitsland. Toon onze panelen in jouw showroom en profiteer van:",
+        "map_image": "shopify://shop_images/map_with_shadow.png",
+        "partner_button_label": "Interesse? Neem contact op",
+        "partner_button_link": "https://puredeco.nl/pages/verkoopparters",
+        "locations_title": "PureDeco showroomlocaties",
+        "locations_subtitle": "",
+        "sample_image": "shopify://shop_images/IMG_4524-865x485_75e0fd2b-7033-48bd-adc0-6d43cb3c250f.jpg",
+        "sample_title": "Twijfel je over kleur of materiaal?",
+        "sample_text": "Bestel gratis samples en bekijk thuis welke panelen het beste passen bij jouw interieur.",
+        "sample_button_label": "",
+        "sample_button_link": ""
+      }
+    }
+  },
+  "order": [
+    "pd_studio",
+    "puredeco_showroom_page_9W9eEn"
+  ]
+}

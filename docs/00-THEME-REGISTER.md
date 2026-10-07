@@ -150,3 +150,11 @@ templates/robots.txt.liquid  79fe39ff3f6c96eb3ef97395ad254787  = OK
 - Kaarten: 4/3/2 kolommen, sfeerbeeld 4:5 met staal-inzet (pd-swatch) en klein label Visualisatie; maat genormaliseerd ('280 × 122 cm'), dikte '5 mm stomp' / '8 mm naadloos' / 'of'; prijs + '+ Staal' (zet url in pd-edit).
 - Filter 'Wandpaneel' → label 'Look'. Filter 'Afwerking' verborgen: optiewaarden zijn verschillend gespeld (5mm / 5mm Stomp / 5mm stomp / 8mm Naadloos / 8mm naadloos / 8mm (naadloos)) en Shopify combineert ze als EN → te weinig resultaten. Oplossing = optiewaarden in productdata gelijktrekken (winkeldata, toestemming nodig; let op feeds/ads).
 - Breadcrumb uitgelijnd met .ph-wrap. md5 pd-collection b1347f1b…, css f47c3d36….
+
+## 7 okt — Studio Herwen (/pages/showroom, H1-test)
+- Nieuwe sectie pd-studio in huisstijl: donkere split-hero (echte foto, 'Voel het verschil. / In het echt.'), 3 stappen, adres/contact met routelink, samples-band, showroompartner-band (donker), LocalBusiness JSON-LD.
+- Alleen echte studiofoto's (WhatsApp_Image_2026-04-29…, IMG_4524…); image_11.png (lijkt render) niet gebruikt.
+- Gegevens gelijkgetrokken: studio do/vr/za 10–15 op afspraak (klopt met BookX-agenda), telefoon/WhatsApp ma–za 10–16 (zoals footer), 4,9 Google Reviews (oude pagina zei 4,8).
+- 'Plan je bezoek' opent BookX (.bookeasy-btn uit header-app); zonder BookX → WhatsApp. Getest: agenda opent.
+- page.showroom.json: pd_studio bovenaan, oude puredeco_showroom_page alleen uitgezet (terugdraaien = aanzetten). URL ongewijzigd.
+- md5 pd-studio fbd13d82…, css 12e686c1…, template 9f645fc2….
