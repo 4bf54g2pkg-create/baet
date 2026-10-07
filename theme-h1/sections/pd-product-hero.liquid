@@ -877,9 +877,9 @@
   if (go) go.addEventListener('click', function () {
     var c = get(), urls = c.map(function (x) { return x.url; }).filter(Boolean);
     if (!urls.length || !window.pdSampleApp) { render('Kies eerst een staal.'); return; }
-    go.disabled = true; go.textContent = 'Stalen klaarzetten… (' + urls.length + ')';
+    close();
     window.pdSampleApp.add(urls)
-      .then(function () { put([]); })
+      .then(function () {})
       .catch(function () { go.disabled = false; go.textContent = 'Samples aanvragen'; render('Dat lukte niet. Probeer het opnieuw of app ons.'); });
   });
   render();

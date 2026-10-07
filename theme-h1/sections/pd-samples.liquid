@@ -227,11 +227,11 @@
   go.addEventListener('click', function () {
     if (!chosen.length) return;
     go.disabled = true;
-    go.textContent = 'Stalen klaarzetten… (' + chosen.length + ')';
+    go.textContent = 'Even geduld…';
     var urls = chosen.map(function (c) { return c.url; }).filter(Boolean);
     if (!window.pdSampleApp || !urls.length) { go.disabled = false; go.textContent = 'Samples aanvragen'; say('Dat lukte niet. Probeer het opnieuw of app ons.'); return; }
     window.pdSampleApp.add(urls)
-      .then(function () { chosen = []; save(); })
+      .then(function () { setTimeout(function () { go.disabled = false; go.textContent = 'Samples aanvragen'; }, 1500); })
       .catch(function () { go.disabled = false; go.textContent = 'Samples aanvragen'; say('Dat lukte niet. Probeer het opnieuw of app ons.'); });
   });
   render();

@@ -139,3 +139,4 @@ templates/robots.txt.liquid  79fe39ff3f6c96eb3ef97395ad254787  = OK
 - Checksums: snippet 31cb9b91…, pd-samples f38a6b02…, pd-product-hero 8f4d92f5…, css 74f1c4f8…
 - Te testen in voorbeeld H1-test: 2–3 stalen kiezen → app-lijst moet die stalen tonen → afrekenen € 0 + € 6,95.
 - Update: iframe-methode bleef hangen (Shopify blokkeert inladen in frame). Nu: rij in sessionStorage, browser gaat per decor naar de productpagina, drukt de app-knop, en opent na het laatste decor de app-lijst. Voortgangsscherm "Stalen klaarzetten · x van n". Snippet md5 88b88095….
+- Update 2: wachtrij + overlay weg. Nu net als live: echte app-knop indrukken (op productpagina direct; vanaf samplepagina naar eerste decor #pd-sample). md5 snippet 14f9d5e7…, pd-samples 85c5eb90…, pd-product-hero 00f47f4d…. Volledige koppeling volgt zodra puredeco.nl/cdn.shopify.com bereikbaar zijn voor analyse van de app.
