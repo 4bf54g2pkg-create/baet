@@ -134,6 +134,13 @@
       "w": 1440,
       "x": 9120,
       "y": 13820
+    },
+    "Productvideo.dc.html": {
+      "h": 4520,
+      "title": "Productvideo per decor · voorstel (692 Urban Smoke)",
+      "w": 1440,
+      "x": 10640,
+      "y": 13820
     }
   },
   "createdOnFiles": {
@@ -189,7 +196,8 @@
     "Samples.dc.html",
     "Snelheid.dc.html",
     "Voorraad.dc.html",
-    "Afrekenknop.dc.html"
+    "Afrekenknop.dc.html",
+    "Productvideo.dc.html"
   ],
   "pages": [],
   "title": "The Puredeco Finish"
