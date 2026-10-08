@@ -113,9 +113,14 @@
     {%- case part -%}{%- when 'title' -%}Over PureDeco | Wandpanelen met bamboekern{%- when 'desc' -%}PureDeco maakt wandpanelen met een kern van bamboe, in houtlook, marmer, beton, Japandi, leer en art. Lees wie we zijn en hoe we werken.{%- endcase -%}
   {%- when 'type-form' -%}
     {%- case part -%}{%- when 'title' -%}Gratis interieuradvies voor je wand | PureDeco{%- when 'desc' -%}Twijfel je welke wandpanelen passen bij jouw ruimte? Vraag gratis en vrijblijvend persoonlijk advies aan bij PureDeco.{%- endcase -%}
+  {%- when 'algemene-voorwaarden' -%}
+    {%- case part -%}{%- when 'title' -%}Algemene voorwaarden | PureDeco{%- when 'desc' -%}Algemene voorwaarden van PureDeco: bestellen, betalen, levering, bedenktijd, retourneren en garantie op wandpanelen en accessoires.{%- endcase -%}
   {%- when 'collection-bundle' -%}
     {%- case part -%}{%- when 'title' -%}Mix and match wandpanelen | PureDeco{%- when 'desc' -%}Combineer decors van PureDeco-wandpanelen met een kern van bamboe tot één wand. Bekijk de mogelijkheden en bestel tot vijf stalen gratis.{%- endcase -%}
   {%- endcase -%}
+{%- when 'blog' -%}
+  {%- if part == 'title' -%}Inspiratie en tips over wandpanelen | PureDeco{%- endif -%}
+  {%- if part == 'desc' -%}Inspiratie en tips over wandpanelen met bamboekern: projecten, onderhoud, montage en toepassingen in woonkamer, keuken, badkamer en kantoor.{%- endif -%}
 {%- when 'product' -%}
   {%- if part == 'title' or part == 'desc' or part == 'mat' -%}
     {%- liquid
@@ -136,7 +141,7 @@
         assign unit = 'per paneel'
         if sl contains 'doorlopend'
           assign mat = 'Doorlopend marmer wandpaneel'
-          assign unit = 'per set van drie panelen'
+          assign unit = 'per set van 3'
         elsif sl contains 'hout'
           assign mat = 'Houten wandpaneel'
         elsif sl contains 'japandi'
@@ -220,6 +225,8 @@
               echo d | append: '.' | append: fin | append: ' Vanaf ' | append: pr | append: ' ' | append: unit | append: '. Gratis stalen, 3 jaar garantie.'
             endif
         endcase
+      elsif part == 'desc' and p.description == blank
+        echo p.title | append: ' van PureDeco, wandpanelen met bamboekern. Tot 5 stalen gratis, 3 jaar garantie.'
       endif
     -%}
   {%- endif -%}

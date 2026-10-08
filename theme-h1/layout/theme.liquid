@@ -52,6 +52,10 @@
     {%- assign pd_seo_robots = pd_seo_robots | strip -%}
     {%- if pd_seo_title != blank -%}{%- assign page_title = pd_seo_title | escape -%}{%- endif -%}
     {%- if pd_seo_desc != blank -%}{%- assign page_description = pd_seo_desc -%}{%- endif -%}
+    {%- if page_description.size > 165 -%}
+      {%- assign page_description = page_description | strip_html | strip_newlines | truncatewords: 24, '…' -%}
+      {%- if page_description.size > 165 -%}{%- assign page_description = page_description | truncate: 160, '…' -%}{%- endif -%}
+    {%- endif -%}
     {%- if pd_seo_robots != blank -%}<meta name="robots" content="{{ pd_seo_robots }}">{%- endif -%}
     <title>
       {{- page_title -}}

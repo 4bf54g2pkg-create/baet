@@ -281,16 +281,11 @@
     {% if settings.logo %}
       "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
     {% endif %}
+    {%- capture pd_social -%}{{ settings.social_twitter_link }}|{{ settings.social_facebook_link }}|{{ settings.social_pinterest_link }}|{{ settings.social_instagram_link }}|{{ settings.social_tiktok_link }}|{{ settings.social_tumblr_link }}|{{ settings.social_snapchat_link }}|{{ settings.social_youtube_link }}|{{ settings.social_vimeo_link }}{%- endcapture -%}
+    {%- assign pd_social = pd_social | split: '|' | compact -%}
     "sameAs": [
-      {{ settings.social_twitter_link | json }},
-      {{ settings.social_facebook_link | json }},
-      {{ settings.social_pinterest_link | json }},
-      {{ settings.social_instagram_link | json }},
-      {{ settings.social_tiktok_link | json }},
-      {{ settings.social_tumblr_link | json }},
-      {{ settings.social_snapchat_link | json }},
-      {{ settings.social_youtube_link | json }},
-      {{ settings.social_vimeo_link | json }}
+      {%- assign pd_first = true -%}
+      {%- for l in pd_social -%}{%- assign l2 = l | strip -%}{%- if l2 != blank -%}{%- unless pd_first -%},{%- endunless -%}{{ l2 | json }}{%- assign pd_first = false -%}{%- endif -%}{%- endfor -%}
     ],
     "url": {{ request.origin | append: page.url | json }}
   }
