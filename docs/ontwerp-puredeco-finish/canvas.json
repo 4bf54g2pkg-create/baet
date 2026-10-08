@@ -113,6 +113,13 @@
       "w": 1440,
       "x": 4560,
       "y": 13820
+    },
+    "Snelheid.dc.html": {
+      "h": 4380,
+      "title": "Snelheid en productdata · voorstel",
+      "w": 1440,
+      "x": 6080,
+      "y": 13820
     }
   },
   "createdOnFiles": {
@@ -165,7 +172,8 @@
     "Beeldset.dc.html",
     "HeroOpties.dc.html",
     "Sectorbeelden.dc.html",
-    "Samples.dc.html"
+    "Samples.dc.html",
+    "Snelheid.dc.html"
   ],
   "pages": [],
   "title": "The Puredeco Finish"
