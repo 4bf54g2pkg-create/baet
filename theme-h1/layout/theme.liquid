@@ -25,7 +25,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
-    <link rel="canonical" href="{{ canonical_url }}">
+    {%- comment -%} Puredeco: altijd het hoofddomein als canonical; bezoekers op www gaan direct naar puredeco.nl (vangnet naast de Shopify-domeinredirect) {%- endcomment -%}
+    <link rel="canonical" href="{{ canonical_url | replace: '://www.puredeco.nl', '://puredeco.nl' }}">
+    {%- if request.host == 'www.puredeco.nl' -%}
+      <script>location.replace('https://puredeco.nl' + location.pathname + location.search + location.hash);</script>
+    {%- endif -%}
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
     
     {%- if settings.favicon != blank -%}
