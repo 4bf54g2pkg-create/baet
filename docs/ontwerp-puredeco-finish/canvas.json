@@ -120,6 +120,13 @@
       "w": 1440,
       "x": 6080,
       "y": 13820
+    },
+    "Voorraad.dc.html": {
+      "h": 4260,
+      "title": "Voorraad, pre-order en melding · voorstel",
+      "w": 1440,
+      "x": 7600,
+      "y": 13820
     }
   },
   "createdOnFiles": {
@@ -173,7 +180,8 @@
     "HeroOpties.dc.html",
     "Sectorbeelden.dc.html",
     "Samples.dc.html",
-    "Snelheid.dc.html"
+    "Snelheid.dc.html",
+    "Voorraad.dc.html"
   ],
   "pages": [],
   "title": "The Puredeco Finish"

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Voorraad, pre-order en melding</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&amp;family=Instrument+Sans:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0}
+.s{font-family:'Cormorant',Georgia,serif;font-weight:500}
+.k{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8C6A4A}
+.tag{position:absolute;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:#E9E3D8;color:#6E675E;padding:4px 8px;z-index:3}
+.h2{font-family:'Cormorant',Georgia,serif;font-weight:500;font-size:46px;line-height:1.05;margin:0}
+.lead{font-size:16px;line-height:1.7;color:#3A3733;max-width:1080px;margin-top:12px}
+.sec{margin-top:96px}
+.num{display:flex;align-items:baseline;gap:18px}
+.num b{font-family:'Cormorant',Georgia,serif;font-weight:500;font-size:60px;color:#8C6A4A}
+.box{background:#F5F2EC;border:1px solid #DDD6CA}
+.note{font-size:13px;line-height:1.6;color:#6E675E}
+.eyeb{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#6E675E}
+.price{font-size:26px;font-weight:500}
+.unit{font-size:13px;color:#6E675E;margin-top:4px}
+.fin{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.fin div{border:1px solid #CFC6B8;padding:10px 12px;font-size:13px}
+.fin div.on{border:2px solid #151413}
+.stock{display:flex;align-items:center;gap:9px;font-size:14px;margin-top:20px}
+.dot{width:9px;height:9px;border-radius:50%}
+.btn{display:block;text-align:center;padding:16px;font-size:15px;font-weight:500;margin-top:14px}
+.btn-ink{background:#151413;color:#F5F2EC}
+.btn-line{border:1px solid #151413;color:#151413}
+.pill{display:inline-block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;padding:4px 9px;font-weight:600}
+.pre{background:#8C6A4A;color:#F5F2EC}
+.field{border:1px solid #CFC6B8;background:#fff;padding:13px 14px;font-size:14px;color:#9A9288}
+.t{width:100%;border-collapse:collapse;font-size:14px;line-height:1.5;background:#F7F4EE}
+.t th,.t td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid rgba(21,20,19,.12)}
+.t thead th{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6E675E;font-weight:600;border-bottom-color:rgba(21,20,19,.3)}
+.old{color:#9A3B2E;text-decoration:line-through}
+.new{color:#3E6B3A;font-weight:600}
+</style>
+</helmet>
+<div style="width:1440px;height:4260px;position:relative;overflow:hidden;background:#EFEAE1;color:#151413;font-family:'Instrument Sans','Helvetica Neue',Arial,sans-serif">
+<div class="tag" style="left:24px;top:20px">Voorraad, pre-order en melding · voorstel · nog niets aangepast</div>
+<div style="padding:90px 72px 80px">
+
+<div class="s" style="font-size:64px;line-height:1">Op voorraad, pre-order of een seintje</div>
+<div class="lead">Elke uitvoering (formaat × afwerking) krijgt één van drie duidelijke standen. Wat de klant ziet hangt af van de voorraad in Shopify en van 'Doorverkopen als niet op voorraad' per uitvoering. Bestellen bij pre-order gaat via het pre-orderplan van Rez, zodat het in de checkout, de orderbevestiging en jullie orderoverzicht als <b>pre-order</b> staat. Inschrijven voor een melding gaat naar de lijst van Rez, die automatisch mailt zodra er weer voorraad is.</div>
+
+<!-- 1 · drie standen -->
+<div class="sec num"><b>1</b><span class="h2">Drie standen op de productpagina</span></div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:32px;align-items:start">
+
+<!-- A -->
+<div>
+<div class="k" style="margin-bottom:12px">A · Op voorraad</div>
+<div class="box" style="padding:30px 30px 34px">
+<div class="eyeb">Hout · 810</div>
+<div class="s" style="font-size:40px;line-height:1;margin-top:8px">Noir Oak</div>
+<div class="price" style="margin-top:22px">€ 139,95</div>
+<div class="unit">per paneel · 260 × 122 cm · € 44,12 per m²</div>
+<div class="fin"><div class="on">Linea · 5 mm stomp</div><div>Signature · 8 mm klik</div></div>
+<div class="stock"><span class="dot" style="background:#3E6B3A"></span><span><b>Op voorraad</b> · in 3–6 werkdagen in huis</span></div>
+<div class="btn btn-ink">In winkelmand</div>
+<div class="btn btn-line" style="margin-top:10px">Eerst voelen? Gratis staal</div>
+</div>
+<div class="note" style="margin-top:10px">Zoals nu, met een groene stip. Levertijd uit jullie verzendbeleid.</div>
+</div>
+
+<!-- B -->
+<div>
+<div class="k" style="margin-bottom:12px">B · Pre-order (doorverkopen aan)</div>
+<div class="box" style="padding:30px 30px 34px;border-color:#8C6A4A">
+<div style="display:flex;justify-content:space-between;align-items:center"><div class="eyeb">Hout · 810</div><span class="pill pre">Pre-order</span></div>
+<div class="s" style="font-size:40px;line-height:1;margin-top:8px">Noir Oak</div>
+<div class="price" style="margin-top:22px">€ 179,95</div>
+<div class="unit">per paneel · 280 × 122 cm · € 52,68 per m²</div>
+<div class="fin"><div>Linea · 5 mm stomp</div><div class="on">Signature · 8 mm klik</div></div>
+<div class="stock"><span class="dot" style="background:#8C6A4A"></span><span><b>Pre-order</b> · verwachte levering vanaf <b>14 december</b></span></div>
+<div class="btn btn-ink" style="background:#8C6A4A">Pre-order plaatsen</div>
+<div style="font-size:13px;line-height:1.6;color:#3A3733;margin-top:12px;background:#EFE6D6;padding:12px 14px">Je betaalt nu het volledige bedrag. We verzenden zodra de nieuwe voorraad binnen is. Je 30 dagen bedenktijd gaat in bij ontvangst.</div>
+<div style="margin-top:14px;font-size:14px;text-align:center"><u>Liever eerst een seintje? Mail me zodra hij op voorraad is</u></div>
+</div>
+<div class="note" style="margin-top:10px">Bronzen kleur in plaats van zwart: in één oogopslag anders dan gewoon bestellen. Leverdatum komt uit de Rez-campagne en moet kloppen.</div>
+</div>
+
+<!-- C -->
+<div>
+<div class="k" style="margin-bottom:12px">C · Tijdelijk uitverkocht (doorverkopen uit)</div>
+<div class="box" style="padding:30px 30px 34px">
+<div class="eyeb">Hout · 810</div>
+<div class="s" style="font-size:40px;line-height:1;margin-top:8px">Noir Oak</div>
+<div class="price" style="margin-top:22px;color:#6E675E">€ 179,95</div>
+<div class="unit">per paneel · 280 × 122 cm · € 52,68 per m²</div>
+<div class="fin"><div>Linea · 5 mm stomp</div><div class="on">Signature · 8 mm klik</div></div>
+<div class="stock"><span class="dot" style="background:#B9AE9E"></span><span><b>Tijdelijk uitverkocht</b> in deze uitvoering</span></div>
+<div style="margin-top:16px;font-size:14px;font-weight:600">Mail me zodra hij weer op voorraad is</div>
+<div style="display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:10px"><div class="field">je@email.nl</div><div class="btn-ink" style="padding:13px 16px;font-size:14px">Houd me op de hoogte</div></div>
+<div class="note" style="margin-top:8px">Eén e-mail over dit paneel. Geen nieuwsbrief.</div>
+<div class="btn btn-line" style="margin-top:16px">Bekijk 5 mm stomp, wel op voorraad</div>
+</div>
+<div class="note" style="margin-top:10px">Geen grijze, dode knop: de melding staat op de plek van de bestelknop, plus een alternatief dat wél leverbaar is.</div>
+</div>
+</div>
+
+<!-- 2 · bevestiging + mobiel -->
+<div class="sec num"><b>2</b><span class="h2">Na inschrijven, en op mobiel</span></div>
+<div style="display:grid;grid-template-columns:1fr 390px;gap:48px;margin-top:32px;align-items:start">
+<div>
+<div class="k" style="margin-bottom:12px">Bevestiging op de plek van het formulier</div>
+<div class="box" style="padding:26px 30px;max-width:620px">
+<div style="display:flex;gap:14px;align-items:flex-start"><span style="width:28px;height:28px;border-radius:50%;background:#3E6B3A;color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;flex:none">✓</span>
+<div><div style="font-size:16px;font-weight:600">Je staat op de lijst</div><div style="font-size:14px;line-height:1.6;color:#3A3733;margin-top:4px">We mailen je zodra <b>810 Noir Oak · 280 × 122 cm · 8 mm klik</b> weer op voorraad is. Tot die tijd kun je hem ook als pre-order bestellen of <u>gratis een staal aanvragen</u>.</div></div></div>
+</div>
+<div class="k" style="margin:36px 0 12px">De e-mail van Rez (tekst)</div>
+<div class="box" style="padding:26px 30px;max-width:620px;font-size:14px;line-height:1.7;color:#3A3733">
+<div class="eyeb">Onderwerp</div><div style="font-weight:600;margin-bottom:12px">810 Noir Oak is weer op voorraad</div>
+Goed nieuws: het paneel waarvoor je je hebt aangemeld is weer leverbaar.<br><b>810 Noir Oak · 280 × 122 cm · 8 mm klik</b><br>Op voorraad is het in 3–6 werkdagen bij je thuis.<br><div style="display:inline-block;background:#151413;color:#F5F2EC;padding:11px 18px;margin-top:14px">Bekijk het paneel</div>
+</div>
+<div class="k" style="margin:36px 0 12px">Winkelmand en checkout</div>
+<div class="box" style="padding:22px 26px;max-width:620px;display:grid;grid-template-columns:72px 1fr auto;gap:16px;align-items:center">
+<div style="width:72px;height:72px;background:url(../../media/stalen/staal-810.jpg) center/cover"></div>
+<div><div style="font-weight:600;font-size:15px">810 Noir Oak</div><div class="note">280 × 122 cm · 8 mm klik · 2 stuks</div><div style="margin-top:6px"><span class="pill pre">Pre-order</span> <span style="font-size:13px;color:#8C6A4A;margin-left:6px">levering vanaf 14 december</span></div></div>
+<div style="font-weight:600">€ 359,90</div>
+</div>
+<div class="note" style="margin-top:8px;max-width:620px">Dezelfde regel staat in de checkout en op de orderbevestiging ('Pre-order · levering vanaf 14 december'), via het pre-orderplan van Rez.</div>
+</div>
+
+<!-- mobiel -->
+<div>
+<div class="k" style="margin-bottom:12px">Mobiel · pre-order</div>
+<div style="width:390px;background:#F5F2EC;border:1px solid #DDD6CA">
+<div style="height:260px;background:url(../../media/stalen/staal-810.jpg) center/cover;position:relative"><span class="pill pre" style="position:absolute;left:14px;top:14px">Pre-order</span></div>
+<div style="padding:20px 20px 24px">
+<div class="eyeb">Hout · 810</div>
+<div class="s" style="font-size:34px;line-height:1;margin-top:6px">Noir Oak</div>
+<div class="price" style="margin-top:16px;font-size:23px">€ 179,95</div>
+<div class="unit">per paneel · 280 × 122 cm · € 52,68 per m²</div>
+<div class="stock" style="font-size:13.5px"><span class="dot" style="background:#8C6A4A"></span><span><b>Pre-order</b> · levering vanaf 14 december</span></div>
+<div class="btn" style="background:#8C6A4A;color:#F5F2EC">Pre-order plaatsen</div>
+<div style="font-size:12.5px;line-height:1.55;color:#3A3733;margin-top:10px;background:#EFE6D6;padding:10px 12px">Volledig bedrag nu; verzending zodra de voorraad binnen is.</div>
+<div style="margin-top:12px;font-size:13.5px;text-align:center"><u>Mail me zodra hij op voorraad is</u></div>
+</div>
+<div style="border-top:1px solid #DDD6CA;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;background:#EFEAE1"><span style="font-size:13px"><b>€ 179,95</b> · pre-order</span><span style="background:#8C6A4A;color:#F5F2EC;padding:10px 14px;font-size:13px">Pre-order plaatsen</span></div>
+</div>
+<div class="note" style="margin-top:8px">Ook de vaste balk onderin zegt 'Pre-order plaatsen'.</div>
+</div>
+</div>
+
+<!-- 3 · collectiekaart -->
+<div class="sec num"><b>3</b><span class="h2">Op de collectiepagina</span></div>
+<div class="lead">Alleen een label als <b>alle</b> uitvoeringen van een decor pre-order zijn; is er nog één op voorraad, dan geen label (de klant ziet het per uitvoering op de productpagina).</div>
+<div style="display:flex;gap:28px;margin-top:28px">
+<div style="width:300px;background:#F5F2EC;border:1px solid #DDD6CA"><div style="height:220px;background:url(../../media/stalen/staal-619.jpg) center/cover;position:relative"><span class="pill pre" style="position:absolute;left:12px;top:12px">Pre-order</span></div><div style="padding:16px 18px"><div class="eyeb">Japandi</div><div class="s" style="font-size:24px;margin-top:4px"><span style="color:#8C6A4A">619</span> Jade</div><div class="note" style="margin-top:8px">vanaf <b style="color:#151413;font-size:16px">€ 139,95</b> per paneel</div></div></div>
+<div style="width:300px;background:#F5F2EC;border:1px solid #DDD6CA"><div style="height:220px;background:url(../../media/stalen/staal-810.jpg) center/cover"></div><div style="padding:16px 18px"><div class="eyeb">Hout</div><div class="s" style="font-size:24px;margin-top:4px"><span style="color:#8C6A4A">810</span> Noir Oak</div><div class="note" style="margin-top:8px">vanaf <b style="color:#151413;font-size:16px">€ 139,95</b> per paneel</div></div></div>
+</div>
+
+<!-- 4 · wat nu pre-order zou worden -->
+<div class="sec num"><b>4</b><span class="h2">Wat hierdoor nu pre-order wordt</span></div>
+<div class="lead">Volgens de voorraad in Shopify van vandaag staan deze uitvoeringen op 0 of lager. Ze verkopen nu gewoon door zonder dat de klant het weet; straks zien ze 'Pre-order'.</div>
+<table class="t" style="margin-top:22px;max-width:900px">
+<thead><tr><th>Decor</th><th>Uitvoering</th><th>Voorraad</th></tr></thead>
+<tbody>
+<tr><th>810 Noir Oak</th><td>260 × 122 cm · 5 mm stomp</td><td>−62</td></tr>
+<tr><th>811 Walnut Classic</th><td>260 × 122 cm · 5 mm stomp</td><td>−6</td></tr>
+<tr><th>619 Jade</th><td>280 × 122 cm · 8 mm klik en 5 mm stomp (beide)</td><td>−4 en −1</td></tr>
+<tr><th>620 Light Brown</th><td>280 × 122 cm · 8 mm klik / 5 mm stomp · 280 × 60 cm · 8 mm (alle 3)</td><td>−7, 0 en −1</td></tr>
+<tr><th>668 Florentine Limestone</th><td>enige uitvoering (280 × 122 cm · 5 mm)</td><td>−2</td></tr>
+</tbody></table>
+<div class="note" style="margin-top:8px;max-width:900px">De voorbeelden hierboven (280 cm, 8 mm) zijn ter illustratie. Klopt de voorraad in Shopify niet (bijvoorbeeld −62), dan eerst daar corrigeren; anders ziet de klant onterecht 'Pre-order'.</div>
+
+<!-- 5 · Rez-instellingen -->
+<div class="sec num"><b>5</b><span class="h2">Teksten en instellingen in Rez</span></div>
+<div class="lead">Deze staan in de Rez-app, niet in het thema. Ik kan er niet bij; jij past ze aan (5 minuten), of geeft mij een lijst en ik controleer daarna op de site.</div>
+<table class="t" style="margin-top:22px">
+<thead><tr><th style="width:280px">Waar</th><th>Nu</th><th>Wordt</th></tr></thead>
+<tbody>
+<tr><th>Pre-order · knoptekst</th><td class="old">Pre Order / Houd mij op de hoogte</td><td class="new">Pre-order plaatsen</td></tr>
+<tr><th>Pre-order · naam van het plan (checkout)</th><td class="old">Houd mij op de hoogte</td><td class="new">Pre-order</td></tr>
+<tr><th>Pre-order · leverdatum</th><td>Leverbaar vanaf 14 december</td><td class="new">Verwachte levering vanaf [juiste datum]</td></tr>
+<tr><th>Melding · knop</th><td class="old">Meld me zodra het weer op voorraad is / Ontvang een melding</td><td class="new">Houd me op de hoogte</td></tr>
+<tr><th>Melding · formulier kop</th><td class="old">Ontvang een melding wanneer het weer beschikbaar is.</td><td class="new">Mail me zodra hij weer op voorraad is</td></tr>
+<tr><th>Melding · formulierknop</th><td class="old">laat het me weten als het beschikbaar is</td><td class="new">Houd me op de hoogte</td></tr>
+<tr><th>Melding · bevestiging</th><td class="old">Bedankt! We laten u weten wanneer het product beschikbaar is.</td><td class="new">Je staat op de lijst. We mailen je zodra hij weer op voorraad is.</td></tr>
+<tr><th>Melding · e-mailknop</th><td class="old">Kijk eens</td><td class="new">Bekijk het paneel</td></tr>
+<tr><th>Toon</th><td class="old">u-vorm</td><td class="new">je-vorm, zoals de rest van de site</td></tr>
+<tr><th>Knopkleur</th><td class="old">groen #55884d en zwart</td><td class="new">brons #8C6A4A (pre-order) en zwart (melding)</td></tr>
+</tbody></table>
+
+<div class="box" style="padding:28px 32px;margin-top:40px;background:#151413;color:#F5F2EC;border:0">
+<div class="k" style="color:#C9B79E">Beveiliging · Rez</div>
+<div style="font-size:15px;line-height:1.7;margin-top:10px">De Rez-app zet een toegangssleutel van je winkel (refresh token) zichtbaar in de broncode van elke productpagina, ook live. Dat is een fout in de app, niet in het thema. Advies: meld het bij Rez-support en vraag of ze de sleutel intrekken en uit de pagina halen. Ik heb de sleutel nergens overgenomen.</div>
+</div>
+
+<div class="box" style="padding:26px 30px;margin-top:24px">
+<div class="k">Hoe ik het bouw (na akkoord, alleen H1-test)</div>
+<div style="font-size:14.5px;line-height:1.75;color:#3A3733;margin-top:10px">De drie standen, het label, de bronzen knop en de tekst onder de knop maak ik zelf in de productpagina; de stand wisselt mee met de gekozen uitvoering. Bij pre-order gaat de bestelling met het pre-orderplan van Rez mee, zodat checkout en order het tonen. Het meldformulier koppel ik aan de lijst van Rez, zodat de automatische mail blijft werken. Lukt die koppeling technisch niet met de opmaak van het ontwerp, dan meld ik dat eerst voordat ik iets anders doe. Rez blijft aan (390 KB); de snelheid winnen we op de andere punten.</div>
+</div>
+
+</div></div>
+</x-dc>
+</body>
+</html>
