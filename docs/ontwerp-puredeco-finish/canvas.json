@@ -127,6 +127,13 @@
       "w": 1440,
       "x": 7600,
       "y": 13820
+    },
+    "Afrekenknop.dc.html": {
+      "h": 1780,
+      "title": "Snelle afrekenknop · met en zonder",
+      "w": 1440,
+      "x": 9120,
+      "y": 13820
     }
   },
   "createdOnFiles": {
@@ -181,7 +188,8 @@
     "Sectorbeelden.dc.html",
     "Samples.dc.html",
     "Snelheid.dc.html",
-    "Voorraad.dc.html"
+    "Voorraad.dc.html",
+    "Afrekenknop.dc.html"
   ],
   "pages": [],
   "title": "The Puredeco Finish"
