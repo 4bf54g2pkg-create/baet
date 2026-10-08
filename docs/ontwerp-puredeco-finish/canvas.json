@@ -141,6 +141,13 @@
       "w": 1440,
       "x": 10640,
       "y": 13820
+    },
+    "Inspiratie.dc.html": {
+      "h": 8900,
+      "title": "Inspiratiepagina · 3 voorstellen (Journal, Per ruimte, Voor & na)",
+      "w": 1440,
+      "x": 12160,
+      "y": 13820
     }
   },
   "createdOnFiles": {
@@ -197,7 +204,8 @@
     "Snelheid.dc.html",
     "Voorraad.dc.html",
     "Afrekenknop.dc.html",
-    "Productvideo.dc.html"
+    "Productvideo.dc.html",
+    "Inspiratie.dc.html"
   ],
   "pages": [],
   "title": "The Puredeco Finish"
