@@ -4,9 +4,15 @@
 <footer class="pdf" role="contentinfo">
   <div class="pdf__wrap">
     <div class="pdf__top">
-      <div>
-        <p class="pdf__claim">{{ section.settings.claim }}</p>
-        <p class="pdf__studio">{{ section.settings.studio_text }} <a href="{{ section.settings.studio_url | default: '/pages/showroom' }}">Plan een bezoek →</a></p>
+      <div class="pdf__visit">
+        {%- if section.settings.claim != blank -%}
+          <p class="pdf__claim">{{ section.settings.claim }}</p>
+          <p class="pdf__studio">{{ section.settings.studio_text }} <a href="{{ section.settings.studio_url | default: '/pages/showroom' }}">Plan een bezoek →</a></p>
+        {%- else -%}
+          <p class="pdf__k">Studio Herwen</p>
+          <p class="pdf__news-h">{{ section.settings.studio_address }}</p>
+          <p class="pdf__studio">Op afspraak · <a href="{{ section.settings.studio_url | default: '/pages/showroom' }}">Plan een bezoek →</a></p>
+        {%- endif -%}
       </div>
       <div class="pdf__news">
         <p class="pdf__k">Nieuwsbrief</p>
@@ -104,7 +110,8 @@
   "class": "pd-footer-section",
   "enabled_on": { "groups": ["footer"] },
   "settings": [
-    { "type": "text", "id": "claim", "label": "Slotregel", "default": "Eén wand. Eén geheel." },
+    { "type": "text", "id": "claim", "label": "Slotregel (optioneel)", "info": "Leeg: studio-adres in dezelfde opmaak als de nieuwsbrief." },
+    { "type": "text", "id": "studio_address", "label": "Studio-adres", "default": "Nijverheidsdwarsstraat 2, Herwen" },
     { "type": "text", "id": "studio_text", "label": "Studio-regel", "default": "Studio Herwen · Nijverheidsdwarsstraat 2 · op afspraak" },
     { "type": "url", "id": "studio_url", "label": "Link afspraak" },
     { "type": "text", "id": "news_heading", "label": "Nieuwsbrief-kop", "default": "Nieuwe decors en projecten, vier keer per jaar." },

@@ -175,6 +175,9 @@
             {%- endif -%}
           </div>
         {%- endif -%}
+        {%- if pdh_decor != blank -%}
+          <button type="button" class="pdh__decor-cue" data-pdh-decor-cue><span class="pdh__playmark" aria-hidden="true"></span>Bekijk video</button>
+        {%- endif -%}
       </div>
 
       <nav class="pdh__views" aria-label="Bekijk {{ pdh_name }}">
@@ -740,11 +743,16 @@
       dUi();
     };
     var dBtn = root.querySelector('[data-pdh-view="video"]');
-    if (dBtn) ['pointerenter', 'focus', 'touchstart'].forEach(function (e) { dBtn.addEventListener(e, warm, { passive: true }); });
+    var dCue = root.querySelector('[data-pdh-decor-cue]');   /* 'Bekijk video' op de foto: altijd in beeld, ook als de knoppenrij onder de rand valt */
+    [dBtn, dCue].forEach(function (el) {
+      if (el) ['pointerenter', 'focus', 'touchstart'].forEach(function (e) { el.addEventListener(e, warm, { passive: true }); });
+    });
+    if (dCue && dBtn) dCue.addEventListener('click', function () { dBtn.click(); });
     root.querySelectorAll('[data-pdh-view]').forEach(function (b) {
       b.addEventListener('click', function () {
         dOn = b.getAttribute('data-pdh-view') === 'video';
         if (dOn) warm();
+        if (dCue) dCue.hidden = dOn;
         dSync();
       });
     });

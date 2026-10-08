@@ -2850,3 +2850,20 @@ b, strong { font-weight: 600; }
 /* Collectiekaart: label bij decors met video (video speelt niet op de kaart) */
 .pc-card__video { position: absolute; right: 1.2rem; top: 1.2rem; z-index: 2; display: inline-flex; align-items: center; padding: 0.3rem 0.8rem; background: rgba(245, 242, 236, 0.92); color: #151413; font-size: 1.05rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; }
 .pc-card__video::before { content: ''; width: 0; height: 0; margin-right: 0.6rem; border-left: 0.55rem solid currentColor; border-top: 0.35rem solid transparent; border-bottom: 0.35rem solid transparent; }
+/* 'Bekijk video' op de foto (ingang naar de decorvideo, altijd in beeld) */
+.pdh__decor-cue {
+  position: absolute; left: 2rem; top: 2rem; z-index: 3;
+  display: inline-flex !important; align-items: center;
+  height: auto !important; min-height: 0 !important; padding: 1rem 1.4rem !important;
+  border: 0 !important; border-radius: 0 !important; box-shadow: 0 0.4rem 1.4rem rgba(21, 20, 19, 0.14) !important;
+  background: rgba(245, 242, 236, 0.94) !important; color: #151413 !important;
+  font: inherit; font-size: 1.15rem !important; line-height: 1 !important; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600;
+  cursor: pointer; transition: background 0.2s;
+}
+.pdh__decor-cue:hover { background: #FFFFFF !important; }
+.pdh__decor-cue:focus-visible { outline: 2px solid #151413; outline-offset: 2px; }
+.pdh__decor-cue::before, .pdh__decor-cue::after { content: none !important; }
+.pdh__decor-cue[hidden] { display: none !important; }
+@media (max-width: 749px) { .pdh__decor-cue { left: 1.2rem; top: 1.2rem; padding: 0.8rem 1.1rem !important; font-size: 1.05rem !important; } }
+/* Footer zonder slotregel: studio links in dezelfde opbouw als de nieuwsbrief rechts */
+.pdf__visit .pdf__studio { margin-top: 1.6rem; }

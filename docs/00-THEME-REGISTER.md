@@ -224,3 +224,9 @@ Alleen H1-test (194824929546). Live, URL's en winkeldata niet aangepast.
 - **Bekend, niet van deze wijziging:** op 692 (en 668) staat een oud rekenscript ('Panels needed') in de winkeldata van het product dat een JS-fout geeft in het snel-bekijken-venster. Niet in het thema; opruimen in de productbeschrijving (met akkoord).
 - **Nieuw decor toevoegen:** filmen volgens opnamegids (artboard Productvideo §5) → `STICKER=1 tools/productvideo-bewerken.sh bron.MOV <nr-naam>` → in product 'Decorvideo' de 4:5-video kiezen en 'Decorvideo datum' invullen. Thema doet de rest.
 - md5: pd-product-hero 015dfce0…, pd-collection b4dd6180…, css 1ecc6ff4….
+- **Aanvulling (zelfde dag):** knop 'Bekijk video' linksboven op de productfoto (de knoppenrij onder de foto viel op laptops buiten beeld); verdwijnt zodra de video open is. Pauzeknop rechtsboven. md5 pd-product-hero 613270da….
+
+## 8 okt — Footer zonder slotregel (H1-test)
+- 'Eén wand. Eén geheel.' weg (gebruiker: niet professioneel). Slotregel is nu optioneel (leeg = weg). Links staat de studio in dezelfde opbouw als de nieuwsbrief rechts: label 'Studio Herwen', adres 'Nijverheidsdwarsstraat 2, Herwen' (nieuwe instelling Studio-adres), 'Op afspraak · Plan een bezoek →'.
+- Let op: dezelfde zin staat nog als kop in de homepage-hero (pd-home); niet aangepast, wacht op keuze.
+- md5 pd-footer a8985fbc…, css 92ba5dea….
