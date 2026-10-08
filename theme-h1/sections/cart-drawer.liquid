@@ -199,8 +199,8 @@
                                     </div>
                                   {%- endif -%}
                                 {%- endfor -%}
-                                {%- if item.selling_plan_allocation != null -%}
-                                  <p class="text-sm text-subtext">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                                {%- if item.selling_plan_allocation != null and item.properties['Pre-order'] == blank -%}
+                                  <p class="text-sm text-subtext">Pre-order</p>
                                 {%- endif -%}
                               </div>
                             {%- endif -%}

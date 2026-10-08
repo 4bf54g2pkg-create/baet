@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "pd_studio": {
@@ -259,10 +268,34 @@
         "sample_button_label": "",
         "sample_button_link": ""
       }
+    },
+    "177684431293c0c63a": {
+      "type": "apps",
+      "blocks": {
+        "bookx_app_blocks_Up4cMG": {
+          "type": "shopify://apps/bookx/blocks/app-blocks/865cd10f-9515-4d8b-8e41-efece9c83f71",
+          "settings": {
+            "bookeasy-app-id": "o8UM2z9KGc6rxK5uyq8Nim",
+            "bookeasy-app-title": "",
+            "bookeasy-app-subtitle": "",
+            "bookeasy-app-description": "",
+            "bookeasy-app-alignment": "flex-start"
+          }
+        }
+      },
+      "block_order": [
+        "bookx_app_blocks_Up4cMG"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
     }
   },
   "order": [
     "pd_studio",
-    "puredeco_showroom_page_9W9eEn"
+    "puredeco_showroom_page_9W9eEn",
+    "177684431293c0c63a"
   ]
 }

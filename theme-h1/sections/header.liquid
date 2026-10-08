@@ -287,6 +287,15 @@
       {%- assign pd_first = true -%}
       {%- for l in pd_social -%}{%- assign l2 = l | strip -%}{%- if l2 != blank -%}{%- unless pd_first -%},{%- endunless -%}{{ l2 | json }}{%- assign pd_first = false -%}{%- endif -%}{%- endfor -%}
     ],
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "NL",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 30,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+      "merchantReturnLink": {{ request.origin | append: '/policies/refund-policy' | json }}
+    },
     "url": {{ request.origin | append: page.url | json }}
   }
 </script>

@@ -92,7 +92,7 @@
     {%- case part -%}{%- when 'title' -%}Japandi wandpanelen | Stofstructuur met bamboekern | PureDeco{%- when 'desc' -%}Japandi wandpanelen met een rustige stofstructuur, van Light en Jade tot Taupe. 5 mm stomp of 8 mm naadloos, met bamboekern. Tot 5 stalen gratis.{%- endcase -%}
   {%- when 'leer' -%}
     {%- case part -%}{%- when 'title' -%}Leerlook wandpanelen | Khaki, Sand en Taupe | PureDeco{%- when 'desc' -%}Leerlook wandpanelen met bamboekern in Khaki, Sand en Taupe. 5 mm stomp of 8 mm naadloos. Tot 5 stalen gratis, 3 jaar garantie.{%- endcase -%}
-  {%- when 'all' -%}
+  {%- when 'all', 'onze-bestsellers', 'nieuwe-collectie' -%}
     {%- if part == 'robots' -%}noindex,follow{%- endif -%}
   {%- endcase -%}
 {%- when 'page' -%}
@@ -122,6 +122,7 @@
   {%- if part == 'title' -%}Inspiratie en tips over wandpanelen | PureDeco{%- endif -%}
   {%- if part == 'desc' -%}Inspiratie en tips over wandpanelen met bamboekern: projecten, onderhoud, montage en toepassingen in woonkamer, keuken, badkamer en kantoor.{%- endif -%}
 {%- when 'product' -%}
+  {%- if part == 'robots' and p.handle == '668-glanzend-marmer-florentine-limestone' -%}noindex,follow{%- endif -%}
   {%- if part == 'title' or part == 'desc' or part == 'mat' -%}
     {%- liquid
       capture sc

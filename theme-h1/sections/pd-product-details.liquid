@@ -143,10 +143,17 @@
           <dt>Decorcode</dt><dd>{{ pd_full }}</dd>
           <dt>Finish</dt><dd>{% if pd_has_sig %}Signature 8 mm klik{% endif %}{% if pd_has_sig and pd_has_lin %} · {% endif %}{% if pd_has_lin %}Linea 5 mm stomp{% endif %}</dd>
           {%- if pd_formats != blank -%}<dt>Formaat</dt><dd>{{ pd_formats }}</dd>{%- endif -%}
+          {%- capture pd_cover -%}{%- render 'pd-m2', product: product, part: 'cover' -%}{%- endcapture -%}
+          {%- capture pd_m2r -%}{%- render 'pd-m2', product: product, part: 'range' -%}{%- endcapture -%}
+          {%- assign pd_cover = pd_cover | strip -%}{%- assign pd_m2r = pd_m2r | strip -%}
+          {%- if pd_cover != blank -%}<dt>Dekking per paneel</dt><dd>{{ pd_cover }}</dd>{%- endif -%}
+          {%- if pd_m2r != blank -%}<dt>Prijs per m²</dt><dd>{{ pd_m2r }}{% if pd_m2r contains '–' %} (per uitvoering){% endif %}</dd>{%- endif -%}
           <dt>Opbouw</dt><dd>Toplaag · gerecycled PVC · bamboekern (snelgroeiend, hernieuwbaar) · gerecyclede onderlaag</dd>
           <dt>Toepassing</dt><dd>Wonen, slapen, badkamer en keuken · waterbestendig</dd>
           <dt>Onderhoud</dt><dd>Zachte, licht vochtige doek; geen schurende middelen</dd>
           <dt>Garantie</dt><dd>3 jaar</dd>
+          <dt>Bedenktijd</dt><dd>30 dagen, vanaf ontvangst</dd>
+          <dt>Verzending</dt><dd>€ 65 in Nederland · gratis vanaf € 600</dd>
           {%- if pd_variant.sku != blank -%}<dt>Artikelnummer</dt><dd>{{ pd_variant.sku }}</dd>{%- endif -%}
         </dl>
         {%- if product.description != blank -%}

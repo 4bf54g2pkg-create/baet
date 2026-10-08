@@ -151,34 +151,10 @@
         "navigation_padding_top": 0,
         "navigation_padding_bottom": 14
       }
-    },
-    "177684431293c0c63a": {
-      "type": "apps",
-      "blocks": {
-        "bookx_app_blocks_Up4cMG": {
-          "type": "shopify://apps/bookx/blocks/app-blocks/865cd10f-9515-4d8b-8e41-efece9c83f71",
-          "settings": {
-            "bookeasy-app-id": "o8UM2z9KGc6rxK5uyq8Nim",
-            "bookeasy-app-title": "",
-            "bookeasy-app-subtitle": "",
-            "bookeasy-app-description": "",
-            "bookeasy-app-alignment": "flex-start"
-          }
-        }
-      },
-      "block_order": [
-        "bookx_app_blocks_Up4cMG"
-      ],
-      "settings": {
-        "include_margins": true,
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
     }
   },
   "order": [
     "topbar_3YD96h",
-    "header",
-    "177684431293c0c63a"
+    "header"
   ]
 }

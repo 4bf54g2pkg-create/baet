@@ -32,6 +32,12 @@
   endcapture
   assign body = clean
   assign per_page = s.per_page | default: 24
+  comment
+    Uit het assortiment (alleen verbergen in dit thema; het product blijft in Shopify bestaan)
+  endcomment
+  assign pd_hidden = '668-glanzend-marmer-florentine-limestone'
+  assign pd_hidden_n = collection.products | where: 'handle', '668-glanzend-marmer-florentine-limestone' | size
+  assign pd_count = collection.products_count | minus: pd_hidden_n
   assign sample_max = s.sample_max | default: 5
 -%}
 
@@ -45,7 +51,7 @@
         <h1 class="pc-head__h">{{ h1 }}</h1>
       </div>
       <ul class="pc-usp" role="list">
-        <li><strong>{{ collection.products_count }}</strong> {% if collection.products_count == 1 %}decor{% else %}decors{% endif %}</li>
+        <li><strong>{{ pd_count }}</strong> {% if pd_count == 1 %}decor{% else %}decors{% endif %}</li>
         <li>Gratis samples · € 6,95 verzending</li>
         <li>3 jaar garantie</li>
       </ul>
@@ -77,7 +83,7 @@
     <div class="ph-wrap">
 
       <div class="pc-bar">
-        <p class="pc-bar__count"><strong>{{ collection.products_count }}</strong> {% if collection.products_count == 1 %}decor{% else %}decors{% endif %}</p>
+        <p class="pc-bar__count"><strong>{{ pd_count }}</strong> {% if pd_count == 1 %}decor{% else %}decors{% endif %}</p>
         {%- if s.show_filters and collection.filters.size > 0 -%}
           {%- comment -%}
             Filterwaarden zijn in de productdata niet overal gelijk geschreven ("8mm Naadloos", "8mm (naadloos)", "5mm stomp").
@@ -198,6 +204,7 @@
       <h2 class="pc-vh">Overzicht van alle decors</h2>
       <ul class="pc-grid" role="list">
         {%- for p in collection.products -%}
+          {%- if pd_hidden contains p.handle -%}{%- continue -%}{%- endif -%}
           {%- liquid
             capture code
               render 'pd-decor', product: p, part: 'code'
@@ -258,6 +265,15 @@
                 {{ room | image_url: width: 900 | image_tag: loading: img_load, fetchpriority: img_prio, widths: '360, 540, 720, 900', sizes: '(min-width: 1200px) 23vw, (min-width: 990px) 30vw, 48vw', alt: alt_room, class: 'pc-card__room' }}
               {%- endif -%}
               {%- if room != panel -%}<span class="pc-card__vis">Visualisatie</span>{%- endif -%}
+              {%- liquid
+                assign pc_pre = true
+                for pv in p.variants
+                  if pv.available == false or pv.inventory_management == blank or pv.inventory_quantity > 0
+                    assign pc_pre = false
+                  endif
+                endfor
+              -%}
+              {%- if pc_pre -%}<span class="pc-card__pre">Pre-order</span>{%- endif -%}
               {%- if swatch != blank -%}<span class="pc-card__sw{% if sw_zoom contains '1' %} is-zoom{% endif %}"><img src="{{ swatch | strip }}" alt="" loading="lazy" width="240" height="240"></span>{%- endif -%}
             </a>
             <div class="pc-card__body">
@@ -270,6 +286,9 @@
                   <strong>{{ p.price_min | money }}</strong>
                   {%- if p.compare_at_price_max > p.price_min -%} <s>{{ p.compare_at_price_max | money }}</s>{%- endif -%}
                   <span class="pc-card__unit">per paneel</span>
+                  {%- capture pc_m2 -%}{%- render 'pd-m2', product: p, part: 'min' -%}{%- endcapture -%}
+                  {%- assign pc_m2 = pc_m2 | strip -%}
+                  {%- if pc_m2 != blank -%}<span class="pc-card__m2">≈ {{ pc_m2 }} per m²</span>{%- endif -%}
                 </p>
                 {%- if v and code != blank -%}
                   <button type="button" class="pc-card__smp" data-pc-sample data-id="{{ v.id }}" data-url="{{ p.url }}" data-title="{{ p.title | escape }}" data-label="{{ label | escape }}" data-img="{{ swatch | strip }}" aria-pressed="false" aria-label="Staal van {{ label | escape }} toevoegen">

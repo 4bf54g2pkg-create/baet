@@ -1,0 +1,74 @@
+{%- comment -%}
+  Puredeco · oppervlak en prijs per m² uit de echte varianten (maat in de optie, bijv. "280 cm x 122 cm" of "260x122").
+  Gebruik: {% render 'pd-m2', product: p, part: 'min' %}
+  part: min   → laagste prijs per m² (money), leeg als er geen maat is
+        range → "€ x – € y" over alle uitvoeringen
+        cover → "3,17 m² (260 × 122 cm) · 3,42 m² (280 × 122 cm)"
+  Sets (bijv. "280x366 (3x280x122)") tellen niet mee; een maat als "280 cm x 366 cm" wel (totale oppervlakte van de set).
+{%- endcomment -%}
+{%- liquid
+  assign m2_lo = 0
+  assign m2_hi = 0
+  assign m2_cover = ''
+  assign m2_seen = ''
+  for v in product.variants
+    assign m2_area = 0
+    for o in v.options
+      assign m2_ok = o | downcase | remove: ' ' | remove: 'cm' | replace: '×', 'x'
+      if m2_ok contains 'x'
+        unless m2_ok contains '('
+          assign m2_parts = m2_ok | split: 'x'
+          assign m2_h = m2_parts[0] | plus: 0
+          assign m2_w = m2_parts[1] | plus: 0
+          if m2_h > 0 and m2_w > 0
+            assign m2_area = m2_h | times: m2_w
+            assign m2_key = m2_h | append: 'x' | append: m2_w
+          endif
+        endunless
+      endif
+    endfor
+    if m2_area > 0
+      assign m2_half = m2_area | divided_by: 2
+      assign m2_c = v.price | times: 10000 | plus: m2_half | divided_by: m2_area
+      if m2_lo == 0 or m2_c < m2_lo
+        assign m2_lo = m2_c
+      endif
+      if m2_c > m2_hi
+        assign m2_hi = m2_c
+      endif
+      assign m2_tag = '|' | append: m2_key | append: '|'
+      unless m2_seen contains m2_tag
+        assign m2_seen = m2_seen | append: m2_tag
+        assign m2_hund = m2_area | plus: 50 | divided_by: 100
+        assign m2_int = m2_hund | divided_by: 100
+        assign m2_dec = m2_hund | modulo: 100
+        if m2_dec < 10
+          assign m2_dec = '0' | append: m2_dec
+        endif
+        assign m2_txt = m2_int | append: ',' | append: m2_dec | append: ' m² (' | append: m2_h | append: ' × ' | append: m2_w | append: ' cm)'
+        if m2_cover == blank
+          assign m2_cover = m2_txt
+        else
+          assign m2_cover = m2_cover | append: ' · ' | append: m2_txt
+        endif
+      endunless
+    endif
+  endfor
+  case part
+    when 'min'
+      if m2_lo > 0
+        echo m2_lo | money
+      endif
+    when 'range'
+      if m2_lo > 0
+        if m2_lo == m2_hi
+          echo m2_lo | money
+        else
+          assign m2_hi_m = m2_hi | money
+          echo m2_lo | money | append: ' – ' | append: m2_hi_m
+        endif
+      endif
+    when 'cover'
+      echo m2_cover
+  endcase
+-%}

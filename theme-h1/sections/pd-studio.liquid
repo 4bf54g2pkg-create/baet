@@ -146,6 +146,18 @@
 <script>
 (function () {
   /* Afspraakknop: open BookX als die op de pagina staat, anders gewoon de WhatsApp-link volgen */
+  /* #plan (vanuit menu of andere pagina's): agenda openen zodra BookX geladen is */
+  function openPlan() {
+    if (location.hash !== '#plan') return;
+    var t0 = Date.now();
+    (function tick() {
+      var b = document.querySelector('.bookeasy-btn');
+      if (b) { b.click(); return; }
+      if (Date.now() - t0 < 10000) setTimeout(tick, 250);
+    })();
+  }
+  openPlan();
+  window.addEventListener('hashchange', openPlan);
   document.querySelectorAll('[data-st-book]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       var b = document.querySelector('.bookeasy-btn');

@@ -1,14 +1,17 @@
 {% liquid
   assign position = 'left,center,right' | split: ','
 %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+{%- comment -%} Puredeco 8 okt: geen externe Swiper-bibliotheek meer; teksten wisselen met een eigen, lichte animatie (zie onderaan). {%- endcomment -%}
               {% style %}
               .vertical-swiper {
                 height: 25px; /* visible area */
+                overflow: hidden;
               }
+              .pd-ticker__track { transition: transform .8s ease; will-change: transform; }
+              @media (prefers-reduced-motion: reduce) { .pd-ticker__track { transition: none; } }
 
-              .vertical-swiper .swiper-slide {
+              .vertical-swiper .pd-ticker__slide {
+                height: 25px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -63,13 +66,13 @@
               </ul>
             {% when 'text' %}
 
-              <div class="swiper vertical-swiper">
-  <div class="swiper-wrapper cta_swipe_announcent_bar">
+              <div class="pd-ticker vertical-swiper">
+  <div class="pd-ticker__track cta_swipe_announcent_bar">
 
     {% for block in section.blocks %}
       {% case block.type %}
         {% when 'text' %}
-          <div class="swiper-slide" {{ block.shopify_attributes }}>
+          <div class="pd-ticker__slide" {{ block.shopify_attributes }}>
             
             <div class="topbar__text rte" style="--highlight-text-color: {{ block.settings.highlight_text_color }}; --highlight-text-background-color: {{ block.settings.highlight_text_background_color }};">
               
@@ -269,29 +272,22 @@
   </div>
 </div>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  new Swiper(".vertical-swiper", {
-    
-    direction: "vertical",
-    loop: true,
-
-    slidesPerView: 1,        // ✅ ONLY ONE SLIDE
-    slidesPerGroup: 1,       // ✅ move one by one
-
-    spaceBetween: 0,
-
-    autoplay: {
-      delay: 2500,           // ⏱ ruknay ka time
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true
-    },
-
-    speed: 800,
-
-    allowTouchMove: true,
-
+/* Puredeco: wisselende teksten in de bovenbalk zonder externe bibliotheek (eerder Swiper via jsdelivr) */
+(function () {
+  document.querySelectorAll('.pd-ticker').forEach(function (box) {
+    var track = box.querySelector('.pd-ticker__track');
+    var slides = track ? track.children : [];
+    if (!track || slides.length < 2) return;
+    var i = 0, paused = false;
+    box.addEventListener('mouseenter', function () { paused = true; });
+    box.addEventListener('mouseleave', function () { paused = false; });
+    setInterval(function () {
+      if (paused || document.hidden) return;
+      i = (i + 1) % slides.length;
+      track.style.transform = 'translateY(' + (-25 * i) + 'px)';
+    }, 3300);
   });
-});
+})();
 </script>
 {% schema %}
 {

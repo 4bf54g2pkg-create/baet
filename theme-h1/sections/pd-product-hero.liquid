@@ -37,9 +37,18 @@
   endif
   assign pdh_variant = product.selected_or_first_available_variant
   assign pdh_form_id = 'pdh-form-' | append: section.id
+  comment
+    Voorraadstanden: op voorraad · pre-order (voorraad op, doorverkopen aan) · tijdelijk uitverkocht (doorverkopen uit).
+    Uit het assortiment: alleen verborgen in dit thema, het product blijft in Shopify bestaan.
+  endcomment
+  assign pdh_pre_date = section.settings.preorder_date | default: '29 december'
+  assign pdh_retired = false
+  if product.handle == '668-glanzend-marmer-florentine-limestone'
+    assign pdh_retired = true
+  endif
 -%}
 
-<div class="pdh" data-pdh data-section="{{ section.id }}">
+<div class="pdh{% if pdh_retired %} pdh--retired{% endif %}" data-pdh data-section="{{ section.id }}" data-pre-date="{{ pdh_pre_date | escape }}">
   <div class="pdh__grid">
 
     {%- comment -%} ===== Beeld ===== {%- endcomment -%}
@@ -158,6 +167,7 @@
             {%- if pdh_eyebrow != blank -%}<span>{{ pdh_eyebrow }}</span>{%- endif -%}
             {%- if pdh_eyebrow != blank and pdh_code != blank -%}<span class="pdh__dot" aria-hidden="true"></span>{%- endif -%}
             {%- if pdh_code != blank -%}<span>{{ pdh_code }}</span>{%- endif -%}
+            <span class="pdh__pill" data-pdh-pill hidden>Pre-order</span>
           </p>
           {%- capture pdh_mat -%}{%- render 'pd-seo', part: 'mat', p: product -%}{%- endcapture -%}
           {%- assign pdh_mat = pdh_mat | strip | default: 'Wandpaneel' -%}
@@ -185,6 +195,8 @@
 
         {%- form 'product', product, id: pdh_form_id, class: 'pdh__form', novalidate: 'novalidate', data-type: 'add-to-cart-form', is: 'product-form' -%}
           <input type="hidden" name="id" value="{{ pdh_variant.id }}" data-pdh-id>
+          <input type="hidden" name="selling_plan" value="" disabled data-pdh-plan>
+          <input type="hidden" name="properties[Pre-order]" value="Verwachte levering vanaf {{ pdh_pre_date | escape }}" disabled data-pdh-preprop>
 
           {%- unless product.has_only_default_variant -%}
             {%- for option in product.options_with_values -%}
@@ -321,7 +333,9 @@
             </div>
           {%- endif -%}
 
-          <div class="pdh__buy">
+          <p class="pdh__stock" data-pdh-stock aria-live="polite"><span class="pdh__sdot" aria-hidden="true"></span><span data-pdh-stock-text>Op voorraad</span></p>
+
+          <div class="pdh__buy" data-pdh-buy>
             <div class="pdh__qty">
               <button type="button" data-pdh-minus aria-label="Eén minder">−</button>
               <input type="number" name="quantity" value="1" min="1" inputmode="numeric" data-pdh-qty aria-label="Aantal panelen">
@@ -333,7 +347,31 @@
             </button>
           </div>
           <div class="product-form__error-message pdh__error" role="alert" hidden></div>
+
+          <p class="pdh__prenote" data-pdh-prenote hidden>Je betaalt nu het volledige bedrag. We verzenden zodra de nieuwe voorraad binnen is. Je 30 dagen bedenktijd gaat in bij ontvangst.</p>
+          <button type="button" class="pdh__notify-link" data-pdh-notify-open hidden>Liever eerst een seintje? Mail me zodra hij op voorraad is</button>
+
+          <div class="pdh__notify" data-pdh-notify hidden>
+            <p class="pdh__notify-h">Mail me zodra hij weer op voorraad is</p>
+            <div class="pdh__notify-row">
+              <input type="email" inputmode="email" autocomplete="email" placeholder="je@email.nl" aria-label="Je e-mailadres" data-pdh-notify-email>
+              <button type="button" data-pdh-notify-send>Houd me op de hoogte</button>
+            </div>
+            <p class="pdh__notify-fine">Eén e-mail over dit paneel. Geen nieuwsbrief.</p>
+            <p class="pdh__notify-err" data-pdh-notify-err hidden></p>
+            <button type="button" class="pdh__notify-alt" data-pdh-alt hidden></button>
+          </div>
+          <div class="pdh__notify-ok" data-pdh-notify-ok hidden>
+            <span class="pdh__notify-tick" aria-hidden="true">✓</span>
+            <div><strong>Je staat op de lijst</strong><span data-pdh-notify-oktext></span></div>
+          </div>
         {%- endform -%}
+        {%- if pdh_retired -%}
+          <div class="pdh__retired">
+            <p><strong>Uit het assortiment.</strong> Dit decor is niet meer leverbaar.</p>
+            <a class="pdh__retired-link" href="/collections/wandpanelen">Bekijk alle wandpanelen →</a>
+          </div>
+        {%- endif -%}
 
         <p class="pdh__error" data-pdh-error hidden></p>
         <p class="pdh__klarna">Of betaal in 3 renteloze termijnen van <strong data-pdh-klarna>{{ pdh_variant.price | divided_by: 3 | money }}</strong> met <span class="pdh__klarna-logo">Klarna.</span></p>
@@ -346,7 +384,6 @@
         </button>
 
         <ul class="pdh__usps">
-          <li class="pdh__usp pdh__usp--lead" data-pdh-meta>Op voorraad · geleverd in 3–6 werkdagen</li>
           <li class="pdh__usp">Gratis bezorgd in Nederland vanaf € 600</li>
           <li class="pdh__usp">30 dagen bedenktijd</li>
           <li class="pdh__usp">3 jaar garantie op de panelen</li>
@@ -403,7 +440,7 @@
   </div>
 
   <script type="application/json" data-pdh-variants>
-    [{%- for v in product.variants -%}{"id":{{ v.id }},"options":{{ v.options | json }},"price":{{ v.price }},"compare":{{ v.compare_at_price | default: 0 }},"available":{{ v.available | json }},"stock":{% if v.inventory_management == blank or v.inventory_quantity > 0 or v.inventory_policy == 'continue' %}true{% else %}false{% endif %}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+    [{%- for v in product.variants -%}{"id":{{ v.id }},"options":{{ v.options | json }},"price":{{ v.price }},"compare":{{ v.compare_at_price | default: 0 }},"available":{{ v.available | json }},"tracked":{% if v.inventory_management != blank %}true{% else %}false{% endif %},"qty":{{ v.inventory_quantity | default: 0 }},"plan":{% assign pdh_pl = v.selling_plan_allocations | first %}{% if pdh_pl %}{{ pdh_pl.selling_plan.id }}{% else %}null{% endif %},"title":{{ v.title | json }}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
   </script>
 </div>
 
@@ -671,12 +708,8 @@
     if (v.compare > v.price) { cmp.hidden = false; cmp.textContent = money(v.compare); } else { cmp.hidden = true; }
     var d = dims(v);
     root.querySelector('[data-pdh-unit]').textContent = 'per paneel' + (d ? ' · ' + String(Math.round(d.h * 100)) + ' × ' + String(Math.round(d.w * 100)) + ' cm · ' + money(Math.round(v.price / (d.h * d.w))) + ' per m²' : '');
-    var cta = root.querySelector('[data-pdh-cta]');
-    cta.disabled = !v.available;
-    root.querySelector('[data-pdh-cta-text]').textContent = v.available ? 'In winkelmand' : 'Niet beschikbaar';
     root.querySelector('[data-pdh-bar-price]').textContent = money(v.price);
-    var meta = root.querySelector('[data-pdh-meta]');
-    meta.textContent = v.stock ? 'Op voorraad · ' + deliveryWindow() : 'Op bestelling · levertijd tot 10 weken, we bevestigen de datum';
+    stockState(v);
     var fk = finishKey(v);
     root.setAttribute('data-finish', fk || '');
     var cap = root.querySelector('[data-pdh-joint-caption]');
@@ -689,6 +722,69 @@
       history.replaceState(null, '', u.toString());
     }
   }
+  /* ---- Voorraad: op voorraad · pre-order · tijdelijk uitverkocht ---- */
+  var preDate = root.getAttribute('data-pre-date') || '';
+  var subscribed = [];
+  var label = {{ pdh_code | append: ' ' | append: pdh_name | strip | json }};
+  function stateOf(v) {
+    if (!v.available) return 'out';
+    if (v.tracked && v.qty <= 0) return 'pre';
+    return 'in';
+  }
+  function niceTitle(v) {
+    return v.options.map(function (o) { return o.replace(/\s*cm\s*x\s*/i, ' × ').replace(/(\d)\s*x\s*(\d)/i, '$1 × $2'); }).join(' · ');
+  }
+  function stockState(v) {
+    var st = stateOf(v);
+    root.setAttribute('data-stock', st);
+    var cta = root.querySelector('[data-pdh-cta]');
+    var ctaText = st === 'pre' ? 'Pre-order plaatsen' : (st === 'out' ? 'Tijdelijk uitverkocht' : 'In winkelmand');
+    cta.disabled = st === 'out';
+    cta.classList.toggle('pdh__cta--pre', st === 'pre');
+    root.querySelector('[data-pdh-cta-text]').textContent = ctaText;
+    var barBtn = root.querySelector('.pdh__bar-cta');
+    if (barBtn) { barBtn.textContent = ctaText; barBtn.classList.toggle('pdh__cta--pre', st === 'pre'); barBtn.disabled = st === 'out'; }
+    root.querySelector('[data-pdh-stock]').setAttribute('data-state', st);
+    root.querySelector('[data-pdh-stock-text]').innerHTML =
+      st === 'pre' ? '<b>Pre-order</b> · verwachte levering vanaf <b>' + preDate + '</b>'
+      : (st === 'out' ? '<b>Tijdelijk uitverkocht</b> in deze uitvoering' : '<b>Op voorraad</b> · ' + deliveryWindow());
+    var pill = root.querySelector('[data-pdh-pill]'); if (pill) pill.hidden = st !== 'pre';
+    var plan = root.querySelector('[data-pdh-plan]');
+    plan.disabled = !(st === 'pre' && v.plan); plan.value = (st === 'pre' && v.plan) ? v.plan : '';
+    root.querySelector('[data-pdh-preprop]').disabled = st !== 'pre';
+    root.querySelector('[data-pdh-prenote]').hidden = st !== 'pre';
+    root.querySelector('[data-pdh-buy]').hidden = st === 'out';
+    var done = subscribed.indexOf(v.id) > -1;
+    root.querySelector('[data-pdh-notify-open]').hidden = st !== 'pre' || done;
+    root.querySelector('[data-pdh-notify-ok]').hidden = !done;
+    root.querySelector('[data-pdh-notify]').hidden = done || st !== 'out';
+    if (done) root.querySelector('[data-pdh-notify-oktext]').textContent = 'We mailen je zodra ' + label + ' · ' + niceTitle(v) + ' weer op voorraad is.';
+    var alt = root.querySelector('[data-pdh-alt]');
+    var other = st === 'out' ? variants.find(function (x) { return x.id !== v.id && stateOf(x) === 'in'; }) : null;
+    alt.hidden = !other;
+    if (other) { alt.textContent = 'Bekijk ' + niceTitle(other) + ', wel op voorraad'; alt.onclick = function () { render(other, true); }; }
+  }
+  root.querySelector('[data-pdh-notify-open]').addEventListener('click', function () {
+    this.hidden = true;
+    var box = root.querySelector('[data-pdh-notify]'); box.hidden = false;
+    box.querySelector('[data-pdh-notify-email]').focus();
+  });
+  root.querySelector('[data-pdh-notify-send]').addEventListener('click', function () {
+    var box = root.querySelector('[data-pdh-notify]');
+    var email = box.querySelector('[data-pdh-notify-email]').value.trim();
+    var err = box.querySelector('[data-pdh-notify-err]');
+    var fail = 'Aanmelden lukt nu niet. App ons gerust, dan houden we je op de hoogte.';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.hidden = false; err.textContent = 'Vul een geldig e-mailadres in.'; return; }
+    err.hidden = true;
+    var v = current; var btn = this; btn.disabled = true;
+    var rez = window.REZ_DATA && window.REZ_DATA.storeData;
+    if (!rez) { btn.disabled = false; err.hidden = false; err.textContent = fail; return; }
+    fetch('/apps/rez/bis/product', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, variant_id: v.id, variant_title: v.title, store_id: rez.id, product_name: {{ product.title | json }}, product_id: {{ product.id }}, locale: 'nl', opt_in_marketing: false }) })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); subscribed.push(v.id); stockState(v); })
+      .catch(function () { err.hidden = false; err.textContent = fail; })
+      .then(function () { btn.disabled = false; });
+  });
   function total() {
     if (!current) return;
     var q = Math.max(1, parseInt(qtyIn.value, 10) || 1);
@@ -894,7 +990,8 @@
   "tag": "section",
   "class": "pd-hero-section",
   "settings": [
-    { "type": "video", "id": "video", "label": "Film voor alle decors (optioneel)", "info": "Een productvideo van het decor zelf gaat voor." }
+    { "type": "video", "id": "video", "label": "Film voor alle decors (optioneel)", "info": "Een productvideo van het decor zelf gaat voor." },
+    { "type": "text", "id": "preorder_date", "label": "Pre-order: verwachte levering vanaf", "default": "29 december", "info": "Zelfde datum als in de Rez-app." }
   ],
   "blocks": [{ "type": "@app" }],
   "presets": [{ "name": "Puredeco product" }],

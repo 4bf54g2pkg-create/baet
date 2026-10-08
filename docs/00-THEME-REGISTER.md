@@ -195,3 +195,22 @@ Alle SEO-teksten staan in het thema (snippets/pd-seo.liquid). Winkeldata (collec
 - Bevinding: www.puredeco.nl is in Shopify als extra domein gekoppeld (primair: puredeco.nl). Google toonde in 90 dagen alleen de www-homepage: 2.294 vertoningen, 229 klikken, positie 4,2 (vooral "puredeco"). Andere www-URL's staan niet in Google. Doorsturing kon niet getest worden: www.puredeco.nl is in de cloudomgeving geblokkeerd.
 - H1-test (vangnet, werkt pas na publicatie): canonical altijd op puredeco.nl; bezoekers op www worden met location.replace naar puredeco.nl gestuurd (alleen gerenderd als request.host = www.puredeco.nl). theme.liquid md5 f7f7b3ed….
 - Echte oplossing ligt in Shopify-beheer (geen API hiervoor): Instellingen → Domeinen → puredeco.nl primair met "Al het verkeer omleiden naar dit domein" aan; www.puredeco.nl moet "Omleiden naar puredeco.nl" tonen. Daarna in Search Console https://www.puredeco.nl/ inspecteren.
+
+## 8 okt — Snelheid, productdata en voorraad/pre-order (H1-test, akkoord op artboards Snelheid, Voorraad, Afrekenknop)
+Alleen H1-test (194824929546). Live, URL's en winkeldata niet aangepast.
+- **Apps:** Mida (heatmaps) en beide XO-embeds uit (settings_data.json). Wholesale (Sami), Rez en chat blijven aan.
+- **BookX:** app-blok uit header-group naar page.showroom.json (sleutel 177684431293c0c63a). Het BookX-**embed moet aan blijven**: bookeasy-widget.js (574 KB) komt uit het embed en is nodig om te boeken (uitzetten brak de agenda; getest). Menu en knoppen elders → /pages/showroom#plan; pd-studio opent de agenda bij #plan (getest).
+- **Snel bekijken:** blijft bestaan zonder snelle afrekenknop (show_dynamic_checkout uit, optie A); productvergelijken uit overlay-group.
+- **Topbar:** Swiper van jsdelivr weg → eigen ticker (pd-ticker, vanilla JS, elke 3,3 s).
+- **Cookiebalk:** compacte balk onderaan (mobiel 207 px i.p.v. vol scherm). b/strong 600.
+- **Niet gedaan:** CSS opsplitsen (19 KB gecomprimeerd, weinig winst), fonts verder afslanken.
+- **Prijs per m²:** snippets/pd-m2.liquid (nieuw) rekent uit de maat in de variant; kaart "≈ € x per m²", specificaties "Dekking per paneel", "Prijs per m²" (per uitvoering), "Bedenktijd 30 dagen, vanaf ontvangst", "Verzending € 65 in Nederland · gratis vanaf € 600". Afronding gecontroleerd (3,42 m²).
+- **Retourbeleid-schema:** Organization hasMerchantReturnPolicy, NL, 30 dagen, per post, kosten klant, link /policies/refund-policy.
+- **Noindex,follow:** /collections/all, onze-bestsellers, nieuwe-collectie, product 668.
+- **668 Florentine Limestone (uit assortiment):** niet in collecties (teller telt hem niet), productpagina toont "Uit het assortiment" + noindex. Product staat nog in Shopify; bij livegang op concept + redirect (met akkoord).
+- **Pre-order:** varianten met voorraad bijgehouden en ≤ 0 tonen pill, "Pre-order · verwachte levering vanaf 29 december" (sectie-instelling preorder_date), knop "Pre-order plaatsen", uitleg (volledig betalen, 30 dagen vanaf ontvangst), selling plan Rez 6125093130 en eigenschap "Pre-order: Verwachte levering vanaf 29 december" in de winkelwagen. Kaart-label "Pre-order" als alle varianten op ≤ 0 staan (619, 620).
+- **Melding bij voorraad:** link + mailformulier → Rez /apps/rez/bis/product (getest met mock; payload klopt).
+- **Rez-app zelf (buiten thema, door eigenaar):** teksten "Pre Order", "Leverbaar vanaf 14 december" → 29 december; BIS-teksten. Rez zet een refresh-token in de paginabron (ook live): melden bij Rez.
+- **Algemene voorwaarden** noemen nog "90 dagen tevredenheidsgarantie" → gelijktrekken met 30 dagen bedenktijd (beslissing eigenaar).
+- **Meting (Pixel 5, 4G, 4× CPU) H1-test voor → na, LCP:** home 3,8 → 2,5 s; collectie 8,1 → 2,5 s; product 3,3 → 2,7 s; studio 6,8 → 6,0 s. TBT: 3,8 → 1,7 s; 2,9 → 2,4 s; 3,3 → 2,5 s; 1,7 → 1,3 s.
+- md5: css 6c7eb266…, theme.liquid 27396138…, cart-drawer 57ada2db…, header-group ae0e2c7c…, header b216365b…, overlay-group bd0321f9…, pd-collection 6b23b301…, pd-product-details 08461362…, pd-product-hero 4e778afa…, pd-studio 94522aff…, topbar 8b32bced…, menu-drawer 6d602a65…, pd-seo 4797fca0…, pd-m2 c224f2cc…, page.showroom.json e60dcc2d…. settings_data.json wordt door Shopify herschreven (geen vergelijkbare md5).

@@ -114,7 +114,7 @@
     "blocks": {
       "10148494829067693542": {
         "type": "shopify://apps/xo-insert-code/blocks/insert-code-body/72017b12-3679-442e-b23c-5c62460717f5",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "custom_liquid": "",
           "custom_css": "",
@@ -130,7 +130,7 @@
       },
       "13392549970259155148": {
         "type": "shopify://apps/xo-insert-code/blocks/insert-code-header/72017b12-3679-442e-b23c-5c62460717f5",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "custom_liquid": "",
           "custom_css": "",
@@ -224,7 +224,7 @@
       },
       "15599951759576395258": {
         "type": "shopify://apps/mida-replay-heatmaps/blocks/mida_recorder/e4c350c5-eabf-426d-8014-47ef50412bd0",
-        "disabled": false,
+        "disabled": true,
         "settings": {}
       }
     },
