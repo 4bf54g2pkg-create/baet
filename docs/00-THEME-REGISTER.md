@@ -171,3 +171,19 @@ templates/robots.txt.liquid  79fe39ff3f6c96eb3ef97395ad254787  = OK
 - H1-test: showroom-partner.liquid en topbar.liquid defaults → PureDeco / info@puredeco.nl; menu-drawer myshopify-links → /pages/. md5 98908e5c… / 76cabe2d… / 93d8f242….
 - Live: schrijven geblokkeerd → kant-en-klare bestanden + instructie in docs/live-opschonen/.
 - Showroomdisplay: 2x opgeschaald, wazige 'puredeco'-letters vervangen door scherp PureDeco-logo (logo.svg) → Bestanden pd-showroomdisplay.jpg (2160×2700); template verkoopparters md5 f16015a9…. Oud puredeco.png niet aangeraakt (live).
+
+## 8 okt — SEO-ronde in H1-test (audit 12.3 + titels/H1's), alleen thema
+Alle SEO-teksten staan in het thema (snippets/pd-seo.liquid). Winkeldata (collectieteksten, SEO-velden, metavelden) en de live site zijn **niet** aangepast; ze gaan pas mee als H1-test gepubliceerd wordt.
+- **pd-seo.liquid (nieuw):** titel, meta, robots, H1, intro en gids per paginatype. Leeg = Shopify-waarde.
+  - Homepage: titel "Wandpanelen met bamboekern | Houtlook & naadloos | PureDeco" + meta.
+  - Collecties Wandpanelen, Hout, Naadloos: H1, titel, meta, intro boven de decors, koopgids eronder (tekst: docs/collectieteksten/CONCEPT-collectieteksten.md, goedgekeurd 8 okt). Japandi en Leer: titel/meta zonder de onjuiste "alles naadloos".
+  - /collections/all: noindex,follow.
+  - Pagina's showroom, sample, verkoopparters, form, faqs, contact, over-ons, type-form, collection-bundle: titel + meta.
+  - Decorproducten: titel "{Materiaal} wandpaneel {code} {naam} | 8 mm naadloos of formaat | PureDeco" en meta (materiaal, formaat, uitvoering, vanaf-prijs). Materiaal ook in de H1 (pd-product-hero, verborgen prefix: "Houten wandpaneel 810 Noir Oak").
+- **theme.liquid:** titel/meta/robots uit pd-seo.
+- **pd-collection:** H1/intro/gids uit pd-seo (gids alleen op pagina 1, vervangt "Over …"); eerste 4 kaartfoto's eager, eerste 2 fetchpriority high; verborgen H2 "Overzicht van alle decors"; JSON-LD-description uit pd-seo.
+- **FAQ Hout (collection.json):** "trekken niet krom door vocht" → "zijn waterbestendig".
+- **H1's:** Studio, Stalen, Projecten: zoekwoord-H1 als bovenregel, slogan als p (zelfde opmaak). Contact, FAQ, Over ons, Advies: eerste kop van de eerste sectie (image-with-text(-overlay)) is nu h1 i.p.v. h2.
+- **Ruis:** cart-drawer "Je winkelwagen" h2 → p. type-form: demo-badge "garace - where design meet function" uitgezet.
+- **Niet gedaan (winkeldata, wacht op akkoord):** 851 Travertine Ivory toevoegen aan collectie 8mm-naadloos; collectieteksten/SEO-velden in Shopify zelf; redirects (docs/casino-opschonen).
+- md5: pd-seo e6bc74fa…, theme.liquid dea10027…, pd-collection d51f5105…, pd-product-hero 6862f7c2…, collection.json bebb9f8b…, pd-studio 491927c3…, pd-samples 4b909dfb…, pd-projects bdf061fb…, image-with-text-overlay 52ee93f1…, image-with-text 50780e1e…, cart-drawer b7e4a72c…, page.type-form.json 43dce21c…, css 2f3bb471….

@@ -2723,3 +2723,31 @@ body.product-samples-widget--active { overflow: auto !important; }
 .vp-form__alt a { color: #151413; }
 @media (min-width: 990px) { .vp-form .pp-form__grid { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 8rem; } }
 @media (max-width: 749px) { .vp-who__list li { font-size: 1.8rem; } .vp-get__list strong { font-size: 2rem; } }
+
+/* ===== Collectie: intro en koopgids (SEO-teksten uit snippets/pd-seo.liquid) ===== */
+.pc-head__intro { max-width: 72ch; margin-top: 1.6rem; font-size: 1.6rem; line-height: 1.65; color: #4A453F; }
+.pc-head__intro p { margin: 0; }
+.pc-guide { background: #EFEAE1; }
+.pc-guide__in { max-width: 76ch; margin: 0 auto; }
+.pc-guide__in > h2:first-child { margin-top: 0; }
+.pc-guide__in h2 { font-size: clamp(2.4rem, 2.6vw, 3.2rem); margin: 4rem 0 1.2rem; }
+.pc-guide__in ol { margin: 0 0 1.6rem; padding-left: 2rem; }
+.pc-guide__in ol li { margin: 0.4rem 0; padding-left: 0.4rem; }
+.pc-guide__in strong { color: #151413; font-weight: 600; }
+.pd-table { margin: 0.4rem 0 2rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.pd-table table { width: 100%; min-width: 46rem; border-collapse: collapse; font-size: 1.45rem; line-height: 1.45; background: #F7F4EE; }
+.pd-table th, .pd-table td { padding: 1rem 1.2rem; text-align: left; vertical-align: top; border-bottom: 1px solid rgba(21, 20, 19, 0.12); }
+.pd-table thead th { font-size: 1.2rem; letter-spacing: 0.08em; text-transform: uppercase; color: #6E675E; font-weight: 600; border-bottom-color: rgba(21, 20, 19, 0.3); }
+.pd-table tbody th { font-weight: 600; color: #151413; white-space: nowrap; }
+.pd-table tbody tr:last-child th, .pd-table tbody tr:last-child td { border-bottom: 0; }
+@media (max-width: 749px) {
+  .pc-head__intro { font-size: 1.45rem; margin-top: 1.2rem; }
+  .pc-guide__in h2 { margin-top: 3.2rem; }
+}
+p.drawer__heading { margin: 0; }
+/* H1 als kleine bovenregel (zoekwoord), slogan blijft de grote kop */
+h1.ph-k { font-family: var(--font-body-family); font-weight: 400; line-height: 1.5; font-size: 1.1rem; letter-spacing: 0.22em; text-transform: uppercase; }
+.pc-guide__in ul { list-style: disc; padding-left: 2rem; }
+.pc-guide__in ol { list-style: decimal; }
+.pc-guide__in li::marker { color: #8C6A4A; }
+.pc-guide__in a, .pc-head__intro a { text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }

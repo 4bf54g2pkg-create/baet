@@ -8,6 +8,25 @@
 {%- liquid
   assign s = section.settings
   assign h1 = collection.metafields.custom.seo_h1.value | default: collection.title
+  capture seo_h1
+    render 'pd-seo', part: 'h1', c: collection
+  endcapture
+  capture seo_intro
+    render 'pd-seo', part: 'intro', c: collection
+  endcapture
+  capture seo_body
+    render 'pd-seo', part: 'body', c: collection
+  endcapture
+  capture seo_desc
+    render 'pd-seo', part: 'desc', c: collection
+  endcapture
+  assign seo_h1 = seo_h1 | strip
+  assign seo_intro = seo_intro | strip
+  assign seo_body = seo_body | strip
+  assign seo_desc = seo_desc | strip | default: page_description
+  if seo_h1 != blank
+    assign h1 = seo_h1
+  endif
   capture clean
     render 'pd-clean-html', html: collection.description
   endcapture
@@ -31,6 +50,9 @@
         <li>3 jaar garantie</li>
       </ul>
     </div>
+    {%- if seo_intro != blank and current_page == 1 -%}
+      <div class="ph-wrap"><div class="pc-head__intro">{{ seo_intro }}</div></div>
+    {%- endif -%}
   </header>
 
   {%- comment -%} Collectienavigatie: interne links met beschrijvende ankertekst {%- endcomment -%}
@@ -173,7 +195,7 @@
         {%- endif -%}
       </div>
 
-      <h2 class="pc-vh">Alle decors in {{ h1 | downcase }}</h2>
+      <h2 class="pc-vh">Overzicht van alle decors</h2>
       <ul class="pc-grid" role="list">
         {%- for p in collection.products -%}
           {%- liquid
@@ -231,7 +253,9 @@
           <li class="pc-card">
             <a class="pc-card__media" href="{{ p.url }}" tabindex="-1" aria-hidden="true">
               {%- if room != blank -%}
-                {{ room | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 1200px) 23vw, (min-width: 990px) 30vw, 48vw', alt: alt_room, class: 'pc-card__room' }}
+                {%- if current_page == 1 and forloop.index <= 4 -%}{%- assign img_load = 'eager' -%}{%- else -%}{%- assign img_load = 'lazy' -%}{%- endif -%}
+                {%- if current_page == 1 and forloop.index <= 2 -%}{%- assign img_prio = 'high' -%}{%- else -%}{%- assign img_prio = 'auto' -%}{%- endif -%}
+                {{ room | image_url: width: 900 | image_tag: loading: img_load, fetchpriority: img_prio, widths: '360, 540, 720, 900', sizes: '(min-width: 1200px) 23vw, (min-width: 990px) 30vw, 48vw', alt: alt_room, class: 'pc-card__room' }}
               {%- endif -%}
               {%- if room != panel -%}<span class="pc-card__vis">Visualisatie</span>{%- endif -%}
               {%- if swatch != blank -%}<span class="pc-card__sw{% if sw_zoom contains '1' %} is-zoom{% endif %}"><img src="{{ swatch | strip }}" alt="" loading="lazy" width="240" height="240"></span>{%- endif -%}
@@ -277,7 +301,7 @@
       "@type": "CollectionPage",
       "name": {{ h1 | json }},
       "url": {{ canonical_url | json }},
-      {%- if page_description != blank %}"description": {{ page_description | json }},{% endif %}
+      {%- if seo_desc != blank %}"description": {{ seo_desc | json }},{% endif %}
       "mainEntity": {
         "@type": "ItemList",
         "numberOfItems": {{ collection.products_count }},
@@ -298,7 +322,15 @@
   </div>
 
   {%- comment -%} Tekst over de collectie {%- endcomment -%}
-  {%- if body != blank -%}
+  {%- if seo_body != blank -%}
+    {%- if current_page == 1 -%}
+      <section class="ph-s pc-guide">
+        <div class="ph-wrap">
+          <div class="pc-rte pc-guide__in">{{ seo_body }}</div>
+        </div>
+      </section>
+    {%- endif -%}
+  {%- elsif body != blank -%}
     <section class="ph-s pc-about">
       <div class="ph-wrap pc-about__in">
         <h2 class="ph-h2">Over {{ h1 | downcase }}</h2>

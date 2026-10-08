@@ -159,7 +159,9 @@
             {%- if pdh_eyebrow != blank and pdh_code != blank -%}<span class="pdh__dot" aria-hidden="true"></span>{%- endif -%}
             {%- if pdh_code != blank -%}<span>{{ pdh_code }}</span>{%- endif -%}
           </p>
-          <h1 class="pdh__title">{% if pdh_code != blank %}<span class="visually-hidden">Wandpaneel {{ pdh_code }} </span>{% endif %}{{ pdh_name }}</h1>
+          {%- capture pdh_mat -%}{%- render 'pd-seo', part: 'mat', p: product -%}{%- endcapture -%}
+          {%- assign pdh_mat = pdh_mat | strip | default: 'Wandpaneel' -%}
+          <h1 class="pdh__title">{% if pdh_code != blank %}<span class="visually-hidden">{{ pdh_mat }} {{ pdh_code }} </span>{% endif %}{{ pdh_name }}</h1>
           {%- assign pdh_rating = product.metafields.reviews.rating.value -%}
           {%- assign pdh_rcount = product.metafields.reviews.rating_count.value | default: 0 -%}
           {%- if pdh_rating != blank and pdh_rcount > 0 -%}

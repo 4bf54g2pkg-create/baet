@@ -43,6 +43,16 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
+    {%- comment -%} Puredeco SEO (H1-test): titel, meta en robots uit snippets/pd-seo.liquid; leeg = Shopify-waarde {%- endcomment -%}
+    {%- capture pd_seo_title -%}{%- render 'pd-seo', part: 'title', c: collection, p: product, pg: page -%}{%- endcapture -%}
+    {%- capture pd_seo_desc -%}{%- render 'pd-seo', part: 'desc', c: collection, p: product, pg: page -%}{%- endcapture -%}
+    {%- capture pd_seo_robots -%}{%- render 'pd-seo', part: 'robots', c: collection, p: product, pg: page -%}{%- endcapture -%}
+    {%- assign pd_seo_title = pd_seo_title | strip -%}
+    {%- assign pd_seo_desc = pd_seo_desc | strip -%}
+    {%- assign pd_seo_robots = pd_seo_robots | strip -%}
+    {%- if pd_seo_title != blank -%}{%- assign page_title = pd_seo_title | escape -%}{%- endif -%}
+    {%- if pd_seo_desc != blank -%}{%- assign page_description = pd_seo_desc -%}{%- endif -%}
+    {%- if pd_seo_robots != blank -%}<meta name="robots" content="{{ pd_seo_robots }}">{%- endif -%}
     <title>
       {{- page_title -}}
       {%- if current_tags -%}

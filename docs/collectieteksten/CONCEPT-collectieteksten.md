@@ -1,6 +1,6 @@
 # Concept: teksten voor de drie hoofdcollecties (audit 12.3)
 
-**Status:** concept. Er is nog niets aangepast in de winkel en niets in een thema. Ik voer pas iets uit na jouw akkoord.
+**Status:** goedgekeurd op 8 okt 2026 en uitgevoerd in H1-test (via snippets/pd-seo.liquid). In de winkeldata en de live site is niets aangepast.
 
 Elke bewering hieronder komt uit de productdata in Shopify of uit de bestaande productteksten. Dit is bewust weggelaten, omdat het nergens is aangetoond:
 - brandklasse B1 en E0;
@@ -132,12 +132,12 @@ Over naadloos zegt de Wandpanelen-pagina alleen kort iets, met een link naar Naa
 > ## De zes houtdecors
 > | Decor | Uitvoering | Formaat | Prijs vanaf |
 > |---|---|---|---|
-> | 602 Wood Classic | 5 mm stomp | 280 × 122 cm | € 99,95 |
-> | 607 White Oak | 5 mm stomp | 280 × 122 cm | € 99,95 |
-> | 615 Radiata | 5 mm stomp | 280 × 122 cm | € 89,95 |
-> | 810 Noir Oak | 5 mm stomp of 8 mm naadloos | 260 of 280 × 122 cm | € 139,95 |
-> | 811 Walnut Classic | 5 mm stomp of 8 mm naadloos | 260 of 280 × 122 cm | € 139,95 |
-> | 812 Walnut Deep | 5 mm stomp of 8 mm naadloos | 280 × 122 cm | € 139,95 |
+> | [602 Wood Classic](/products/602-hout-wood-classic) | 5 mm stomp | 280 × 122 cm | € 99,95 |
+> | [607 White Oak](/products/607-hout-wood-white-oak) | 5 mm stomp | 280 × 122 cm | € 99,95 |
+> | [615 Radiata](/products/615-hout-wood-radiata) | 5 mm stomp | 280 × 122 cm | € 89,95 |
+> | [810 Noir Oak](/products/810-hout-noir-oak) | 5 mm stomp of 8 mm naadloos | 260 of 280 × 122 cm | € 139,95 |
+> | [811 Walnut Classic](/products/811-hout-walnut-classic) | 5 mm stomp of 8 mm naadloos | 260 of 280 × 122 cm | € 139,95 |
+> | [812 Walnut Deep](/products/812-hout-walnut-deep) | 5 mm stomp of 8 mm naadloos | 280 × 122 cm | € 139,95 |
 >
 > ## 5 mm of 8 mm naadloos?
 > - **5 mm stomp:** de panelen staan tegen elkaar met een zichtbare voeg. Die werk je af met een tussenprofiel of kit in de kleur van het hout. Dat past goed bij een wand die je toch in vlakken wilt verdelen.
@@ -186,11 +186,11 @@ Over naadloos zegt de Wandpanelen-pagina alleen kort iets, met een link naar Naa
 > | Prijs | € 119,95 – € 179,95 per paneel | vanaf € 89,95 per paneel |
 >
 > ## Welke decors zijn er naadloos?
-> - **Houtlook:** 810 Noir Oak, 811 Walnut Classic, 812 Walnut Deep. Bekijk alle [houten wandpanelen](/collections/hout-1).
-> - **Japandi:** 619 Jade, 620 Light Brown, 821 Light, 823 Taupe Dark, 824 Taupe.
-> - **Leerlook:** 830 Taupe, 831 Sand.
-> - **Art:** 840 Grain Creme, 841 Grain Blue, 842 Stucco Light, 843 Stucco Shadow.
-> - **Travertin:** 851 Travertine Ivory.
+> - **Houtlook:** [810 Noir Oak](/products/810-hout-noir-oak), [811 Walnut Classic](/products/811-hout-walnut-classic), [812 Walnut Deep](/products/812-hout-walnut-deep). Bekijk alle [houten wandpanelen](/collections/hout-1).
+> - **Japandi:** [619 Jade](/products/619-japanse-stof-japaneses-style-jade), [620 Light Brown](/products/620-japanse-stof-japaneses-style-brown), [821 Light](/products/821-japanse-stof-japandi-light), [823 Taupe Dark](/products/823-japanse-stof-japandi-taupe), [824 Taupe](/products/824-japanse-stof-japandi-taupe-dark).
+> - **Leerlook:** [830 Taupe](/products/830-leer-leather-taup), [831 Sand](/products/831-leer-leather-sand).
+> - **Art:** [840 Grain Creme](/products/840-art-grain-creme), [841 Grain Blue](/products/841-art-grain-blue), [842 Stucco Light](/products/842-art-stucco-light), [843 Stucco Shadow](/products/843-art-stucco-light-shadow).
+> - **Travertin:** [851 Travertine Ivory](/products/wandpaneel-travertine-ivory-851).
 >
 > Marmer en beton zijn er alleen in 5 mm stomp. Bij [doorlopend marmer](/collections/doorlopend-marmer) loopt de tekening wel over drie panelen door.
 >

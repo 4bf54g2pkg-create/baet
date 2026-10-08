@@ -1,0 +1,226 @@
+{%- comment -%}
+  Puredeco · SEO voor H1-test, volledig in het thema (de winkeldata en de live site blijven ongewijzigd).
+  Gebruik: {% render 'pd-seo', part: 'title', c: collection, p: product, pg: page %}
+  part: title | desc | robots | h1 | intro | body (collecties) | mat (materiaal-label van een decorproduct)
+  Leeg resultaat = het thema gebruikt de gewone waarde uit Shopify.
+  Teksten collecties: docs/collectieteksten/CONCEPT-collectieteksten.md (goedgekeurd 8 okt 2026).
+{%- endcomment -%}
+{%- case template.name -%}
+{%- when 'index' -%}
+  {%- case part -%}
+    {%- when 'title' -%}Wandpanelen met bamboekern | Houtlook & naadloos | PureDeco
+    {%- when 'desc' -%}Wandpanelen voor woonkamer, slaapkamer en badkamer: houtlook, marmer, beton en Japandi. 5 mm of 8 mm naadloos, 3 jaar garantie. Tot 5 stalen gratis.
+  {%- endcase -%}
+{%- when 'collection' -%}
+  {%- case c.handle -%}
+  {%- when 'wandpanelen' -%}
+    {%- case part -%}
+      {%- when 'title' -%}Wandpanelen kopen | Houtlook, marmer & naadloos | PureDeco
+      {%- when 'desc' -%}Wandpanelen met bamboekern in houtlook, marmer, beton, Japandi, leer en art. 5 mm stomp of 8 mm naadloos. Tot 5 stalen gratis, 3 jaar garantie.
+      {%- when 'h1' -%}Wandpanelen met bamboekern
+      {%- when 'intro' -%}<p>Wandpanelen van 122 cm breed en 260 of 280 cm hoog, met een kern van bamboe. Kies uit houtlook, marmer, beton, travertin, Japandi, leer en art, als 5 mm stomp paneel of als 8 mm paneel dat naadloos aansluit. Eén paneel bedekt ruim 3 m² en monteer je met montagekit direct op de wand.</p>
+      {%- when 'body' -%}
+<h2>Wat zijn wandpanelen met bamboekern?</h2>
+<p>Een wandpaneel van PureDeco bestaat uit vier lagen:</p>
+<ul><li>een toplaag met het decor en de structuur;</li><li>een laag gerecycled PVC;</li><li>een kern van bamboe;</li><li>een gerecyclede onderlaag.</li></ul>
+<p>Die opbouw maakt het paneel licht en vormvast. Het is waterbestendig en eenvoudig schoon te maken.</p>
+<p>Het decor zit in de toplaag. Een houtlook-paneel is dus geen massief hout, en een marmerlook-paneel geen natuursteen. Het voordeel: je hoeft niets te oliën, te lakken of te impregneren.</p>
+<h2>Welke stijlen zijn er?</h2>
+<ul><li><strong><a href="/collections/hout-1">Houten wandpanelen</a>:</strong> eiken- en walnootlook, van licht tot zwart.</li><li><strong>Marmer:</strong> mat en glanzend. Bij <a href="/collections/doorlopend-marmer">doorlopend marmer</a> loopt de tekening over drie panelen door.</li><li><strong>Beton en travertin:</strong> <a href="/products/concrete-smoke-691-betonlook">Concrete Smoke 691</a>, <a href="/products/concrete-rust-861-betonlook">Concrete Rust 861</a> en <a href="/products/wandpaneel-travertine-ivory-851">Travertine Ivory 851</a>.</li><li><strong><a href="/collections/japandi">Japandi</a>:</strong> rustige stofstructuren in licht, jade, bruin en taupe.</li><li><strong><a href="/collections/leer">Leerlook</a>:</strong> khaki, zand en taupe.</li><li><strong><a href="/collections/kunst">Art</a>:</strong> stucco- en grain-structuren.</li></ul>
+<h2>5 mm stomp of 8 mm naadloos?</h2>
+<div class="pd-table"><table><thead><tr><th scope="col"></th><th scope="col">5 mm stomp</th><th scope="col">8 mm naadloos</th></tr></thead><tbody><tr><th scope="row">Aansluiting</th><td>panelen stuiten tegen elkaar</td><td>kliksysteem</td></tr><tr><th scope="row">Naad</th><td>zichtbare voeg, af te werken met een tussenprofiel of kit in kleur</td><td>vrijwel onzichtbaar</td></tr><tr><th scope="row">Decors</th><td>alle stijlen</td><td>houtlook, Japandi, leer, art en travertin</td></tr><tr><th scope="row">Prijs</th><td>vanaf € 89,95 per paneel</td><td>vanaf € 119,95 per paneel</td></tr></tbody></table></div>
+<p>Wil je een wand die leest als één vlak? Kijk dan bij de <a href="/collections/8mm-naadloos">naadloze wandpanelen</a>.</p>
+<h2>Hoeveel wandpanelen heb ik nodig?</h2>
+<p>Een paneel is 122 cm breed. Zo reken je het uit:</p>
+<ol><li>Deel de breedte van je wand door 1,22.</li><li>Rond naar boven af.</li></ol>
+<p>Voorbeeld: een wand van 4,50 m breed geeft 4,50 / 1,22 = 3,7. Je hebt dus 4 panelen nodig. Op elke productpagina rekent de calculator het voor je uit.</p>
+<ul><li>Een paneel van 280 × 122 cm bedekt 3,42 m².</li><li>Een paneel van 260 × 122 cm bedekt 3,17 m².</li></ul>
+<h2>Wat kosten wandpanelen?</h2>
+<ul><li>Losse panelen kosten van <strong>€ 89,95 tot € 179,95</strong> per stuk. Dat is ongeveer € 26 tot € 57 per m².</li><li>De 8 mm naadloze panelen beginnen bij € 119,95.</li><li>Doorlopend marmer koop je als set van drie panelen.</li><li>De prijs per paneel staat bij elk decor hierboven.</li></ul>
+<h2>Zo monteer je wandpanelen</h2>
+<ol><li>Zorg voor een vlakke, schone, droge en vetvrije wand.</li><li>Zaag de panelen op maat met een fijne zaag, inclusief sparingen voor stopcontacten.</li><li>Zet <a href="/products/hack-tack-montagekit">High Tack montagekit</a> in banen op de wand. Houd een kleine afstand tot de randen.</li><li>Druk het paneel stevig aan en controleer met een waterpas.</li><li>Werk randen en hoeken af met <a href="/collections/accessoires">aluminium profielen</a>.</li><li>Laat de kit uitharden en verwijder dan de beschermfolie.</li></ol>
+<p>Voor een ronde wand frees je aan de achterkant sleuven, ongeveer elke 3 tot 5 cm. Daarna verwarm en buig je het paneel.</p>
+<h2>In welke ruimtes?</h2>
+<p>Wandpanelen passen in de woonkamer, slaapkamer, hal, keuken, badkamer en in kantoren en horeca. Omdat ze waterbestendig zijn, kun je ze in de badkamer en keuken gebruiken. Vermijd wel plekken waar water blijft staan.</p>
+<h2>Eerst zien en voelen</h2>
+<p>Bestel <a href="/pages/sample">tot vijf stalen gratis</a>: je betaalt alleen € 6,95 verzending. Of bekijk de panelen op ware grootte in onze <a href="/pages/showroom">studio in Herwen</a>. Op alle wandpanelen krijg je 3 jaar garantie.</p>
+    {%- endcase -%}
+  {%- when 'hout-1' -%}
+    {%- case part -%}
+      {%- when 'title' -%}Houten wandpanelen | Houtlook met bamboekern | PureDeco
+      {%- when 'desc' -%}Houten wandpanelen in eiken- en walnootlook met bamboekern. 5 mm stomp of 8 mm naadloos. Tot 5 stalen gratis, 3 jaar garantie.
+      {%- when 'h1' -%}Houten wandpanelen
+      {%- when 'intro' -%}<p>Houten wandpanelen met de uitstraling van eiken en walnoot, van licht tot zwart. De houtnerf zit in een toplaag op een kern van bamboe, dus je hoeft niets te oliën of te lakken. Zes decors, waarvan drie ook als 8 mm naadloos paneel.</p>
+      {%- when 'body' -%}
+<h2>Echt hout of houtlook?</h2>
+<p>Onze houten wandpanelen zijn houtlook. De toplaag heeft een realistische houtnerf en kleur, en daaronder zitten gerecycled PVC, een kern van bamboe en een gerecyclede onderlaag. Je krijgt de warmte van een houten wand. Je hoeft niet te schuren, te oliën of te lakken, en de panelen zijn waterbestendig.</p>
+<h2>De zes houtdecors</h2>
+<div class="pd-table"><table><thead><tr><th scope="col">Decor</th><th scope="col">Uitvoering</th><th scope="col">Formaat</th><th scope="col">Prijs vanaf</th></tr></thead><tbody><tr><th scope="row"><a href="/products/602-hout-wood-classic">602 Wood Classic</a></th><td>5 mm stomp</td><td>280 × 122 cm</td><td>€ 99,95</td></tr><tr><th scope="row"><a href="/products/607-hout-wood-white-oak">607 White Oak</a></th><td>5 mm stomp</td><td>280 × 122 cm</td><td>€ 99,95</td></tr><tr><th scope="row"><a href="/products/615-hout-wood-radiata">615 Radiata</a></th><td>5 mm stomp</td><td>280 × 122 cm</td><td>€ 89,95</td></tr><tr><th scope="row"><a href="/products/810-hout-noir-oak">810 Noir Oak</a></th><td>5 mm stomp of 8 mm naadloos</td><td>260 of 280 × 122 cm</td><td>€ 139,95</td></tr><tr><th scope="row"><a href="/products/811-hout-walnut-classic">811 Walnut Classic</a></th><td>5 mm stomp of 8 mm naadloos</td><td>260 of 280 × 122 cm</td><td>€ 139,95</td></tr><tr><th scope="row"><a href="/products/812-hout-walnut-deep">812 Walnut Deep</a></th><td>5 mm stomp of 8 mm naadloos</td><td>280 × 122 cm</td><td>€ 139,95</td></tr></tbody></table></div>
+<h2>5 mm of 8 mm naadloos?</h2>
+<ul><li><strong>5 mm stomp:</strong> de panelen staan tegen elkaar met een zichtbare voeg. Die werk je af met een tussenprofiel of kit in de kleur van het hout. Dat past goed bij een wand die je toch in vlakken wilt verdelen.</li><li><strong>8 mm naadloos:</strong> heeft een kliksysteem, en de naad is vrijwel onzichtbaar. Kies dit voor één doorlopende houten wand.</li></ul>
+<p>Alle 8 mm decors vind je bij de <a href="/collections/8mm-naadloos">naadloze wandpanelen</a>.</p>
+<h2>Waar gebruik je houten wandpanelen?</h2>
+<ul><li><strong>Achter het bed:</strong> een warme wand.</li><li><strong>In de woonkamer:</strong> een accentwand achter de tv of de bank.</li><li><strong>In de hal of op kantoor:</strong> een rustige houten wand.</li><li><strong>In de badkamer en keuken:</strong> dat kan, want de panelen zijn waterbestendig. Vermijd wel plekken waar water blijft staan.</li></ul>
+<h2>Hoeveel panelen en hoe monteer je ze?</h2>
+<p>Deel de breedte van je wand door 1,22 en rond naar boven af. Een wand van 3,60 m breed vraagt dus 3 panelen. Je monteert ze met montagekit op een vlakke, droge wand. Hoe dat stap voor stap gaat, lees je bij <a href="/collections/wandpanelen">Zo monteer je wandpanelen</a>.</p>
+<h2>Eerst de kleur zien?</h2>
+<p>Houtkleuren zie je het best in je eigen licht. Bestel <a href="/pages/sample">tot vijf stalen gratis</a>, je betaalt alleen € 6,95 verzending. Of kom kijken in de <a href="/pages/showroom">studio in Herwen</a>.</p>
+    {%- endcase -%}
+  {%- when '8mm-naadloos' -%}
+    {%- case part -%}
+      {%- when 'title' -%}Naadloze wandpanelen | 8 mm met kliksysteem | PureDeco
+      {%- when 'desc' -%}8 mm naadloze wandpanelen met bamboekern in houtlook, Japandi, leer, art en travertin. Eén strak doorlopende wand. Tot 5 stalen gratis, 3 jaar garantie.
+      {%- when 'h1' -%}Naadloze wandpanelen
+      {%- when 'intro' -%}<p>Naadloze wandpanelen zijn 8 mm dik en sluiten met een kliksysteem strak op elkaar aan. Zo leest de wand als één rustig vlak, zonder voeg en zonder tussenprofiel. Kies uit houtlook, Japandi, leerlook, art en travertin, in 260 of 280 cm hoog.</p>
+      {%- when 'body' -%}
+<h2>Wat maakt een wandpaneel naadloos?</h2>
+<ul><li><strong>Een 5 mm stomp paneel</strong> zet je tegen het volgende aan. Je ziet dan een voeg, die je afwerkt met een profiel of kit.</li><li><strong>Een 8 mm naadloos paneel</strong> klikt in het volgende paneel. De naad is vrijwel onzichtbaar, zodat het decor rustig doorloopt over de hele wand.</li></ul>
+<h2>Naadloos of stomp: het verschil</h2>
+<div class="pd-table"><table><thead><tr><th scope="col"></th><th scope="col">8 mm naadloos</th><th scope="col">5 mm stomp</th></tr></thead><tbody><tr><th scope="row">Dikte</th><td>8 mm</td><td>5 mm</td></tr><tr><th scope="row">Aansluiting</th><td>kliksysteem</td><td>tegen elkaar</td></tr><tr><th scope="row">Naad</th><td>vrijwel onzichtbaar</td><td>zichtbaar, af te werken met profiel of kit</td></tr><tr><th scope="row">Stijlen</th><td>houtlook, Japandi, leer, art, travertin</td><td>alle stijlen, ook marmer en beton</td></tr><tr><th scope="row">Prijs</th><td>€ 119,95 – € 179,95 per paneel</td><td>vanaf € 89,95 per paneel</td></tr></tbody></table></div>
+<h2>Welke decors zijn er naadloos?</h2>
+<ul><li><strong>Houtlook:</strong> <a href="/products/810-hout-noir-oak">810 Noir Oak</a>, <a href="/products/811-hout-walnut-classic">811 Walnut Classic</a>, <a href="/products/812-hout-walnut-deep">812 Walnut Deep</a>. Bekijk alle <a href="/collections/hout-1">houten wandpanelen</a>.</li><li><strong>Japandi:</strong> <a href="/products/619-japanse-stof-japaneses-style-jade">619 Jade</a>, <a href="/products/620-japanse-stof-japaneses-style-brown">620 Light Brown</a>, <a href="/products/821-japanse-stof-japandi-light">821 Light</a>, <a href="/products/823-japanse-stof-japandi-taupe">823 Taupe Dark</a>, <a href="/products/824-japanse-stof-japandi-taupe-dark">824 Taupe</a>.</li><li><strong>Leerlook:</strong> <a href="/products/830-leer-leather-taup">830 Taupe</a>, <a href="/products/831-leer-leather-sand">831 Sand</a>.</li><li><strong>Art:</strong> <a href="/products/840-art-grain-creme">840 Grain Creme</a>, <a href="/products/841-art-grain-blue">841 Grain Blue</a>, <a href="/products/842-art-stucco-light">842 Stucco Light</a>, <a href="/products/843-art-stucco-light-shadow">843 Stucco Shadow</a>.</li><li><strong>Travertin:</strong> <a href="/products/wandpaneel-travertine-ivory-851">851 Travertine Ivory</a>.</li></ul>
+<p>Marmer en beton zijn er alleen in 5 mm stomp. Bij <a href="/collections/doorlopend-marmer">doorlopend marmer</a> loopt de tekening wel over drie panelen door.</p>
+<h2>Wat kosten naadloze wandpanelen?</h2>
+<ul><li><strong>Art-decors (260 × 122 cm):</strong> vanaf € 119,95 per paneel, ongeveer € 38 per m².</li><li><strong>Hout, Japandi en travertin (280 × 122 cm):</strong> tot € 179,95 per paneel, ongeveer € 53 per m².</li></ul>
+<h2>Naadloze wandpanelen monteren</h2>
+<ol><li>Zorg voor een vlakke, schone en droge wand.</li><li>Zet het eerste paneel met montagekit precies waterpas. Daar lijnen de andere panelen op uit.</li><li>Klik elk volgend paneel in het vorige en druk het aan.</li><li>Werk de buitenranden en hoeken af met een <a href="/products/eindprofielen">eindprofiel</a> of <a href="/products/hoekprofielen-gelijk">hoekprofiel</a>.</li></ol>
+<p>Meer uitleg vind je bij <a href="/collections/wandpanelen">Zo monteer je wandpanelen</a>.</p>
+<h2>Eerst de naad zien?</h2>
+<p>De aansluiting zie en voel je het best in het echt. Bestel <a href="/pages/sample">tot vijf stalen gratis</a>, je betaalt alleen € 6,95 verzending. Of zet in onze <a href="/pages/showroom">studio in Herwen</a> de panelen naast elkaar. Op alle wandpanelen krijg je 3 jaar garantie.</p>
+    {%- endcase -%}
+  {%- when 'japandi' -%}
+    {%- case part -%}{%- when 'title' -%}Japandi wandpanelen | Stofstructuur met bamboekern | PureDeco{%- when 'desc' -%}Japandi wandpanelen met een rustige stofstructuur, van Light en Jade tot Taupe. 5 mm stomp of 8 mm naadloos, met bamboekern. Tot 5 stalen gratis.{%- endcase -%}
+  {%- when 'leer' -%}
+    {%- case part -%}{%- when 'title' -%}Leerlook wandpanelen | Khaki, Sand en Taupe | PureDeco{%- when 'desc' -%}Leerlook wandpanelen met bamboekern in Khaki, Sand en Taupe. 5 mm stomp of 8 mm naadloos. Tot 5 stalen gratis, 3 jaar garantie.{%- endcase -%}
+  {%- when 'all' -%}
+    {%- if part == 'robots' -%}noindex,follow{%- endif -%}
+  {%- endcase -%}
+{%- when 'page' -%}
+  {%- case pg.handle -%}
+  {%- when 'showroom' -%}
+    {%- case part -%}{%- when 'title' -%}Wandpanelen showroom in Herwen | Studio PureDeco{%- when 'desc' -%}Bekijk en voel onze wandpanelen op ware grootte in Studio Herwen. Persoonlijk advies over decor, afwerking en het aantal panelen. Op afspraak.{%- endcase -%}
+  {%- when 'sample' -%}
+    {%- case part -%}{%- when 'title' -%}Gratis stalen wandpanelen | Tot 5 samples | PureDeco{%- when 'desc' -%}Kies tot vijf stalen van onze wandpanelen en bekijk ze thuis in je eigen licht. De stalen zijn gratis, je betaalt alleen € 6,95 verzending.{%- endcase -%}
+  {%- when 'verkoopparters' -%}
+    {%- case part -%}{%- when 'title' -%}Verkooppartner worden | Showroomdisplay | PureDeco{%- when 'desc' -%}Toon PureDeco-wandpanelen in je eigen zaak. Met een showroomdisplay, zakelijke prijzen en persoonlijke ondersteuning. Meld je aan voor een kennismaking.{%- endcase -%}
+  {%- when 'form' -%}
+    {%- case part -%}{%- when 'title' -%}Wandpanelen voor projecten en bedrijven | PureDeco{%- when 'desc' -%}Wandpanelen met bamboekern voor hotels, horeca, kantoren en winkels. Vraag projectadvies en stalen aan bij PureDeco Projects.{%- endcase -%}
+  {%- when 'faqs' -%}
+    {%- case part -%}{%- when 'title' -%}Veelgestelde vragen over wandpanelen | PureDeco{%- when 'desc' -%}Antwoorden over montage, profielen, montagekit, stalen en garantie van PureDeco-wandpanelen met een kern van bamboe.{%- endcase -%}
+  {%- when 'contact' -%}
+    {%- case part -%}{%- when 'title' -%}Contact | PureDeco wandpanelen{%- when 'desc' -%}Vragen over wandpanelen? Bel of app 0316 700 214, mail info@puredeco.nl of plan een bezoek aan Studio Herwen.{%- endcase -%}
+  {%- when 'over-ons' -%}
+    {%- case part -%}{%- when 'title' -%}Over PureDeco | Wandpanelen met bamboekern{%- when 'desc' -%}PureDeco maakt wandpanelen met een kern van bamboe, in houtlook, marmer, beton, Japandi, leer en art. Lees wie we zijn en hoe we werken.{%- endcase -%}
+  {%- when 'type-form' -%}
+    {%- case part -%}{%- when 'title' -%}Gratis interieuradvies voor je wand | PureDeco{%- when 'desc' -%}Twijfel je welke wandpanelen passen bij jouw ruimte? Vraag gratis en vrijblijvend persoonlijk advies aan bij PureDeco.{%- endcase -%}
+  {%- when 'collection-bundle' -%}
+    {%- case part -%}{%- when 'title' -%}Mix and match wandpanelen | PureDeco{%- when 'desc' -%}Combineer decors van PureDeco-wandpanelen met een kern van bamboe tot één wand. Bekijk de mogelijkheden en bestel tot vijf stalen gratis.{%- endcase -%}
+  {%- endcase -%}
+{%- when 'product' -%}
+  {%- if part == 'title' or part == 'desc' or part == 'mat' -%}
+    {%- liquid
+      capture sc
+        render 'pd-decor', product: p, part: 'code'
+      endcapture
+      assign sc = sc | strip
+      if sc != blank
+        capture sn
+          render 'pd-decor', product: p, part: 'name'
+        endcapture
+        capture se
+          render 'pd-decor', product: p, part: 'eyebrow'
+        endcapture
+        assign sn = sn | strip
+        assign sl = se | append: ' ' | append: p.title | downcase
+        assign mat = 'Wandpaneel'
+        assign unit = 'per paneel'
+        if sl contains 'doorlopend'
+          assign mat = 'Doorlopend marmer wandpaneel'
+          assign unit = 'per set van drie panelen'
+        elsif sl contains 'hout'
+          assign mat = 'Houten wandpaneel'
+        elsif sl contains 'japandi'
+          assign mat = 'Japandi wandpaneel'
+        elsif sl contains 'leer'
+          assign mat = 'Leerlook wandpaneel'
+        elsif sl contains 'marmer'
+          assign mat = 'Marmerlook wandpaneel'
+        elsif sl contains 'beton'
+          assign mat = 'Betonlook wandpaneel'
+        elsif sl contains 'travertin'
+          assign mat = 'Travertinlook wandpaneel'
+        elsif sl contains 'metaal'
+          assign mat = 'Metaallook wandpaneel'
+        elsif sl contains ' art '
+          assign mat = 'Art wandpaneel'
+        endif
+        assign f5 = false
+        assign f8 = false
+        assign size = ''
+        for o in p.options_with_values
+          for ov in o.values
+            assign ok = ov | downcase | remove: ' '
+            if ok contains '8mm'
+              assign f8 = true
+            elsif ok contains '5mm'
+              assign f5 = true
+            elsif ok contains 'x' or ok contains '×'
+              unless ok contains '('
+                assign sz = ok | remove: 'cm' | replace: '×', 'x' | split: 'x'
+                if size == blank
+                  assign size = sz | join: ' × ' | append: ' cm'
+                  assign size_w = sz.last
+                  assign size_h = sz.first
+                elsif sz.last == size_w and sz.first != size_h
+                  assign h_lo = size_h
+                  assign h_hi = sz.first
+                  if sz.first < size_h
+                    assign h_lo = sz.first
+                    assign h_hi = size_h
+                  endif
+                  assign size = h_lo | append: ' of ' | append: h_hi | append: ' × ' | append: size_w | append: ' cm'
+                endif
+              endunless
+            endif
+          endfor
+        endfor
+        assign label = mat | append: ' ' | append: sc | append: ' ' | append: sn
+        case part
+          when 'mat'
+            echo mat
+          when 'title'
+            assign mid = size
+            if f8
+              assign mid = '8 mm naadloos'
+            endif
+            assign t = label
+            if mid != blank
+              assign t = t | append: ' | ' | append: mid
+            endif
+            assign t = t | append: ' | PureDeco'
+            if t.size > 68
+              assign t = label | append: ' | PureDeco'
+            endif
+            echo t
+          when 'desc'
+            if true
+              assign fin = ''
+              if f5 and f8
+                assign fin = ' 5 mm stomp of 8 mm naadloos.'
+              elsif f8
+                assign fin = ' 8 mm naadloos met kliksysteem.'
+              elsif f5
+                assign fin = ' 5 mm stomp.'
+              endif
+              assign d = label | append: ' met bamboekern'
+              if size != blank
+                assign d = d | append: ', ' | append: size
+              endif
+              assign pr = p.price_min | money
+              echo d | append: '.' | append: fin | append: ' Vanaf ' | append: pr | append: ' ' | append: unit | append: '. Gratis stalen, 3 jaar garantie.'
+            endif
+        endcase
+      endif
+    -%}
+  {%- endif -%}
+{%- endcase -%}
