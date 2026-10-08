@@ -41,9 +41,9 @@ Over naadloos zegt de Wandpanelen-pagina alleen kort iets, met een link naar Naa
 
 **H1:** Wandpanelen met bamboekern
 
-**SEO-titel (57 tekens):** Wandpanelen kopen | Houtlook, marmer & naadloos | PureDeco
+**SEO-titel (58 tekens):** Wandpanelen kopen | Houtlook, marmer & naadloos | PureDeco
 
-**Meta (139 tekens):** Wandpanelen met bamboekern in houtlook, marmer, beton, Japandi, leer en art. 5 mm stomp of 8 mm naadloos. Tot 5 stalen gratis, 3 jaar garantie.
+**Meta (143 tekens):** Wandpanelen met bamboekern in houtlook, marmer, beton, Japandi, leer en art. 5 mm stomp of 8 mm naadloos. Tot 5 stalen gratis, 3 jaar garantie.
 
 **Intro (boven de decors):**
 > Wandpanelen van 122 cm breed en 260 of 280 cm hoog, met een kern van bamboe. Kies uit houtlook, marmer, beton, travertin, Japandi, leer en art, als 5 mm stomp paneel of als 8 mm paneel dat naadloos aansluit. Eén paneel bedekt ruim 3 m² en monteer je met montagekit direct op de wand.
@@ -117,9 +117,9 @@ Over naadloos zegt de Wandpanelen-pagina alleen kort iets, met een link naar Naa
 
 **H1:** Houten wandpanelen
 
-**SEO-titel (54 tekens):** Houten wandpanelen | Houtlook met bamboekern | PureDeco
+**SEO-titel (55 tekens):** Houten wandpanelen | Houtlook met bamboekern | PureDeco
 
-**Meta (133 tekens):** Houten wandpanelen in eiken- en walnootlook met bamboekern. 5 mm stomp of 8 mm naadloos. Tot 5 stalen gratis, 3 jaar garantie.
+**Meta (126 tekens):** Houten wandpanelen in eiken- en walnootlook met bamboekern. 5 mm stomp of 8 mm naadloos. Tot 5 stalen gratis, 3 jaar garantie.
 
 **Intro (boven de decors):**
 > Houten wandpanelen met de uitstraling van eiken en walnoot, van licht tot zwart. De houtnerf zit in een toplaag op een kern van bamboe, dus je hoeft niets te oliën of te lakken. Zes decors, waarvan drie ook als 8 mm naadloos paneel.
@@ -165,7 +165,7 @@ Over naadloos zegt de Wandpanelen-pagina alleen kort iets, met een link naar Naa
 
 **SEO-titel (54 tekens):** Naadloze wandpanelen | 8 mm met kliksysteem | PureDeco
 
-**Meta (150 tekens):** 8 mm naadloze wandpanelen met bamboekern in houtlook, Japandi, leer, art en travertin. Eén strak doorlopende wand. Tot 5 stalen gratis, 3 jaar garantie.
+**Meta (152 tekens):** 8 mm naadloze wandpanelen met bamboekern in houtlook, Japandi, leer, art en travertin. Eén strak doorlopende wand. Tot 5 stalen gratis, 3 jaar garantie.
 
 **Intro (boven de decors):**
 > Naadloze wandpanelen zijn 8 mm dik en sluiten met een kliksysteem strak op elkaar aan. Zo leest de wand als één rustig vlak, zonder voeg en zonder tussenprofiel. Kies uit houtlook, Japandi, leerlook, art en travertin, in 260 of 280 cm hoog.
