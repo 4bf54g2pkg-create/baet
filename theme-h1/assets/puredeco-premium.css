@@ -2825,3 +2825,28 @@ b, strong { font-weight: 600; }
 /* Pre-order op mobiel: knoptekst past, meldlink loopt niet buiten beeld */
 .pdh__notify-link { white-space: normal; }
 @media (max-width: 749px) { .pdh__cta.pdh__cta--pre .pdh__cta-total { display: none; } }
+
+/* ===== Decorvideo (productpagina · knop 'Video') ===== */
+.pdh__playmark { display: inline-block; width: 0; height: 0; border-left: 0.6rem solid currentColor; border-top: 0.38rem solid transparent; border-bottom: 0.38rem solid transparent; margin-right: 0.7rem; vertical-align: 0.1rem; }
+.pdh__decor { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #E9E3D8; }
+.pdh__decor-frame { position: relative; height: 100%; aspect-ratio: 4 / 5; max-width: 100%; overflow: hidden; background: #D9D2C6; }
+@media (min-width: 750px) { .pdh__decor-frame { height: calc(100% - 6.4rem); box-shadow: 0 1.6rem 4rem rgba(21, 20, 19, 0.12); } }
+.pdh__view .pdh__decor-video { width: 100%; height: 100%; object-fit: cover; display: block; background: #D9D2C6; }
+.pdh__decor-label { position: absolute; left: 1.4rem; bottom: 1.4rem; margin: 0; padding: 0.6rem 1rem; background: rgba(21, 20, 19, 0.72); color: #F5F2EC; font-size: 1.05rem; line-height: 1; letter-spacing: 0.16em; text-transform: uppercase; pointer-events: none; }
+.pdh__decor-toggle {
+  position: absolute; right: 1.4rem; top: 1.4rem; /* boven: botst niet met de chatknop rechtsonder */
+  display: grid !important; place-items: center;
+  width: 4rem !important; height: 4rem !important; min-width: 0 !important; min-height: 0 !important; padding: 0 !important;
+  border: 0 !important; border-radius: 50% !important; box-shadow: none !important;
+  background: rgba(21, 20, 19, 0.72) !important; color: #F5F2EC !important; cursor: pointer;
+  transition: background 0.2s;
+}
+.pdh__decor-toggle:hover { background: rgba(21, 20, 19, 0.88) !important; }
+.pdh__decor-toggle:focus-visible { outline: 2px solid #F5F2EC; outline-offset: 2px; }
+.pdh__decor-toggle::before, .pdh__decor-toggle::after { content: none !important; }
+.pdh__decor-toggle span { display: block; box-sizing: border-box; width: 1.2rem; height: 1.4rem; border-left: 0.4rem solid currentColor; border-right: 0.4rem solid currentColor; }
+.pdh__decor.is-paused .pdh__decor-toggle span { width: 0; height: 0; margin-left: 0.3rem; border-right: 0; border-left: 1.2rem solid currentColor; border-top: 0.72rem solid transparent; border-bottom: 0.72rem solid transparent; }
+
+/* Collectiekaart: label bij decors met video (video speelt niet op de kaart) */
+.pc-card__video { position: absolute; right: 1.2rem; top: 1.2rem; z-index: 2; display: inline-flex; align-items: center; padding: 0.3rem 0.8rem; background: rgba(245, 242, 236, 0.92); color: #151413; font-size: 1.05rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; }
+.pc-card__video::before { content: ''; width: 0; height: 0; margin-right: 0.6rem; border-left: 0.55rem solid currentColor; border-top: 0.35rem solid transparent; border-bottom: 0.35rem solid transparent; }

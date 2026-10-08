@@ -1,6 +1,6 @@
 {%- comment -%}
   Puredeco · bovenkant productpagina als één compositie.
-  Beeld (Interieur · Specimen · Structuur · Aansluiting · Film) + titel, prijs, Finish, formaat, aantal en koopknop.
+  Beeld (Interieur · Video · Specimen · Structuur · Aansluiting · Film) + titel, prijs, Finish, formaat, aantal en koopknop.
   Toevoegen aan winkelmand via het theme-formulier (is="product-form"), dus de winkelmandlade werkt zoals altijd.
 {%- endcomment -%}
 {%- liquid
@@ -29,6 +29,11 @@
 
   assign pdh_film = section.settings.video | default: shop.metafields.puredeco.montage_video.value
   assign pdh_proj = product.metafields.puredeco.project_video.value
+  comment
+    Decorvideo: korte echte opname van dit decor (productveld puredeco.decor_video, bewerkt met tools/productvideo-bewerken.sh).
+    Laadt niets tot iemand op 'Video' klikt (of erboven hangt); bij 'beweging beperken' speelt hij pas na een klik op afspelen.
+  endcomment
+  assign pdh_decor = product.metafields.puredeco.decor_video.value
   assign pdh_first = 'interieur'
   if pdh_proj != blank
     assign pdh_first = 'praktijk'
@@ -110,6 +115,31 @@
           </div>
         {%- endif -%}
 
+        {%- if pdh_decor != blank -%}
+          {%- liquid
+            assign dv_hls = pdh_decor.sources | where: 'format', 'm3u8' | first
+            comment
+              Shopify geeft hier de adaptieve stream (HLS: iPhone, Safari, Android kiezen zelf de juiste kwaliteit)
+              en de hoogste MP4 als terugval voor de overige browsers.
+            endcomment
+            assign dv_big = pdh_decor.sources | where: 'format', 'mp4' | sort: 'height' | last
+            assign dv_alt = pdh_decor.alt | default: pdh_name
+          -%}
+          <div class="pdh__view" data-view="video">
+            <div class="pdh__decor is-paused" data-pdh-decor>
+              <div class="pdh__decor-frame">
+                <video class="pdh__decor-video" data-pdh-decor-video muted loop playsinline preload="none" disableremoteplayback
+                  data-poster="{{ pdh_decor.preview_image | image_url: width: 1080 }}" aria-label="{{ dv_alt | escape }}">
+                  {%- if dv_hls -%}<source src="{{ dv_hls.url }}" type="application/x-mpegURL">{%- endif -%}
+                  {%- if dv_big -%}<source src="{{ dv_big.url }}" type="video/mp4">{%- endif -%}
+                </video>
+                <p class="pdh__decor-label">Echte opname</p>
+                <button type="button" class="pdh__decor-toggle" data-pdh-decor-toggle aria-label="Video afspelen"><span aria-hidden="true"></span></button>
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+
         {%- if pdh_pack -%}
           <div class="pdh__view{% if pdh_first == 'specimen' %} is-active{% endif %}" data-view="specimen">
             <div class="pdh__specimen">
@@ -150,6 +180,7 @@
       <nav class="pdh__views" aria-label="Bekijk {{ pdh_name }}">
         {%- if pdh_proj != blank -%}<button type="button" class="is-active" data-pdh-view="praktijk">In de praktijk</button>{%- endif -%}
         {%- if pdh_interiors > 0 -%}<button type="button"{% if pdh_first == 'interieur' %} class="is-active"{% endif %} data-pdh-view="interieur">Interieur</button>{%- endif -%}
+        {%- if pdh_decor != blank -%}<button type="button" data-pdh-view="video"><span class="pdh__playmark" aria-hidden="true"></span>Video</button>{%- endif -%}
         {%- if pdh_pack -%}
           <button type="button"{% if pdh_first == 'specimen' %} class="is-active"{% endif %} data-pdh-view="specimen">Paneel</button>
           <button type="button" data-pdh-view="structuur">Structuur</button>
@@ -614,6 +645,30 @@
 </script>
 
 <script type="application/ld+json">{{ product | structured_data }}</script>
+{%- if pdh_decor != blank -%}
+  {%- liquid
+    assign dv_label = pdh_name
+    if pdh_code != blank
+      assign dv_label = pdh_code | append: ' ' | append: pdh_name
+    endif
+    assign dv_date = product.metafields.puredeco.decor_video_date.value | default: product.updated_at
+    assign dv_secs = pdh_decor.duration | divided_by: 1000.0 | round
+    assign dv_hi = pdh_decor.sources | where: 'format', 'mp4' | sort: 'height' | last
+  -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": {{ 'Wandpaneel ' | append: dv_label | append: ' · echte opname' | json }},
+  "description": {{ 'Korte echte opname van wandpaneel ' | append: dv_label | append: ': zo valt het licht over het paneel en zie je de tekening van het decor.' | json }},
+  "thumbnailUrl": [{{ pdh_decor.preview_image | image_url: width: 1080 | prepend: 'https:' | json }}],
+  "uploadDate": {{ dv_date | date: '%Y-%m-%d' | json }},
+  "duration": "PT{{ dv_secs }}S",
+  {%- if dv_hi %}"contentUrl": {{ dv_hi.url | prepend: 'https:' | replace: 'https:https:', 'https:' | json }},{% endif %}
+  "inLanguage": "nl"
+}
+</script>
+{%- endif -%}
 
 <script>
 (function () {
@@ -656,10 +711,51 @@
         var on = v.getAttribute('data-view') === k;
         v.classList.toggle('is-active', on);
         var vid = v.querySelector('video');
-        if (vid) { if (on) { vid.play && vid.play().catch(function () {}); } else { vid.pause && vid.pause(); } }
+        if (vid && !vid.hasAttribute('data-pdh-decor-video')) { if (on) { vid.play && vid.play().catch(function () {}); } else { vid.pause && vid.pause(); } }
       });
     });
   });
+  /* ---- Beeld: decorvideo · laadt pas bij gebruik, pauzeert buiten beeld, respecteert 'beweging beperken' ---- */
+  var decor = root.querySelector('[data-pdh-decor]');
+  if (decor) {
+    var dv = decor.querySelector('video');
+    var dtg = decor.querySelector('[data-pdh-decor-toggle]');
+    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var dHeld = calm, dOn = false, dSeen = true, dWarm = false;
+    var warm = function () {
+      if (dWarm) return; dWarm = true;
+      dv.setAttribute('poster', dv.getAttribute('data-poster'));
+      dv.preload = 'auto';
+    };
+    var dUi = function () {
+      var playing = dOn && !dHeld;
+      decor.classList.toggle('is-paused', !playing);
+      dtg.setAttribute('aria-label', playing ? 'Video pauzeren' : 'Video afspelen');
+    };
+    var dSync = function () {
+      if (dOn && !dHeld && dSeen && !document.hidden) {
+        var pr = dv.play();
+        if (pr && pr.catch) pr.catch(function () { dHeld = true; dUi(); });
+      } else { dv.pause(); }
+      dUi();
+    };
+    var dBtn = root.querySelector('[data-pdh-view="video"]');
+    if (dBtn) ['pointerenter', 'focus', 'touchstart'].forEach(function (e) { dBtn.addEventListener(e, warm, { passive: true }); });
+    root.querySelectorAll('[data-pdh-view]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        dOn = b.getAttribute('data-pdh-view') === 'video';
+        if (dOn) warm();
+        dSync();
+      });
+    });
+    dtg.addEventListener('click', function () { warm(); dHeld = !dHeld; dSync(); });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { dSeen = es[0].isIntersecting; if (dOn) dSync(); }, { threshold: 0.25 }).observe(decor);
+    }
+    document.addEventListener('visibilitychange', function () { if (dOn) dSync(); });
+    dUi();
+  }
+
   var strip = root.querySelector('[data-pdh-strip]');
   if (strip) {
     var count = root.querySelector('[data-pdh-count]');
