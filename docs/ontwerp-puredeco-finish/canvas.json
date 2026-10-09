@@ -148,6 +148,13 @@
       "w": 1440,
       "x": 12160,
       "y": 13820
+    },
+    "InspiratieV2.dc.html": {
+      "h": 9560,
+      "title": "Inspiratie v2 · zoekdata, scans en tekeningen (hub + ruimtegids)",
+      "w": 1440,
+      "x": 13680,
+      "y": 13820
     }
   },
   "createdOnFiles": {
@@ -205,7 +212,8 @@
     "Voorraad.dc.html",
     "Afrekenknop.dc.html",
     "Productvideo.dc.html",
-    "Inspiratie.dc.html"
+    "Inspiratie.dc.html",
+    "InspiratieV2.dc.html"
   ],
   "pages": [],
   "title": "The Puredeco Finish"
