@@ -1,0 +1,176 @@
+{%- comment -%}
+  Puredeco · artikel in de inspiratie (projecten en advies). Artboard: docs/ontwerp-puredeco-finish/InspiratieV2.dc.html
+  Titel, ruimte, feiten en decors per artikel: snippets/pd-insp.liquid. De tekst komt uit Shopify en wordt bij het tonen opgeschoond
+  (oude links, lege opsommingen, kopniveaus); de artikelen zelf blijven ongewijzigd. Herschreven tekst (alleen dit thema): snippets/pd-insp-tekst.liquid.
+{%- endcomment -%}
+{%- liquid
+  assign h = article.handle
+  capture kind
+    render 'pd-insp', key: h, part: 'kind'
+  endcapture
+  capture ttl
+    render 'pd-insp', key: h, part: 'ttl'
+  endcapture
+  capture room
+    render 'pd-insp', key: h, part: 'room'
+  endcapture
+  capture facts
+    render 'pd-insp', key: h, part: 'facts'
+  endcapture
+  capture decors
+    render 'pd-insp', key: h, part: 'decors'
+  endcapture
+  capture photo
+    render 'pd-insp', key: h, part: 'photo'
+  endcapture
+  capture desc
+    render 'pd-insp', key: h, part: 'desc'
+  endcapture
+  capture own
+    render 'pd-insp-tekst', key: h, part: 'body'
+  endcapture
+  assign kind = kind | strip
+  assign ttl = ttl | strip | default: article.title
+  assign room = room | strip
+  assign facts = facts | strip
+  assign decors = decors | strip
+  assign photo = photo | strip
+  assign own = own | strip
+  assign eyebrow = 'Inspiratie'
+  if kind == 'project'
+    assign eyebrow = 'Project · ' | append: room
+  elsif kind == 'advies'
+    assign eyebrow = 'Advies'
+  endif
+
+  comment
+    Opschonen bij het tonen: oude WordPress-links naar de huidige pagina's, lege spans, kopniveaus onder de H1.
+  endcomment
+  assign body = article.content
+  assign body = body | replace: 'https://puredeco.nl/product/marmer/', '/collections/wandpanelen' | replace: 'https://puredeco.nl/product/japanse-stof/', '/collections/japandi' | replace: 'https://puredeco.nl/product/leer/', '/collections/leer'
+  assign body = body | replace: 'https://puredeco.nl/bamboepanelen/', '/collections/wandpanelen' | replace: 'https://puredeco.nl/bamboepanelen', '/collections/wandpanelen' | replace: 'https://puredeco.nl/akupanelen/', '/collections/akupanelen' | replace: 'https://puredeco.nl/samples/', '/pages/sample'
+  assign body = body | replace: '<span> </span>', ' ' | replace: '<h3', '<h2' | replace: '</h3>', '</h2>'
+-%}
+
+<article class="pda pda--{{ kind | default: 'advies' }}">
+  <div class="pdi-wrap">
+    <nav class="pdi-crumb" aria-label="Kruimelpad"><a href="{{ routes.root_url }}">Home</a><span aria-hidden="true">·</span><a href="{{ blog.url }}">Inspiratie</a><span aria-hidden="true">·</span><span>{{ ttl }}</span></nav>
+
+    <header class="pda-head">
+      <div class="pda-head__text">
+        <p class="pdi-k">{{ eyebrow }}</p>
+        <h1 class="pdi-h1 pda-h1">{{ ttl }}</h1>
+        {%- if facts != blank -%}
+          <dl class="pda-facts">
+            {%- assign fl = facts | split: '|' -%}
+            {%- for f in fl -%}
+              {%- assign fp = f | split: '::' -%}
+              <div><dt>{{ fp[0] }}</dt><dd>{{ fp[1] }}</dd></div>
+            {%- endfor -%}
+          </dl>
+        {%- endif -%}
+        {%- if decors != blank -%}
+          <p class="pdi-k pda-used">Gebruikt in dit project</p>
+          <ul class="pda-decors" role="list">
+            {%- assign dl = decors | split: ',' -%}
+            {%- for dh in dl -%}
+              {%- assign dp = all_products[dh] -%}
+              {%- if dp.id -%}
+                {%- capture m2 -%}{%- render 'pd-m2', product: dp, part: 'min' -%}{%- endcapture -%}
+                <li><a href="{{ dp.url }}">
+                  {%- if dp.featured_image == blank -%}{%- elsif dh contains 'akupanelen' -%}{{ dp.featured_image | image_url: width: 200, height: 200, crop: 'center' | image_tag: loading: 'lazy', width: 64, height: 64, alt: '' }}{%- else -%}{{ dp.featured_image | image_url: width: 200, height: 600, crop: 'center' | image_tag: loading: 'lazy', width: 64, height: 64, alt: '' }}{%- endif -%}
+                  <span><strong>{% render 'pd-decor', product: dp, part: 'full' %}</strong><span>{% if dp.price_varies %}vanaf {% endif %}{{ dp.price_min | money }}{% if m2 != blank %} · ≈ {{ m2 | strip }} per m²{% endif %}</span></span>
+                </a></li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+        <p class="pda-upd">Bijgewerkt: {{ article.updated_at | date: '%d-%m-%Y' }}</p>
+      </div>
+
+      <figure class="pda-media">
+        {%- if photo == 'echt' and article.image -%}
+          {{ article.image | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600, 900, 1200, 1400', sizes: '(min-width: 990px) 55vw, 100vw', alt: article.image.alt | default: ttl }}
+          <figcaption class="pdi-tag">Echte foto</figcaption>
+        {%- elsif photo == 'decor' and decors != blank -%}
+          {%- assign d1 = decors | split: ',' | first -%}
+          {%- assign dp = all_products[d1] -%}
+          {%- if dp.featured_image -%}
+            {{ dp.featured_image | image_url: width: 500, height: 1500, crop: 'center' | image_tag: loading: 'eager', widths: '400, 500', sizes: '(min-width: 990px) 45vw, 100vw', alt: dp.title | escape }}
+            <figcaption class="pdi-tag pdi-tag--decor">Decor · {% render 'pd-decor', product: dp, part: 'full' %}</figcaption>
+          {%- endif -%}
+        {%- else -%}
+          <div class="pda-swatches" aria-hidden="true">
+            {%- assign sw = 'wandpaneel-travertine-ivory-851,811-hout-walnut-classic,646-leer-khaki-leather,619-japanse-stof-japaneses-style-jade' | split: ',' -%}
+            {%- for s in sw -%}{%- assign sp = all_products[s] -%}{%- if sp.featured_image -%}{{ sp.featured_image | image_url: width: 200, height: 900, crop: 'center' | image_tag: loading: 'eager', sizes: '25vw', alt: '' }}{%- endif -%}{%- endfor -%}
+          </div>
+          <figcaption class="pdi-tag pdi-tag--decor">Decors uit de collectie</figcaption>
+        {%- endif -%}
+      </figure>
+    </header>
+
+    <div class="pda-body pdi-rte">
+      {%- if own != blank -%}{{ own }}{%- else -%}{{ body }}{%- endif -%}
+    </div>
+
+    <aside class="pda-cta">
+      <p class="pdi-k">Eerst voelen</p>
+      <p class="pda-cta__t">Bestel tot 5 stalen gratis</p>
+      <p class="pda-cta__links"><a href="/pages/sample">Stalen kiezen →</a><a href="/pages/showroom">Plan een bezoek in Herwen →</a></p>
+    </aside>
+
+    {%- comment -%} Andere projecten en advies {%- endcomment -%}
+    {%- assign shown = 0 -%}
+    <section class="pda-more" aria-labelledby="pda-more">
+      <h2 class="pdi-h2" id="pda-more">Meer inspiratie</h2>
+      <ul role="list">
+        {%- for a in blog.articles limit: 50 -%}
+          {%- if a.handle == h or shown >= 3 -%}{%- continue -%}{%- endif -%}
+          {%- capture k2 -%}{%- render 'pd-insp', key: a.handle, part: 'kind' -%}{%- endcapture -%}
+          {%- assign k2 = k2 | strip -%}
+          {%- if k2 == 'project' or k2 == 'advies' -%}
+            {%- assign shown = shown | plus: 1 -%}
+            <li><a href="{{ a.url }}"><span class="pdi-k pdi-k--stone">{% if k2 == 'project' %}Project · {% render 'pd-insp', key: a.handle, part: 'room' %}{% else %}Advies{% endif %}</span><span class="pdi-proj__t">{% render 'pd-insp', key: a.handle, part: 'ttl' %}</span></a></li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </section>
+  </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": {{ ttl | json }},
+      {%- if desc != blank %}"description": {{ desc | strip | json }},{% endif %}
+      {%- if article.image %}"image": [{{ article.image | image_url: width: 1200 | prepend: 'https:' | json }}],{% endif %}
+      "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
+      "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
+      "author": { "@type": "Organization", "name": "PureDeco", "url": {{ shop.url | append: '/' | json }} },
+      "publisher": { "@type": "Organization", "name": "PureDeco", "url": {{ shop.url | append: '/' | json }} },
+      "mainEntityOfPage": {{ shop.url | append: article.url | json }},
+      "inLanguage": "nl"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ shop.url | append: '/' | json }} },
+        { "@type": "ListItem", "position": 2, "name": "Inspiratie", "item": {{ shop.url | append: blog.url | json }} },
+        { "@type": "ListItem", "position": 3, "name": {{ ttl | json }}, "item": {{ shop.url | append: article.url | json }} }
+      ]
+    }
+  ]
+}
+</script>
+
+{% schema %}
+{
+  "name": "Puredeco artikel",
+  "tag": "div",
+  "class": "pd-artikel-section",
+  "settings": []
+}
+{% endschema %}

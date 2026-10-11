@@ -1,0 +1,121 @@
+{%- comment -%}
+  Puredeco · inspiratie: één plek met de gegevens per artikel en per gids (alleen in dit thema; de artikelen in Shopify blijven ongewijzigd).
+  Gebruik: {% render 'pd-insp', key: article.handle, part: 'ttl' %}
+  key:  artikelhandle, 'gids-badkamer' (gids) of 'hub' (de inspiratiepagina)
+  part: kind    project | advies | gids | dubbel
+        ttl     korte, schone titel (H1 en kaarten)
+        room    ruimte (bovenregel)
+        lead    één zin voor kaarten
+        decors  producthandles, gescheiden door komma's (eerste = hoofddecor)
+        facts   'Label::Waarde' gescheiden door |
+        photo   echt | decor   (decor = de kaart toont het decor in plaats van een zwakke foto)
+        title   titel in Google · desc  meta-omschrijving · robots
+        order   volgorde op de inspiratiepagina
+{%- endcomment -%}
+{%- comment -%} article.handle bevat in Shopify de blognaam ('nieuws/...'): alleen het laatste deel telt. {%- endcomment -%}
+{%- assign key = key | split: '/' | last -%}
+{%- case key -%}
+
+{%- when 'hub' -%}
+  {%- case part -%}
+    {%- when 'title' -%}Wandpanelen inspiratie en advies per ruimte | PureDeco
+    {%- when 'desc' -%}Inspiratie en advies voor wandpanelen per ruimte: welke decors passen, hoe je plaatst en wat een wand kost. Met tekeningen op schaal en projecten van klanten.
+  {%- endcase -%}
+
+{%- when 'gids-badkamer' -%}
+  {%- case part -%}
+    {%- when 'kind' -%}gids
+    {%- when 'ttl' -%}Wandpanelen in de badkamer
+    {%- when 'room' -%}Badkamer
+    {%- when 'lead' -%}Decors voor natte ruimtes, plaatsen en kosten
+    {%- when 'decors' -%}wandpaneel-travertine-ivory-851,666-glanzend-marmer-white-slate,urban-smoke-692-marmerlook,811-hout-walnut-classic
+    {%- when 'title' -%}Wandpanelen badkamer: decors, plaatsen en kosten | PureDeco
+    {%- when 'desc' -%}Wandpanelen in de badkamer: waterbestendig, in één stuk tot 280 cm hoog en te plaatsen over bestaande tegels. Decors, uitvoeringen, rekenvoorbeeld en montage.
+  {%- endcase -%}
+
+{%- when 'kantoorruimte-in-japanse-stijl-japansestof-wandpanelen-akupanelen-puredeco' -%}
+  {%- case part -%}
+    {%- when 'kind' -%}project
+    {%- when 'order' -%}1
+    {%- when 'ttl' -%}Kantoor in Japanse stijl
+    {%- when 'room' -%}Werkplek
+    {%- when 'lead' -%}619 Jade met akupanelen in walnoot en zwarte tussenprofielen
+    {%- when 'decors' -%}619-japanse-stof-japaneses-style-jade,driezijdige-akupanelen
+    {%- when 'facts' -%}Ruimte::Kantoor|Wand::619 Jade (Japandi)|Accent::Akupaneel 302 Walnut|Afwerking::Zwarte tussenprofielen
+    {%- when 'photo' -%}echt
+    {%- when 'title' -%}Kantoor in Japanse stijl met Japandi-wandpanelen | PureDeco
+    {%- when 'desc' -%}Project: een kantoor met Japandi-wandpanelen in 619 Jade, akupanelen in walnoot en zwarte tussenprofielen. Rustig, warm en beter voor de akoestiek.
+  {%- endcase -%}
+
+{%- when 'inspiratie-showcase-keukenwand-met-luxe-marmerlook-wandpaneel-pandora-slate-glans' -%}
+  {%- case part -%}
+    {%- when 'kind' -%}project
+    {%- when 'order' -%}2
+    {%- when 'ttl' -%}Keukenwand in Pandora Slate
+    {%- when 'room' -%}Keuken
+    {%- when 'lead' -%}670 Pandora Slate in glans, over de bestaande wand
+    {%- when 'decors' -%}670-glanzend-marmer-pandora-slate
+    {%- when 'facts' -%}Ruimte::Keuken|Decor::670 Pandora Slate · glans|Ondergrond::Bestaande wand
+    {%- when 'photo' -%}echt
+    {%- when 'title' -%}Keukenwand in marmerlook: 670 Pandora Slate | PureDeco
+    {%- when 'desc' -%}Project: een keukenwand met marmerlook-wandpanelen in 670 Pandora Slate, glans. Direct over de bestaande wand geplaatst, zonder breekwerk.
+  {%- endcase -%}
+
+{%- when 'uitbouw-met-luxe-leren-wandpanelen-en-antraciet-profielen' -%}
+  {%- case part -%}
+    {%- when 'kind' -%}project
+    {%- when 'order' -%}3
+    {%- when 'ttl' -%}Uitbouw met leren wandpanelen
+    {%- when 'room' -%}Uitbouw
+    {%- when 'lead' -%}646 Khaki met antraciet tussen- en eindprofielen
+    {%- when 'decors' -%}646-leer-khaki-leather
+    {%- when 'facts' -%}Ruimte::Uitbouw|Decor::646 Khaki (leer)|Afwerking::Antraciet tussen- en eindprofielen
+    {%- when 'photo' -%}decor
+    {%- when 'title' -%}Uitbouw met leren wandpanelen in 646 Khaki | PureDeco
+    {%- when 'desc' -%}Project: de wanden van een uitbouw met leren wandpanelen in 646 Khaki, afgewerkt met antraciet tussen- en eindprofielen. Warm, rustig en strak.
+  {%- endcase -%}
+
+{%- when 'wc-renovatie-in-een-halve-dag-met-white-slate-marmerlook-wandpanelen' -%}
+  {%- case part -%}
+    {%- when 'kind' -%}project
+    {%- when 'order' -%}4
+    {%- when 'ttl' -%}Toilet vernieuwd over de tegels
+    {%- when 'room' -%}Toilet
+    {%- when 'lead' -%}666 White Slate in glans, direct over de oude tegels
+    {%- when 'decors' -%}666-glanzend-marmer-white-slate
+    {%- when 'facts' -%}Ruimte::Toilet|Decor::666 White Slate · glans|Ondergrond::Bestaande tegels
+    {%- when 'photo' -%}decor
+    {%- when 'title' -%}Toilet vernieuwd met wandpanelen over de tegels | PureDeco
+    {%- when 'desc' -%}Project: een verouderd toilet vernieuwd met marmerlook-wandpanelen in 666 White Slate, direct over de bestaande tegels. Zonder breekwerk.
+  {%- endcase -%}
+
+{%- when 'de-voordelen-van-bamboepanelen-een-duurzame-en-stijlvolle-keuze-voor-je-interieur' -%}
+  {%- case part -%}
+    {%- when 'kind' -%}advies
+    {%- when 'order' -%}1
+    {%- when 'ttl' -%}Bamboe wandpanelen: wat zijn het?
+    {%- when 'room' -%}Advies
+    {%- when 'lead' -%}Opbouw, maten, uitvoeringen en waar ze passen
+    {%- when 'title' -%}Bamboe wandpanelen: opbouw, maten en prijzen | PureDeco
+    {%- when 'desc' -%}Wat zijn bamboe wandpanelen? Opbouw in vier lagen, maten (122 × 260 of 280 cm), 5 mm stomp of 8 mm naadloos, prijzen per m² en in welke ruimtes ze passen.
+  {%- endcase -%}
+
+{%- when 'tips-voor-het-onderhouden-van-je-bamboepanelen' -%}
+  {%- case part -%}
+    {%- when 'kind' -%}advies
+    {%- when 'order' -%}3
+    {%- when 'ttl' -%}Je wandpanelen onderhouden
+    {%- when 'room' -%}Advies
+    {%- when 'lead' -%}Schoonmaken, vocht en ventilatie, wat je beter niet gebruikt
+    {%- when 'title' -%}Wandpanelen onderhouden: zo blijven ze mooi | PureDeco
+    {%- when 'desc' -%}Zo onderhoud je wandpanelen met bamboekern: schoonmaken met een zachte doek, de juiste middelen, vocht en ventilatie in badkamer en keuken.
+  {%- endcase -%}
+
+{%- when 'tips-voor-het-onderhouden-van-je-bamboepanelen-1' -%}
+  {%- comment -%} Kopie van het onderhoudsartikel onder een andere titel: niet tonen, niet indexeren. {%- endcomment -%}
+  {%- case part -%}
+    {%- when 'kind' -%}dubbel
+    {%- when 'robots' -%}noindex,follow
+  {%- endcase -%}
+
+{%- endcase -%}

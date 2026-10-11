@@ -1,0 +1,298 @@
+{%- comment -%}
+  Puredeco · inspiratiepagina (blog 'nieuws', URL blijft /blogs/nieuws). Artboard: docs/ontwerp-puredeco-finish/InspiratieV2.dc.html
+  Per ruimte (tekening op schaal met een echt decor), per materiaal (collecties), advies, projecten en vragen.
+  Gegevens per artikel/gids: snippets/pd-insp.liquid. Tekeningen: snippets/pd-tekening.liquid.
+  Gidslinks: bestaat het artikel 'wandpanelen-<ruimte>' in deze blog, dan daarheen; anders (alleen H1-test) naar de voorbeeldweergave ?view=gids-<ruimte>.
+{%- endcomment -%}
+{%- liquid
+  assign insp_url = blog.url
+  assign gids_bk_url = insp_url | append: '?view=gids-badkamer'
+  assign guide_urls = ''
+  for a in blog.articles limit: 50
+    assign ah = a.handle | split: '/' | last
+    if ah contains 'wandpanelen-'
+      assign guide_urls = guide_urls | append: ah | append: '=' | append: a.url | append: '|'
+    endif
+    if ah == 'wandpanelen-badkamer'
+      assign gids_bk_url = a.url
+    endif
+  endfor
+
+  comment
+    Laagste prijs per m² over alle wandpanelen, live uit de winkel.
+  endcomment
+  assign min_m2 = 0
+  for p in collections['wandpanelen'].products limit: 60
+    capture c
+      render 'pd-m2', product: p, part: 'cents'
+    endcapture
+    assign c = c | strip | plus: 0
+    if c > 0
+      if min_m2 == 0 or c < min_m2
+        assign min_m2 = c
+      endif
+    endif
+  endfor
+
+  assign rooms = 'badkamer,toilet,keuken,woonkamer,slaapkamer,werkplek' | split: ','
+  assign room_tex = 'wandpaneel-travertine-ivory-851,666-glanzend-marmer-white-slate,concrete-smoke-691-betonlook,811-hout-walnut-classic,646-leer-khaki-leather,619-japanse-stof-japaneses-style-jade' | split: ','
+  assign room_ttl = 'Wandpanelen in de badkamer|Wandpanelen in het toilet|Wandpanelen in de keuken|Wandpanelen in de woonkamer|Wandpanelen in de slaapkamer|Wandpanelen op kantoor' | split: '|'
+  assign room_sub = 'Decors voor natte ruimtes, plaatsen en kosten|Kleine ruimte, groot verschil|Achterwand en kookhoek|Tv-wand en accentwand|Achter het bed|Rust en akoestiek' | split: '|'
+-%}
+
+<div class="pdi" data-pdi>
+  <div class="pdi-wrap">
+    <nav class="pdi-crumb" aria-label="Kruimelpad"><a href="{{ routes.root_url }}">Home</a><span aria-hidden="true">·</span><span>Inspiratie</span></nav>
+
+    <header class="pdi-head">
+      <div>
+        <p class="pdi-k">Inspiratie &amp; advies</p>
+        <h1 class="pdi-h1">{{ section.settings.heading | default: 'Wandpanelen voor elke ruimte' }}</h1>
+      </div>
+      <p class="pdi-intro">{{ section.settings.intro | default: 'Per ruimte uitgelegd: welke decors passen, hoe je plaatst en wat een wand kost. Met tekeningen op schaal en projecten van klanten.' }}</p>
+    </header>
+    <ul class="pdi-facts" role="list">
+      <li>Panelen <strong>tot 280 cm</strong> hoog, 122 cm breed</li>
+      {%- if min_m2 > 0 -%}<li>Vanaf <strong>{{ min_m2 | money }} per m²</strong></li>{%- endif -%}
+      <li><a href="/pages/sample"><strong>Tot 5 stalen gratis</strong></a> · € 6,95 verzending</li>
+      <li><a href="/pages/showroom">Studio <strong>Herwen</strong></a> op afspraak</li>
+    </ul>
+  </div>
+
+  {%- comment -%} Per ruimte {%- endcomment -%}
+  <section class="pdi-sec pdi-wrap" aria-labelledby="pdi-rooms">
+    <p class="pdi-k">Per ruimte</p>
+    <h2 class="pdi-h2" id="pdi-rooms">Waar komt je wand?</h2>
+    <ul class="pdi-rooms" role="list">
+      {%- for r in rooms -%}
+        {%- liquid
+          assign i = forloop.index0
+          assign tp = all_products[room_tex[i]]
+          assign tex = ''
+          if tp.featured_image
+            assign tex = tp.featured_image | image_url: width: 480, height: 1440, crop: 'center'
+          endif
+          assign guide_key = '|wandpanelen-' | append: r | append: '='
+          assign has_guide = false
+          assign link = '/collections/wandpanelen'
+          assign gu = '|' | append: guide_urls
+          if gu contains guide_key
+            assign has_guide = true
+            assign link = gu | split: guide_key | last | split: '|' | first
+          elsif r == 'badkamer'
+            assign has_guide = true
+            assign link = gids_bk_url
+          endif
+        -%}
+        <li class="pdi-room">
+          <a href="{{ link }}" class="pdi-room__a">
+            <span class="pdi-room__fig">{%- render 'pd-tekening', room: r, tex: tex, uid: section.id -%}</span>
+            <h3 class="pdi-room__t">{{ room_ttl[i] }}</h3>
+            <span class="pdi-room__s">{{ room_sub[i] }}</span>
+            <span class="pdi-room__go">{% if has_guide %}Lees de gids{% else %}Bekijk de decors{% endif %} →</span>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+    <p class="pdi-note">Tekeningen op schaal: een paneel is 122 cm breed en tot 280 cm hoog. De wand toont een echt decor uit de collectie.</p>
+  </section>
+
+  {%- comment -%} Per materiaal {%- endcomment -%}
+  {%- liquid
+    assign mats = 'Hout|Japandi|Leer|Art|Naadloos 8 mm|Doorlopend marmer|Akupanelen|Alle wandpanelen' | split: '|'
+    assign mat_c = 'hout-1,japandi,leer,kunst,8mm-naadloos,doorlopend-marmer,akupanelen,wandpanelen' | split: ','
+    assign mat_p = '811-hout-walnut-classic,619-japanse-stof-japaneses-style-jade,646-leer-khaki-leather,842-art-stucco-light,wandpaneel-travertine-ivory-851,677-doorlopend-marmer-italian-white-slate,driezijdige-akupanelen,urban-smoke-692-marmerlook' | split: ','
+  -%}
+  <section class="pdi-sec pdi-wrap pdi-split" aria-labelledby="pdi-mat">
+    <div>
+      <p class="pdi-k">Per materiaal</p>
+      <h2 class="pdi-h2" id="pdi-mat">Kies je uitstraling</h2>
+      <p class="pdi-note">Elke tegel opent de collectie.</p>
+    </div>
+    <ul class="pdi-mats" role="list">
+      {%- for m in mats -%}
+        {%- assign mp = all_products[mat_p[forloop.index0]] -%}
+        <li><a href="/collections/{{ mat_c[forloop.index0] }}">
+          {%- comment -%} Productfoto's: smalle uitsnede uit het midden (toont het materiaal); de akupanelen-foto is een interieurfoto en blijft heel. {%- endcomment -%}
+          {%- if mp.featured_image == blank -%}
+          {%- elsif mp.handle contains 'akupanelen' -%}
+            {{ mp.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', widths: '200, 400', sizes: '(min-width: 990px) 14vw, 45vw', alt: '' , class: 'pdi-mat__img' }}
+          {%- else -%}
+            {{ mp.featured_image | image_url: width: 300, height: 900, crop: 'center' | image_tag: loading: 'lazy', widths: '200, 300', sizes: '(min-width: 990px) 14vw, 45vw', alt: '' , class: 'pdi-mat__img' }}
+          {%- endif -%}
+          <span>{{ m }} →</span>
+        </a></li>
+      {%- endfor -%}
+    </ul>
+  </section>
+
+  {%- comment -%} Advies {%- endcomment -%}
+  {%- liquid
+    assign advies = ''
+    for a in blog.articles limit: 50
+      capture kind
+        render 'pd-insp', key: a.handle, part: 'kind'
+      endcapture
+      if kind == 'advies'
+        capture o
+          render 'pd-insp', key: a.handle, part: 'order'
+        endcapture
+        assign advies = advies | append: o | append: ':' | append: a.handle | append: ','
+      endif
+    endfor
+    assign advies = advies | split: ',' | sort
+  -%}
+  <section class="pdi-sec pdi-wrap pdi-split" aria-labelledby="pdi-adv">
+    <div>
+      <p class="pdi-k">Zelf aan de slag</p>
+      <h2 class="pdi-h2" id="pdi-adv">Advies en plaatsen</h2>
+    </div>
+    <ol class="pdi-list" role="list">
+      {%- assign n = 0 -%}
+      {%- for entry in advies -%}
+        {%- if forloop.index == 2 -%}
+          {%- assign n = n | plus: 1 -%}
+          <li><a href="{{ gids_bk_url }}"><span class="pdi-list__n">{{ n | prepend: '0' }}</span><span><span class="pdi-list__t">Wandpanelen in de badkamer</span><span class="pdi-list__s">Decors, Linea of Signature, kosten en plaatsen over tegels</span></span><span class="pdi-list__go">Lezen →</span></a></li>
+        {%- endif -%}
+        {%- assign h = entry | split: ':' | last -%}
+        {%- assign a = blog.articles | where: 'handle', h | first -%}
+        {%- if a -%}
+          {%- assign n = n | plus: 1 -%}
+          <li><a href="{{ a.url }}"><span class="pdi-list__n">{{ n | prepend: '0' }}</span><span><span class="pdi-list__t">{% render 'pd-insp', key: h, part: 'ttl' %}</span><span class="pdi-list__s">{% render 'pd-insp', key: h, part: 'lead' %}</span></span><span class="pdi-list__go">Lezen →</span></a></li>
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if advies.size < 2 -%}
+        {%- assign n = n | plus: 1 -%}
+        <li><a href="{{ gids_bk_url }}"><span class="pdi-list__n">{{ n | prepend: '0' }}</span><span><span class="pdi-list__t">Wandpanelen in de badkamer</span><span class="pdi-list__s">Decors, Linea of Signature, kosten en plaatsen over tegels</span></span><span class="pdi-list__go">Lezen →</span></a></li>
+      {%- endif -%}
+    </ol>
+  </section>
+
+  {%- comment -%} Projecten {%- endcomment -%}
+  {%- liquid
+    assign projs = ''
+    for a in blog.articles limit: 50
+      capture kind
+        render 'pd-insp', key: a.handle, part: 'kind'
+      endcapture
+      if kind == 'project'
+        capture o
+          render 'pd-insp', key: a.handle, part: 'order'
+        endcapture
+        assign projs = projs | append: o | append: ':' | append: a.handle | append: ','
+      endif
+    endfor
+    assign projs = projs | split: ',' | sort
+  -%}
+  {%- if projs.size > 0 -%}
+  <section class="pdi-sec pdi-wrap" aria-labelledby="pdi-proj">
+    <p class="pdi-k">Uit de praktijk</p>
+    <h2 class="pdi-h2" id="pdi-proj">Projecten van klanten</h2>
+    <ul class="pdi-proj" role="list">
+      {%- for entry in projs -%}
+        {%- liquid
+          assign h = entry | split: ':' | last
+          assign a = blog.articles | where: 'handle', h | first
+          capture photo
+            render 'pd-insp', key: h, part: 'photo'
+          endcapture
+          capture decors
+            render 'pd-insp', key: h, part: 'decors'
+          endcapture
+          assign d1 = decors | strip | split: ',' | first
+          assign dp = all_products[d1]
+        -%}
+        {%- if a -%}
+        <li><a href="{{ a.url }}">
+          <span class="pdi-proj__img">
+            {%- if photo == 'echt' and a.image -%}
+              {{ a.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400, 600, 900', sizes: '(min-width: 990px) 25vw, 50vw', alt: a.title | escape }}
+              <span class="pdi-tag">Echte foto</span>
+            {%- elsif dp.featured_image -%}
+              {{ dp.featured_image | image_url: width: 300, height: 900, crop: 'center' | image_tag: loading: 'lazy', widths: '200, 300', sizes: '(min-width: 990px) 25vw, 50vw', alt: dp.title | escape }}
+              <span class="pdi-tag pdi-tag--decor">Decor</span>
+            {%- endif -%}
+          </span>
+          <span class="pdi-k pdi-k--stone">{% render 'pd-insp', key: h, part: 'room' %}</span>
+          <span class="pdi-proj__t">{% render 'pd-insp', key: h, part: 'ttl' %}</span>
+          <span class="pdi-proj__s">{% render 'pd-insp', key: h, part: 'lead' %}</span>
+        </a></li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </section>
+  {%- endif -%}
+
+  {%- comment -%} Veelgestelde vragen (teksten uit de goedgekeurde collectie- en productteksten) {%- endcomment -%}
+  <section class="pdi-sec pdi-wrap pdi-split" aria-labelledby="pdi-faq">
+    <div>
+      <p class="pdi-k">Veelgestelde vragen</p>
+      <h2 class="pdi-h2" id="pdi-faq">Kort antwoord</h2>
+    </div>
+    <div class="pdi-faq">
+      <details><summary>Wat is het verschil tussen Linea en Signature?</summary><p>Linea is 5 mm: de panelen stuiten tegen elkaar en je ziet een naad, die je afwerkt met een tussenprofiel of kit in kleur. Signature is 8 mm met een kliksysteem; op een vlakke, rechte ondergrond is de naad vrijwel onzichtbaar.</p></details>
+      <details><summary>Hoeveel panelen heb ik nodig voor mijn wand?</summary><p>Een paneel is 122 cm breed. Deel de breedte van je wand door 1,22 en rond naar boven af. Een wand van 4,50 m breed geeft 3,7: je hebt dus 4 panelen nodig. Op elke productpagina rekent de calculator het voor je uit.</p></details>
+      <details><summary>Kan ik wandpanelen in de badkamer gebruiken?</summary><p>Ja. De panelen zijn waterbestendig en geschikt voor badkamer en keuken. Vermijd wel plekken waar water blijft staan.</p></details>
+      <details><summary>Kan ik eerst een staal bekijken?</summary><p>Ja. Bestel tot vijf stalen gratis; je betaalt alleen € 6,95 verzending. Of bekijk de panelen op ware grootte in onze studio in Herwen.</p></details>
+    </div>
+  </section>
+
+  <div class="pdi-wrap pdi-close">
+    <p>Eerst voelen? <a href="/pages/sample">Bestel tot 5 stalen gratis →</a></p>
+  </div>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ shop.url | append: '/' | json }} },
+        { "@type": "ListItem", "position": 2, "name": "Inspiratie", "item": {{ shop.url | append: insp_url | json }} }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "name": {{ section.settings.heading | default: 'Wandpanelen voor elke ruimte' | json }},
+      "url": {{ shop.url | append: insp_url | json }},
+      "inLanguage": "nl",
+      "hasPart": [
+        {%- assign first = true -%}
+        {%- for a in blog.articles limit: 50 -%}
+          {%- capture kind -%}{%- render 'pd-insp', key: a.handle, part: 'kind' -%}{%- endcapture -%}
+          {%- if kind == 'project' or kind == 'advies' -%}
+            {%- unless first %},{% endunless -%}
+            {%- capture t -%}{%- render 'pd-insp', key: a.handle, part: 'ttl' -%}{%- endcapture -%}
+            { "@type": "Article", "headline": {{ t | strip | json }}, "url": {{ shop.url | append: a.url | json }} }
+            {%- assign first = false -%}
+          {%- endif -%}
+        {%- endfor %}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Wat is het verschil tussen Linea en Signature?", "acceptedAnswer": { "@type": "Answer", "text": "Linea is 5 mm: de panelen stuiten tegen elkaar en je ziet een naad, die je afwerkt met een tussenprofiel of kit in kleur. Signature is 8 mm met een kliksysteem; op een vlakke, rechte ondergrond is de naad vrijwel onzichtbaar." } },
+        { "@type": "Question", "name": "Hoeveel panelen heb ik nodig voor mijn wand?", "acceptedAnswer": { "@type": "Answer", "text": "Een paneel is 122 cm breed. Deel de breedte van je wand door 1,22 en rond naar boven af. Een wand van 4,50 m breed geeft 3,7: je hebt dus 4 panelen nodig." } },
+        { "@type": "Question", "name": "Kan ik wandpanelen in de badkamer gebruiken?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. De panelen zijn waterbestendig en geschikt voor badkamer en keuken. Vermijd wel plekken waar water blijft staan." } },
+        { "@type": "Question", "name": "Kan ik eerst een staal bekijken?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Bestel tot vijf stalen gratis; je betaalt alleen € 6,95 verzending. Of bekijk de panelen op ware grootte in onze studio in Herwen." } }
+      ]
+    }
+  ]
+}
+</script>
+
+{% schema %}
+{
+  "name": "Puredeco inspiratie",
+  "tag": "div",
+  "class": "pd-insp-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Kop (H1)", "default": "Wandpanelen voor elke ruimte" },
+    { "type": "textarea", "id": "intro", "label": "Intro", "default": "Per ruimte uitgelegd: welke decors passen, hoe je plaatst en wat een wand kost. Met tekeningen op schaal en projecten van klanten." }
+  ],
+  "presets": [{ "name": "Puredeco inspiratie" }]
+}
+{% endschema %}

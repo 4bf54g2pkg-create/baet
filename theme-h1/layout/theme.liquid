@@ -48,9 +48,9 @@
     {%- endunless -%}
 
     {%- comment -%} Puredeco SEO (H1-test): titel, meta en robots uit snippets/pd-seo.liquid; leeg = Shopify-waarde {%- endcomment -%}
-    {%- capture pd_seo_title -%}{%- render 'pd-seo', part: 'title', c: collection, p: product, pg: page -%}{%- endcapture -%}
-    {%- capture pd_seo_desc -%}{%- render 'pd-seo', part: 'desc', c: collection, p: product, pg: page -%}{%- endcapture -%}
-    {%- capture pd_seo_robots -%}{%- render 'pd-seo', part: 'robots', c: collection, p: product, pg: page -%}{%- endcapture -%}
+    {%- capture pd_seo_title -%}{%- render 'pd-seo', part: 'title', c: collection, p: product, pg: page, a: article -%}{%- endcapture -%}
+    {%- capture pd_seo_desc -%}{%- render 'pd-seo', part: 'desc', c: collection, p: product, pg: page, a: article -%}{%- endcapture -%}
+    {%- capture pd_seo_robots -%}{%- render 'pd-seo', part: 'robots', c: collection, p: product, pg: page, a: article -%}{%- endcapture -%}
     {%- assign pd_seo_title = pd_seo_title | strip -%}
     {%- assign pd_seo_desc = pd_seo_desc | strip -%}
     {%- assign pd_seo_robots = pd_seo_robots | strip -%}

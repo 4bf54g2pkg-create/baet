@@ -1,0 +1,134 @@
+{%- comment -%}
+  Puredeco · herschreven artikelteksten, alleen in dit thema (de tekst in Shopify blijft ongewijzigd tot de livegang).
+  Alleen feiten uit de goedgekeurde collectie- en productteksten (docs/collectieteksten/CONCEPT-collectieteksten.md); prijzen live.
+  Gebruik: {% render 'pd-insp-tekst', key: article.handle, part: 'body' %}
+{%- endcomment -%}
+{%- comment -%} article.handle bevat in Shopify de blognaam ('nieuws/...'): alleen het laatste deel telt. {%- endcomment -%}
+{%- assign key = key | split: '/' | last -%}
+{%- case key -%}
+{%- when 'de-voordelen-van-bamboepanelen-een-duurzame-en-stijlvolle-keuze-voor-je-interieur' -%}
+  {%- liquid
+    comment
+      Prijzen live: losse panelen van 122 cm breed (geen sets van drie, geen smalle stroken van 60 cm), per uitvoering.
+    endcomment
+    assign pmin = 0
+    assign pmax = 0
+    assign p5 = 0
+    assign p8 = 0
+    assign m2min = 0
+    for p in collections['wandpanelen'].products limit: 60
+      for v in p.variants
+        assign vt = v.title | downcase | remove: ' '
+        if vt contains '366' or vt contains '3x' or vt contains 'x60'
+          continue
+        endif
+        if pmin == 0 or v.price < pmin
+          assign pmin = v.price
+        endif
+        if v.price > pmax
+          assign pmax = v.price
+        endif
+        if vt contains '8mm'
+          if p8 == 0 or v.price < p8
+            assign p8 = v.price
+          endif
+        elsif vt contains '5mm'
+          if p5 == 0 or v.price < p5
+            assign p5 = v.price
+          endif
+        endif
+      endfor
+      capture c
+        render 'pd-m2', product: p, part: 'cents'
+      endcapture
+      assign c = c | strip | plus: 0
+      if c > 0
+        if m2min == 0 or c < m2min
+          assign m2min = c
+        endif
+      endif
+    endfor
+    assign gids_bk_url = blog.url | append: '?view=gids-badkamer'
+    for a in blog.articles limit: 50
+      assign ah = a.handle | split: '/' | last
+      if ah == 'wandpanelen-badkamer'
+        assign gids_bk_url = a.url
+      endif
+    endfor
+  -%}
+<p class="pda-lead">Een bamboe wandpaneel is een paneel met een kern van bamboe en een toplaag met het decor: houtlook, marmer, beton, travertin, Japandi, leer of art. Het is 122 cm breed en 260 of 280 cm hoog. Eén paneel bedekt ruim 3 m², en je monteert het met montagekit direct op de wand.</p>
+<nav class="pda-toc" aria-label="In dit artikel"><p class="pdi-k">In dit artikel</p><a href="#opbouw">Opbouw</a><a href="#uitvoeringen">5 mm of 8 mm</a><a href="#maten">Maten en aantal</a><a href="#prijzen">Prijzen</a><a href="#ruimtes">Waar ze passen</a><a href="#monteren">Monteren</a><a href="#stijlen">Stijlen</a></nav>
+
+<h2 id="opbouw">Hoe is een bamboe wandpaneel opgebouwd?</h2>
+<figure class="pda-layers">
+  <svg viewBox="0 0 560 170" role="img" aria-label="Doorsnede van een wandpaneel: toplaag, gerecycled PVC, bamboekern, gerecyclede onderlaag">
+    <g font-family="Instrument Sans, Arial, sans-serif" font-size="12" fill="#151413">
+      <rect x="20" y="30" width="300" height="14" fill="#C8B9A6" stroke="#151413"/>
+      <rect x="20" y="44" width="300" height="16" fill="#E9E3D8" stroke="#151413"/>
+      <rect x="20" y="60" width="300" height="46" fill="#D9C38F" stroke="#151413"/>
+      <g stroke="#8C6A4A" stroke-width=".8" opacity=".7"><path d="M30 70h280M30 80h280M30 90h280M30 100h280"/></g>
+      <rect x="20" y="106" width="300" height="14" fill="#BDB6AA" stroke="#151413"/>
+      <g stroke="#151413" stroke-width=".8"><path d="M320 37h40M320 52h40M320 83h40M320 113h40"/></g>
+      <text x="368" y="41">Toplaag met decor en structuur</text>
+      <text x="368" y="56">Gerecycled PVC</text>
+      <text x="368" y="87">Kern van bamboe</text>
+      <text x="368" y="117">Gerecyclede onderlaag</text>
+    </g>
+  </svg>
+</figure>
+<p>Een wandpaneel van PureDeco bestaat uit vier lagen: een toplaag met het decor en de structuur, een laag gerecycled PVC, een kern van bamboe en een gerecyclede onderlaag. Die opbouw maakt het paneel licht en vormvast. Het is waterbestendig en eenvoudig schoon te maken.</p>
+<p>Het decor zit in de toplaag. Een houtlook-paneel is dus geen massief hout, en een marmerlook-paneel geen natuursteen. Het voordeel: je hoeft niets te oliën, te lakken of te impregneren.</p>
+
+<h2 id="uitvoeringen">5 mm stomp of 8 mm naadloos?</h2>
+<p>Elk decor is er als Linea (5 mm, stomp) of Signature (8 mm, klik), of in beide uitvoeringen.</p>
+<div class="pd-table"><table><thead><tr><th scope="col"></th><th scope="col">Linea · 5 mm stomp</th><th scope="col">Signature · 8 mm naadloos</th></tr></thead><tbody>
+<tr><th scope="row">Aansluiting</th><td>panelen stuiten tegen elkaar</td><td>kliksysteem</td></tr>
+<tr><th scope="row">Naad</th><td>zichtbare voeg, af te werken met een tussenprofiel of kit in kleur</td><td>vrijwel onzichtbaar op een vlakke, rechte ondergrond</td></tr>
+<tr><th scope="row">Decors</th><td>alle stijlen</td><td>houtlook, Japandi, leer, art en travertin</td></tr>
+{%- if p5 > 0 and p8 > 0 -%}<tr><th scope="row">Prijs</th><td>vanaf {{ p5 | money }} per paneel</td><td>vanaf {{ p8 | money }} per paneel</td></tr>{%- endif -%}
+</tbody></table></div>
+<p>Wil je een wand die leest als één vlak? Kijk dan bij de <a href="/collections/8mm-naadloos">naadloze wandpanelen</a>.</p>
+
+<h2 id="maten">Welke maten zijn er, en hoeveel heb ik nodig?</h2>
+<ul><li>Een paneel van 280 × 122 cm bedekt 3,42 m².</li><li>Een paneel van 260 × 122 cm bedekt 3,17 m².</li></ul>
+<p>Een paneel is 122 cm breed. Deel de breedte van je wand door 1,22 en rond naar boven af. Voorbeeld: een wand van 4,50 m breed geeft 4,50 / 1,22 = 3,7. Je hebt dus 4 panelen nodig. Op elke productpagina rekent de calculator het voor je uit.</p>
+
+<h2 id="prijzen">Wat kosten bamboe wandpanelen?</h2>
+<ul>
+  {%- if pmin > 0 -%}<li>Losse panelen kosten van <strong>{{ pmin | money }} tot {{ pmax | money }}</strong> per stuk{% if m2min > 0 %}, vanaf {{ m2min | money }} per m²{% endif %}.</li>{%- endif -%}
+  {%- if p8 > 0 -%}<li>De 8 mm naadloze panelen beginnen bij {{ p8 | money }}.</li>{%- endif -%}
+  <li><a href="/collections/doorlopend-marmer">Doorlopend marmer</a> koop je als set van drie panelen.</li>
+</ul>
+<p>De prijs per paneel en per m² staat bij elk decor in de <a href="/collections/wandpanelen">collectie</a>.</p>
+
+<h2 id="ruimtes">In welke ruimtes passen ze?</h2>
+<p>Wandpanelen passen in de woonkamer, slaapkamer, hal, keuken, badkamer en in kantoren en horeca. Omdat ze waterbestendig zijn, kun je ze in de badkamer en keuken gebruiken. Vermijd wel plekken waar water blijft staan.</p>
+<ul>
+  <li><a href="{{ gids_bk_url }}">Wandpanelen in de badkamer</a>: decors, uitvoering, kosten en plaatsen over tegels.</li>
+  <li><a href="/blogs/nieuws/inspiratie-showcase-keukenwand-met-luxe-marmerlook-wandpaneel-pandora-slate-glans">Keukenwand in Pandora Slate</a>: een project in marmerlook.</li>
+  <li><a href="/blogs/nieuws/kantoorruimte-in-japanse-stijl-japansestof-wandpanelen-akupanelen-puredeco">Kantoor in Japanse stijl</a>: Japandi met akupanelen.</li>
+</ul>
+
+<h2 id="monteren">Zo monteer je wandpanelen</h2>
+<ol>
+  <li>Zorg voor een vlakke, schone, droge en vetvrije wand: stucwerk, gipsplaat, beton of bestaande tegels.</li>
+  <li>Zaag de panelen op maat met een fijne zaag, inclusief sparingen voor stopcontacten.</li>
+  <li>Zet <a href="/products/hack-tack-montagekit">High Tack montagekit</a> in banen op de wand. Houd een kleine afstand tot de randen.</li>
+  <li>Druk het paneel stevig aan en controleer met een waterpas.</li>
+  <li>Werk randen en hoeken af met <a href="/collections/accessoires">aluminium profielen</a>.</li>
+  <li>Laat de kit uitharden en verwijder dan de beschermfolie.</li>
+</ol>
+
+<h2 id="stijlen">Welke stijlen zijn er?</h2>
+<ul>
+  <li><strong><a href="/collections/hout-1">Houten wandpanelen</a>:</strong> eiken- en walnootlook, van licht tot zwart.</li>
+  <li><strong>Marmer:</strong> mat en glanzend. Bij <a href="/collections/doorlopend-marmer">doorlopend marmer</a> loopt de tekening over drie panelen door.</li>
+  <li><strong>Beton en travertin:</strong> <a href="/products/concrete-smoke-691-betonlook">Concrete Smoke 691</a>, <a href="/products/concrete-rust-861-betonlook">Concrete Rust 861</a> en <a href="/products/wandpaneel-travertine-ivory-851">Travertine Ivory 851</a>.</li>
+  <li><strong><a href="/collections/japandi">Japandi</a>:</strong> rustige stofstructuren in licht, jade, bruin en taupe.</li>
+  <li><strong><a href="/collections/leer">Leerlook</a>:</strong> khaki, zand en taupe.</li>
+  <li><strong><a href="/collections/kunst">Art</a>:</strong> stucco- en grain-structuren.</li>
+</ul>
+
+<h2 id="eerst-voelen">Eerst zien en voelen</h2>
+<p>Bestel <a href="/pages/sample">tot vijf stalen gratis</a>: je betaalt alleen € 6,95 verzending. Of bekijk de panelen op ware grootte in onze <a href="/pages/showroom">studio in Herwen</a>. Op alle wandpanelen krijg je 3 jaar garantie.</p>
+{%- endcase -%}

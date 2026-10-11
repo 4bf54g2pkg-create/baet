@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "pd_artikel": { "type": "pd-artikel", "settings": {} }
+  },
+  "order": ["pd_artikel"]
+}

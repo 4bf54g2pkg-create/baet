@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "pd_inspiratie": {
+      "type": "pd-inspiratie",
+      "settings": {
+        "heading": "Wandpanelen voor elke ruimte",
+        "intro": "Per ruimte uitgelegd: welke decors passen, hoe je plaatst en wat een wand kost. Met tekeningen op schaal en projecten van klanten."
+      }
+    }
+  },
+  "order": ["pd_inspiratie"]
+}

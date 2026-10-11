@@ -119,8 +119,14 @@
     {%- case part -%}{%- when 'title' -%}Mix and match wandpanelen | PureDeco{%- when 'desc' -%}Combineer decors van PureDeco-wandpanelen met een kern van bamboe tot één wand. Bekijk de mogelijkheden en bestel tot vijf stalen gratis.{%- endcase -%}
   {%- endcase -%}
 {%- when 'blog' -%}
-  {%- if part == 'title' -%}Inspiratie en tips over wandpanelen | PureDeco{%- endif -%}
-  {%- if part == 'desc' -%}Inspiratie en tips over wandpanelen met bamboekern: projecten, onderhoud, montage en toepassingen in woonkamer, keuken, badkamer en kantoor.{%- endif -%}
+  {%- comment -%} Inspiratie: teksten in snippets/pd-insp.liquid. Een gids-voorbeeld (blog.gids-*) is alleen voor de preview: noindex. {%- endcomment -%}
+  {%- if template.suffix contains 'gids-' -%}
+    {%- render 'pd-insp', key: template.suffix, part: part -%}{%- if part == 'robots' -%}noindex,follow{%- endif -%}
+  {%- else -%}
+    {%- render 'pd-insp', key: 'hub', part: part -%}
+  {%- endif -%}
+{%- when 'article' -%}
+  {%- render 'pd-insp', key: a.handle, part: part -%}
 {%- when 'product' -%}
   {%- if part == 'robots' and p.handle == '668-glanzend-marmer-florentine-limestone' -%}noindex,follow{%- endif -%}
   {%- if part == 'title' or part == 'desc' or part == 'mat' -%}

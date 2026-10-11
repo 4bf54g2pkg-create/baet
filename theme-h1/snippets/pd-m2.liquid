@@ -2,6 +2,7 @@
   Puredeco · oppervlak en prijs per m² uit de echte varianten (maat in de optie, bijv. "280 cm x 122 cm" of "260x122").
   Gebruik: {% render 'pd-m2', product: p, part: 'min' %}
   part: min   → laagste prijs per m² (money), leeg als er geen maat is
+        cents → laagste prijs per m² als getal in centen (0 als er geen maat is)
         range → "€ x – € y" over alle uitvoeringen
         cover → "3,17 m² (260 × 122 cm) · 3,42 m² (280 × 122 cm)"
   Sets (bijv. "280x366 (3x280x122)") tellen niet mee; een maat als "280 cm x 366 cm" wel (totale oppervlakte van de set).
@@ -70,5 +71,7 @@
       endif
     when 'cover'
       echo m2_cover
+    when 'cents'
+      echo m2_lo
   endcase
 -%}
