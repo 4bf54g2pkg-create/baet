@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "pd_gids": { "type": "pd-gids", "settings": { "room": "woonkamer" } }
+  },
+  "order": ["pd_gids"]
+}

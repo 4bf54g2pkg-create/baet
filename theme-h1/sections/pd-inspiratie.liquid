@@ -1,7 +1,7 @@
 {%- comment -%}
   Puredeco · inspiratiepagina (blog 'nieuws', URL blijft /blogs/nieuws). Artboard: docs/ontwerp-puredeco-finish/InspiratieV2.dc.html
-  Per ruimte (tekening op schaal met een echt decor), per materiaal (collecties), advies, projecten en vragen.
-  Gegevens per artikel/gids: snippets/pd-insp.liquid. Tekeningen: snippets/pd-tekening.liquid.
+  Per ruimte (visualisatie op schaal met een echt decor, assets/pd-vis-<ruimte>.jpg), per materiaal (collecties), advies, projecten en vragen.
+  Gegevens per artikel/gids: snippets/pd-insp.liquid en snippets/pd-gids-tekst.liquid. Visualisaties: tools/render (altijd met label 'Visualisatie').
   Gidslinks: bestaat het artikel 'wandpanelen-<ruimte>' in deze blog, dan daarheen; anders (alleen H1-test) naar de voorbeeldweergave ?view=gids-<ruimte>.
 {%- endcomment -%}
 {%- liquid
@@ -34,10 +34,9 @@
     endif
   endfor
 
-  assign rooms = 'badkamer,toilet,keuken,woonkamer,slaapkamer,werkplek' | split: ','
-  assign room_tex = 'wandpaneel-travertine-ivory-851,666-glanzend-marmer-white-slate,concrete-smoke-691-betonlook,811-hout-walnut-classic,646-leer-khaki-leather,619-japanse-stof-japaneses-style-jade' | split: ','
+  assign rooms = 'badkamer,toilet,keuken,woonkamer,slaapkamer,kantoor' | split: ','
   assign room_ttl = 'Wandpanelen in de badkamer|Wandpanelen in het toilet|Wandpanelen in de keuken|Wandpanelen in de woonkamer|Wandpanelen in de slaapkamer|Wandpanelen op kantoor' | split: '|'
-  assign room_sub = 'Decors voor natte ruimtes, plaatsen en kosten|Kleine ruimte, groot verschil|Achterwand en kookhoek|Tv-wand en accentwand|Achter het bed|Rust en akoestiek' | split: '|'
+  assign room_sub = '851 Travertine Ivory · decors, plaatsen en kosten|666 White Slate · over de tegels|670 Pandora Slate · keukenwand en achterwand|811 Walnut Classic · tv-wand van vloer tot plafond|646 Khaki · leer achter het bed|619 Jade · met akupanelen' | split: '|'
 -%}
 
 <div class="pdi" data-pdi>
@@ -49,7 +48,7 @@
         <p class="pdi-k">Inspiratie &amp; advies</p>
         <h1 class="pdi-h1">{{ section.settings.heading | default: 'Wandpanelen voor elke ruimte' }}</h1>
       </div>
-      <p class="pdi-intro">{{ section.settings.intro | default: 'Per ruimte uitgelegd: welke decors passen, hoe je plaatst en wat een wand kost. Met tekeningen op schaal en projecten van klanten.' }}</p>
+      <p class="pdi-intro">{{ section.settings.intro | default: 'Per ruimte uitgelegd: welke decors passen, hoe je plaatst en wat een wand kost. Met visualisaties en tekeningen op schaal en projecten van klanten.' }}</p>
     </header>
     <ul class="pdi-facts" role="list">
       <li>Panelen <strong>tot 280 cm</strong> hoog, 122 cm breed</li>
@@ -59,6 +58,12 @@
     </ul>
   </div>
 
+  {%- assign hero = 'pd-vis-woonkamer.jpg' -%}
+  <figure class="pdi-hero pdi-wrap">
+    <img src="{{ hero | asset_img_url: '1800x' }}" srcset="{{ hero | asset_img_url: '900x' }} 900w, {{ hero | asset_img_url: '1200x' }} 1200w, {{ hero | asset_img_url: '1800x' }} 1800w" sizes="(min-width: 1320px) 1176px, 100vw" width="1800" height="1200" fetchpriority="high" alt="Visualisatie: tv-wand van vloer tot plafond met wandpanelen in 811 Walnut Classic">
+    <figcaption><span class="pdi-tag pdi-tag--vis">Visualisatie</span><span>Tv-wand in 811 Walnut Classic · Signature 8 mm · 4 panelen van 122 × 280 cm</span></figcaption>
+  </figure>
+
   {%- comment -%} Per ruimte {%- endcomment -%}
   <section class="pdi-sec pdi-wrap" aria-labelledby="pdi-rooms">
     <p class="pdi-k">Per ruimte</p>
@@ -67,34 +72,28 @@
       {%- for r in rooms -%}
         {%- liquid
           assign i = forloop.index0
-          assign tp = all_products[room_tex[i]]
-          assign tex = ''
-          if tp.featured_image
-            assign tex = tp.featured_image | image_url: width: 480, height: 1440, crop: 'center'
-          endif
           assign guide_key = '|wandpanelen-' | append: r | append: '='
-          assign has_guide = false
-          assign link = '/collections/wandpanelen'
+          assign link = insp_url | append: '?view=gids-' | append: r
           assign gu = '|' | append: guide_urls
           if gu contains guide_key
-            assign has_guide = true
             assign link = gu | split: guide_key | last | split: '|' | first
-          elsif r == 'badkamer'
-            assign has_guide = true
-            assign link = gids_bk_url
           endif
+          assign vis = 'pd-vis-' | append: r | append: '.jpg'
         -%}
         <li class="pdi-room">
           <a href="{{ link }}" class="pdi-room__a">
-            <span class="pdi-room__fig">{%- render 'pd-tekening', room: r, tex: tex, uid: section.id -%}</span>
+            <span class="pdi-room__img">
+              <img src="{{ vis | asset_img_url: '900x' }}" srcset="{{ vis | asset_img_url: '600x' }} 600w, {{ vis | asset_img_url: '900x' }} 900w, {{ vis | asset_img_url: '1200x' }} 1200w" sizes="(min-width: 990px) 30vw, (min-width: 600px) 45vw, 78vw" width="1800" height="1200" loading="lazy" alt="Visualisatie: {{ room_ttl[i] | downcase }}">
+              <span class="pdi-tag pdi-tag--vis">Visualisatie</span>
+            </span>
             <h3 class="pdi-room__t">{{ room_ttl[i] }}</h3>
             <span class="pdi-room__s">{{ room_sub[i] }}</span>
-            <span class="pdi-room__go">{% if has_guide %}Lees de gids{% else %}Bekijk de decors{% endif %} →</span>
+            <span class="pdi-room__go">Lees de gids →</span>
           </a>
         </li>
       {%- endfor -%}
     </ul>
-    <p class="pdi-note">Tekeningen op schaal: een paneel is 122 cm breed en tot 280 cm hoog. De wand toont een echt decor uit de collectie.</p>
+    <p class="pdi-note">Visualisaties op schaal met het echte decor uit de collectie: panelen van 122 cm breed en tot 280 cm hoog. In elke gids staat ook een tekening op schaal.</p>
   </section>
 
   {%- comment -%} Per materiaal {%- endcomment -%}
@@ -268,6 +267,16 @@
             { "@type": "Article", "headline": {{ t | strip | json }}, "url": {{ shop.url | append: a.url | json }} }
             {%- assign first = false -%}
           {%- endif -%}
+        {%- endfor -%}
+        {%- for r in rooms -%}
+          {%- assign guide_key = '|wandpanelen-' | append: r | append: '=' -%}
+          {%- assign gu = '|' | append: guide_urls -%}
+          {%- if gu contains guide_key -%}
+            {%- unless first %},{% endunless -%}
+            {%- assign gurl = gu | split: guide_key | last | split: '|' | first -%}
+            { "@type": "Article", "headline": {{ room_ttl[forloop.index0] | json }}, "url": {{ shop.url | append: gurl | json }} }
+            {%- assign first = false -%}
+          {%- endif -%}
         {%- endfor %}
       ]
     },
@@ -291,7 +300,7 @@
   "class": "pd-insp-section",
   "settings": [
     { "type": "text", "id": "heading", "label": "Kop (H1)", "default": "Wandpanelen voor elke ruimte" },
-    { "type": "textarea", "id": "intro", "label": "Intro", "default": "Per ruimte uitgelegd: welke decors passen, hoe je plaatst en wat een wand kost. Met tekeningen op schaal en projecten van klanten." }
+    { "type": "textarea", "id": "intro", "label": "Intro", "default": "Per ruimte uitgelegd: welke decors passen, hoe je plaatst en wat een wand kost. Met visualisaties en tekeningen op schaal en projecten van klanten." }
   ],
   "presets": [{ "name": "Puredeco inspiratie" }]
 }

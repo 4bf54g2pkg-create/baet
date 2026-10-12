@@ -1,8 +1,9 @@
 {%- comment -%}
-  Puredeco · ruimtegids (nu: badkamer). Artboard: docs/ontwerp-puredeco-finish/InspiratieV2.dc.html
-  H1-test: te bekijken via /blogs/nieuws?view=gids-badkamer (templates/blog.gids-badkamer.json, noindex).
-  Bij livegang: artikel 'wandpanelen-badkamer' aanmaken met sjabloon 'gids' (templates/article.gids.json); de ruimte volgt dan uit de handle.
-  Alleen feiten uit de goedgekeurde collectie- en productteksten; prijzen live.
+  Puredeco · ruimtegids (badkamer, toilet, keuken, woonkamer, slaapkamer, kantoor). Artboard: docs/ontwerp-puredeco-finish/InspiratieV2.dc.html
+  Inhoud per ruimte: snippets/pd-gids-tekst.liquid; titel, omschrijving en decors: snippets/pd-insp.liquid (sleutel gids-<ruimte>).
+  H1-test: te bekijken via /blogs/nieuws?view=gids-<ruimte> (templates/blog.gids-<ruimte>.json, noindex).
+  Bij livegang: artikel 'wandpanelen-<ruimte>' aanmaken met sjabloon 'gids' (templates/article.gids.json); de ruimte volgt dan uit de handle.
+  Visualisaties: assets/pd-vis-<ruimte>.jpg, gemaakt met tools/render (echte decorscans, op schaal), altijd met label 'Visualisatie'.
 {%- endcomment -%}
 {%- liquid
   assign room = section.settings.room | default: 'badkamer'
@@ -19,9 +20,47 @@
   capture desc
     render 'pd-insp', key: key, part: 'desc'
   endcapture
+  capture label
+    render 'pd-gids-tekst', room: room, part: 'label'
+  endcapture
+  capture h_decors
+    render 'pd-gids-tekst', room: room, part: 'h_decors'
+  endcapture
+  capture h_kosten
+    render 'pd-gids-tekst', room: room, part: 'h_kosten'
+  endcapture
+  capture h_plaatsen
+    render 'pd-gids-tekst', room: room, part: 'h_plaatsen'
+  endcapture
+  capture calc
+    render 'pd-gids-tekst', room: room, part: 'calc'
+  endcapture
+  capture proj
+    render 'pd-gids-tekst', room: room, part: 'proj'
+  endcapture
+  capture faq
+    render 'pd-gids-tekst', room: room, part: 'faq'
+  endcapture
+  capture vis
+    render 'pd-gids-tekst', room: room, part: 'vis'
+  endcapture
+  capture vis_decor
+    render 'pd-gids-tekst', room: room, part: 'vis_decor'
+  endcapture
   assign ttl = ttl | strip
+  assign label = label | strip
+  assign h_decors = h_decors | strip
+  assign h_kosten = h_kosten | strip
+  assign h_plaatsen = h_plaatsen | strip
+  assign faq_l = faq | strip | split: '|'
+  assign vis = vis | strip
+  assign vis_decor = vis_decor | strip
+  assign vis_p = all_products[vis_decor]
   assign dl = decors | strip | split: ','
   assign tex_p = all_products[dl[0]]
+  if vis_p.id
+    assign tex_p = vis_p
+  endif
   assign tex = ''
   if tex_p.featured_image
     assign tex = tex_p.featured_image | image_url: width: 480, height: 1440, crop: 'center'
@@ -32,47 +71,60 @@
   endif
 
   comment
-    Rekenvoorbeeld: een wand van 2,44 m breed (2 panelen) in 692 Urban Smoke, Linea 280 × 122 cm.
+    Rekenvoorbeeld per ruimte: 'producthandle|5mm of 8mm|aantal|wand|panelen'. De variant met 280 cm en de gekozen dikte.
   endcomment
-  assign ex = all_products['urban-smoke-692-marmerlook']
+  assign cp = calc | strip | split: '|'
+  assign ex = all_products[cp[0]]
+  assign ex_n = cp[2] | plus: 0
   assign ex_v = ex.variants | first
   for v in ex.variants
-    assign vt = v.title | downcase
-    if vt contains '280' and vt contains '5'
+    assign vt = v.title | downcase | remove: ' '
+    if vt contains '280' and vt contains cp[1]
       assign ex_v = v
       break
     endif
   endfor
-  assign ex_tot = ex_v.price | times: 2
+  assign ex_tot = ex_v.price | times: ex_n
+  assign ex_uitv = 'Linea'
+  if cp[1] == '8mm'
+    assign ex_uitv = 'Signature'
+  endif
+  assign pj = proj | strip | split: '|'
+  assign pj_p = all_products[pj[3]]
+  assign pj_url = blog.url | append: '/' | append: pj[0]
 -%}
 
 <article class="pda pdg">
   <div class="pdi-wrap">
-    <nav class="pdi-crumb" aria-label="Kruimelpad"><a href="{{ routes.root_url }}">Home</a><span aria-hidden="true">·</span><a href="{{ blog.url }}">Inspiratie</a><span aria-hidden="true">·</span><span>Badkamer</span></nav>
+    <nav class="pdi-crumb" aria-label="Kruimelpad"><a href="{{ routes.root_url }}">Home</a><span aria-hidden="true">·</span><a href="{{ blog.url }}">Inspiratie</a><span aria-hidden="true">·</span><span>{{ label }}</span></nav>
 
     <header class="pdg-head">
       <div>
-        <p class="pdi-k">Gids · Badkamer</p>
-        <h1 class="pdi-h1 pda-h1">{{ ttl | default: 'Wandpanelen in de badkamer' }}</h1>
+        <p class="pdi-k">Gids · {{ label }}</p>
+        <h1 class="pdi-h1 pda-h1">{{ ttl | default: label }}</h1>
         <div class="pdg-short">
           <p class="pdi-k pdi-k--stone">Kort antwoord</p>
-          <p>Ja, dat kan. De panelen zijn waterbestendig en komen in één stuk van 260 of 280 cm hoog, dus zonder voegen per tegel. Je plaatst ze op een vlakke, droge en schone wand, ook over bestaande tegels. Linea (5 mm, zichtbare naad) is in de badkamer de standaardkeuze; Signature (8 mm, klik) sluit naadloos aan op een vlakke, rechte ondergrond. Vermijd plekken waar water blijft staan.</p>
+          <p>{% render 'pd-gids-tekst', room: room, part: 'kort' %}</p>
         </div>
-        <nav class="pdg-toc" aria-label="In deze gids">
-          <p class="pdi-k pdi-k--stone">In deze gids</p>
-          <a href="#decors">Welke decors passen</a><a href="#uitvoering">Linea of Signature</a><a href="#kosten">Wat kost een badkamerwand</a><a href="#plaatsen">Plaatsen, ook over tegels</a><a href="#onderhoud">Onderhoud</a><a href="#vragen">Veelgestelde vragen</a>
-        </nav>
       </div>
-      <figure class="pdg-fig">
-        <div class="pdg-draw">{%- render 'pd-tekening', room: 'badkamer', tex: tex, uid: section.id -%}</div>
-        <figcaption class="pdi-note">Tekening op schaal · wand in {% render 'pd-decor', product: tex_p, part: 'full' %}</figcaption>
+      {%- if vis != blank -%}
+      <figure class="pdg-vis">
+        {%- capture vis_alt -%}Visualisatie: {{ label | downcase }} met wandpanelen in {% render 'pd-decor', product: tex_p, part: 'full' %}{%- endcapture -%}
+        <img src="{{ vis | asset_img_url: '1200x' }}" srcset="{{ vis | asset_img_url: '600x' }} 600w, {{ vis | asset_img_url: '900x' }} 900w, {{ vis | asset_img_url: '1200x' }} 1200w, {{ vis | asset_img_url: '1800x' }} 1800w" sizes="(min-width: 990px) 56vw, 100vw" width="1800" height="1200" alt="{{ vis_alt | strip | escape }}" fetchpriority="high">
+        <figcaption><span class="pdi-tag pdi-tag--vis">Visualisatie</span><span class="pdg-vis__cap">Wand in {% render 'pd-decor', product: tex_p, part: 'full' %} · op schaal, met het echte decor</span></figcaption>
       </figure>
+      {%- endif -%}
     </header>
+
+    <nav class="pdg-toc pdg-toc--row" aria-label="In deze gids">
+      <p class="pdi-k pdi-k--stone">In deze gids</p>
+      <a href="#decors">Decors</a><a href="#uitvoering">Linea of Signature</a><a href="#kosten">Kosten</a><a href="#schaal">Op schaal</a><a href="#plaatsen">Plaatsen</a><a href="#onderhoud">Onderhoud</a><a href="#vragen">Vragen</a>
+    </nav>
 
     <section class="pdg-sec" id="decors" aria-labelledby="pdg-decors">
       <p class="pdg-n">01</p>
-      <h2 class="pdi-h2" id="pdg-decors">Welke decors passen in de badkamer</h2>
-      <p class="pdg-p">Lichte steen- en marmerdecors houden een badkamer licht; hout en donker marmer geven warmte. Vier decors om mee te beginnen:</p>
+      <h2 class="pdi-h2" id="pdg-decors">{{ h_decors }}</h2>
+      <p class="pdg-p">{% render 'pd-gids-tekst', room: room, part: 'decors_p' %}</p>
       <ul class="pdg-decors" role="list">
         {%- for dh in dl -%}
           {%- assign dp = all_products[dh] -%}
@@ -98,21 +150,21 @@
         <p class="pdg-n">02</p>
         <h2 class="pdi-h2" id="pdg-uitv">Linea of Signature</h2>
         <div class="pdg-joints">
-          <div><svg viewBox="0 0 200 50" aria-hidden="true"><rect x="10" y="18" width="88" height="10" fill="#D8CFC2" stroke="#151413"/><rect x="102" y="18" width="88" height="10" fill="#D8CFC2" stroke="#151413"/><line x1="100" y1="10" x2="100" y2="36" stroke="#8C6A4A" stroke-dasharray="2 2"/></svg><p><strong>Linea</strong> · 5 mm, stomp<br><span>Zichtbare voeg, af te werken met een tussenprofiel of kit in kleur. Standaard in de badkamer.</span></p></div>
+          <div><svg viewBox="0 0 200 50" aria-hidden="true"><rect x="10" y="18" width="88" height="10" fill="#D8CFC2" stroke="#151413"/><rect x="102" y="18" width="88" height="10" fill="#D8CFC2" stroke="#151413"/><line x1="100" y1="10" x2="100" y2="36" stroke="#8C6A4A" stroke-dasharray="2 2"/></svg><p><strong>Linea</strong> · 5 mm, stomp<br><span>{% render 'pd-gids-tekst', room: room, part: 'uitv' %}</span></p></div>
           <div><svg viewBox="0 0 200 50" aria-hidden="true"><path d="M10 18h86v4h6v6H10z" fill="#D8CFC2" stroke="#151413"/><path d="M190 18h-88v4h-6v6h94z" fill="#C9BFB1" stroke="#151413"/></svg><p><strong>Signature</strong> · 8 mm, klik<br><span>Vrijwel onzichtbare naad op een vlakke, rechte ondergrond.</span></p></div>
         </div>
       </section>
       <section class="pdg-sec" id="kosten" aria-labelledby="pdg-kost">
         <p class="pdg-n">03</p>
-        <h2 class="pdi-h2" id="pdg-kost">Wat kost een badkamerwand</h2>
+        <h2 class="pdi-h2" id="pdg-kost">{{ h_kosten }}</h2>
         {%- if ex.id -%}
         <div class="pdg-calc">
           <p class="pdi-k pdi-k--stone">Rekenvoorbeeld</p>
           <table>
-            <tr><th scope="row">Wand</th><td>2,44 m breed × 2,60 m hoog</td></tr>
-            <tr><th scope="row">Panelen</th><td>2 × 122 × 280 cm, ingekort tot 260 cm</td></tr>
-            <tr><th scope="row">Decor</th><td><a href="{{ ex.url }}">{% render 'pd-decor', product: ex, part: 'full' %}</a> · Linea · {{ ex_v.price | money }}</td></tr>
-            <tr class="pdg-calc__tot"><th scope="row">Panelen totaal</th><td>{{ ex_tot | money }}</td></tr>
+            <tr><th scope="row">Wand</th><td>{{ cp[3] }}</td></tr>
+            <tr><th scope="row">Panelen</th><td>{{ cp[4] }}</td></tr>
+            <tr><th scope="row">Decor</th><td><a href="{{ ex.url }}">{% render 'pd-decor', product: ex, part: 'full' %}</a> · {{ ex_uitv }} · {{ ex_v.price | money }}</td></tr>
+            <tr class="pdg-calc__tot"><th scope="row">Panelen totaal</th><td>{{ ex_n }} × {{ ex_v.price | money }} = {{ ex_tot | money }}</td></tr>
           </table>
           <p class="pdi-note">Zo reken je je eigen wand uit: deel de breedte door 1,22 en rond naar boven af. Plus montagekit en eventueel profielen. Op elke productpagina rekent de calculator het voor je uit.</p>
         </div>
@@ -120,11 +172,23 @@
       </section>
     </div>
 
+    <section class="pdg-sec pdg-scale" id="schaal" aria-labelledby="pdg-schaal">
+      <div>
+        <p class="pdg-n">04</p>
+        <h2 class="pdi-h2" id="pdg-schaal">Op schaal</h2>
+        <p class="pdg-p">De tekening toont vier panelen van 122 × 280 cm naast elkaar: een wand van 4,88 m breed, met het echte decor. Eén paneel bedekt ruim 3 m². {% render 'pd-gids-tekst', room: room, part: 'schaal' %}</p>
+      </div>
+      <figure class="pdg-fig">
+        <div class="pdg-draw">{%- if room == 'kantoor' %}{% assign draw = 'werkplek' %}{% else %}{% assign draw = room %}{% endif -%}{%- render 'pd-tekening', room: draw, tex: tex, uid: section.id -%}</div>
+        <figcaption class="pdi-note">Tekening op schaal · wand in {% render 'pd-decor', product: tex_p, part: 'full' %}</figcaption>
+      </figure>
+    </section>
+
     <div class="pdg-two">
       <section class="pdg-sec pdi-rte" id="plaatsen" aria-labelledby="pdg-plaats">
-        <p class="pdg-n">04</p>
-        <h2 class="pdi-h2" id="pdg-plaats">Plaatsen, ook over tegels</h2>
-        <p>Je plaatst de panelen op een vlakke, droge en schone wand: stucwerk, gipsplaat, beton of bestaande tegels. Hoe vlakker de ondergrond, hoe strakker het resultaat.</p>
+        <p class="pdg-n">05</p>
+        <h2 class="pdi-h2" id="pdg-plaats">{{ h_plaatsen }}</h2>
+        <p>{% render 'pd-gids-tekst', room: room, part: 'plaatsen_p' %}</p>
         <ol>
           <li>Maak de wand schoon, droog en vetvrij.</li>
           <li>Zaag de panelen op maat met een fijne zaag, inclusief sparingen.</li>
@@ -135,28 +199,28 @@
         </ol>
       </section>
       <section class="pdg-sec pdi-rte" id="onderhoud" aria-labelledby="pdg-ond">
-        <p class="pdg-n">05</p>
+        <p class="pdg-n">06</p>
         <h2 class="pdi-h2" id="pdg-ond">Onderhoud</h2>
-        <p>De panelen zijn eenvoudig schoon te maken. Neem ze af met een zachte, vochtige doek en gebruik geen schuurmiddelen. Zorg in de badkamer voor goede ventilatie.</p>
+        <p>{% render 'pd-gids-tekst', room: room, part: 'ond' %}</p>
         <p><a href="/blogs/nieuws/tips-voor-het-onderhouden-van-je-bamboepanelen">Meer over onderhoud →</a></p>
+        {%- if pj_p.id -%}
         <div class="pdg-proj">
           <p class="pdi-k pdi-k--stone">Uit de praktijk</p>
-          {%- assign wc = all_products['666-glanzend-marmer-white-slate'] -%}
-          <a href="/blogs/nieuws/wc-renovatie-in-een-halve-dag-met-white-slate-marmerlook-wandpanelen">
-            {%- if wc.featured_image -%}{{ wc.featured_image | image_url: width: 300, height: 900, crop: 'center' | image_tag: loading: 'lazy', width: 120, height: 120, alt: '' }}{%- endif -%}
-            <span><span class="pdi-proj__t">Toilet vernieuwd over de tegels</span><span class="pdi-note">666 White Slate · glans</span></span>
+          <a href="{{ pj_url }}">
+            {%- if pj_p.featured_image -%}{{ pj_p.featured_image | image_url: width: 300, height: 900, crop: 'center' | image_tag: loading: 'lazy', width: 120, height: 120, alt: '' }}{%- endif -%}
+            <span><span class="pdi-proj__t">{{ pj[1] }}</span><span class="pdi-note">{{ pj[2] }}</span></span>
           </a>
         </div>
+        {%- endif -%}
       </section>
     </div>
 
     <section class="pdg-sec pdi-split" id="vragen" aria-labelledby="pdg-faq">
-      <div><p class="pdg-n">06</p><h2 class="pdi-h2" id="pdg-faq">Veelgestelde vragen</h2></div>
+      <div><p class="pdg-n">07</p><h2 class="pdi-h2" id="pdg-faq">Veelgestelde vragen</h2></div>
       <div class="pdi-faq">
-        <details><summary>Kan ik de panelen over tegels plaatsen?</summary><p>Ja, op een vlakke, droge en schone ondergrond, ook bestaande tegels. Hoe vlakker de ondergrond, hoe strakker het resultaat.</p></details>
-        <details><summary>Welke uitvoering kies ik voor de badkamer?</summary><p>Linea (5 mm, stomp) is in de badkamer de standaardkeuze; de voeg werk je af met een tussenprofiel of kit in kleur. Signature (8 mm, klik) sluit naadloos aan op een vlakke, rechte ondergrond.</p></details>
-        <details><summary>Zijn de panelen geschikt voor een natte ruimte?</summary><p>De panelen zijn waterbestendig en geschikt voor badkamer en keuken. Vermijd wel plekken waar water blijft staan.</p></details>
-        <details><summary>Kan ik eerst een staal zien?</summary><p>Ja. Bestel tot vijf stalen gratis; je betaalt alleen € 6,95 verzending. Of bekijk de panelen op ware grootte in onze studio in Herwen.</p></details>
+        {%- for f in faq_l -%}{%- assign fq = f | split: '::' -%}
+        <details><summary>{{ fq[0] }}</summary><p>{{ fq[1] }}</p></details>
+        {%- endfor -%}
       </div>
     </section>
 
@@ -183,6 +247,7 @@
       "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
       {%- endif -%}
       "mainEntityOfPage": {{ shop.url | append: page_url | json }},
+      {%- if vis != blank %}"image": [{{ vis | asset_img_url: '1800x' | prepend: 'https:' | json }}],{% endif %}
       "inLanguage": "nl"
     },
     {
@@ -195,7 +260,7 @@
     },
     {
       "@type": "ItemList",
-      "name": "Decors voor de badkamer",
+      "name": {{ 'Decors voor ' | append: label | downcase | json }},
       "itemListElement": [
         {%- for dh in dl -%}{%- assign dp = all_products[dh] -%}
         { "@type": "ListItem", "position": {{ forloop.index }}, "url": {{ shop.url | append: dp.url | json }}, "name": {{ dp.title | json }} }{% unless forloop.last %},{% endunless %}
@@ -205,10 +270,9 @@
     {
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "Kan ik de panelen over tegels plaatsen?", "acceptedAnswer": { "@type": "Answer", "text": "Ja, op een vlakke, droge en schone ondergrond, ook bestaande tegels. Hoe vlakker de ondergrond, hoe strakker het resultaat." } },
-        { "@type": "Question", "name": "Welke uitvoering kies ik voor de badkamer?", "acceptedAnswer": { "@type": "Answer", "text": "Linea (5 mm, stomp) is in de badkamer de standaardkeuze; de voeg werk je af met een tussenprofiel of kit in kleur. Signature (8 mm, klik) sluit naadloos aan op een vlakke, rechte ondergrond." } },
-        { "@type": "Question", "name": "Zijn de panelen geschikt voor een natte ruimte?", "acceptedAnswer": { "@type": "Answer", "text": "De panelen zijn waterbestendig en geschikt voor badkamer en keuken. Vermijd wel plekken waar water blijft staan." } },
-        { "@type": "Question", "name": "Kan ik eerst een staal zien?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Bestel tot vijf stalen gratis; je betaalt alleen € 6,95 verzending. Of bekijk de panelen op ware grootte in onze studio in Herwen." } }
+        {%- for f in faq_l -%}{%- assign fq = f | split: '::' -%}
+        { "@type": "Question", "name": {{ fq[0] | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ fq[1] | json }} } }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
       ]
     }
   ]
@@ -221,7 +285,7 @@
   "tag": "div",
   "class": "pd-gids-section",
   "settings": [
-    { "type": "select", "id": "room", "label": "Ruimte", "default": "badkamer", "options": [{ "value": "badkamer", "label": "Badkamer" }] }
+    { "type": "select", "id": "room", "label": "Ruimte", "default": "badkamer", "options": [{ "value": "badkamer", "label": "Badkamer" }, { "value": "toilet", "label": "Toilet" }, { "value": "keuken", "label": "Keuken" }, { "value": "woonkamer", "label": "Woonkamer" }, { "value": "slaapkamer", "label": "Slaapkamer" }, { "value": "kantoor", "label": "Kantoor" }] }
   ]
 }
 {% endschema %}

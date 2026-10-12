@@ -1,0 +1,131 @@
+{%- comment -%}
+  Puredeco · inhoud per ruimtegids (alleen in dit thema). Gebruikt door sections/pd-gids.liquid.
+  Gebruik: {% render 'pd-gids-tekst', room: 'toilet', part: 'kort' %}
+  Alleen feiten uit de goedgekeurde teksten (docs/collectieteksten/CONCEPT-collectieteksten.md, PDP-FAQ) en de productdata.
+  Niet gebruiken: geluidsabsorberend (wandpanelen), hittebestendig, brandklasse, UV-bestendig, levertijden.
+  part:
+    label       ruimte voor kruimelpad en bovenregel
+    kort        kort antwoord bovenaan
+    h_decors    kop sectie decors · decors_p  inleiding
+    h_kosten    kop rekenvoorbeeld
+    calc        'producthandle|uitvoering (5mm of 8mm)|aantal|wandtekst|paneeltekst'
+    uitv        advies Linea/Signature voor deze ruimte
+    schaal      extra zin bij de tekening op schaal (de tekening zelf toont altijd vier panelen)
+    h_plaatsen  kop plaatsen · plaatsen_p  inleiding
+    ond         onderhoud
+    proj        'artikelhandle|titel|regel|producthandle' (praktijkvoorbeeld)
+    faq         'vraag::antwoord|vraag::antwoord'
+    vis         bestandsnaam visualisatie in assets · vis_decor  producthandle van het decor in de visualisatie
+{%- endcomment -%}
+{%- case room -%}
+
+{%- when 'badkamer' -%}
+  {%- case part -%}
+    {%- when 'label' -%}Badkamer
+    {%- when 'kort' -%}Ja, dat kan. De panelen zijn waterbestendig en komen in één stuk van 260 of 280 cm hoog, dus zonder voegen per tegel. Je plaatst ze op een vlakke, droge en schone wand, ook over bestaande tegels. Linea (5 mm, zichtbare naad) is in de badkamer de standaardkeuze; Signature (8 mm, klik) sluit naadloos aan op een vlakke, rechte ondergrond. Vermijd plekken waar water blijft staan.
+    {%- when 'h_decors' -%}Welke decors passen in de badkamer
+    {%- when 'decors_p' -%}Lichte steen- en marmerdecors houden een badkamer licht; hout en donker marmer geven warmte. Vier decors om mee te beginnen:
+    {%- when 'h_kosten' -%}Wat kost een badkamerwand
+    {%- when 'calc' -%}urban-smoke-692-marmerlook|5mm|2|2,44 m breed × 2,60 m hoog|2 × 122 × 280 cm, ingekort tot 260 cm
+    {%- when 'uitv' -%}Zichtbare voeg, af te werken met een tussenprofiel of kit in kleur. Standaard in de badkamer.
+    {%- when 'h_plaatsen' -%}Plaatsen, ook over tegels
+    {%- when 'plaatsen_p' -%}Je plaatst de panelen op een vlakke, droge en schone wand: stucwerk, gipsplaat, beton of bestaande tegels. Hoe vlakker de ondergrond, hoe strakker het resultaat.
+    {%- when 'ond' -%}De panelen zijn eenvoudig schoon te maken. Neem ze af met een zachte, vochtige doek en gebruik geen schuurmiddelen. Zorg in de badkamer voor goede ventilatie.
+    {%- when 'proj' -%}wc-renovatie-in-een-halve-dag-met-white-slate-marmerlook-wandpanelen|Toilet vernieuwd over de tegels|666 White Slate · glans|666-glanzend-marmer-white-slate
+    {%- when 'faq' -%}Kan ik de panelen over tegels plaatsen?::Ja, op een vlakke, droge en schone ondergrond, ook bestaande tegels. Hoe vlakker de ondergrond, hoe strakker het resultaat.|Welke uitvoering kies ik voor de badkamer?::Linea (5 mm, stomp) is in de badkamer de standaardkeuze; de voeg werk je af met een tussenprofiel of kit in kleur. Signature (8 mm, klik) sluit naadloos aan op een vlakke, rechte ondergrond.|Zijn de panelen geschikt voor een natte ruimte?::De panelen zijn waterbestendig en geschikt voor badkamer en keuken. Vermijd wel plekken waar water blijft staan.|Kan ik eerst een staal zien?::Ja. Bestel tot vijf stalen gratis; je betaalt alleen € 6,95 verzending. Of bekijk de panelen op ware grootte in onze studio in Herwen.
+    {%- when 'vis' -%}pd-vis-badkamer.jpg
+    {%- when 'vis_decor' -%}wandpaneel-travertine-ivory-851
+  {%- endcase -%}
+
+{%- when 'toilet' -%}
+  {%- case part -%}
+    {%- when 'label' -%}Toilet
+    {%- when 'kort' -%}Een toilet is klein, dus je hebt weinig panelen nodig: is de achterwand smaller dan 122 cm, dan bedekt één paneel hem in één stuk, van vloer tot plafond. Je plaatst de panelen op een vlakke, droge en schone wand, ook over bestaande tegels. De panelen zijn waterbestendig; vermijd plekken waar water blijft staan.
+    {%- when 'h_decors' -%}Welke decors passen in het toilet
+    {%- when 'decors_p' -%}In een kleine ruimte mag het decor opvallen. Glanzend marmer maakt een toilet lichter; een donker decor maakt het knus. Vier decors om mee te beginnen:
+    {%- when 'h_kosten' -%}Wat kost een toiletwand
+    {%- when 'calc' -%}666-glanzend-marmer-white-slate|5mm|5|toilet van 1,0 × 1,5 m: achterwand en twee zijwanden|1 achterwand + 2 × 2 zijwanden
+    {%- when 'uitv' -%}Zichtbare voeg, af te werken met een tussenprofiel of kit in kleur. Alle marmerdecors zijn Linea.
+    {%- when 'schaal' -%}In een toilet is de achterwand vaak smaller: tot 122 cm breed is één paneel genoeg.
+    {%- when 'h_plaatsen' -%}Plaatsen over de tegels
+    {%- when 'plaatsen_p' -%}Je plaatst de panelen direct op een vlakke, droge en schone wand: stucwerk, gipsplaat, beton of bestaande tegels. Bij een toilet zaag je sparingen voor leidingen en de bedieningsplaat.
+    {%- when 'ond' -%}De panelen zijn eenvoudig schoon te maken. Neem ze af met een zachte, vochtige doek en gebruik geen schuurmiddelen.
+    {%- when 'proj' -%}wc-renovatie-in-een-halve-dag-met-white-slate-marmerlook-wandpanelen|Toilet vernieuwd over de tegels|666 White Slate · glans|666-glanzend-marmer-white-slate
+    {%- when 'faq' -%}Hoeveel panelen heb ik nodig voor een toilet?::Meet elke wand die je wilt bekleden, deel de breedte door 1,22 en rond naar boven af. Een achterwand tot 122 cm breed is één paneel; een zijwand van 1,5 m zijn twee panelen.|Kan ik de panelen over tegels plaatsen?::Ja, op een vlakke, droge en schone ondergrond, ook bestaande tegels. Hoe vlakker de ondergrond, hoe strakker het resultaat.|Hoe werk ik de hoeken en randen af?::Met aluminium profielen: hoekprofielen voor de hoeken, eindprofielen voor de randen. Bij Linea kun je de voeg ook afwerken met kit in kleur.|Kan ik eerst een staal zien?::Ja. Bestel tot vijf stalen gratis; je betaalt alleen € 6,95 verzending. Of bekijk de panelen op ware grootte in onze studio in Herwen.
+    {%- when 'vis' -%}pd-vis-toilet.jpg
+    {%- when 'vis_decor' -%}666-glanzend-marmer-white-slate
+  {%- endcase -%}
+
+{%- when 'keuken' -%}
+  {%- case part -%}
+    {%- when 'label' -%}Keuken
+    {%- when 'kort' -%}Ja, als keukenwand of als achterwand boven het werkblad. De panelen zijn waterbestendig en eenvoudig schoon te maken, en komen in één stuk van 260 of 280 cm hoog. Je plaatst ze op een vlakke, droge en schone wand, ook over bestaande tegels. Vermijd plekken waar water blijft staan.
+    {%- when 'h_decors' -%}Welke decors passen in de keuken
+    {%- when 'decors_p' -%}Marmer geeft een keukenwand rust en glans; hout maakt hem warm. Kies een decor dat past bij je fronten en werkblad. Vier decors om mee te beginnen:
+    {%- when 'h_kosten' -%}Wat kost een keukenwand
+    {%- when 'calc' -%}670-glanzend-marmer-pandora-slate|5mm|3|3,66 m breed × 2,60 m hoog|3 × 122 × 280 cm, ingekort tot 260 cm
+    {%- when 'uitv' -%}Zichtbare voeg, af te werken met een tussenprofiel of kit in kleur. Alle marmerdecors zijn Linea.
+    {%- when 'h_plaatsen' -%}Plaatsen achter het werkblad
+    {%- when 'plaatsen_p' -%}Je plaatst de panelen op een vlakke, droge en schone wand: stucwerk, gipsplaat, beton of bestaande tegels. Zaag sparingen voor stopcontacten, en werk randen en hoeken af met aluminium profielen.
+    {%- when 'ond' -%}Spatten neem je af met een zachte, vochtige doek. Gebruik geen schuurmiddelen.
+    {%- when 'proj' -%}inspiratie-showcase-keukenwand-met-luxe-marmerlook-wandpaneel-pandora-slate-glans|Keukenwand in Pandora Slate|670 Pandora Slate · glans|670-glanzend-marmer-pandora-slate
+    {%- when 'faq' -%}Kan ik wandpanelen als achterwand in de keuken gebruiken?::Ja. De panelen zijn waterbestendig en eenvoudig schoon te maken. Vermijd wel plekken waar water blijft staan.|Kan een paneel direct achter de kookplaat?::Over hittebestendigheid hebben we geen testgegevens. Wil je panelen dicht bij een kookplaat plaatsen, neem dan eerst contact met ons op.|Kan ik over de bestaande tegels plaatsen?::Ja, op een vlakke, droge en schone ondergrond, ook bestaande tegels. Hoe vlakker de ondergrond, hoe strakker het resultaat.|Kan ik eerst een staal zien?::Ja. Bestel tot vijf stalen gratis; je betaalt alleen € 6,95 verzending. Of bekijk de panelen op ware grootte in onze studio in Herwen.
+    {%- when 'vis' -%}pd-vis-keuken.jpg
+    {%- when 'vis_decor' -%}670-glanzend-marmer-pandora-slate
+  {%- endcase -%}
+
+{%- when 'woonkamer' -%}
+  {%- case part -%}
+    {%- when 'label' -%}Woonkamer
+    {%- when 'kort' -%}Een wand achter de tv of de bank is de plek waar wandpanelen het meest doen. Een paneel is 122 cm breed en tot 280 cm hoog, dus een tv-wand van vloer tot plafond maak je met drie of vier panelen. Wil je een wand die leest als één vlak, kies dan Signature (8 mm, klik) op een vlakke, rechte ondergrond.
+    {%- when 'h_decors' -%}Welke decors passen in de woonkamer
+    {%- when 'decors_p' -%}Hout geeft een tv-wand diepte en warmte; travertin en Japandi houden hem licht en rustig. Vier decors om mee te beginnen:
+    {%- when 'h_kosten' -%}Wat kost een tv-wand
+    {%- when 'calc' -%}811-hout-walnut-classic|8mm|4|4,88 m breed × 2,80 m hoog|4 × 122 × 280 cm, Signature
+    {%- when 'uitv' -%}Zichtbare voeg, af te werken met een tussenprofiel of kit in kleur. Goed als je de lijnen wilt laten zien.
+    {%- when 'h_plaatsen' -%}Plaatsen op de wand
+    {%- when 'plaatsen_p' -%}Je plaatst de panelen op een vlakke, droge en schone wand: stucwerk, gipsplaat, beton of bestaande tegels. Voor een naadloze wand met Signature moet de ondergrond vlak en recht zijn.
+    {%- when 'ond' -%}Afstoffen of afnemen met een zachte, vochtige doek is genoeg. Je hoeft niets te oliën, te lakken of te impregneren.
+    {%- when 'proj' -%}uitbouw-met-luxe-leren-wandpanelen-en-antraciet-profielen|Uitbouw met leren wandpanelen|646 Khaki · antraciet profielen|646-leer-khaki-leather
+    {%- when 'faq' -%}Hoeveel panelen heb ik nodig voor een tv-wand?::Deel de breedte van de wand door 1,22 en rond naar boven af. Een wand van 4,50 m breed geeft 3,7: je hebt dus vier panelen nodig.|Linea of Signature in de woonkamer?::Signature (8 mm, klik) sluit vrijwel naadloos aan op een vlakke, rechte ondergrond: de wand leest als één vlak. Linea (5 mm, stomp) heeft een zichtbare voeg, die je afwerkt met een tussenprofiel of kit in kleur.|Moet de hele wand vol?::Nee. Een vlak van twee of drie panelen achter de tv of de bank kan ook. De randen werk je af met eindprofielen.|Kan ik eerst een staal zien?::Ja. Bestel tot vijf stalen gratis; je betaalt alleen € 6,95 verzending. Of bekijk de panelen op ware grootte in onze studio in Herwen.
+    {%- when 'vis' -%}pd-vis-woonkamer.jpg
+    {%- when 'vis_decor' -%}811-hout-walnut-classic
+  {%- endcase -%}
+
+{%- when 'slaapkamer' -%}
+  {%- case part -%}
+    {%- when 'label' -%}Slaapkamer
+    {%- when 'kort' -%}Een wand achter het bed maakt een slaapkamer rustig en af. Leer, Japandi en hout geven een zachte, warme uitstraling. De panelen komen in één stuk van 260 of 280 cm hoog en je plaatst ze op een vlakke, droge en schone wand. Je hoeft de hele wand niet te bekleden: een vlak achter het bed, afgewerkt met eindprofielen, kan ook.
+    {%- when 'h_decors' -%}Welke decors passen in de slaapkamer
+    {%- when 'decors_p' -%}Zachte structuren werken goed achter een bed: leer, stof (Japandi) of een donker hout. Vier decors om mee te beginnen:
+    {%- when 'h_kosten' -%}Wat kost een wand achter het bed
+    {%- when 'calc' -%}646-leer-khaki-leather|5mm|3|3,66 m breed × 2,60 m hoog|3 × 122 × 280 cm, ingekort tot 260 cm
+    {%- when 'uitv' -%}Zichtbare voeg, af te werken met een tussenprofiel of kit in kleur. De lijnen geven een wand achter het bed ritme.
+    {%- when 'h_plaatsen' -%}Plaatsen achter het bed
+    {%- when 'plaatsen_p' -%}Je plaatst de panelen op een vlakke, droge en schone wand: stucwerk, gipsplaat, beton of bestaande tegels. Zaag sparingen voor stopcontacten en schakelaars naast het bed.
+    {%- when 'ond' -%}Afstoffen of afnemen met een zachte, vochtige doek is genoeg. Gebruik geen schuurmiddelen.
+    {%- when 'proj' -%}uitbouw-met-luxe-leren-wandpanelen-en-antraciet-profielen|Uitbouw met leren wandpanelen|646 Khaki · antraciet profielen|646-leer-khaki-leather
+    {%- when 'faq' -%}Moet de hele wand vol?::Nee. Een vlak van twee of drie panelen achter het bed kan ook. De randen werk je af met eindprofielen.|Welke decors voelen zacht aan?::Leer en Japandi hebben een voelbare structuur; je ziet en voelt ze het best met een staal.|Hoeveel panelen heb ik nodig?::Deel de breedte van de wand door 1,22 en rond naar boven af. Een wand van 3,66 m breed is precies drie panelen.|Kan ik eerst een staal zien?::Ja. Bestel tot vijf stalen gratis; je betaalt alleen € 6,95 verzending. Of bekijk de panelen op ware grootte in onze studio in Herwen.
+    {%- when 'vis' -%}pd-vis-slaapkamer.jpg
+    {%- when 'vis_decor' -%}646-leer-khaki-leather
+  {%- endcase -%}
+
+{%- when 'kantoor' -%}
+  {%- case part -%}
+    {%- when 'label' -%}Kantoor
+    {%- when 'kort' -%}Een rustige wand maakt een werkplek prettiger. Japandi en licht hout geven een kalme, professionele uitstraling; wil je ook iets doen aan de akoestiek, combineer dan met akupanelen (lamellen op vilt). De panelen komen in één stuk van 260 of 280 cm hoog en je plaatst ze op een vlakke, droge en schone wand.
+    {%- when 'h_decors' -%}Welke decors passen op kantoor
+    {%- when 'decors_p' -%}Japandi en licht hout houden een werkplek rustig; akupanelen geven ritme en zijn bedoeld voor een betere akoestiek. Vier opties om mee te beginnen:
+    {%- when 'h_kosten' -%}Wat kost een kantoorwand
+    {%- when 'calc' -%}619-japanse-stof-japaneses-style-jade|5mm|3|3,66 m breed × 2,60 m hoog|3 × 122 × 280 cm, ingekort tot 260 cm
+    {%- when 'uitv' -%}Zichtbare voeg, af te werken met een tussenprofiel of kit in kleur, zoals de zwarte tussenprofielen in ons kantoorproject.
+    {%- when 'h_plaatsen' -%}Plaatsen op kantoor
+    {%- when 'plaatsen_p' -%}Je plaatst de panelen op een vlakke, droge en schone wand: stucwerk, gipsplaat, beton of bestaande tegels. Zaag sparingen voor stopcontacten en schakelaars.
+    {%- when 'ond' -%}Afstoffen of afnemen met een zachte, vochtige doek is genoeg. Gebruik geen schuurmiddelen.
+    {%- when 'proj' -%}kantoorruimte-in-japanse-stijl-japansestof-wandpanelen-akupanelen-puredeco|Kantoor in Japanse stijl|619 Jade met akupanelen|619-japanse-stof-japaneses-style-jade
+    {%- when 'faq' -%}Verbeteren wandpanelen de akoestiek?::Daarvoor zijn akupanelen bedoeld: lamellen van 21 mm op vilt. Je kunt ze combineren met wandpanelen, zoals in ons kantoorproject.|Linea of Signature op kantoor?::Signature (8 mm, klik) sluit vrijwel naadloos aan op een vlakke, rechte ondergrond. Linea (5 mm, stomp) heeft een zichtbare voeg, die je afwerkt met een tussenprofiel of kit in kleur.|Hoeveel panelen heb ik nodig?::Deel de breedte van de wand door 1,22 en rond naar boven af. Een wand van 3,66 m breed is precies drie panelen.|Kan ik eerst een staal zien?::Ja. Bestel tot vijf stalen gratis; je betaalt alleen € 6,95 verzending. Of bekijk de panelen op ware grootte in onze studio in Herwen.
+    {%- when 'vis' -%}pd-vis-kantoor.jpg
+    {%- when 'vis_decor' -%}619-japanse-stof-japaneses-style-jade
+  {%- endcase -%}
+
+{%- endcase -%}

@@ -48,11 +48,14 @@
         endif
       endif
     endfor
-    assign gids_bk_url = blog.url | append: '?view=gids-badkamer'
+    comment
+      Gidslinks: het artikel 'wandpanelen-<ruimte>' als dat bestaat, anders (alleen H1-test) de voorbeeldweergave.
+    endcomment
+    assign guide_urls = '|'
     for a in blog.articles limit: 50
       assign ah = a.handle | split: '/' | last
-      if ah == 'wandpanelen-badkamer'
-        assign gids_bk_url = a.url
+      if ah contains 'wandpanelen-'
+        assign guide_urls = guide_urls | append: ah | append: '=' | append: a.url | append: '|'
       endif
     endfor
   -%}
@@ -104,9 +107,14 @@
 <h2 id="ruimtes">In welke ruimtes passen ze?</h2>
 <p>Wandpanelen passen in de woonkamer, slaapkamer, hal, keuken, badkamer en in kantoren en horeca. Omdat ze waterbestendig zijn, kun je ze in de badkamer en keuken gebruiken. Vermijd wel plekken waar water blijft staan.</p>
 <ul>
-  <li><a href="{{ gids_bk_url }}">Wandpanelen in de badkamer</a>: decors, uitvoering, kosten en plaatsen over tegels.</li>
-  <li><a href="/blogs/nieuws/inspiratie-showcase-keukenwand-met-luxe-marmerlook-wandpaneel-pandora-slate-glans">Keukenwand in Pandora Slate</a>: een project in marmerlook.</li>
-  <li><a href="/blogs/nieuws/kantoorruimte-in-japanse-stijl-japansestof-wandpanelen-akupanelen-puredeco">Kantoor in Japanse stijl</a>: Japandi met akupanelen.</li>
+  {%- assign g_rooms = 'badkamer,toilet,keuken,woonkamer,slaapkamer,kantoor' | split: ',' -%}
+  {%- assign g_txt = 'decors, uitvoering, kosten en plaatsen over tegels|weinig panelen, direct over de tegels|keukenwand en achterwand|tv-wand en accentwand van vloer tot plafond|een wand achter het bed|Japandi en hout, met akupanelen' | split: '|' -%}
+  {%- assign g_ttl = 'in de badkamer|in het toilet|in de keuken|in de woonkamer|in de slaapkamer|op kantoor' | split: '|' -%}
+  {%- for r in g_rooms -%}
+    {%- assign gk = '|wandpanelen-' | append: r | append: '=' -%}
+    {%- if guide_urls contains gk -%}{%- assign gurl = guide_urls | split: gk | last | split: '|' | first -%}{%- else -%}{%- assign gurl = blog.url | append: '?view=gids-' | append: r -%}{%- endif -%}
+  <li><a href="{{ gurl }}">Wandpanelen {{ g_ttl[forloop.index0] }}</a>: {{ g_txt[forloop.index0] }}.</li>
+  {%- endfor -%}
 </ul>
 
 <h2 id="monteren">Zo monteer je wandpanelen</h2>
