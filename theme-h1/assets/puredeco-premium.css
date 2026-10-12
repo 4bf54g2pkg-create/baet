@@ -3050,8 +3050,11 @@ b, strong { font-weight: 600; }
 /* ===== Inspiratie v3: visualisaties (renders op schaal met echte decors) ===== */
 .pdi-tag--vis { background: rgba(245, 242, 236, 0.9); color: var(--pdi-ink); }
 .pdi-hero { margin: 3.2rem auto 0; position: relative; }
-.pdi-hero img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 55%; }
-@media (min-width: 990px) { .pdi-hero img { aspect-ratio: 21 / 9; } }
+.pdi-hero__media { position: relative; overflow: hidden; aspect-ratio: 16 / 9; background: #2A2420; }
+@media (min-width: 990px) { .pdi-hero__media { aspect-ratio: 21 / 9; } }
+.pdi-hero__media img, .pdi-hero__vid { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
+.pdi-hero__vid { opacity: 0; transition: opacity 0.8s ease; }
+.pdi-hero__vid.is-on { opacity: 1; }
 .pdi-hero figcaption { display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; align-items: center; margin-top: 1rem; font-size: 1.3rem; color: var(--pdi-stone); }
 .pdi-hero .pdi-tag, .pdg-vis .pdi-tag { position: static; }
 .pdi-room__img { position: relative; display: block; overflow: hidden; background: #E9E3D8; }

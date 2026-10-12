@@ -60,7 +60,11 @@
 
   {%- assign hero = 'pd-vis-woonkamer.jpg' -%}
   <figure class="pdi-hero pdi-wrap">
-    <img src="{{ hero | asset_img_url: '1800x' }}" srcset="{{ hero | asset_img_url: '900x' }} 900w, {{ hero | asset_img_url: '1200x' }} 1200w, {{ hero | asset_img_url: '1800x' }} 1800w" sizes="(min-width: 1320px) 1176px, 100vw" width="1800" height="1200" fetchpriority="high" alt="Visualisatie: tv-wand van vloer tot plafond met wandpanelen in 811 Walnut Classic">
+    <div class="pdi-hero__media">
+      <img src="{{ hero | asset_img_url: '1800x' }}" srcset="{{ hero | asset_img_url: '900x' }} 900w, {{ hero | asset_img_url: '1200x' }} 1200w, {{ hero | asset_img_url: '1800x' }} 1800w" sizes="(min-width: 1320px) 1176px, 100vw" width="1800" height="1200" fetchpriority="high" alt="Visualisatie: tv-wand van vloer tot plafond met wandpanelen in 811 Walnut Classic">
+      {%- comment -%} Korte camerabeweging (visualisatie, tools/render/video_woonkamer.py). Laadt pas na de pagina en niet bij 'minder beweging'. {%- endcomment -%}
+      <video class="pdi-hero__vid" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-pdi-vid="{{ 'pd-vis-woonkamer.mp4' | asset_url }}"></video>
+    </div>
     <figcaption><span class="pdi-tag pdi-tag--vis">Visualisatie</span><span>Tv-wand in 811 Walnut Classic · Signature 8 mm · 4 panelen van 122 × 280 cm</span></figcaption>
   </figure>
 
@@ -240,6 +244,22 @@
     <p>Eerst voelen? <a href="/pages/sample">Bestel tot 5 stalen gratis →</a></p>
   </div>
 </div>
+
+<script>
+  (function () {
+    var v = document.querySelector('[data-pdi-vid]');
+    if (!v || !window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var start = function () {
+      v.src = v.getAttribute('data-pdi-vid');
+      v.addEventListener('playing', function () { v.classList.add('is-on'); }, { once: true });
+      var p = v.play(); if (p && p.catch) p.catch(function () {});
+    };
+    if (document.readyState === 'complete') start(); else window.addEventListener('load', start, { once: true });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (e) { if (!v.src) return; e[0].isIntersecting ? v.play().catch(function () {}) : v.pause(); }).observe(v);
+    }
+  })();
+</script>
 
 <script type="application/ld+json">
 {
