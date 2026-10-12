@@ -245,7 +245,8 @@
         "padding_bottom": 18,
         "show_section_divider": false,
         "divider_width": "fixed"
-      }
+      },
+      "disabled": true
     },
     "1776857862bed0fb52": {
       "type": "apps",
@@ -264,7 +265,8 @@
         "include_margins": true,
         "padding_top": 0,
         "padding_bottom": 0
-      }
+      },
+      "disabled": true
     },
     "contact_form_it8mNq": {
       "type": "contact-form",

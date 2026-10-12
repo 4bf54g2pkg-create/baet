@@ -257,3 +257,8 @@ Alleen H1-test (194824929546). Live thema, URL's, blog en artikelen niet aangepa
 - **Opruimen in beheer:** `assets/pd-test.mp4` (2 KB testbestand) staat nog in H1-test; verwijderen kan alleen in Shopify-beheer (thema → code bewerken).
 - **Livegang (met akkoord, winkeldata):** per ruimte een artikel 'wandpanelen-<ruimte>' met sjabloon 'gids' in blog Nieuws; links schakelen vanzelf.
 - md5: pd-inspiratie.liquid 2b5fdcc5…, pd-gids.liquid 2a51f1f0…, pd-gids-tekst.liquid effb316e…, pd-insp.liquid fb3741c5…, pd-insp-tekst.liquid 968a5b4f…, puredeco-premium.css b6ad66a7…, blog.json 013e033c….
+
+## 12 okt: aanmeldformulier zakelijke klant van /pages/form (H1-test)
+- Op verzoek weggehaald: kop "Meld je aan als zakelijke klant" (`rich_text_UW7KqJ`) en het Sami Wholesale-registratieformulier (`1776857862bed0fb52`) in `templates/page.btbcta.json` staan op `disabled` (uitgeschakeld, niet verwijderd: terug te zetten in de editor). De pagina eindigt nu met "Bespreek je project" (projectaanvraag).
+- Pagina en URL /pages/form blijven bestaan (Projecten, advertenties). Live thema niet aangepast.
+- Open: footermenu `pd-footer-zakelijk` heeft nog "Zakelijk account" → /pages/form; dat linkt nu naar de Projectenpagina zonder aanmelding.
