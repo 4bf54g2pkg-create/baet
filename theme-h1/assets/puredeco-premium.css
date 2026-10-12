@@ -3074,3 +3074,78 @@ b, strong { font-weight: 600; }
   .pdg-toc--row::-webkit-scrollbar { display: none; }
   .pdg-toc--row a { white-space: nowrap; }
 }
+
+/* ===== Dealers: Zakelijk-menu, homepageblok, doorverwijzing, aanmelden in twee stappen ===== */
+.pd-zak { position: relative; display: inline-flex; }
+.pd-zak__btn { display: inline-flex; align-items: center; gap: 0.6rem; background: none; border: 0; font: inherit; cursor: pointer; }
+.pd-zak__chev { width: 1rem; height: 0.6rem; transition: transform 0.2s; }
+.pd-zak.is-open .pd-zak__chev { transform: rotate(180deg); }
+.pd-zak__panel { position: absolute; right: -1rem; top: calc(100% + 1.2rem); width: 58rem; display: grid; grid-template-columns: 1fr 1fr; background: #F5F2EC; border: 1px solid #DDD6CA; box-shadow: 0 2.2rem 4.8rem rgba(21, 20, 19, 0.14); z-index: 40; opacity: 0; visibility: hidden; transform: translateY(-0.4rem); transition: opacity 0.18s, transform 0.18s, visibility 0s 0.18s; text-align: left; }
+.pd-zak::after { content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 1.4rem; }
+.pd-zak.is-open .pd-zak__panel { opacity: 1; visibility: visible; transform: none; transition: opacity 0.18s, transform 0.18s; }
+.pd-zak__door { display: flex; flex-direction: column; gap: 0.5rem; padding: 2.4rem 2.4rem 2.2rem; color: #151413; text-decoration: none; border-right: 1px solid #DDD6CA; }
+.pd-zak__door:nth-child(2) { border-right: 0; }
+.pd-zak__door:hover { background: #EFEAE1; }
+.pd-zak__ey { font-size: 1.05rem; letter-spacing: 0.16em; text-transform: uppercase; color: #6E675E; }
+.pd-zak__t { font-family: var(--font-heading-family); font-size: 2.6rem; line-height: 1.1; }
+.pd-zak__d { font-size: 1.35rem; line-height: 1.55; color: #6E675E; }
+.pd-zak__go { margin-top: 0.6rem; font-size: 1.35rem; align-self: flex-start; border-bottom: 1px solid #151413; }
+.pd-zak__foot { grid-column: 1 / -1; display: flex; justify-content: space-between; margin: 0; padding: 1.2rem 2.4rem; border-top: 1px solid #DDD6CA; font-size: 1.3rem; color: #6E675E; }
+.pd-zak__foot a { color: #151413; text-decoration: none; border-bottom: 1px solid #151413; }
+.pd-md-zak { list-style: none; margin: 2rem 0 1.6rem; padding: 1.6rem 0 0; border-top: 1px solid #DDD6CA; }
+.pd-md-zak__k { margin: 0 0 0.8rem; font-size: 1.1rem; letter-spacing: 0.2em; text-transform: uppercase; color: #8C6A4A; }
+.pd-md-zak a { display: block; padding: 0.8rem 0; font-size: 1.6rem; color: #151413; text-decoration: none; }
+
+.ph-dealer { background: #EFEAE1; }
+.ph-dealer__grid { display: grid; gap: 3.2rem; align-items: center; }
+@media (min-width: 990px) { .ph-dealer__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 7.2rem; } }
+.ph-dealer__img { position: relative; overflow: hidden; aspect-ratio: 4 / 5; background: #2A2420; }
+@media (min-width: 990px) { .ph-dealer__img { aspect-ratio: 1 / 1; } }
+.ph-dealer__img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; }
+.ph-dealer__txt .ph-h2 { margin-top: 1.6rem; }
+.ph-dealer__list { list-style: none; margin: 2.8rem 0 0; padding: 0; display: grid; gap: 0; border-top: 1px solid #DDD6CA; }
+.ph-dealer__list li { padding: 1.4rem 0; border-bottom: 1px solid #DDD6CA; font-size: 1.45rem; color: #6E675E; }
+.ph-dealer__list strong { display: block; font-weight: 600; color: #151413; }
+.ph-dealer__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1.6rem 2.8rem; margin-top: 3.2rem; }
+
+.pp-dealerbar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.6rem 2rem; margin: 0; padding: 1.2rem 2rem; background: #E9E3D8; font-size: 1.4rem; color: #3A3733; }
+@media (min-width: 990px) { .pp-dealerbar { padding: 1.2rem 7.2rem; } }
+.pp-dealerbar a { color: #151413; text-decoration: none; border-bottom: 1px solid #151413; white-space: nowrap; }
+
+.vp-stepper { list-style: none; margin: 2.8rem 0 2.4rem; padding: 0; display: grid; gap: 0; border-top: 1px solid #DDD6CA; }
+.vp-stepper__i { display: grid; grid-template-columns: 4rem 1fr; padding: 1.4rem 0; border-bottom: 1px solid #DDD6CA; font-size: 1.6rem; color: #6E675E; }
+.vp-stepper__i span { grid-row: span 2; font-family: var(--font-heading-family); font-size: 2.6rem; line-height: 1; color: #B9AE9F; }
+.vp-stepper__i small { font-size: 1.3rem; color: #6E675E; }
+.vp-stepper__i.is-on { color: #151413; }
+.vp-stepper__i.is-on span { color: #8C6A4A; }
+.vp-wish { border: 0; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 2rem; }
+@media (max-width: 749px) { .vp-wish { grid-template-columns: 1fr; } }
+.vp-wish legend { margin-bottom: 1rem; padding: 0; font-size: 1.3rem; color: #151413; }
+.pp-form__form .vp-wish label { flex-direction: row; align-items: center; gap: 1rem; min-height: 4.8rem; padding: 0 1.4rem; border: 1px solid #DDD6CA; background: #FFFFFF; font-size: 1.4rem; cursor: pointer; }
+.pp-form__form .vp-wish input { width: 1.8rem; min-height: 0; height: 1.8rem; padding: 0; accent-color: #151413; flex: none; }
+.vp-form__small { margin: 0; font-size: 1.3rem; color: #6E675E; }
+.vp-linkbtn { background: none; border: 0; padding: 0; font: inherit; color: #151413; text-decoration: underline; text-underline-offset: 0.3rem; cursor: pointer; }
+.vp-done { grid-column: 1 / -1; padding: 2.4rem; background: #FFFFFF; border: 1px solid #DDD6CA; font-size: 1.5rem; line-height: 1.6; }
+.vp-done__t { margin: 0.8rem 0; font-family: var(--font-heading-family); font-size: 2.6rem; line-height: 1.15; }
+.vp-step2 { margin-top: 3.6rem; padding-top: 3.2rem; border-top: 1px solid #151413; scroll-margin-top: 12rem; }
+.vp-step2[hidden] { display: none; }
+.vp-step2__h { margin: 0.8rem 0 0.6rem; font-family: var(--font-heading-family); font-weight: 500; font-size: clamp(2.6rem, 2.2rem + 0.8vw, 3.4rem); line-height: 1.1; }
+.vp-step2__t { margin: 0 0 2.4rem; font-size: 1.5rem; line-height: 1.6; color: #3A3733; }
+/* Sami-registratieformulier in de huisstijl */
+.vp-sami, .vp-sami * { font-family: inherit !important; box-shadow: none !important; }
+.vp-sami form, .vp-sami > div { max-width: none !important; width: 100% !important; margin: 0 !important; padding: 0 !important; background: transparent !important; border: 0 !important; }
+.vp-sami label { font-size: 1.3rem !important; color: #151413 !important; font-weight: 400 !important; }
+.vp-sami input:not([type=checkbox]):not([type=radio]), .vp-sami select, .vp-sami textarea { width: 100% !important; min-height: 4.8rem !important; padding: 1.2rem 1.4rem !important; border: 1px solid #DDD6CA !important; border-radius: 0 !important; background: #FFFFFF !important; font-size: 1.5rem !important; color: #151413 !important; }
+.vp-sami input:focus, .vp-sami select:focus, .vp-sami textarea:focus { outline: 2px solid #151413 !important; outline-offset: -1px; }
+.vp-sami button, .vp-sami [type=submit] { width: 100% !important; min-height: 5.4rem !important; border: 0 !important; border-radius: 0 !important; background: #151413 !important; color: #F5F2EC !important; font-size: 1.6rem !important; letter-spacing: 0 !important; text-transform: none !important; cursor: pointer; }
+.vp-sami h1, .vp-sami h2, .vp-sami h3 { display: none !important; }
+/* Sami: eigen kader en groene knop van de app overschrijven */
+.vp-sami .boxed-form, .vp-sami .samitaWS-registrationForm-app, .vp-sami .samitaWS-registrationForm-app.boxed-layout, .vp-sami .samitaWS-container { max-width: none !important; width: 100% !important; margin: 0 !important; padding: 0 !important; background: transparent !important; border: 0 !important; }
+.vp-sami .samitaWS-registrationForm-app button.action.submit.classic-button, .vp-sami .samitaWS-registrationForm-app button[type=submit] { width: 100% !important; min-height: 5.4rem !important; background: #151413 !important; border: 0 !important; border-radius: 0 !important; color: #F5F2EC !important; font-size: 1.6rem !important; font-weight: 400 !important; }
+.vp-sami .samitaWS-registrationForm-app button.action.submit.classic-button:hover { background: #000 !important; }
+.vp-sami .samitaWS-heading, .vp-sami .samitaWS-description.description { display: none !important; }
+@media (max-width: 749px) {
+  .pd-zak__panel { position: fixed; left: 1.2rem; right: 1.2rem; width: auto; grid-template-columns: 1fr; }
+  .pd-zak__door { border-right: 0; border-bottom: 1px solid #DDD6CA; padding: 1.8rem; }
+  .pd-zak__d { display: none; }
+}

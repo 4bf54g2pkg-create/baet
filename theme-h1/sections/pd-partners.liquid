@@ -1,7 +1,6 @@
 {%- comment -%}
   Puredeco · verkooppartners (pagina /pages/verkoopparters) in de huisstijl.
-  Inhoud overgenomen uit de vorige versie van de pagina; aanmelden gaat via het Shopify-contactformulier op deze pagina
-  (de oude knop linkte naar het myshopify-domein).
+  Inhoud overgenomen uit de vorige versie van de pagina. Aanmelden: stap 1 aanvraag (contactformulier), stap 2 zakelijk account (Sami Wholesale).
 {%- endcomment -%}
 {%- liquid
   assign s = section.settings
@@ -16,7 +15,7 @@
       <h1 class="st-hero__h">Word verkooppartner<br>van Puredeco.</h1>
       <p class="st-hero__t">{{ s.intro }}</p>
       <div class="ph-btns">
-        <a class="ph-btn ph-btn--paper" href="#vp-form">Meld je aan</a>
+        <a class="ph-btn ph-btn--paper" href="#vp-form">Word dealer</a>
         <a class="ph-btn ph-btn--line-light" href="{{ s.studio_url | default: '/pages/showroom' }}">Kom eerst kijken in Herwen</a>
       </div>
       {%- if s.price_text != blank -%}
@@ -71,46 +70,132 @@
         <h2 class="ph-h2">Van aanmelding tot display in je zaak</h2>
       </div>
       <ol class="st-steps__list" role="list">
-        <li><span class="st-steps__n">01</span><h3>Aanmelden</h3><p>Laat hieronder je gegevens achter. Kennismaken is vrijblijvend.</p></li>
+        <li><span class="st-steps__n">01</span><h3>Aanmelden en account</h3><p>Vertel wat je zoekt en maak je zakelijke account aan. Kennismaken is vrijblijvend.</p></li>
         <li><span class="st-steps__n">02</span><h3>Persoonlijk gesprek</h3><p>We bespreken je zaak en kijken of je regio nog beschikbaar is. We werken bewust met een klein netwerk van partners.</p></li>
         <li><span class="st-steps__n">03</span><h3>Start in je regio</h3><p>Bij een match reserveren we je regio, ontvang je het showroompakket en kun je direct verkopen.</p></li>
       </ol>
     </div>
   </section>
 
-  {%- comment -%} Aanmelden {%- endcomment -%}
+  {%- comment -%}
+    Aanmelden in twee stappen:
+    1. Aanvraag (Shopify-contactformulier → mail naar Puredeco): wie je bent, waar je interesse in hebt en een korte toelichting.
+    2. Zakelijk account aanmaken. De winkel gebruikt de nieuwe klantaccounts van Shopify, dus registreren met wachtwoord loopt via
+       het Sami Wholesale-appblok in deze sectie (registratieformulier). Stap 2 verschijnt na stap 1; de gegevens uit stap 1 worden alvast ingevuld.
+  {%- endcomment -%}
   <section class="ph-s pp-form vp-form" id="vp-form">
     <div class="ph-wrap pp-form__grid">
       <div>
-        <p class="ph-k ph-k--bronze">Aanmelden</p>
-        <h2 class="ph-h2">Interesse in een partnership?</h2>
-        <p class="ph-lead pp-form__lead">Laat je gegevens achter, dan nemen we contact met je op voor een vrijblijvende kennismaking.</p>
-        <p class="vp-form__alt">Liever direct contact? Bel <a href="tel:{{ s.phone | remove: ' ' }}">{{ s.phone }}</a> of <a href="https://wa.me/{{ wa }}?text={{ 'Hallo Puredeco, ik heb interesse in een verkooppartnerschap.' | url_encode }}" target="_blank" rel="noopener">app ons</a>.</p>
+        <p class="ph-k ph-k--bronze">Aanmelden als dealer</p>
+        <h2 class="ph-h2">In twee stappen dealer</h2>
+        <ol class="vp-stepper" role="list">
+          <li class="vp-stepper__i is-on" data-vp-step="1"><span>1</span>Jouw aanvraag<small>Wie je bent en wat je zoekt</small></li>
+          <li class="vp-stepper__i" data-vp-step="2"><span>2</span>Zakelijk account<small>Inloggen en bestellen tegen zakelijke prijzen</small></li>
+        </ol>
+        <p class="vp-form__alt">Liever direct contact? Bel <a href="tel:{{ s.phone | remove: ' ' }}">{{ s.phone }}</a> of <a href="https://wa.me/{{ wa }}?text={{ 'Hallo Puredeco, ik heb interesse om dealer te worden.' | url_encode }}" target="_blank" rel="noopener">app ons</a>.</p>
+        <p class="vp-form__alt">Al zakelijk klant? <a href="{{ routes.account_login_url }}">Inloggen</a>.</p>
       </div>
-      {%- form 'contact', id: 'vp-contact', class: 'pp-form__form' -%}
-        <input type="hidden" name="contact[Onderwerp]" value="Aanmelding verkooppartner">
-        {%- if form.posted_successfully? -%}
-          <p class="pp-form__ok">Dank je. We hebben je aanmelding ontvangen en nemen snel contact met je op.</p>
-        {%- else -%}
-          {%- if form.errors -%}<p class="pp-form__err">Controleer de velden: {{ form.errors | default_errors }}</p>{%- endif -%}
-          <label><span>Bedrijf</span><input type="text" name="contact[Bedrijf]" autocomplete="organization" required></label>
-          <label><span>Naam</span><input type="text" name="contact[name]" autocomplete="name" required></label>
-          <label><span>E-mail</span><input type="email" name="contact[email]" autocomplete="email" required></label>
-          <label><span>Telefoon</span><input type="tel" name="contact[phone]" autocomplete="tel"></label>
-          <label><span>Plaats</span><input type="text" name="contact[Plaats]" autocomplete="address-level2"></label>
-          <label><span>Type bedrijf</span>
-            <select name="contact[Type bedrijf]">
-              <option value="">Kies…</option>
-              {%- for w in who -%}{%- assign w2 = w | strip -%}{%- if w2 != blank -%}<option>{{ w2 }}</option>{%- endif -%}{%- endfor -%}
-              <option>Anders</option>
-            </select>
-          </label>
-          <label class="pp-form__wide"><span>Vertel kort over je zaak (optioneel)</span><textarea name="contact[body]" rows="4"></textarea></label>
-          <button type="submit" class="pp-form__submit pp-form__wide">Verstuur aanmelding</button>
-        {%- endif -%}
-      {%- endform -%}
+
+      <div class="vp-flow" data-vp-flow>
+        {%- form 'contact', id: 'vp-contact', class: 'pp-form__form vp-step1' -%}
+          <input type="hidden" name="contact[Onderwerp]" value="Aanmelding dealer">
+          {%- if form.posted_successfully? -%}
+            <div class="vp-done" data-vp-posted>
+              <p class="ph-k ph-k--bronze">Stap 1 ontvangen</p>
+              <p class="vp-done__t">Dank je, we hebben je aanvraag ontvangen.</p>
+              <p>Maak hieronder je zakelijke account aan. Na goedkeuring zie je na inloggen de zakelijke prijzen. We nemen ook contact met je op voor een kennismaking.</p>
+            </div>
+          {%- else -%}
+            {%- if form.errors -%}<p class="pp-form__err">Controleer de velden: {{ form.errors | default_errors }}</p>{%- endif -%}
+            <label><span>Bedrijf *</span><input type="text" name="contact[Bedrijf]" autocomplete="organization" required data-vp-k="company"></label>
+            <label><span>Naam *</span><input type="text" name="contact[name]" autocomplete="name" required data-vp-k="name"></label>
+            <label><span>E-mail *</span><input type="email" name="contact[email]" autocomplete="email" required data-vp-k="email"></label>
+            <label><span>Telefoon *</span><input type="tel" name="contact[phone]" autocomplete="tel" required data-vp-k="phone"></label>
+            <label><span>Plaats *</span><input type="text" name="contact[Plaats]" autocomplete="address-level2" required data-vp-k="city"></label>
+            <label><span>Type bedrijf</span>
+              <select name="contact[Type bedrijf]">
+                <option value="">Kies…</option>
+                {%- for w in who -%}{%- assign w2 = w | strip -%}{%- if w2 != blank -%}<option>{{ w2 }}</option>{%- endif -%}{%- endfor -%}
+                <option>Anders</option>
+              </select>
+            </label>
+            <fieldset class="pp-form__wide vp-wish">
+              <legend>Waar heb je interesse in?</legend>
+              <label><input type="checkbox" name="contact[Interesse showroomdisplay]" value="ja"><span>Showroomdisplay in mijn zaak</span></label>
+              <label><input type="checkbox" name="contact[Interesse zakelijk inkopen]" value="ja"><span>Inkopen voor mijn klanten tegen zakelijke prijzen</span></label>
+              <label><input type="checkbox" name="contact[Interesse stalen]" value="ja"><span>Stalen en presentatiemateriaal</span></label>
+              <label><input type="checkbox" name="contact[Interesse anders]" value="ja"><span>Anders, zie toelichting</span></label>
+            </fieldset>
+            <label class="pp-form__wide"><span>Wat wil je precies? Korte toelichting *</span><textarea name="contact[body]" rows="4" required placeholder="Bijvoorbeeld: welke decors, hoeveel ruimte je in je zaak hebt, of je al wandpanelen verkoopt."></textarea></label>
+            <button type="submit" class="pp-form__submit pp-form__wide">Verstuur en ga naar stap 2</button>
+            <p class="pp-form__wide vp-form__small">Al een aanvraag gedaan? <button type="button" class="vp-linkbtn" data-vp-open2>Direct een zakelijk account aanmaken</button></p>
+          {%- endif -%}
+        {%- endform -%}
+
+        <div class="vp-step2" id="vp-account" data-vp-step2 {% unless form.posted_successfully? %}hidden{% endunless %}>
+          <p class="ph-k ph-k--bronze">Stap 2</p>
+          <h3 class="vp-step2__h">Maak je zakelijke account</h3>
+          <p class="vp-step2__t">Met je zakelijke account log je in en bestel je tegen zakelijke prijzen, zodra we je account hebben goedgekeurd.</p>
+          <div class="vp-sami">
+            {%- for block in section.blocks -%}
+              {%- if block.type == '@app' -%}{% render block %}{%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+
+  <script>
+    (function () {
+      var flow = document.querySelector('[data-vp-flow]');
+      if (!flow) return;
+      var KEY = 'pd-dealer-aanvraag';
+      var step2 = flow.querySelector('[data-vp-step2]');
+      var form = flow.querySelector('form');
+      var steps = document.querySelectorAll('[data-vp-step]');
+      var show2 = function (scroll) {
+        step2.hidden = false;
+        steps.forEach(function (s) { s.classList.toggle('is-on', s.getAttribute('data-vp-step') === '2'); });
+        prefill();
+        if (scroll) step2.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+      // stap 1 onthouden voor het invullen van stap 2 (alleen in deze browsersessie)
+      if (form && !flow.querySelector('[data-vp-posted]')) {
+        form.addEventListener('submit', function () {
+          var d = {};
+          form.querySelectorAll('[data-vp-k]').forEach(function (i) { d[i.getAttribute('data-vp-k')] = i.value.trim(); });
+          try { sessionStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {}
+        });
+      }
+      var open2 = flow.querySelector('[data-vp-open2]');
+      if (open2) open2.addEventListener('click', function () { show2(true); });
+      if (flow.querySelector('[data-vp-posted]') || location.hash === '#vp-account') show2(true);
+
+      // Sami-velden vullen op label/placeholder (het formulier wordt door de app opgebouwd)
+      function prefill() {
+        var d; try { d = JSON.parse(sessionStorage.getItem(KEY) || 'null'); } catch (e) { d = null; }
+        if (!d) return;
+        var parts = (d.name || '').split(' ');
+        var map = { 'bedrijf': d.company, 'voornaam': parts.shift(), 'achternaam': parts.join(' '), 'e-mail': d.email, 'telefoon': d.phone, 'stad': d.city, 'plaats': d.city };
+        var fill = function () {
+          var done = 0;
+          step2.querySelectorAll('input').forEach(function (i) {
+            var k = (i.getAttribute('placeholder') || i.getAttribute('aria-label') || '').trim().toLowerCase();
+            if (map[k] && !i.value) {
+              var set = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
+              set.call(i, map[k]); i.dispatchEvent(new Event('input', { bubbles: true })); i.dispatchEvent(new Event('change', { bubbles: true })); done++;
+            }
+          });
+          return done;
+        };
+        if (fill()) return;
+        var mo = new MutationObserver(function () { if (fill()) mo.disconnect(); });
+        mo.observe(step2, { childList: true, subtree: true });
+        setTimeout(function () { mo.disconnect(); }, 15000);
+      }
+    })();
+  </script>
 
   {%- comment -%} Veelgestelde vragen {%- endcomment -%}
   {%- capture faq -%}{%- for block in section.blocks -%}{%- if block.type == 'faq' and block.settings.q != blank -%}x{%- endif -%}{%- endfor -%}{%- endcapture -%}
@@ -155,6 +240,7 @@
       { "type": "text", "id": "title", "label": "Titel" },
       { "type": "text", "id": "text", "label": "Toelichting" }
     ]},
+    { "type": "@app" },
     { "type": "faq", "name": "Vraag", "settings": [
       { "type": "text", "id": "q", "label": "Vraag" },
       { "type": "richtext", "id": "a", "label": "Antwoord" }

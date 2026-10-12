@@ -238,6 +238,34 @@
     </div>
   </section>
 
+  {%- comment -%} 5b · Dealers: tweede zakelijke ingang naast Projects (artboard Dealers, punt 02) {%- endcomment -%}
+  {%- if s.show_dealers -%}
+  <section class="ph-s ph-dealer" id="dealers">
+    <div class="ph-wrap ph-dealer__grid">
+      <div class="ph-dealer__img">
+        {%- if s.dealer_image != blank -%}
+          {{ s.dealer_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '500, 800, 1200', sizes: '(min-width: 990px) 45vw, 100vw', alt: 'Showroomdisplay met Puredeco-wandpanelen' }}
+          {%- if s.dealer_is_visual -%}<span class="ph-tag">Visualisatie van het showroomdisplay</span>{%- endif -%}
+        {%- endif -%}
+      </div>
+      <div class="ph-dealer__txt">
+        <p class="ph-k ph-k--bronze">Voor showrooms en vakhandel</p>
+        <h2 class="ph-h2">Word dealer van Puredeco</h2>
+        <p class="ph-lead">Verkoop onze wandpanelen in je eigen zaak. Je krijgt een showroomdisplay met onze hardlopers, zakelijke prijzen en persoonlijke ondersteuning. We werken met een beperkt aantal partners per regio.</p>
+        <ul class="ph-dealer__list" role="list">
+          <li><strong>Showroomdisplay</strong>met onze populairste panelen</li>
+          <li><strong>Zakelijke prijzen</strong>na inloggen met je zakelijke account</li>
+          <li><strong>Exclusief in je regio</strong>beperkt aantal partners</li>
+        </ul>
+        <div class="ph-dealer__cta">
+          <a class="ph-btn ph-btn--ink" href="{{ s.dealer_url | default: '/pages/verkoopparters' }}">Word dealer</a>
+          <a class="ph-link" href="{{ routes.account_login_url }}">Al zakelijk klant? Inloggen →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+
   {%- comment -%} 6 · Collecties {%- endcomment -%}
   <section class="ph-s ph-coll">
     <div class="ph-wrap">
@@ -439,6 +467,10 @@
     { "type": "image_picker", "id": "wall_detail", "label": "Beeld structuur" },
     { "type": "header", "content": "Puredeco Projects" },
     { "type": "url", "id": "projects_url", "label": "Link projectaanvraag" },
+    { "type": "checkbox", "id": "show_dealers", "label": "Toon blok 'Word dealer' onder Projects", "default": true },
+    { "type": "image_picker", "id": "dealer_image", "label": "Beeld dealers (showroomdisplay)" },
+    { "type": "checkbox", "id": "dealer_is_visual", "label": "Beeld dealers is een visualisatie (toont label)", "default": true },
+    { "type": "url", "id": "dealer_url", "label": "Link dealerpagina" },
     { "type": "image_picker", "id": "sector_image_1", "label": "Beeld hotels" },
     { "type": "image_picker", "id": "sector_image_2", "label": "Beeld horeca" },
     { "type": "image_picker", "id": "sector_image_3", "label": "Beeld kantoren" },

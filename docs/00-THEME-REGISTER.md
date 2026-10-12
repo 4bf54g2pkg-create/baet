@@ -262,3 +262,15 @@ Alleen H1-test (194824929546). Live thema, URL's, blog en artikelen niet aangepa
 - Op verzoek weggehaald: kop "Meld je aan als zakelijke klant" (`rich_text_UW7KqJ`) en het Sami Wholesale-registratieformulier (`1776857862bed0fb52`) in `templates/page.btbcta.json` staan op `disabled` (uitgeschakeld, niet verwijderd: terug te zetten in de editor). De pagina eindigt nu met "Bespreek je project" (projectaanvraag).
 - Pagina en URL /pages/form blijven bestaan (Projecten, advertenties). Live thema niet aangepast.
 - Open: footermenu `pd-footer-zakelijk` heeft nog "Zakelijk account" → /pages/form; dat linkt nu naar de Projectenpagina zonder aanmelding.
+
+## 12 okt: dealers zichtbaar + registreren (H1-test, artboard Dealers punten 01, 02, 03, 05)
+- **Header:** "Professionals" is nu "Zakelijk" met een paneel: Projecten (/pages/form) · Dealer worden (/pages/verkoopparters) · Inloggen zakelijk. Mobiel: paneel over de volle breedte; in het mobiele menu een blok "Zakelijk" (Dealer worden, Inloggen zakelijk).
+- **Homepage:** nieuw blok "Word dealer" onder Puredeco Projects (`pd-home`, instellingen show_dealers, dealer_image = pd-showroomdisplay.jpg met label "Visualisatie van het showroomdisplay", dealer_url).
+- **Projectenpagina:** balk bovenaan "Heb je een showroom, interieurzaak of montagebedrijf? Word dealer van Puredeco →".
+- **Footer (menu pd-footer-zakelijk, alleen H1):** Projecten · Dealer worden · Zakelijk account aanmaken (/pages/verkoopparters#vp-account) · Inloggen zakelijk.
+- **Dealerpagina, aanmelden in twee stappen** (`pd-partners`):
+  1. Aanvraag (contactformulier, onderwerp "Aanmelding dealer"): bedrijf, naam, e-mail, telefoon, plaats, type bedrijf, interesses (showroomdisplay, zakelijk inkopen, stalen, anders) en verplichte toelichting "Wat wil je precies?".
+  2. Zakelijk account: Sami Wholesale-registratieformulier (app-blok in de sectie, formulier 11967), opgemaakt in de huisstijl; gegevens uit stap 1 worden ingevuld. Verschijnt na stap 1, via "Direct een zakelijk account aanmaken" of #vp-account.
+- Waarom via Sami: de winkel gebruikt de nieuwe klantaccounts van Shopify; een eigen registratieformulier met wachtwoord kan daar niet. Goedkeuring en B2B-prijzen regelt Sami.
+- Getest met omleidingen voor in de testomgeving geblokkeerde hosts (myshopify.com, unpkg, cdnjs, reCAPTCHA): formulier verschijnt en wordt vooraf ingevuld. Niet echt verzonden (geen testaccount aangemaakt).
+- Niet gebouwd (op verzoek): "Vind een verkooppunt".

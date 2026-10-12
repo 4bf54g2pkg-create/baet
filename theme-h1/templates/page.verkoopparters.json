@@ -72,6 +72,12 @@
             "q": "Kan ik eerst vrijblijvend kennismaken?",
             "a": "<p>Ja. Laat je gegevens achter via het formulier, of kom langs in Studio Herwen om de panelen in het echt te zien.</p>"
           }
+        },
+        "sami_registratie": {
+          "type": "shopify://apps/sami-wholesale/blocks/app-block-quick-order-form/799b9db0-2c2b-4b20-8675-98acd123fbb2",
+          "settings": {
+            "shortcode": "{SamitaWSRegistrationForm:MTE5Njc=}"
+          }
         }
       },
       "block_order": [
@@ -84,7 +90,8 @@
         "faq_1",
         "faq_2",
         "faq_3",
-        "faq_4"
+        "faq_4",
+        "sami_registratie"
       ],
       "settings": {
         "intro": "Toon onze wandpanelen in je eigen zaak. Je krijgt een showroompakket, zakelijke prijzen en persoonlijke ondersteuning bij verkoop en advies.",
