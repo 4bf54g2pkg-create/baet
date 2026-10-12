@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Dealers zichtbaar maken</title>
+<style>
+@font-face{font-family:'Cormorant';src:url('../../tools/banners/cormorant.woff2') format('woff2');font-weight:300 700}
+@font-face{font-family:'Instrument Sans';src:url('../../tools/banners/instrument.woff2') format('woff2');font-weight:400 700}
+:root{--ink:#151413;--stone:#6E675E;--bronze:#8C6A4A;--line:#DDD6CA;--paper:#F5F2EC;--sand:#E9E3D8}
+*{box-sizing:border-box}
+body{margin:0;background:#DCD5CA;font-family:'Instrument Sans',Arial,sans-serif;color:var(--ink)}
+.board{width:1600px;margin:0 auto;padding:56px 56px 80px;background:var(--paper)}
+.s{font-family:'Cormorant',Georgia,serif;font-weight:500}
+.k{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--bronze)}
+.ey{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--stone)}
+h1{font-family:'Cormorant',Georgia,serif;font-weight:500;font-size:64px;line-height:1;margin:10px 0 0}
+.lead{font-size:16px;line-height:1.7;color:#3A3733;max-width:980px;margin-top:16px}
+.sec{margin-top:72px;display:grid;grid-template-columns:420px 1fr;gap:48px;align-items:start}
+.num{font-family:'Cormorant',Georgia,serif;font-size:56px;color:var(--bronze);line-height:1}
+.sec h2{font-family:'Cormorant',Georgia,serif;font-weight:500;font-size:36px;line-height:1.1;margin:8px 0 10px}
+.sec p,.sec li{font-size:14.5px;line-height:1.7;color:#3A3733}
+.sec ul{padding-left:18px;margin:8px 0 0}
+.frame{background:#fff;border:1px solid var(--line);box-shadow:0 18px 40px rgba(21,20,19,.08);position:relative}
+.why{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.why div{border-top:1px solid var(--ink);padding-top:12px;font-size:14px;line-height:1.6;color:#3A3733}
+.why b{display:block;font-family:'Cormorant',Georgia,serif;font-size:22px;font-weight:500;margin-bottom:4px;color:var(--ink)}
+/* mini-site */
+.hdr{display:flex;align-items:center;height:64px;padding:0 28px;border-bottom:1px solid var(--line);background:var(--paper);font-size:13.5px;gap:26px}
+.hdr .logo{font-family:'Cormorant',Georgia,serif;font-size:30px;margin:0 auto}
+.hdr .cta{border:1px solid var(--ink);padding:9px 14px}
+.hdr .on{border-bottom:1px solid var(--ink);padding-bottom:3px}
+.drop{position:absolute;right:120px;top:63px;width:520px;background:var(--paper);border:1px solid var(--line);box-shadow:0 22px 48px rgba(21,20,19,.14);display:grid;grid-template-columns:1fr 1fr;z-index:3}
+.drop a{display:block;padding:22px 22px 20px;color:inherit;text-decoration:none;border-right:1px solid var(--line)}
+.drop a:last-child{border-right:0}
+.drop .t{font-family:'Cormorant',Georgia,serif;font-size:24px;margin:6px 0 4px}
+.drop .d{font-size:12.5px;line-height:1.55;color:var(--stone)}
+.drop .go{display:inline-block;margin-top:10px;font-size:12.5px;border-bottom:1px solid var(--ink)}
+.drop .foot{grid-column:1/3;border-top:1px solid var(--line);padding:12px 22px;font-size:12px;color:var(--stone);display:flex;justify-content:space-between}
+.sw{display:block;background-size:cover;background-position:center}
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.door{position:relative;height:360px;color:#F5F2EC;overflow:hidden}
+.door .bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.door .sh{position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,20,19,.05) 30%,rgba(21,20,19,.78))}
+.door .tx{position:absolute;left:28px;right:28px;bottom:26px}
+.door .k{color:#E8D9C4}
+.door h3{font-family:'Cormorant',Georgia,serif;font-weight:500;font-size:40px;line-height:1.02;margin:8px 0 8px}
+.door p{font-size:13.5px;line-height:1.55;margin:0 0 14px;color:#EDE6DB;max-width:460px}
+.btn{display:inline-block;font-size:13px;padding:11px 16px;background:#F5F2EC;color:var(--ink)}
+.btn.line{background:transparent;border:1px solid #F5F2EC;color:#F5F2EC;margin-left:8px}
+.strip{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:var(--sand);font-size:13.5px}
+.strip a{border-bottom:1px solid var(--ink)}
+.hero{height:190px;background:#211D1A;color:#F5F2EC;padding:34px 28px}
+.hero .s{font-size:40px;line-height:1.05}
+.loc{display:grid;grid-template-columns:1fr 1.1fr;min-height:420px}
+.map{position:relative;background:#E7E1D6}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.list{padding:26px 28px}
+.srch{display:flex;gap:8px;margin:12px 0 18px}
+.srch span{flex:1;border:1px solid var(--line);background:#fff;padding:11px 12px;font-size:13px;color:var(--stone)}
+.srch b{background:var(--ink);color:#fff;font-weight:500;font-size:13px;padding:11px 16px}
+.dl{border-top:1px solid var(--line)}
+.dl div{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:14px 0;border-bottom:1px solid var(--line);font-size:13px}
+.dl b{font-family:'Cormorant',Georgia,serif;font-size:21px;font-weight:500}
+.dl i{font-style:normal;color:var(--stone)}
+.dl em{font-style:normal;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze);align-self:center}
+.ph{color:var(--stone);font-size:12px}
+.ftr{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:26px 28px;border-top:1px solid var(--line);font-size:13px;background:var(--paper)}
+.ftr .k{color:var(--stone);margin-bottom:10px}
+.ftr div div{margin:7px 0}
+.new{background:#EADBC6;padding:1px 6px;margin-left:6px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--bronze)}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:6px}
+.flow div{padding:18px 18px 16px;border-right:1px solid var(--line);font-size:13px;line-height:1.55;color:#3A3733}
+.flow div:last-child{border-right:0}
+.flow b{display:block;font-family:'Cormorant',Georgia,serif;font-size:21px;font-weight:500;color:var(--ink);margin:4px 0}
+.q{margin-top:64px;padding:26px 30px;background:#EFEAE1;border:1px solid var(--line)}
+.q h2{font-family:'Cormorant',Georgia,serif;font-weight:500;font-size:32px;margin:6px 0 10px}
+.q ol{margin:0;padding-left:20px;font-size:14.5px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="board">
+  <p class="k">Artboard · zakelijk · voorstel, nog niets aangepast</p>
+  <h1>Dealers een eigen plek naast Projecten</h1>
+  <p class="lead">De dealerpagina bestaat al (<b>/pages/verkoopparters</b>: voordelen, showroompakket, aanmelden), maar je vindt hem alleen via de footer en een blok op de Studiopagina. Header, homepage en de knop "Professionals" gaan allemaal naar Projecten. Voorstel: twee duidelijke ingangen, <b>Projecten</b> en <b>Dealers</b>, overal waar nu alleen Projecten staat. Geen nieuwe URL's: beide pagina's blijven waar ze zijn.</p>
+  <div class="why">
+    <div><b>Twee doelgroepen, twee vragen</b>Een architect of aannemer zoekt panelen voor één project. Een showroom of vakhandel zoekt een vaste leverancier met marge en display.</div>
+    <div><b>Belofte waarmaken</b>De dealerpagina belooft "vermelding op onze website". Er is nu nog geen plek waar klanten een verkooppunt kunnen vinden.</div>
+    <div><b>Dealers helpen ook consumenten</b>Een verkooppunt in de buurt is voor een klant net zo waardevol als de studio in Herwen: zien en voelen voor je koopt.</div>
+  </div>
+
+  <!-- 1 header -->
+  <section class="sec">
+    <div><div class="num">01</div><h2>Header: "Professionals" wordt "Zakelijk"</h2>
+      <p>De knop rechtsboven opent een paneel met twee deuren. Mobiel: in het menu een blok "Zakelijk" met dezelfde drie regels.</p>
+      <ul><li>Projecten → /pages/form (blijft)</li><li>Dealer worden → /pages/verkoopparters</li><li>Inloggen zakelijk → bestaand account</li></ul></div>
+    <div class="frame" style="height:330px;background:var(--paper)">
+      <div class="hdr"><span>Collecties</span><span>Inspiratie</span><span>Projecten</span><span>Studio</span><span class="logo">PureDeco</span><span class="on">Zakelijk ▾</span><span class="cta">Samples</span></div>
+      <div class="drop">
+        <a><span class="ey">Architecten · aannemers · horeca</span><div class="t">Projecten</div><div class="d">Projectprijs per m², stalen voor je presentatie, levering in fases.</div><span class="go">Bespreek je project →</span></a>
+        <a><span class="ey">Showrooms · vakhandel · montage</span><div class="t">Dealer worden</div><div class="d">Showroomdisplay, zakelijke prijzen en een beperkt aantal partners per regio.</div><span class="go">Word verkooppartner →</span></a>
+        <div class="foot"><span>Al zakelijk klant?</span><span style="color:var(--ink);border-bottom:1px solid var(--ink)">Inloggen zakelijk →</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 homepage -->
+  <section class="sec">
+    <div><div class="num">02</div><h2>Homepage: twee deuren in plaats van één</h2>
+      <p>Het huidige blok "Voor projecten" wordt een tweeluik. Links Projecten (bestaande projectbeelden), rechts Dealers met de foto van het showroomdisplay die al op de dealerpagina staat (hier gebruikt).</p>
+      <p class="ph">Beelden: bestaand materiaal, geen nieuwe claims.</p></div>
+    <div class="frame doors">
+      <div class="door"><div class="bg" style="background-image:url('../visualisaties/kantoor.jpg')"></div><div class="sh"></div><div class="tx"><span class="k">Puredeco Projects</span><h3>Voor projecten</h3><p>Hotels, horeca, kantoren en retail. Projectprijs per m², stalen en levering in fases.</p><span class="btn">Bespreek je project</span></div></div>
+      <div class="door"><div class="bg" style="background-image:url('dealers/showroomdisplay.jpg');background-position:50% 30%"></div><div class="sh"></div><div class="tx"><span class="k">Voor showrooms en vakhandel</span><h3>Word dealer</h3><p>Showroomdisplay met onze hardlopers, zakelijke prijzen en exclusiviteit in je regio.</p><span class="btn">Word verkooppartner</span></div></div>
+    </div>
+  </section>
+
+  <!-- 3 projecten-pagina -->
+  <section class="sec">
+    <div><div class="num">03</div><h2>Projectenpagina: doorverwijzen</h2>
+      <p>Bovenaan /pages/form een smalle balk voor wie hier als dealer belandt (bijvoorbeeld via de oude link "Zakelijk account"). Andersom staat op de dealerpagina een regel naar Projecten.</p></div>
+    <div class="frame">
+      <div class="strip"><span>Heb je een showroom, interieurzaak of montagebedrijf?</span><a>Word verkooppartner →</a></div>
+      <div class="hero"><span class="k" style="color:#E8D9C4">Puredeco Projects</span><div class="s" style="margin-top:10px">Wandpanelen voor projecten</div></div>
+    </div>
+  </section>
+
+  <!-- 4 verkooppunten -->
+  <section class="sec">
+    <div><div class="num">04</div><h2>Nieuw: "Vind een verkooppunt"</h2>
+      <p>Een blok onderaan de dealerpagina én op de Studiopagina (naast Herwen). Klant zoekt op postcode of plaats; per dealer naam, plaats, wat er te zien is en een routelink.</p>
+      <ul><li>Gegevens per dealer in Shopify (metaobject "Verkooppunt"), zodat je ze zelf toevoegt zonder code.</li><li>Zolang er geen dealers zijn, toont het blok alleen "Studio Herwen" en "Word het eerste verkooppunt in jouw regio".</li><li>Schema LocalBusiness per verkooppunt: goed voor lokaal zoeken.</li></ul></div>
+    <div class="frame loc">
+      <div class="map"><svg viewBox="0 0 400 420" aria-hidden="true"><path d="M150 30 L270 40 L320 110 L330 210 L300 300 L250 380 L170 395 L110 340 L80 250 L95 150 Z" fill="#DDD5C8" stroke="#BFB4A4"/><g fill="#8C6A4A"><circle cx="268" cy="250" r="7"/><circle cx="190" cy="200" r="5" fill="#151413"/><circle cx="160" cy="300" r="5" fill="#151413"/><circle cx="230" cy="120" r="5" fill="#151413"/></g><text x="280" y="255" font-size="12" font-family="Instrument Sans" fill="#151413">Studio Herwen</text></svg></div>
+      <div class="list"><span class="k">Verkooppunten</span><div class="s" style="font-size:30px;margin-top:6px">Zien en voelen bij jou in de buurt</div>
+        <div class="srch"><span>Postcode of plaats</span><b>Zoek</b></div>
+        <div class="dl">
+          <div><b>Studio Herwen</b><em>Puredeco</em><i>Nijverheidsdwarsstraat 2 · op afspraak</i><span>Route →</span></div>
+          <div><b>[Naam dealer]</b><em>Display</em><i>[Plaats] · [wat er te zien is]</i><span>Route →</span></div>
+          <div><b>[Naam dealer]</b><em>Display</em><i>[Plaats] · [wat er te zien is]</i><span>Route →</span></div>
+        </div>
+        <p class="ph">Voorbeeldregels: echte dealers vul jij in.</p></div>
+    </div>
+  </section>
+
+  <!-- 5 footer + aanmelden -->
+  <section class="sec">
+    <div><div class="num">05</div><h2>Footer en aanmelden</h2>
+      <p>Kolom Zakelijk: <b>Projecten · Dealer worden · Vind een verkooppunt · Inloggen zakelijk</b>. "Zakelijk account" (wijst nu naar Projecten) vervalt.</p>
+      <p>Aanmelden als dealer loopt via het formulier op de dealerpagina. Na goedkeuring krijgt de dealer een zakelijk account (Sami Wholesale) met B2B-prijzen; de registratie zit dan niet meer als los formulier op de site.</p></div>
+    <div>
+      <div class="frame ftr">
+        <div><div class="k">Collecties</div><div>Hout</div><div>Beton ciré</div><div>Travertin</div><div>…</div></div>
+        <div><div class="k">Service</div><div>Gratis samples</div><div>Veelgestelde vragen</div><div>Studio Herwen</div><div>Contact</div></div>
+        <div><div class="k">Zakelijk</div><div>Projecten</div><div>Dealer worden<span class="new">nieuw</span></div><div>Vind een verkooppunt<span class="new">nieuw</span></div><div>Inloggen zakelijk</div></div>
+        <div><div class="k">Contact</div><div>WhatsApp 0316 700 214</div><div>info@puredeco.nl</div></div>
+      </div>
+      <div class="frame flow" style="margin-top:18px">
+        <div><span class="ey">1</span><b>Aanmelden</b>Formulier op de dealerpagina.</div>
+        <div><span class="ey">2</span><b>Gesprek</b>Regio en partnerschap bespreken.</div>
+        <div><span class="ey">3</span><b>Zakelijk account</b>Puredeco zet het account klaar; B2B-prijzen na inloggen.</div>
+        <div><span class="ey">4</span><b>Op de kaart</b>Verkooppunt zichtbaar bij "Vind een verkooppunt".</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="q"><span class="k">Graag jouw keuze</span><h2>Wat mag ik bouwen in H1-test?</h2>
+    <ol><li>Header "Zakelijk" met twee deuren (01), homepage-tweeluik (02), balk op Projecten (03), footer (05): alleen thema, kan direct.</li>
+    <li>"Vind een verkooppunt" (04): heeft een metaobject in Shopify nodig (winkeldata) en jouw lijst met huidige dealers. Zijn er al dealers?</li>
+    <li>Klopt de flow: aanmelden → gesprek → jij zet het zakelijke account klaar? Of moeten dealers zichzelf direct kunnen registreren?</li></ol></div>
+</div>
+</body>
+</html>
