@@ -1,202 +1,240 @@
 # Advertentie-ROI per advertentie — Meta Ads en Google Ads
 
-Periode: **laatste 30 dagen** (voortschrijdend). Daarvoor stond de meting nog niet goed ingericht,
-dus oudere perioden zijn bewust weggelaten. Alle cijfers komen live uit het Meta-advertentieaccount
-PureDeco (via Windsor.ai), de GA4-property PureDeco en de Shopify-administratie van puredeco.nl.
-Er is in dit onderzoek niets gewijzigd aan advertentieaccounts, conversietracking, GA4, pixels,
-feeds of het live Shopify-theme.
+**Periode advertenties: laatste 30 dagen** (12 september — 12 oktober 2026). Daarvoor stond de meting
+niet goed, dus oudere perioden blijven eruit. **Het doorkooppercentage van staalaanvragers** komt uit
+een langere orderhistorie (12 mei — 12 oktober 2026), omdat een staal dat vandaag de deur uitgaat nog
+niet gekocht kan hebben. Dat getal komt uit de orders van de winkel zelf en niet uit advertentietags,
+dus de kwaliteit van die tags speelt er geen rol in.
 
-Opgegeven door PureDeco en in de berekening gebruikt: **inkoopprijs € 30 per paneel**, en **stalen
-leveren geen winst**.
+Opgegeven door PureDeco: **inkoopprijs € 30 per paneel**. Alles verder komt uit het Meta-advertentie-
+account, de GA4-property en de Shopify-orderregels.
 
 Dashboard: https://claude.ai/artifact/9PVzn4wwdwqcGsVE5wrn9Y
-Broncode van de dashboardpagina: `ads/dashboard/index.html`
+Broncode: `ads/dashboard/index.html` · Cohortbestand: `ads/cohort-staalaanvragers.json`
 
 ---
 
-## 1. De uitkomst in één alinea
+## 1. Correctie op de vorige versie
 
-In 30 dagen ging er **€ 2.734,38** naar advertenties. Op de omzet die Meta en Google zelf
-toeschrijven, en met € 30 inkoop per paneel, blijft daar **€ 117,71 brutowinst** van over — en dat is
-nog vóór jouw eigen verzendkosten, verwerking, retouren en vaste lasten. Het gaat dus ongeveer
-quitte, en dat gemiddelde verbergt het echte verhaal: **€ 1.978,63 van die € 2.734,38 (72%) zit in
-advertenties en campagnes die stuk voor stuk verlies maken**, terwijl vier van de dertien
-€ 755,75 kosten en € 1.908,09 brutowinst opleveren.
+De vorige analyse zette de grens tussen staal en paneel op € 30 per stuk en haalde daarmee stalen en
+panelen door elkaar. Dat was fout. Uit de **orderregels** blijkt de catalogus eenduidig:
 
-## 2. De marge, uit de eigen verkopen gerekend
+| Prijs per stuk | Wat het is | Stuks (5 maanden) |
+|---|---|---:|
+| € 0,00 | gratis staal | 1.452 |
+| € 8,95 | High Tack Montagekit | 89 |
+| € 23,95 | profielen (eind-, hoek-, tussen-) | 126 |
+| € 49,95 / € 65,00 / € 70,00 | akoestische panelen, sierlatten | 23 |
+| **€ 89,95 — € 599,00** | **wandpanelen** | **405** |
 
-De marge is niet aangenomen maar berekend uit alle verkopen van de laatste 30 dagen, met de
-betaalde prijs per stuk per artikel en maat:
+Tussen € 70 en € 89,95 zit niets. Een paneel kost gemiddeld **€ 140,44** in de laatste 30 dagen.
+Daarmee is de marge heel anders dan eerder gemeld.
+
+## 2. De marge, uit de orderregels
 
 | | |
 |---|---:|
-| Verkochte panelen vanaf € 30 per stuk | 157 stuks |
-| Omzet daarvan | € 9.677,65 |
-| Gemiddelde verkoopprijs per paneel | € 61,64 |
-| Inkoopwaarde (157 × € 30) | € 4.710,00 |
-| Brutowinst op panelen | € 4.967,65 |
-| **Brutomarge** | **51,3%** |
-| **Break-even ROAS** | **1,95** |
+| Verkochte panelen (30 dagen) | 111 stuks |
+| Paneelomzet | € 15.588,50 |
+| Gemiddelde verkoopprijs per paneel | € 140,44 |
+| Inkoopwaarde (111 × € 30) | € 3.330,00 |
+| Brutowinst op panelen | € 12.258,50 |
+| **Brutomarge** | **78,6%** |
+| **Break-even ROAS** | **1,27** |
+| Gemiddelde paneelomzet per paneelorder | € 677,76 |
 
-Buiten de rekensom gelaten, omdat daar geen winst op zit of de inkoopprijs niet bekend is:
-**172 gratis weggegeven stuks**, **181 stuks die onder de inkoopprijs zijn verkocht** (samen
-€ 3.370,62, gemiddeld € 18,62 per stuk) en **€ 1.102,25** aan profielen, montagekit en akoestische
-panelen.
+Een break-even ROAS van 1,27 in plaats van 2,50 verandert het oordeel over bijna elke advertentie.
 
-> **Dit is de vraag waar de marge op staat of valt.** Die 181 stuks à gemiddeld € 18,62 — zijn dat
-> stalen, dan is 51,3% juist. Zijn het volwaardige panelen, dan worden ze onder de inkoopprijs
-> verkocht en zakt de brutomarge naar **22,3%** met een break-even ROAS van **4,49**, en dan is
-> vrijwel geen enkele advertentie meer rendabel. Een paar voorbeelden van die regels: *Japandi 823
-> Taupe Dark* 38 stuks voor € 446,15 (€ 11,74 per stuk), *Travertine Ivory 851* 32 stuks voor
-> € 446,14 (€ 13,94), *Japandi 821 Light* 19 stuks voor € 115,65 (€ 6,09), *Japandi 824 Taupe*
-> 41 stuks voor € 1.040,95 (€ 25,39). Het dashboard rekent met 51,3% en laat het andere scenario
-> ernaast zien.
+## 3. Wat een staalaanvraag werkelijk waard is
 
-## 3. Meta Ads per advertentie (30 dagen)
+Dit is het getal waar de hele strategie op draait, en het staat in de administratie:
 
-Netto waarde = de conversiewaarde van Meta min € 6,95 per conversie (verzendkosten van een
-stalenorder, geen winst). Brutowinst = netto waarde × 51,3% − spend.
+| | |
+|---|---:|
+| Staalaanvragers met minstens 30 dagen de kans | 365 |
+| Daarvan kocht later panelen | 28 |
+| **Doorkooppercentage** | **7,7%** |
+| Mediaan aantal dagen tot de paneelorder | 16 dagen |
+| Gemiddelde paneelomzet per doorgekomen klant | € 752,62 |
+| **Verwachte brutowinst per staalaanvraag** | **€ 45,40** |
 
-| Advertentie | Spend | CPC | Conv. | Waarde (Meta) | Netto waarde | ROAS | Brutowinst | ROI |
+7,7% × € 752,62 × 78,6% marge = **€ 45,40 per aangevraagd staal**, gemiddeld over álle aanvragers —
+ook de 92% die nooit terugkomt. Over de volle vijf maanden komt **41% van alle paneelomzet** van
+klanten die eerder een staal aanvroegen.
+
+De advertentiekosten per toegeschreven conversie zijn **€ 25,55**. Een staalaanvraag is dus ruim
+winstgevend ingekocht — zolang het fysieke staal niet te veel kost. Zie punt 6.
+
+## 4. Meta Ads per advertentie (30 dagen)
+
+*Brutowinst nu* = netto waarde (conversiewaarde min € 6,95 verzendkosten per conversie) × 78,6%
+marge − spend. *Pijplijn* = de toegeschreven staalaanvragen × € 45,40.
+
+| Advertentie | Spend | CPC | Conv. | €/conv. | ROAS | Brutowinst nu | Pijplijn | Verwacht totaal |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| zakelijk verbouwen | 410,63 | 0,23 | 25 | 3.036,25 | 2.862,50 | 7,39 | **+1.058,72** | +258% |
-| Marmerlook va 125 | 296,93 | 0,23 | 21 | 1.679,67 | 1.533,72 | 5,66 | **+490,35** | +165% |
-| diaan creator 1 | 637,43 | 0,26 | 30 | 575,23 | 366,73 | 0,90 | **−449,18** | −70% |
-| Nieuwe wandpanelen | 178,73 | 0,25 | 8 | 55,60 | 0,00 | 0,31 | **−178,73** | −100% |
-| diaan creator 2 | 69,62 | 0,29 | 3 | 20,85 | 0,00 | 0,30 | **−69,62** | −100% |
-| video 3 | 18,74 | 0,28 | 0 | 0,00 | 0,00 | 0,00 | **−18,74** | −100% |
-| Video led profiel japans | 14,08 | 0,36 | 0 | 0,00 | 0,00 | 0,00 | **−14,08** | −100% |
-| **Totaal** | **1.626,16** | 0,24 | **87** | **5.367,60** | **4.762,95** | **3,30** | **+818,72** | +50% |
+| zakelijk verbouwen | 410,63 | 0,23 | 25 | 16,43 | 7,39 | +1.840,39 | +943,29 | **+2.783,68** |
+| Marmerlook va 125 | 296,93 | 0,23 | 21 | 14,14 | 5,66 | +909,16 | +850,70 | **+1.759,86** |
+| diaan creator 1 | 637,43 | 0,26 | 30 | 21,25 | 0,90 | −349,04 | +1.337,49 | **+988,45** |
+| Nieuwe wandpanelen | 178,73 | 0,25 | 8 | 22,34 | 0,31 | −178,73 | +363,22 | **+184,49** |
+| diaan creator 2 | 69,62 | 0,29 | 3 | 23,21 | 0,30 | −69,62 | +136,21 | **+66,59** |
+| video 3 | 18,74 | 0,28 | 0 | — | 0,00 | −18,74 | 0,00 | **−18,74** |
+| Video led profiel japans | 14,08 | 0,36 | 0 | — | 0,00 | −14,08 | 0,00 | **−14,08** |
+| **Totaal** | **1.626,16** | 0,25 | **87** | 18,69 | 3,30 | **+2.119,33** | **+3.630,90** | **+5.750,24** |
 
-*Nieuwe wandpanelen* en *diaan creator 2* hebben een netto waarde van exact nul: elke conversie die
-Meta eraan toeschrijft was precies € 6,95 waard. Dat zijn stalenaanvragen, geen verkopen.
+**Stresstest.** De pijplijnkolom gebruikt Meta's eigen toewijzing, en die is optimistisch: Shopify
+schrijft maar 42 orders aan Facebook en Instagram toe tegenover de 87 die Meta claimt. Reken je met
+Shopify's eigen 42 orders, dan is de pijplijn 42 × € 45,40 = € 1.906,80 tegenover € 1.626,16 spend —
+**ook dan betaalt Meta zich terug.** Dat is het strengste scenario dat de data toelaat.
 
-## 4. Google Ads per campagne (30 dagen, GA4)
+## 5. Google Ads per campagne (30 dagen, GA4)
 
-De GA4-productomzet is al zonder verzendkosten, dus die gaat ongewijzigd × 51,3% − kosten.
+| Campagne | Kosten | CPC | Trans. | Productomzet | Brutowinst nu | Pijplijn | Verwacht totaal |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| PMAX - Campagne - PureDeco.nl | 401,74 | 0,63 | 3 | 0,00 | −401,74 | +136,21 | **−265,53** |
+| Search \| Wandpanelen | 353,77 | 1,09 | 5 | 0,00 | −353,77 | +227,01 | **−126,76** |
+| Search \| Concurrenten | 231,53 | 1,82 | 1 | 0,00 | −231,53 | +45,40 | **−186,13** |
+| Shopping \| Bamboepanelen | 72,99 | 0,12 | 4 | 0,00 | −72,99 | +181,61 | **+108,62** |
+| Brand \| PureDeco Protection | 29,54 | 0,26 | 5 | 431,70 | +309,94 | +198,09 | **+508,03** |
+| Brand \| PureDeco Protection NL-BE | 18,65 | 0,23 | 2 | 361,60 | +265,71 | +66,58 | **+332,29** |
+| **Totaal** | **1.108,22** | 0,23 | **20** | **793,30** | **−484,38** | **+854,90** | **+370,52** |
 
-| Campagne | Kosten | CPC | Trans. | Productomzet | ROAS | Brutowinst |
-|---|---:|---:|---:|---:|---:|---:|
-| PMAX - Campagne - PureDeco.nl | 401,74 | 0,63 | 3 | 0,00 | 0,00 | **−401,74** |
-| Search \| Wandpanelen | 353,77 | 1,09 | 5 | 0,00 | 0,00 | **−353,77** |
-| Search \| Concurrenten | 231,53 | 1,82 | 1 | 0,00 | 0,00 | **−231,53** |
-| Shopping \| Bamboepanelen | 72,99 | 0,12 | 4 | 0,00 | 0,00 | **−72,99** |
-| Brand \| PureDeco Protection | 29,54 | 0,26 | 5 | 431,70 | 14,61 | **+192,06** |
-| Brand \| PureDeco Protection NL-BE | 18,65 | 0,23 | 2 | 361,60 | 19,39 | **+166,96** |
-| **Totaal** | **1.108,22** | 0,23 | **20** | **793,30** | **0,72** | **−701,01** |
+Per advertentiegroep: *Wandpanelen algemeen* € 281,16 (4 transacties, € 0,00 omzet), *Thuispaneel*
+€ 104,39 bij € 3,60 per klik, *Paneli* € 90,31 met nul transacties.
 
-Dit is de scherpste bevinding van de 30-daagse periode: **van de € 1.108,22 Google Ads-kosten
-leverde € 1.060,03 nul euro productomzet op**, en de € 48,19 die wél omzet opleverde zit in twee
-merkcampagnes die vrijwel droogstaan. De grootste campagne, *PMAX - Campagne - PureDeco.nl*, kostte
-€ 401,74 en had 3 transacties met € 0,00 productomzet. In de 90-daagse blik leek deze campagne nog
-rendabel; die ROAS kwam volledig uit één order van 1 augustus — buiten de goed gemeten periode.
+**Samen: € 2.734,38 advertentiekosten, € 1.634,95 brutowinst nu, € 4.485,80 pijplijn, verwacht
+totaal € 6.120,75** — vóór de kostprijs van de verstuurde stalen, de verzendkosten die PureDeco
+zelf betaalt, verwerking, retouren en vaste lasten.
 
-Per advertentiegroep valt op: *Wandpanelen algemeen* € 281,16 (4 transacties, € 0,00),
-*Thuispaneel* binnen Concurrenten € 104,39 (€ 3,60 per klik, 1 transactie, € 0,00),
-*Paneli* € 90,31 (0 transacties).
+## 6. De enige vraag die nog openstaat, en hij beslist alles
 
-## 5. Drie bronnen, dezelfde advertenties, drie antwoorden
+In 30 dagen zijn er **400 stalen** weggegeven in **139 staalorders** (2,9 per order). Dat is
+**3,6 gratis stalen per verkocht paneel**. De klant betaalt € 6,90 verzendkosten per staalorder.
 
-| Bron | Orders | Omzet | Toewijzing |
-|---|---:|---:|---|
-| Meta Ads Manager | 87 | 5.367,60 | 7 dagen na klik, 1 dag na weergave, over apparaten |
-| GA4 laatste klik | 45 | **0,00** | laatste klik van de sessie |
-| Shopify administratie | 42 | **185,00** | verwijzer van de order, brutoproductomzet |
+| Per staalorder | |
+|---|---:|
+| Verwachte brutowinst uit de staalaanvraag | + € 45,40 |
+| Verzendkosten die de klant betaalt | + € 6,90 |
+| Advertentiekosten per toegeschreven conversie | − € 25,55 |
+| **Ruimte voor de fysieke staalorder** | **€ 26,75** |
+| Bij 2,9 stalen per order | |
+| **Break-even kostprijs per staal** | **€ 9,29** |
 
-GA4 schrijft over 30 dagen **nul euro** productomzet toe aan betaald Facebook, bij 3.546 sessies en
-37 transacties. Shopify boekt € 185,00: facebook 16 orders met € 185,00 productomzet, instagram
-26 orders met **€ 0,00** productomzet en wél € 143,50 verzendkosten.
+Kost een staal minder dan € 9,29, dan is de staalmachine winstgevend en mogen de advertenties die
+stalen aanbrengen juist harder lopen. Kost een staal meer, dan is elk extra staal verlies, hoe
+goedkoop de klik ook was.
 
-Oorzaak, aantoonbaar: een order waarin alleen verzendkosten zijn betaald telt in beide platforms mee
-als aankoop, met die verzendkosten als waarde. Op **16 van de 27** dagen met minstens één
-toegeschreven aankoop lag de gemiddelde waarde per aankoop onder € 10 — dat betreft **41 van de 87**
-aankopen (47%), vrijwel allemaal exacte veelvouden van € 6,95.
+**Dit is niet academisch.** In de catalogus staan de gratis stalen onder dezelfde artikelnamen en
+dezelfde maten als de volwaardige panelen (bijvoorbeeld "Wandpaneel Hout 810 Noir Oak", variant
+"260 cm x 122 cm / 5mm Stomp"), met prijs nul. Zijn dat werkelijk panelen van volle maat, dan kost
+elk staal de volle € 30 inkoop en loopt de rekening op tot **€ 12.000 per 30 dagen** — ruim vier keer
+de advertentiekosten, en dan is het hele model verlieslatend. Zijn het kleine stalen van een paar
+euro, dan is dit het beste kanaal dat PureDeco heeft.
 
-## 6. Advies
+**Wat ik nodig heb:** de kostprijs van één staal (materiaal + verpakking + wat PureDeco zelf aan
+verzending betaalt). Eén getal, en de hele analyse wordt een afrekening in plaats van een inschatting.
 
-### Nu stoppen — € 1.978,63 per 30 dagen vrij, zonder één euro winst op te geven
+## 7. Advies
 
-Elk van deze is op zichzelf verlieslatend; samen kosten ze 72% van het advertentiebudget.
+### Direct stoppen — € 264,35 per 30 dagen, zonder enig verlies
 
-1. **PMAX - Campagne - PureDeco.nl** — € 401,74, nul productomzet. Niet pauzeren zonder eerst te
-   kijken of hij met *PMax_NL (Adscale)* op dezelfde feed concurreert; die laatste stond in deze
-   30 dagen praktisch stil.
-2. **Search | Wandpanelen** — € 353,77 bij € 1,09 per klik, vijf transacties, nul omzet. De
-   advertentiegroep *Wandpanelen algemeen* is er alleen al € 281,16 van.
-3. **Search | Concurrenten** — € 231,53, één transactie, nul omzet. Bieden op merknamen van
-   concurrenten levert hier niets op.
-4. **diaan creator 1** — € 637,43, de grootste post bij Meta (39% van de Meta-spend), ROAS 0,90 en
-   € 449,18 verlies. Dertig conversies met gemiddeld € 19,17 waarde: stalenaanvragers.
-5. **Nieuwe wandpanelen** en **diaan creator 2** — samen € 248,35 met een netto waarde van exact
-   nul. Elke toegeschreven aankoop was precies het verzendtarief.
-6. **video 3** en **Video led profiel japans** — samen € 32,82 en nul conversies. Te klein om van te
-   leren.
-7. **Shopping | Bamboepanelen** — € 72,99 aan heel goedkope klikken (€ 0,12) die alleen tot
-   nul-omzetorders leiden. Niet per se stoppen: dit is de goedkoopste traffic die je hebt. Eerst de
-   bestemming nakijken — waar landen die 607 klikken, en waarom koopt niemand daar.
+Deze drie zijn negatief in élk scenario:
 
-### Opschalen — de vier die geld opleveren
+1. **Search | Concurrenten** — € 231,53 voor één conversie bij € 1,82 per klik (advertentiegroep
+   *Thuispaneel* € 3,60 per klik). Bieden op merknamen van concurrenten levert hier niets op.
+2. **video 3** en **Video led profiel japans** — € 32,82 en nul conversies. Te klein om van te leren.
 
-8. **zakelijk verbouwen** — € 410,63 in, € 1.058,72 brutowinst eruit, ROI 258%. Dit is met afstand
-   je beste advertentie en hij krijgt maar een kwart van het Meta-budget. Verhoog stapsgewijs
-   (20–30% per week, niet in één sprong) en kijk per week of de waarde per conversie boven de
-   € 100 blijft. Zakt die naar het verzendtarief, dan is de schaalgrens bereikt.
-9. **Marmerlook va 125** — ROI 165%, zelfde aanpak. Samen met *zakelijk verbouwen* zijn dit de
-   enige twee Meta-advertenties met een waarde per conversie boven € 70: ze trekken kopers, geen
-   stalenaanvragers.
-10. **Brand | PureDeco Protection** en **NL-BE** — € 48,19 samen voor € 359,02 brutowinst. De enige
-    Google-campagnes die geld opleveren, en ze staan vrijwel droog. Let op: merkzoekwoorden
-    kannibaliseren voor een deel het organische resultaat, dus de werkelijke winst is kleiner dan de
-    ROAS suggereert. Test met een verdubbeld budget en beoordeel betaald plus organisch op het merk
-    samen, niet de campagne alleen.
+### Herbouwen in plaats van stoppen
 
-### Eerst de meting repareren — dit gaat vóór elke budgetbeslissing
+3. **PMAX - Campagne - PureDeco.nl** (€ 401,74, drie conversies, nul productomzet) en
+   **Search | Wandpanelen** (€ 353,77, vijf conversies, nul productomzet). Die kopen uitsluitend
+   staalaanvragen in, maar dúúr: € 134 en € 71 per conversie, tegen € 18,69 bij Meta. Ze zijn niet
+   waardeloos, ze zijn te duur. Zet ze op de staalaanvraag als conversiedoel mét de juiste waarde
+   (punt 6 hieronder) en een doel-CPA rond de € 25; halen ze dat niet binnen twee weken, dan uit.
+   Controleer eerst of PMAX met *PMax_NL (Adscale)* op dezelfde feed concurreert — die laatste stond
+   deze 30 dagen praktisch stil.
+4. **Shopping | Bamboepanelen** — € 72,99 bij € 0,12 per klik, de goedkoopste traffic die er is, en in
+   de pijplijn al positief (+€ 108,62). Laten staan en de bestemmingspagina nakijken: 607 klikken
+   leidden tot vier staalorders en nul panelen.
 
-11. **Scheid de stalenaanvraag van de aankoop.** Zolang een order van € 0,00 product plus € 6,95
-    verzendkosten als `Purchase` wordt doorgegeven, leren beide platforms dat een stalenaanvraag
-    het doel is. Voorstel: stuur voor orders die alleen stalen bevatten een eigen gebeurtenis (bij
-    Meta een `Lead` of `SubmitApplication`, bij Google een aparte conversieactie die *niet*
-    meetelt voor biedingen) en houd `Purchase` voor betaalde orders. Zet Meta daarna op
-    conversiewaarde in plaats van conversies, met een minimum-ROAS van 1,95.
-    *Dit raakt conversietracking. Ik voer hier niets uit zonder expliciete toestemming; dit is een
-    voorstel, geen uitgevoerde wijziging.*
-12. **Zet UTM's op alle advertentielinks.** Van de 167 orders in deze 30 dagen hebben 73 orders
-    (€ 8.118,41 productomzet) geen enkele verwijzer in Shopify. Dat is 44% van de orders zonder
-    herkenbare bron.
-13. **Herstel de zelfverwijzingen.** Shopify ziet 16 orders (€ 2.125,76) met verwijzer `puredeco`
-    en één met `mollie`: het eigen domein en de betaalpagina worden als bron geregistreerd. Dat
-    vervuilt elke bron-toewijzing.
-14. **Stuur de echte orderwaarde server-side door** (Shopify → Meta Conversions API, met order-id
-    voor ontdubbeling), zodat Meta op omzet optimaliseert in plaats van op pixelwaarde.
-15. **Zet de prijsstelling recht.** De 181 stuks die onder de inkoopprijs van € 30 zijn verkocht,
-    zijn óf verkeerd geprijsde panelen óf stalen met een verkeerde variantnaam. In beide gevallen
-    is het een probleem: in het eerste geval verlies per order, in het tweede een marge die niet
-    te meten is.
+### Opschalen — hier zit het geld
 
-### De getallen die nog ontbreken
+5. **zakelijk verbouwen** is met afstand je beste advertentie: € 410,63 in, € 2.783,68 verwacht
+   eruit, ROAS 7,39, € 16,43 per conversie en de hoogste waarde per conversie van allemaal. Hij
+   krijgt maar een kwart van het Meta-budget. Verhoog met 20–30% per week (niet in één sprong, dan
+   herijkt Meta de doelgroep) en kijk wekelijks of de waarde per conversie boven € 100 blijft. Zakt
+   die naar het verzendtarief, dan is de schaalgrens bereikt. Dit is ook het zakelijke segment waar
+   PureDeco naartoe wil — de advertentie bewijst dat die doelgroep werkt.
+6. **Marmerlook va 125** — ROAS 5,66, zelfde aanpak.
+7. **Brand | PureDeco Protection** en **NL-BE** — € 48,19 samen voor € 840 verwachte winst, de enige
+   Google-campagnes die geld opleveren, en ze staan vrijwel droog. Verdubbel het budget. Let op dat
+   merkzoekwoorden deels organisch verkeer opeten: beoordeel betaald plus organisch op het merk
+   samen.
+8. **diaan creator 1** mag blijven draaien, maar op de proef. € 637,43 is 39% van het Meta-budget
+   voor dertig staalaanvragen en vrijwel geen directe omzet. In de pijplijn is hij positief
+   (+€ 988,45), maar dat hangt volledig aan het doorkooppercentage. Meet over zes weken of de
+   staalaanvragers uit deze advertentie net zo vaak terugkomen als het gemiddelde van 7,7%; zo niet,
+   dan is zijn pijplijnwaarde lager dan hier staat en gaat hij eruit.
 
-16. **Wat levert een aangevraagd staal later op?** Van de klanten met een staalorder: welk
-    percentage kocht binnen 90 en 180 dagen betaald, en voor hoeveel? Zonder dat getal is een
-    negatieve winst per advertentie geen bewijs dat de advertentie waardeloos is — alleen dat hij
-    zich binnen 30 dagen niet terugbetaalt. Dit is niet uit ShopifyQL te halen
-    (`customer_type` bestaat daar niet) en vraagt een analyse op orderniveau per klant.
-17. **Is € 30 inkoop de prijs voor élk paneel?** De gemiddelde verkoopprijs loopt van € 6,09 tot
-    € 239,60 per stuk en de maten verschillen (280×122, 280×60, 280×366). Eén inkoopprijs voor
-    alles maakt de marge per advertentie grover dan nodig.
+### De meting goed zetten — dit is de grootste hefboom die je hebt
 
-### Wat dit onderzoek niet kan zeggen
+9. **Geef de staalaanvraag zijn gemeten waarde.** Nu gaat een staalorder als `Purchase` met € 6,95
+   als waarde naar beide platforms. Daardoor denken de biedalgoritmes dat een staalaanvraag
+   € 6,95 waard is, terwijl hij € 45,40 brutowinst oplevert. Stuur de staalorder als eigen
+   gebeurtenis met **waarde € 45,40** en houd `Purchase` voor echte paneelorders met de
+   werkelijke orderwaarde. Dan kunnen Meta en Google voor het eerst op echte waarde bieden in
+   plaats van op verzendkosten. Zet daarna Meta op conversiewaarde met een minimum-ROAS van 1,3
+   en Google op doel-ROAS 1,3.
+   *Dit raakt conversietracking. Ik voer hier niets van uit zonder jouw expliciete toestemming;
+   dit is een voorstel met een uitvoeringsplan.*
+10. **Stuur de echte orderwaarde server-side door** (Shopify → Meta Conversions API, met order-id
+    voor ontdubbeling).
+11. **UTM's op alle advertentielinks.** Van de 167 orders in deze 30 dagen hebben 73 orders
+    (€ 8.118,41 productomzet) geen enkele verwijzer in Shopify — 44% van de orders zonder
+    herkenbare bron. En herstel de zelfverwijzingen: 16 orders komen binnen met verwijzer
+    `puredeco`, één met `mollie`.
 
-Geen van deze cijfers zegt welk deel van de omzet ook zonder advertenties was gekomen. Dat vraagt
-een test waarin een deel van het bereik bewust geen advertenties ziet (geo-holdout of een
-conversion-lift-studie bij Meta). Door de korte periode van 30 dagen verschuift bovendien één grote
-order de winst van een advertentie merkbaar: *zakelijk verbouwen* haalt zijn winst uit een handvol
-orders. Lees de uitschieters met die korte periode in gedachten.
+### De staalmachine beter maken — hier ligt de grootste winst
 
-## 7. Veiligheid
+12. **Elk procentpunt doorkoop is € 823 brutowinst per maand waard** bij de huidige 139 staalorders
+    per 30 dagen (1,39 extra klanten × € 752,62 × 78,6%). Van 7,7% naar 12% is **€ 3.540 per maand**,
+    zonder één euro extra advertentiebudget. Dit is veruit de goedkoopste groei die er ligt.
+13. **Bouw een opvolgreeks op de staalorder.** De mediaan is 16 dagen tussen staal en order: er is
+    tijd en er wordt nu niets mee gedaan. Drie contactmomenten — dag 2 ("je staal is onderweg" met
+    een montagevideo), dag 7 (rekenhulp: hoeveel panelen heb ik nodig voor mijn wand), dag 14
+    (persoonlijk aanbod met een termijn). Meet het doorkooppercentage per week in dit dashboard.
+14. **Maak van de staalkosten een voucher.** Vraag € 9,95 voor de staalbox in plaats van alleen
+    verzendkosten, en geef dat bedrag terug als korting op de eerste paneelorder. Dat dekt de
+    kostprijs van het staal, filtert de verzamelaars eruit, en geeft elke aanvrager een reden om
+    terug te komen. Dit is de standaardoplossing in materiaalverkoop en het is hier precies de
+    ingreep die punt 6 oplost.
+15. **Beperk het aantal stalen per order.** Nu gemiddeld 2,9, en 3,6 gratis stalen per verkocht
+    paneel. Een maximum van drie met een duidelijke keuzehulp verlaagt de kosten zonder de
+    conversie te raken.
+16. **Zet een zakelijke staalbox apart.** Er bestaat al een "Sample box (Volledig b2b)" van € 5,95;
+    daarvan is er in vijf maanden één verkocht. *zakelijk verbouwen* bewijst dat de zakelijke
+    doelgroep de hoogste orderwaarde heeft — geef die doelgroep een eigen aanvraagroute met
+    projectgegevens erbij, zodat de opvolging gericht kan.
 
-Tijdens dit onderzoek is uitsluitend gelezen. Er is niets gewijzigd in: Meta Ads, Google Ads,
-Performance Max, Shopping, Merchant Center, productfeeds, GA4, pixels, conversietracking,
-landingspagina's, URL's, het live Shopify-theme of het development-theme. Er zijn geen claims over
-certificeringen, brandklassen, akoestiek, levertijden, voorraad, reviews, projecten of referenties
-gebruikt of verzonnen. De enige niet-gemeten getallen in dit rapport zijn de twee die PureDeco zelf
-heeft opgegeven: € 30 inkoop per paneel, en stalen zonder winst.
+### Wat er nog niet gemeten is
+
+17. **Het doorkooppercentage per bron.** De 7,7% is gemeten over álle staalaanvragers, niet alleen
+    die uit advertenties. Of een aanvrager uit een Meta-video net zo vaak terugkomt als iemand die
+    via organisch zoeken binnenkwam, is nu niet te zien. Met UTM's op de advertentielinks (punt 11)
+    wordt dat na zes weken wél meetbaar, en dan is de pijplijnwaarde per advertentie exact.
+18. **Hoeveel van de omzet ook zonder advertenties was gekomen.** Dat vraagt een test waarin een
+    deel van het bereik bewust geen advertenties ziet (geo-holdout of een conversion-lift-studie bij
+    Meta). Tot die tijd is alles hierboven toewijzing, geen oorzaak.
+
+## 8. Over de data
+
+De orderhistorie bevat een **bulk-import van 11 mei 2026** (tientallen orders binnen vier minuten met
+afwijkende datums). Die valt buiten alle berekeningen hier; de cohortanalyse begint op 12 mei 2026.
+
+## 9. Veiligheid
+
+Uitsluitend gelezen. Er is niets gewijzigd in: Meta Ads, Google Ads, Performance Max, Shopping,
+Merchant Center, productfeeds, GA4, pixels, conversietracking, landingspagina's, URL's, het live
+Shopify-theme of het development-theme. Geen claims over certificeringen, brandklassen, akoestiek,
+levertijden, voorraad, reviews, projecten of referenties. Het enige niet-gemeten getal in dit rapport
+is de inkoopprijs van € 30 per paneel, door PureDeco zelf opgegeven. De kostprijs van een staal is
+onbekend en is nergens ingevuld.

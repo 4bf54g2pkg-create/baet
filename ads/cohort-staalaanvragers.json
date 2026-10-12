@@ -1,0 +1,4992 @@
+[
+{
+"klant": "11637243511050",
+"eerste_staal": "2026-05-12",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 153,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11637396799754",
+"eerste_staal": "2026-05-12",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 153,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 16,
+"paneelomzet_daarna": 1198.0
+},
+{
+"klant": "11634972328202",
+"eerste_staal": "2026-05-12",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 153,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11644420653322",
+"eerste_staal": "2026-05-13",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 152,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11645138370826",
+"eerste_staal": "2026-05-13",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 152,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11647740412170",
+"eerste_staal": "2026-05-14",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 151,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11647727501578",
+"eerste_staal": "2026-05-14",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 151,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 131,
+"paneelomzet_daarna": 1189.65
+},
+{
+"klant": "11647769346314",
+"eerste_staal": "2026-05-14",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 151,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11648027328778",
+"eerste_staal": "2026-05-14",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 151,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11648430113034",
+"eerste_staal": "2026-05-14",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 151,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11648742293770",
+"eerste_staal": "2026-05-14",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 151,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11649818853642",
+"eerste_staal": "2026-05-14",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 151,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11650219507978",
+"eerste_staal": "2026-05-14",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 151,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11650397438218",
+"eerste_staal": "2026-05-14",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 151,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11650916712714",
+"eerste_staal": "2026-05-15",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 150,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11651323789578",
+"eerste_staal": "2026-05-15",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 150,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11651383165194",
+"eerste_staal": "2026-05-15",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 150,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11652145578250",
+"eerste_staal": "2026-05-15",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 150,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11653813043466",
+"eerste_staal": "2026-05-16",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 149,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11653917278474",
+"eerste_staal": "2026-05-16",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 149,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11654082101514",
+"eerste_staal": "2026-05-16",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 149,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11654724452618",
+"eerste_staal": "2026-05-16",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 149,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11655466483978",
+"eerste_staal": "2026-05-17",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 148,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11657418735882",
+"eerste_staal": "2026-05-17",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 148,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11659152916746",
+"eerste_staal": "2026-05-18",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 147,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11659675238666",
+"eerste_staal": "2026-05-18",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 147,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11659765547274",
+"eerste_staal": "2026-05-18",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 147,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11660481593610",
+"eerste_staal": "2026-05-18",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 147,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11660678070538",
+"eerste_staal": "2026-05-18",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 147,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11662826275082",
+"eerste_staal": "2026-05-19",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 146,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11663419146506",
+"eerste_staal": "2026-05-19",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 146,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11663991472394",
+"eerste_staal": "2026-05-19",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 146,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11664264134922",
+"eerste_staal": "2026-05-19",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 146,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11634186912010",
+"eerste_staal": "2026-05-19",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 146,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11664879878410",
+"eerste_staal": "2026-05-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 145,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11665511842058",
+"eerste_staal": "2026-05-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 145,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11665628594442",
+"eerste_staal": "2026-05-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 145,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11668863975690",
+"eerste_staal": "2026-05-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 145,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11676654108938",
+"eerste_staal": "2026-05-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 145,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11678785175818",
+"eerste_staal": "2026-05-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 145,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11698914361610",
+"eerste_staal": "2026-05-22",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 143,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11699115065610",
+"eerste_staal": "2026-05-22",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 143,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11699348832522",
+"eerste_staal": "2026-05-22",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 143,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11700065370378",
+"eerste_staal": "2026-05-22",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 143,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11712364773642",
+"eerste_staal": "2026-05-23",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 142,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11712380895498",
+"eerste_staal": "2026-05-23",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 142,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11650303852810",
+"eerste_staal": "2026-05-23",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 142,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11714334884106",
+"eerste_staal": "2026-05-24",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 141,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11714933883146",
+"eerste_staal": "2026-05-24",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 141,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11715798368522",
+"eerste_staal": "2026-05-24",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 141,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 8,
+"paneelomzet_daarna": 559.8
+},
+{
+"klant": "11719790756106",
+"eerste_staal": "2026-05-25",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 140,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11722405314826",
+"eerste_staal": "2026-05-26",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 139,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11724706283786",
+"eerste_staal": "2026-05-26",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 139,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11725058834698",
+"eerste_staal": "2026-05-26",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 139,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11576080859402",
+"eerste_staal": "2026-05-29",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 136,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11753014984970",
+"eerste_staal": "2026-05-30",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 135,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11753376743690",
+"eerste_staal": "2026-05-30",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 135,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11633262625034",
+"eerste_staal": "2026-05-31",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 134,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11757450264842",
+"eerste_staal": "2026-05-31",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 134,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11758366556426",
+"eerste_staal": "2026-06-01",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 133,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11759083028746",
+"eerste_staal": "2026-06-01",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 133,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11759981723914",
+"eerste_staal": "2026-06-01",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 133,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11760264446218",
+"eerste_staal": "2026-06-01",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 133,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11757182910730",
+"eerste_staal": "2026-06-02",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 132,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11764075364618",
+"eerste_staal": "2026-06-02",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 132,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11764361396490",
+"eerste_staal": "2026-06-02",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 132,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11764470481162",
+"eerste_staal": "2026-06-02",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 132,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11764544504074",
+"eerste_staal": "2026-06-02",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 132,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11765527675146",
+"eerste_staal": "2026-06-03",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 131,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11765560312074",
+"eerste_staal": "2026-06-03",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 131,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11765588656394",
+"eerste_staal": "2026-06-03",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 131,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11767373922570",
+"eerste_staal": "2026-06-03",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 131,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11767913611530",
+"eerste_staal": "2026-06-04",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 130,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 27,
+"paneelomzet_daarna": 419.85
+},
+{
+"klant": "11769064882442",
+"eerste_staal": "2026-06-04",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 130,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11769765462282",
+"eerste_staal": "2026-06-04",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 130,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11770896351498",
+"eerste_staal": "2026-06-04",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 130,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11775873843466",
+"eerste_staal": "2026-06-06",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 128,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11775904547082",
+"eerste_staal": "2026-06-06",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 128,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11776803504394",
+"eerste_staal": "2026-06-06",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 128,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 29,
+"paneelomzet_daarna": 139.95
+},
+{
+"klant": "11777327956234",
+"eerste_staal": "2026-06-07",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 127,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11777429373194",
+"eerste_staal": "2026-06-07",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 127,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11777922924810",
+"eerste_staal": "2026-06-07",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 127,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11778462318858",
+"eerste_staal": "2026-06-07",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 127,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11779341517066",
+"eerste_staal": "2026-06-07",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 127,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11781512364298",
+"eerste_staal": "2026-06-08",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 126,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11783344029962",
+"eerste_staal": "2026-06-08",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 126,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11783391707402",
+"eerste_staal": "2026-06-08",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 126,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 25,
+"paneelomzet_daarna": 1079.7
+},
+{
+"klant": "11787373019402",
+"eerste_staal": "2026-06-09",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 125,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11787876630794",
+"eerste_staal": "2026-06-09",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 125,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11788613189898",
+"eerste_staal": "2026-06-10",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 124,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11788791742730",
+"eerste_staal": "2026-06-10",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 124,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11788914524426",
+"eerste_staal": "2026-06-10",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 124,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11788946964746",
+"eerste_staal": "2026-06-10",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 124,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11788957843722",
+"eerste_staal": "2026-06-10",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 124,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11790581629194",
+"eerste_staal": "2026-06-10",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 124,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11790604075274",
+"eerste_staal": "2026-06-10",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 124,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11791378088202",
+"eerste_staal": "2026-06-11",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 123,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11794434556170",
+"eerste_staal": "2026-06-11",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 123,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 22,
+"paneelomzet_daarna": 499.75
+},
+{
+"klant": "11795617382666",
+"eerste_staal": "2026-06-12",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 122,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11798103294218",
+"eerste_staal": "2026-06-12",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 122,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11799510548746",
+"eerste_staal": "2026-06-12",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 122,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11807143428362",
+"eerste_staal": "2026-06-15",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 119,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11807461409034",
+"eerste_staal": "2026-06-15",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 119,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11807530057994",
+"eerste_staal": "2026-06-15",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 119,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11807901909258",
+"eerste_staal": "2026-06-15",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 119,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 93,
+"paneelomzet_daarna": 359.9
+},
+{
+"klant": "11810666971402",
+"eerste_staal": "2026-06-15",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 119,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11812015767818",
+"eerste_staal": "2026-06-16",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 118,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11812113776906",
+"eerste_staal": "2026-06-16",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 118,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11812255170826",
+"eerste_staal": "2026-06-16",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 118,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11815819346186",
+"eerste_staal": "2026-06-17",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 117,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11816457273610",
+"eerste_staal": "2026-06-17",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 117,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11816913404170",
+"eerste_staal": "2026-06-17",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 117,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11820362727690",
+"eerste_staal": "2026-06-17",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 117,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 16,
+"paneelomzet_daarna": 339.9
+},
+{
+"klant": "11821150994698",
+"eerste_staal": "2026-06-18",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 116,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11821268599050",
+"eerste_staal": "2026-06-18",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 116,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11827643121930",
+"eerste_staal": "2026-06-19",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 115,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11830100689162",
+"eerste_staal": "2026-06-19",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 115,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11783584448778",
+"eerste_staal": "2026-06-19",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 115,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 6,
+"paneelomzet_daarna": 509.85
+},
+{
+"klant": "11831295672586",
+"eerste_staal": "2026-06-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 114,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11831395025162",
+"eerste_staal": "2026-06-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 114,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11831675584778",
+"eerste_staal": "2026-06-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 114,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11833565708554",
+"eerste_staal": "2026-06-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 113,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11833580519690",
+"eerste_staal": "2026-06-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 113,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11834263863562",
+"eerste_staal": "2026-06-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 113,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11834613596426",
+"eerste_staal": "2026-06-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 113,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 15,
+"paneelomzet_daarna": 1592.0
+},
+{
+"klant": "11837373841674",
+"eerste_staal": "2026-06-22",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 112,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11837734617354",
+"eerste_staal": "2026-06-22",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 112,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11838816518410",
+"eerste_staal": "2026-06-23",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 111,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11840380829962",
+"eerste_staal": "2026-06-23",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 111,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11840515080458",
+"eerste_staal": "2026-06-23",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 111,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11678826561802",
+"eerste_staal": "2026-06-23",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 111,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11842740191498",
+"eerste_staal": "2026-06-24",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 110,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11843492151562",
+"eerste_staal": "2026-06-25",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 109,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11843731947786",
+"eerste_staal": "2026-06-25",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 109,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11846310134026",
+"eerste_staal": "2026-06-26",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 108,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11846858965258",
+"eerste_staal": "2026-06-26",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 108,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11848120598794",
+"eerste_staal": "2026-06-27",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 107,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11848403714314",
+"eerste_staal": "2026-06-27",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 107,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11849670590730",
+"eerste_staal": "2026-06-27",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 107,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 63,
+"paneelomzet_daarna": 239.9
+},
+{
+"klant": "11849741173002",
+"eerste_staal": "2026-06-27",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 107,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11850304815370",
+"eerste_staal": "2026-06-28",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 106,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11852710150410",
+"eerste_staal": "2026-06-29",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 105,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11854130872586",
+"eerste_staal": "2026-06-29",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 105,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11857143038218",
+"eerste_staal": "2026-06-30",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 104,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11858280251658",
+"eerste_staal": "2026-07-01",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 103,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11858529485066",
+"eerste_staal": "2026-07-01",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 103,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 11,
+"paneelomzet_daarna": 1879.3
+},
+{
+"klant": "11860535673098",
+"eerste_staal": "2026-07-02",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 102,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11866428277002",
+"eerste_staal": "2026-07-04",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 100,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11866957545738",
+"eerste_staal": "2026-07-04",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 100,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11867177713930",
+"eerste_staal": "2026-07-04",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 100,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11867754266890",
+"eerste_staal": "2026-07-04",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 100,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11867839103242",
+"eerste_staal": "2026-07-04",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 100,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11868514812170",
+"eerste_staal": "2026-07-05",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 99,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11869141860618",
+"eerste_staal": "2026-07-05",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 99,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11869217980682",
+"eerste_staal": "2026-07-05",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 99,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11869580493066",
+"eerste_staal": "2026-07-05",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 99,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11869684826378",
+"eerste_staal": "2026-07-05",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 99,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11869694230794",
+"eerste_staal": "2026-07-05",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 99,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11871499059466",
+"eerste_staal": "2026-07-06",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 98,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11871863374090",
+"eerste_staal": "2026-07-06",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 98,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11871907709194",
+"eerste_staal": "2026-07-06",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 98,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11872373014794",
+"eerste_staal": "2026-07-06",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 98,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11873596932362",
+"eerste_staal": "2026-07-06",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 98,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11874694299914",
+"eerste_staal": "2026-07-07",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 97,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11875191193866",
+"eerste_staal": "2026-07-07",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 97,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11876131963146",
+"eerste_staal": "2026-07-07",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 97,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11877588828426",
+"eerste_staal": "2026-07-08",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 96,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 7,
+"paneelomzet_daarna": 949.65
+},
+{
+"klant": "11878648447242",
+"eerste_staal": "2026-07-08",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 96,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11880315158794",
+"eerste_staal": "2026-07-09",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 95,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11887556264202",
+"eerste_staal": "2026-07-09",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 95,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 22,
+"paneelomzet_daarna": 1869.45
+},
+{
+"klant": "11887881191690",
+"eerste_staal": "2026-07-09",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 95,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 7,
+"paneelomzet_daarna": 179.95
+},
+{
+"klant": "11888175710474",
+"eerste_staal": "2026-07-09",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 95,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11888360259850",
+"eerste_staal": "2026-07-09",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 95,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11889709908234",
+"eerste_staal": "2026-07-10",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 94,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11895320084746",
+"eerste_staal": "2026-07-12",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 92,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11895403806986",
+"eerste_staal": "2026-07-12",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 92,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11895868784906",
+"eerste_staal": "2026-07-13",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 91,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11901162848522",
+"eerste_staal": "2026-07-14",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 90,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11902479696138",
+"eerste_staal": "2026-07-14",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 90,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11902562959626",
+"eerste_staal": "2026-07-14",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 90,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11904930251018",
+"eerste_staal": "2026-07-15",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 89,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11907400663306",
+"eerste_staal": "2026-07-16",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 88,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11907555754250",
+"eerste_staal": "2026-07-16",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 88,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11907860398346",
+"eerste_staal": "2026-07-16",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 88,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11634353635594",
+"eerste_staal": "2026-07-17",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 87,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11909483790602",
+"eerste_staal": "2026-07-17",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 87,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11909643862282",
+"eerste_staal": "2026-07-17",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 87,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11910201278730",
+"eerste_staal": "2026-07-17",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 87,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11910549602570",
+"eerste_staal": "2026-07-18",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 86,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11910820954378",
+"eerste_staal": "2026-07-18",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 86,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11911501447434",
+"eerste_staal": "2026-07-18",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 86,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11911581696266",
+"eerste_staal": "2026-07-18",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 86,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11912614117642",
+"eerste_staal": "2026-07-19",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 85,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11913824338186",
+"eerste_staal": "2026-07-19",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 85,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11915045011722",
+"eerste_staal": "2026-07-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 84,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11915457003786",
+"eerste_staal": "2026-07-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 84,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11916354060554",
+"eerste_staal": "2026-07-20",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 84,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11916549882122",
+"eerste_staal": "2026-07-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 84,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11916671844618",
+"eerste_staal": "2026-07-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 84,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11916712476938",
+"eerste_staal": "2026-07-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 84,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11634198905098",
+"eerste_staal": "2026-07-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 84,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11916866224394",
+"eerste_staal": "2026-07-20",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 84,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11916904595722",
+"eerste_staal": "2026-07-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 84,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11917037207818",
+"eerste_staal": "2026-07-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 83,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11917049331978",
+"eerste_staal": "2026-07-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 83,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11917127549194",
+"eerste_staal": "2026-07-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 83,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11634342527242",
+"eerste_staal": "2026-07-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 83,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11917311017226",
+"eerste_staal": "2026-07-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 83,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11918059569418",
+"eerste_staal": "2026-07-21",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 83,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11918200602890",
+"eerste_staal": "2026-07-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 83,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11918382924042",
+"eerste_staal": "2026-07-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 83,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11918894727434",
+"eerste_staal": "2026-07-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 83,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 36,
+"paneelomzet_daarna": 419.85
+},
+{
+"klant": "11918948204810",
+"eerste_staal": "2026-07-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 83,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11919119122698",
+"eerste_staal": "2026-07-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 83,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11919235055882",
+"eerste_staal": "2026-07-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 83,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11919254552842",
+"eerste_staal": "2026-07-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 83,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11919323758858",
+"eerste_staal": "2026-07-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 83,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11919632236810",
+"eerste_staal": "2026-07-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 83,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11920582181130",
+"eerste_staal": "2026-07-22",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 82,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11920700539146",
+"eerste_staal": "2026-07-22",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 82,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11921210081546",
+"eerste_staal": "2026-07-22",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 82,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11634348130570",
+"eerste_staal": "2026-07-22",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 82,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 42,
+"paneelomzet_daarna": 874.65
+},
+{
+"klant": "11921780670730",
+"eerste_staal": "2026-07-22",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 82,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11921873436938",
+"eerste_staal": "2026-07-22",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 82,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11922571297034",
+"eerste_staal": "2026-07-23",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 81,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11923549290762",
+"eerste_staal": "2026-07-23",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 81,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11923823788298",
+"eerste_staal": "2026-07-23",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 81,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11923883557130",
+"eerste_staal": "2026-07-23",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 81,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11925454553354",
+"eerste_staal": "2026-07-24",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 80,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11926381658378",
+"eerste_staal": "2026-07-24",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 80,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11927047438602",
+"eerste_staal": "2026-07-25",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 79,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11928035885322",
+"eerste_staal": "2026-07-25",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 79,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11930967376138",
+"eerste_staal": "2026-07-26",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 78,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11931623227658",
+"eerste_staal": "2026-07-27",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 77,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11931762163978",
+"eerste_staal": "2026-07-27",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 77,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11933423108362",
+"eerste_staal": "2026-07-27",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 77,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11933466001674",
+"eerste_staal": "2026-07-27",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 77,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11934308172042",
+"eerste_staal": "2026-07-28",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 76,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11934464737546",
+"eerste_staal": "2026-07-28",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 76,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11942985433354",
+"eerste_staal": "2026-07-29",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 75,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11943061881098",
+"eerste_staal": "2026-07-29",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 75,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11943342473482",
+"eerste_staal": "2026-07-29",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 75,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11943988920586",
+"eerste_staal": "2026-07-29",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 75,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11944432599306",
+"eerste_staal": "2026-07-29",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 75,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11945967157514",
+"eerste_staal": "2026-07-30",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 74,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11947106730250",
+"eerste_staal": "2026-07-30",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 74,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11948335005962",
+"eerste_staal": "2026-07-31",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 73,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11948413092106",
+"eerste_staal": "2026-07-31",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 73,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11949189759242",
+"eerste_staal": "2026-07-31",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 73,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11950504968458",
+"eerste_staal": "2026-08-01",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 72,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11951356739850",
+"eerste_staal": "2026-08-01",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 72,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11952264642826",
+"eerste_staal": "2026-08-01",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 72,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11952318415114",
+"eerste_staal": "2026-08-01",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 72,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11952635216138",
+"eerste_staal": "2026-08-02",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 71,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11634328371466",
+"eerste_staal": "2026-08-02",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 71,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11953184801034",
+"eerste_staal": "2026-08-02",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 71,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11954531565834",
+"eerste_staal": "2026-08-02",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 71,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11954957648138",
+"eerste_staal": "2026-08-03",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 70,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11955395526922",
+"eerste_staal": "2026-08-03",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 70,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11956412154122",
+"eerste_staal": "2026-08-03",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 70,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11956626555146",
+"eerste_staal": "2026-08-03",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 70,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11958429942026",
+"eerste_staal": "2026-08-04",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 69,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11959149035786",
+"eerste_staal": "2026-08-04",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 69,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11959301832970",
+"eerste_staal": "2026-08-04",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 69,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11962515620106",
+"eerste_staal": "2026-08-05",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 68,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11962636796170",
+"eerste_staal": "2026-08-05",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 68,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11963574190346",
+"eerste_staal": "2026-08-05",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 68,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11964818850058",
+"eerste_staal": "2026-08-06",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 67,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11965204234506",
+"eerste_staal": "2026-08-06",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 67,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11965476897034",
+"eerste_staal": "2026-08-06",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 67,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 48,
+"paneelomzet_daarna": 1939.1
+},
+{
+"klant": "11966416683274",
+"eerste_staal": "2026-08-06",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 67,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11968568951050",
+"eerste_staal": "2026-08-07",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 66,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11969336770826",
+"eerste_staal": "2026-08-08",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 65,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11969909063946",
+"eerste_staal": "2026-08-08",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 65,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11971042705674",
+"eerste_staal": "2026-08-09",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 64,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11971420422410",
+"eerste_staal": "2026-08-09",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 64,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11971551756554",
+"eerste_staal": "2026-08-09",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 64,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11972425580810",
+"eerste_staal": "2026-08-09",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 64,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11969220083978",
+"eerste_staal": "2026-08-10",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 63,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11978271785226",
+"eerste_staal": "2026-08-11",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 62,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11978590486794",
+"eerste_staal": "2026-08-11",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 62,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11978856530186",
+"eerste_staal": "2026-08-12",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 61,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11979072340234",
+"eerste_staal": "2026-08-12",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 61,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11979090886922",
+"eerste_staal": "2026-08-12",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 61,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11979492131082",
+"eerste_staal": "2026-08-12",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 61,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11980892897546",
+"eerste_staal": "2026-08-12",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 61,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11982534574346",
+"eerste_staal": "2026-08-13",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 60,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 19,
+"paneelomzet_daarna": 139.95
+},
+{
+"klant": "11984118284554",
+"eerste_staal": "2026-08-14",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 59,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11986177884426",
+"eerste_staal": "2026-08-15",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 58,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11986337169674",
+"eerste_staal": "2026-08-15",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 58,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11987028705546",
+"eerste_staal": "2026-08-15",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 58,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 18,
+"paneelomzet_daarna": 479.8
+},
+{
+"klant": "11988078919946",
+"eerste_staal": "2026-08-16",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 57,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11990179348746",
+"eerste_staal": "2026-08-16",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 57,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11994564854026",
+"eerste_staal": "2026-08-18",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 55,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11994805043466",
+"eerste_staal": "2026-08-18",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 55,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11995338735882",
+"eerste_staal": "2026-08-18",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 55,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11995974172938",
+"eerste_staal": "2026-08-18",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 55,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11996681240842",
+"eerste_staal": "2026-08-18",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 55,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11998464246026",
+"eerste_staal": "2026-08-18",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 55,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11999925272842",
+"eerste_staal": "2026-08-19",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 54,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12001920418058",
+"eerste_staal": "2026-08-19",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 54,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12002511585546",
+"eerste_staal": "2026-08-20",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 53,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12007757185290",
+"eerste_staal": "2026-08-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 52,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12008451440906",
+"eerste_staal": "2026-08-22",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 51,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12009218605322",
+"eerste_staal": "2026-08-22",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 51,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 5,
+"paneelomzet_daarna": 1079.55
+},
+{
+"klant": "11634355044618",
+"eerste_staal": "2026-08-22",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 51,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12010500292874",
+"eerste_staal": "2026-08-23",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 50,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12010651812106",
+"eerste_staal": "2026-08-23",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 50,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12011443093770",
+"eerste_staal": "2026-08-23",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 50,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12015586115850",
+"eerste_staal": "2026-08-24",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 49,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12017714037002",
+"eerste_staal": "2026-08-25",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 48,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12017809359114",
+"eerste_staal": "2026-08-25",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 48,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12017828430090",
+"eerste_staal": "2026-08-25",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 48,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11634361172234",
+"eerste_staal": "2026-08-25",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 48,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12019863290122",
+"eerste_staal": "2026-08-25",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 48,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12020337475850",
+"eerste_staal": "2026-08-26",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 47,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12021645639946",
+"eerste_staal": "2026-08-26",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 47,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12026520764682",
+"eerste_staal": "2026-08-27",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 46,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12026639286538",
+"eerste_staal": "2026-08-27",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 46,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12029265608970",
+"eerste_staal": "2026-08-28",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 45,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11634353111306",
+"eerste_staal": "2026-08-28",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 45,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12029848355082",
+"eerste_staal": "2026-08-28",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 45,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 27,
+"paneelomzet_daarna": 719.8
+},
+{
+"klant": "12030124818698",
+"eerste_staal": "2026-08-28",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 45,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12033364001034",
+"eerste_staal": "2026-08-28",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 45,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12035546415370",
+"eerste_staal": "2026-08-29",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 44,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12036368105738",
+"eerste_staal": "2026-08-29",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 44,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12038732185866",
+"eerste_staal": "2026-08-30",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 43,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12039027032330",
+"eerste_staal": "2026-08-30",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 43,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12040678834442",
+"eerste_staal": "2026-08-30",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 43,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12041029812490",
+"eerste_staal": "2026-08-30",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 43,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11976441397514",
+"eerste_staal": "2026-08-30",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 43,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 12,
+"paneelomzet_daarna": 719.8
+},
+{
+"klant": "12041751757066",
+"eerste_staal": "2026-08-30",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 43,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12044804227338",
+"eerste_staal": "2026-08-31",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 42,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12046315487498",
+"eerste_staal": "2026-09-01",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 41,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12048926015754",
+"eerste_staal": "2026-09-01",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 41,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12049289085194",
+"eerste_staal": "2026-09-02",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 40,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12050087346442",
+"eerste_staal": "2026-09-02",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 40,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12050273566986",
+"eerste_staal": "2026-09-02",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 40,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12053182546186",
+"eerste_staal": "2026-09-03",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 39,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12053313323274",
+"eerste_staal": "2026-09-03",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 39,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12059726905610",
+"eerste_staal": "2026-09-04",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 38,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12060355854602",
+"eerste_staal": "2026-09-05",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 37,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12060474048778",
+"eerste_staal": "2026-09-05",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 37,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12061653074186",
+"eerste_staal": "2026-09-05",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 37,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12064921846026",
+"eerste_staal": "2026-09-06",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 36,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12065322500362",
+"eerste_staal": "2026-09-07",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 35,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12065980350730",
+"eerste_staal": "2026-09-07",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 35,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12066725429514",
+"eerste_staal": "2026-09-07",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 35,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 17,
+"paneelomzet_daarna": 339.9
+},
+{
+"klant": "12067025879306",
+"eerste_staal": "2026-09-07",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 35,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11634329682186",
+"eerste_staal": "2026-09-07",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 35,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12071103299850",
+"eerste_staal": "2026-09-08",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 34,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12071363313930",
+"eerste_staal": "2026-09-08",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 34,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12072822571274",
+"eerste_staal": "2026-09-09",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 33,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 7,
+"paneelomzet_daarna": 374.85
+},
+{
+"klant": "12073666871562",
+"eerste_staal": "2026-09-09",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 33,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12073944940810",
+"eerste_staal": "2026-09-09",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 33,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12074297360650",
+"eerste_staal": "2026-09-09",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 33,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12074653057290",
+"eerste_staal": "2026-09-09",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 33,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12078718058762",
+"eerste_staal": "2026-09-11",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 31,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12078885142794",
+"eerste_staal": "2026-09-11",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 31,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12079134408970",
+"eerste_staal": "2026-09-11",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 31,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12080709992714",
+"eerste_staal": "2026-09-11",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 31,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 6,
+"paneelomzet_daarna": 699.75
+},
+{
+"klant": "12081272389898",
+"eerste_staal": "2026-09-11",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 31,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12081709809930",
+"eerste_staal": "2026-09-12",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 30,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12083600818442",
+"eerste_staal": "2026-09-12",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 30,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 8,
+"paneelomzet_daarna": 279.9
+},
+{
+"klant": "12083605471498",
+"eerste_staal": "2026-09-12",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 30,
+"rijp_30_dagen": "ja",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11634207097098",
+"eerste_staal": "2026-09-13",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 29,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12085304262922",
+"eerste_staal": "2026-09-13",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 29,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11634346688778",
+"eerste_staal": "2026-09-14",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 28,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12088668258570",
+"eerste_staal": "2026-09-14",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 28,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12090298958090",
+"eerste_staal": "2026-09-14",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 28,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12090983842058",
+"eerste_staal": "2026-09-15",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 27,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12101014946058",
+"eerste_staal": "2026-09-16",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 26,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12101021270282",
+"eerste_staal": "2026-09-16",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 26,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 20,
+"paneelomzet_daarna": 249.9
+},
+{
+"klant": "12101218074890",
+"eerste_staal": "2026-09-16",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 26,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12101240553738",
+"eerste_staal": "2026-09-16",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 26,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12101984059658",
+"eerste_staal": "2026-09-17",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 25,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12107154030858",
+"eerste_staal": "2026-09-17",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 25,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12107437506826",
+"eerste_staal": "2026-09-17",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 25,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12108199756042",
+"eerste_staal": "2026-09-18",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 24,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12108698353930",
+"eerste_staal": "2026-09-18",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 24,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12110588313866",
+"eerste_staal": "2026-09-19",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 23,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12113131700490",
+"eerste_staal": "2026-09-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 22,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12113359601930",
+"eerste_staal": "2026-09-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 22,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12113418518794",
+"eerste_staal": "2026-09-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 22,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12113946902794",
+"eerste_staal": "2026-09-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 22,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12114330091786",
+"eerste_staal": "2026-09-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 22,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12114500681994",
+"eerste_staal": "2026-09-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 22,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12115181043978",
+"eerste_staal": "2026-09-20",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 22,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12115767099658",
+"eerste_staal": "2026-09-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 21,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12117475852554",
+"eerste_staal": "2026-09-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 21,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12117875261706",
+"eerste_staal": "2026-09-21",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 21,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12118381166858",
+"eerste_staal": "2026-09-22",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 20,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12118392340746",
+"eerste_staal": "2026-09-22",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 20,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12120447451402",
+"eerste_staal": "2026-09-22",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 20,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 5,
+"paneelomzet_daarna": 764.7
+},
+{
+"klant": "12120609653002",
+"eerste_staal": "2026-09-22",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 20,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12120611094794",
+"eerste_staal": "2026-09-22",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 20,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 6,
+"paneelomzet_daarna": 1019.7
+},
+{
+"klant": "12121411354890",
+"eerste_staal": "2026-09-23",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 19,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12121547735306",
+"eerste_staal": "2026-09-23",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 19,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12121724551434",
+"eerste_staal": "2026-09-23",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 19,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 4,
+"paneelomzet_daarna": 359.9
+},
+{
+"klant": "12121920307466",
+"eerste_staal": "2026-09-23",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 19,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12122002096394",
+"eerste_staal": "2026-09-23",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 19,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12126212456714",
+"eerste_staal": "2026-09-24",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 18,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11900263203082",
+"eerste_staal": "2026-09-24",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 18,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12126536139018",
+"eerste_staal": "2026-09-24",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 18,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12126619402506",
+"eerste_staal": "2026-09-24",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 18,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12126733336842",
+"eerste_staal": "2026-09-24",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 18,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12127091785994",
+"eerste_staal": "2026-09-24",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 18,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12127505940746",
+"eerste_staal": "2026-09-24",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 18,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12127604572426",
+"eerste_staal": "2026-09-24",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 18,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12127938183434",
+"eerste_staal": "2026-09-25",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 17,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12129012220170",
+"eerste_staal": "2026-09-25",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 17,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 12,
+"paneelomzet_daarna": 124.95
+},
+{
+"klant": "12131255058698",
+"eerste_staal": "2026-09-25",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 17,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12131306864906",
+"eerste_staal": "2026-09-25",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 17,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12133053497610",
+"eerste_staal": "2026-09-26",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 16,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12133155111178",
+"eerste_staal": "2026-09-26",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 16,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12133595447562",
+"eerste_staal": "2026-09-26",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 16,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12133685952778",
+"eerste_staal": "2026-09-26",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 16,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12134331482378",
+"eerste_staal": "2026-09-26",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 16,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12134641565962",
+"eerste_staal": "2026-09-26",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 16,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12135891304714",
+"eerste_staal": "2026-09-27",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 15,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12136005206282",
+"eerste_staal": "2026-09-27",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 15,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "11778441216266",
+"eerste_staal": "2026-09-27",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 15,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12136984805642",
+"eerste_staal": "2026-09-27",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 15,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12137848504586",
+"eerste_staal": "2026-09-27",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 15,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12137954083082",
+"eerste_staal": "2026-09-27",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 15,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12138785865994",
+"eerste_staal": "2026-09-28",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 14,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12138851631370",
+"eerste_staal": "2026-09-28",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 14,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12139951784202",
+"eerste_staal": "2026-09-28",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 14,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12141796425994",
+"eerste_staal": "2026-09-28",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 14,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12145498947850",
+"eerste_staal": "2026-09-29",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 13,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12149882355978",
+"eerste_staal": "2026-09-29",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 13,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12151163027722",
+"eerste_staal": "2026-09-30",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 12,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12154646495498",
+"eerste_staal": "2026-09-30",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 12,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12154854048010",
+"eerste_staal": "2026-09-30",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 12,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12155685994762",
+"eerste_staal": "2026-09-30",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 12,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12162629370122",
+"eerste_staal": "2026-10-01",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 11,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12162879881482",
+"eerste_staal": "2026-10-01",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 11,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 8,
+"paneelomzet_daarna": 839.7
+},
+{
+"klant": "12166040092938",
+"eerste_staal": "2026-10-02",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 10,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12166180110602",
+"eerste_staal": "2026-10-02",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 10,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12169626059018",
+"eerste_staal": "2026-10-02",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 10,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12172511641866",
+"eerste_staal": "2026-10-03",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 9,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12173687324938",
+"eerste_staal": "2026-10-03",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 9,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12174176682250",
+"eerste_staal": "2026-10-03",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 9,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12174227734794",
+"eerste_staal": "2026-10-03",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 9,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12178190434570",
+"eerste_staal": "2026-10-04",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 8,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12178699059466",
+"eerste_staal": "2026-10-04",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 8,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12179231801610",
+"eerste_staal": "2026-10-04",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 8,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12180709114122",
+"eerste_staal": "2026-10-04",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 8,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12184860655882",
+"eerste_staal": "2026-10-05",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 7,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12167929430282",
+"eerste_staal": "2026-10-05",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 7,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12185892651274",
+"eerste_staal": "2026-10-05",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 7,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12185951174922",
+"eerste_staal": "2026-10-05",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 7,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12186241859850",
+"eerste_staal": "2026-10-05",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 7,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12186254278922",
+"eerste_staal": "2026-10-05",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 7,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12147807486218",
+"eerste_staal": "2026-10-06",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 6,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12189496377610",
+"eerste_staal": "2026-10-06",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 6,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12189946839306",
+"eerste_staal": "2026-10-06",
+"stalen_in_eerste_order": 5,
+"dagen_sinds_eerste_staal": 6,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12189986881802",
+"eerste_staal": "2026-10-06",
+"stalen_in_eerste_order": 4,
+"dagen_sinds_eerste_staal": 6,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12190465261834",
+"eerste_staal": "2026-10-07",
+"stalen_in_eerste_order": 4,
+"dagen_sinds_eerste_staal": 5,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12191154405642",
+"eerste_staal": "2026-10-07",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 5,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12191321161994",
+"eerste_staal": "2026-10-07",
+"stalen_in_eerste_order": 4,
+"dagen_sinds_eerste_staal": 5,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12191411994890",
+"eerste_staal": "2026-10-07",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 5,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12191921471754",
+"eerste_staal": "2026-10-07",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 5,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12189496017162",
+"eerste_staal": "2026-10-07",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 5,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "ja",
+"dagen_tot_eerste_paneelorder": 1,
+"paneelomzet_daarna": 723.95
+},
+{
+"klant": "12192611238154",
+"eerste_staal": "2026-10-07",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 5,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12192621625610",
+"eerste_staal": "2026-10-07",
+"stalen_in_eerste_order": 4,
+"dagen_sinds_eerste_staal": 5,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12193055375626",
+"eerste_staal": "2026-10-08",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 4,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12193331904778",
+"eerste_staal": "2026-10-08",
+"stalen_in_eerste_order": 4,
+"dagen_sinds_eerste_staal": 4,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12193484669194",
+"eerste_staal": "2026-10-08",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 4,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12194549629194",
+"eerste_staal": "2026-10-08",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 4,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12194873737482",
+"eerste_staal": "2026-10-08",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 4,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12195119104266",
+"eerste_staal": "2026-10-08",
+"stalen_in_eerste_order": 5,
+"dagen_sinds_eerste_staal": 4,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12196276371722",
+"eerste_staal": "2026-10-09",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 3,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12196875075850",
+"eerste_staal": "2026-10-09",
+"stalen_in_eerste_order": 4,
+"dagen_sinds_eerste_staal": 3,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12197345460490",
+"eerste_staal": "2026-10-09",
+"stalen_in_eerste_order": 4,
+"dagen_sinds_eerste_staal": 3,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12198419693834",
+"eerste_staal": "2026-10-09",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 3,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12198714867978",
+"eerste_staal": "2026-10-09",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 3,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12200346124554",
+"eerste_staal": "2026-10-10",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 2,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12200700379402",
+"eerste_staal": "2026-10-10",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 2,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12201385394442",
+"eerste_staal": "2026-10-10",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 2,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12201431040266",
+"eerste_staal": "2026-10-10",
+"stalen_in_eerste_order": 4,
+"dagen_sinds_eerste_staal": 2,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12202411032842",
+"eerste_staal": "2026-10-10",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 2,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12202480795914",
+"eerste_staal": "2026-10-10",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 2,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12202931355914",
+"eerste_staal": "2026-10-10",
+"stalen_in_eerste_order": 4,
+"dagen_sinds_eerste_staal": 2,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12203237474570",
+"eerste_staal": "2026-10-10",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 2,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12204341788938",
+"eerste_staal": "2026-10-11",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 1,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12204374786314",
+"eerste_staal": "2026-10-11",
+"stalen_in_eerste_order": 2,
+"dagen_sinds_eerste_staal": 1,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12204502581514",
+"eerste_staal": "2026-10-11",
+"stalen_in_eerste_order": 5,
+"dagen_sinds_eerste_staal": 1,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12205023592714",
+"eerste_staal": "2026-10-11",
+"stalen_in_eerste_order": 4,
+"dagen_sinds_eerste_staal": 1,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12205531365642",
+"eerste_staal": "2026-10-11",
+"stalen_in_eerste_order": 4,
+"dagen_sinds_eerste_staal": 1,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12206859190538",
+"eerste_staal": "2026-10-11",
+"stalen_in_eerste_order": 5,
+"dagen_sinds_eerste_staal": 1,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12207041151242",
+"eerste_staal": "2026-10-11",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 1,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12207085486346",
+"eerste_staal": "2026-10-11",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 1,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12207163965706",
+"eerste_staal": "2026-10-11",
+"stalen_in_eerste_order": 4,
+"dagen_sinds_eerste_staal": 1,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12208143433994",
+"eerste_staal": "2026-10-12",
+"stalen_in_eerste_order": 3,
+"dagen_sinds_eerste_staal": 0,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12208810557706",
+"eerste_staal": "2026-10-12",
+"stalen_in_eerste_order": 1,
+"dagen_sinds_eerste_staal": 0,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12209284645130",
+"eerste_staal": "2026-10-12",
+"stalen_in_eerste_order": 5,
+"dagen_sinds_eerste_staal": 0,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12209468932362",
+"eerste_staal": "2026-10-12",
+"stalen_in_eerste_order": 5,
+"dagen_sinds_eerste_staal": 0,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+},
+{
+"klant": "12210165514506",
+"eerste_staal": "2026-10-12",
+"stalen_in_eerste_order": 5,
+"dagen_sinds_eerste_staal": 0,
+"rijp_30_dagen": "nee",
+"later_panelen_gekocht": "nee",
+"dagen_tot_eerste_paneelorder": null,
+"paneelomzet_daarna": 0
+}
+]
