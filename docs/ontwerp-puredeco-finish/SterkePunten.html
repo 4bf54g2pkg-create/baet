@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Sterke punten en zelfanalyse</title>
+<style>
+@font-face{font-family:'Cormorant';src:url('../../tools/banners/cormorant.woff2') format('woff2');font-weight:300 700}
+@font-face{font-family:'Instrument Sans';src:url('../../tools/banners/instrument.woff2') format('woff2');font-weight:400 700}
+:root{--ink:#151413;--stone:#6E675E;--bronze:#8C6A4A;--line:#DDD6CA;--paper:#F5F2EC;--sand:#E9E3D8}
+*{box-sizing:border-box}
+body{margin:0;background:#DCD5CA;font-family:'Instrument Sans',Arial,sans-serif;color:var(--ink)}
+.board{width:1600px;margin:0 auto;padding:56px 56px 80px;background:var(--paper)}
+.k{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--bronze)}
+.ey{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone)}
+.s{font-family:'Cormorant',Georgia,serif;font-weight:500}
+h1{font-family:'Cormorant',Georgia,serif;font-weight:500;font-size:62px;line-height:1;margin:10px 0 0}
+h2{font-family:'Cormorant',Georgia,serif;font-weight:500;font-size:38px;line-height:1.08;margin:8px 0 10px}
+p,li{font-size:14.5px;line-height:1.7;color:#3A3733}
+.lead{font-size:16px;max-width:1060px;margin-top:14px}
+.sec{margin-top:70px;display:grid;grid-template-columns:400px 1fr;gap:48px;align-items:start}
+.num{font-family:'Cormorant',Georgia,serif;font-size:56px;color:var(--bronze);line-height:1}
+.frame{background:#fff;border:1px solid var(--line);box-shadow:0 18px 40px rgba(21,20,19,.08);position:relative}
+.usp{display:grid;grid-template-columns:repeat(6,1fr);background:var(--paper)}
+.usp div{padding:22px 18px 20px;border-right:1px solid var(--line)}
+.usp div:last-child{border-right:0}
+.usp svg{width:30px;height:30px;stroke:var(--ink);fill:none;stroke-width:1.3}
+.usp b{display:block;font-family:'Cormorant',Georgia,serif;font-weight:500;font-size:21px;line-height:1.1;margin:12px 0 4px}
+.usp span{font-size:12.5px;line-height:1.5;color:var(--stone)}
+.hero{position:relative;height:300px;background:linear-gradient(90deg,rgba(21,20,19,.72),rgba(21,20,19,.2)),url('../visualisaties/woonkamer.jpg') center/cover;color:#F5F2EC;padding:46px 40px}
+.hero .s{font-size:50px;line-height:1.02}
+.hero p{color:#EDE6DB;max-width:520px;margin:12px 0 0}
+.old{position:absolute;right:20px;top:18px;background:#F5F2EC;color:var(--ink);font-size:11px;padding:6px 10px;letter-spacing:.06em}
+.pdp{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.pdp .img{background:url('../visualisaties/woonkamer.jpg') 30% center/cover;min-height:330px}
+.pdp .info{padding:28px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chips span{border:1px solid var(--line);background:var(--paper);padding:7px 10px;font-size:12.5px}
+.chips span i{font-style:normal;color:var(--bronze);margin-right:6px}
+.btn{display:inline-block;background:var(--ink);color:#F5F2EC;padding:13px 18px;font-size:13px;margin-top:16px}
+.bend{display:grid;grid-template-columns:1.15fr 1fr;gap:0}
+.bend .draw{padding:22px;background:var(--paper);border-right:1px solid var(--line)}
+.bend .txt{padding:24px 26px}
+.steps{counter-reset:s;list-style:none;padding:0;margin:10px 0 0}
+.steps li{position:relative;padding:10px 0 10px 40px;border-top:1px solid var(--line);font-size:14px}
+.steps li:before{counter-increment:s;content:counter(s,decimal-leading-zero);position:absolute;left:0;top:9px;font-family:'Cormorant',Georgia,serif;font-size:22px;color:var(--bronze)}
+.q{background:#EFE6D8;border:1px solid #D8C7AE;padding:14px 16px;margin-top:14px;font-size:13.5px}
+.q b{color:var(--bronze)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);font-weight:500;background:var(--paper)}
+td b{font-weight:600}
+.sc{display:inline-block;min-width:34px;text-align:center;padding:3px 6px;font-weight:600;font-size:12.5px}
+.g{background:#DDE8D6}.o{background:#F2E3C4}.r{background:#F1D3CB}
+.tips{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tip{background:#fff;border:1px solid var(--line);padding:18px 18px 16px}
+.tip .p{font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.tip b{display:block;font-family:'Cormorant',Georgia,serif;font-weight:500;font-size:22px;line-height:1.1;margin:6px 0 6px}
+.tip p{font-size:13.5px;margin:0}
+.ask{margin-top:64px;padding:26px 30px;background:#EFEAE1;border:1px solid var(--line)}
+.ask ol{margin:8px 0 0;padding-left:20px}
+.ask li{font-size:14.5px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="board">
+  <p class="k">Artboard · rapport · nog niets aangepast</p>
+  <h1>Sterke punten laten zien, en een eerlijke blik op H1-test</h1>
+  <p class="lead">De sterkste argumenten van Puredeco staan nu verstopt in productteksten en veelgestelde vragen. Bezoekers zien ze pas na scrollen of klikken. Buigen voor ronde wanden staat in de productteksten als "buigbaar", maar nergens staat dat je daarvoor moet infrezen en verwarmen. Dat is onvolledig, en het is een gemiste kans. Dit artboard laat zien hoe we de sterke punten overal herkenbaar maken. Daarna volgt een kritische analyse van mijn eigen werk in H1-test, met prioriteiten.</p>
+
+  <section class="sec">
+    <div><div class="num">01</div><h2>Eén vaste rij sterke punten</h2>
+      <p>Zes punten met dezelfde iconen en woorden op elke plek: direct onder de hero, op elke collectiepagina en verkleind op de productpagina. Bezoekers leren ze zo in één oogopslag herkennen.</p>
+      <p>Alle teksten komen uit wat al klopt. Waterbestendig krijgt altijd de toevoeging "vermijd staand water".</p></div>
+    <div class="frame usp">
+      <div><svg viewBox="0 0 30 30"><path d="M15 4c5 7 8 11 8 15a8 8 0 0 1-16 0c0-4 3-8 8-15z"/></svg><b>Waterbestendig</b><span>Ook in badkamer en keuken. Vermijd staand water.</span></div>
+      <div><svg viewBox="0 0 30 30"><rect x="4" y="4" width="10" height="10"/><rect x="16" y="4" width="10" height="10"/><rect x="4" y="16" width="10" height="10"/><path d="M17 26V16h9"/></svg><b>Over bestaande tegels</b><span>Op een vlakke, droge, schone wand. Zonder breekwerk.</span></div>
+      <div><svg viewBox="0 0 30 30"><path d="M5 25C5 13 13 5 25 5"/><path d="M9 25c0-9 7-16 16-16" stroke-dasharray="2 2"/></svg><b>Ook voor ronde wanden</b><span>Achterkant infrezen en verwarmen, dan buigen.</span></div>
+      <div><svg viewBox="0 0 30 30"><rect x="10" y="2" width="10" height="26"/><path d="M5 2v26M3 2h4M3 28h4"/></svg><b>In één stuk tot 280 cm</b><span>122 cm breed. Geen voegen per tegel.</span></div>
+      <div><svg viewBox="0 0 30 30"><path d="M6 24l6-6M10 26l-6-6 12-12 6 6z"/><path d="M18 6l6 6"/></svg><b>Eenvoudig te monteren</b><span>Met montagekit, in zes stappen.</span></div>
+      <div><svg viewBox="0 0 30 30"><path d="M15 3l10 4v8c0 6-4 10-10 12C9 25 5 21 5 15V7z"/><path d="M10 15l4 4 6-7"/></svg><b>3 jaar garantie</b><span>Tot 5 stalen gratis, alleen € 6,95 verzending.</span></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div><div class="num">02</div><h2>Hero: een belofte in plaats van een slogan</h2>
+      <p>"Eén wand. Eén geheel." staat nog in de homepage-hero. Je vond deze zin in de footer niet professioneel, dus hij hoort ook niet in de hero. Voorstel: in één zin zeggen wat de klant krijgt, met de sterke punten eronder.</p></div>
+    <div class="frame"><div class="hero"><span class="old">Nu: "Eén wand. Eén geheel."</span><span class="k" style="color:#E8D9C4">Wandpanelen met een bamboekern</span><div class="s" style="margin-top:12px">Een nieuwe wand,<br>zonder breekwerk.</div><p>Waterbestendig, in één stuk tot 280 cm hoog en te plaatsen over bestaande tegels. Bekijk alle decors of bestel gratis stalen.</p></div></div>
+  </section>
+
+  <section class="sec">
+    <div><div class="num">03</div><h2>Productpagina: sterke punten bij de koopknop</h2>
+      <p>Nu staan "waterbestendig" en "buigbaar" pas in de specificaties en veelgestelde vragen. Voorstel: vier korte labels direct onder de prijs. Die verschillen per uitvoering: Linea toont "Ronde wanden mogelijk" alleen als dat voor die dikte klopt.</p></div>
+    <div class="frame pdp"><div class="img"></div><div class="info"><span class="ey">Hout · 811</span><div class="s" style="font-size:38px;margin-top:6px">Walnut Classic</div><div style="font-size:22px;margin-top:10px">€ 179,95 <span style="font-size:13px;color:var(--stone)">per paneel · € 52,68 per m²</span></div>
+      <div class="chips"><span><i>●</i>Waterbestendig</span><span><i>●</i>Over tegels te plaatsen</span><span><i>●</i>In één stuk tot 280 cm</span><span><i>●</i>3 jaar garantie</span></div>
+      <span class="btn">In winkelmand</span> <span class="btn" style="background:transparent;color:var(--ink);border:1px solid var(--ink)">Gratis stalen</span>
+      <p style="font-size:12.5px;margin-top:12px;color:var(--stone)">Ronde wand? <u>Zo buig je een paneel →</u></p></div></div>
+  </section>
+
+  <section class="sec">
+    <div><div class="num">04</div><h2>Ronde wanden: een eigen uitleg</h2>
+      <p>Een korte gids "Wandpanelen buigen voor ronde wanden", met een doorsnedetekening, stappen en later een video. Daarnaar linken vanuit de productpagina, de rij sterke punten, de veelgestelde vragen en de montagefilm.</p>
+      <p>Goed voor SEO: zoekopdrachten als "wandpanelen buigen" en "ronde wand bekleden" hebben nu geen pagina op de site.</p>
+      <div class="q"><b>Nog niet invullen zonder jouw gegevens:</b> de kleinste straal, de diepte en afstand van de sleuven, de warmtebron en temperatuur, en welke uitvoeringen (5 mm, 8 mm, welke decors). Dat staat hieronder als [vraag].</div></div>
+    <div class="frame bend">
+      <div class="draw"><span class="ey">Doorsnede, schematisch</span>
+        <svg viewBox="0 0 560 300" style="width:100%;margin-top:10px" aria-hidden="true">
+          <g font-family="Instrument Sans,Arial" font-size="12" fill="#151413">
+          <rect x="30" y="40" width="500" height="22" fill="#D9C38F" stroke="#151413"/>
+          <rect x="30" y="34" width="500" height="6" fill="#8A5B3E" stroke="#151413"/>
+          <g fill="#F5F2EC" stroke="#151413">
+            <path d="M80 62l8-14 8 14z"/><path d="M130 62l8-14 8 14z"/><path d="M180 62l8-14 8 14z"/><path d="M230 62l8-14 8 14z"/><path d="M280 62l8-14 8 14z"/><path d="M330 62l8-14 8 14z"/><path d="M380 62l8-14 8 14z"/><path d="M430 62l8-14 8 14z"/>
+          </g>
+          <text x="30" y="24">Toplaag (decor)</text><text x="300" y="86">Ingefreesde sleuven aan de achterkant · afstand [vraag]</text>
+          <path d="M60 250 C160 140 400 140 500 250" fill="none" stroke="#8A5B3E" stroke-width="7"/>
+          <path d="M60 258 C160 148 400 148 500 258" fill="none" stroke="#D9C38F" stroke-width="12"/>
+          <path d="M280 205v-60" stroke="#8C6A4A" stroke-dasharray="3 3"/><text x="288" y="180">straal ≥ [vraag]</text>
+          <g stroke="#C0392B" fill="none" opacity=".8"><path d="M150 285c4-6-4-10 0-16"/><path d="M165 285c4-6-4-10 0-16"/><path d="M180 285c4-6-4-10 0-16"/></g>
+          <text x="196" y="285">Verwarmen met [vraag: föhn / heteluchtpistool, °C]</text>
+          </g>
+        </svg></div>
+      <div class="txt"><span class="k">Gids · ronde wanden</span><div class="s" style="font-size:30px;margin:6px 0 4px">Wandpanelen buigen</div>
+        <ol class="steps"><li>Meet de straal van de wand. Kleinste straal: [vraag].</li><li>Frees sleuven aan de achterkant: diepte [vraag], om de [vraag] cm.</li><li>Verwarm het paneel gelijkmatig met [vraag].</li><li>Buig rustig tegen de wand en zet het vast met montagekit.</li><li>Werk de randen af met profielen.</li></ol>
+        <p style="font-size:12.5px;color:var(--stone)">Geldt voor: [vraag welke uitvoeringen en decors]. Video van het buigen: [vraag of die er is].</p></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div><div class="num">05</div><h2>Eerlijke analyse van H1-test</h2>
+      <p>Gemeten op 13 pagina's (mobiel). Technisch staat het goed: 1 H1 per pagina, titels en omschrijvingen gevuld, geen Liquid-fouten, laadtijd tot het grootste beeld 1,1–2,6 s (zonder vertraging gemeten), geen verspringende opmaak.</p>
+      <p>Wat beter moet staat hiernaast, op volgorde van impact.</p></div>
+    <div class="frame">
+      <table>
+        <tr><th>Onderdeel</th><th>Oordeel</th><th>Wat ik zie</th><th>Voorstel</th></tr>
+        <tr><td><b>Sterke punten</b></td><td><span class="sc r">4/10</span></td><td>"Waterbestendig" staat op home, collectie en product, maar klein en ver naar beneden. Op de FAQ-pagina staat het niet. "Over tegels" staat alleen in de inspiratie.</td><td>Rij sterke punten (01) en labels op de productpagina (03).</td></tr>
+        <tr><td><b>Ronde wanden</b></td><td><span class="sc r">3/10</span></td><td>Productteksten zeggen "buigbaar, geschikt voor ronde wanden" zonder infrezen en verwarmen. Mijn eigen homepage-tekst bij 691 zegt "5 mm dun en buigbaar, dus ook voor ronde wanden". Dat is net zo onvolledig.</td><td>Tekst corrigeren en een gids "buigen" (04), zodra jij de gegevens geeft.</td></tr>
+        <tr><td><b>Hero</b></td><td><span class="sc o">5/10</span></td><td>Mooi beeld, maar de slogan zegt niets over het product. Op mobiel nemen de topbalk, header en zoekbalk bijna een derde van het scherm in.</td><td>Belofte als kop (02). Zoekbalk op mobiel inklappen tot een icoon.</td></tr>
+        <tr><td><b>Vertrouwen</b></td><td><span class="sc r">4/10</span></td><td>Geen klantbeoordelingen op de site. Veel beelden zijn (eerlijk gelabelde) visualisaties, maar er zijn weinig echte foto's. Mijn renders zijn goed, maar niet van echt te onderscheiden; de meubels zijn simpel.</td><td>Beoordelingen tonen, echte projectfoto's verzamelen (zie tips).</td></tr>
+        <tr><td><b>Productpagina</b></td><td><span class="sc g">7/10</span></td><td>Sterk: prijs per m², calculator met tekening, specificaties, montagefilm. Zwak: de koppen geven weinig argumenten. "Gemaakt om te blijven" is vaag.</td><td>Labels bij de prijs, en een concrete ondertitel per decor.</td></tr>
+        <tr><td><b>Inspiratie en gidsen</b></td><td><span class="sc g">7/10</span></td><td>Zes gidsen, schema, interne links en visualisaties. Ze staan nog als voorbeeld (noindex) en leveren dus nog geen bezoekers op.</td><td>Artikelen aanmaken bij de livegang (5 min per gids).</td></tr>
+        <tr><td><b>Zakelijk</b></td><td><span class="sc g">7/10</span></td><td>Projecten en dealers zijn nu duidelijk gescheiden. Er zijn nog geen echte projecten, alleen "in voorbereiding".</td><td>Eerste project vastleggen met foto's voor, tijdens en na.</td></tr>
+        <tr><td><b>Snelheid</b></td><td><span class="sc o">6/10</span></td><td>Ongeveer 180–200 verzoeken per pagina. De Product Samples-app laadt op elke pagina vanaf een externe server.</td><td>Samples-app alleen laden waar nodig; apps die niets doen uitzetten.</td></tr>
+        <tr><td><b>Openstaand</b></td><td><span class="sc o">—</span></td><td>Algemene voorwaarden noemen 90 dagen terwijl de site 30 dagen zegt. Testbestanden pdtmp-* en pd-test.mp4. Het oude rekenscript in 692/668. Contactpagina: 4 afbeeldingen zonder alt-tekst.</td><td>Opruimen vóór publicatie (lijst in het register).</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div><div class="num">06</div><h2>Tips om de beste van de markt te worden</h2>
+      <p>Wat de beste interieurmerken online anders doen. Gesorteerd op opbrengst per moeite. Nieuwe beweringen alleen als jij ze kunt onderbouwen.</p></div>
+    <div class="tips">
+      <div class="tip"><span class="p k">Hoog · snel</span><b>Echte beoordelingen</b><p>Vraag elke klant na levering om een review (Google of Judge.me). Toon het gemiddelde op home en productpagina, met review-schema voor sterren in Google.</p></div>
+      <div class="tip"><span class="p k">Hoog · snel</span><b>Opvolging van stalen</b><p>Drie tot vijf dagen na de stalen een mail: "Welk decor past?", met de calculator en een link naar Studio Herwen. Stalen zijn je warmste leads.</p></div>
+      <div class="tip"><span class="p k">Hoog · middel</span><b>Echte projectfoto's</b><p>Vraag klanten om een foto (bijvoorbeeld in ruil voor een kleine attentie, jouw keuze). Eén professionele fotodag in Herwen voor de top-10 decors levert beelden op voor jaren.</p></div>
+      <div class="tip"><span class="p k">Hoog · middel</span><b>Technisch blad per product</b><p>Pdf met opbouw, maten, gewicht, onderhoud en montage. Architecten en dealers vragen hierom. Brandklasse en emissie alleen als ze getest zijn; laat dat eventueel testen, want voor projecten is het een groot voordeel.</p></div>
+      <div class="tip"><span class="p k">Middel · snel</span><b>Berekening bewaren of als offerte</b><p>Laat de calculator een pdf of link maken ("bewaar je wand"). Particulieren delen die met hun partner, zakelijke klanten met hun opdrachtgever.</p></div>
+      <div class="tip"><span class="p k">Middel · middel</span><b>Je wand visualiseren</b><p>Er staat een niet-gepubliceerde pagina "Visualiseer je wand" (ai-visualizer). Als die goed werkt, is dit dé reden om terug te komen. Wel altijd met het label visualisatie.</p></div>
+      <div class="tip"><span class="p k">Middel · snel</span><b>Levertijd en voorraad zichtbaar</b><p>"Op voorraad · levering binnen X werkdagen" bij de koopknop, maar alleen met echte gegevens. Onzekerheid over levertijd is een grote reden om af te haken.</p></div>
+      <div class="tip"><span class="p k">Middel · snel</span><b>Google Bedrijfsprofiel Studio Herwen</b><p>Foto's van de studio, openingstijden "op afspraak", reviews en een afspraaklink. Goed voor "wandpanelen showroom" in de buurt.</p></div>
+      <div class="tip"><span class="p k">Basis</span><b>Meten wat werkt</b><p>GA4-gebeurtenissen voor stalen, calculator, projectaanvraag en dealeraanmelding. Dan weet je welke pagina's echt verkopen en wat je moet verbeteren.</p></div>
+    </div>
+  </section>
+
+  <div class="ask"><span class="k">Graag jouw input</span><h2 style="font-size:32px">Wat ik nodig heb</h2>
+    <ol>
+      <li><b>Buigen:</b> welke uitvoeringen en decors (alleen 5 mm Linea, of ook 8 mm?), de kleinste straal, de diepte en afstand van de sleuven, de warmtebron en temperatuur, en of buigen binnen de garantie valt. Is er een foto of video van?</li>
+      <li><b>Akkoord op 01–04:</b> de rij sterke punten, de nieuwe hero-tekst, de labels op de productpagina en de gids "buigen" (zodra 1 bekend is). Alles alleen in H1-test.</li>
+      <li><b>Opruimen 05:</b> mag ik de homepage-tekst bij 691 nu al corrigeren naar "met infrezen en verwarmen ook voor ronde wanden"?</li>
+      <li><b>Tips 06:</b> welke wil je oppakken? Voor beoordelingen, mails en GA4 is een app of instelling in de winkel nodig. Dat doe ik alleen met jouw akkoord.</li>
+    </ol></div>
+</div>
+</body>
+</html>
