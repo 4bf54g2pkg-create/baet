@@ -283,6 +283,13 @@
           <summary>Hoe zaag of snijd ik een paneel op maat?</summary>
           <p>Met een fijne cirkelzaag, of met een stanleymes: kras een paar keer langs een rei, buig het paneel en breek het af. In de montagefilm hierboven zie je hoe.</p>
         </details>
+        {%- assign pdd_cols = product.collections | map: 'handle' | join: ',' | prepend: ',' | append: ',' -%}
+        {%- if pdd_cols contains ',wandpanelen,' -%}
+        <details class="pd-faq__item">
+          <summary>Kan ik het paneel buigen voor een ronde wand?</summary>
+          <p>Ja, alle wandpanelen zijn te buigen. Frees de achterkant in tot aan de toplaag, verwarm het paneel en buig het mee met de wand. <a href="{{ articles['nieuws/wandpanelen-buigen'].url | default: '/blogs/nieuws?view=gids-buigen' }}">Zo werkt het →</a></p>
+        </details>
+        {%- endif -%}
         <details class="pd-faq__item">
           <summary>Hoeveel panelen moet ik bestellen?</summary>
           <p>Vul bovenaan de breedte en hoogte van je wand in; de calculator rekent met panelen van 280 × 122 cm en laat ook de rest zien. Twijfel je? Stuur ons een foto van je wand.</p>

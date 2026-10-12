@@ -274,3 +274,17 @@ Alleen H1-test (194824929546). Live thema, URL's, blog en artikelen niet aangepa
 - Waarom via Sami: de winkel gebruikt de nieuwe klantaccounts van Shopify; een eigen registratieformulier met wachtwoord kan daar niet. Goedkeuring en B2B-prijzen regelt Sami.
 - Getest met omleidingen voor in de testomgeving geblokkeerde hosts (myshopify.com, unpkg, cdnjs, reCAPTCHA): formulier verschijnt en wordt vooraf ingevuld. Niet echt verzonden (geen testaccount aangemaakt).
 - Niet gebouwd (op verzoek): "Vind een verkooppunt".
+
+## 12 okt: sterke punten en buigen (H1-test, rapport SterkePunten punten 01–04)
+Feit van Puredeco (12 okt): alle wandpanelen zijn te buigen: achterkant infrezen tot aan de toplaag, daarna verwarmen en buigen. Geen getallen (straal, sleufdiepte, temperatuur) op de site zolang die niet bevestigd zijn.
+- **Sterke punten, overal dezelfde woorden** (`snippets/pd-usp.liquid`):
+  - Rij met zes punten (Waterbestendig · Over bestaande tegels · Ook voor ronde wanden · In één stuk tot 280 cm · Eenvoudig te monteren · 3 jaar garantie) onder de hero van de homepage en boven de producten van wandpaneel-collecties. Niet bij akupanelen en accessoires, niet vanaf pagina 2.
+  - Productpagina (alleen wandpanelen): vier labels onder de prijs plus "Ronde wand? Zo buig je een paneel →".
+- **Hero homepage:** kop "Een nieuwe wand, zonder breekwerk." met de regel "Waterbestendig, in één stuk tot 280 cm hoog en te plaatsen over bestaande tegels." Beide zijn instellingen in de editor (hero_heading, hero_sub, show_usp). De kop blijft op de linkerhelft van het beeld.
+- **Gids buigen** (`sections/pd-buigen.liquid`): kort antwoord, tekening bovenaanzicht (paneel om ronde wand, sleuven aan de achterkant), doorsnede met vier lagen, vijf genummerde stappen, vier vragen, schema HowTo + FAQPage + BreadcrumbList. Voorbeeld: /blogs/nieuws?view=gids-buigen (noindex). Sjablonen `blog.gids-buigen.json` en `article.buigen.json`.
+- **Video:** de sectie heeft een instelling 'Video buigen' (Shopify-video). Leeg = tekening. Zodra de video in Shopify Bestanden staat, kan hij in H1-test gekoppeld worden.
+- **Tekst 691 (homepage):** "5 mm dun en buigbaar" is nu "5 mm dun; met een ingefreesde achterkant en warmte ook voor ronde wanden."
+- **Productpagina, vragen:** nieuwe vraag "Kan ik het paneel buigen voor een ronde wand?" (alleen wandpanelen), linkt naar de gids.
+- **Livegang (met akkoord, winkeldata):** artikel 'wandpanelen-buigen' met sjabloon 'buigen' in blog Nieuws; alle links schakelen vanzelf om (`articles['nieuws/wandpanelen-buigen'].url | default`).
+- **Open (winkeldata, niet aangepast):** ongeveer 30 productomschrijvingen zeggen "buigbaar" zonder de werkwijze.
+- md5: pd-usp d238af41…, pd-buigen fc6d46cf…, pd-home 27a45411…, pd-collection 5ec5dabf…, pd-product-hero f4a05ce1…, pd-product-details cd2b1f9d…, pd-insp 7d6983d7…, puredeco-premium.css 7757dfdb…, index.json 4ae8c942…, blog.gids-buigen.json / article.buigen.json ef16ae9d….

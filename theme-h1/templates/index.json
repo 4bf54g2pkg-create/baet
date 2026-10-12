@@ -1283,7 +1283,10 @@
         "sector_image_3": "shopify://shop_images/pd-sector-kantoren.jpg",
         "sector_image_4": "shopify://shop_images/pd-sector-retail.jpg",
         "edit_note": "Je betaalt € 6,95 verzending; binnen 3–5 werkdagen in huis.",
-        "dealer_image": "shopify://shop_images/pd-showroomdisplay.jpg"
+        "dealer_image": "shopify://shop_images/pd-showroomdisplay.jpg",
+        "hero_heading": "Een nieuwe wand,<br>zonder breekwerk.",
+        "hero_sub": "Waterbestendig, in één stuk tot 280 cm hoog en te plaatsen over bestaande tegels.",
+        "show_usp": true
       }
     },
     "pd_home_cta": {

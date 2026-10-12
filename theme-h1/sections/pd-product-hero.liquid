@@ -226,6 +226,9 @@
           <s class="pdh__compare" data-pdh-compare{% unless pdh_variant.compare_at_price > pdh_variant.price %} hidden{% endunless %}>{{ pdh_variant.compare_at_price | money }}</s>
           <span class="pdh__unit" data-pdh-unit>per paneel</span>
         </div>
+        {%- comment -%} Sterke punten bij de prijs, alleen voor wandpanelen {%- endcomment -%}
+        {%- assign pdh_cols = product.collections | map: 'handle' | join: ',' | prepend: ',' | append: ',' -%}
+        {%- if pdh_cols contains ',wandpanelen,' -%}{%- render 'pd-usp', style: 'chips' -%}{%- endif -%}
 
         {%- form 'product', product, id: pdh_form_id, class: 'pdh__form', novalidate: 'novalidate', data-type: 'add-to-cart-form', is: 'product-form' -%}
           <input type="hidden" name="id" value="{{ pdh_variant.id }}" data-pdh-id>

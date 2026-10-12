@@ -3149,3 +3149,33 @@ b, strong { font-weight: 600; }
   .pd-zak__door { border-right: 0; border-bottom: 1px solid #DDD6CA; padding: 1.8rem; }
   .pd-zak__d { display: none; }
 }
+
+/* ===== Sterke punten (snippets/pd-usp.liquid) en gids buigen ===== */
+.pd-usp { background: #F5F2EC; border-top: 1px solid #DDD6CA; border-bottom: 1px solid #DDD6CA; }
+.pd-usp__list { list-style: none; margin: 0 auto; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 750px) { .pd-usp__list { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1200px) { .pd-usp__list { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+.pd-usp__list li { display: flex; flex-direction: column; gap: 0.4rem; padding: 2.2rem 1.8rem 2rem; border-right: 1px solid #DDD6CA; border-bottom: 1px solid #DDD6CA; }
+@media (min-width: 1200px) { .pd-usp__list li { border-bottom: 0; } .pd-usp__list li:last-child { border-right: 0; } }
+.pd-usp__list svg { width: 2.8rem; height: 2.8rem; fill: none; stroke: #151413; stroke-width: 1.3; margin-bottom: 0.8rem; }
+.pd-usp__list strong { font-family: var(--font-heading-family); font-weight: 500; font-size: 2rem; line-height: 1.15; color: #151413; }
+.pd-usp__list span { font-size: 1.3rem; line-height: 1.5; color: #6E675E; }
+.pd-usp__list a { color: #151413; text-decoration: underline; text-underline-offset: 0.25rem; white-space: nowrap; }
+.pd-usp-chips { list-style: none; margin: 1.4rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.pd-usp-chips li { padding: 0.6rem 1rem; border: 1px solid #DDD6CA; background: #F5F2EC; font-size: 1.25rem; color: #151413; line-height: 1.3; }
+.pd-usp-chips li::before { content: ''; display: inline-block; width: 0.6rem; height: 0.6rem; margin-right: 0.7rem; border-radius: 50%; background: #8C6A4A; vertical-align: 0.1rem; }
+.pd-usp-bend { margin: 1rem 0 0; font-size: 1.3rem; color: #6E675E; }
+.pd-usp-bend a { color: #151413; text-decoration: underline; text-underline-offset: 0.25rem; }
+.ph-hero__sub { max-width: 52rem; margin: 1.4rem 0 0; font-size: 1.6rem; line-height: 1.6; color: #EDE6DB; }
+.pdb-draw { background: #F5F2EC; border: 1px solid #E2DBCF; padding: 2rem; }
+.pdb-draw svg { display: block; width: 100%; height: auto; }
+.pdb-media video, .pdb-video { display: block; width: 100%; height: auto; background: #151413; }
+/* Hero-kop 'Een nieuwe wand, zonder breekwerk.' blijft op de linkerhelft van het beeld; USP-titels mobiel iets kleiner */
+@media (max-width: 749px) { .ph-hero__h { font-size: clamp(4.2rem, 11.4vw, 5.6rem); } .pd-usp__list strong { font-size: 1.8rem; } }
+@media (min-width: 990px) { .ph-hero__h { font-size: clamp(5.6rem, 6vw, 10.4rem); } }
+.pd-usp__list strong { text-wrap: balance; }
+/* Gids buigen: genummerde stappen */
+.pdb-steps ol { list-style: none; counter-reset: pdb; padding-left: 0; max-width: 76rem; }
+.pdb-steps ol li { counter-increment: pdb; position: relative; padding: 1.2rem 0 1.2rem 5.2rem; margin: 0; border-top: 1px solid #E2DBCF; }
+.pdb-steps ol li:last-child { border-bottom: 1px solid #E2DBCF; }
+.pdb-steps ol li::before { content: counter(pdb, decimal-leading-zero); position: absolute; left: 0; top: 1.2rem; font-family: var(--font-heading-family); font-size: 2rem; line-height: 1.2; color: #8C6A4A; }

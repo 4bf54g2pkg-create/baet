@@ -60,6 +60,10 @@
       <div class="ph-wrap"><div class="pc-head__intro">{{ seo_intro }}</div></div>
     {%- endif -%}
   </header>
+  {%- comment -%} Sterke punten: alleen bij wandpanelen, niet bij akupanelen en accessoires {%- endcomment -%}
+  {%- unless collection.handle == 'akupanelen' or collection.handle == 'accessoires' or current_page > 1 -%}
+    {%- render 'pd-usp', style: 'row', wrap: true -%}
+  {%- endunless -%}
 
   {%- comment -%} Collectienavigatie: interne links met beschrijvende ankertekst {%- endcomment -%}
   {%- assign nav = s.nav | newline_to_br | split: '<br />' -%}

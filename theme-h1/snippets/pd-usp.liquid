@@ -1,0 +1,49 @@
+{%- comment -%}
+  Puredeco · sterke punten van de wandpanelen, overal dezelfde woorden en iconen (rapport SterkePunten, punt 01 en 03).
+  Gebruik: {% render 'pd-usp', style: 'row' %}   (zes punten met uitleg; home en collectie)
+           {% render 'pd-usp', style: 'chips' %} (vier labels bij de prijs op de productpagina)
+  Alleen voor wandpanelen (niet voor akupanelen of accessoires): de aanroeper bepaalt dat.
+  Buigen: alle wandpanelen; achterkant infrezen tot aan de toplaag, verwarmen, buigen (bevestigd door Puredeco, 12 okt 2026).
+{%- endcomment -%}
+{%- liquid
+  assign buig_art = articles['nieuws/wandpanelen-buigen']
+  assign buig_url = buig_art.url | default: '/blogs/nieuws?view=gids-buigen'
+-%}
+{%- if style == 'chips' -%}
+  <ul class="pd-usp-chips" role="list">
+    <li>Waterbestendig</li>
+    <li>Over bestaande tegels</li>
+    <li>In één stuk tot 280 cm</li>
+    <li>3 jaar garantie</li>
+  </ul>
+  <p class="pd-usp-bend">Ronde wand? <a href="{{ buig_url }}">Zo buig je een paneel →</a></p>
+{%- else -%}
+  <section class="pd-usp" aria-label="Sterke punten">
+    <ul class="pd-usp__list{% if wrap %} ph-wrap{% endif %}" role="list">
+      <li>
+        <svg viewBox="0 0 30 30" aria-hidden="true"><path d="M15 4c5 7 8 11 8 15a8 8 0 0 1-16 0c0-4 3-8 8-15z"/></svg>
+        <strong>Waterbestendig</strong><span>Ook in badkamer en keuken. Vermijd staand water.</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 30 30" aria-hidden="true"><rect x="4" y="4" width="10" height="10"/><rect x="16" y="4" width="10" height="10"/><rect x="4" y="16" width="10" height="10"/><path d="M17 26V16h9"/></svg>
+        <strong>Over bestaande tegels</strong><span>Op een vlakke, droge, schone wand. Zonder breekwerk.</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 30 30" aria-hidden="true"><path d="M5 25C5 13 13 5 25 5"/><path d="M9 25c0-9 7-16 16-16" stroke-dasharray="2 2"/></svg>
+        <strong>Ook voor ronde wanden</strong><span>Achterkant infrezen, verwarmen en buigen. <a href="{{ buig_url }}">Zo werkt het →</a></span>
+      </li>
+      <li>
+        <svg viewBox="0 0 30 30" aria-hidden="true"><rect x="10" y="2" width="10" height="26"/><path d="M5 2v26M3 2h4M3 28h4"/></svg>
+        <strong>In één stuk tot 280 cm</strong><span>122 cm breed. Geen voegen per tegel.</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 30 30" aria-hidden="true"><path d="M10 26l-6-6 12-12 6 6z"/><path d="M18 6l6 6"/></svg>
+        <strong>Eenvoudig te monteren</strong><span>Met montagekit, in zes stappen.</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 30 30" aria-hidden="true"><path d="M15 3l10 4v8c0 6-4 10-10 12C9 25 5 21 5 15V7z"/><path d="M10 15l4 4 6-7"/></svg>
+        <strong>3 jaar garantie</strong><span>Tot 5 stalen gratis, alleen € 6,95 verzending.</span>
+      </li>
+    </ul>
+  </section>
+{%- endif -%}
