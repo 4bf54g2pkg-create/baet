@@ -1,0 +1,975 @@
+<div class="pd">
+
+  <header class="pd-head" id="overzicht">
+    <h1 class="pd-title">Advertentie-ROI per advertentie</h1>
+    <p class="pd-lede">In 90 dagen ging er <span class="pd-m dash-skeleton" data-source="totalen" data-field="kosten_totaal" data-row="0">&mdash;</span> naar Meta en Google Ads samen. Meta rapporteert daarvoor <span class="pd-m dash-skeleton" data-source="totalen" data-field="meta_waarde" data-row="0">&mdash;</span> aan conversiewaarde, terwijl de Shopify-administratie aan Facebook en Instagram <span class="pd-m dash-skeleton" data-source="afstemming" data-field="waarde" data-where="bron=Shopify administratie">&mdash;</span> brutoproductomzet toeschrijft. Vergelijk advertenties daarom op kosten per conversie, en behandel elke ROAS hieronder als een signaal.</p>
+    <p class="pd-note">Laatste 90 dagen · Meta Ads en Google Ads · bedragen in euro</p>
+  </header>
+
+  <section class="pd-tiles" aria-label="Kerncijfers">
+    <div class="pd-tile">
+      <p class="pd-tile-label">Advertentiekosten</p>
+      <p class="pd-tile-value dash-skeleton" data-source="totalen" data-field="kosten_totaal" data-row="0">—</p>
+      <p class="pd-tile-sub">Meta + Google Ads, 90 dagen</p>
+    </div>
+    <div class="pd-tile">
+      <p class="pd-tile-label">ROAS volgens Meta</p>
+      <p class="pd-tile-value dash-skeleton" data-source="totalen" data-field="meta_roas" data-row="0">—</p>
+      <p class="pd-tile-sub">Conversiewaarde die Meta zelf rapporteert</p>
+    </div>
+    <div class="pd-tile">
+      <p class="pd-tile-label">ROAS volgens GA4</p>
+      <p class="pd-tile-value dash-skeleton" data-source="totalen" data-field="google_roas" data-row="0">—</p>
+      <p class="pd-tile-sub">Google Ads, laatste klik</p>
+    </div>
+    <div class="pd-tile pd-tile-warn">
+      <p class="pd-tile-label">Productomzet via social in Shopify</p>
+      <p class="pd-tile-value dash-skeleton" data-source="afstemming" data-field="waarde" data-where="bron=Shopify administratie">—</p>
+      <p class="pd-tile-sub">Wat de winkeladministratie aan Facebook en Instagram toeschrijft</p>
+    </div>
+    <div class="pd-tile pd-tile-warn">
+      <p class="pd-tile-label">Meta-conversies zonder productomzet</p>
+      <p class="pd-tile-value dash-skeleton" data-source="sample_aandeel" data-field="aandeel_conversies" data-row="0">—</p>
+      <p class="pd-tile-sub">Aankopen waarvan de waarde exact de verzendkosten is</p>
+    </div>
+  </section>
+
+  <section class="pd-section" id="meta">
+    <h2 class="pd-h2">Meta Ads per advertentie</h2>
+    <p class="pd-sub">Spend, clicks en conversies komen rechtstreeks uit het advertentieaccount. ROAS, CPC en kosten per conversie zijn hieruit berekend. ROAS = conversiewaarde gedeeld door spend; de conversiewaarde is wat Meta zelf toeschrijft (7 dagen klik, 1 dag weergave), niet wat Shopify boekt.</p>
+
+    <div class="pd-card">
+      <h3 class="pd-h3">ROAS per advertentie</h3>
+      <p class="pd-cardnote">De streeplijn is break-even bij 40% brutomarge: ROAS 2,5. Dat marge&shy;percentage is een aanname, geen gemeten getal — geef je werkelijke brutomarge door en de lijn schuift mee.</p>
+      <div class="pd-chartbox" id="pd-meta-roas-box" data-source="meta_roi meta_ads">
+        <svg class="pd-svg" id="pd-meta-roas" width="100%" role="img" aria-label="ROAS per Meta-advertentie"></svg>
+        <div class="pd-tip" hidden></div>
+      </div>
+    </div>
+
+    <div class="pd-card">
+      <h3 class="pd-h3">Alle cijfers per advertentie</h3>
+      <div class="pd-tablebox">
+        <table class="pd-table" id="pd-meta-table" data-source="meta_ads" data-row-key="ad_name">
+          <thead>
+            <tr>
+              <th scope="col" data-field="ad_name">Advertentie</th>
+              <th scope="col" data-field="adset_name">Advertentieset</th>
+              <th scope="col" class="pd-r" data-field="spend">Spend</th>
+              <th scope="col" class="pd-r" data-field="clicks">Clicks</th>
+              <th scope="col" class="pd-r" data-source="meta_roi" data-field="cpc">CPC</th>
+              <th scope="col" class="pd-r" data-field="actions_omni_purchase">Conversies</th>
+              <th scope="col" class="pd-r" data-source="meta_roi" data-field="kosten_per_conversie">Kosten / conversie</th>
+              <th scope="col" class="pd-r" data-field="action_values_omni_purchase">Waarde (Meta)</th>
+              <th scope="col" class="pd-r" data-source="meta_roi" data-field="waarde_per_conversie">Waarde / conversie</th>
+              <th scope="col" class="pd-r" data-source="meta_roi" data-field="roas">ROAS</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="pd-cardnote">Waarde per conversie scheidt de twee soorten advertenties: rond de verzendkosten betekent dat de advertentie vooral gratis stalen oplevert, ruim daarboven dat er echt gekocht wordt.</p>
+    </div>
+  </section>
+
+  <section class="pd-section" id="google">
+    <h2 class="pd-h2">Google Ads per campagne en advertentiegroep</h2>
+    <p class="pd-sub">Google Ads is niet als eigen bron gekoppeld; kosten, clicks, transacties en omzet komen uit Google Analytics 4, dat de gekoppelde Google Ads-kosten meeleest. Toewijzing is laatste klik. Performance Max-campagnes hebben geen advertentiegroepen, dus daar staan de kosten alleen op campagneniveau.</p>
+
+    <div class="pd-card">
+      <h3 class="pd-h3">Kosten tegenover omzet per campagne</h3>
+      <div class="pd-chartbox" id="pd-g-box" data-source="google_campagnes google_roi">
+        <svg class="pd-svg" id="pd-g-chart" width="100%" role="img" aria-label="Google Ads kosten tegenover omzet per campagne"></svg>
+        <div class="pd-tip" hidden></div>
+      </div>
+    </div>
+
+    <div class="pd-card">
+      <h3 class="pd-h3">Per campagne</h3>
+      <div class="pd-tablebox">
+        <table class="pd-table" id="pd-g-table" data-source="google_campagnes" data-row-key="session_google_ads_campaign_name">
+          <thead>
+            <tr>
+              <th scope="col" data-field="session_google_ads_campaign_name">Campagne</th>
+              <th scope="col" class="pd-r" data-field="advertiser_ad_cost">Kosten</th>
+              <th scope="col" class="pd-r" data-field="advertiser_ad_clicks">Clicks</th>
+              <th scope="col" class="pd-r" data-source="google_roi" data-field="cpc">CPC</th>
+              <th scope="col" class="pd-r" data-field="transactions">Transacties</th>
+              <th scope="col" class="pd-r" data-source="google_roi" data-field="kosten_per_transactie">Kosten / transactie</th>
+              <th scope="col" class="pd-r" data-field="purchase_revenue">Productomzet</th>
+              <th scope="col" class="pd-r" data-source="google_roi" data-field="roas">ROAS</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="pd-card">
+      <h3 class="pd-h3">Per advertentiegroep</h3>
+      <div class="pd-tablebox">
+        <table class="pd-table" id="pd-gg-table" data-source="google_groepen" data-row-key="session_google_ads_campaign_name,session_google_ads_ad_group_name">
+          <thead>
+            <tr>
+              <th scope="col" data-field="session_google_ads_campaign_name">Campagne</th>
+              <th scope="col" data-field="session_google_ads_ad_group_name">Advertentiegroep</th>
+              <th scope="col" class="pd-r" data-field="advertiser_ad_cost">Kosten</th>
+              <th scope="col" class="pd-r" data-field="advertiser_ad_clicks">Clicks</th>
+              <th scope="col" class="pd-r" data-source="groep_roi" data-field="cpc">CPC</th>
+              <th scope="col" class="pd-r" data-field="transactions">Transacties</th>
+              <th scope="col" class="pd-r" data-field="purchase_revenue">Productomzet</th>
+              <th scope="col" class="pd-r" data-source="groep_roi" data-field="roas">ROAS</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="pd-cardnote">Van de Google Ads-kosten is <span class="pd-m dash-skeleton" data-source="groep_dekking" data-field="niet_toewijsbaar" data-row="0">&mdash;</span> hier niet op advertentiegroep terug te vinden: Performance Max kent geen advertentiegroepen, en een deel van de klikken komt binnen zonder advertentiegroep in de meting.</p>
+    </div>
+  </section>
+
+  <section class="pd-section" id="afstemming">
+    <h2 class="pd-h2">Drie bronnen, dezelfde advertenties, drie antwoorden</h2>
+    <p class="pd-sub">Dit is de reden om geen enkele ROAS hierboven als winst te lezen. Voor precies dezelfde Meta-advertenties en dezelfde 90 dagen rapporteren Meta, Google Analytics 4 en de Shopify-administratie een andere omzet. Het aantal orders waarover GA4 en Shopify het eens zijn; over de waarde ervan niet.</p>
+
+    <div class="pd-card">
+      <h3 class="pd-h3">Omzet toegeschreven aan Facebook en Instagram</h3>
+      <div class="pd-chartbox" id="pd-rec-box" data-source="afstemming">
+        <svg class="pd-svg" id="pd-rec-chart" width="100%" role="img" aria-label="Omzet toegeschreven aan Facebook en Instagram per bron"></svg>
+        <div class="pd-tip" hidden></div>
+      </div>
+      <div class="pd-tablebox">
+        <table class="pd-table" id="pd-rec-table" data-source="afstemming" data-row-key="bron">
+          <thead>
+            <tr>
+              <th scope="col" data-field="bron">Bron</th>
+              <th scope="col" class="pd-r" data-field="orders">Orders</th>
+              <th scope="col" class="pd-r" data-field="waarde">Omzet</th>
+              <th scope="col" data-field="toewijzing">Toewijzing</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="pd-card">
+      <h3 class="pd-h3">Wat de winkel werkelijk boekt per orderbron</h3>
+      <p class="pd-cardnote">Brutoproductomzet is wat de artikelen opbrachten; verzendkosten staan apart. Een order met nul productomzet en wel verzendkosten is een order waarin alleen verzendkosten zijn betaald — de gratis stalen.</p>
+      <div class="pd-tablebox">
+        <table class="pd-table" id="pd-sh-table" data-source="shopify_bronnen" data-row-key="order_referrer_name,order_referrer_source">
+          <thead>
+            <tr>
+              <th scope="col" data-field="order_referrer_name">Verwijzer</th>
+              <th scope="col" data-field="order_referrer_source">Kanaal</th>
+              <th scope="col" class="pd-r" data-field="orders">Orders</th>
+              <th scope="col" class="pd-r" data-field="gross_sales">Brutoproductomzet</th>
+              <th scope="col" class="pd-r" data-field="shipping_charges">Verzendkosten</th>
+              <th scope="col" class="pd-r" data-source="shopify_roi" data-field="product_per_order">Product / order</th>
+              <th scope="col" class="pd-r" data-field="total_sales">Totale omzet</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="pd-section" id="stalen">
+    <h2 class="pd-h2">Waarop Meta optimaliseert</h2>
+    <p class="pd-sub">Elke stip is één dag: de gemiddelde waarde van de aankopen die Meta die dag toeschrijft. De band onderin is het bedrag van de verzendkosten. Een stip in die band betekent dat elke aankoop van die dag precies de verzendkosten waard was.</p>
+    <div class="pd-card">
+      <h3 class="pd-h3">Waarde per toegeschreven aankoop, per dag</h3>
+      <div class="pd-chartbox" id="pd-sample-box" data-source="meta_per_conversie">
+        <svg class="pd-svg" id="pd-sample-chart" width="100%" role="img" aria-label="Waarde per toegeschreven Meta-aankoop per dag"></svg>
+        <div class="pd-tip" hidden></div>
+      </div>
+      <p class="pd-cardnote">Op <span class="pd-m dash-skeleton" data-source="sample_aandeel" data-field="dagen_onder_tien" data-row="0">&mdash;</span> van de <span class="pd-m dash-skeleton" data-source="sample_aandeel" data-field="dagen" data-row="0">&mdash;</span> dagen met minstens &eacute;&eacute;n toegeschreven aankoop lag die gemiddelde waarde onder &euro;&nbsp;10; dat betreft <span class="pd-m dash-skeleton" data-source="sample_aandeel" data-field="conversies_onder_tien" data-row="0">&mdash;</span> van de <span class="pd-m dash-skeleton" data-source="sample_aandeel" data-field="conversies" data-row="0">&mdash;</span> aankopen. Vrijwel al die waarden zijn exacte veelvouden van &euro;&nbsp;5,95 of &euro;&nbsp;6,95, en de Shopify-administratie laat bij social-orders nul brutoproductomzet zien met wel verzendkosten.</p>
+    </div>
+  </section>
+
+  <section class="pd-section" id="verloop">
+    <h2 class="pd-h2">Dagelijkse advertentiekosten</h2>
+    <div class="pd-card">
+      <h3 class="pd-h3">Meta tegenover Google Ads</h3>
+      <div class="pd-chartbox" id="pd-daily-box" data-source="meta_dagen google_dagen">
+        <svg class="pd-svg" id="pd-daily-chart" width="100%" role="img" aria-label="Dagelijkse advertentiekosten Meta tegenover Google Ads"></svg>
+        <div class="pd-tip" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pd-section" id="methode">
+    <h2 class="pd-h2">Hoe dit gemeten is, en wat het niet zegt</h2>
+    <div class="pd-prose">
+      <h3 class="pd-h3">De begrippen</h3>
+      <p><strong>ROAS</strong> is omzet gedeeld door advertentiekosten. Het is geen winst: er zit nog inkoop, verzending, verwerking en btw-afdracht in. <strong>ROI</strong> vraagt de brutomarge erbij. Bij 40% brutomarge ligt break-even op ROAS 2,5; bij 30% op 3,3; bij 50% op 2,0. Die 40% is in dit dashboard een aanname en nergens een gemeten getal — met de werkelijke brutomarge per materiaalgroep wordt de break-evenlijn pas een echte grens.</p>
+      <p><strong>Kosten per conversie</strong> en <strong>CPC</strong> zijn de enige cijfers hier waarover alle bronnen het eens zijn, omdat ze geen toewijzing van omzet nodig hebben. Zij zijn daarom het betrouwbaarst om advertenties onderling te vergelijken.</p>
+
+      <h3 class="pd-h3">Waarom de bronnen verschillen</h3>
+      <p>Meta schrijft een aankoop toe aan een advertentie als iemand binnen 7 dagen na een klik of 1 dag na een weergave koopt, ook op een ander apparaat. Google Analytics 4 schrijft toe aan de laatste klik van de sessie. Shopify kijkt naar de verwijzer van de order. Drie verschillende vragen, dus drie verschillende antwoorden — dat is normaal. Wat hier niet normaal is, is de grootte van het verschil in waarde terwijl het aantal orders wél overeenkomt.</p>
+      <p>Eén verklaring is aantoonbaar: een order waarin alleen verzendkosten zijn betaald telt in beide advertentieplatforms mee als aankoop, met de verzendkosten als waarde. In de Shopify-administratie is de productomzet van zo'n order nul. Zolang dat zo staat ingericht, optimaliseren de biedalgoritmes van Meta en Google op het aanvragen van gratis stalen, niet op verkoop.</p>
+
+      <h3 class="pd-h3">Wat dit dashboard niet kan</h3>
+      <p>Het kan niet zeggen welk deel van de omzet zonder advertenties ook was gekomen. Daarvoor is een test nodig waarin een deel van het bereik bewust geen advertenties ziet. Het kan ook niet zeggen wat een aangevraagd staal later opbrengt: dat vraagt het terugkoopgedrag van de stalenaanvragers over een langere periode. Zonder die twee is elk ROI-getal per advertentie een signaal, geen afrekening.</p>
+      <p>Op advertentieniveau is Google Ads hier niet te splitsen: zonder gekoppeld Google Ads-account gaat de granulariteit tot advertentiegroep. Advertentietekst of -asset vergt een directe koppeling met Google Ads.</p>
+    </div>
+  </section>
+
+</div>
+
+<style>
+  .pd { font-family: var(--font-anthropic-sans); color: var(--color-fg); }
+  .pd-head { margin-bottom: var(--cds-gap-lg); }
+  .pd-title { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0 0 var(--cds-gap-xs); }
+  .pd-lede { font-size: var(--cds-font-size-body); margin: 0 0 var(--cds-gap-xs); max-width: 62ch; }
+  .pd-note { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin: 0; }
+  .pd-sub { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin: 0 0 var(--cds-gap-md); max-width: 78ch; }
+  .pd-section { margin-top: var(--cds-gap-xl); }
+  .pd-h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0 0 var(--cds-gap-xs); }
+  .pd-h3 { font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); margin: 0 0 var(--cds-gap-xs); }
+
+  .pd-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: var(--cds-gap-md); }
+  .pd-tile { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); }
+  .pd-tile-label { font-size: var(--cds-font-size-caption); color: var(--cds-text-secondary); margin: 0 0 var(--cds-gap-xs); }
+  .pd-tile-value { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; font-variant-numeric: tabular-nums; line-height: 1.1; }
+  .pd-tile-sub { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin: var(--cds-gap-xs) 0 0; }
+  .pd-tile-warn .pd-tile-value { color: var(--color-bad); }
+
+  .pd-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); margin-top: var(--cds-gap-md); }
+  .pd-cardnote { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin: var(--cds-gap-xs) 0 var(--cds-gap-md); max-width: 78ch; }
+  .pd-chartbox { position: relative; }
+  .pd-svg { display: block; }
+
+  .pd-tablebox { overflow-x: auto; margin-top: var(--cds-gap-sm); }
+  .pd-table { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+  .pd-table th, .pd-table td { text-align: left; padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
+  .pd-table thead th { color: var(--cds-text-secondary); font-weight: var(--cds-font-weight-medium); position: sticky; top: 0; background: var(--color-panel); }
+  .pd-table .pd-r { text-align: right; }
+  .pd-table tbody tr:last-child td { border-bottom: none; }
+  .pd-table tfoot td { font-weight: var(--cds-font-weight-medium); border-top: 1px solid var(--color-border-line); border-bottom: none; }
+  .pd-good { color: var(--color-ok); }
+  .pd-bad { color: var(--color-bad); }
+
+  .pd-tip { position: absolute; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); pointer-events: none; z-index: 5; max-width: 18rem; }
+  .pd-tip-head { color: var(--cds-text-secondary); margin-bottom: 2px; }
+  .pd-tip-row { display: flex; align-items: center; gap: 6px; }
+  .pd-tip-sw { width: 8px; height: 8px; border-radius: 2px; flex: none; }
+
+  .pd-prose { max-width: 78ch; }
+  .pd-prose p { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin: 0 0 var(--cds-gap-sm); line-height: 1.55; }
+  .pd-prose .pd-h3 { color: var(--color-fg); margin-top: var(--cds-gap-md); }
+  .pd-m { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .pd-prose strong { font-weight: var(--cds-font-weight-medium); color: var(--color-fg); }
+
+  .pd-fail { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 180px; }
+  .pd-fail-dot { width: .375rem; height: .375rem; border-radius: 50%; background: var(--color-bad); flex: none; }
+  .pd-fail-txt { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+
+  [data-dash-source-state="empty"] { color: transparent; }
+  [data-dash-source-state="refreshing"] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+</style>
+
+<script>
+  /* Shopify Analytics antwoordt met kolomdefinities en rijen als cellen; dit maakt daar rijobjecten van. */
+  dash.loader('shopify_bronnen', {
+    description: 'Het antwoord van Shopify Analytics als rijen: elke cel bij de naam van haar kolom, geldbedragen en aantallen als getal.',
+    fn: ({ answer }) => {
+      let a = answer;
+      if (typeof a === 'string') {
+        const start = a.indexOf('{');
+        const end = a.lastIndexOf('}');
+        if (start < 0 || end < start) throw new Error('Shopify gaf geen JSON terug: ' + a.slice(0, 200));
+        a = JSON.parse(a.slice(start, end + 1));
+      }
+      if (!a || typeof a !== 'object') throw new Error('Onbegrepen antwoord van Shopify Analytics.');
+      if (a.error || a.errors) throw new Error(String(a.error || JSON.stringify(a.errors)).slice(0, 300));
+      if (!Array.isArray(a.columns) || !Array.isArray(a.rows)) {
+        throw new Error('Geen kolommen of rijen in het antwoord. Sleutels: ' + Object.keys(a).join(', '));
+      }
+      const names = a.columns.map((c) => String(c.name));
+      const numeric = new Set(['MONEY', 'INTEGER', 'FLOAT', 'DECIMAL', 'PERCENT']);
+      const isNum = a.columns.map((c) => numeric.has(String(c.dataType).toUpperCase()));
+      const data = a.rows.map((cells) => {
+        const row = {};
+        names.forEach((n, i) => { row[n] = isNum[i] ? Number(cells[i]) : cells[i]; });
+        return row;
+      });
+      const meta = a.query ? [{ label: 'ShopifyQL', value: String(a.query), type: 'code', lang: 'sql' }] : [];
+      return { data, columns: names, meta };
+    },
+  });
+
+  dash.calc('meta_roi', {
+    title: 'Meta: ROAS en kosten per advertentie',
+    description: 'Per advertentie uit de cijfers van het advertentieaccount: CPC = spend / clicks, kosten per conversie = spend / conversies, waarde per conversie = conversiewaarde / conversies, ROAS = conversiewaarde / spend.',
+    inputs: ['meta_ads'],
+    fn: (meta_ads) => meta_ads.map((ad) => ({
+      ad_name: ad.ad_name,
+      cpc: Number(ad.clicks) ? Number(ad.spend) / Number(ad.clicks) : null,
+      kosten_per_conversie: Number(ad.actions_omni_purchase) ? Number(ad.spend) / Number(ad.actions_omni_purchase) : null,
+      waarde_per_conversie: Number(ad.actions_omni_purchase) ? Number(ad.action_values_omni_purchase) / Number(ad.actions_omni_purchase) : null,
+      roas: Number(ad.spend) ? Number(ad.action_values_omni_purchase) / Number(ad.spend) : null,
+    })),
+  });
+
+  dash.calc('google_roi', {
+    title: 'Google Ads: ROAS per campagne',
+    description: 'Per campagne uit de GA4-cijfers: CPC = kosten / clicks, kosten per transactie = kosten / transacties, ROAS = productomzet / kosten.',
+    inputs: ['google_campagnes'],
+    fn: (google_campagnes) => google_campagnes.map((c) => ({
+      session_google_ads_campaign_name: c.session_google_ads_campaign_name,
+      cpc: Number(c.advertiser_ad_clicks) ? Number(c.advertiser_ad_cost) / Number(c.advertiser_ad_clicks) : null,
+      kosten_per_transactie: Number(c.transactions) ? Number(c.advertiser_ad_cost) / Number(c.transactions) : null,
+      roas: Number(c.advertiser_ad_cost) ? Number(c.purchase_revenue) / Number(c.advertiser_ad_cost) : null,
+    })),
+  });
+
+  dash.calc('groep_roi', {
+    title: 'Google Ads: ROAS per advertentiegroep',
+    description: 'Per advertentiegroep uit de GA4-cijfers: CPC = kosten / clicks, ROAS = productomzet / kosten.',
+    inputs: ['google_groepen'],
+    fn: (google_groepen) => google_groepen.map((g) => ({
+      session_google_ads_campaign_name: g.session_google_ads_campaign_name,
+      session_google_ads_ad_group_name: g.session_google_ads_ad_group_name,
+      cpc: Number(g.advertiser_ad_clicks) ? Number(g.advertiser_ad_cost) / Number(g.advertiser_ad_clicks) : null,
+      roas: Number(g.advertiser_ad_cost) ? Number(g.purchase_revenue) / Number(g.advertiser_ad_cost) : null,
+    })),
+  });
+
+  dash.calc('groep_dekking', {
+    title: 'Google Ads-kosten zonder advertentiegroep',
+    description: 'De som van de kosten per campagne min de som van de kosten per advertentiegroep: het deel van de Google Ads-kosten dat in de meting geen advertentiegroep draagt.',
+    inputs: ['google_campagnes', 'google_groepen'],
+    fn: (google_campagnes, google_groepen) => {
+      const totaal = (rows, kolom) => rows.reduce((som, rij) => som + Number(rij[kolom] || 0), 0);
+      const campagnes = totaal(google_campagnes, 'advertiser_ad_cost');
+      const groepen = totaal(google_groepen, 'advertiser_ad_cost');
+      return [{ kosten_campagnes: campagnes, kosten_groepen: groepen, niet_toewijsbaar: campagnes - groepen }];
+    },
+  });
+
+  dash.calc('totalen', {
+    title: 'Totalen over beide kanalen',
+    description: 'De som van de advertentiekosten en van de omzet die elk kanaal zelf toeschrijft, met de ROAS daarvan. Meta-waarde komt uit het advertentieaccount, Google-omzet uit GA4.',
+    inputs: ['meta_ads', 'google_campagnes'],
+    fn: (meta_ads, google_campagnes) => {
+      const totaal = (rows, kolom) => rows.reduce((som, rij) => som + Number(rij[kolom] || 0), 0);
+      const meta_spend = totaal(meta_ads, 'spend');
+      const meta_waarde = totaal(meta_ads, 'action_values_omni_purchase');
+      const google_kosten = totaal(google_campagnes, 'advertiser_ad_cost');
+      const google_omzet = totaal(google_campagnes, 'purchase_revenue');
+      return [{
+        kosten_totaal: meta_spend + google_kosten,
+        meta_spend: meta_spend,
+        meta_waarde: meta_waarde,
+        meta_conversies: totaal(meta_ads, 'actions_omni_purchase'),
+        meta_roas: meta_spend ? meta_waarde / meta_spend : null,
+        google_kosten: google_kosten,
+        google_omzet: google_omzet,
+        google_transacties: totaal(google_campagnes, 'transactions'),
+        google_roas: google_kosten ? google_omzet / google_kosten : null,
+      }];
+    },
+  });
+
+  dash.calc('afstemming', {
+    title: 'Social-omzet volgens drie bronnen',
+    description: 'Dezelfde Meta-advertenties en dezelfde periode, zoals elk van de drie bronnen ze toeschrijft aan Facebook en Instagram. Meta uit het advertentieaccount, GA4 uit de bron/medium-rijen die met facebook of ig beginnen, Shopify uit de orderrijen met verwijzer facebook of instagram.',
+    inputs: ['meta_ads', 'ga4_kanalen', 'shopify_bronnen'],
+    fn: (meta_ads, ga4_kanalen, shopify_bronnen) => {
+      const totaal = (rows, kolom) => rows.reduce((som, rij) => som + Number(rij[kolom] || 0), 0);
+      const ga4_social = ga4_kanalen.filter((rij) => /facebook|instagram|^ig \/|^fb \//.test(String(rij.session_source_medium)));
+      const shop_social = shopify_bronnen.filter((rij) => rij.order_referrer_name === 'facebook' || rij.order_referrer_name === 'instagram');
+      return [
+        { bron: 'Meta Ads Manager', orders: totaal(meta_ads, 'actions_omni_purchase'), waarde: totaal(meta_ads, 'action_values_omni_purchase'), toewijzing: '7 dagen na klik, 1 dag na weergave, over apparaten heen' },
+        { bron: 'GA4 laatste klik', orders: totaal(ga4_social, 'transactions'), waarde: totaal(ga4_social, 'purchase_revenue'), toewijzing: 'laatste klik van de sessie' },
+        { bron: 'Shopify administratie', orders: totaal(shop_social, 'orders'), waarde: totaal(shop_social, 'gross_sales'), toewijzing: 'verwijzer van de order, brutoproductomzet' },
+      ];
+    },
+  });
+
+  dash.calc('meta_per_conversie', {
+    title: 'Meta: waarde per aankoop per dag',
+    description: 'Per dag de conversiewaarde die Meta toeschrijft, gedeeld door het aantal toegeschreven aankopen. Dagen zonder toegeschreven aankoop vallen weg.',
+    inputs: ['meta_dagen'],
+    fn: (meta_dagen) => meta_dagen
+      .filter((dag) => Number(dag.actions_omni_purchase) > 0)
+      .map((dag) => ({
+        date: String(dag.date).slice(0, 10),
+        conversies: Number(dag.actions_omni_purchase),
+        waarde: Number(dag.action_values_omni_purchase),
+        waarde_per_conversie: Number(dag.action_values_omni_purchase) / Number(dag.actions_omni_purchase),
+      })),
+  });
+
+  dash.calc('sample_aandeel', {
+    title: 'Meta-aankopen met een lage waarde',
+    description: 'Dagen met minstens een toegeschreven aankoop worden gesplitst op de gemiddelde waarde per aankoop: onder de drempel van 10 euro, of daarboven. Het aandeel is het aantal aankopen op de dagen onder die drempel, gedeeld door alle toegeschreven aankopen.',
+    inputs: ['meta_dagen'],
+    fn: (meta_dagen) => {
+      const drempel = 10;
+      const dagen = meta_dagen.filter((dag) => Number(dag.actions_omni_purchase) > 0);
+      const laag = dagen.filter((dag) => Number(dag.action_values_omni_purchase) / Number(dag.actions_omni_purchase) < drempel);
+      const aankopen = (rows) => rows.reduce((som, dag) => som + Number(dag.actions_omni_purchase), 0);
+      return [{
+        dagen: dagen.length,
+        dagen_onder_tien: laag.length,
+        conversies: aankopen(dagen),
+        conversies_onder_tien: aankopen(laag),
+        aandeel_conversies: aankopen(dagen) ? aankopen(laag) / aankopen(dagen) : null,
+      }];
+    },
+  });
+
+  dash.calc('shopify_roi', {
+    title: 'Shopify: productomzet per order',
+    description: 'Per orderbron de brutoproductomzet gedeeld door het aantal orders.',
+    inputs: ['shopify_bronnen'],
+    fn: (shopify_bronnen) => shopify_bronnen.map((bron) => ({
+      order_referrer_name: bron.order_referrer_name,
+      order_referrer_source: bron.order_referrer_source,
+      product_per_order: Number(bron.orders) ? Number(bron.gross_sales) / Number(bron.orders) : null,
+    })),
+  });
+</script>
+
+<script>
+  (function () {
+    const geld2 = new Intl.NumberFormat('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const geld0 = new Intl.NumberFormat('nl-NL', { maximumFractionDigits: 0 });
+    const getal = new Intl.NumberFormat('nl-NL', { maximumFractionDigits: 0 });
+    const echt = (v) => v !== null && v !== undefined && v !== '' && isFinite(Number(v));
+    const fmt = {
+      eur: (v) => (echt(v) ? '€ ' + geld2.format(Number(v)) : '—'),
+      eur0: (v) => (echt(v) ? '€ ' + geld0.format(Math.round(Number(v))) : '—'),
+      num: (v) => (echt(v) ? getal.format(Number(v)) : '—'),
+      dec: (v) => (echt(v) ? geld2.format(Number(v)) : '—'),
+      pct: (v) => (echt(v) ? getal.format(Number(v) * 100) + '%' : '—'),
+      txt: (v) => (v === null || v === undefined || v === '' ? '—' : String(v)),
+    };
+    const MUTED = 'var(--cds-chart-muted)';
+    const BREAK_EVEN = 2.5; /* vaste referentie: break-even ROAS bij 40% brutomarge */
+
+    const rows = (id) => {
+      const s = dash.data(id);
+      return s.status === 'ok' && Array.isArray(s.data) ? s.data : [];
+    };
+    const staat = (ids) => {
+      const lijst = ids.map((id) => dash.data(id));
+      if (lijst.some((s) => s.status === 'error' || s.status === 'connect' || s.status === 'declined')) return 'error';
+      if (lijst.every((s) => s.status === 'ok')) return 'ok';
+      return 'loading';
+    };
+
+    /* ---------- gemarkeerde losse getallen ---------- */
+    const VELD = {
+      kosten_totaal: fmt.eur0, meta_spend: fmt.eur0, meta_waarde: fmt.eur0, meta_roas: fmt.dec,
+      google_kosten: fmt.eur0, google_omzet: fmt.eur0, google_roas: fmt.dec,
+      niet_toewijsbaar: fmt.eur0, waarde: fmt.eur0, orders: fmt.num,
+      dagen: fmt.num, dagen_onder_tien: fmt.num, conversies: fmt.num,
+      conversies_onder_tien: fmt.num, aandeel_conversies: fmt.pct,
+    };
+    function vulMarks() {
+      document.querySelectorAll('.pd-m, .pd-tile-value').forEach((el) => {
+        const id = el.dataset.source;
+        const veld = el.dataset.field;
+        if (!id || !veld) return;
+        const bron = dash.data(id);
+        let rij = null;
+        if (bron.status === 'ok' && Array.isArray(bron.data)) {
+          if (el.dataset.where) {
+            const paren = el.dataset.where.split('&').map((p) => p.split('='));
+            rij = bron.data.find((r) => paren.every(([k, v]) => String(r[decodeURIComponent(k)]) === decodeURIComponent(v))) || null;
+          } else {
+            rij = bron.data[Number(el.dataset.row || 0)] || null;
+          }
+        }
+        const f = VELD[veld] || fmt.txt;
+        el.textContent = rij ? f(rij[veld]) : '—';
+        el.classList.toggle('dash-skeleton', bron.status === 'loading' || bron.status === 'missing');
+      });
+    }
+
+    /* ---------- tabellen ---------- */
+    const cel = (tekst, klasse) => {
+      const td = document.createElement('td');
+      td.textContent = tekst;
+      if (klasse) td.className = klasse;
+      return td;
+    };
+    function vulTabel(tabelId, kolommen, data, sleutel) {
+      const body = document.querySelector('#' + tabelId + ' tbody');
+      if (!body) return;
+      body.replaceChildren();
+      data.forEach((r) => {
+        const tr = document.createElement('tr');
+        tr.dataset.key = sleutel.length === 1
+          ? String(r[sleutel[0]])
+          : sleutel.map((k) => encodeURIComponent(String(r[k]))).join(',');
+        kolommen.forEach((k) => tr.append(cel(k.f(r[k.veld]), k.klasse)));
+        body.append(tr);
+      });
+    }
+
+    /* ---------- tooltip ---------- */
+    function tipHelper(box) {
+      const tip = box.querySelector('.pd-tip');
+      return {
+        toon(kop, regels, event) {
+          const kinderen = [];
+          const h = document.createElement('div');
+          h.className = 'pd-tip-head';
+          h.textContent = kop;
+          kinderen.push(h);
+          regels.forEach((r) => {
+            const d = document.createElement('div');
+            d.className = 'pd-tip-row';
+            if (r.kleur) {
+              const sw = document.createElement('span');
+              sw.className = 'pd-tip-sw';
+              sw.style.background = r.kleur;
+              d.append(sw);
+            }
+            const n = document.createElement('span');
+            n.textContent = r.naam + ': ' + r.waarde;
+            d.append(n);
+            kinderen.push(d);
+          });
+          tip.replaceChildren(...kinderen);
+          tip.hidden = false;
+          const kader = box.getBoundingClientRect();
+          const x = event.clientX - kader.left;
+          const y = event.clientY - kader.top;
+          const tw = tip.offsetWidth;
+          let links = x + 14;
+          if (links + tw > kader.width) links = Math.max(0, x - tw - 14);
+          tip.style.left = links + 'px';
+          tip.style.top = Math.max(0, y - 12) + 'px';
+        },
+        weg() { tip.hidden = true; },
+      };
+    }
+
+    function mislukt(box, svgEl, hoogte) {
+      d3.select(svgEl).selectAll('*').remove();
+      d3.select(svgEl).attr('height', hoogte).attr('viewBox', null);
+      let f = box.querySelector('.pd-fail');
+      if (!f) {
+        f = document.createElement('div');
+        f.className = 'pd-fail';
+        const dot = document.createElement('span');
+        dot.className = 'pd-fail-dot';
+        const txt = document.createElement('span');
+        txt.className = 'pd-fail-txt';
+        txt.textContent = 'Kon niet laden';
+        f.append(dot, txt);
+        box.append(f);
+      }
+      f.style.minHeight = hoogte + 'px';
+      f.hidden = false;
+    }
+    const geenFout = (box) => { const f = box.querySelector('.pd-fail'); if (f) f.hidden = true; };
+
+    /* ---------- horizontale staven, een of twee series ---------- */
+    function staven(svgEl, box, data, opties) {
+      const series = opties.series;
+      const breedte = Math.max(280, box.clientWidth);
+      const dik = series.length > 1 ? 11 : 16;
+      const rijH = series.length * (dik + 2) + 16;
+      const boven = 6;
+      const onder = 30;
+      const hoogte = boven + data.length * rijH + onder;
+      const svg = d3.select(svgEl);
+      svg.selectAll('*').remove();
+      svg.attr('viewBox', '0 0 ' + breedte + ' ' + hoogte).attr('height', hoogte);
+
+      const kort = (t) => (t.length > 34 ? t.slice(0, 33) + '…' : t);
+      const meet = svg.append('g').attr('font-size', 11).attr('opacity', 0);
+      const meetBreedte = (t) => { const n = meet.append('text').text(t).node(); return n.getComputedTextLength(); };
+      let labelB = 0;
+      data.forEach((r) => { labelB = Math.max(labelB, meetBreedte(kort(r.label))); });
+      labelB = Math.min(labelB, Math.max(80, breedte * 0.34));
+      let waardeB = 0;
+      data.forEach((r) => r.display.forEach((d) => { waardeB = Math.max(waardeB, meetBreedte(d)); }));
+      meet.remove();
+
+      const links = labelB + 10;
+      const rechts = breedte - waardeB - 10;
+      const maxWaarde = Math.max(
+        opties.minMax || 0,
+        d3.max(data, (r) => d3.max(r.values, (v) => Number(v) || 0)) || 1
+      );
+      const x = d3.scaleLinear([0, maxWaarde * 1.02], [links, Math.max(links + 40, rechts)]);
+      const y = d3.scaleBand(data.map((r) => r.label), [boven, boven + data.length * rijH]).paddingInner(0.28);
+
+      /* as onderaan */
+      const as = svg.append('g')
+        .attr('transform', 'translate(0,' + (boven + data.length * rijH + 4) + ')')
+        .call(d3.axisBottom(x).ticks(Math.max(2, Math.round((rechts - links) / 90))).tickFormat(opties.tickFormat).tickSize(0).tickPadding(6));
+      as.attr('font-size', null).attr('font-family', null);
+      as.select('.domain').attr('stroke', 'var(--cds-chart-axis)');
+      as.selectAll('text').attr('fill', 'var(--color-fg-muted)').attr('font-size', 10);
+
+      /* rasterlijnen */
+      svg.insert('g', ':first-child')
+        .selectAll('line')
+        .data(x.ticks(Math.max(2, Math.round((rechts - links) / 90))))
+        .join('line')
+        .attr('x1', (d) => x(d)).attr('x2', (d) => x(d))
+        .attr('y1', boven).attr('y2', boven + data.length * rijH)
+        .attr('stroke', 'var(--cds-chart-grid)').attr('stroke-width', 1);
+
+      const tip = tipHelper(box);
+
+      data.forEach((r) => {
+        const basis = y(r.label);
+        svg.append('text')
+          .attr('x', labelB).attr('y', basis + y.bandwidth() / 2)
+          .attr('text-anchor', 'end').attr('dominant-baseline', 'middle')
+          .attr('font-size', 11).attr('fill', 'var(--color-fg)')
+          .text(kort(r.label));
+
+        series.forEach((s, si) => {
+          const v = Number(r.values[si]) || 0;
+          const yy = basis + si * (dik + 2) + (y.bandwidth() - series.length * (dik + 2) + 2) / 2;
+          svg.append('rect')
+            .attr('x', x(0)).attr('y', yy)
+            .attr('width', Math.max(1, x(v) - x(0))).attr('height', dik)
+            .attr('rx', 4)
+            .attr('fill', r.colors && r.colors[si] ? r.colors[si] : s.kleur)
+            .on('pointerenter pointermove', function (event) {
+              tip.toon(r.label, series.map((ss, i) => ({
+                naam: ss.naam,
+                waarde: r.display[i],
+                kleur: r.colors && r.colors[i] ? r.colors[i] : ss.kleur,
+              })), event);
+            })
+            .on('pointerleave', tip.weg);
+          svg.append('text')
+            .attr('x', x(v) + 6).attr('y', yy + dik / 2)
+            .attr('dominant-baseline', 'middle')
+            .attr('font-size', 10).attr('fill', 'var(--color-fg-muted)')
+            .text(r.display[si]);
+        });
+      });
+
+      if (opties.referentie) {
+        svg.append('line')
+          .attr('x1', x(opties.referentie)).attr('x2', x(opties.referentie))
+          .attr('y1', boven).attr('y2', boven + data.length * rijH)
+          .attr('stroke', 'var(--cds-chart-reference)').attr('stroke-width', 1)
+          .attr('stroke-dasharray', '4 3');
+        svg.append('text')
+          .attr('x', x(opties.referentie)).attr('y', boven + data.length * rijH + 20)
+          .attr('text-anchor', 'middle').attr('font-size', 10)
+          .attr('fill', 'var(--color-fg-muted)').text(opties.referentieLabel);
+      }
+      if (series.length > 1) {
+        const legenda = svg.append('g');
+        let dx = links;
+        series.forEach((s) => {
+          legenda.append('rect').attr('x', dx).attr('y', hoogte - 14).attr('width', 8).attr('height', 8).attr('rx', 2).attr('fill', s.kleur);
+          legenda.append('text').attr('x', dx + 12).attr('y', hoogte - 10).attr('dominant-baseline', 'middle')
+            .attr('font-size', 10).attr('fill', 'var(--color-fg-muted)').text(s.naam);
+          dx += 12 + s.naam.length * 6.2 + 16;
+        });
+      }
+    }
+
+    /* ---------- tekenen ---------- */
+    dash.onData(() => {
+      vulMarks();
+
+      /* Meta: tabel */
+      const metaAds = rows('meta_ads').slice().sort((a, b) => Number(b.spend) - Number(a.spend));
+      const metaRoi = new Map(rows('meta_roi').map((r) => [r.ad_name, r]));
+      vulTabel('pd-meta-table', [
+        { veld: 'ad_name', f: fmt.txt },
+        { veld: 'adset_name', f: fmt.txt },
+        { veld: 'spend', f: fmt.eur, klasse: 'pd-r' },
+        { veld: 'clicks', f: fmt.num, klasse: 'pd-r' },
+        { veld: 'cpc', f: fmt.eur, klasse: 'pd-r' },
+        { veld: 'actions_omni_purchase', f: fmt.num, klasse: 'pd-r' },
+        { veld: 'kosten_per_conversie', f: fmt.eur, klasse: 'pd-r' },
+        { veld: 'action_values_omni_purchase', f: fmt.eur, klasse: 'pd-r' },
+        { veld: 'waarde_per_conversie', f: fmt.eur, klasse: 'pd-r' },
+        { veld: 'roas', f: fmt.dec, klasse: 'pd-r' },
+      ], metaAds.map((a) => Object.assign({}, a, metaRoi.get(a.ad_name) || {})), ['ad_name']);
+
+      /* Meta: ROAS-staven */
+      const roasBox = document.getElementById('pd-meta-roas-box');
+      const roasSvg = document.getElementById('pd-meta-roas');
+      const roasStaat = staat(['meta_ads', 'meta_roi']);
+      if (roasStaat === 'error') {
+        mislukt(roasBox, roasSvg, 240);
+      } else {
+        geenFout(roasBox);
+        const data = rows('meta_roi').slice()
+          .map((r) => ({ naam: r.ad_name, roas: Number(r.roas) || 0, spend: Number((metaAds.find((a) => a.ad_name === r.ad_name) || {}).spend) || 0 }))
+          .sort((a, b) => b.roas - a.roas);
+        staven(roasSvg, roasBox, data.map((r) => ({
+          label: r.naam,
+          values: [r.roas],
+          display: [fmt.dec(r.roas)],
+          colors: [r.roas >= BREAK_EVEN ? dash.colors[0] : MUTED],
+        })), {
+          series: [{ naam: 'ROAS volgens Meta', kleur: dash.colors[0] }],
+          referentie: BREAK_EVEN,
+          referentieLabel: 'break-even 2,5',
+          minMax: BREAK_EVEN * 1.15,
+          tickFormat: (d) => new Intl.NumberFormat('nl-NL', { maximumFractionDigits: 1 }).format(d),
+        });
+      }
+
+      /* Google: tabellen */
+      const gCamp = rows('google_campagnes').slice().sort((a, b) => Number(b.advertiser_ad_cost) - Number(a.advertiser_ad_cost));
+      const gRoi = new Map(rows('google_roi').map((r) => [r.session_google_ads_campaign_name, r]));
+      vulTabel('pd-g-table', [
+        { veld: 'session_google_ads_campaign_name', f: fmt.txt },
+        { veld: 'advertiser_ad_cost', f: fmt.eur, klasse: 'pd-r' },
+        { veld: 'advertiser_ad_clicks', f: fmt.num, klasse: 'pd-r' },
+        { veld: 'cpc', f: fmt.eur, klasse: 'pd-r' },
+        { veld: 'transactions', f: fmt.num, klasse: 'pd-r' },
+        { veld: 'kosten_per_transactie', f: fmt.eur, klasse: 'pd-r' },
+        { veld: 'purchase_revenue', f: fmt.eur, klasse: 'pd-r' },
+        { veld: 'roas', f: fmt.dec, klasse: 'pd-r' },
+      ], gCamp.map((c) => Object.assign({}, c, gRoi.get(c.session_google_ads_campaign_name) || {})), ['session_google_ads_campaign_name']);
+
+      const gGroep = rows('google_groepen').slice().sort((a, b) => Number(b.advertiser_ad_cost) - Number(a.advertiser_ad_cost));
+      const ggRoi = new Map(rows('groep_roi').map((r) => [r.session_google_ads_campaign_name + '\u0000' + r.session_google_ads_ad_group_name, r]));
+      vulTabel('pd-gg-table', [
+        { veld: 'session_google_ads_campaign_name', f: fmt.txt },
+        { veld: 'session_google_ads_ad_group_name', f: fmt.txt },
+        { veld: 'advertiser_ad_cost', f: fmt.eur, klasse: 'pd-r' },
+        { veld: 'advertiser_ad_clicks', f: fmt.num, klasse: 'pd-r' },
+        { veld: 'cpc', f: fmt.eur, klasse: 'pd-r' },
+        { veld: 'transactions', f: fmt.num, klasse: 'pd-r' },
+        { veld: 'purchase_revenue', f: fmt.eur, klasse: 'pd-r' },
+        { veld: 'roas', f: fmt.dec, klasse: 'pd-r' },
+      ], gGroep.map((g) => Object.assign({}, g, ggRoi.get(g.session_google_ads_campaign_name + '\u0000' + g.session_google_ads_ad_group_name) || {})),
+        ['session_google_ads_campaign_name', 'session_google_ads_ad_group_name']);
+
+      /* Google: kosten tegenover omzet */
+      const gBox = document.getElementById('pd-g-box');
+      const gSvg = document.getElementById('pd-g-chart');
+      if (staat(['google_campagnes']) === 'error') {
+        mislukt(gBox, gSvg, 260);
+      } else {
+        geenFout(gBox);
+        staven(gSvg, gBox, gCamp.map((c) => ({
+          label: c.session_google_ads_campaign_name,
+          values: [Number(c.advertiser_ad_cost) || 0, Number(c.purchase_revenue) || 0],
+          display: [fmt.eur0(c.advertiser_ad_cost), fmt.eur0(c.purchase_revenue)],
+        })), {
+          series: [{ naam: 'kosten', kleur: MUTED }, { naam: 'productomzet', kleur: dash.colors[0] }],
+          tickFormat: (d) => '€' + geld0.format(d),
+        });
+      }
+
+      /* Afstemming */
+      const recBox = document.getElementById('pd-rec-box');
+      const recSvg = document.getElementById('pd-rec-chart');
+      const afst = rows('afstemming');
+      if (staat(['afstemming']) === 'error') {
+        mislukt(recBox, recSvg, 160);
+      } else {
+        geenFout(recBox);
+        staven(recSvg, recBox, afst.map((r, i) => ({
+          label: r.bron,
+          values: [Number(r.waarde) || 0],
+          display: [fmt.eur0(r.waarde)],
+          colors: [i === afst.length - 1 ? dash.colors[0] : MUTED],
+        })), {
+          series: [{ naam: 'omzet toegeschreven aan social', kleur: dash.colors[0] }],
+          tickFormat: (d) => '€' + geld0.format(d),
+        });
+      }
+      vulTabel('pd-rec-table', [
+        { veld: 'bron', f: fmt.txt },
+        { veld: 'orders', f: fmt.num, klasse: 'pd-r' },
+        { veld: 'waarde', f: fmt.eur, klasse: 'pd-r' },
+        { veld: 'toewijzing', f: fmt.txt },
+      ], afst, ['bron']);
+
+      /* Shopify per orderbron */
+      const shop = rows('shopify_bronnen').slice().sort((a, b) => Number(b.orders) - Number(a.orders));
+      const shopRoi = new Map(rows('shopify_roi').map((r) => [r.order_referrer_name + '\u0000' + r.order_referrer_source, r]));
+      vulTabel('pd-sh-table', [
+        { veld: 'order_referrer_name', f: (v) => (v ? String(v) : 'onbekend') },
+        { veld: 'order_referrer_source', f: (v) => (v ? String(v) : 'onbekend') },
+        { veld: 'orders', f: fmt.num, klasse: 'pd-r' },
+        { veld: 'gross_sales', f: fmt.eur, klasse: 'pd-r' },
+        { veld: 'shipping_charges', f: fmt.eur, klasse: 'pd-r' },
+        { veld: 'product_per_order', f: fmt.eur, klasse: 'pd-r' },
+        { veld: 'total_sales', f: fmt.eur, klasse: 'pd-r' },
+      ], shop.map((r) => Object.assign({}, r, shopRoi.get(r.order_referrer_name + '\u0000' + r.order_referrer_source) || {})),
+        ['order_referrer_name', 'order_referrer_source']);
+
+      /* Waarde per aankoop per dag */
+      const sBox = document.getElementById('pd-sample-box');
+      const sSvg = document.getElementById('pd-sample-chart');
+      if (staat(['meta_per_conversie']) === 'error') {
+        mislukt(sBox, sSvg, 260);
+      } else {
+        geenFout(sBox);
+        const data = rows('meta_per_conversie')
+          .map((r) => ({ dag: new Date(String(r.date) + 'T00:00:00Z'), v: Number(r.waarde_per_conversie), n: Number(r.conversies), w: Number(r.waarde) }))
+          .filter((r) => !isNaN(r.dag) && r.v > 0);
+        const breedte = Math.max(280, sBox.clientWidth);
+        const hoogte = 280;
+        const svg = d3.select(sSvg);
+        svg.selectAll('*').remove();
+        svg.attr('viewBox', '0 0 ' + breedte + ' ' + hoogte).attr('height', hoogte);
+        if (data.length) {
+          const meet = svg.append('g').attr('font-size', 10).attr('opacity', 0);
+          const maxY = Math.max(300, d3.max(data, (r) => r.v) * 1.2);
+          const yTicks = [5, 10, 25, 50, 100, 250].filter((t) => t <= maxY);
+          let yB = 0;
+          yTicks.forEach((t) => { yB = Math.max(yB, meet.append('text').text('€' + geld0.format(t)).node().getComputedTextLength()); });
+          meet.remove();
+          const m = { top: 14, right: 10, bottom: 26, left: yB + 10 };
+          const x = d3.scaleUtc(d3.extent(data, (r) => r.dag), [m.left, breedte - m.right]);
+          const minY = Math.min(4.5, (d3.min(data, (r) => r.v) || 4.5) * 0.9);
+          const y = d3.scaleLog([minY, maxY], [hoogte - m.bottom, m.top]);
+
+          svg.append('g').selectAll('line').data(yTicks).join('line')
+            .attr('x1', m.left).attr('x2', breedte - m.right)
+            .attr('y1', (d) => y(d)).attr('y2', (d) => y(d))
+            .attr('stroke', 'var(--cds-chart-grid)');
+
+          svg.append('rect')
+            .attr('x', m.left).attr('y', y(6.95))
+            .attr('width', breedte - m.right - m.left)
+            .attr('height', Math.max(2, y(5.95) - y(6.95)))
+            .attr('fill', 'var(--cds-chart-reference)').attr('opacity', 0.28);
+          svg.append('text')
+            .attr('x', m.left + 4).attr('y', y(6.95) - 5)
+            .attr('font-size', 10).attr('fill', 'var(--color-fg-muted)')
+            .text('€ 5,95 – € 6,95');
+
+          const asX = svg.append('g').attr('transform', 'translate(0,' + (hoogte - m.bottom) + ')')
+            .call(d3.axisBottom(x).ticks(Math.max(2, Math.round(breedte / 110))).tickFormat(d3.utcFormat('%-d %b')).tickSize(0).tickPadding(6));
+          asX.attr('font-size', null).attr('font-family', null);
+          asX.select('.domain').attr('stroke', 'var(--cds-chart-axis)');
+          asX.selectAll('text').attr('fill', 'var(--color-fg-muted)').attr('font-size', 10);
+          const asY = svg.append('g').attr('transform', 'translate(' + m.left + ',0)')
+            .call(d3.axisLeft(y).tickValues(yTicks).tickFormat((d) => '€' + geld0.format(d)).tickSize(0).tickPadding(6));
+          asY.attr('font-size', null).attr('font-family', null);
+          asY.select('.domain').remove();
+          asY.selectAll('text').attr('fill', 'var(--color-fg-muted)').attr('font-size', 10);
+
+          const tip = tipHelper(sBox);
+          svg.append('g').selectAll('circle').data(data).join('circle')
+            .attr('cx', (d) => x(d.dag)).attr('cy', (d) => y(d.v))
+            .attr('r', 4.5)
+            .attr('fill', (d) => (d.v < 10 ? MUTED : dash.colors[0]))
+            .attr('stroke', 'var(--color-panel)').attr('stroke-width', 2)
+            .on('pointerenter pointermove', function (event, d) {
+              tip.toon(d3.utcFormat('%-d %b %Y')(d.dag), [
+                { naam: 'waarde per aankoop', waarde: fmt.eur(d.v), kleur: d.v < 10 ? MUTED : dash.colors[0] },
+                { naam: 'aankopen', waarde: fmt.num(d.n) },
+                { naam: 'totale waarde', waarde: fmt.eur(d.w) },
+              ], event);
+            })
+            .on('pointerleave', tip.weg);
+        }
+      }
+
+      /* Dagelijkse kosten */
+      const dBox = document.getElementById('pd-daily-box');
+      const dSvg = document.getElementById('pd-daily-chart');
+      if (staat(['meta_dagen', 'google_dagen']) === 'error') {
+        mislukt(dBox, dSvg, 240);
+      } else {
+        geenFout(dBox);
+        const mReeks = rows('meta_dagen').map((r) => ({ dag: new Date(String(r.date).slice(0, 10) + 'T00:00:00Z'), v: Number(r.spend) || 0 })).filter((r) => !isNaN(r.dag));
+        const gReeks = rows('google_dagen').map((r) => ({ dag: new Date(String(r.date).slice(0, 10) + 'T00:00:00Z'), v: Number(r.advertiser_ad_cost) || 0 })).filter((r) => !isNaN(r.dag));
+        const breedte = Math.max(280, dBox.clientWidth);
+        const hoogte = 240;
+        const svg = d3.select(dSvg);
+        svg.selectAll('*').remove();
+        svg.attr('viewBox', '0 0 ' + breedte + ' ' + hoogte).attr('height', hoogte);
+        const alles = mReeks.concat(gReeks);
+        if (alles.length) {
+          const reeksen = [
+            { naam: 'Meta', data: mReeks, kleur: dash.colors[0] },
+            { naam: 'Google Ads', data: gReeks, kleur: dash.colors[1] },
+          ].filter((r) => r.data.length);
+          const meet = svg.append('g').attr('font-size', 10).attr('opacity', 0);
+          const maxY = d3.max(alles, (r) => r.v) || 1;
+          const yTicks = d3.scaleLinear([0, maxY], [0, 1]).ticks(4);
+          let yB = 0;
+          yTicks.forEach((t) => { yB = Math.max(yB, meet.append('text').text('€' + geld0.format(t)).node().getComputedTextLength()); });
+          let eindB = 0;
+          reeksen.forEach((r) => { eindB = Math.max(eindB, meet.append('text').text(r.naam).node().getComputedTextLength()); });
+          meet.remove();
+          const m = { top: 14, right: eindB + 14, bottom: 26, left: yB + 10 };
+          const x = d3.scaleUtc(d3.extent(alles, (r) => r.dag), [m.left, breedte - m.right]);
+          const y = d3.scaleLinear([0, maxY * 1.05], [hoogte - m.bottom, m.top]);
+          svg.append('g').selectAll('line').data(yTicks).join('line')
+            .attr('x1', m.left).attr('x2', breedte - m.right)
+            .attr('y1', (d) => y(d)).attr('y2', (d) => y(d))
+            .attr('stroke', 'var(--cds-chart-grid)');
+          const asX = svg.append('g').attr('transform', 'translate(0,' + (hoogte - m.bottom) + ')')
+            .call(d3.axisBottom(x).ticks(Math.max(2, Math.round(breedte / 110))).tickFormat(d3.utcFormat('%-d %b')).tickSize(0).tickPadding(6));
+          asX.attr('font-size', null).attr('font-family', null);
+          asX.select('.domain').attr('stroke', 'var(--cds-chart-axis)');
+          asX.selectAll('text').attr('fill', 'var(--color-fg-muted)').attr('font-size', 10);
+          const asY = svg.append('g').attr('transform', 'translate(' + m.left + ',0)')
+            .call(d3.axisLeft(y).tickValues(yTicks).tickFormat((d) => '€' + geld0.format(d)).tickSize(0).tickPadding(6));
+          asY.attr('font-size', null).attr('font-family', null);
+          asY.select('.domain').remove();
+          asY.selectAll('text').attr('fill', 'var(--color-fg-muted)').attr('font-size', 10);
+          const lijn = d3.line().x((d) => x(d.dag)).y((d) => y(d.v));
+          reeksen.forEach((r) => {
+            const geordend = r.data.slice().sort((a, b) => a.dag - b.dag);
+            svg.append('path').datum(geordend).attr('fill', 'none')
+              .attr('stroke', r.kleur).attr('stroke-width', 2)
+              .attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round')
+              .attr('d', lijn);
+            const laatste = geordend[geordend.length - 1];
+            svg.append('text').attr('x', x(laatste.dag) + 6).attr('y', y(laatste.v))
+              .attr('dominant-baseline', 'middle').attr('font-size', 10)
+              .attr('fill', r.kleur).text(r.naam);
+          });
+          const tip = tipHelper(dBox);
+          const perDag = new Map();
+          reeksen.forEach((r, i) => r.data.forEach((p) => {
+            const k = +p.dag;
+            if (!perDag.has(k)) perDag.set(k, { dag: p.dag, v: [] });
+            perDag.get(k).v[i] = p.v;
+          }));
+          const punten = Array.from(perDag.values()).sort((a, b) => a.dag - b.dag);
+          const zoek = d3.bisector((d) => d.dag).center;
+          svg.append('rect')
+            .attr('x', m.left).attr('y', m.top)
+            .attr('width', Math.max(1, breedte - m.right - m.left)).attr('height', hoogte - m.bottom - m.top)
+            .attr('fill', 'transparent')
+            .on('pointerenter pointermove', function (event) {
+              const kader = dSvg.getBoundingClientRect();
+              const ux = (event.clientX - kader.left) * (breedte / (kader.width || breedte));
+              const d = punten[zoek(punten, x.invert(ux))];
+              if (!d) return;
+              tip.toon(d3.utcFormat('%-d %b %Y')(d.dag), reeksen.map((r, i) => ({
+                naam: r.naam, waarde: fmt.eur(d.v[i]), kleur: r.kleur,
+              })), event);
+            })
+            .on('pointerleave', tip.weg);
+        }
+      }
+    });
+
+    /* link volgt de secties mee */
+    const secties = Array.from(document.querySelectorAll('.pd-head[id], .pd-section[id]'));
+    let huidig = '';
+    const volg = () => {
+      let beste = secties[0];
+      secties.forEach((s) => { if (s.getBoundingClientRect().top <= window.innerHeight * 0.35) beste = s; });
+      if (beste && beste.id !== huidig) { huidig = beste.id; dash.setLink(huidig); }
+    };
+    window.addEventListener('scroll', volg, { passive: true });
+    const genoemd = document.getElementById(location.hash.slice(1));
+    if (genoemd) { genoemd.scrollIntoView(); dash.setLink(genoemd.id); }
+  })();
+</script>
