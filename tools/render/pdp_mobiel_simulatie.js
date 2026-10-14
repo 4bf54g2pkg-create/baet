@@ -88,6 +88,25 @@ await p.evaluate((OPT)=>{
  }
 },OPT);
 await p.waitForTimeout(800);
+if(process.argv[3]==='tint'){
+  const inj=require('./tint-inject.js'); const data=JSON.parse(fs.readFileSync('tint-data.json','utf8'));
+  await p.evaluate(`(${inj.toString()})(${JSON.stringify({data,desk:false})})`);
+  await p.waitForTimeout(1500);
+  const y1=await p.evaluate(()=>Math.round(document.querySelector('.pdh__title').getBoundingClientRect().top+scrollY)-120);
+  await p.evaluate(y=>window.scrollTo(0,y),y1); await p.waitForTimeout(800); await p.screenshot({path:'tm-1.png'});
+  const y2=await p.evaluate(()=>Math.round(document.querySelector('.tw').getBoundingClientRect().top+scrollY)-60);
+  await p.evaluate(y=>window.scrollTo(0,y),y2); await p.waitForTimeout(1500); await p.screenshot({path:'tm-2.png'});
+  await p.evaluate(()=>window.__twMode('vis')); await p.waitForTimeout(2500); await p.screenshot({path:'tm-3.png'});
+  await p.evaluate((y)=>{window.__twMode('sw');document.querySelector('.tw__row').scrollLeft=640;window.scrollTo(0,y+250)},y2); await p.waitForTimeout(1200); await p.screenshot({path:'tm-4.png'});
+  await b.close(); return;
+}
+if(process.argv[3]==='more'){
+  const y=await p.evaluate(()=>Math.round(document.querySelector('.pd-more').getBoundingClientRect().top+scrollY)-170);
+  for(let s=0;s<=y;s+=600){await p.evaluate(s=>window.scrollTo(0,s),s);await p.waitForTimeout(100);}
+  await p.evaluate(y=>window.scrollTo(0,y),y); await p.waitForTimeout(1500); await p.screenshot({path:'tm-nu.png'});
+  await p.evaluate(y=>window.scrollTo(0,y+560),y); await p.waitForTimeout(1200); await p.screenshot({path:'tm-nu2.png'});
+  await b.close(); return;
+}
 if(process.argv[3]==='full'){
   if(OPT==='E'){ await p.fill('[data-pdc-w]','4,80'); await p.fill('[data-pdc-h]','2,60'); await p.waitForTimeout(400); }
   // lazy beelden laden
