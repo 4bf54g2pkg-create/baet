@@ -311,3 +311,12 @@ Feiten van Puredeco (14 okt): toplaag van gerecycled PVC met het decor; kern van
 - **8 mm Signature = kliksysteem** (bevestigd in productomschrijvingen 830 en 851).
 - md5: pd-vergelijk 6df3d2fa…, pd-home f7dc71c8…, pd-opbouw 9014c573…, pd-usp 2a4ed460…, puredeco-premium.css 90874dcd….
 - **Open:** productomschrijvingen in de winkel noemen nog de oude opbouw (gerecycled PVC-laag, gerecyclede onderlaag) en "buigbaar" zonder werkwijze: winkeldata, aanpassen alleen met akkoord.
+
+## 14 okt: vergelijking kort en krachtig (H1-test, na "veel te uitgebreid" / "kort maar krachtig")
+- Homepage: de grote vergelijking (`pd-vergelijk`) is vervangen door `snippets/pd-waarom.liquid` (gegenereerd door `tools/vergelijking/maak_waarom.py`): kop "Alles wat een wand moet zijn. In één paneel.", link naar gratis stalen en drie kaarten met mini-doorsnede "Puredeco vs …":
+  1. In plaats van tegels: "Geen tegels. Geen breekwerk."
+  2. In plaats van hol kunststof of SPC-panelen: "Geen hol kunststof. Echt bamboe."
+  3. In plaats van badkamerpanelen van 60 cm: "Geen naad om de 60 cm."
+- Alleen feiten, geen merken en geen "beter dan"; het beeld dat Puredeco de beste keus is ontstaat uit de drie verschillen.
+- `snippets/pd-vergelijk.liquid` blijft in het thema (niet meer gebruikt) voor een eventuele aparte pagina "Wandbekleding vergelijken" (pagina aanmaken = winkeldata, alleen met akkoord). Artboard: `docs/ontwerp-puredeco-finish/VergelijkingCompact.html`.
+- md5: pd-waarom 1959c4bb…, pd-home 8d4a675a…, puredeco-premium.css 0a35bf8c….
