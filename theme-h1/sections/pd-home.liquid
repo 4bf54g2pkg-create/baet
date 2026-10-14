@@ -133,32 +133,7 @@
     </div>
   </section>
 
-  {%- comment -%} 3 · Het verschil zit vanbinnen: opbouw, feiten en een eerlijke vergelijking (rapport Exclusief).
-       Feit Puredeco: toplaag van gerecycled PVC, kern van behandeld bamboe (daardoor waterbestendig). Brandklasse B1 bevestigd. {%- endcomment -%}
-  {%- liquid
-    assign buig_url = articles['nieuws/wandpanelen-buigen'].url | default: '/blogs/nieuws?view=gids-buigen'
-  -%}
-  <section class="ph-core" id="opbouw" aria-labelledby="ph-core-h">
-    <div class="ph-wrap">
-      <div class="ph-core__head">
-        <div>
-          <p class="ph-k ph-k--light">Het verschil zit vanbinnen</p>
-          <h2 class="ph-core__h" id="ph-core-h">Gerecycled PVC buiten.<br>Behandeld bamboe vanbinnen.</h2>
-        </div>
-        <div>
-          <p class="ph-core__t">Onder een hoogwaardige toplaag zit geen hol kunststof en geen houtvezel, maar een dichte kern van behandeld bamboe. Stevig en waterbestendig, en toch licht: bij het plaatsen til je geen zware platen of tegels.</p>
-          <p class="ph-core__links"><a href="/pages/sample">Voel het zelf: bestel gratis stalen →</a></p>
-        </div>
-      </div>
-      {%- render 'pd-opbouw', tone: 'dark' -%}
-      <dl class="ph-core__facts">
-        <div><dt>280 × 122</dt><dd>cm in één stuk, van vloer tot plafond</dd></div>
-        <div><dt>B1</dt><dd>brandklasse, moeilijk ontvlambaar</dd></div>
-        <div><dt>5 en 8 mm</dt><dd>dun, ook over bestaande tegels</dd></div>
-        <div><dt>Rond</dt><dd><a href="{{ buig_url }}">te buigen na infrezen en verwarmen</a></dd></div>
-      </dl>
-    </div>
-  </section>
+  {%- comment -%} 3 · Waarom Puredeco: één blok (artboard WaaromPuredeco, akkoord 14 okt). Vervangt "Het verschil zit vanbinnen" + de vier kaarten. {%- endcomment -%}
   {%- render 'pd-waarom' -%}
 
   {%- comment -%} 4 · Van ver één vlak, van dichtbij materiaal {%- endcomment -%}

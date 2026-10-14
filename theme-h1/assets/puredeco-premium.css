@@ -3323,3 +3323,37 @@ b, strong { font-weight: 600; }
 .pw-lead { max-width: 44rem; }
 .pw-lead p { margin: 0 0 1.4rem; font-size: 1.6rem; line-height: 1.65; color: #3A3733; }
 .pw-lead strong { color: #151413; font-weight: 600; }
+
+/* ===== Waarom Puredeco, één blok (14 okt, artboard WaaromPuredeco) ===== */
+.pwb { background: #1B1917; color: #F5F2EC; padding: 8rem 0 7.2rem; scroll-margin-top: 8rem; }
+.pwb-top { display: grid; gap: 2.4rem; align-items: end; }
+@media (min-width: 990px) { .pwb-top { grid-template-columns: 1.25fr 1fr; gap: 6rem; } }
+.pwb-h { margin: 1.4rem 0 0; font-family: var(--font-heading-family); font-weight: 500; font-size: clamp(4rem, 5vw, 7rem); line-height: 1; color: #F5F2EC; }
+.pwb-lead p { margin: 0 0 2.2rem; font-size: 1.8rem; line-height: 1.6; color: #CFC6B8; }
+.pwb-lead strong { color: #F5F2EC; font-weight: 600; }
+.pwb-btns { display: flex; flex-wrap: wrap; align-items: center; gap: 1.4rem 2.2rem; }
+.pwb-btn { display: inline-block; padding: 1.6rem 2.6rem; background: #F5F2EC; color: #151413; font-size: 1.5rem; font-weight: 500; text-decoration: none; transition: background .2s; }
+.pwb-btn:hover { background: #E9E3D8; }
+.pwb-lnk, .pwb-rs a { color: #F5F2EC; text-decoration: underline; text-underline-offset: 0.4rem; text-decoration-thickness: 1px; font-size: 1.4rem; }
+.pwb-rs a { font-size: inherit; color: #CFC6B8; }
+.pwb-mid { display: grid; gap: 3.2rem; align-items: center; margin-top: 5.6rem; }
+@media (min-width: 990px) { .pwb-mid { grid-template-columns: 1fr 1.35fr; gap: 5.6rem; } }
+.pwb-close { margin: 0; }
+.pwb-close img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+.pwb-close figcaption { margin-top: 1rem; font-size: 1.2rem; color: #BDB4A6; }
+.pwb-op .pd-op__cap { display: none; }
+.pwb-leg { list-style: none; counter-reset: pwb; margin: 2.2rem 0 0; padding: 0; display: grid; gap: 1.6rem; }
+@media (min-width: 750px) { .pwb-leg { grid-template-columns: 1fr 1fr; gap: 2.4rem; } }
+.pwb-leg li { counter-increment: pwb; position: relative; padding-left: 4.4rem; }
+.pwb-leg li::before { content: counter(pwb); position: absolute; left: 0; top: 0; width: 3rem; height: 3rem; border: 1px solid #F5F2EC; border-radius: 50%; display: grid; place-items: center; font-size: 1.4rem; font-weight: 600; }
+.pwb-leg b { display: block; font-family: var(--font-heading-family); font-weight: 500; font-size: 2.2rem; line-height: 1.15; }
+.pwb-leg span { display: block; margin-top: 0.3rem; font-size: 1.4rem; color: #BDB4A6; }
+.pwb-rs { list-style: none; margin: 5.6rem 0 0; padding: 0; display: grid; border-top: 1px solid #3A3531; }
+@media (min-width: 750px) { .pwb-rs { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3.2rem; } }
+@media (min-width: 1200px) { .pwb-rs { grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 0; } }
+.pwb-rs li { padding: 2.8rem 0 2.4rem; border-bottom: 1px solid #3A3531; }
+@media (min-width: 1200px) { .pwb-rs li { padding: 2.8rem 2.8rem 0 0; margin-right: 2.8rem; border-bottom: 0; border-right: 1px solid #3A3531; } .pwb-rs li:last-child { border-right: 0; margin-right: 0; } }
+.pwb-n { font-size: 1.2rem; letter-spacing: 0.16em; color: #C7A988; }
+.pwb-rs h3 { margin: 1rem 0; font-family: var(--font-heading-family); font-weight: 500; font-size: clamp(2.6rem, 2.2vw, 3rem); line-height: 1.1; color: #F5F2EC; }
+.pwb-rs p { margin: 0; font-size: 1.45rem; line-height: 1.65; color: #CFC6B8; }
+@media (max-width: 749px) { .pwb { padding: 5.6rem 0 4.8rem; } .pwb-btn { width: 100%; text-align: center; } }

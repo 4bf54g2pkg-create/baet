@@ -322,3 +322,8 @@ Feiten van Puredeco (14 okt): toplaag van gerecycled PVC met het decor; kern van
 - md5: pd-waarom 1959c4bb…, pd-home 8d4a675a…, puredeco-premium.css 0a35bf8c….
 - **Update 14 okt (input Puredeco):** vier kaarten in plaats van drie: tegels · smalle panelen ("Geen naad om de 60 cm of 1 meter", 122 cm breed) · hol kunststof ("Een kern met een hoge dichtheid") · SPC-panelen ("Ziet eruit als echt. Voelt ook zo.": toplagen hout, leer, Japandi-stof, travertin met voelbare structuur; "Die keuze vind je bij SPC niet" op opgave van Puredeco). Desktop 4 kolommen, tablet 2, mobiel onder elkaar. md5 pd-waarom ff84ddb9…, css 1f974267….
 - **Update 14 okt (lange termijn):** kop van "Waarom Puredeco" is nu "Een wand kies je niet voor even." met "Panelen die je verlijmt, haal je er niet zomaar weer af. Goedkoop wordt dan duurkoop. **Kies één keer goed.**" en de stalenlink. Geen levensduur- of garantieclaim; het argument rust op een feit (verlijmd = niet zomaar weg). md5 pd-waarom a5f34250…, css 4db1811a….
+
+## 14 okt: Waarom Puredeco, één blok (H1-test, akkoord artboard WaaromPuredeco)
+- `snippets/pd-waarom.liquid` herschreven: donker blok (#opbouw) met kop "Een wand kies je niet voor even.", "Een wand haal je er niet zomaar weer af. Kies hem één keer goed.", knop "Bestel gratis stalen" + link Studio Herwen; close-up `assets/pd-close-811.jpg` (uitsnede productfoto 811, met onderschrift); opbouwtekening (pd-opbouw, legend false) met eigen legenda; vier redenen: Direct over je tegels · 122 cm breed · Dicht, stevig en toch licht · Voel de nerf.
+- `sections/pd-home.liquid`: blok "Het verschil zit vanbinnen" (ph-core) verwijderd; alleen nog `render 'pd-waarom'`.
+- md5: pd-waarom 14a2ff99…, pd-home 02a89749…, css 91ba5dee…, pd-close-811.jpg 3b8c2e56….
