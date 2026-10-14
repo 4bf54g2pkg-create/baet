@@ -1,0 +1,318 @@
+{%- comment -%}
+  Puredeco: de decors van dezelfde serie (bijv. alle 6 houtdecors), in een vaste volgorde.
+  Volgorde: de lijst "Volgorde decors" in de thema-instellingen (Puredeco), daarna de rest van de serie.
+  Serie: metafield custom.sibling_products, anders de collectie van de broodkruimel, anders de eerste gewone collectie.
+
+  style: 'kiezer'    → rij stalen onder de prijs (koopkolom)
+  style: 'vergelijk' → sectie "Vergelijk de houttinten" onderaan de productpagina
+  style: 'pairs'     → tot 3 buurtinten als <li> voor de samplebox
+  Gebruik: {% render 'pd-decors', product: product, style: 'kiezer' %}
+{%- endcomment -%}
+{%- liquid
+  assign dg = product.metafields.custom.sibling_products.value
+  if dg == blank
+    capture dg_crumb
+      render 'pd-crumb-collection', product: product
+    endcapture
+    assign dg_url = dg_crumb | strip | split: '||' | last
+    assign dg_handle = dg_url | split: '/' | last
+    if dg_handle != blank and collections[dg_handle].products_count > 1
+      assign dg = collections[dg_handle].products
+    endif
+  endif
+  if dg == blank
+    for c in product.collections
+      if c.handle != 'all' and c.products_count > 1
+        assign dg = c.products
+        break
+      endif
+    endfor
+  endif
+
+  assign dg_in = ','
+  for p in dg
+    assign dg_in = dg_in | append: p.handle | append: ','
+  endfor
+  assign dg_cur = ',' | append: product.handle | append: ','
+
+  comment
+    Volgorde opbouwen als lijst van handles
+  endcomment
+  assign dg_order = ','
+  assign dg_from_list = 0
+  unless dg_in contains dg_cur
+    assign dg_order = dg_order | append: product.handle | append: ','
+  endunless
+  for p in settings.pd_decor_order
+    assign k = ',' | append: p.handle | append: ','
+    if dg_in contains k or k == dg_cur
+      unless dg_order contains k
+        assign dg_order = dg_order | append: p.handle | append: ','
+        assign dg_from_list = dg_from_list | plus: 1
+      endunless
+    endif
+  endfor
+  for p in dg
+    assign k = ',' | append: p.handle | append: ','
+    unless dg_order contains k
+      if p.available or p.handle == product.handle
+        assign dg_order = dg_order | append: p.handle | append: ','
+      endif
+    endunless
+  endfor
+  assign dg_handles = dg_order | remove_first: ',' | split: ','
+  assign dg_n = dg_handles.size
+  assign dg_scale = false
+  if dg_from_list == dg_n and dg_n > 2
+    assign dg_scale = true
+  endif
+
+  capture dg_eyebrow
+    render 'pd-decor', product: product, part: 'eyebrow'
+  endcapture
+  assign dg_eyebrow = dg_eyebrow | strip
+  assign dg_eyebrow_lc = dg_eyebrow | downcase
+-%}
+
+{%- if dg_n > 1 -%}
+
+{%- if style == 'kiezer' -%}
+  {%- liquid
+    capture dg_cur_code
+      render 'pd-decor', product: product, part: 'code'
+    endcapture
+    capture dg_cur_name
+      render 'pd-decor', product: product, part: 'name'
+    endcapture
+    assign dg_lin_only = ''
+    assign dg_lin_n = 0
+    assign dg_sig_n = 0
+  -%}
+  <div class="pdk">
+    <p class="pdk__h"><span>{% if dg_eyebrow != blank %}{{ dg_eyebrow }} · {% endif %}{{ dg_n }} decors</span><b>{{ dg_cur_code | strip }} {{ dg_cur_name | strip }}</b></p>
+    <ul class="pdk__sw" role="list">
+      {%- for h in dg_handles -%}
+        {%- for p in dg -%}
+          {%- if p.handle == h -%}
+            {%- liquid
+              capture pc
+                render 'pd-decor', product: p, part: 'code'
+              endcapture
+              capture pn
+                render 'pd-decor', product: p, part: 'name'
+              endcapture
+              capture psw
+                render 'pd-swatch', product: p, width: 200
+              endcapture
+              assign p_sig = false
+              for o in p.options_with_values
+                for v in o.values
+                  assign kk = v | downcase | remove: ' ' | slice: 0, 3
+                  if kk == '8mm'
+                    assign p_sig = true
+                  endif
+                endfor
+              endfor
+              if p_sig
+                assign dg_sig_n = dg_sig_n | plus: 1
+              else
+                assign dg_lin_n = dg_lin_n | plus: 1
+                assign dg_lin_only = dg_lin_only | append: pc | strip | append: '|'
+              endif
+            -%}
+            <li><a class="pdk__s{% if p.handle == product.handle %} is-on{% endif %}" href="{{ p.url }}"{% if p.handle == product.handle %} aria-current="page"{% endif %} title="{{ pc | strip }} {{ pn | strip }}"><img src="{{ psw | strip }}" alt="{{ pc | strip }} {{ pn | strip | escape }}" width="100" height="100" loading="lazy"></a></li>
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if h == product.handle -%}{%- unless dg_in contains dg_cur -%}
+          {%- capture psw -%}{% render 'pd-swatch', product: product, width: 200 %}{%- endcapture -%}
+          <li><a class="pdk__s is-on" href="{{ product.url }}" aria-current="page" title="{{ dg_cur_code | strip }} {{ dg_cur_name | strip }}"><img src="{{ psw | strip }}" alt="{{ dg_cur_code | strip }} {{ dg_cur_name | strip | escape }}" width="100" height="100" loading="lazy"></a></li>
+        {%- endunless -%}{%- endif -%}
+      {%- endfor -%}
+    </ul>
+    {%- if dg_scale -%}<p class="pdk__sc" aria-hidden="true"><span>Licht</span><i></i><span>Donker</span></p>{%- endif -%}
+    {%- if dg_lin_n > 0 and dg_sig_n > 0 -%}
+      {%- assign dl = dg_lin_only | split: '|' -%}
+      <p class="pdk__note">
+        {%- for c in dl -%}{%- if forloop.last and forloop.length > 1 %} en {% elsif forloop.index > 1 %}, {% endif -%}{{ c }}{%- endfor %} {% if dl.size == 1 %}is er{% else %}zijn er{% endif %} alleen als Linea (5 mm).
+      </p>
+    {%- endif -%}
+  </div>
+
+{%- elsif style == 'vergelijk' -%}
+  {%- liquid
+    if dg_eyebrow_lc == 'hout'
+      assign dg_title = 'Vergelijk de houttinten'
+    else
+      assign dg_title = 'Vergelijk de tinten'
+    endif
+    assign dg_has_vis = false
+    for p in dg
+      assign pim = p.media | where: 'media_type', 'image'
+      if pim.size > 1
+        assign dg_has_vis = true
+      endif
+    endfor
+  -%}
+  <section class="pd-s pdv" data-pdv data-mode="sw" aria-labelledby="pdv-title">
+    <div class="pd-wrap">
+      <div class="pdv__top">
+        <div>
+          <p class="pdv__k">{% if dg_eyebrow != blank %}{{ dg_eyebrow }} · {% endif %}{{ dg_n }} decors</p>
+          <h2 class="pd-h2" id="pdv-title">{{ dg_title }}</h2>
+          <p class="pdv__lead">{% if dg_scale %}Van licht naar donker, naast elkaar. {% else %}Naast elkaar. {% endif %}Bestel de tinten waarover je twijfelt als staal en leg ze tegen je wand.</p>
+        </div>
+        {%- if dg_has_vis -%}
+          <div class="pdv__tg" role="group" aria-label="Weergave">
+            <button type="button" aria-pressed="true" data-pdv-mode="sw">Close-up</button>
+            <button type="button" aria-pressed="false" data-pdv-mode="vis">In een interieur</button>
+          </div>
+        {%- endif -%}
+      </div>
+      {%- if dg_scale -%}<p class="pdv__scale" aria-hidden="true"><span>Licht</span><i></i><span>Donker</span></p>{%- endif -%}
+      <ul class="pdv__row" role="list">
+        {%- for h in dg_handles -%}
+          {%- for p in dg -%}
+            {%- if p.handle == h -%}
+              {%- liquid
+                capture pc
+                  render 'pd-decor', product: p, part: 'code'
+                endcapture
+                assign pc = pc | strip
+                capture pn
+                  render 'pd-decor', product: p, part: 'name'
+                endcapture
+                assign pn = pn | strip
+                capture psw
+                  render 'pd-swatch', product: p, width: 600
+                endcapture
+                capture psm
+                  render 'pd-swatch', product: p, width: 160
+                endcapture
+                assign pim = p.media | where: 'media_type', 'image'
+                assign pvis = pim[1]
+                assign pvis_gen = false
+                if pvis
+                  assign pvis_file = pvis.src | split: '?' | first | split: '/' | last
+                  if pvis_file contains 'generated'
+                    assign pvis_gen = true
+                  endif
+                endif
+                assign ps = false
+                assign pl = false
+                for o in p.options_with_values
+                  for v in o.values
+                    assign kk = v | downcase | remove: ' ' | slice: 0, 3
+                    if kk == '8mm'
+                      assign ps = true
+                    elsif kk == '5mm'
+                      assign pl = true
+                    endif
+                  endfor
+                endfor
+                assign pon = false
+                if p.handle == product.handle
+                  assign pon = true
+                endif
+              -%}
+              <li class="pdv__c{% if pon %} is-on{% endif %}">
+                <a class="pdv__link" href="{{ p.url }}"{% if pon %} aria-current="page"{% endif %}>
+                  <span class="pdv__im">
+                    <img class="pdv__sw" src="{{ psw | strip }}" alt="{{ pc }} {{ pn | escape }}, close-up van het decor" width="600" height="600" loading="lazy">
+                    {%- if pvis -%}{{ pvis | image_url: width: 900 | image_tag: loading: 'lazy', widths: '450, 700, 900', sizes: '(min-width: 990px) 16vw, 46vw', alt: '', class: 'pdv__vis' }}{%- endif -%}
+                    {%- if pon -%}<span class="pdv__b">Je bekijkt dit decor</span>{%- endif -%}
+                    {%- if pvis_gen -%}<span class="pdv__v">Visualisatie</span>{%- endif -%}
+                  </span>
+                  <span class="pdv__tx">
+                    <span class="pdv__code">{{ pc }}</span>
+                    <span class="pdv__name">{{ pn }}</span>
+                    <span class="pdv__fin">{% if ps %}Signature{% endif %}{% if ps and pl %} · {% endif %}{% if pl %}Linea{% endif %}</span>
+                    <span class="pdv__pr">{% if p.price_varies %}vanaf {% endif %}{{ p.price_min | money }}{% if p.title contains 'Wandpaneel' %} <small>per paneel</small>{% endif %}</span>
+                  </span>
+                </a>
+                {%- if p.available -%}
+                  <button type="button" class="pdv__smp" data-pde-add data-pde-main data-id="{{ p.selected_or_first_available_variant.id }}" data-url="{{ p.url }}" data-title="{{ p.title | escape }}" data-label="{{ pc }} {{ pn | escape }}" data-img="{{ psm | strip }}" aria-haspopup="dialog"><span data-pde-label>+ Gratis staal</span></button>
+                {%- endif -%}
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endfor -%}
+      </ul>
+      <div class="pdv__ft"><span>Tot 5 stalen gratis · alleen € 6,95 verzending</span><a href="/pages/sample">Bekijk alle stalen →</a></div>
+      <p class="pdv__disc">Kleuren op een scherm kunnen afwijken. Een staal laat het echte decor zien.</p>
+    </div>
+  </section>
+  <script>
+  (function () {
+    var s = document.querySelector('[data-pdv]');
+    if (!s || s.dataset.ready) return;
+    s.dataset.ready = '1';
+    s.querySelectorAll('[data-pdv-mode]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var m = b.getAttribute('data-pdv-mode');
+        s.setAttribute('data-mode', m);
+        s.querySelectorAll('[data-pdv-mode]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      });
+    });
+  })();
+  </script>
+
+{%- elsif style == 'pairs' -%}
+  {%- liquid
+    assign dg_ci = 0
+    for h in dg_handles
+      if h == product.handle
+        assign dg_ci = forloop.index0
+      endif
+    endfor
+    assign dg_pick = ','
+    assign dg_picked = 0
+    for dd in (1..12)
+      for side in (1..2)
+        if side == 1
+          assign idx = dg_ci | plus: dd
+        else
+          assign idx = dg_ci | minus: dd
+        endif
+        if idx >= 0 and idx < dg_n and dg_picked < 3
+          assign hh = dg_handles[idx]
+          assign dg_pick = dg_pick | append: hh | append: ','
+          assign dg_picked = dg_picked | plus: 1
+        endif
+      endfor
+    endfor
+    assign dg_pick_list = dg_pick | remove_first: ',' | split: ','
+  -%}
+  {%- for hh in dg_pick_list -%}
+    {%- for p in dg -%}
+      {%- if p.handle == hh and p.available -%}
+        {%- liquid
+          capture pc
+            render 'pd-decor', product: p, part: 'code'
+          endcapture
+          assign pc = pc | strip
+          capture pn
+            render 'pd-decor', product: p, part: 'name'
+          endcapture
+          capture psw
+            render 'pd-swatch', product: p, width: 400
+          endcapture
+          capture psm
+            render 'pd-swatch', product: p, width: 160
+          endcapture
+          capture pz
+            render 'pd-swatch', product: p, part: 'zoom'
+          endcapture
+        -%}
+        <li class="pde__pair">
+          <button type="button" class="pde__pair-btn{% if pz contains '1' %} is-zoom{% endif %}" data-pde-add data-id="{{ p.selected_or_first_available_variant.id }}" data-url="{{ p.url }}" data-title="{{ p.title | escape }}" data-label="{{ pc }} {{ pn | strip | escape }}" data-img="{{ psm | strip }}" aria-pressed="false">
+            <img src="{{ psw | strip }}" alt="" loading="lazy" width="400" height="400">
+          </button>
+          <p class="pde__pair-name"><strong>{{ pc }}</strong> {{ pn | strip }}</p>
+          <a class="pde__pair-link" href="{{ p.url }}">Bekijk decor</a>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- endif -%}

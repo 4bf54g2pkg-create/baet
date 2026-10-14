@@ -48,46 +48,7 @@
 
 <div class="pd-story">
 
-  {%- comment -%} 1 · Keuzehulp (alleen wandpanelen) {%- endcomment -%}
-  {%- if pd_wall -%}
-  <section class="pd-s pd-choice" data-pd-choice>
-    <div class="pd-wrap">
-      <div class="pd-choice__top">
-        <h2 class="pd-h2">Welke Puredeco Finish past bij jouw wand?</h2>
-        <div class="pd-choice__toggle" role="group" aria-label="Kies wat je zoekt">
-          <button type="button" class="is-active" data-pd-pick="sig">Ik wil één rustig vlak</button>
-          <button type="button" data-pd-pick="lin">Een zichtbare naad is prima</button>
-        </div>
-      </div>
-      <div class="pd-choice__cards">
-        <article class="pd-card is-active" data-pd-card="sig">
-          <header class="pd-card__head"><h3 class="pd-card__name">Signature <em class="pd-card__badge">Ons paradepaardje</em></h3><span>8 mm · klik</span></header>
-          <div class="pd-xsvg" aria-hidden="true"><svg viewBox="0 0 316 64"><rect x="16" y="22" width="248" height="3.5" fill="#7A4F36"/><g fill="none" stroke="#151413" stroke-width="1" stroke-linejoin="round"><path d="M16 22 H140 V28 H150 V36 H140 V42 H16 Z"/><path d="M140 22 H264 V42 H140 V36 H150 V28 H140"/></g><g stroke="#151413" stroke-width="0.8"><line x1="278" y1="22" x2="278" y2="42"/><line x1="274" y1="22" x2="282" y2="22"/><line x1="274" y1="42" x2="282" y2="42"/></g><text x="286" y="35" font-size="9" fill="#151413">8 mm</text><text x="140" y="58" font-size="8" fill="#6E675E" text-anchor="middle" letter-spacing="1.5">KLIK · NAADLOOS</text></svg></div>
-          <p class="pd-card__small">Doorsnede: toplaag van gerecycled PVC op een kern van behandeld bamboe. De klikverbinding trekt de panelen naadloos tegen elkaar.</p>
-          <dl class="pd-card__rows">
-            <dt>Uitstraling</dt><dd>Naadloos: één doorlopende wand, zonder zichtbare naad*</dd>
-            <dt>Montage</dt><dd>Panelen klikken in elkaar, op een vlakke, egale wand</dd>
-            <dt>Ideaal voor</dt><dd>Accentwand, slaapkamer, entree, hotelkamer</dd>
-            <dt>Decors</dt><dd>Hout 810–812 · Japandi · Leer · Art · Travertin</dd>
-          </dl>
-          <p class="pd-card__foot">{% if pd_has_sig %}Beschikbaar voor {{ pd_ref }}. {% endif %}Aanbevolen: de Puredeco-look.<small>* Op een vlakke, rechte ondergrond. Hoe vlakker de wand, hoe strakker het resultaat.</small></p>
-        </article>
-        <article class="pd-card" data-pd-card="lin">
-          <header class="pd-card__head"><h3 class="pd-card__name">Linea</h3><span>5 mm · stomp</span></header>
-          <div class="pd-xsvg" aria-hidden="true"><svg viewBox="0 0 316 64"><rect x="16" y="25" width="126.5" height="2.5" fill="#7A4F36"/><rect x="145.5" y="25" width="118.5" height="2.5" fill="#7A4F36"/><g fill="none" stroke="#151413" stroke-width="1"><rect x="16" y="25" width="126.5" height="12.5"/><rect x="145.5" y="25" width="118.5" height="12.5"/></g><rect x="142.5" y="25" width="3" height="12.5" fill="#151413"/><g stroke="#151413" stroke-width="0.8"><line x1="278" y1="25" x2="278" y2="37.5"/><line x1="274" y1="25" x2="282" y2="25"/><line x1="274" y1="37.5" x2="282" y2="37.5"/></g><text x="286" y="34.5" font-size="9" fill="#151413">5 mm</text><text x="144" y="58" font-size="8" fill="#6E675E" text-anchor="middle" letter-spacing="1.5">STOMP · ZICHTBARE NAAD</text></svg></div>
-          <p class="pd-card__small">Doorsnede: dunner paneel, stomp tegen elkaar geplaatst. De naad tussen de panelen blijft zichtbaar.</p>
-          <dl class="pd-card__rows">
-            <dt>Uitstraling</dt><dd>Zichtbare naad tussen de panelen</dd>
-            <dt>Montage</dt><dd>Panelen stomp tegen elkaar</dd>
-            <dt>Geschikt voor</dt><dd>Badkamer en keuken</dd>
-            <dt>Decors</dt><dd>Marmer · Beton · Hout 602–615 · Japandi · Leer 646</dd>
-          </dl>
-          <p class="pd-card__foot">{% if pd_has_lin %}Beschikbaar voor {{ pd_ref }}. {% endif %}Standaarduitvoering.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-  {%- endif -%}
+  {%- comment -%} 1 · Keuzehulp Signature/Linea staat nu in de koopkolom (finishkaarten met tekening) {%- endcomment -%}
 
   {%- comment -%} 2 · Montage: film met meelopende hoofdstukken {%- endcomment -%}
   {%- assign pd_film = section.settings.video | default: shop.metafields.puredeco.montage_video.value -%}
@@ -104,14 +65,11 @@
 
       <div class="pd-mont__frame">
         {%- if pd_film != blank -%}
-          {%- if pd_film.preview_image -%}
-            {{ pd_film.preview_image | image_url: width: 1920 | image_tag: loading: 'lazy', widths: '960, 1440, 1920', sizes: '(min-width: 990px) 80vw, 100vw', alt: '', class: 'pd-mont__video pd-mont__poster pd-mont__poster--land' }}
-          {%- endif -%}
+          {%- comment -%} Stilstaand beeld uit de film zelf (stap 2); het eerste filmbeeld is leeg {%- endcomment -%}
+          <img class="pd-mont__video pd-mont__poster pd-mont__poster--land" src="{{ 'pd-montage-liggend.jpg' | asset_img_url: '1920x' }}" srcset="{{ 'pd-montage-liggend.jpg' | asset_img_url: '960x' }} 960w, {{ 'pd-montage-liggend.jpg' | asset_img_url: '1920x' }} 1920w" sizes="(min-width: 990px) 80vw, 100vw" width="1920" height="1080" loading="lazy" alt="">
           <template data-pd-film="land">{{ pd_film | video_tag: muted: true, playsinline: true, preload: 'auto', class: 'pd-mont__video' }}</template>
           {%- if pd_film_m != blank -%}
-            {%- if pd_film_m.preview_image -%}
-              {{ pd_film_m.preview_image | image_url: width: 1080 | image_tag: loading: 'lazy', widths: '540, 810, 1080', sizes: '100vw', alt: '', class: 'pd-mont__video pd-mont__poster pd-mont__poster--port' }}
-            {%- endif -%}
+            <img class="pd-mont__video pd-mont__poster pd-mont__poster--port" src="{{ 'pd-montage-staand.jpg' | asset_img_url: '864x' }}" srcset="{{ 'pd-montage-staand.jpg' | asset_img_url: '540x' }} 540w, {{ 'pd-montage-staand.jpg' | asset_img_url: '864x' }} 864w" sizes="100vw" width="864" height="1080" loading="lazy" alt="">
             <template data-pd-film="port">{{ pd_film_m | video_tag: muted: true, playsinline: true, preload: 'auto', class: 'pd-mont__video' }}</template>
           {%- endif -%}
           <button type="button" class="pd-mont__play" data-pd-mont-play aria-label="Film afspelen">
@@ -230,7 +188,17 @@
       assign pd_more_title = 'Verwante decors'
     endif
   -%}
-  {%- if pd_more != blank -%}
+  {%- liquid
+    assign pd_vergelijk = ''
+    if pd_wall
+      capture pd_vergelijk
+        render 'pd-decors', product: product, style: 'vergelijk'
+      endcapture
+    endif
+  -%}
+  {%- if pd_vergelijk contains 'pdv__c' -%}
+    {{ pd_vergelijk }}
+  {%- elsif pd_more != blank -%}
     <section class="pd-s pd-more">
       <div class="pd-wrap">
         <div class="pd-more__head">

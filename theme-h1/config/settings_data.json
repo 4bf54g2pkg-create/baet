@@ -533,7 +533,15 @@
           "progress_bar_color": "#0d8756"
         }
       }
-    }
+    },
+    "pd_decor_order": [
+      "607-hout-wood-white-oak",
+      "602-hout-wood-classic",
+      "615-hout-wood-radiata",
+      "811-hout-walnut-classic",
+      "812-hout-walnut-deep",
+      "810-hout-noir-oak"
+    ]
   },
   "installed_preset_name": "Hyper",
   "presets": {
