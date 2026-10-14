@@ -301,3 +301,13 @@ Feiten van Puredeco (14 okt): toplaag van gerecycled PVC met het decor; kern van
 - **Gids buigen:** tekst en doorsnede naar twee lagen (sleuven door de bamboekern tot aan de toplaag).
 - md5: pd-opbouw 21d724e3…, pd-home 4eb24dd5…, puredeco-premium.css 13484a1b…, pd-usp 1568f053…, pd-seo 82358165…, pd-insp-tekst cc32933e…, pd-insp 6cc89060…, price cbce92ae…, pcard-badges 96223902…, product-badges eac4eeb5…, pd-product-details 1e74994d…, pd-product-hero 7c42dea5…, pd-collection 71904b66…, pd-projects 726f1d25…, pd-buigen 09a4f7dc…, header-group.json 957a239a….
 - **Open (winkeldata of thema-teksten buiten de pd-secties):** `templates/page.about.json` noemt "dempen geluid, brandvertragend" en `templates/product.json` (uitgeschakeld blok) "geluidsabsorberend"; productomschrijvingen in de winkel noemen nog "buigbaar" en soms de oude opbouw.
+
+## 14 okt: vergelijking op topniveau (H1-test, artboard Vergelijking + input Puredeco)
+- **Nieuw:** `snippets/pd-vergelijk.liquid` (gegenereerd door `tools/vergelijking/maak_snippet.py`; daar aanpassen). Vervangt de oude tabel `ph-cmp` op de homepage.
+  - Zeven soorten wanden: Puredeco, andere bamboepanelen, SPC-panelen, holle PVC-panelen, HPL op multiplex, tegels, microcement. Mini-doorsnede per soort; rijen in groepen (uitstraling, materiaal, gebruik, plaatsen, kosten en service); bolletjes sterk/verschilt/minder (eerlijk, ook bij Puredeco: prijs gemiddeld, tegels A1).
+  - Desktop: Puredeco + 3 gekozen soorten (standaard bamboe, SPC, tegels), knop "Alle zeven tonen". Mobiel: Puredeco + 1 soort, rij voor rij (geen schuiftabel).
+  - Bron: openbare productinformatie NL/BE, okt 2026; soorten, geen merken.
+- **Input Puredeco (14 okt):** bamboe is licht (geen zware platen/tegels tillen); dichte, stevige kern van hoogwaardige kwaliteit; toplaag van uitzonderlijk hoge kwaliteit, houtnerf zichtbaar en voelbaar. Verwerkt in vergelijking (rijen "Decor en structuur", "Tillen en plaatsen", "Opbouw"), in het blok "Het verschil zit vanbinnen", de legenda van `pd-opbouw` en de rij sterke punten. Bewust geen "sterker dan anderen": zonder meetwaarde (dichtheid) niet aantoonbaar; wel "dichte, stevige kern".
+- **8 mm Signature = kliksysteem** (bevestigd in productomschrijvingen 830 en 851).
+- md5: pd-vergelijk 6df3d2fa…, pd-home f7dc71c8…, pd-opbouw 9014c573…, pd-usp 2a4ed460…, puredeco-premium.css 90874dcd….
+- **Open:** productomschrijvingen in de winkel noemen nog de oude opbouw (gerecycled PVC-laag, gerecyclede onderlaag) en "buigbaar" zonder werkwijze: winkeldata, aanpassen alleen met akkoord.
