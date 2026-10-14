@@ -88,6 +88,22 @@ await p.evaluate((OPT)=>{
  }
 },OPT);
 await p.waitForTimeout(800);
+if(process.argv[3]==='full'){
+  if(OPT==='E'){ await p.fill('[data-pdc-w]','4,80'); await p.fill('[data-pdc-h]','2,60'); await p.waitForTimeout(400); }
+  // lazy beelden laden
+  const H=await p.evaluate(()=>document.documentElement.scrollHeight);
+  for(let y=0;y<H;y+=500){ await p.evaluate(y=>window.scrollTo(0,y),y); await p.waitForTimeout(120); }
+  await p.evaluate(()=>window.scrollTo(0,0)); await p.waitForTimeout(1200);
+  const r=await p.evaluate(()=>{const bar=document.querySelector('.pdh__bar');const bh=bar?Math.round(bar.getBoundingClientRect().height):0;
+    document.querySelectorAll('.pdh__bar,shopify-chat').forEach(e=>e.style.setProperty('display','none','important'));
+    const he=document.querySelector('.pd-hero-section');const hr=he.getBoundingClientRect();
+    const ft=document.querySelector('.shopify-section-group-footer-group, footer');
+    return {heroEnd:Math.round(hr.bottom+scrollY),foot:ft?Math.round(ft.getBoundingClientRect().top+scrollY):document.documentElement.scrollHeight,bh}});
+  console.log(OPT,'full',JSON.stringify(r));
+  await p.screenshot({path:`mf-${OPT}.png`,fullPage:true});
+  fs.writeFileSync(`mf-${OPT}.json`,JSON.stringify(r));
+  await b.close(); return;
+}
 const m=await p.evaluate(()=>{const g=s=>{const e=document.querySelector(s);if(!e)return null;const r=e.getBoundingClientRect();return Math.round(r.top+scrollY)};
  return {media:g('.pdh__media'),mediaEnd:Math.round(document.querySelector('.pdh__media').getBoundingClientRect().bottom+scrollY),title:g('.pdh__title'),price:g('.pdh__price'),cta:g('.pdh__cta'),ctaH:Math.round(document.querySelector('.pdh__cta').getBoundingClientRect().height),ctaR:Math.round(document.querySelector('.pdh__cta').getBoundingClientRect().right),smp:g('.pdh-smp'),vh:innerHeight,cta_txt:document.querySelector('.pdh__cta').innerText.replace(/\s+/g,' ')}});
 console.log(OPT,JSON.stringify(m));

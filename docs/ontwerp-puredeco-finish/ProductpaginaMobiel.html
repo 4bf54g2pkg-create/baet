@@ -35,6 +35,20 @@ table{border-collapse:collapse;width:100%;margin-top:18px;background:#fff;border
 th,td{text-align:left;padding:11px 14px;border-bottom:1px solid #EFEAE1;font-size:14px}
 th{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8C6A4A;font-weight:500}
 tr.g td{background:#F1F6F2}
+.tot{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:24px;align-items:start}
+.tc h3{font-family:Cormorant,Georgia,serif;font-weight:500;font-size:26px;margin:0}
+.tc .y{font-size:12.5px;margin:2px 0 10px;color:#3A3733}
+.tc .fr{border:8px solid #151413;border-bottom:0;border-radius:30px 30px 0 0;overflow:hidden;background:#fff}
+.tc .fr img{display:block;width:100%}
+.tc .bar{border:8px solid #151413;border-top:0;border-radius:0 0 30px 30px;overflow:hidden;background:#fff;position:relative}
+.tc .bar img{display:block;width:100%}
+.tc .bl{font-size:11.5px;color:#2F6B4F;margin:8px 4px 0;font-weight:600}
+.tc .nob{border:8px solid #151413;border-top:0;border-radius:0 0 30px 30px;height:22px;background:#fff}
+.und{display:grid;grid-template-columns:repeat(3,340px) 1fr;gap:28px;margin-top:24px;align-items:start}
+.und img{display:block;width:100%;border:1px solid #DDD6CA}
+.note{background:#fff;border:1px solid #DDD6CA;padding:14px 16px;margin-bottom:12px}
+.note b{display:block;font-size:14.5px;margin-bottom:3px}.note p{margin:0;font-size:13px;line-height:1.55}
+.note.r{border-left:3px solid #9B3D2E}.note.g{border-left:3px solid #2F6B4F}
 .ask{margin-top:48px;padding:22px 28px;background:#EFEAE1;border:1px solid #DDD6CA}.ask li{font-size:14.5px;line-height:1.85}
 </style></head><body><div class="board">
 <p class="k">Artboard · alleen ontwerp · niets aangepast in H1-test of live</p>
@@ -130,6 +144,36 @@ tr.g td{background:#F1F6F2}
   <p class="k" style="margin-top:14px">Wat er gebeurt</p>
   <ul><li>De volgorde is: finish → formaat → calculator met tekening → levertijd → knop</li><li>Dit lijkt het meest op de huidige pagina, maar dan met de basis en de koopbalk</li></ul>
   <div class="why"><p class="k">Commercieel</p><p>Niets verdwijnt achter een tik. De pagina is wel het langst. Door de koopbalk kost dat geen verkoop, maar de rest van de pagina (staal, zekerheden) zakt verder weg.</p></div>
+ </div>
+</div>
+</div>
+
+<!-- ============ TOTAAL ============ -->
+<div class="sec">
+<p class="k">Totaal · de hele koopkolom, van boven tot onder</p>
+<h2>Alles op een rij: van foto tot betaalmethodes, WhatsApp en Projects</h2>
+<p class="lead">Per optie de complete productpagina op de telefoon, tot het einde van het koopblok. De vaste koopbalk staat in het echt altijd onderin beeld. Hier staat hij onder elke pagina.</p>
+<div class="tot">
+ <div class="tc"><span class="badge r">Nu</span><h3>Huidig</h3><p class="y">Koopblok 3.325 px · knop op 2.454 px, afgesneden</p><div class="fr"><img src="pdpm/tot-nu.jpg"></div><div class="nob"></div><p class="bl" style="color:#9B3D2E">Koopbalk verschijnt pas na het scrollen voorbij de knop</p></div>
+ <div class="tc"><span class="badge">Optie D</span><h3>Direct</h3><p class="y">Koopblok 2.237 px · knop op 1.190 px</p><div class="fr"><img src="pdpm/tot-D.jpg"></div><div class="bar"><img src="pdpm/bar-D.jpg"></div><p class="bl">Vaste koopbalk, altijd in beeld</p></div>
+ <div class="tc"><span class="badge g">Optie E · advies</span><h3>Per wand</h3><p class="y">Koopblok 2.511 px · na invullen van 4,80 × 2,60 m</p><div class="fr"><img src="pdpm/tot-E.jpg"></div><div class="bar"><img src="pdpm/bar-E.jpg"></div><p class="bl">Vaste koopbalk met het bedrag voor de hele wand</p></div>
+ <div class="tc"><span class="badge">Optie F</span><h3>Compleet</h3><p class="y">Koopblok 2.849 px · knop op 1.916 px</p><div class="fr"><img src="pdpm/tot-F.jpg"></div><div class="bar"><img src="pdpm/bar-F.jpg"></div><p class="bl">Vaste koopbalk, altijd in beeld</p></div>
+</div>
+<p style="font-size:13.5px;margin-top:18px">In alle opties blijft onder de knop alles staan: levertijd, Klarna, gratis staal, de vier sterke punten, de zekerheden (gratis bezorgd vanaf € 600, 30 dagen bedenktijd, Studio Herwen), <b>Veilig betalen met</b> en alle betaalmethodes, <b>Persoonlijk advies</b> met de knoppen WhatsApp en Bel, <b>Eindprofielen</b> en <b>Puredeco Projects</b>.</p>
+</div>
+
+<!-- ============ ONDER ============ -->
+<div class="sec">
+<p class="k">Daaronder · voor alle drie de opties gelijk</p>
+<h2>De rest van de pagina</h2>
+<div class="und">
+ <div><img src="pdpm/onder-1.jpg"></div>
+ <div><img src="pdpm/onder-2.jpg"></div>
+ <div><img src="pdpm/onder-3.jpg"></div>
+ <div>
+  <div class="note g"><b>Volgorde blijft</b><p>Montage in 5 stappen, Alles over 811 (specificaties met de tekening van de opbouw en de productbeschrijving), 811 in het interieur, Meer uit de houtcollectie, Goed om te weten (vragen) en Studio Herwen.</p></div>
+  <div class="note g"><b>"Welke Puredeco Finish past" weg</b><p>De keuze staat al in de koopkolom, met dezelfde tekeningen. De pagina wordt daardoor ongeveer 1.600 px korter: nu 10.223 px, met D 7.538 px.</p></div>
+  <div class="note r"><b>Montagefilm: leeg vlak</b><p>Bovenaan links staat een groot leeg vlak tot de film laadt. Ik geef hem een stilstaand beeld uit de film, zodat er direct iets te zien is.</p></div>
  </div>
 </div>
 </div>
