@@ -220,11 +220,13 @@
           {%- assign pdh_rcount = product.metafields.reviews.rating_count.value | default: 0 -%}
           {%- if pdh_rating != blank and pdh_rcount > 0 -%}
             {%- assign pdh_pct = pdh_rating.rating | divided_by: pdh_rating.scale_max | times: 100.0 -%}
-            <a class="pdh__rating" href="#judgeme_product_reviews" aria-label="Beoordeeld met {{ pdh_rating.rating | round: 1 }} van de {{ pdh_rating.scale_max }}, {{ pdh_rcount }} reviews">
+            <a class="pdh__rating" href="#pd-reviews" aria-label="Beoordeeld met {{ pdh_rating.rating | round: 1 }} van de {{ pdh_rating.scale_max }}, {{ pdh_rcount }} reviews">
               <span class="pdh__stars" style="--pct: {{ pdh_pct }}%" aria-hidden="true">★★★★★</span>
               <span>{{ pdh_rating.rating | round: 1 | replace: '.', ',' }}</span>
               <span class="pdh__rating-n">· {{ pdh_rcount }} {% if pdh_rcount == 1 %}review{% else %}reviews{% endif %}</span>
             </a>
+          {%- else -%}
+            {%- render 'pd-reviews', part: 'stars' -%}
           {%- endif -%}
           {%- if pdh_is_panel -%}
             <p class="pdh__intro">{{ product.metafields.custom.intro | default: 'Op een kern van bamboe: stevig, vormvast en gemaakt om te blijven.' }}</p>

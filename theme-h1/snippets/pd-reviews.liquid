@@ -1,0 +1,90 @@
+{%- comment -%}
+  Puredeco: echte reviews uit Judge.me (shop-metafield judgeme.reviews_grid), alleen geverifieerde kopers.
+  Testreviews en dubbele, niet-geverifieerde reviews vallen er zo vanzelf uit.
+  part: 'stars'   → regel met sterren onder de productnaam (alleen als het product zelf nog geen reviews heeft)
+  part: 'section' → blok "Wat klanten zeggen"
+  Geen eigen JSON-LD: winkelreviews horen niet als productbeoordeling in Google.
+{%- endcomment -%}
+{%- liquid
+  assign pr_all = shop.metafields.judgeme.reviews_grid.value.all_reviews.reviews
+  assign pr_n = 0
+  assign pr_sum = 0
+  for r in pr_all
+    if r.verified_buyer == true
+      assign pr_n = pr_n | plus: 1
+      assign pr_sum = pr_sum | plus: r.rating
+    endif
+  endfor
+  if pr_n > 0
+    assign pr_avg = pr_sum | times: 1.0 | divided_by: pr_n | round: 1
+    assign pr_avg_txt = pr_avg | append: '' | replace: '.', ','
+    assign pr_pct = pr_avg | divided_by: 5.0 | times: 100
+  endif
+  assign pr_months = 'januari,februari,maart,april,mei,juni,juli,augustus,september,oktober,november,december' | split: ','
+-%}
+{%- if pr_n > 0 -%}
+{%- if part == 'stars' -%}
+  <a class="pdr-line" href="#pd-reviews"><span class="pdr-stars" style="--pct: {{ pr_pct }}%" aria-hidden="true">★★★★★</span><b>{{ pr_avg_txt }}</b><u>{{ pr_n }} reviews over Puredeco</u></a>
+{%- elsif part == 'section' -%}
+  <section class="pd-s pdr" id="pd-reviews" data-pdr aria-labelledby="pdr-title">
+    <div class="pd-wrap">
+      <div class="pdr__top">
+        <div>
+          <p class="pdr__k">Reviews · geverifieerde kopers</p>
+          <h2 class="pd-h2" id="pdr-title">Wat klanten zeggen</h2>
+        </div>
+        <div class="pdr__sum">
+          <span class="pdr__big">{{ pr_avg_txt }}</span>
+          <div><span class="pdr-stars" style="--pct: {{ pr_pct }}%" aria-hidden="true">★★★★★</span><small>op basis van {{ pr_n }} reviews over Puredeco</small></div>
+        </div>
+      </div>
+      <ul class="pdr__row" role="list">
+        {%- assign pr_i = 0 -%}
+        {%- for r in pr_all -%}
+          {%- if r.verified_buyer == true -%}
+            {%- liquid
+              assign pr_i = pr_i | plus: 1
+              assign r_name = r.reviewer_name
+              if r.is_anonymous_reviewer or r_name == blank or r_name == 'Anoniem'
+                assign r_name = 'Anonieme klant'
+              endif
+              assign r_m = r.created_at | date: '%m' | plus: 0 | minus: 1
+              assign r_year = r.created_at | date: '%Y'
+              assign r_date = pr_months[r_m] | append: ' ' | append: r_year
+              assign r_prod = r.product_title | remove_first: 'Wandpaneel ' | strip
+              assign r_first = r_prod | slice: 0
+              assign r_up = r_first | upcase
+              if r_first != r_up
+                assign r_rest = r_prod | slice: 1, 200
+                assign r_prod = r_up | append: r_rest
+              endif
+            -%}
+            <li class="pdr__c{% if pr_i > 6 %} is-more{% endif %}">
+              <span class="pdr-stars" style="--pct: {{ r.rating | times: 20 }}%" aria-label="{{ r.rating }} van 5 sterren">★★★★★</span>
+              <p class="pdr__q">“{{ r.body | newline_to_br | replace: '<br />', ' ' | strip_html | strip }}”</p>
+              {%- if r.pictures_urls.size > 0 -%}
+                <span class="pdr__pics">
+                  {%- for pic in r.pictures_urls limit: 3 -%}<img src="{{ pic.small }}" alt="" width="72" height="72" loading="lazy">{%- endfor -%}
+                </span>
+              {%- endif -%}
+              <p class="pdr__n"><b>{{ r_name }}</b> · {{ r_date }}</p>
+              <p class="pdr__p">{% if r.product_title == 'PureDeco' or r.product_title == blank %}Over Puredeco{% else %}Over <a href="{{ r.product_url }}">{{ r_prod }}</a>{% endif %} · <span class="pdr__v">✓ Geverifieerde koper</span></p>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+      <div class="pdr__ft">
+        <span class="pdr__src">Reviews via Judge.me</span>
+        {%- if pr_n > 6 -%}<button type="button" class="pdr__all" data-pdr-all aria-expanded="false">Toon alle {{ pr_n }} reviews</button>{%- endif -%}
+      </div>
+    </div>
+  </section>
+  <script>
+  (function () {
+    var s = document.querySelector('[data-pdr]'); if (!s || s.dataset.ready) return; s.dataset.ready = '1';
+    var b = s.querySelector('[data-pdr-all]');
+    if (b) b.addEventListener('click', function () { s.classList.add('is-all'); b.hidden = true; });
+  })();
+  </script>
+{%- endif -%}
+{%- endif -%}

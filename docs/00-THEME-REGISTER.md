@@ -343,3 +343,11 @@ Feiten van Puredeco (14 okt): toplaag van gerecycled PVC met het decor; kern van
 - Getest mobiel (iPhone 13) en desktop (1440): volgorde kiezer, 6 kaarten, koopbalk € 719,80 na 4,80 × 2,60 m, samplebox vanuit vergelijk, 812 onthoudt de wand, geen JS-fouten van het thema.
 - md5: pd-decors eeb6a9d0…, pd-product-hero ffdf2893…, pd-product-details aae0f7cb…, header 51785dae…, puredeco-premium.css 63317128…, settings_schema 04db5c36…, pd-montage-liggend 2b9792dc…, pd-montage-staand aa7705f9….
 - **Reviews:** Judge.me is geïnstalleerd; het reviewblok staat in `templates/product.json` uitgeschakeld. Aangeleverde reviews → Judge.me-importbestand → widget aanzetten en sterren bij de titel (code staat klaar).
+
+## 14 okt: echte reviews uit Judge.me op elke productpagina (H1-test)
+- Nieuw `snippets/pd-reviews.liquid`: leest `shop.metafields.judgeme.reviews_grid` (alle Judge.me-reviews) en toont alleen **geverifieerde kopers** (9 van 13; weggelaten: 2× "John Doe · Body of the review" = testreviews van Judge.me, 2× dubbele niet-geverifieerde "Saartje Berkel"). Gemiddelde 5,0.
+- Onder elk product hetzelfde blok "Wat klanten zeggen" (boven "Goed om te weten"), per review: sterren, tekst, naam (anoniem → "Anonieme klant"), maand/jaar, "Over [product]" of "Over Puredeco", ✓ Geverifieerde koper, foto's van de klant. Mobiel swipen, desktop 6 + "Toon alle 9 reviews".
+- Onder de productnaam: "★★★★★ 5,0 · 9 reviews over Puredeco" als het product zelf nog geen reviews heeft; anders de eigen productbeoordeling (bestaande code, link naar #pd-reviews).
+- Geen eigen JSON-LD voor winkelreviews op productpagina's (Google-richtlijn). Nieuwe reviews in Judge.me verschijnen vanzelf.
+- **Advies (winkel, niet aangepast):** de 2 testreviews "John Doe" in Judge.me verwijderen; ze tellen nu mee in Judge.me's eigen totaal (13).
+- md5: pd-reviews 5bed31eb…, pd-product-hero 217e4881…, pd-product-details 8eead183…, css 7df15007….
