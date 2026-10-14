@@ -28,12 +28,10 @@ await p.evaluate((OPT)=>{
  .pdh__head{margin-bottom:0!important}.pdh__intro{display:none!important}
  .pdh__title{margin-bottom:4px!important}
  .pdh__finishes{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important}
- .pdh__finish{display:grid!important;grid-template-columns:52px minmax(0,1fr);gap:10px;align-items:center;padding:8px!important;min-height:0!important}
- .pdh__finish-swatch{width:52px!important;height:52px!important;aspect-ratio:auto!important;overflow:hidden;display:block!important;margin:0!important}
- .pdh__fs-sec{display:none!important}.pdh__fs-face{height:100%!important;width:100%!important;aspect-ratio:auto!important}
- .pdh__finish-badge,.pdh__finish-desc{display:none!important}
- .pdh__finish-text{padding:0!important;gap:2px!important}
- .pdh__finish-name{font-size:21px!important;line-height:1.1!important}
+ .pdh__fs-face{aspect-ratio:auto!important;height:78px!important}
+ .pdh__finish-desc{display:none!important}
+ .pdh__finish-text{gap:2px!important;padding-top:10px!important}
+ .pdh__finish-name{font-size:22px!important;line-height:1.1!important}
  .pdh__finish-spec{font-size:12px!important;line-height:1.35!important}
  .pdh__finish-note{font-size:11.5px!important;margin-top:6px!important;line-height:1.4!important}
  .pdh__opt{margin-bottom:14px!important}
@@ -44,7 +42,14 @@ await p.evaluate((OPT)=>{
  .sim-del{font-size:13px;line-height:1.45;margin:10px 0 0;color:#151413}
  .pdh__stock{margin:12px 0 0!important}
  .pdh__klarna{margin-top:8px!important}
+ .pdh__bar{transform:none!important;opacity:1!important;visibility:visible!important;display:grid!important;grid-template-columns:auto minmax(0,1fr);gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom))!important;align-items:stretch;height:auto!important}
+ .pdh__bar-name,.pdh__bar-price{display:none!important}
+ .sim-bsmp{border:1px solid #151413;background:#FBF9F5;color:#151413;font:inherit;font-size:14px;padding:0 14px;height:50px;white-space:nowrap}
+ .pdh__bar-cta{height:50px!important;width:100%!important;display:flex!important;align-items:center;justify-content:center;gap:8px;font-size:15px!important}
+ body{padding-bottom:72px}
  `; document.head.appendChild(css);
+ { const bar=$('.pdh__bar'); const bs=document.createElement('button'); bs.className='sim-bsmp'; bs.textContent='Gratis staal'; bar.prepend(bs);
+   bar.querySelector('.pdh__bar-cta').innerHTML='In winkelmand <span style="opacity:.75" class="sim-bt">· € 179,95</span>'; }
  const icons=$('.header__icons--right'); if(icons){const s=document.createElement('button');s.className='sim-search';s.setAttribute('aria-label','Zoeken');s.innerHTML='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>';icons.prepend(s);}
  // kortere specs
  document.querySelectorAll('.pdh__finish').forEach(l=>{const sp=l.querySelector('.pdh__finish-spec'); if(l.dataset.finish==='sig') sp.textContent='8 mm · klik · naadloos*'; else sp.textContent='5 mm · stomp · zichtbare naad';});
@@ -77,28 +82,22 @@ await p.evaluate((OPT)=>{
    smp.after(chips); chips.style.marginTop='18px'; chips.after(bend);
  }
  if(OPT==='F'){
-   const st=document.createElement('style'); st.textContent=`
-    .pdh__bar{transform:none!important;opacity:1!important;visibility:visible!important;display:grid!important;grid-template-columns:auto minmax(0,1fr);gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom))!important;align-items:stretch;height:auto!important}
-    .pdh__bar-name,.pdh__bar-price{display:none!important}
-    .sim-bsmp{border:1px solid #151413;background:#FBF9F5;color:#151413;font:inherit;font-size:14px;padding:0 14px;height:50px;white-space:nowrap}
-    .pdh__bar-cta{height:50px!important;width:100%!important;display:flex!important;align-items:center;justify-content:center;gap:8px;font-size:15px!important}
-    body{padding-bottom:72px}`;
-   document.head.appendChild(st);
-   const bar=$('.pdh__bar'); const bs=document.createElement('button'); bs.className='sim-bsmp'; bs.textContent='Gratis staal'; bar.prepend(bs);
-   bar.querySelector('.pdh__bar-cta').innerHTML='In winkelmand <span style="opacity:.75">· € 179,95</span>';
    fmt.after(calc); calc.after(stock); stock.after(buy); buy.after(kl);
    form.after(smp); smp.style.marginTop='14px';
    smp.after(chips); chips.style.marginTop='18px'; chips.after(bend);
  }
 },OPT);
-if(OPT==='E'){ // klant vult wand in
-  await p.fill('[data-pdc-w]','4,80'); await p.fill('[data-pdc-h]','2,60'); await p.waitForTimeout(400);
-}
 await p.waitForTimeout(800);
 const m=await p.evaluate(()=>{const g=s=>{const e=document.querySelector(s);if(!e)return null;const r=e.getBoundingClientRect();return Math.round(r.top+scrollY)};
  return {media:g('.pdh__media'),mediaEnd:Math.round(document.querySelector('.pdh__media').getBoundingClientRect().bottom+scrollY),title:g('.pdh__title'),price:g('.pdh__price'),cta:g('.pdh__cta'),ctaH:Math.round(document.querySelector('.pdh__cta').getBoundingClientRect().height),ctaR:Math.round(document.querySelector('.pdh__cta').getBoundingClientRect().right),smp:g('.pdh-smp'),vh:innerHeight,cta_txt:document.querySelector('.pdh__cta').innerText.replace(/\s+/g,' ')}});
 console.log(OPT,JSON.stringify(m));
 await p.screenshot({path:`ms-${OPT}-full.png`,fullPage:true});
 const stops=OPT==="nu"?[0,640,1240,1840,2300]:[0, m.mediaEnd-140, m.mediaEnd-140+600];
-for(let i=0;i<stops.length;i++){ await p.evaluate(y=>window.scrollTo(0,y),stops[i]); await p.waitForTimeout(900); await p.screenshot({path:`ms-${OPT}-s${i+1}.png`}); }
+for(let i=0;i<stops.length;i++){
+  if(OPT==='E'&&i===2){ 
+  await p.fill('[data-pdc-w]','4,80'); await p.fill('[data-pdc-h]','2,60'); await p.waitForTimeout(400);
+  await p.evaluate(()=>{document.querySelector('.sim-bt').textContent='· '+document.querySelector('[data-pdh-total]').textContent;});
+
+    const y=await p.evaluate(()=>Math.round(document.querySelector('.pdc').getBoundingClientRect().top+scrollY)-60); stops[i]=y; }
+  await p.evaluate(y=>window.scrollTo(0,y),stops[i]); await p.waitForTimeout(900); await p.screenshot({path:`ms-${OPT}-s${i+1}.png`}); }
 await b.close();})();
