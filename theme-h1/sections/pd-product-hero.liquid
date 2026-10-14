@@ -41,6 +41,14 @@
     assign pdh_first = 'specimen'
   endif
   assign pdh_variant = product.selected_or_first_available_variant
+  comment
+    "van"-prijs alleen bij een echte actie: product in collectie 'actie' of met tag 'actie' (rapport Exclusief, 14 okt 2026)
+  endcomment
+  assign pdh_ac = product.collections | map: 'handle'
+  assign pdh_actie = false
+  if pdh_ac contains 'actie' or product.tags contains 'actie'
+    assign pdh_actie = true
+  endif
   assign pdh_form_id = 'pdh-form-' | append: section.id
   comment
     Voorraadstanden: op voorraad · pre-order (voorraad op, doorverkopen aan) · tijdelijk uitverkocht (doorverkopen uit).
@@ -223,7 +231,7 @@
 
         <div class="pdh__price" aria-live="polite">
           <span class="pdh__amount" data-pdh-price>{{ pdh_variant.price | money }}</span>
-          <s class="pdh__compare" data-pdh-compare{% unless pdh_variant.compare_at_price > pdh_variant.price %} hidden{% endunless %}>{{ pdh_variant.compare_at_price | money }}</s>
+          <s class="pdh__compare" data-pdh-compare{% unless pdh_actie and pdh_variant.compare_at_price > pdh_variant.price %} hidden{% endunless %}>{{ pdh_variant.compare_at_price | money }}</s>
           <span class="pdh__unit" data-pdh-unit>per paneel</span>
         </div>
         {%- comment -%} Sterke punten bij de prijs, alleen voor wandpanelen {%- endcomment -%}
@@ -423,7 +431,7 @@
         <ul class="pdh__usps">
           <li class="pdh__usp">Gratis bezorgd in Nederland vanaf € 600</li>
           <li class="pdh__usp">30 dagen bedenktijd</li>
-          <li class="pdh__usp">3 jaar garantie op de panelen</li>
+          <li class="pdh__usp"><a href="/pages/showroom">Bekijk en voel ze in Studio Herwen, op afspraak</a></li>
         </ul>
 
         {%- if shop.enabled_payment_types.size > 0 -%}
@@ -477,7 +485,7 @@
   </div>
 
   <script type="application/json" data-pdh-variants>
-    [{%- for v in product.variants -%}{"id":{{ v.id }},"options":{{ v.options | json }},"price":{{ v.price }},"compare":{{ v.compare_at_price | default: 0 }},"available":{{ v.available | json }},"tracked":{% if v.inventory_management != blank %}true{% else %}false{% endif %},"qty":{{ v.inventory_quantity | default: 0 }},"plan":{% assign pdh_pl = v.selling_plan_allocations | first %}{% if pdh_pl %}{{ pdh_pl.selling_plan.id }}{% else %}null{% endif %},"title":{{ v.title | json }}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+    [{%- for v in product.variants -%}{"id":{{ v.id }},"options":{{ v.options | json }},"price":{{ v.price }},"compare":{% if pdh_actie %}{{ v.compare_at_price | default: 0 }}{% else %}0{% endif %},"available":{{ v.available | json }},"tracked":{% if v.inventory_management != blank %}true{% else %}false{% endif %},"qty":{{ v.inventory_quantity | default: 0 }},"plan":{% assign pdh_pl = v.selling_plan_allocations | first %}{% if pdh_pl %}{{ pdh_pl.selling_plan.id }}{% else %}null{% endif %},"title":{{ v.title | json }}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
   </script>
 </div>
 

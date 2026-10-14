@@ -3179,3 +3179,59 @@ b, strong { font-weight: 600; }
 .pdb-steps ol li { counter-increment: pdb; position: relative; padding: 1.2rem 0 1.2rem 5.2rem; margin: 0; border-top: 1px solid #E2DBCF; }
 .pdb-steps ol li:last-child { border-bottom: 1px solid #E2DBCF; }
 .pdb-steps ol li::before { content: counter(pdb, decimal-leading-zero); position: absolute; left: 0; top: 1.2rem; font-family: var(--font-heading-family); font-size: 2rem; line-height: 1.2; color: #8C6A4A; }
+
+/* ===== Exclusief (14 okt): opbouw, het verschil zit vanbinnen, vergelijking ===== */
+.pd-op { margin: 0; }
+.pd-op__draw svg { display: block; width: 100%; height: auto; }
+.pd-op__n circle { fill: #F5F2EC; stroke: #151413; stroke-width: 1; }
+.pd-op__n text { font: 600 19px 'Instrument Sans', Arial, sans-serif; fill: #151413; }
+.pd-op__legend { list-style: none; counter-reset: pdop; margin: 2rem 0 0; padding: 0; display: grid; gap: 1.4rem; }
+@media (min-width: 750px) { .pd-op__legend { grid-template-columns: 1fr 1fr; gap: 3.2rem; } }
+.pd-op__legend li { counter-increment: pdop; position: relative; padding-left: 4.4rem; }
+.pd-op__legend li::before { content: counter(pdop); position: absolute; left: 0; top: 0; width: 3rem; height: 3rem; border-radius: 50%; border: 1px solid currentColor; display: grid; place-items: center; font-size: 1.4rem; font-weight: 600; }
+.pd-op__legend b { display: block; font-family: var(--font-heading-family); font-weight: 500; font-size: 2.2rem; line-height: 1.15; }
+.pd-op__legend span { display: block; margin-top: 0.4rem; font-size: 1.4rem; line-height: 1.6; }
+.pd-op__cap { margin-top: 1.2rem; font-size: 1.2rem; }
+.pd-op--light { color: #151413; }
+.pd-op--light .pd-op__draw { background: #F5F2EC; border: 1px solid #E2DBCF; padding: 2rem; }
+.pd-op--light .pd-op__legend span, .pd-op--light .pd-op__cap { color: #6E675E; }
+.pd-op--dark { color: #F5F2EC; }
+.pd-op--dark .pd-op__legend span, .pd-op--dark .pd-op__cap { color: #BDB4A6; }
+
+.ph-core { background: #1B1917; color: #F5F2EC; padding: 7.2rem 0 6.4rem; scroll-margin-top: 8rem; }
+.ph-core__head { display: grid; gap: 2rem; margin-bottom: 4rem; }
+@media (min-width: 990px) { .ph-core__head { grid-template-columns: 1.1fr 1fr; gap: 6rem; align-items: end; } }
+.ph-core__h { margin: 1.4rem 0 0; font-family: var(--font-heading-family); font-weight: 500; font-size: clamp(3.6rem, 4.6vw, 6.4rem); line-height: 1.02; color: #F5F2EC; }
+.ph-core__t { margin: 0; max-width: 52rem; font-size: 1.6rem; line-height: 1.7; color: #CFC6B8; }
+.ph-core__links { margin: 1.6rem 0 0; }
+.ph-core__links a, .ph-core__facts a { color: #F5F2EC; text-decoration: underline; text-underline-offset: 0.4rem; text-decoration-thickness: 1px; }
+.ph-core .pd-op { max-width: 110rem; }
+.ph-core__facts { margin: 4.8rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid #3A3531; }
+@media (min-width: 990px) { .ph-core__facts { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.ph-core__facts div { padding: 2.4rem 2rem 0 0; }
+.ph-core__facts dt { font-family: var(--font-heading-family); font-weight: 500; font-size: clamp(3rem, 3.4vw, 4.4rem); line-height: 1; color: #F5F2EC; }
+.ph-core__facts dd { margin: 0.8rem 0 0; font-size: 1.3rem; line-height: 1.5; color: #BDB4A6; }
+
+.ph-cmp { background: #FFFFFF; }
+.ph-cmp .ph-h2 { margin: 1rem 0 2.8rem; max-width: 60rem; }
+.ph-cmp__scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.ph-cmp__t { width: 100%; min-width: 72rem; border-collapse: collapse; font-size: 1.4rem; line-height: 1.5; }
+.ph-cmp__t th, .ph-cmp__t td { text-align: left; vertical-align: top; padding: 1.4rem 1.6rem; border-bottom: 1px solid #E2DBCF; }
+.ph-cmp__t thead th { font-size: 1.1rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; color: #6E675E; background: #F5F2EC; }
+.ph-cmp__t thead th.is-pd { background: #151413; color: #F5F2EC; }
+.ph-cmp__t tbody th { font-weight: 600; color: #151413; width: 17rem; }
+.ph-cmp__t td { color: #3A3733; }
+.ph-cmp__t td.is-pd { background: #F3EDE3; color: #151413; font-weight: 500; }
+.ph-cmp__note { margin: 1.4rem 0 0; font-size: 1.3rem; color: #6E675E; }
+.ph-cmp .visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 749px) {
+  .ph-core { padding: 5.6rem 0 4.8rem; }
+  .ph-cmp__t tbody th { position: sticky; left: 0; background: #FFFFFF; z-index: 1; width: 12rem; }
+  .ph-cmp__t thead th:first-child { position: sticky; left: 0; z-index: 1; }
+}
+
+/* Productpagina: opbouw bij de specificaties */
+.pd-specs__opbouw { margin-top: 2.8rem; }
+.pd-specs__opbouw .pd-op__legend b { font-size: 1.9rem; }
+.ph-cmp__hint { display: none; margin: 0 0 1rem; font-size: 1.2rem; color: #6E675E; }
+@media (max-width: 749px) { .ph-cmp__hint { display: block; } }

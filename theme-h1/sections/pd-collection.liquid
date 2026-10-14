@@ -53,7 +53,7 @@
       <ul class="pc-usp" role="list">
         <li><strong>{{ pd_count }}</strong> {% if pd_count == 1 %}decor{% else %}decors{% endif %}</li>
         <li>Gratis samples · € 6,95 verzending</li>
-        <li>3 jaar garantie</li>
+        <li><a href="/pages/showroom">Bekijk ze in Studio Herwen</a></li>
       </ul>
     </div>
     {%- if seo_intro != blank and current_page == 1 -%}
@@ -289,7 +289,9 @@
                 <p class="pc-card__price">
                   {%- if p.price_varies -%}<span class="pc-card__from">vanaf</span> {% endif -%}
                   <strong>{{ p.price_min | money }}</strong>
-                  {%- if p.compare_at_price_max > p.price_min -%} <s>{{ p.compare_at_price_max | money }}</s>{%- endif -%}
+                  {%- comment -%} "van"-prijs alleen bij een echte actie: collectie of tag 'actie' (rapport Exclusief) {%- endcomment -%}
+                  {%- assign pc_ac = p.collections | map: 'handle' -%}
+                  {%- if p.compare_at_price_max > p.price_min -%}{%- if pc_ac contains 'actie' or p.tags contains 'actie' -%} <s>{{ p.compare_at_price_max | money }}</s>{%- endif -%}{%- endif -%}
                   <span class="pc-card__unit">per paneel</span>
                   {%- capture pc_m2 -%}{%- render 'pd-m2', product: p, part: 'min' -%}{%- endcapture -%}
                   {%- assign pc_m2 = pc_m2 | strip -%}

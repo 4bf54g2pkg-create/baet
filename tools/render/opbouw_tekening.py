@@ -1,45 +1,46 @@
-# Trapsgewijze doorsnede van de vier lagen (oblique), lagen van onder naar boven steeds korter
-def layers_svg(dark=True, fs=22, fs2=12.5):
-    W,D,Dv,step=470,120,66,104
-    x0=30; base=300
-    ink='#F5F2EC' if dark else '#151413'
-    sub='#BDB4A6' if dark else '#6E675E'
-    L=[('Gerecyclede onderlaag','De achterkant, hier komt de montagekit op',11,'#BDB6AA','#A9A295','#9B9487',None),
-       ('Kern van bamboe','Stevig en vormvast',36,'#D9C38F','#C8B07A','#B39A64','fibre'),
-       ('Gerecycled PVC','Waterbestendig',14,'#E9E3D8','#D6CEC0','#C9C0B1',None),
-       ('Toplaag met decor','Het decor onder een beschermende laag',10,'#6A4E3A','#57402F','#4A3628','grain')]
-    out=[]; y=base; anchors=[]
-    for i,(n,s,t,top,front,side,pat) in enumerate(L):
-        w=W-i*step
-        yt=y-t   # top of this layer (front edge)
-        out.append(f'<rect x="{x0}" y="{yt}" width="{w}" height="{t}" fill="{front}"/>')
-        out.append(f'<polygon points="{x0+w},{yt} {x0+w+D},{yt-Dv} {x0+w+D},{yt-Dv+t} {x0+w},{yt+t}" fill="{side}"/>')
-        out.append(f'<polygon points="{x0},{yt} {x0+w},{yt} {x0+w+D},{yt-Dv} {x0+D},{yt-Dv}" fill="{top}"/>')
-        if pat=='grain':
-            for k in range(1,22):
-                a=k/22
-                out.append(f'<path d="M{x0+w*a:.1f} {yt} L{x0+w*a+D:.1f} {yt-Dv}" stroke="#80604A" stroke-width="{0.6+0.6*(k%4==0)}" opacity=".75"/>')
-        if pat=='fibre':
-            for k in range(1,20):
-                a=k/20
-                out.append(f'<path d="M{x0+D*a:.1f} {yt-Dv*a:.1f} L{x0+w+D*a:.1f} {yt-Dv*a:.1f}" stroke="#C2A96F" stroke-width=".8"/>')
-            for k in range(1,10):
-                out.append(f'<path d="M{x0} {yt+k*3.6:.1f}H{x0+w}" stroke="#BEA46B" stroke-width=".5"/>')
-        # anker: midden van het zichtbare stuk bovenvlak (deel dat niet door de volgende laag bedekt wordt)
-        if i<3:
-            ax=x0+w-step/2+D/2; ay=yt-Dv/2
-        else:
-            ax=x0+w/2+D/2; ay=yt-Dv/2
-        anchors.append((ax,ay,n,s))
-        y=yt
-    lab_x=x0+W+D+40
-    ys=[300,226,152,78][::-1]
-    out2=[]
-    for (ax,ay,n,s),ly in zip(anchors[::-1],[112,172,232,292]):
-        out2.append(f'<circle cx="{ax:.1f}" cy="{ay:.1f}" r="3" fill="{ink}"/>')
-        out2.append(f'<path d="M{ax:.1f} {ay:.1f}L{lab_x-40:.1f} {ly-6}H{lab_x-8}" stroke="{sub}" stroke-width=".8" fill="none"/>')
-        out2.append(f'<text x="{lab_x}" y="{ly-2}" fill="{ink}" font-family="Cormorant,Georgia,serif" font-size="{fs}">{n}</text>')
-        out2.append(f'<text x="{lab_x}" y="{ly+fs2+6}" fill="{sub}" font-family="Instrument Sans,Arial,sans-serif" font-size="{fs2}">{s}</text>')
-    return f'<svg viewBox="0 70 {lab_x+max(250,fs2*22):.0f} 250" role="img" aria-label="Opbouw van een Puredeco-wandpaneel in vier lagen">'+''.join(out)+''.join(out2)+'</svg>'
-if __name__=='__main__':
-    open('layers-test.html','w').write('<body style="background:#1B1917;margin:0;width:900px">'+layers_svg()+'</body>')
+# Twee lagen, trapsgewijs: kern van behandeld bamboe (vol) met daarop de toplaag van gerecycled PVC (korter)
+def svg():
+    W,D,Dv=560,170,90
+    x0,base=20,250
+    o=[]
+    # kern
+    t=46; w=W; yt=base-t
+    o.append(f'<rect x="{x0}" y="{yt}" width="{w}" height="{t}" fill="#C8B07A"/>')
+    for k in range(1,12): o.append(f'<path d="M{x0} {yt+k*3.8:.1f}H{x0+w}" stroke="#B89E66" stroke-width=".6"/>')
+    o.append(f'<polygon points="{x0+w},{yt} {x0+w+D},{yt-Dv} {x0+w+D},{yt-Dv+t} {x0+w},{yt+t}" fill="#B0965F"/>')
+    o.append(f'<polygon points="{x0},{yt} {x0+w},{yt} {x0+w+D},{yt-Dv} {x0+D},{yt-Dv}" fill="#D9C38F"/>')
+    for k in range(1,24):
+        a=k/24; o.append(f'<path d="M{x0+D*a:.1f} {yt-Dv*a:.1f}L{x0+w+D*a:.1f} {yt-Dv*a:.1f}" stroke="#C6AD73" stroke-width=".8"/>')
+    core_anchor=(x0+w-95+D/2, yt-Dv/2)
+    # toplaag
+    t2=10; w2=W-200; yt2=yt-t2
+    o.append(f'<rect x="{x0}" y="{yt2}" width="{w2}" height="{t2}" fill="#57402F"/>')
+    o.append(f'<polygon points="{x0+w2},{yt2} {x0+w2+D},{yt2-Dv} {x0+w2+D},{yt2-Dv+t2} {x0+w2},{yt2+t2}" fill="#4A3628"/>')
+    o.append(f'<polygon points="{x0},{yt2} {x0+w2},{yt2} {x0+w2+D},{yt2-Dv} {x0+D},{yt2-Dv}" fill="#6A4E3A"/>')
+    for k in range(1,26):
+        a=k/26; o.append(f'<path d="M{x0+w2*a:.1f} {yt2}L{x0+w2*a+D:.1f} {yt2-Dv}" stroke="#80604A" stroke-width="{0.6+0.6*(k%4==0)}" opacity=".75"/>')
+    top_anchor=(x0+w2/2+D/2, yt2-Dv/2)
+    for n,(ax,ay) in ((1,top_anchor),(2,core_anchor)):
+        o.append(f'<g class="pd-op__n"><circle cx="{ax:.0f}" cy="{ay:.0f}" r="15"/><text x="{ax:.0f}" y="{ay+5:.0f}" text-anchor="middle">{n}</text></g>')
+    return f'<svg class="pd-op__svg" viewBox="10 {yt2-Dv-10} {W+D+20} {base-(yt2-Dv-10)+10}" role="img" aria-label="Opbouw van een Puredeco-wandpaneel: toplaag van gerecycled PVC met het decor, op een kern van behandeld bamboe">'+''.join(o)+'</svg>'
+s=svg()
+liquid='''{%- comment -%}
+  Puredeco · opbouw van een wandpaneel (rapport Exclusief, 14 okt 2026).
+  Feit van Puredeco: toplaag van gerecycled PVC met het decor; kern van behandeld bamboe. Door de behandeling is de kern waterbestendig.
+  Gebruik: {% render 'pd-opbouw', tone: 'dark' %} (homepage) of tone: 'light' (productpagina, gids). legend: false = alleen tekening.
+{%- endcomment -%}
+<figure class="pd-op pd-op--{{ tone | default: 'light' }}">
+  <div class="pd-op__draw">''' + s + '''</div>
+  {%- unless legend == false -%}
+  <ol class="pd-op__legend">
+    <li><b>Toplaag van gerecycled PVC</b><span>Met het decor en de structuur: hout, steen, beton, leer of Japandi.</span></li>
+    <li><b>Kern van behandeld bamboe</b><span>Stevig, en door de behandeling waterbestendig. Hierin frees je de sleuven om te buigen.</span></li>
+  </ol>
+  {%- endunless -%}
+  <figcaption class="pd-op__cap">Schematisch, niet op schaal.</figcaption>
+</figure>
+'''
+open('/home/user/baet/theme-h1/snippets/pd-opbouw.liquid','w').write(liquid)
+css='''<style>body{margin:0;background:#1B1917;width:760px}.pd-op__n circle{fill:#F5F2EC}.pd-op__n text{font:600 15px Arial;fill:#151413}</style>'''
+open('t.html','w').write(css+s)
+print(len(liquid))

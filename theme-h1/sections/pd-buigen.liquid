@@ -53,26 +53,25 @@
       <div>
         <p class="pdg-n">01</p>
         <h2 class="pdi-h2" id="pdb-door">Wat je infreest</h2>
-        <p class="pdg-p">Een wandpaneel bestaat uit vier lagen: de toplaag met het decor, gerecycled PVC, een kern van bamboe en een gerecyclede onderlaag. Om te buigen frees je aan de achterkant sleuven door de onderste lagen, tot aan de toplaag. Daarna verwarm je het paneel, zodat het soepel meebuigt.</p>
+        <p class="pdg-p">Een wandpaneel heeft een toplaag van gerecycled PVC met het decor, op een kern van behandeld bamboe. Om te buigen frees je aan de achterkant sleuven door de bamboekern, tot aan de toplaag. Daarna verwarm je het paneel, zodat het soepel meebuigt.</p>
       </div>
       <figure class="pdg-fig">
         <div class="pdg-draw">
-          <svg viewBox="0 0 680 230" role="img" aria-label="Doorsnede van een wandpaneel met sleuven aan de achterkant tot aan de toplaag">
+          <svg viewBox="0 0 680 200" role="img" aria-label="Doorsnede van een wandpaneel: toplaag van gerecycled PVC, kern van behandeld bamboe met sleuven aan de achterkant tot aan de toplaag">
             <g font-family="Instrument Sans, Arial, sans-serif" font-size="13" fill="#151413">
-              <rect x="30" y="50" width="420" height="12" fill="#8A5B3E" stroke="#151413"/>
-              <rect x="30" y="62" width="420" height="14" fill="#E9E3D8" stroke="#151413"/>
-              <rect x="30" y="76" width="420" height="40" fill="#D9C38F" stroke="#151413"/>
-              <rect x="30" y="116" width="420" height="12" fill="#BDB6AA" stroke="#151413"/>
+              <rect x="30" y="50" width="420" height="12" fill="#6A4E3A" stroke="#151413"/>
+              <rect x="30" y="62" width="420" height="58" fill="#D9C38F" stroke="#151413"/>
+              <g stroke="#C2A96F" stroke-width=".7">{%- for k in (1..6) -%}{%- assign ly = k | times: 8 | plus: 64 -%}<path d="M31 {{ ly }}H449"/>{%- endfor -%}</g>
               <g fill="#F5F2EC" stroke="#151413">
-                {%- for x in (0..6) -%}{%- assign px = x | times: 60 | plus: 60 -%}<path d="M{{ px }} 128 L{{ px }} 62 L{{ px | plus: 14 }} 62 L{{ px | plus: 14 }} 128 Z"/>{%- endfor -%}
+                {%- for x in (0..6) -%}{%- assign px = x | times: 60 | plus: 60 -%}<path d="M{{ px }} 120 L{{ px }} 62 L{{ px | plus: 14 }} 62 L{{ px | plus: 14 }} 120 Z"/>{%- endfor -%}
               </g>
-              <g fill="none" stroke="#151413" stroke-width=".8"><path d="M450 56H470L486 30H500M450 69H470L486 62H500M450 96H500M450 122H470L486 128H500"/></g>
-              <text x="506" y="34">Toplaag (blijft heel)</text>
-              <text x="506" y="66">Gerecycled PVC</text>
-              <text x="506" y="100">Kern van bamboe</text>
-              <text x="506" y="132">Onderlaag</text>
-              <path d="M60 150v12M74 150v12M60 156h14" stroke="#8C6A4A" fill="none"/><text x="86" y="160" fill="#6E675E">Sleuf aan de achterkant, tot aan de toplaag</text>
-              <text x="30" y="200" fill="#6E675E">Voorkant (decor) boven · achterkant onder</text>
+              <g fill="none" stroke="#151413" stroke-width=".8"><path d="M450 56H500M450 92H500"/></g>
+              <text x="506" y="52">Toplaag van gerecycled PVC</text>
+              <text x="506" y="68" fill="#6E675E">met het decor, blijft heel</text>
+              <text x="506" y="88">Kern van behandeld bamboe</text>
+              <text x="506" y="104" fill="#6E675E">hierin frees je de sleuven</text>
+              <path d="M60 140v12M74 140v12M60 146h14" stroke="#8C6A4A" fill="none"/><text x="86" y="150" fill="#6E675E">Sleuf aan de achterkant, tot aan de toplaag</text>
+              <text x="30" y="186" fill="#6E675E">Voorkant (decor) boven · achterkant onder</text>
             </g>
           </svg>
         </div>

@@ -133,36 +133,50 @@
     </div>
   </section>
 
-  {%- comment -%} 3 · Gebouwd om te blijven: een sterke kern, jaren mooi {%- endcomment -%}
-  <section class="ph-s ph-built">
+  {%- comment -%} 3 · Het verschil zit vanbinnen: opbouw, feiten en een eerlijke vergelijking (rapport Exclusief).
+       Feit Puredeco: toplaag van gerecycled PVC, kern van behandeld bamboe (daardoor waterbestendig). Brandklasse B1 bevestigd. {%- endcomment -%}
+  {%- liquid
+    assign buig_url = articles['nieuws/wandpanelen-buigen'].url | default: '/blogs/nieuws?view=gids-buigen'
+  -%}
+  <section class="ph-core" id="opbouw" aria-labelledby="ph-core-h">
     <div class="ph-wrap">
-      <div class="ph-built__head">
-        <h2 class="ph-h2">Gebouwd om te blijven</h2>
-        <p class="ph-lead">Een wand vervang je niet elk jaar. Daarom begint een Puredeco-paneel bij de kern: bamboe, stevig en vormvast, met daaromheen een opbouw die jaren mooi blijft.</p>
+      <div class="ph-core__head">
+        <div>
+          <p class="ph-k ph-k--light">Het verschil zit vanbinnen</p>
+          <h2 class="ph-core__h" id="ph-core-h">Gerecycled PVC buiten.<br>Behandeld bamboe vanbinnen.</h2>
+        </div>
+        <div>
+          <p class="ph-core__t">Onder het decor zit geen hol kunststof en geen houtvezel, maar een kern van behandeld bamboe. Die maakt het paneel stevig en waterbestendig, ook in badkamer en keuken.</p>
+          <p class="ph-core__links"><a href="/pages/sample">Voel het zelf: bestel gratis stalen →</a></p>
+        </div>
       </div>
-      <div class="ph-built__row ph-swipe">
-        <article class="ph-built__card">
-          <div class="ph-built__art" aria-hidden="true">
-            <svg viewBox="0 0 384 240"><g fill="#B79A72"><rect x="118" y="30" width="14" height="210"/><rect x="190" y="16" width="14" height="224"/></g><g fill="#CDB892"><rect x="150" y="70" width="14" height="170"/><rect x="226" y="100" width="14" height="140"/></g><g stroke="#F5F2EC" stroke-width="2"><line x1="118" y1="90" x2="132" y2="90"/><line x1="118" y1="160" x2="132" y2="160"/><line x1="190" y1="70" x2="204" y2="70"/><line x1="190" y1="140" x2="204" y2="140"/><line x1="190" y1="200" x2="204" y2="200"/><line x1="150" y1="130" x2="164" y2="130"/><line x1="150" y1="190" x2="164" y2="190"/><line x1="226" y1="160" x2="240" y2="160"/></g></svg>
-          </div>
-          <h3 class="ph-h3">Een sterke kern</h3>
-          <p class="ph-t">Bamboe is van nature sterk en licht. Als kern geeft het het paneel stevigheid: het blijft recht en vormvast, ook bij wisselende temperatuur en vocht in badkamer en keuken.</p>
-        </article>
-        <article class="ph-built__card">
-          <div class="ph-built__art" aria-hidden="true">
-            <svg viewBox="0 0 384 240"><rect x="40" y="86" width="304" height="14" fill="#6A4E3A"/><rect x="40" y="100" width="304" height="9" fill="#B8AC9C"/><rect x="40" y="109" width="304" height="44" fill="#D9C9A3"/><g stroke="#C2B188" stroke-width="1">{%- for i in (0..37) -%}<line x1="{{ i | times: 8 | plus: 44 }}" y1="109" x2="{{ i | times: 8 | plus: 44 }}" y2="153"/>{%- endfor -%}</g><rect x="40" y="153" width="304" height="9" fill="#B8AC9C"/><g font-family="Instrument Sans, sans-serif" font-size="12" fill="#6E675E"><text x="40" y="190">Toplaag · tussenlaag · bamboekern · onderlaag</text></g><g transform="translate(312 40)"><circle r="30" fill="none" stroke="#8C6A4A" stroke-width="1.5"/><text y="-2" text-anchor="middle" font-family="Cormorant, serif" font-size="22" fill="#151413">3 jaar</text><text y="14" text-anchor="middle" font-family="Instrument Sans, sans-serif" font-size="9" fill="#6E675E" letter-spacing="1">GARANTIE</text></g></svg>
-          </div>
-          <h3 class="ph-h3">Gemaakt om lang mee te gaan</h3>
-          <p class="ph-t">Meerlaags opgebouwd: een beschermende toplaag over het decor, de bamboekern eronder. Zo blijft de wand jarenlang mooi. Daarom geven we 3 jaar garantie op de panelen.</p>
-        </article>
-        <article class="ph-built__card">
-          <div class="ph-built__art" aria-hidden="true">
-            <svg viewBox="0 0 384 240"><g transform="translate(112 52) rotate(-6)"><rect width="110" height="150" fill="#6A4E3A"/><g stroke="rgba(255,255,255,.08)">{%- for i in (0..26) -%}<line x1="{{ i | times: 4 | plus: 2 }}" y1="0" x2="{{ i | times: 4 | plus: 2 }}" y2="150"/>{%- endfor -%}</g></g><g transform="translate(186 62) rotate(5)"><rect width="110" height="150" fill="#D9CDB8"/></g><g font-family="Instrument Sans, sans-serif" font-size="12" fill="#6E675E"><text x="112" y="232">Puredeco</text><text x="226" y="232">ander paneel</text></g></svg>
-          </div>
-          <h3 class="ph-h3">Vergelijk het zelf</h3>
-          <p class="ph-t">Vraag een gratis sample aan, druk erop, buig het en leg het naast een ander paneel. Je voelt meteen waarom de kern het verschil maakt.</p>
-        </article>
+      {%- render 'pd-opbouw', tone: 'dark' -%}
+      <dl class="ph-core__facts">
+        <div><dt>280 × 122</dt><dd>cm in één stuk, van vloer tot plafond</dd></div>
+        <div><dt>B1</dt><dd>brandklasse, moeilijk ontvlambaar</dd></div>
+        <div><dt>5 en 8 mm</dt><dd>dun, ook over bestaande tegels</dd></div>
+        <div><dt>Rond</dt><dd><a href="{{ buig_url }}">te buigen na infrezen en verwarmen</a></dd></div>
+      </dl>
+    </div>
+  </section>
+  <section class="ph-s ph-cmp" aria-labelledby="ph-cmp-h">
+    <div class="ph-wrap">
+      <p class="ph-k ph-k--bronze">Vergelijking</p>
+      <h2 class="ph-h2" id="ph-cmp-h">Zo verhoudt een Puredeco-wand zich tot andere wanden</h2>
+      <p class="ph-cmp__hint" aria-hidden="true">Schuif opzij voor meer →</p>
+      <div class="ph-cmp__scroll" tabindex="0" role="region" aria-label="Vergelijkingstabel, schuif opzij voor meer">
+        <table class="ph-cmp__t">
+          <thead><tr><th scope="col"><span class="visually-hidden">Kenmerk</span></th><th scope="col" class="is-pd">Puredeco</th><th scope="col">MDF-wandpanelen</th><th scope="col">Holle kunststof panelen</th><th scope="col">Tegels</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Opbouw</th><td class="is-pd">Toplaag van gerecycled PVC, kern van behandeld bamboe</td><td>Geperste houtvezel</td><td>Hol, met kamers</td><td>Keramiek</td></tr>
+            <tr><th scope="row">Badkamer en keuken</th><td class="is-pd">Ja, waterbestendig</td><td>Meestal niet: MDF zwelt op door vocht</td><td>Ja</td><td>Ja</td></tr>
+            <tr><th scope="row">Naden</th><td class="is-pd">Eén naad per 122 cm</td><td>Verschilt per product</td><td>Vaak smalle banen met veel naden</td><td>Voeg rond elke tegel</td></tr>
+            <tr><th scope="row">Werk</th><td class="is-pd">Lijmen op de bestaande wand, zonder breekwerk</td><td>Verschilt per product</td><td>Lijmen of op regelwerk</td><td>Oude tegels eraf of erover, lijmen en voegen</td></tr>
+            <tr><th scope="row">Brandklasse</th><td class="is-pd">B1</td><td>Verschilt per product</td><td>Verschilt per product</td><td>Onbrandbaar</td></tr>
+          </tbody>
+        </table>
       </div>
+      <p class="ph-cmp__note">Algemene kenmerken van soorten wanden, geen merken. Waar het per product verschilt, staat dat erbij.</p>
     </div>
   </section>
 

@@ -36,11 +36,20 @@
     endif
   endif
   assign pd_variant = product.selected_or_first_available_variant
+  comment
+    Alleen wandpanelen krijgen keuzehulp, opbouw en brandklasse (niet akupanelen, profielen of montagekit).
+  endcomment
+  assign pdd_cols = product.collections | map: 'handle' | join: ',' | prepend: ',' | append: ','
+  assign pd_wall = false
+  if pdd_cols contains ',wandpanelen,'
+    assign pd_wall = true
+  endif
 -%}
 
 <div class="pd-story">
 
-  {%- comment -%} 1 · Keuzehulp {%- endcomment -%}
+  {%- comment -%} 1 · Keuzehulp (alleen wandpanelen) {%- endcomment -%}
+  {%- if pd_wall -%}
   <section class="pd-s pd-choice" data-pd-choice>
     <div class="pd-wrap">
       <div class="pd-choice__top">
@@ -54,7 +63,7 @@
         <article class="pd-card is-active" data-pd-card="sig">
           <header class="pd-card__head"><h3 class="pd-card__name">Signature <em class="pd-card__badge">Ons paradepaardje</em></h3><span>8 mm · klik</span></header>
           <div class="pd-xsvg" aria-hidden="true"><svg viewBox="0 0 316 64"><rect x="16" y="22" width="248" height="3.5" fill="#7A4F36"/><g fill="none" stroke="#151413" stroke-width="1" stroke-linejoin="round"><path d="M16 22 H140 V28 H150 V36 H140 V42 H16 Z"/><path d="M140 22 H264 V42 H140 V36 H150 V28 H140"/></g><g stroke="#151413" stroke-width="0.8"><line x1="278" y1="22" x2="278" y2="42"/><line x1="274" y1="22" x2="282" y2="22"/><line x1="274" y1="42" x2="282" y2="42"/></g><text x="286" y="35" font-size="9" fill="#151413">8 mm</text><text x="140" y="58" font-size="8" fill="#6E675E" text-anchor="middle" letter-spacing="1.5">KLIK · NAADLOOS</text></svg></div>
-          <p class="pd-card__small">Doorsnede: toplaag · gerecycled PVC · bamboekern · onderlaag. De klikverbinding trekt de panelen naadloos tegen elkaar.</p>
+          <p class="pd-card__small">Doorsnede: toplaag van gerecycled PVC op een kern van behandeld bamboe. De klikverbinding trekt de panelen naadloos tegen elkaar.</p>
           <dl class="pd-card__rows">
             <dt>Uitstraling</dt><dd>Naadloos: één doorlopende wand, zonder zichtbare naad*</dd>
             <dt>Montage</dt><dd>Panelen klikken in elkaar, op een vlakke, egale wand</dd>
@@ -78,6 +87,7 @@
       </div>
     </div>
   </section>
+  {%- endif -%}
 
   {%- comment -%} 2 · Montage: film met meelopende hoofdstukken {%- endcomment -%}
   {%- assign pd_film = section.settings.video | default: shop.metafields.puredeco.montage_video.value -%}
@@ -141,21 +151,27 @@
       <div>
         <dl class="pd-specs__table">
           <dt>Decorcode</dt><dd>{{ pd_full }}</dd>
-          <dt>Finish</dt><dd>{% if pd_has_sig %}Signature 8 mm klik{% endif %}{% if pd_has_sig and pd_has_lin %} · {% endif %}{% if pd_has_lin %}Linea 5 mm stomp{% endif %}</dd>
+          {%- if pd_wall -%}<dt>Finish</dt><dd>{% if pd_has_sig %}Signature 8 mm klik{% endif %}{% if pd_has_sig and pd_has_lin %} · {% endif %}{% if pd_has_lin %}Linea 5 mm stomp{% endif %}</dd>{%- endif -%}
           {%- if pd_formats != blank -%}<dt>Formaat</dt><dd>{{ pd_formats }}</dd>{%- endif -%}
           {%- capture pd_cover -%}{%- render 'pd-m2', product: product, part: 'cover' -%}{%- endcapture -%}
           {%- capture pd_m2r -%}{%- render 'pd-m2', product: product, part: 'range' -%}{%- endcapture -%}
           {%- assign pd_cover = pd_cover | strip -%}{%- assign pd_m2r = pd_m2r | strip -%}
           {%- if pd_cover != blank -%}<dt>Dekking per paneel</dt><dd>{{ pd_cover }}</dd>{%- endif -%}
           {%- if pd_m2r != blank -%}<dt>Prijs per m²</dt><dd>{{ pd_m2r }}{% if pd_m2r contains '–' %} (per uitvoering){% endif %}</dd>{%- endif -%}
-          <dt>Opbouw</dt><dd>Toplaag · gerecycled PVC · bamboekern (snelgroeiend, hernieuwbaar) · gerecyclede onderlaag</dd>
+          {%- if pd_wall -%}
+          <dt>Opbouw</dt><dd>Toplaag van gerecycled PVC met het decor · kern van behandeld bamboe (snelgroeiend, hernieuwbaar)</dd>
+          <dt>Brandklasse</dt><dd>B1, moeilijk ontvlambaar</dd>
           <dt>Toepassing</dt><dd>Wonen, slapen, badkamer en keuken · waterbestendig</dd>
+          {%- endif -%}
           <dt>Onderhoud</dt><dd>Zachte, licht vochtige doek; geen schurende middelen</dd>
           <dt>Garantie</dt><dd>3 jaar</dd>
           <dt>Bedenktijd</dt><dd>30 dagen, vanaf ontvangst</dd>
           <dt>Verzending</dt><dd>€ 65 in Nederland · gratis vanaf € 600</dd>
           {%- if pd_variant.sku != blank -%}<dt>Artikelnummer</dt><dd>{{ pd_variant.sku }}</dd>{%- endif -%}
         </dl>
+        {%- if pd_wall -%}
+          <div class="pd-specs__opbouw">{%- render 'pd-opbouw', tone: 'light' -%}</div>
+        {%- endif -%}
         {%- if product.description != blank -%}
           <details class="pd-specs__more">
             <summary>Productbeschrijving</summary>
@@ -283,8 +299,7 @@
           <summary>Hoe zaag of snijd ik een paneel op maat?</summary>
           <p>Met een fijne cirkelzaag, of met een stanleymes: kras een paar keer langs een rei, buig het paneel en breek het af. In de montagefilm hierboven zie je hoe.</p>
         </details>
-        {%- assign pdd_cols = product.collections | map: 'handle' | join: ',' | prepend: ',' | append: ',' -%}
-        {%- if pdd_cols contains ',wandpanelen,' -%}
+        {%- if pd_wall -%}
         <details class="pd-faq__item">
           <summary>Kan ik het paneel buigen voor een ronde wand?</summary>
           <p>Ja, alle wandpanelen zijn te buigen. Frees de achterkant in tot aan de toplaag, verwarm het paneel en buig het mee met de wand. <a href="{{ articles['nieuws/wandpanelen-buigen'].url | default: '/blogs/nieuws?view=gids-buigen' }}">Zo werkt het →</a></p>
