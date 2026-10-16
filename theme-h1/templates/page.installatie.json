@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "pd_installatie": {
+      "type": "pd-installatie",
+      "settings": {}
+    }
+  },
+  "order": [
+    "pd_installatie"
+  ]
+}

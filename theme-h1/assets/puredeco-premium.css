@@ -3613,7 +3613,7 @@ html.pde-open shopify-chat { display: none !important; }
   .pc-dot.is-off { background: #A39C92; }
 
   /* Onderbalk */
-  .pc-dock { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 0.8rem; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 1rem 1.2rem calc(1rem + env(safe-area-inset-bottom)); background: rgba(245, 242, 236, 0.97); border-top: 1px solid #E4DDD1; }
+  .pc-dock { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 0.8rem; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 1rem 1.2rem calc(1rem + env(safe-area-inset-bottom)); background: rgba(245, 242, 236, 0.97); border-top: 1px solid #E4DDD1; }
   .pc-dock.has-filter { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.35fr); }
   .pc-dock__b { display: flex; align-items: center; justify-content: center; gap: 0.6rem; height: 5rem; padding: 0 0.6rem; border: 1px solid #151413; border-radius: 0; background: #FBF9F5; color: #151413; font: inherit; font-size: 1.4rem; text-decoration: none; white-space: nowrap; overflow: hidden; cursor: pointer; }
   .pc-dock__b.is-ink { background: #151413; color: #F5F2EC; }

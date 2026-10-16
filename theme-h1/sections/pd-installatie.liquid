@@ -1,0 +1,749 @@
+{%- comment -%}
+  Puredeco · Installatie (H1-test). Ontwerp: scratchpad home/inst/inst2.html, akkoord 16 okt 2026.
+  Alle feiten uit home/inst/FEITEN.md. Niet noemen: montageservice, schroeven, douche, buiggetallen, retourtermijn, "1 dag".
+  Kit: op de achterkant van het paneel (montagefilm en kitpagina), banen 10–20 cm uit elkaar.
+  Voorbeeld in H1: /pages/faqs?view=installatie. Livegang: pagina 'installatie' met sjabloon 'installatie'.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign film = shop.metafields.puredeco.montage_video.value
+  assign film_m = shop.metafields.puredeco.montage_video_mobile.value
+  assign phone = s.phone | default: '0316 700 214'
+  assign tel = phone | remove: ' ' | remove_first: '0' | prepend: '+31'
+  assign wa = s.whatsapp | default: '31316700214' | remove: ' ' | remove: '+'
+  assign kit = all_products['hack-tack-montagekit']
+  assign pdf = s.pdf_url | default: 'https://cdn.shopify.com/s/files/1/0940/4075/2394/files/PureDeco-montagehandleiding.pdf'
+  assign handles = s.products | default: 'hack-tack-montagekit|eindprofielen|tussenprofielen|hoekprofielen-gelijk|buitenhoekprofielen' | split: '|'
+  assign step_t = 'Voorbereiden|Op maat maken|Kit aanbrengen|Plaatsen en aansluiten|Afwerken' | split: '|'
+  assign step_s = '3.6|8.6|14.6|19.8|27.2' | split: '|'
+  assign step_d = '0:05|0:06|0:05|0:07|0:04' | split: '|'
+  assign faq = 'Kan ik wandpanelen over tegels plaatsen?::Ja, op een vlakke, droge en schone ondergrond, ook over bestaande tegels. Maak de tegels eerst vetvrij met een ondergrondreiniger. Hoe vlakker de ondergrond, hoe strakker het resultaat.|Hoeveel montagekit heb ik nodig?::Met één koker van 290 ml breng je ongeveer 10 meter lijmril aan. Zet de kit in verticale banen op de achterkant van het paneel, ongeveer 10 tot 20 cm uit elkaar. Twijfel je? Stuur ons je wandmaat, dan rekenen we mee.|Hoe lang moet de kit uitharden?::Je hebt ongeveer 15 minuten om een paneel bij te stellen. Daarna hardt de kit uit; volledig uitgehard is hij na 24 tot 48 uur, afhankelijk van de lijmdikte en de omstandigheden. Tape de panelen zolang tijdelijk aan elkaar.|Waarmee zaag ik de panelen op maat?::Met een fijne cirkelzaag, of met een stanleymes: kras een paar keer langs een rei, buig het paneel en breek het af. Zaag sparingen voor stopcontacten en leidingen uit voordat je gaat plaatsen.|Wat is het verschil tussen 5 mm en 8 mm bij het plaatsen?::Linea (5 mm) plaats je stomp tegen elkaar; je ziet een naad, die je kunt afwerken met een tussenprofiel. Signature (8 mm) klikt in elkaar en is vrijwel naadloos op een vlakke, rechte wand.|Kan ik de panelen in de badkamer of keuken gebruiken?::Ja, de panelen zijn waterbestendig en geschikt voor badkamer en keuken. Vermijd plekken waar water blijft staan en zorg in de badkamer voor goede ventilatie. Wil je panelen dicht bij een kookplaat plaatsen, neem dan eerst contact met ons op.|Kan ik een paneel buigen voor een ronde wand?::Ja, alle wandpanelen zijn te buigen. Frees de achterkant in tot aan de toplaag, verwarm het paneel en buig het rustig mee met de wand. Frees nooit in de toplaag.|Hoe maak ik de panelen schoon?::Met een zachte, licht vochtige doek. Gebruik geen schurende of agressieve schoonmaakmiddelen. Je hoeft niets te oliën, te lakken of te impregneren.' | split: '|'
+-%}
+{%- capture ic_chat -%}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>{%- endcapture -%}
+{%- capture ic_tel -%}<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/></svg>{%- endcapture -%}
+{%- capture ic_wa -%}<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-4-1z"/></svg>{%- endcapture -%}
+{%- capture ic_home -%}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 11l8-6 8 6v9H4z"/><path d="M10 20v-5h4v5"/></svg>{%- endcapture -%}
+{%- capture ic_dl -%}<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 19h14"/></svg>{%- endcapture -%}
+
+<style>
+.pdn{--ink:#151413;--text:#3A3733;--mute:#6E675E;--line:#DDD6CA;--paper:#F5F2EC;--card:#FBF9F5;--sand:#EFEAE1;--bronze:#8C6A4A;--warn:#9B5B2E;--green:#2F6B4F;background:var(--paper);color:var(--ink);font-size:15px;line-height:1.55}
+.pdn *{box-sizing:border-box}
+:where(.pdn) a{color:inherit}
+.pdn img{display:block;max-width:100%}
+.pdn-page{max-width:1280px;margin:0 auto;padding:0 20px}
+.pdn-k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze);margin:0;font-weight:500}
+.pdn-h2{font-family:var(--font-heading-family);font-weight:500;font-size:32px;line-height:1.05;margin:6px 0 0;color:var(--ink);letter-spacing:-.005em}
+.pdn-p{color:var(--text);margin:10px 0 0;font-size:15px}
+.pdn-btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 20px;font:inherit;font-size:15px;font-weight:500;text-decoration:none;border:1px solid var(--ink);width:100%;background:transparent;color:var(--ink);cursor:pointer;border-radius:0}
+.pdn .pdn-btn--ink{background:var(--ink);color:#F5F2EC}
+.pdn-btn[disabled]{opacity:.45;cursor:default}
+.pdn-sec{padding:44px 0;border-top:1px solid var(--line);scroll-margin-top:calc(var(--pdn-top,0px) + 64px)}
+.pdn-crumb{font-size:12px;color:var(--mute);padding:14px 0 0;margin:0}
+.pdn-crumb a{text-decoration:none}
+/* hero */
+.pdn-hero{padding:10px 0 26px}
+.pdn-hero h1{font-family:var(--font-heading-family);font-weight:500;font-size:40px;line-height:1.02;margin:8px 0 0;letter-spacing:-.01em}
+.pdn-kern{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:18px 0 0;border:1px solid var(--line);background:var(--card);padding:0;list-style:none}
+.pdn-kern li{padding:12px 10px;border-left:1px solid var(--line);font-size:12px;color:var(--mute);line-height:1.3}
+.pdn-kern li:first-child{border-left:0}
+.pdn-kern b{display:block;font-size:14px;color:var(--ink);font-weight:600;margin-bottom:2px}
+.pdn-hero__cta{display:grid;gap:8px;margin-top:16px}
+.pdn-film{position:relative;margin:18px 0 0;aspect-ratio:4/5;overflow:hidden;background:#2a2420}
+.pdn-film img,.pdn-film picture,.pdn-film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pdn-film__play{position:absolute;left:16px;bottom:16px;right:16px;display:flex;align-items:center;gap:12px;background:rgba(245,242,236,.95);padding:10px 14px 10px 10px;border:0;font:inherit;text-align:left;cursor:pointer;color:var(--ink)}
+.pdn-film__play i{width:44px;height:44px;border-radius:50%;background:var(--ink);flex:none;position:relative}
+.pdn-film__play i::after{content:"";position:absolute;left:17px;top:13px;border-left:14px solid #F5F2EC;border-top:9px solid transparent;border-bottom:9px solid transparent}
+.pdn-film__play b{display:block;font-size:15px}.pdn-film__play span span{font-size:12.5px;color:var(--mute)}
+.pdn-film.is-playing .pdn-film__play,.pdn-film.is-playing picture{display:none}
+.pdn-chap{display:flex;gap:6px;overflow-x:auto;margin:10px -20px 0 0;padding:0 20px 2px 0;scrollbar-width:none;list-style:none}
+.pdn-chap::-webkit-scrollbar{display:none}
+.pdn-chap a{display:block;flex:none;font-size:12.5px;padding:7px 11px;border:1px solid var(--line);background:var(--card);text-decoration:none;white-space:nowrap}
+.pdn-chap b{color:var(--bronze);font-weight:600;margin-right:4px}
+/* stappenbalk mobiel */
+.pdn-bar{position:sticky;top:var(--pdn-top,0px);z-index:20;background:#F5F2EC;border-bottom:1px solid var(--line);border-top:1px solid var(--line);padding:10px 20px;display:flex;align-items:center;gap:12px}
+.pdn-bar__p{flex:1;min-width:0}
+.pdn-bar__t{font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pdn-bar__t span{color:var(--mute);font-weight:400}
+.pdn-bar__l{height:3px;background:var(--line);margin-top:6px}.pdn-bar__l i{display:block;height:3px;width:0;background:var(--ink);transition:width .25s}
+.pdn-bar__toc{font:inherit;font-size:13px;border:1px solid var(--ink);padding:0 12px;min-height:36px;white-space:nowrap;background:transparent;color:var(--ink);cursor:pointer}
+/* situatie */
+.pdn-sit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-top:18px}
+.pdn-st{min-width:0;white-space:normal;height:auto;letter-spacing:normal;text-transform:none;position:relative;background:var(--card);border:1px solid var(--line);padding:14px;min-height:118px;display:flex;flex-direction:column;justify-content:space-between;font:inherit;text-align:left;color:var(--ink);cursor:pointer;border-radius:0}
+.pdn-st svg{width:44px;height:36px}
+.pdn-st b{font-size:15px;line-height:1.2;font-weight:600}.pdn-st small{display:block;font-size:12px;color:var(--mute);font-weight:400;margin-top:2px}
+.pdn-st[aria-pressed="true"]{border:2px solid var(--ink);padding:13px}
+.pdn-st[aria-pressed="true"]::after{content:"✓";position:absolute;right:10px;top:8px;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#F5F2EC;font-size:12px;display:flex;align-items:center;justify-content:center}
+.pdn-seg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);margin-top:12px;border:1px solid var(--ink)}
+.pdn-seg button{display:block;min-width:0;white-space:normal;height:auto;letter-spacing:normal;text-transform:none;padding:12px 8px;text-align:center;font:inherit;font-size:14px;background:transparent;border:0;color:var(--ink);cursor:pointer;border-radius:0}
+.pdn-seg small{display:block;font-size:11.5px;color:var(--mute)}
+.pdn-seg [aria-pressed="true"]{background:var(--ink);color:#F5F2EC}.pdn-seg [aria-pressed="true"] small{color:rgba(245,242,236,.7)}
+.pdn-res{margin-top:12px;background:var(--sand);padding:12px 14px;font-size:13.5px;color:var(--text)}
+.pdn-res b{color:var(--ink)}
+/* stappen */
+.pdn-steps{display:grid;gap:14px;margin-top:20px;padding:0;list-style:none}
+.pdn-card{background:var(--card);border:1px solid var(--line);scroll-margin-top:calc(var(--pdn-top,0px) + 64px)}
+.pdn-card__img{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--sand)}
+.pdn-card__img img{width:100%;height:100%;object-fit:cover}
+.pdn-card__num{position:absolute;left:12px;top:12px;background:var(--ink);color:#F5F2EC;font-size:12px;letter-spacing:.12em;padding:5px 9px}
+.pdn-card__clip{position:absolute;right:12px;bottom:12px;background:rgba(245,242,236,.95);font:inherit;font-size:12px;padding:0 10px;min-height:32px;display:flex;align-items:center;gap:6px;border:0;color:var(--ink);cursor:pointer}
+.pdn-card__clip::before{content:"";border-left:8px solid var(--ink);border-top:5px solid transparent;border-bottom:5px solid transparent}
+.pdn-card__b{padding:16px 16px 18px}
+.pdn-card h3{font-family:var(--font-heading-family);font-weight:500;font-size:26px;line-height:1.1;margin:0}
+.pdn-card ul{margin:8px 0 0;padding-left:18px;color:var(--text);font-size:14.5px}
+.pdn-card li{margin:3px 0}
+.pdn [data-if][hidden]{display:none}
+.pdn-let{margin-top:12px;border-left:3px solid var(--warn);background:#F6EEE6;padding:10px 12px;font-size:13.5px;color:var(--text)}
+.pdn-let b{color:var(--warn)}
+.pdn-mini{display:flex;align-items:center;gap:12px;margin-top:12px;border:1px solid var(--line);padding:8px;background:#fff}
+.pdn-mini img{width:52px;height:52px;object-fit:contain;flex:none}
+.pdn-mini div{flex:1;font-size:13.5px;line-height:1.3;min-width:0}.pdn-mini div b{display:block;font-size:14px}
+.pdn-mini .pdn-add{min-height:40px;padding:0 14px;background:var(--ink);color:#F5F2EC;font:inherit;font-size:13.5px;display:flex;align-items:center;white-space:nowrap;border:0;cursor:pointer;text-decoration:none}
+.pdn-tag{display:inline-block;margin-top:10px;font-size:12px;padding:3px 8px;border:1px solid var(--line);color:var(--mute)}
+/* nodig */
+.pdn-need h3{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);font-weight:600;margin:22px 0 8px;font-family:inherit}
+.pdn-row{display:grid;grid-template-columns:56px minmax(0,1fr) auto;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.pdn-row img{width:56px;height:56px;object-fit:contain;background:#fff;border:1px solid var(--line)}
+.pdn-row__t{font-size:14px;line-height:1.3}.pdn-row__t a{text-decoration:none;font-weight:600;display:block}.pdn-row__t span{color:var(--mute);font-size:12.5px;display:block}
+.pdn-row select{margin-top:6px;font:inherit;font-size:13px;height:32px;border:1px solid var(--line);background:#fff;color:var(--ink);padding:0 6px;max-width:100%}
+.pdn-qty{display:flex;align-items:center;border:1px solid var(--ink);height:40px}
+.pdn-qty button{width:36px;height:38px;border:0;background:transparent;font-size:18px;color:var(--ink);cursor:pointer}
+.pdn-qty output{width:26px;text-align:center;font-weight:600}
+.pdn-chk{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line);font-size:14.5px;cursor:pointer;margin:0}
+.pdn-chk input{appearance:none;-webkit-appearance:none;width:22px;height:22px;border:1.5px solid var(--ink);flex:none;margin:0;display:grid;place-content:center;background:#fff;border-radius:0}
+.pdn-chk input:checked{background:var(--ink)}
+.pdn-chk input:checked::after{content:"✓";color:#F5F2EC;font-size:13px}
+.pdn-chk:has(input:checked) span{color:var(--mute);text-decoration:line-through}
+.pdn-sum{margin-top:14px;display:flex;justify-content:space-between;align-items:center;background:var(--sand);padding:12px 14px;font-size:14px}
+.pdn-sum b{font-size:17px}
+.pdn-note{font-size:12.5px;color:var(--mute);margin:8px 0 0}
+/* rekenhulp */
+.pdn-calc{background:var(--card);border:1px solid var(--line);padding:16px;margin-top:18px}
+.pdn-fld{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pdn-fld label{font-size:12.5px;color:var(--mute);display:block}
+.pdn-in{margin-top:4px;height:50px;border:1px solid var(--ink);background:#fff;display:flex;align-items:center;padding:0 12px}
+.pdn-in input{border:0;outline:0;font:inherit;font-size:18px;width:100%;min-width:0;background:transparent;color:var(--ink);padding:0;box-shadow:none}
+.pdn-in small{font-size:13px;color:var(--mute)}
+.pdn-in:focus-within{outline:2px solid var(--bronze);outline-offset:1px}
+.pdn-out{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}
+.pdn-out div{background:var(--sand);padding:10px;font-size:12px;color:var(--mute)}
+.pdn-out b{display:block;font-family:var(--font-heading-family);font-weight:500;font-size:26px;line-height:1.05;color:var(--ink);white-space:nowrap}
+.pdn-wall{margin-top:14px}.pdn-wall svg{width:100%;height:auto;display:block}
+/* profielen */
+.pdn-profs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.pdn-pf{background:var(--card);border:1px solid var(--line);padding:12px;display:flex;flex-direction:column}
+.pdn-pf svg{width:100%;height:62px;background:#fff;border:1px solid var(--line)}
+.pdn-pf b{display:block;font-size:14.5px;margin-top:8px}.pdn-pf>span{font-size:12.5px;color:var(--mute);display:block;line-height:1.35;flex:1}
+.pdn-sw{display:flex;gap:6px;margin-top:8px;padding:0;list-style:none}.pdn-sw li{width:18px;height:18px;border-radius:50%;border:1px solid rgba(0,0,0,.15)}
+.pdn-pf__pr{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:13.5px;gap:8px}
+/* fouten */
+.pdn-errs{display:grid;gap:10px;margin-top:18px;padding:0;list-style:none}
+.pdn-err{display:grid;grid-template-columns:36px 1fr;gap:12px;background:var(--card);border:1px solid var(--line);padding:14px}
+.pdn-err__x{width:36px;height:36px;border-radius:50%;background:#F6EEE6;color:var(--warn);display:flex;align-items:center;justify-content:center;font-weight:700}
+.pdn-err b{display:block;font-size:15px}.pdn-err p{font-size:13.5px;color:var(--text);margin:2px 0 0}
+.pdn-err em{font-style:normal;color:var(--green);font-weight:600}
+/* faq */
+.pdn-faq details{border-top:1px solid var(--line);padding:16px 0}.pdn-faq details:last-child{border-bottom:1px solid var(--line)}
+.pdn-faq summary{list-style:none;display:flex;justify-content:space-between;gap:12px;font-family:var(--font-heading-family);font-size:21px;font-weight:500;line-height:1.2;cursor:pointer}
+.pdn-faq summary::-webkit-details-marker{display:none}
+.pdn-faq summary::after{content:"+";font-family:var(--font-body-family);color:var(--mute)}.pdn-faq details[open] summary::after{content:"–"}
+.pdn-faq p{margin:8px 0 0;color:var(--text);font-size:14.5px}
+/* hulp */
+.pdn-help{background:var(--ink);color:#F5F2EC;padding:40px 20px}
+.pdn-help .pdn-k{color:#C8A27A}.pdn-help .pdn-h2{color:#F5F2EC}.pdn-help .pdn-p{color:rgba(245,242,236,.8)}
+.pdn-opts{display:grid;gap:8px;margin-top:18px}
+.pdn-opt{display:grid;grid-template-columns:40px 1fr auto;align-items:center;gap:12px;padding:12px 14px;border:1px solid rgba(245,242,236,.25);text-decoration:none;font:inherit;font-size:15px;color:#F5F2EC;background:transparent;text-align:left;cursor:pointer;width:100%;border-radius:0}
+.pdn-opt[hidden]{display:none}
+.pdn-opt i{width:40px;height:40px;border-radius:50%;background:rgba(245,242,236,.12);display:flex;align-items:center;justify-content:center;font-style:normal}
+.pdn-opt small{display:block;font-size:12.5px;color:rgba(245,242,236,.65)}
+.pdn-opt--ink{background:#F5F2EC;color:var(--ink)}.pdn-opt--ink small{color:var(--mute)}.pdn-opt--ink i{background:var(--sand)}
+.pdn-pdf{display:flex;align-items:center;gap:12px;margin-top:18px;padding:14px;border:1px dashed rgba(245,242,236,.35);font-size:14px;text-decoration:none;color:#F5F2EC}
+.pdn-pdf b{display:block}.pdn-pdf small{color:rgba(245,242,236,.6)}
+/* onderbalk + inhoud */
+.pdn-dock{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(245,242,236,.97);border-top:1px solid var(--line)}
+.pdn-dock a,.pdn-dock button{display:flex;align-items:center;justify-content:center;gap:8px;height:50px;border:1px solid var(--ink);font:inherit;font-size:14.5px;text-decoration:none;background:var(--card);color:var(--ink);cursor:pointer;border-radius:0;white-space:nowrap}
+.pdn-dock .is-ink{background:var(--ink);color:#F5F2EC}
+html.pdn-has-dock body{padding-bottom:72px}
+.pdn-sheet{position:fixed;inset:0;z-index:60}
+.pdn-sheet[hidden]{display:none}
+.pdn-sheet__bg{display:block!important;position:absolute;inset:0;background:rgba(21,20,19,.45)}
+.pdn-sheet__in{position:absolute;left:0;right:0;bottom:0;max-height:86vh;overflow-y:auto;background:var(--paper);padding:14px 20px calc(22px + env(safe-area-inset-bottom));border-radius:14px 14px 0 0}
+.pdn-sheet__grip{width:40px;height:4px;background:#CFC6B8;border-radius:2px;margin:0 auto 12px}
+.pdn-toc a{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-top:1px solid var(--line);text-decoration:none;font-size:15.5px}
+.pdn-toc a b{color:var(--bronze);font-weight:600;width:28px;display:inline-block}
+.pdn-toc a.is-cur{font-weight:600}
+.pdn-toast{position:fixed;left:12px;right:12px;bottom:84px;z-index:31;background:var(--ink);color:#F5F2EC;padding:12px 14px;font-size:14px;text-align:center}
+.pdn-toast[hidden]{display:none}
+.pdn-side{display:none}
+@media (min-width:990px){
+  .pdn{font-size:16px}
+  .pdn-sit{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+  html.pdn-has-dock body{padding-bottom:0}
+  .pdn-dock,.pdn-bar,.pdn-sheet{display:none!important}
+  .pdn-page{padding:0 48px}
+  .pdn-hero{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;padding:20px 0 56px}
+  .pdn-hero h1{font-size:64px}
+  .pdn-hero__cta{grid-template-columns:auto auto;justify-content:start}
+  .pdn-hero__cta .pdn-btn{width:auto;padding:0 28px}
+  .pdn-film{aspect-ratio:16/10;margin:0}
+    .pdn-film__play{right:auto}
+  .pdn-chap{margin-right:0}
+  .pdn-grid{display:grid;grid-template-columns:230px minmax(0,1fr);gap:56px}
+  .pdn-side{display:block;position:sticky;top:calc(var(--pdn-top,0px) + 24px);align-self:start;padding-top:44px}
+  .pdn-side p{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze);margin:0 0 10px}
+  .pdn-side .pdn-toc a{font-size:14px;padding:9px 0;color:var(--text);justify-content:flex-start;gap:6px}
+  .pdn-side .pdn-toc a.is-cur{color:var(--ink)}
+  .pdn-side .pdn-btn{margin-top:18px}
+  .pdn-h2{font-size:42px}
+  .pdn-seg,.pdn-res{max-width:620px}
+  .pdn-steps{grid-template-columns:1fr 1fr;gap:18px}
+  .pdn-steps>li:first-child{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr}
+  .pdn-steps>li:first-child .pdn-card__img{aspect-ratio:auto;height:100%;min-height:300px}
+  .pdn-need{display:grid;grid-template-columns:1.3fr 1fr;gap:40px}
+  .pdn-calcw{display:grid;grid-template-columns:1fr 1.1fr;gap:32px;align-items:start}
+  .pdn-wall{margin-top:18px}
+  .pdn-profs{grid-template-columns:repeat(4,1fr)}
+  .pdn-errs{grid-template-columns:1fr 1fr}
+  .pdn-help{padding:64px max(48px,calc((100vw - 1280px)/2 + 48px));display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:center}
+  .pdn-opts{grid-template-columns:1fr 1fr}
+  .pdn-toast{left:auto;right:24px;bottom:24px;max-width:360px}
+}
+</style>
+
+<div class="pdn" data-pdn data-tel="{{ tel }}">
+  <div class="pdn-page">
+    <nav class="pdn-crumb" aria-label="Kruimelpad"><a href="{{ routes.root_url }}">Home</a> / <span>Installatie</span></nav>
+
+    <section class="pdn-hero" id="top">
+      <div>
+        <p class="pdn-k">Installatie · zelf plaatsen</p>
+        <h1>Wandpanelen plaatsen: zo doe je het zelf</h1>
+        <p class="pdn-p">Lijm de panelen met montagekit op een vlakke wand, ook over bestaande tegels. Geen breekwerk en geen vakman nodig: met gewoon gereedschap en deze stappen lukt het.</p>
+        <ul class="pdn-kern" role="list">
+          <li><b>Zelf te doen</b>geen vakman nodig</li>
+          <li><b>Over tegels</b>zonder breekwerk</li>
+          <li><b>{% if kit %}{{ kit.price | money }}{% else %}€ 8,95{% endif %}</b>montagekit · 290 ml</li>
+        </ul>
+        <div class="pdn-hero__cta">
+          <a class="pdn-btn pdn-btn--ink" href="#stappen">Bekijk de 5 stappen</a>
+          <a class="pdn-btn" href="{{ pdf }}" target="_blank" rel="noopener" data-pdn-pdf>{{ ic_dl }} Handleiding (PDF)</a>
+        </div>
+      </div>
+      <div>
+        <div class="pdn-film" data-pdn-film>
+          <picture><source media="(min-width: 990px)" srcset="{{ 'pd-montage-liggend.jpg' | asset_img_url: '960x' }} 960w, {{ 'pd-montage-liggend.jpg' | asset_img_url: '1600x' }} 1600w" sizes="45vw"><img src="{{ 'pd-montage-staand.jpg' | asset_img_url: '864x' }}" srcset="{{ 'pd-montage-staand.jpg' | asset_img_url: '540x' }} 540w, {{ 'pd-montage-staand.jpg' | asset_img_url: '864x' }} 864w" sizes="100vw" width="864" height="1080" alt="Montage van een wandpaneel" fetchpriority="high"></picture>
+          {%- if film != blank -%}
+            <template data-pdn-v="land">{{ film | video_tag: controls: true, muted: true, playsinline: true, preload: 'auto' }}</template>
+            {%- if film_m != blank -%}<template data-pdn-v="port">{{ film_m | video_tag: controls: true, muted: true, playsinline: true, preload: 'auto' }}</template>{%- endif -%}
+            <button type="button" class="pdn-film__play" data-pdn-play="0"><i aria-hidden="true"></i><span><b>Bekijk de montage · 0:36</b><span>Vijf stappen, ook zonder geluid te volgen</span></span></button>
+          {%- endif -%}
+        </div>
+        <ol class="pdn-chap" role="list">
+          {%- assign chap = 'Voorbereiden|Op maat|Kit|Plaatsen|Afwerken' | split: '|' -%}
+          {%- for t in chap -%}<li><a href="#stap-{{ forloop.index }}"><b>0{{ forloop.index }}</b>{{ t }}</a></li>{%- endfor -%}
+        </ol>
+      </div>
+    </section>
+  </div>
+
+  <div class="pdn-bar" data-pdn-bar>
+    <div class="pdn-bar__p"><div class="pdn-bar__t" data-pdn-bar-t>Op deze pagina</div><div class="pdn-bar__l"><i data-pdn-bar-l></i></div></div>
+    <button type="button" class="pdn-bar__toc" data-pdn-toc-open aria-haspopup="dialog">Inhoud ▾</button>
+  </div>
+
+  {%- capture toc -%}
+    <a href="#situatie" data-pdn-nav="situatie"><span><b>·</b>Jouw situatie</span></a>
+    <a href="#nodig" data-pdn-nav="nodig"><span><b>·</b>Wat heb je nodig</span></a>
+    <a href="#reken" data-pdn-nav="reken"><span><b>·</b>Hoeveel panelen</span></a>
+    {%- for t in step_t -%}<a href="#stap-{{ forloop.index }}" data-pdn-nav="stap-{{ forloop.index }}"><span><b>0{{ forloop.index }}</b>{{ t }}</span></a>{%- endfor -%}
+    <a href="#profielen" data-pdn-nav="profielen"><span><b>·</b>Profielen</span></a>
+    <a href="#fouten" data-pdn-nav="fouten"><span><b>·</b>Veelgemaakte fouten</span></a>
+    <a href="#vragen" data-pdn-nav="vragen"><span><b>·</b>Vragen</span></a>
+  {%- endcapture -%}
+
+  <div class="pdn-page"><div class="pdn-grid">
+    <aside class="pdn-side" aria-label="Op deze pagina">
+      <p>Op deze pagina</p>
+      <nav class="pdn-toc">{{ toc }}</nav>
+      <a class="pdn-btn pdn-btn--ink" href="#hulp">Vraag het ons</a>
+      <a class="pdn-btn" href="{{ pdf }}" target="_blank" rel="noopener" style="margin-top:8px">Handleiding (PDF)</a>
+    </aside>
+    <main>
+
+      {%- comment -%} 1 · Situatie {%- endcomment -%}
+      <section class="pdn-sec" id="situatie" data-pdn-sec="Jouw situatie">
+        <p class="pdn-k">Jouw situatie</p><h2 class="pdn-h2">Mijn wand is…</h2>
+        <p class="pdn-p">Kies je wand en je uitvoering. De stappen hieronder passen zich aan.</p>
+        <div class="pdn-sit" role="group" aria-label="Soort wand">
+          <button type="button" class="pdn-st" data-pdn-wall="glad" aria-pressed="true"><svg viewBox="0 0 44 36" fill="none" stroke="#151413" stroke-width="1.4" aria-hidden="true"><rect x="4" y="4" width="36" height="28"/></svg><b>Glad<small>stucwerk, gipsplaat, beton</small></b></button>
+          <button type="button" class="pdn-st" data-pdn-wall="tegel" aria-pressed="false"><svg viewBox="0 0 44 36" fill="none" stroke="#151413" stroke-width="1.4" aria-hidden="true"><rect x="4" y="4" width="36" height="28"/><path d="M4 13h36M4 22h36M16 4v9M28 13v9M16 22v10"/></svg><b>Betegeld<small>over je tegels, zonder breken</small></b></button>
+          <button type="button" class="pdn-st" data-pdn-wall="bad" aria-pressed="false"><svg viewBox="0 0 44 36" fill="none" stroke="#151413" stroke-width="1.4" aria-hidden="true"><path d="M8 32V14a6 6 0 0112 0v18M28 32V6h8v26"/><path d="M4 32h36"/></svg><b>Badkamer of keuken<small>waterbestendig</small></b></button>
+          <button type="button" class="pdn-st" data-pdn-wall="rond" aria-pressed="false"><svg viewBox="0 0 44 36" fill="none" stroke="#151413" stroke-width="1.4" aria-hidden="true"><path d="M6 32a16 16 0 0132 0"/></svg><b>Rond<small>panelen buigen</small></b></button>
+        </div>
+        <div class="pdn-seg" role="group" aria-label="Uitvoering">
+          <button type="button" data-pdn-ux="lin" aria-pressed="true">Linea · 5 mm<small>stomp, met naad</small></button>
+          <button type="button" data-pdn-ux="sig" aria-pressed="false">Signature · 8 mm<small>klik, vrijwel naadloos</small></button>
+        </div>
+        <p class="pdn-res" data-pdn-res aria-live="polite"></p>
+      </section>
+
+      {%- comment -%} 2 · Wat heb je nodig {%- endcomment -%}
+      <section class="pdn-sec" id="nodig" data-pdn-sec="Wat heb je nodig">
+        <p class="pdn-k">Wat heb je nodig</p><h2 class="pdn-h2">Alles op één lijst</h2>
+        <div class="pdn-need">
+          <div data-pdn-list>
+            <h3>Van Puredeco</h3>
+            {%- for h in handles -%}
+              {%- assign p = all_products[h] -%}
+              {%- if p == blank or p.available == false -%}{%- continue -%}{%- endif -%}
+              {%- liquid
+                assign pos = 0
+                for o in p.options_with_values
+                  if o.values.size > 1
+                    assign pos = o.position
+                  endif
+                endfor
+                assign q = 0
+                if h == 'hack-tack-montagekit'
+                  assign q = 1
+                endif
+                assign pi = pos | minus: 1
+              -%}
+              <div class="pdn-row" data-pdn-item data-handle="{{ h }}">
+                {%- if p.featured_image -%}{{ p.featured_image | image_url: width: 160 | image_tag: loading: 'lazy', alt: p.title, width: 56, height: 56 }}{%- else -%}<span></span>{%- endif -%}
+                <div class="pdn-row__t">
+                  <a href="{{ p.url }}">{{ p.title | remove: ' Wandpanelen' }}</a>
+                  <span>{% if h == 'hack-tack-montagekit' %}290 ml · ± 10 m lijmril per koker{% else %}Aluminium · 300 cm{% endif %} · {{ p.price | money }}</span>
+                  {%- if pos > 0 -%}
+                    <select data-pdn-var aria-label="Kleur {{ p.title }}">
+                      {%- for v in p.variants -%}{%- if v.available -%}<option value="{{ v.id }}" data-price="{{ v.price }}">{{ v.options[pi] }}</option>{%- endif -%}{%- endfor -%}
+                    </select>
+                  {%- else -%}
+                    <input type="hidden" data-pdn-var value="{{ p.selected_or_first_available_variant.id }}" data-price="{{ p.selected_or_first_available_variant.price }}">
+                  {%- endif -%}
+                </div>
+                <div class="pdn-qty"><button type="button" data-pdn-q="-1" aria-label="Minder">–</button><output data-pdn-qv>{{ q }}</output><button type="button" data-pdn-q="1" aria-label="Meer">+</button></div>
+              </div>
+            {%- endfor -%}
+            <div class="pdn-sum"><span>Kit en profielen</span><b data-pdn-sum>€ 0,00</b></div>
+            <button type="button" class="pdn-btn pdn-btn--ink" data-pdn-cart style="margin-top:10px">In winkelwagen</button>
+            <p class="pdn-note">Profielen zijn 300 cm lang; de laatste 20 cm kan ongeverfd zijn. Hoeveel kit je nodig hebt, hangt af van het aantal panelen en de afstand tussen de kitbanen.</p>
+          </div>
+          <div>
+            <h3>Uit je gereedschapskist</h3>
+            {%- assign tools = 'Kitpistool|Fijne cirkelzaag, of stanleymes en een rei|Waterpas|Rolmaat en potlood|Ondergrondreiniger (bijvoorbeeld alcohol)|Maskingtape|Handschoenen' | split: '|' -%}
+            {%- for t in tools -%}<label class="pdn-chk"><input type="checkbox"><span>{{ t }}</span></label>{%- endfor -%}
+            <p class="pdn-note">Vink af wat je al hebt.</p>
+          </div>
+        </div>
+      </section>
+
+      {%- comment -%} 3 · Rekenhulp {%- endcomment -%}
+      <section class="pdn-sec" id="reken" data-pdn-sec="Hoeveel panelen" data-lin="{{ s.price_linea | default: 8995 }}" data-sig="{{ s.price_signature | default: 11995 }}">
+        <p class="pdn-k">Hoeveel panelen</p><h2 class="pdn-h2">Reken het uit</h2>
+        <p class="pdn-p">Deel de breedte van je wand door 1,22 m en rond naar boven af. Of vul je maat in:</p>
+        <div class="pdn-calcw">
+          <div class="pdn-calc">
+            <div class="pdn-fld">
+              <div><label for="pdn-w">Breedte wand</label><div class="pdn-in"><input id="pdn-w" inputmode="decimal" autocomplete="off" value="3,60" data-pdn-w><small>m</small></div></div>
+              <div><label for="pdn-h">Hoogte wand</label><div class="pdn-in"><input id="pdn-h" inputmode="decimal" autocomplete="off" value="2,60" data-pdn-h><small>m</small></div></div>
+            </div>
+            <div class="pdn-out" aria-live="polite">
+              <div><b data-pdn-o="n">3</b>panelen</div>
+              <div><b data-pdn-o="m2">9,4</b>m² wand</div>
+              <div><b data-pdn-o="p">€ 269,85</b><span data-pdn-o="pl">vanaf, Linea</span></div>
+            </div>
+            <a class="pdn-btn pdn-btn--ink" href="{{ s.decor_url | default: '/collections/wandpanelen' }}" data-pdn-go data-sig="{{ s.decor_url_sig | default: '/collections/8mm-naadloos' }}" style="margin-top:12px">Kies je decor →</a>
+            <a class="pdn-btn" href="/pages/sample" style="margin-top:8px">Eerst gratis samples</a>
+            <p class="pdn-note">Je wandmaat gaat mee naar de productpagina.</p>
+          </div>
+          <figure class="pdn-wall" style="margin-left:0;margin-right:0">
+            <svg viewBox="0 0 480 300" role="img" aria-label="Indeling van de wand" data-pdn-svg></svg>
+            <figcaption class="pdn-note" data-pdn-cap>Rekenvoorbeeld. Panelen zijn 122 cm breed en tot 280 cm hoog. Hoger dan 2,80 m? Dan komt er een horizontale naad; we denken graag mee.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      {%- comment -%} 4 · Stappen {%- endcomment -%}
+      <section class="pdn-sec" id="stappen" data-pdn-sec="Stap voor stap">
+        <p class="pdn-k">Stap voor stap</p><h2 class="pdn-h2">Zo plaats je de panelen</h2>
+        <ol class="pdn-steps" role="list">
+          {%- for t in step_t -%}
+            {%- assign fn = 'pd-montage-stap-' | append: forloop.index | append: '.jpg' -%}
+            <li class="pdn-card" id="stap-{{ forloop.index }}" data-pdn-sec="{{ t }}" data-pdn-step="{{ forloop.index }}">
+              <div class="pdn-card__img">
+                {%- if images[fn] != blank -%}{{ images[fn] | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '480, 800, 1200', sizes: '(min-width: 990px) 40vw, 100vw', alt: t }}{%- endif -%}
+                <span class="pdn-card__num">STAP {{ forloop.index }}</span>
+                {%- if film != blank -%}<button type="button" class="pdn-card__clip" data-pdn-play="{{ step_s[forloop.index0] }}" aria-label="Bekijk stap {{ forloop.index }} in de film">{{ step_d[forloop.index0] }}</button>{%- endif -%}
+              </div>
+              <div class="pdn-card__b">
+                <h3>{{ t }}</h3>
+                {%- case forloop.index -%}
+                  {%- when 1 -%}
+                    <ul>
+                      <li><b>Haal eerst de beschermfolie van de panelen.</b></li>
+                      <li>Maak de wand vlak, schoon, droog en vetvrij.</li>
+                      <li data-if="tegel" hidden>Tegels: ontvet ze met een ondergrondreiniger. Ze moeten vlak, droog en schoon zijn.</li>
+                      <li data-if="bad" hidden>Zorg in de badkamer voor goede ventilatie.</li>
+                      <li>Meet de wand op en bepaal de indeling. Zet het eerste paneel droog tegen de wand om te zien of alles goed uitlijnt.</li>
+                      <li>Zet met een waterpas een lijn voor het eerste paneel.</li>
+                    </ul>
+                    <p class="pdn-let"><b>Let op:</b> hoe vlakker de wand, hoe strakker het resultaat.<span data-if="sig" hidden> Signature is naadloos op een vlakke, rechte wand.</span></p>
+                  {%- when 2 -%}
+                    <ul>
+                      <li>Zaag met een fijne cirkelzaag, of kras met een stanleymes een paar keer langs een rei, buig en breek af.</li>
+                      <li>Zaag sparingen voor stopcontacten en leidingen uit voordat je gaat plaatsen.</li>
+                      <li data-if="rond" hidden>Ronde wand: frees de achterkant in tot aan de toplaag, verwarm het paneel en buig het mee. Frees nooit in de toplaag. <a href="{{ s.bend_url | default: '/blogs/nieuws?view=gids-buigen' }}">Lees de gids buigen</a></li>
+                    </ul>
+                  {%- when 3 -%}
+                    <ul>
+                      <li>Zet High Tack montagekit in verticale banen op de achterkant van het paneel.</li>
+                      <li>Houd ongeveer 10–20 cm tussenruimte tussen de banen.</li>
+                      <li>Eén koker van 290 ml is goed voor ongeveer 10 meter lijmril.</li>
+                    </ul>
+                    {%- if kit -%}
+                      <div class="pdn-mini">{{ kit.featured_image | image_url: width: 120 | image_tag: loading: 'lazy', alt: kit.title, width: 52, height: 52 }}<div><b>{{ kit.title }}</b>290 ml · {{ kit.price | money }}</div><button type="button" class="pdn-add" data-pdn-quick="{{ kit.selected_or_first_available_variant.id }}">+ In winkelwagen</button></div>
+                    {%- endif -%}
+                  {%- when 4 -%}
+                    <ul>
+                      <li>Druk het eerste paneel waterpas en stevig aan. Daar lijnen de andere panelen op uit.</li>
+                      <li>Je hebt ongeveer 15 minuten om bij te stellen.</li>
+                      <li data-if="lin">Linea plaats je stomp tegen elkaar. Een tussenprofiel in de naad kan, maar hoeft niet.</li>
+                      <li data-if="sig" hidden>Signature: klik elk volgend paneel in het vorige en druk het aan.</li>
+                      <li>Tape de panelen tijdelijk aan elkaar, zodat ze niet verschuiven tijdens het uitharden.</li>
+                    </ul>
+                  {%- when 5 -%}
+                    <ul>
+                      <li>Werk randen en hoeken af met aluminium profielen. Zet de kit in een zigzag op de achterkant van het profiel.</li>
+                      <li>Laat de kit 24–48 uur volledig uitharden. Haal daarna de tape weg.</li>
+                    </ul>
+                    <div class="pdn-mini"><svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true"><rect x="6" y="22" width="34" height="8" fill="#8A5A44"/><path d="M40 16v20h6V16z" fill="#151413"/></svg><div><b>Profielen</b>300 cm · vanaf € 23,95</div><a class="pdn-add" href="#profielen">Kies profiel</a></div>
+                {%- endcase -%}
+              </div>
+            </li>
+          {%- endfor -%}
+        </ol>
+      </section>
+
+      {%- comment -%} 5 · Profielen {%- endcomment -%}
+      <section class="pdn-sec" id="profielen" data-pdn-sec="Profielen">
+        <p class="pdn-k">Afwerken</p><h2 class="pdn-h2">Welk profiel waar?</h2>
+        <p class="pdn-p">Aluminium, 300 cm lang. Zaag ze op maat en lijm ze met dezelfde kit. Panelen kunnen ook zonder profielen; dat hangt af van de afwerking die je wilt.</p>
+        {%- liquid
+          assign pf_h = 'eindprofielen|tussenprofielen|hoekprofielen-gelijk|buitenhoekprofielen' | split: '|'
+          assign pf_t = 'Eindprofiel|Tussenprofiel|Hoekprofiel gelijk|Buitenhoekprofiel' | split: '|'
+          assign pf_d = 'Strakke rand langs plafond, vloer of zijkant|Verbinding tussen twee panelen, vooral bij Linea|Binnen- en buitenhoeken netjes afwerken|Buitenhoeken, met extra bescherming tegen schade' | split: '|'
+        -%}
+        <div class="pdn-profs">
+          {%- for h in pf_h -%}
+            {%- assign p = all_products[h] -%}
+            {%- if p == blank -%}{%- continue -%}{%- endif -%}
+            <div class="pdn-pf">
+              {%- case forloop.index -%}
+                {%- when 1 -%}<svg viewBox="0 0 160 62" aria-hidden="true"><rect x="30" y="22" width="90" height="10" fill="#8A5A44"/><path d="M120 16v22h8V16z" fill="#151413"/><text x="80" y="54" font-size="9" text-anchor="middle" fill="#6E675E">rand van de wand</text></svg>
+                {%- when 2 -%}<svg viewBox="0 0 160 62" aria-hidden="true"><rect x="20" y="22" width="56" height="10" fill="#8A5A44"/><rect x="84" y="22" width="56" height="10" fill="#8A5A44"/><path d="M76 16v22h8V16z" fill="#151413"/><text x="80" y="54" font-size="9" text-anchor="middle" fill="#6E675E">tussen twee panelen</text></svg>
+                {%- when 3 -%}<svg viewBox="0 0 160 62" aria-hidden="true"><path d="M40 12h50v8H48v30h-8z" fill="#8A5A44"/><path d="M48 20h6v30h-6z" fill="#151413" opacity=".85"/><text x="110" y="54" font-size="9" text-anchor="middle" fill="#6E675E">hoek</text></svg>
+                {%- when 4 -%}<svg viewBox="0 0 160 62" aria-hidden="true"><path d="M50 50V18h50v8H58v24z" fill="#8A5A44"/><path d="M44 12h62v6H50v32h-6z" fill="#151413"/><text x="118" y="54" font-size="9" text-anchor="middle" fill="#6E675E">buitenhoek</text></svg>
+              {%- endcase -%}
+              <b>{{ pf_t[forloop.index0] }}</b>
+              <span>{{ pf_d[forloop.index0] }}</span>
+              <ul class="pdn-sw" role="list" aria-label="Kleuren">
+                {%- for v in p.variants -%}
+                  {%- assign vt = v.title | downcase -%}
+                  {%- if vt contains 'antraciet' -%}<li style="background:#3B3B3B" title="Antraciet"></li>{%- elsif vt contains 'zwart' -%}<li style="background:#111" title="Zwart"></li>{%- elsif vt contains 'wit' -%}<li style="background:#fff" title="Wit"></li>{%- elsif vt contains 'brons' -%}<li style="background:#9C6B3E" title="Brons"></li>{%- elsif vt contains 'goud' -%}<li style="background:#C9A55A" title="Goud"></li>{%- endif -%}
+                {%- endfor -%}
+              </ul>
+              <div class="pdn-pf__pr"><b>{{ p.price | money }}</b><button type="button" class="pdn-tag" style="margin:0;background:#fff;cursor:pointer;font:inherit;font-size:12.5px;color:var(--ink)" data-pdn-pick="{{ h }}">+ Op mijn lijst</button></div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </section>
+
+      {%- comment -%} 6 · Fouten {%- endcomment -%}
+      <section class="pdn-sec" id="fouten" data-pdn-sec="Veelgemaakte fouten">
+        <p class="pdn-k">Voorkom gedoe</p><h2 class="pdn-h2">Vijf fouten die je makkelijk voorkomt</h2>
+        <ol class="pdn-errs" role="list">
+          <li class="pdn-err"><span class="pdn-err__x">1</span><div><b>De wand niet ontvetten</b><p>Vet en stof laten de kit slecht hechten. <em>Reinig eerst, ook tegels.</em></p></div></li>
+          <li class="pdn-err"><span class="pdn-err__x">2</span><div><b>Signature op een scheve wand</b><p>Op een oneffen wand wordt de naad zichtbaar. <em>Kies Linea, of maak de wand eerst vlak.</em></p></div></li>
+          <li class="pdn-err"><span class="pdn-err__x">3</span><div><b>Sparingen achteraf zagen</b><p>Op de wand zagen gaat lastig. <em>Zaag stopcontacten en leidingen vooraf uit.</em></p></div></li>
+          <li class="pdn-err"><span class="pdn-err__x">4</span><div><b>Panelen laten schuiven</b><p>Tijdens het uitharden kan een paneel zakken. <em>Tape ze tijdelijk aan elkaar.</em></p></div></li>
+          <li class="pdn-err"><span class="pdn-err__x">5</span><div><b>Staand water</b><p>De panelen zijn waterbestendig, maar niet bedoeld voor water dat blijft staan. <em>Laat het niet op de wand staan.</em></p></div></li>
+        </ol>
+      </section>
+
+      {%- comment -%} 7 · Vragen {%- endcomment -%}
+      <section class="pdn-sec pdn-faq" id="vragen" data-pdn-sec="Vragen">
+        <p class="pdn-k">Vragen over installatie</p><h2 class="pdn-h2" style="margin-bottom:14px">Goed om te weten</h2>
+        {%- for f in faq -%}{%- assign fq = f | split: '::' -%}
+          <details{% if forloop.first %} open{% endif %}><summary>{{ fq[0] }}</summary><p>{{ fq[1] }}</p></details>
+        {%- endfor -%}
+      </section>
+    </main>
+  </div></div>
+
+  {%- comment -%} 8 · Hulp {%- endcomment -%}
+  <section class="pdn-help" id="hulp">
+    <div>
+      <p class="pdn-k">Hulp bij je wand</p>
+      <h2 class="pdn-h2">Twijfel je? Stuur een foto van je wand</h2>
+      <p class="pdn-p">We kijken mee naar de ondergrond, de maat en wat je nodig hebt.</p>
+    </div>
+    <div>
+      <div class="pdn-opts">
+        <button type="button" class="pdn-opt pdn-opt--ink" data-pdn-chat hidden><i>{{ ic_chat }}</i><span>Chat met ons<small>Direct een vraag stellen</small></span><span aria-hidden="true">→</span></button>
+        <a class="pdn-opt" href="https://wa.me/{{ wa }}?text={{ 'Hallo Puredeco, ik heb een vraag over het plaatsen van wandpanelen.' | url_encode }}" target="_blank" rel="noopener"><i>{{ ic_wa }}</i><span>WhatsApp<small>Stuur een foto van je wand mee</small></span><span aria-hidden="true">→</span></a>
+        <a class="pdn-opt" href="tel:{{ tel }}"><i>{{ ic_tel }}</i><span>Bel {{ phone }}<small>{{ s.phone_hours | default: 'Ma–za · 10–16 uur' }}</small></span><span aria-hidden="true">→</span></a>
+        <a class="pdn-opt" href="/pages/showroom"><i>{{ ic_home }}</i><span>Studio Herwen<small>{{ s.studio_hours | default: 'Do, vr en za · 10–15 uur, op afspraak' }}</small></span><span aria-hidden="true">→</span></a>
+      </div>
+      <a class="pdn-pdf" href="{{ pdf }}" target="_blank" rel="noopener" data-pdn-pdf>{{ ic_dl }}<span><b>Download de montagehandleiding (PDF)</b><small>8 pagina's · handig op de bouwplaats, ook zonder internet</small></span></a>
+    </div>
+  </section>
+
+  <div class="pdn-dock" data-pdn-dock>
+    <a href="#hulp" data-pdn-ask>{{ ic_chat }} Vraag het ons</a>
+    <a class="is-ink" href="#reken">Bereken &amp; bestel →</a>
+  </div>
+
+  <div class="pdn-sheet" data-pdn-sheet hidden role="dialog" aria-modal="true" aria-label="Op deze pagina">
+    <div class="pdn-sheet__bg" data-pdn-close></div>
+    <div class="pdn-sheet__in">
+      <div class="pdn-sheet__grip" aria-hidden="true"></div>
+      <p class="pdn-k" style="margin-bottom:6px">Op deze pagina</p>
+      <nav class="pdn-toc">{{ toc }}</nav>
+    </div>
+  </div>
+  <div class="pdn-toast" data-pdn-toast hidden role="status"></div>
+</div>
+
+<script>
+(function () {
+  var root = document.querySelector('[data-pdn]'); if (!root) return;
+  var $ = function (q, c) { return (c || root).querySelector(q); };
+  var $$ = function (q, c) { return [].slice.call((c || root).querySelectorAll(q)); };
+  var money = function (c) { return '€ ' + (c / 100).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.'); };
+  var mobile = window.matchMedia('(max-width: 989px)');
+  document.documentElement.classList.add('pdn-has-dock');
+
+  /* Hoogte van de vaste kop, zodat de stappenbalk eronder plakt */
+  function top() { var h = document.querySelector('[is="sticky-header"]'); var y = h ? Math.max(0, Math.round(h.getBoundingClientRect().bottom)) : 0; root.style.setProperty('--pdn-top', y + 'px'); }
+  top(); window.addEventListener('resize', top); window.addEventListener('scroll', function () { window.requestAnimationFrame(top); }, { passive: true });
+
+  /* Toast */
+  var toastT; function toast(t) { var el = $('[data-pdn-toast]'); el.textContent = t; el.hidden = false; clearTimeout(toastT); toastT = setTimeout(function () { el.hidden = true; }, 2600); }
+
+  /* 1 · Situatie: tekst en stappen passen zich aan */
+  var state = { wall: 'glad', ux: 'lin' };
+  var TXT = {
+    glad: { lin: '<b>Gladde wand met Linea:</b> op stucwerk, gipsplaat of beton. De wand moet vlak, droog, schoon en vetvrij zijn. Panelen sluiten stomp aan; een tussenprofiel kan, hoeft niet.', sig: '<b>Gladde wand met Signature:</b> op stucwerk, gipsplaat of beton. Signature klikt in elkaar en is naadloos op een vlakke, rechte wand. Hoe vlakker de wand, hoe strakker de naad.' },
+    tegel: { lin: '<b>Over tegels met Linea:</b> zonder breekwerk. De tegels moeten vlak, droog en vetvrij zijn; ontvet ze eerst. Panelen sluiten stomp aan; een tussenprofiel kan, hoeft niet.', sig: '<b>Over tegels met Signature:</b> zonder breekwerk. Ontvet de tegels eerst. Signature is naadloos op een vlakke, rechte ondergrond; is de tegelwand niet vlak, kies dan Linea.' },
+    bad: { lin: '<b>Badkamer of keuken met Linea:</b> waterbestendig, en hier de standaardkeuze. Vermijd plekken waar water blijft staan en zorg voor goede ventilatie. Dicht bij een kookplaat? Neem eerst contact met ons op.', sig: '<b>Badkamer of keuken met Signature:</b> waterbestendig en naadloos op een vlakke, rechte wand. Vermijd plekken waar water blijft staan en zorg voor goede ventilatie. Dicht bij een kookplaat? Neem eerst contact met ons op.' },
+    rond: { lin: '<b>Ronde wand:</b> alle wandpanelen zijn te buigen. Frees de achterkant in tot aan de toplaag, verwarm het paneel en buig het rustig mee met de wand. Zie stap 2.', sig: '<b>Ronde wand:</b> alle wandpanelen zijn te buigen. Frees de achterkant in tot aan de toplaag, verwarm het paneel en buig het rustig mee met de wand. Zie stap 2.' }
+  };
+  function applySit() {
+    $$('[data-pdn-wall]').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.pdnWall === state.wall); });
+    $$('[data-pdn-ux]').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.pdnUx === state.ux); });
+    $('[data-pdn-res]').innerHTML = TXT[state.wall][state.ux];
+    $$('[data-if]').forEach(function (el) { el.hidden = el.dataset.if !== state.wall && el.dataset.if !== state.ux; });
+    calc();
+  }
+  root.addEventListener('click', function (e) {
+    var w = e.target.closest('[data-pdn-wall]'); if (w) { state.wall = w.dataset.pdnWall; applySit(); return; }
+    var u = e.target.closest('[data-pdn-ux]'); if (u) { state.ux = u.dataset.pdnUx; applySit(); return; }
+  });
+
+  /* 2 · Lijst: aantallen, kleur, totaal en in de winkelwagen */
+  function sum() {
+    var t = 0, n = 0;
+    $$('[data-pdn-item]').forEach(function (r) {
+      var q = parseInt($('[data-pdn-qv]', r).textContent, 10) || 0;
+      var v = $('[data-pdn-var]', r); var o = v.tagName === 'SELECT' ? v.options[v.selectedIndex] : v;
+      t += q * (parseInt(o.dataset.price, 10) || 0); n += q;
+    });
+    $('[data-pdn-sum]').textContent = money(t);
+    var b = $('[data-pdn-cart]'); b.disabled = n === 0; b.textContent = n ? 'In winkelwagen (' + n + ')' : 'Kies minstens één artikel';
+  }
+  function setQ(r, d) { var o = $('[data-pdn-qv]', r); o.textContent = Math.max(0, Math.min(99, (parseInt(o.textContent, 10) || 0) + d)); sum(); }
+  root.addEventListener('click', function (e) {
+    var q = e.target.closest('[data-pdn-q]'); if (q) { setQ(q.closest('[data-pdn-item]'), parseInt(q.dataset.pdnQ, 10)); return; }
+    var p = e.target.closest('[data-pdn-pick]');
+    if (p) { var r = $('[data-pdn-item][data-handle="' + p.dataset.pdnPick + '"]'); if (r) { setQ(r, 1); toast('Toegevoegd aan je lijst bij "Wat heb je nodig"'); } return; }
+  });
+  $$('[data-pdn-var]').forEach(function (s) { s.addEventListener('change', sum); });
+  function add(items, btn) {
+    if (btn) { btn.disabled = true; btn.dataset.t = btn.textContent; btn.textContent = 'Bezig…'; }
+    return fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ items: items }) })
+      .then(function (r) { if (!r.ok) throw r; return r.json(); })
+      .then(function () {
+        if (document.querySelector('cart-drawer')) document.dispatchEvent(new CustomEvent('cart:refresh', { detail: { open: true } }));
+        else window.location.href = '/cart';
+      })
+      .catch(function () { toast('Dat lukte niet. Probeer het opnieuw of bel ons.'); })
+      .finally(function () { if (btn) { btn.disabled = false; btn.textContent = btn.dataset.t; } });
+  }
+  $('[data-pdn-cart]').addEventListener('click', function () {
+    var items = [];
+    $$('[data-pdn-item]').forEach(function (r) { var q = parseInt($('[data-pdn-qv]', r).textContent, 10) || 0; if (q > 0) items.push({ id: parseInt($('[data-pdn-var]', r).value, 10), quantity: q }); });
+    if (items.length) add(items, this).then(sum);
+  });
+  $$('[data-pdn-quick]').forEach(function (b) { b.addEventListener('click', function () { add([{ id: parseInt(b.dataset.pdnQuick, 10), quantity: 1 }], b); }); });
+  sum();
+
+  /* 3 · Rekenhulp: zelfde regels als de productpagina (122 cm breed, rijen van 2,80 m) */
+  var rk = $('#reken'), wIn = $('[data-pdn-w]'), hIn = $('[data-pdn-h]');
+  var num = function (v) { var n = parseFloat(String(v || '').replace(',', '.')); return isFinite(n) && n > 0 ? n : 0; };
+  try {
+    var kept = JSON.parse(sessionStorage.getItem('pd-walls') || 'null');
+    if (kept && kept[0] && num(kept[0].w) && num(kept[0].h)) { wIn.value = kept[0].w; hIn.value = kept[0].h; }
+  } catch (e) {}
+  function calc() {
+    if (!wIn) return;
+    var w = num(wIn.value), h = num(hIn.value), PW = 1.22, PH = 2.8;
+    var cols = w ? Math.ceil(w / PW - 1e-9) : 0, rows = h ? Math.ceil(h / PH - 1e-9) : 0, n = cols * rows;
+    var pr = parseInt(state.ux === 'sig' ? rk.dataset.sig : rk.dataset.lin, 10) || 0;
+    $('[data-pdn-o="n"]').textContent = n || '–';
+    $('[data-pdn-o="m2"]').textContent = w && h ? (w * h).toFixed(1).replace('.', ',') : '–';
+    $('[data-pdn-o="p"]').textContent = n ? money(n * pr) : '–';
+    $('[data-pdn-o="pl"]').textContent = 'vanaf, ' + (state.ux === 'sig' ? 'Signature' : 'Linea');
+    /* Tekening */
+    var svg = $('[data-pdn-svg]'); if (!svg) return;
+    if (!n) { svg.innerHTML = ''; return; }
+    var X = 20, Y = 20, MW = 440, MH = 230, sc = Math.min(MW / (cols * PW), MH / (rows * PH));
+    var ww = w * sc, wh = h * sc, out = '', seam = state.ux === 'sig' ? ' stroke-dasharray="4 3"' : '';
+    out += '<rect x="' + X + '" y="' + Y + '" width="' + (cols * PW * sc).toFixed(1) + '" height="' + (rows * PH * sc).toFixed(1) + '" fill="#EFEAE1" stroke="#DDD6CA" stroke-dasharray="3 3"/>';
+    for (var c = 0; c < cols; c++) {
+      var cx = X + c * PW * sc, cw = Math.min(PW * sc, ww - c * PW * sc);
+      for (var r = 0; r < rows; r++) {
+        var cy = Y + r * PH * sc, ch = Math.min(PH * sc, wh - r * PH * sc);
+        out += '<rect x="' + cx.toFixed(1) + '" y="' + cy.toFixed(1) + '" width="' + cw.toFixed(1) + '" height="' + ch.toFixed(1) + '" fill="#8A5A44" stroke="#151413" stroke-width="1"' + seam + '/>';
+      }
+      var lab = Math.round(Math.min(PW, w - c * PW) * 100);
+      if (cw > 34) out += '<text x="' + (cx + cw / 2).toFixed(1) + '" y="' + (Y + Math.min(wh, PH * sc) / 2).toFixed(1) + '" text-anchor="middle" font-size="12" fill="#F5F2EC">' + lab + ' cm</text>';
+    }
+    out += '<g stroke="#151413" stroke-width=".8"><line x1="' + X + '" y1="' + (Y + wh + 16).toFixed(1) + '" x2="' + (X + ww).toFixed(1) + '" y2="' + (Y + wh + 16).toFixed(1) + '"/></g>';
+    var rest = Math.round((cols * PW - w) * 100);
+    var tl = String(w.toFixed(2)).replace('.', ',') + ' × ' + String(h.toFixed(2)).replace('.', ',') + ' m' + (rest > 0 ? ' · laatste paneel ' + rest + ' cm smaller zagen' : '') + (rows > 1 ? ' · met horizontale naad' : '');
+    out += '<text x="' + (X + ww / 2).toFixed(1) + '" y="' + Math.min(296, Y + wh + 34).toFixed(1) + '" text-anchor="middle" font-size="12" fill="#151413">' + tl + '</text>';
+    svg.setAttribute('viewBox', '0 0 480 ' + Math.max(120, Math.ceil(Y + wh + 44)));
+    svg.innerHTML = out;
+  }
+  [wIn, hIn].forEach(function (el) { el && el.addEventListener('input', calc); });
+  var go = $('[data-pdn-go]');
+  var goBase = go && go.getAttribute('href');
+  go && go.addEventListener('click', function () {
+    var w = wIn.value, h = hIn.value;
+    try { if (num(w) && num(h)) sessionStorage.setItem('pd-walls', JSON.stringify([{ w: w, h: h }])); } catch (e) {}
+    go.setAttribute('href', state.ux === 'sig' && go.dataset.sig ? go.dataset.sig : goBase);
+  });
+
+  /* Film: speelt in het kader, vanaf een hoofdstuk */
+  var fb = $('[data-pdn-film]'), vid = null;
+  function play(t) {
+    if (!fb) return;
+    if (!vid) {
+      var tpl = (mobile.matches && $('template[data-pdn-v="port"]')) || $('template[data-pdn-v="land"]'); if (!tpl) return;
+      fb.appendChild(document.importNode(tpl.content, true)); vid = fb.querySelector('video'); fb.classList.add('is-playing');
+    }
+    var go2 = function () { try { vid.currentTime = t; } catch (e) {} vid.play && vid.play().catch(function () {}); };
+    vid.readyState > 0 ? go2() : vid.addEventListener('loadedmetadata', go2, { once: true });
+  }
+  root.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-pdn-play]'); if (!b) return;
+    var t = parseFloat(b.dataset.pdnPlay) || 0;
+    if (!fb.contains(b)) fb.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    play(t);
+  });
+
+  /* Inhoud (mobiel) */
+  var sheet = $('[data-pdn-sheet]');
+  function shut() { sheet.hidden = true; document.documentElement.style.overflow = ''; }
+  $('[data-pdn-toc-open]').addEventListener('click', function () { sheet.hidden = false; document.documentElement.style.overflow = 'hidden'; });
+  sheet.addEventListener('click', function (e) { if (e.target.closest('[data-pdn-close]') || e.target.closest('a')) shut(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') shut(); });
+
+  /* Waar ben je: stappenbalk en inhoud */
+  var secs = $$('[data-pdn-sec]').filter(function (s) { return s.id && s.id !== 'stappen'; });
+  var barT = $('[data-pdn-bar-t]'), barL = $('[data-pdn-bar-l]');
+  function where() {
+    var line = (parseInt(getComputedStyle(root).getPropertyValue('--pdn-top'), 10) || 0) + 90, cur = null;
+    secs.forEach(function (s) { if (s.getBoundingClientRect().top <= line) cur = s; });
+    var i = cur ? secs.indexOf(cur) : -1;
+    barL.style.width = Math.round(((i + 1) / secs.length) * 100) + '%';
+    if (!cur) barT.innerHTML = 'Op deze pagina';
+    else if (cur.dataset.pdnStep) barT.innerHTML = 'Stap ' + cur.dataset.pdnStep + ' van 5 <span>· ' + cur.dataset.pdnSec + '</span>';
+    else barT.textContent = cur.dataset.pdnSec;
+    $$('[data-pdn-nav]').forEach(function (a) { a.classList.toggle('is-cur', !!cur && a.dataset.pdnNav === cur.id); });
+  }
+  var tk = false; window.addEventListener('scroll', function () { if (!tk) { tk = true; requestAnimationFrame(function () { where(); tk = false; }); } }, { passive: true });
+  where();
+
+  /* Shopify-chat openen vanuit onze knoppen; zonder chat blijft de knop naar #hulp gaan */
+  function chatReady() {
+    var c = document.querySelector('shopify-chat');
+    if (!c || typeof c.show !== 'function') return false;
+    document.documentElement.classList.add('pc-own-chat');
+    $$('[data-pdn-chat]').forEach(function (b) { b.hidden = false; b.addEventListener('click', function () { try { c.show(); } catch (e) {} }); });
+    var ask = $('[data-pdn-ask]'); ask && ask.addEventListener('click', function (e) { e.preventDefault(); try { c.show(); } catch (er) { location.hash = 'hulp'; } });
+    return true;
+  }
+  if (!chatReady() && window.customElements) customElements.whenDefined('shopify-chat').then(function () { setTimeout(chatReady, 300); });
+
+  applySit();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "HowTo",
+      "name": "Wandpanelen plaatsen",
+      "description": "Zo plaats je wandpanelen zelf met montagekit, op een vlakke wand of over bestaande tegels.",
+      "inLanguage": "nl",
+      "tool": [{ "@type": "HowToTool", "name": "Kitpistool" }, { "@type": "HowToTool", "name": "Fijne cirkelzaag of stanleymes" }, { "@type": "HowToTool", "name": "Waterpas" }],
+      "supply": [{ "@type": "HowToSupply", "name": "High Tack montagekit" }, { "@type": "HowToSupply", "name": "Aluminium profielen" }],
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Voorbereiden", "text": "Haal eerst de beschermfolie van de panelen. Maak de wand vlak, schoon, droog en vetvrij. Zet met een waterpas een lijn voor het eerste paneel." },
+        { "@type": "HowToStep", "position": 2, "name": "Op maat maken", "text": "Zaag met een fijne cirkelzaag of kras met een stanleymes langs een rei, buig en breek af. Zaag sparingen vooraf uit." },
+        { "@type": "HowToStep", "position": 3, "name": "Kit aanbrengen", "text": "Zet High Tack montagekit in verticale banen op de achterkant van het paneel, ongeveer 10 tot 20 cm uit elkaar." },
+        { "@type": "HowToStep", "position": 4, "name": "Plaatsen en aansluiten", "text": "Druk het eerste paneel waterpas en stevig aan. Je hebt ongeveer 15 minuten om bij te stellen. Tape de panelen tijdelijk aan elkaar." },
+        { "@type": "HowToStep", "position": 5, "name": "Afwerken", "text": "Werk randen en hoeken af met aluminium profielen en laat de kit 24 tot 48 uur uitharden." }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": {{ shop.url | append: '/' | json }} },
+        { "@type": "ListItem", "position": 2, "name": "Installatie", "item": {{ shop.url | append: '/pages/installatie' | json }} }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for f in faq -%}{%- assign fq = f | split: '::' -%}
+        { "@type": "Question", "name": {{ fq[0] | json }}, "acceptedAnswer": { "@type": "Answer", "text": {{ fq[1] | json }} } }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  ]
+}
+</script>
+
+{% schema %}
+{
+  "name": "Puredeco installatie",
+  "tag": "div",
+  "class": "pd-installatie-section",
+  "settings": [
+    { "type": "url", "id": "pdf_url", "label": "Montagehandleiding (PDF)", "info": "Leeg = PureDeco-montagehandleiding.pdf uit Bestanden" },
+    { "type": "text", "id": "products", "label": "Producten op de lijst", "info": "Handles, gescheiden door |", "default": "hack-tack-montagekit|eindprofielen|tussenprofielen|hoekprofielen-gelijk|buitenhoekprofielen" },
+    { "type": "number", "id": "price_linea", "label": "Vanafprijs Linea per paneel (centen, 122 cm breed)", "default": 8995 },
+    { "type": "number", "id": "price_signature", "label": "Vanafprijs Signature per paneel (centen, 122 cm breed)", "default": 11995 },
+    { "type": "text", "id": "decor_url", "label": "Link 'Kies je decor'", "default": "/collections/wandpanelen" },
+    { "type": "text", "id": "decor_url_sig", "label": "Link 'Kies je decor' bij Signature", "default": "/collections/8mm-naadloos" },
+    { "type": "text", "id": "bend_url", "label": "Link gids buigen", "default": "/blogs/nieuws?view=gids-buigen" },
+    { "type": "text", "id": "phone", "label": "Telefoon", "default": "0316 700 214" },
+    { "type": "text", "id": "whatsapp", "label": "WhatsApp (internationaal, zonder +)", "default": "31316700214" },
+    { "type": "text", "id": "phone_hours", "label": "Bereikbaar", "default": "Ma–za · 10–16 uur" },
+    { "type": "text", "id": "studio_hours", "label": "Studio", "default": "Do, vr en za · 10–15 uur, op afspraak" }
+  ]
+}
+{% endschema %}

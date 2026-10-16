@@ -1,0 +1,167 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><title>PureDeco montagehandleiding</title>
+<style>
+@font-face{font-family:'Cormorant';src:url('/home/user/baet/tools/banners/cormorant.woff2') format('woff2');font-weight:300 700}
+@font-face{font-family:'Instrument Sans';src:url('/home/user/baet/tools/banners/instrument.woff2') format('woff2');font-weight:400 700}
+@page{size:A4;margin:0}
+:root{--paper:#F5F2EC;--card:#FBF9F5;--sand:#EFEAE1;--line:#DDD6CA;--ink:#151413;--text:#3A3733;--mute:#6E675E;--bronze:#8C6A4A;--warn:#9B5B2E;--green:#2F6B4F;--serif:'Cormorant',Georgia,serif;--sans:'Instrument Sans',Arial,sans-serif}
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html,body{margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);font-size:10pt;line-height:1.5}
+.pg{width:210mm;height:297mm;position:relative;overflow:hidden;background:var(--paper);page-break-after:always;padding:18mm 18mm 20mm}
+.pg:last-child{page-break-after:auto}
+.ft{position:absolute;left:18mm;right:18mm;bottom:9mm;display:flex;justify-content:space-between;font-size:7.5pt;color:var(--mute);border-top:.3mm solid var(--line);padding-top:2.5mm}
+.k{font-size:7.5pt;letter-spacing:.22em;text-transform:uppercase;color:var(--bronze);margin:0}
+h1{font-family:var(--serif);font-weight:500;font-size:44pt;line-height:.98;margin:4mm 0 0}
+h2{font-family:var(--serif);font-weight:500;font-size:26pt;line-height:1.02;margin:2mm 0 0}
+h3{font-family:var(--serif);font-weight:500;font-size:15pt;line-height:1.1;margin:0}
+p{margin:2mm 0 0;color:var(--text)}
+ul{margin:2mm 0 0;padding-left:4.5mm;color:var(--text)}li{margin:1mm 0}
+.box{background:var(--card);border:.3mm solid var(--line);padding:5mm}
+.sand{background:var(--sand);padding:4mm 5mm}
+.let{border-left:1mm solid var(--warn);background:#F6EEE6;padding:3mm 4mm;font-size:9pt;color:var(--text);margin-top:3mm}
+.let b{color:var(--warn)}
+.tip{border-left:1mm solid var(--green);background:#EAF0EA;padding:3mm 4mm;font-size:9pt;color:var(--text);margin-top:3mm}
+.tip b{color:var(--green)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5mm}
+.num{display:inline-flex;align-items:center;justify-content:center;width:10mm;height:10mm;background:var(--ink);color:#F5F2EC;font-family:var(--serif);font-size:16pt;flex:none}
+.step{display:grid;grid-template-columns:62mm 1fr;gap:6mm;padding:5mm 0;border-top:.3mm solid var(--line)}
+.step img{width:62mm;height:44mm;object-fit:cover;background:var(--sand);border:.3mm solid var(--line)}
+.step .hd{display:flex;align-items:center;gap:3mm}
+.chk{display:flex;gap:2.5mm;align-items:flex-start;padding:1.6mm 0;border-top:.3mm solid var(--line);font-size:9.5pt}
+.chk i{width:4mm;height:4mm;border:.35mm solid var(--ink);flex:none;margin-top:.6mm}
+.prod{display:flex;gap:4mm;align-items:center;padding:3mm 0;border-top:.3mm solid var(--line)}
+.prod img{width:16mm;height:16mm;object-fit:contain;background:#fff;border:.3mm solid var(--line)}
+.prod b{display:block;font-size:10pt}.prod span{font-size:8.5pt;color:var(--mute)}
+.toc a{display:flex;justify-content:space-between;padding:2.2mm 0;border-top:.3mm solid var(--line);text-decoration:none;color:var(--ink);font-size:10.5pt}
+.toc a span{color:var(--mute)}
+svg{display:block}
+.cover{padding:0;background:var(--ink);color:#F5F2EC}
+.cover .img{position:absolute;inset:0 0 auto 0;height:170mm;overflow:hidden}
+.cover .img img{width:100%;height:100%;object-fit:cover;opacity:.95}
+.cover .t{position:absolute;left:18mm;right:18mm;top:182mm}
+.cover .t .k{color:#C8A27A}
+.cover h1{font-size:50pt;color:#F5F2EC}
+.cover p{color:rgba(245,242,236,.8);font-size:11pt}
+.cover .bot{position:absolute;left:18mm;right:18mm;bottom:14mm;display:flex;justify-content:space-between;align-items:flex-end;font-size:8.5pt;color:rgba(245,242,236,.7)}
+.logo{font-family:var(--serif);font-size:24pt;color:#F5F2EC}
+.pill{display:inline-block;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;padding:1mm 2.5mm;border:.3mm solid var(--line);color:var(--mute);margin-top:2mm}
+.pill.ink{background:var(--ink);color:#F5F2EC;border-color:var(--ink)}
+</style></head><body>
+
+<!-- 1 COVER -->
+<section class="pg cover">
+ <div class="img"><img src="close811.jpg" alt=""></div>
+ <div class="t"><p class="k">Montagehandleiding</p><h1>Wandpanelen plaatsen</h1>
+  <p>Voor Linea (5 mm, stomp) en Signature (8 mm, klik). Op een vlakke wand of over bestaande tegels, met High Tack Montagekit en aluminium profielen.</p></div>
+ <div class="bot"><div><div class="logo">PureDeco</div>Versie 1 · oktober 2026</div><div style="text-align:right">Lees deze handleiding helemaal door<br>voordat je begint.</div></div>
+</section>
+
+<!-- 2 INHOUD + OVER HET PANEEL -->
+<section class="pg">
+ <p class="k">Inhoud</p><h2>In deze handleiding</h2>
+ <div class="toc" style="margin-top:4mm">
+  <a href="#"><b>1 · Over het paneel</b><span>2</span></a><a href="#"><b>2 · Voordat je begint</b><span>3</span></a><a href="#"><b>3 · Wat heb je nodig</b><span>3</span></a><a href="#"><b>4 · Hoeveel panelen</b><span>4</span></a><a href="#"><b>5 · Stap voor stap</b><span>5–6</span></a><a href="#"><b>6 · Afwerken met profielen</b><span>7</span></a><a href="#"><b>7 · Een ronde wand</b><span>7</span></a><a href="#"><b>8 · Onderhoud, garantie en hulp</b><span>8</span></a>
+ </div>
+ <div style="margin-top:9mm"><p class="k">1 · Over het paneel</p><h2>Twee uitvoeringen</h2>
+  <p>Elk paneel heeft een kern van behandeld bamboe en een toplaag met het decor. Een paneel is 122 cm breed en 280 cm hoog (bij een aantal decors 260 cm). Eén paneel van 280 × 122 cm bedekt ongeveer 3,4 m².</p></div>
+ <div class="g2" style="margin-top:5mm">
+  <div class="box"><span class="pill">Standaard</span><h3 style="margin-top:2mm">Linea · 5 mm</h3><p style="font-size:9pt">Stomp. Je plaatst het paneel strak tegen het volgende paneel; de naad blijft zichtbaar. Eventueel met een tussenprofiel.</p>
+   <svg viewBox="0 0 316 64" style="width:100%;margin-top:3mm"><rect x="16" y="25" width="126.5" height="2.5" fill="#7A4F36"/><rect x="145.5" y="25" width="118.5" height="2.5" fill="#7A4F36"/><g fill="none" stroke="#151413" stroke-width="1"><rect x="16" y="25" width="126.5" height="12.5"/><rect x="145.5" y="25" width="118.5" height="12.5"/></g><rect x="142.5" y="25" width="3" height="12.5" fill="#151413"/><g stroke="#151413" stroke-width="0.8"><line x1="278" y1="25" x2="278" y2="37.5"/><line x1="274" y1="25" x2="282" y2="25"/><line x1="274" y1="37.5" x2="282" y2="37.5"/></g><text x="286" y="34.5" font-size="9" fill="#151413">5 mm</text><text x="144" y="58" font-size="8" fill="#6E675E" text-anchor="middle" letter-spacing="1.5">STOMP · ZICHTBARE NAAD</text></svg></div>
+  <div class="box"><span class="pill ink">Signature</span><h3 style="margin-top:2mm">Signature · 8 mm</h3><p style="font-size:9pt">Met kliksysteem. De panelen schuiven in elkaar en sluiten vrijwel naadloos aan, op een vlakke, rechte ondergrond.</p>
+   <svg viewBox="0 0 316 64" style="width:100%;margin-top:3mm"><rect x="16" y="22" width="248" height="3.5" fill="#7A4F36"/><g fill="none" stroke="#151413" stroke-width="1" stroke-linejoin="round"><path d="M16 22 H140 V28 H150 V36 H140 V42 H16 Z"/><path d="M140 22 H264 V42 H140 V36 H150 V28 H140"/></g><g stroke="#151413" stroke-width="0.8"><line x1="278" y1="22" x2="278" y2="42"/><line x1="274" y1="22" x2="282" y2="22"/><line x1="274" y1="42" x2="282" y2="42"/></g><text x="286" y="35" font-size="9" fill="#151413">8 mm</text><text x="140" y="58" font-size="8" fill="#6E675E" text-anchor="middle" letter-spacing="1.5">KLIK · NAADLOOS</text></svg></div>
+ </div>
+ <div class="ft"><span>PureDeco · Montagehandleiding wandpanelen</span><span>2</span></div>
+</section>
+
+<!-- 3 VOORDAT JE BEGINT + NODIG -->
+<section class="pg">
+ <p class="k">2 · Voordat je begint</p><h2>De ondergrond</h2>
+ <div class="g2" style="margin-top:4mm">
+  <div><p>De wand moet <b>vlak, droog, schoon en vetvrij</b> zijn. Geschikt zijn:</p><ul><li>stucwerk</li><li>gipsplaat</li><li>beton</li><li>bestaande tegels (zonder breekwerk)</li></ul></div>
+  <div><div class="let"><b>Beschermfolie:</b> haal de beschermfolie van de panelen voordat je begint.</div><div class="let"><b>Let op:</b> hoe vlakker de wand, hoe strakker het resultaat. Signature is alleen naadloos op een vlakke, rechte ondergrond.</div><div class="let"><b>Vocht:</b> de panelen zijn waterbestendig, ook in badkamer en keuken. Vermijd staand water op de wand.</div></div>
+ </div>
+ <div style="margin-top:9mm"><p class="k">3 · Wat heb je nodig</p><h2>Materiaal en gereedschap</h2></div>
+ <div class="g2" style="margin-top:4mm">
+  <div><h3 style="font-size:12pt">Van PureDeco</h3>
+   <div class="prod"><img src="hack-tack-montagekit.jpg"><div><b>High Tack Montagekit</b><span>Koker van 290 ml. Eén koker is ongeveer 10 meter lijmril.</span></div></div>
+   <div class="prod"><img src="eindprofielen.jpg"><div><b>Aluminium profielen</b><span>Eind-, tussen-, hoek- en buitenhoekprofiel. 300 cm lang; de laatste 20 cm kan ongeverfd zijn.</span></div></div>
+   <div class="tip"><b>Tip:</b> plaats met de High Tack Montagekit. Dat is ook een voorwaarde voor de garantie.</div></div>
+  <div><h3 style="font-size:12pt">Uit je gereedschapskist</h3>
+   <div class="chk"><i></i>Kitpistool en afbreekmes</div><div class="chk"><i></i>Fijne cirkelzaag, of stanleymes en een rei</div><div class="chk"><i></i>Waterpas (of laserwaterpas)</div><div class="chk"><i></i>Meetlint en potlood</div><div class="chk"><i></i>Ondergrondreiniger, bijvoorbeeld alcohol</div><div class="chk"><i></i>Maskingtape of lijmklemmen</div><div class="chk"><i></i>Rubberen hamer</div><div class="chk"><i></i>Handschoenen</div></div>
+ </div>
+ <div class="ft"><span>PureDeco · Montagehandleiding wandpanelen</span><span>3</span></div>
+</section>
+
+<!-- 4 HOEVEEL PANELEN -->
+<section class="pg">
+ <p class="k">4 · Hoeveel panelen</p><h2>Meten en indelen</h2>
+ <div class="g2" style="margin-top:4mm">
+  <div><ul><li>Meet de breedte en de hoogte van de wand.</li><li>Deel de breedte door 1,22 m en rond <b>naar boven</b> af. Dat is het aantal panelen per wand.</li><li>Is de wand hoger dan 2,80 m? Dan komt er een horizontale naad. Neem gerust contact op, we denken mee.</li><li>Teken de indeling op de wand: waar komen de naden, stopcontacten en hoeken?</li></ul>
+   <div class="tip"><b>Rekenhulp:</b> op elke productpagina vul je de maat van je wand in. Je ziet direct het aantal panelen, de m² en de prijs.</div></div>
+  <div class="box"><svg viewBox="0 0 480 300" style="width:100%"><rect x="20" y="20" width="440" height="230" fill="#F5F2EC" stroke="#151413"/><g fill="#8A5A44" stroke="#151413" stroke-width="1"><rect x="20" y="20" width="149" height="230"/><rect x="169" y="20" width="149" height="230"/><rect x="318" y="20" width="142" height="230"/></g><g stroke="#151413" stroke-width=".8"><line x1="20" y1="270" x2="460" y2="270"/><line x1="20" y1="265" x2="20" y2="275"/><line x1="460" y1="265" x2="460" y2="275"/></g><g font-size="13" fill="#F5F2EC" text-anchor="middle"><text x="94" y="140">122 cm</text><text x="243" y="140">122 cm</text><text x="389" y="140">116 cm</text></g><text x="240" y="292" text-anchor="middle" font-size="13" fill="#151413">Voorbeeld: wand 3,60 m breed → 3 panelen</text></svg>
+   <p style="font-size:8.5pt">3,60 ÷ 1,22 = 2,95 → 3 panelen. Het laatste paneel zaag je 6 cm smaller.</p></div>
+ </div>
+ <div class="sand" style="margin-top:9mm"><h3>Voor elke wand dezelfde volgorde</h3><p style="font-size:9.5pt">1 Voorbereiden → 2 Op maat maken → 3 Kit aanbrengen → 4 Plaatsen en aansluiten → 5 Afwerken. Bekijk ook de montagefilm (36 seconden) op puredeco.nl/pages/installatie.</p></div>
+ <div class="ft"><span>PureDeco · Montagehandleiding wandpanelen</span><span>4</span></div>
+</section>
+
+<!-- 5 STAPPEN 1-3 -->
+<section class="pg">
+ <p class="k">5 · Stap voor stap</p><h2>Zo plaats je de panelen</h2>
+ <div class="step" style="margin-top:4mm"><img src="mont-1.jpg"><div><div class="hd"><span class="num">1</span><h3>Voorbereiden</h3></div><ul><li><b>Haal eerst de beschermfolie van de panelen.</b></li><li>Maak de wand schoon, droog, stofvrij en vetvrij. Ontvet tegels met een ondergrondreiniger.</li><li>Haal vuil, vet en oude lijmresten weg.</li><li>Zet met een waterpas een rechte lijn voor het eerste paneel.</li></ul><div class="let"><b>Let op:</b> hoe vlakker de wand, hoe strakker het resultaat.</div></div></div>
+ <div class="step"><img src="mont-2.jpg"><div><div class="hd"><span class="num">2</span><h3>Op maat maken</h3></div><ul><li>Zaag met een fijne cirkelzaag. Of kras een paar keer met een stanleymes langs een rei, buig het paneel en breek het af.</li><li>Zaag sparingen voor stopcontacten, schakelaars en leidingen <b>vooraf</b> uit.</li></ul></div></div>
+ <div class="step"><img src="mont-3.jpg"><div><div class="hd"><span class="num">3</span><h3>Kit aanbrengen</h3></div><ul><li>Breng High Tack Montagekit aan op de achterkant van het paneel, in verticale banen of dotten.</li><li>Houd ongeveer 10–20 cm tussenruimte.</li></ul><div class="tip"><b>Tip:</b> één koker van 290 ml is ongeveer 10 meter lijmril.</div></div></div>
+ <div class="ft"><span>PureDeco · Montagehandleiding wandpanelen</span><span>5</span></div>
+</section>
+
+<!-- 6 STAPPEN 4-5 -->
+<section class="pg">
+ <div class="step" style="border-top:0;padding-top:0"><img src="mont-4.jpg"><div><div class="hd"><span class="num">4</span><h3>Plaatsen en aansluiten</h3></div><ul><li>Zet het eerste paneel tegen je lijn en controleer met de waterpas. Druk het stevig aan.</li><li>Je hebt ongeveer 15 minuten om het paneel bij te stellen.</li><li><b>Signature:</b> klik het volgende paneel in het vorige.</li><li><b>Linea:</b> plaats het volgende paneel strak tegen het vorige, eventueel met een tussenprofiel.</li><li>Tape de panelen tijdelijk aan elkaar, zodat ze niet verschuiven terwijl de kit uithardt.</li></ul></div></div>
+ <div class="step"><img src="mont-5.jpg"><div><div class="hd"><span class="num">5</span><h3>Afwerken</h3></div><ul><li>Werk randen en hoeken af met aluminium profielen (zie pagina 7).</li><li>Laat de kit volledig uitharden: 24 tot 48 uur, afhankelijk van de laagdikte en de ruimte.</li><li>Haal daarna de tape weg.</li></ul></div></div>
+ <div style="margin-top:6mm"><p class="k">Voorkom gedoe</p><h2 style="font-size:20pt">Vijf fouten die je makkelijk voorkomt</h2></div>
+ <div class="g2" style="margin-top:3mm;font-size:9pt">
+  <div class="box" style="padding:3.5mm 4mm"><b>1 · De wand niet ontvetten.</b> Vet en stof laten de kit slecht hechten. Reinig eerst, ook tegels.</div>
+  <div class="box" style="padding:3.5mm 4mm"><b>2 · Signature op een scheve wand.</b> Op een oneffen wand wordt de naad zichtbaar. Kies Linea, of maak de wand eerst vlak.</div>
+  <div class="box" style="padding:3.5mm 4mm"><b>3 · Sparingen achteraf zagen.</b> Op de wand zagen gaat lastig. Zaag ze vooraf uit.</div>
+  <div class="box" style="padding:3.5mm 4mm"><b>4 · Panelen laten schuiven.</b> Tape ze tijdelijk aan elkaar tot de kit is uitgehard.</div>
+  <div class="box" style="padding:3.5mm 4mm"><b>5 · Staand water.</b> Waterbestendig, maar laat geen water op de wand staan.</div>
+ </div>
+ <div class="ft"><span>PureDeco · Montagehandleiding wandpanelen</span><span>6</span></div>
+</section>
+
+<!-- 7 PROFIELEN + BUIGEN -->
+<section class="pg">
+ <p class="k">6 · Afwerken met profielen</p><h2>Welk profiel waar?</h2>
+ <div class="g2" style="margin-top:4mm;gap:4mm">
+  <div class="box" style="padding:4mm"><svg viewBox="0 0 160 50" style="width:100%;height:16mm"><rect x="30" y="16" width="90" height="10" fill="#8A5A44"/><path d="M120 10v22h8V10z" fill="#151413"/></svg><b>Eindprofiel</b><p style="font-size:8.5pt;margin:1mm 0 0">Strakke rand langs plafond, vloer of zijkant.</p></div>
+  <div class="box" style="padding:4mm"><svg viewBox="0 0 160 50" style="width:100%;height:16mm"><rect x="20" y="16" width="56" height="10" fill="#8A5A44"/><rect x="84" y="16" width="56" height="10" fill="#8A5A44"/><path d="M76 10v22h8V10z" fill="#151413"/></svg><b>Tussenprofiel</b><p style="font-size:8.5pt;margin:1mm 0 0">Verbinding tussen twee panelen.</p></div>
+  <div class="box" style="padding:4mm"><svg viewBox="0 0 160 50" style="width:100%;height:16mm"><path d="M50 6h50v8H58v30h-8z" fill="#8A5A44"/><path d="M58 14h6v30h-6z" fill="#151413"/></svg><b>Hoekprofiel gelijk</b><p style="font-size:8.5pt;margin:1mm 0 0">Binnen- en buitenhoeken netjes afwerken.</p></div>
+  <div class="box" style="padding:4mm"><svg viewBox="0 0 160 50" style="width:100%;height:16mm"><path d="M60 44V12h50v8H68v24z" fill="#8A5A44"/><path d="M54 6h62v6H60v32h-6z" fill="#151413"/></svg><b>Buitenhoekprofiel</b><p style="font-size:8.5pt;margin:1mm 0 0">Voor buitenhoeken, met extra bescherming.</p></div>
+ </div>
+ <div class="sand" style="margin-top:4mm;font-size:9pt"><b>Zo plaats je een profiel:</b> zaag het op maat, breng montagekit in een zigzag aan op de achterkant, druk het stevig aan en controleer met een waterpas. Laat de kit 24 tot 48 uur uitharden. Bij Linea kun je de naad ook afwerken met kit in kleur.</div>
+ <div style="margin-top:8mm"><p class="k">7 · Een ronde wand</p><h2>Een paneel buigen</h2></div>
+ <div class="g2" style="margin-top:3mm">
+  <div><ul><li>Meet de ronde wand en bepaal welk deel van het paneel moet buigen.</li><li>Frees aan de achterkant sleuven over dat deel, door de bamboekern tot aan de toplaag. <b>Frees niet in de toplaag.</b></li><li>Verwarm het paneel gelijkmatig over het ingefreesde deel.</li><li>Buig het rustig mee met de wand en plaats het direct met High Tack Montagekit.</li><li>Werk de randen af met profielen.</li></ul></div>
+  <div class="box"><svg viewBox="0 0 220 120" style="width:100%"><path d="M20 100 Q110 0 200 100" fill="none" stroke="#8A5A44" stroke-width="10"/><path d="M28 108 Q110 14 192 108" fill="none" stroke="#151413" stroke-width="1" stroke-dasharray="3 4"/><text x="110" y="116" font-size="10" text-anchor="middle" fill="#6E675E">infrezen · verwarmen · buigen</text></svg><p style="font-size:8.5pt">Twijfel je over de straal van je wand? Vraag het ons vooraf.</p></div>
+ </div>
+ <div class="ft"><span>PureDeco · Montagehandleiding wandpanelen</span><span>7</span></div>
+</section>
+
+<!-- 8 ONDERHOUD GARANTIE HULP -->
+<section class="pg">
+ <p class="k">8 · Onderhoud, garantie en hulp</p><h2>Na het plaatsen</h2>
+ <div class="g2" style="margin-top:4mm">
+  <div class="box"><h3>Onderhoud</h3><ul style="font-size:9.5pt"><li>Afstoffen of afnemen met een zachte, licht vochtige doek is genoeg.</li><li>Gebruik zo nodig een mild reinigingsmiddel.</li><li>Geen schurende of agressieve middelen.</li><li>Je hoeft niets te oliën, te lakken of te impregneren.</li></ul></div>
+  <div class="box"><h3>Garantie</h3><p style="font-size:9.5pt">De garantie geldt als de panelen zijn geplaatst volgens deze montage-instructies, met de High Tack Montagekit, en zijn onderhouden zoals hiernaast staat. Schade door een onjuiste installatie valt erbuiten. Meld een defect via info@puredeco.nl, met aankoopbewijs en foto's.</p></div>
+ </div>
+ <div style="margin-top:9mm;background:var(--ink);color:#F5F2EC;padding:8mm;display:grid;grid-template-columns:1fr 34mm;gap:8mm;align-items:center">
+  <div><p class="k" style="color:#C8A27A">Hulp nodig?</p><h2 style="color:#F5F2EC">We kijken met je mee</h2>
+   <p style="color:rgba(245,242,236,.85)">Stuur een foto van je wand via WhatsApp, of bel ons.</p>
+   <p style="color:#F5F2EC;font-size:11pt;margin-top:4mm"><b>0316 700 214</b> · bellen en WhatsApp, ma–za 10–16 uur<br><b>info@puredeco.nl</b><br><b>Studio Herwen</b> · Nijverheidsdwarsstraat 2, 6914 AX Herwen · do, vr en za 10–15 uur, op afspraak</p></div>
+  <div style="text-align:center"><img src="qr.png" style="width:34mm;height:34mm"><p style="font-size:7.5pt;color:rgba(245,242,236,.7);margin-top:2mm">Montagefilm en meer:<br>puredeco.nl/pages/installatie</p></div>
+ </div>
+ <p style="font-size:7.5pt;color:var(--mute);margin-top:6mm">Deze handleiding is met zorg samengesteld. Afbeeldingen zijn illustraties. Twijfel je over je situatie, neem dan contact op voordat je begint. Versie 1, oktober 2026.</p>
+ <div class="ft"><span>PureDeco · Montagehandleiding wandpanelen</span><span>8</span></div>
+</section>
+</body></html>
