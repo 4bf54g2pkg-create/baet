@@ -31,7 +31,7 @@
     render 'pd-clean-html', html: collection.description
   endcapture
   assign body = clean
-  assign per_page = s.per_page | default: 24
+  assign per_page = s.per_page | default: 48
   comment
     Uit het assortiment (alleen verbergen in dit thema; het product blijft in Shopify bestaan)
   endcomment
@@ -81,7 +81,7 @@
 {%- capture pc_ic_wa -%}<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-4-1z"/></svg>{%- endcapture -%}
 {%- capture pc_ic_cal -%}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="5" width="16" height="15"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>{%- endcapture -%}
 
-<div class="ph pc {% if pc_ov %}pc--ov{% else %}pc--one{% endif %}" data-pc data-max="{{ sample_max }}" data-prop="Voorbeeld van"{% if s.show_status %} data-days="{{ s.open_days | default: '1,2,3,4,5,6' }}" data-from="{{ s.open_from | default: 10 }}" data-to="{{ s.open_to | default: 16 }}"{% endif %}>
+<div class="ph pc {% if pc_ov %}pc--ov{% else %}pc--one{% endif %}" data-pc data-sid="{{ section.id }}" data-max="{{ sample_max }}" data-prop="Voorbeeld van"{% if s.show_status %} data-days="{{ s.open_days | default: '1,2,3,4,5,6' }}" data-from="{{ s.open_from | default: 10 }}" data-to="{{ s.open_to | default: 16 }}"{% endif %}>
 
   {%- comment -%} Kop: compact, zodat de decors direct in beeld staan {%- endcomment -%}
   <header class="pc-head">
@@ -167,6 +167,10 @@
   </nav>
 
   {%- paginate collection.products by per_page -%}
+  {%- comment -%} Oude link naar een pagina die niet (meer) bestaat, bijvoorbeeld ?page=2: door naar de volledige lijst {%- endcomment -%}
+  {%- if paginate.current_page > 1 and collection.products.size == 0 -%}
+    <script>(function () { var u = new URL(location.href); u.searchParams.delete('page'); location.replace(u.toString()); })();</script>
+  {%- endif -%}
   <section class="pc-shop" id="decors">
     <div class="ph-wrap">
 
@@ -363,7 +367,7 @@
           -%}
           {%- comment -%} Mobiel (één kolom): houtdecors van licht naar donker, volgorde uit Thema-instellingen › Puredeco · decors {%- endcomment -%}
           {%- liquid
-            assign pc_o = pc_n | times: 10
+            assign pc_o = pc_n | plus: paginate.current_offset | times: 10
             if collection.handle == 'hout-1' and settings.pd_decor_order != blank
               assign pc_o = pc_n | plus: 100 | times: 10
               for dp in settings.pd_decor_order
@@ -420,6 +424,11 @@
           </li>
         {%- endfor -%}
       </ul>
+
+      {%- comment -%} Automatisch doorladen tijdens het scrollen; de paginalinks hieronder blijven voor Google en zonder JavaScript {%- endcomment -%}
+      {%- if paginate.next -%}
+        <div class="pc-more" data-pc-more data-next="{{ paginate.next.url }}" hidden><span class="pc-more__spin" aria-hidden="true"></span><span data-pc-more-t>Meer decors laden…</span></div>
+      {%- endif -%}
 
       {%- if paginate.pages > 1 -%}
         <nav class="pc-pages" aria-label="Pagina's">
@@ -626,24 +635,70 @@
   var toast = root.querySelector('[data-pc-toast]'), tt = root.querySelector('[data-pc-toast-t]'), timer;
   function get() { try { return JSON.parse(localStorage.getItem(KEY) || '[]') || []; } catch (e) { return []; } }
   function put(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} }
-  var btns = [].slice.call(root.querySelectorAll('[data-pc-sample]'));
+  function sbtns() { return [].slice.call(root.querySelectorAll('[data-pc-sample]')); }
   var mine = root.querySelector('[data-pc-mine]');
   function paint() {
     var c = get();
-    btns.forEach(function (b) { var on = c.some(function (x) { return x.id === b.dataset.id; }); b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+    sbtns().forEach(function (b) { var on = c.some(function (x) { return x.id === b.dataset.id; }); b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
     if (mine) mine.textContent = c.length ? 'Mijn stalen · ' + c.length + '/' + MAX + ' →' : 'Gratis stalen →';
   }
   function say(t) { tt.textContent = t; toast.hidden = false; clearTimeout(timer); timer = setTimeout(function () { toast.hidden = true; }, 4000); }
-  btns.forEach(function (b) {
-    b.addEventListener('click', function () {
-      var c = get(), i = c.findIndex(function (x) { return x.id === b.dataset.id; });
-      if (i > -1) { c.splice(i, 1); put(c); paint(); say(b.dataset.label + ' verwijderd · ' + c.length + ' van ' + MAX + ' gekozen'); return; }
-      if (c.length >= MAX) { say('Je hebt al ' + MAX + ' samples gekozen'); return; }
-      c.push({ id: b.dataset.id, url: b.dataset.url, title: b.dataset.title, label: b.dataset.label, img: b.dataset.img }); put(c); paint();
-      say(b.dataset.label + ' toegevoegd · ' + c.length + ' van ' + MAX + ' gekozen');
-    });
+  root.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-pc-sample]'); if (!b) return;
+    var c = get(), i = c.findIndex(function (x) { return x.id === b.dataset.id; });
+    if (i > -1) { c.splice(i, 1); put(c); paint(); say(b.dataset.label + ' verwijderd · ' + c.length + ' van ' + MAX + ' gekozen'); return; }
+    if (c.length >= MAX) { say('Je hebt al ' + MAX + ' samples gekozen'); return; }
+    c.push({ id: b.dataset.id, url: b.dataset.url, title: b.dataset.title, label: b.dataset.label, img: b.dataset.img }); put(c); paint();
+    say(b.dataset.label + ' toegevoegd · ' + c.length + ' van ' + MAX + ' gekozen');
   });
   paint();
+
+  /* Doorladen: de volgende pagina komt er vanzelf onder zodra je bijna onderaan bent */
+  var more = root.querySelector('[data-pc-more]'), grid = root.querySelector('.pc-grid'), busy = false, extra = 0;
+  function loadNext() {
+    if (!more || busy || !more.dataset.next) return Promise.resolve(false);
+    busy = true; more.classList.add('is-busy');
+    var u = new URL(more.dataset.next, location.origin); u.searchParams.set('section_id', root.dataset.sid);
+    return fetch(u.toString(), { credentials: 'same-origin' }).then(function (r) { if (!r.ok) throw r; return r.text(); }).then(function (h) {
+      var d = new DOMParser().parseFromString(h, 'text/html');
+      [].forEach.call(d.querySelectorAll('.pc-grid > li.pc-card'), function (li) { grid.appendChild(document.importNode(li, true)); });
+      var nx = d.querySelector('[data-pc-more]');
+      extra++; busy = false; more.classList.remove('is-busy');
+      if (nx && nx.dataset.next) { more.dataset.next = nx.dataset.next; if (io) { io.unobserve(more); io.observe(more); } setTimeout(function () { if (more && !busy && more.getBoundingClientRect().top < window.innerHeight + 1400) loadNext(); }, 60); } else { if (io) io.disconnect(); more.remove(); more = null; }
+      paint(); return true;
+    }).catch(function () {
+      busy = false; if (more) { more.classList.remove('is-busy'); more.classList.add('is-err'); more.querySelector('[data-pc-more-t]').textContent = 'Laden lukte niet. Tik om opnieuw te proberen.'; }
+      return false;
+    });
+  }
+  var io = null;
+  if (more && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('pc-inf');
+    more.hidden = false;
+    io = new IntersectionObserver(function (en) { if (en[0].isIntersecting) loadNext(); }, { rootMargin: '0px 0px 1400px 0px' });
+    io.observe(more);
+    /* Ook bij snel scrollen of springen (bijvoorbeeld naar de footer): laden zodra de laadregel boven de onderkant van het scherm + marge ligt */
+    var chk = false;
+    window.addEventListener('scroll', function () {
+      if (chk || !more) return; chk = true;
+      requestAnimationFrame(function () { chk = false; if (more && !busy && !more.classList.contains('is-err') && more.getBoundingClientRect().top < window.innerHeight + 1400) loadNext(); });
+    }, { passive: true });
+    more.addEventListener('click', function () { more.classList.remove('is-err'); more.querySelector('[data-pc-more-t]').textContent = 'Meer decors laden…'; loadNext(); });
+  }
+  /* Terug van een productpagina: dezelfde decors en dezelfde plek in de lijst */
+  var BK = 'pc-back', here = location.pathname + location.search;
+  root.addEventListener('click', function (e) {
+    var a = e.target.closest('.pc-card a'); if (!a) return;
+    try { sessionStorage.setItem(BK, JSON.stringify({ p: here, n: extra, y: window.scrollY })); } catch (er) {}
+  });
+  try {
+    var bk = JSON.parse(sessionStorage.getItem(BK) || 'null'), nav = (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]) || {};
+    if (bk && bk.p === here && nav.type === 'back_forward' && bk.n > 0) {
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      var step = function (k) { if (k <= 0 || !more) { window.scrollTo(0, bk.y); return; } loadNext().then(function (ok) { if (ok) step(k - 1); else window.scrollTo(0, bk.y); }); };
+      step(bk.n);
+    }
+  } catch (er) {}
 
   /* Mobiel: intro en sterke punten na de decors, filters in het paneel. Terug op hun plek bij een breder scherm. */
   var mq = window.matchMedia('(max-width: 749px)');
@@ -716,7 +771,7 @@
     { "type": "checkbox", "id": "intro_from_text", "label": "Eerste alinea van de collectietekst als intro", "default": true },
     { "type": "checkbox", "id": "hero_visual", "label": "Collectiebeeld is een visualisatie", "default": true },
     { "type": "textarea", "id": "nav", "label": "Collectienavigatie", "info": "Eén per regel: handle|tekst. De tekst is de ankertekst voor Google.", "default": "wandpanelen|Alle wandpanelen\nhout-1|Houten wandpanelen\n8mm-naadloos|Naadloze wandpanelen\njapandi|Japandi wandpanelen\nleer|Leerlook\nkunst|Art\ndoorlopend-marmer|Marmerlook\nakupanelen|Akupanelen\naccessoires|Accessoires" },
-    { "type": "range", "id": "per_page", "label": "Producten per pagina", "min": 12, "max": 48, "step": 4, "default": 24 },
+    { "type": "range", "id": "per_page", "label": "Producten per pagina", "info": "Meer producten laden vanzelf tijdens het scrollen", "min": 12, "max": 48, "step": 4, "default": 48 },
     { "type": "checkbox", "id": "show_filters", "label": "Filters tonen", "default": true },
     { "type": "checkbox", "id": "show_sort", "label": "Sorteren tonen", "default": true },
     { "type": "range", "id": "sample_max", "label": "Maximaal aantal samples", "min": 1, "max": 6, "step": 1, "default": 5 },

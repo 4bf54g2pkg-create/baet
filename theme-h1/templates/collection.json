@@ -92,7 +92,7 @@
         "intro_from_text": true,
         "hero_visual": true,
         "nav": "wandpanelen|Alle wandpanelen\nhout-1|Houten wandpanelen\n8mm-naadloos|Naadloze wandpanelen\njapandi|Japandi wandpanelen\nleer|Leerlook\nkunst|Art\ndoorlopend-marmer|Marmerlook\nakupanelen|Akupanelen\naccessoires|Accessoires",
-        "per_page": 24,
+        "per_page": 48,
         "show_filters": true,
         "show_sort": true,
         "sample_max": 5

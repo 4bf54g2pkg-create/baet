@@ -3648,3 +3648,12 @@ html.pde-open shopify-chat { display: none !important; }
   .pc-sheet__slot .pc-clear { display: inline-block; margin-top: 0.4rem; font-size: 1.4rem; color: #151413; }
   .pc-sheet__go { display: block; width: 100%; height: 5.2rem; margin-top: 2rem; border: 0; border-radius: 0; background: #151413; color: #F5F2EC; font: inherit; font-size: 1.5rem; cursor: pointer; }
 }
+
+/* Collectie: automatisch doorladen (H1, 16 okt) */
+html.pc-inf .pc-pages { display: none; }
+.pc-more { display: flex; align-items: center; justify-content: center; gap: 1rem; min-height: 6.4rem; margin-top: 2.4rem; font-size: 1.4rem; color: #6E675E; cursor: pointer; }
+.pc-more[hidden] { display: none; }
+.pc-more__spin { width: 1.8rem; height: 1.8rem; border: 2px solid #DDD6CA; border-top-color: #151413; border-radius: 50%; visibility: hidden; }
+.pc-more.is-busy .pc-more__spin { visibility: visible; animation: pc-spin .8s linear infinite; }
+.pc-more.is-err { color: #9B5B2E; text-decoration: underline; }
+@keyframes pc-spin { to { transform: rotate(360deg); } }
