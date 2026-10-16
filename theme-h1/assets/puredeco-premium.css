@@ -3519,3 +3519,132 @@ html.pde-open shopify-chat { display: none !important; }
 }
 @media (max-width: 989px) { .pdr__row { align-items: start; } }
 .pdr__pics img { background: #E4DDD1; }
+
+/* Collectiepagina mobiel (akkoord artboards 12–14): overzicht compact raster + vaste looks, losse collecties één kolom met grote beelden,
+   onderbalk Filter · Advies · Mijn stalen, adviespaneel (chat, bellen, WhatsApp, studio). Desktop en tablet ongewijzigd. */
+.pc-m { display: none; }
+.pc-m[hidden], .pc-dot[hidden] { display: none !important; }
+@media (max-width: 989px) {
+  .collection-template .header__search { display: none !important; }
+  .collection-template .pd-msearch { display: inline-flex; align-items: center; justify-content: center; width: 4.4rem; height: 4.4rem; color: currentColor; }
+}
+@media (max-width: 749px) {
+  .collection-template .section-breadcrumb { display: none; }
+  .pc .pc-head { padding: 1.6rem 0 1rem; }
+  .pc .pc-head__in { display: block; }
+  .pc .pc-head .ph-k, .pc .pc-head .pc-usp, .pc .pc-nav { display: none; }
+  .pc .pc-head__h { margin: 0; font-size: 3.2rem; line-height: 1.05; }
+  .pc-m__meta { display: block; margin: 0.6rem 0 0; font-size: 1.4rem; color: #3A3733; }
+  .pc-m__trust { display: flex; gap: 1.6rem; margin: 1rem -2rem 0 0; padding: 0 2rem 0.2rem 0; list-style: none; overflow-x: auto; scrollbar-width: none; white-space: nowrap; font-size: 1.3rem; color: #3A3733; }
+  .pc-m__trust::-webkit-scrollbar { display: none; }
+  .pc-m__trust li::before { content: '✓ '; color: #2F6B4F; font-weight: 600; }
+  .pc-m__trust a { color: inherit; }
+  .pc .pc-bar { display: none; }
+  .pc .pc-shop { padding-top: 1.4rem; }
+
+  /* Looks */
+  .pc-looks { display: block; }
+  .pc-looks__row { display: flex; gap: 0.8rem; overflow-x: auto; margin-right: -2rem; padding: 0 2rem 0.2rem 0; scrollbar-width: none; }
+  .pc-looks__row::-webkit-scrollbar { display: none; }
+  .pc-look { flex: none; text-decoration: none; color: #151413; }
+  .pc-look i { display: block; background: #EFEAE1 center / cover no-repeat; font-style: normal; }
+  .pc--ov .pc-looks { position: sticky; top: var(--pc-top, 0); z-index: 20; padding: 1rem 0; background: rgba(245, 242, 236, 0.97); border-bottom: 1px solid #E4DDD1; }
+  .pc--ov .pc-look { display: inline-flex; align-items: center; gap: 0.8rem; height: 4.4rem; padding: 0 1.4rem 0 0.6rem; border: 1px solid #DDD6CA; background: #FBF9F5; font-size: 1.4rem; white-space: nowrap; }
+  .pc--ov .pc-look i { width: 3rem; height: 3rem; }
+  .pc--ov .pc-look--all { padding-left: 1.4rem; }
+  .pc--ov .pc-look--all i { display: none; }
+  .pc--ov .pc-look.is-on { border-color: #151413; box-shadow: inset 0 0 0 1px #151413; }
+  .pc--one .pc-looks { padding: 0.4rem 0 0; }
+  .pc--one .pc-looks__row { gap: 1rem; padding-left: 0.2rem; padding-top: 0.3rem; }
+  .pc--one .pc-look { width: 5.8rem; text-align: center; font-size: 1.15rem; line-height: 1.25; }
+  .pc--one .pc-look i { width: 5.8rem; height: 5.8rem; outline: 1px solid rgba(21, 20, 19, 0.08); outline-offset: -1px; }
+  .pc--one .pc-look--all i { display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: #151413; }
+  .pc--one .pc-look span { display: block; margin-top: 0.6rem; white-space: nowrap; }
+  .pc--one .pc-look.is-on { font-weight: 600; }
+  .pc--one .pc-look.is-on i { outline: 2px solid #151413; outline-offset: 2px; }
+
+  /* Overzicht: compact raster, staal-knop op de foto */
+  .pc--ov .pc-grid { gap: 2.2rem 1.2rem; }
+  .pc--ov .pc-card { position: relative; }
+  .pc--ov .pc-card__eyebrow { display: none; }
+  .pc--ov .pc-card__body { padding-top: 1rem; }
+  .pc--ov .pc-card__name { margin: 0; font-size: 1.9rem; line-height: 1.15; }
+  .pc--ov .pc-card__spec { margin: 0.3rem 0 0; font-size: 1.2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pc--ov .pc-card__size { display: none; }
+  .pc--ov .pc-card__foot { display: block; border-top: 0; margin-top: 0; padding-top: 0.6rem; }
+  .pc--ov .pc-card__price { white-space: normal; font-size: 1.4rem; }
+  .pc--ov .pc-card__smp { position: absolute; z-index: 3; top: 0.8rem; right: 0.8rem; display: inline-flex; align-items: center; height: 3.6rem !important; padding: 0 1.2rem !important; border: 0 !important; border-radius: 1.8rem !important; background: rgba(245, 242, 236, 0.95) !important; box-shadow: 0 0.2rem 0.8rem rgba(21, 20, 19, 0.14); font-size: 1.3rem; color: #151413; }
+  .pc--ov .pc-card__smp.is-on { background: #151413 !important; color: #F5F2EC; }
+  .pc--ov .pc-card__video { right: auto; left: 0.8rem; top: 0.8rem; }
+  .pc--ov .pc-card__pre { left: 0.8rem; top: 0.8rem; }
+  .pc--ov .pc-card__pre + .pc-card__video { top: 3.6rem; }
+
+  /* Losse collectie: één kolom, grote beelden */
+  .pc--one .pc-grid { grid-template-columns: minmax(0, 1fr); gap: 3rem; }
+  .pc--one .pc-grid > li { order: var(--o, 0); }
+  .pc--one .pc-card__media { aspect-ratio: 4 / 3; }
+  .pc--one .pc-card__sw { width: 6.4rem; }
+  .pc--one .pc-card__eyebrow { display: none; }
+  .pc--one .pc-card__body { padding-top: 1.2rem; }
+  .pc--one .pc-card__name { margin: 0; font-size: 2.6rem; }
+  .pc--one .pc-card__spec { font-size: 1.3rem; }
+  .pc--one .pc-card__foot { flex-direction: row; align-items: center; justify-content: space-between; gap: 1rem; }
+  .pc--one .pc-card__price { font-size: 1.6rem; }
+  .pc--one .pc-card__price .pc-card__unit, .pc--one .pc-card__price s { display: inline; }
+  .pc--one .pc-card__price .pc-card__unit { margin-left: 0.4rem; }
+  .pc--one .pc-card__smp { flex: none; display: inline-flex; align-items: center; height: 4.4rem !important; padding: 0 1.6rem !important; border: 1px solid #151413 !important; font-size: 1.4rem; color: #151413; }
+  .pc--one .pc-card__smp .off { font-size: 0; }
+  .pc--one .pc-card__smp .off::after { content: '+ Gratis staal'; font-size: 1.4rem; }
+  .pc--one .pc-card__smp.is-on { background: #151413 !important; color: #F5F2EC; }
+
+  /* Adviesblok in het raster */
+  .pc-help { display: block; grid-column: 1 / -1; padding: 1.8rem 1.8rem 1.6rem; background: #EFEAE1; border: 1px solid #DDD6CA; }
+  .pc-help p { margin: 0; }
+  .pc-help__k { font-size: 1.05rem; letter-spacing: 0.2em; text-transform: uppercase; color: #8C6A4A; }
+  .pc-help__h { margin-top: 0.6rem !important; font-family: var(--font-heading-family); font-weight: 500; font-size: 2.4rem; line-height: 1.1; color: #151413; }
+  .pc-help__t { margin-top: 0.4rem !important; font-size: 1.35rem; line-height: 1.5; color: #3A3733; }
+  .pc-help__row { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 0.8rem; margin-top: 1.2rem; }
+  .pc-help__row a, .pc-help__row button { display: flex; align-items: center; justify-content: center; gap: 0.6rem; height: 4.6rem; padding: 0 0.6rem; border: 1px solid #151413; border-radius: 0; background: #FBF9F5; color: #151413; font: inherit; font-size: 1.35rem; text-decoration: none; white-space: nowrap; cursor: pointer; }
+  .pc-help__row .is-ink { background: #151413; color: #F5F2EC; }
+  .pc-help__st { display: flex; align-items: center; gap: 0.6rem; margin-top: 1rem !important; font-size: 1.2rem; color: #3A3733; }
+
+  /* Bereikbaar-stip */
+  .pc-dot { display: inline-block; flex: none; width: 0.8rem; height: 0.8rem; border-radius: 50%; background: #2F8A5B; }
+  .pc-dot.is-off { background: #A39C92; }
+
+  /* Onderbalk */
+  .pc-dock { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 0.8rem; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 1rem 1.2rem calc(1rem + env(safe-area-inset-bottom)); background: rgba(245, 242, 236, 0.97); border-top: 1px solid #E4DDD1; }
+  .pc-dock.has-filter { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.35fr); }
+  .pc-dock__b { display: flex; align-items: center; justify-content: center; gap: 0.6rem; height: 5rem; padding: 0 0.6rem; border: 1px solid #151413; border-radius: 0; background: #FBF9F5; color: #151413; font: inherit; font-size: 1.4rem; text-decoration: none; white-space: nowrap; overflow: hidden; cursor: pointer; }
+  .pc-dock__b.is-ink { background: #151413; color: #F5F2EC; }
+  .pc-dock__b .pc-dot { margin-left: 0.2rem; }
+  .collection-template body, body.collection-template { padding-bottom: 7.2rem; }
+  .pc .pc-toast { bottom: 8.4rem; }
+  html.pc-own-chat shopify-chat::part(activator) { display: none; }
+
+  /* Panelen */
+  html.pc-sheet-open, html.pc-sheet-open body { overflow: hidden; }
+  .pc-sheet { display: block; position: fixed; inset: 0; z-index: 60; }
+  .pc-sheet__bg { display: block !important; position: absolute; inset: 0; background: rgba(21, 20, 19, 0.45); }
+  .pc-sheet__in { position: absolute; left: 0; right: 0; bottom: 0; max-height: 88vh; overflow-y: auto; padding: 2rem 2rem calc(2.2rem + env(safe-area-inset-bottom)); background: #F5F2EC; border-radius: 1.4rem 1.4rem 0 0; }
+  .pc-sheet__x { position: absolute; top: 1rem; right: 1rem; width: 4.4rem; height: 4.4rem; border: 0; background: none; font-size: 2.6rem; line-height: 1; color: #151413; cursor: pointer; }
+  .pc-sheet__k { margin: 0; font-size: 1.1rem; letter-spacing: 0.2em; text-transform: uppercase; color: #8C6A4A; }
+  .pc-sheet__h { margin: 0.4rem 0 0.2rem; padding-right: 4.4rem; font-family: var(--font-heading-family); font-weight: 500; font-size: 2.8rem; line-height: 1.1; color: #151413; }
+  .pc-sheet__st { display: flex; align-items: center; gap: 0.6rem; margin: 0 0 0.6rem; font-size: 1.35rem; color: #3A3733; }
+  .pc-opt { display: grid; grid-template-columns: 4.4rem minmax(0, 1fr) auto; align-items: center; gap: 1.2rem; width: 100%; height: auto !important; min-height: 6.8rem; line-height: 1.35; margin-top: 0.8rem; padding: 1.2rem 1.4rem; border: 1px solid #DDD6CA; border-radius: 0; background: #FBF9F5; color: #151413; font: inherit; text-align: left; text-decoration: none; cursor: pointer; }
+  .pc-opt.is-ink { background: #151413; border-color: #151413; color: #F5F2EC; }
+  .pc-opt__i { display: flex; align-items: center; justify-content: center; width: 4.4rem; height: 4.4rem; border-radius: 50%; background: #EFEAE1; }
+  .pc-opt.is-ink .pc-opt__i { background: rgba(255, 255, 255, 0.12); }
+  .pc-opt b { display: block; font-weight: 500; font-size: 1.55rem; }
+  .pc-opt small { display: block; font-size: 1.25rem; opacity: 0.75; }
+  .pc-sheet__l { margin: 1.8rem 0 0.8rem; font-size: 1.1rem; letter-spacing: 0.2em; text-transform: uppercase; color: #8C6A4A; }
+  .pc-sheet__chips { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+  .pc-sheet .pc-chip { display: inline-flex; align-items: center; min-height: 4.4rem; padding: 0 1.4rem; border: 1px solid #DDD6CA; background: #FBF9F5; color: #151413; font: inherit; font-size: 1.4rem; text-decoration: none; cursor: pointer; }
+  .pc-sheet .pc-chip.is-on { border-color: #151413; box-shadow: inset 0 0 0 1px #151413; background: #FBF9F5; color: #151413; }
+  .pc-sheet__slot .pc-filters { display: block; margin-top: 1.4rem; }
+  .pc-sheet__slot .pc-filter { flex-wrap: wrap; overflow: visible; margin: 0 0 1rem; padding: 0; gap: 0.8rem; }
+  .pc-sheet__slot .pc-filter__l { width: 100%; margin: 0.4rem 0 0; font-size: 1.1rem; letter-spacing: 0.2em; color: #8C6A4A; }
+  .pc-sheet__slot .pc-chip.is-on { background: #151413; color: #F5F2EC; box-shadow: none; }
+  .pc-sheet__slot .pc-clear { display: inline-block; margin-top: 0.4rem; font-size: 1.4rem; color: #151413; }
+  .pc-sheet__go { display: block; width: 100%; height: 5.2rem; margin-top: 2rem; border: 0; border-radius: 0; background: #151413; color: #F5F2EC; font: inherit; font-size: 1.5rem; cursor: pointer; }
+}

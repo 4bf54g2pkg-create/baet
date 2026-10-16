@@ -39,9 +39,49 @@
   assign pd_hidden_n = collection.products | where: 'handle', '668-glanzend-marmer-florentine-limestone' | size
   assign pd_count = collection.products_count | minus: pd_hidden_n
   assign sample_max = s.sample_max | default: 5
+  comment
+    Mobiel: overzichtscollecties (instelling) krijgen het compacte raster met filter; elke andere collectie één kolom met grote beelden
+  endcomment
+  assign pc_ov = false
+  assign ov_list = s.overview_handles | default: 'wandpanelen' | split: ','
+  for oh in ov_list
+    assign oh2 = oh | strip
+    if oh2 == collection.handle
+      assign pc_ov = true
+    endif
+  endfor
+  assign pc_panels = true
+  if collection.handle == 'akupanelen' or collection.handle == 'accessoires'
+    assign pc_panels = false
+  endif
+  assign pc_min = 0
+  for p in collection.products
+    if pd_hidden contains p.handle
+      continue
+    endif
+    if p.price_min > 0
+      if pc_min == 0 or p.price_min < pc_min
+        assign pc_min = p.price_min
+      endif
+    endif
+  endfor
+  if pc_ov
+    assign pc_help_at = 5
+  else
+    assign pc_help_at = 3
+  endif
+  assign pc_phone = s.phone | default: '0316 700 214'
+  assign pc_tel = pc_phone | remove: ' ' | remove_first: '0' | prepend: '+31'
+  assign pc_wa = s.whatsapp | default: '31316700214' | remove: ' ' | remove: '+'
+  assign pc_wa_text = 'Hallo Puredeco, ik heb een vraag over ' | append: h1 | append: '.'
+  assign pc_hours = s.phone_hours | default: 'Ma–za · 10–16 uur'
 -%}
+{%- capture pc_ic_chat -%}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>{%- endcapture -%}
+{%- capture pc_ic_tel -%}<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/></svg>{%- endcapture -%}
+{%- capture pc_ic_wa -%}<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-4-1z"/></svg>{%- endcapture -%}
+{%- capture pc_ic_cal -%}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="5" width="16" height="15"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>{%- endcapture -%}
 
-<div class="ph pc" data-pc data-max="{{ sample_max }}" data-prop="Voorbeeld van">
+<div class="ph pc {% if pc_ov %}pc--ov{% else %}pc--one{% endif %}" data-pc data-max="{{ sample_max }}" data-prop="Voorbeeld van"{% if s.show_status %} data-days="{{ s.open_days | default: '1,2,3,4,5,6' }}" data-from="{{ s.open_from | default: 10 }}" data-to="{{ s.open_to | default: 16 }}"{% endif %}>
 
   {%- comment -%} Kop: compact, zodat de decors direct in beeld staan {%- endcomment -%}
   <header class="pc-head">
@@ -49,6 +89,16 @@
       <div class="pc-head__t">
         <p class="ph-k ph-k--bronze">{{ s.eyebrow | default: 'Wandpanelen met bamboekern' }}</p>
         <h1 class="pc-head__h">{{ h1 }}</h1>
+        {%- if pc_panels -%}
+          {%- assign h1_dc = h1 | downcase -%}
+          <p class="pc-m pc-m__meta">{% unless h1_dc contains 'bamboe' %}Met bamboekern{% if pc_min > 0 %} · {% endif %}{% endunless %}{% if pc_min > 0 %}{% if h1_dc contains 'bamboe' %}Vanaf{% else %}vanaf{% endif %} {{ pc_min | money }} per paneel{% endif %}</p>
+          <ul class="pc-m pc-m__trust" role="list">
+            <li>Gratis stalen, € 6,95 verzending</li>
+            <li>Op voorraad in 3–6 werkdagen in huis</li>
+            <li>30 dagen bedenktijd</li>
+            <li><a href="/pages/showroom">Studio in Herwen</a></li>
+          </ul>
+        {%- endif -%}
       </div>
       <ul class="pc-usp" role="list">
         <li><strong>{{ pd_count }}</strong> {% if pd_count == 1 %}decor{% else %}decors{% endif %}</li>
@@ -60,6 +110,40 @@
       <div class="ph-wrap"><div class="pc-head__intro">{{ seo_intro }}</div></div>
     {%- endif -%}
   </header>
+
+  {%- comment -%} Mobiel: looks met echt staal (overzicht: vaste chips; collectie: tegels). Links naar de bestaande collecties. {%- endcomment -%}
+  {%- if pc_panels -%}
+    {%- assign looks = s.looks | newline_to_br | split: '<br />' -%}
+    <nav class="pc-m pc-looks" aria-label="Looks" data-pc-looks>
+      <div class="ph-wrap">
+        <div class="pc-looks__row">
+          <a class="pc-look pc-look--all{% if pc_ov %} is-on{% endif %}" href="/collections/wandpanelen"{% if collection.handle == 'wandpanelen' %} aria-current="page"{% endif %}><i aria-hidden="true">Alle</i><span>{% if pc_ov %}Alle{% else %}Overzicht{% endif %}</span></a>
+          {%- for line in looks -%}
+            {%- assign lk = line | strip | split: '|' -%}
+            {%- if lk.size < 2 -%}{%- continue -%}{%- endif -%}
+            {%- liquid
+              assign lh = lk[0] | strip
+              assign ll = lk[1] | strip
+              assign lc = lk[2] | strip
+              assign lsw = ''
+              for lp in collections[lh].products
+                if lc == blank or lp.title contains lc
+                  capture lsw
+                    render 'pd-swatch', product: lp, width: 120
+                  endcapture
+                  assign lsw = lsw | strip
+                  if lsw != blank
+                    break
+                  endif
+                endif
+              endfor
+            -%}
+            <a class="pc-look{% if lh == collection.handle %} is-on{% endif %}" href="/collections/{{ lh }}"{% if lh == collection.handle %} aria-current="page"{% endif %}><i aria-hidden="true"{% if lsw != blank %} style="background-image: url('{{ lsw }}')"{% endif %}></i><span>{{ ll }}</span></a>
+          {%- endfor -%}
+        </div>
+      </div>
+    </nav>
+  {%- endif -%}
   {%- comment -%} Sterke punten: alleen bij wandpanelen, niet bij akupanelen en accessoires {%- endcomment -%}
   {%- unless collection.handle == 'akupanelen' or collection.handle == 'accessoires' or current_page > 1 -%}
     {%- render 'pd-usp', style: 'row', wrap: true -%}
@@ -206,9 +290,25 @@
       </div>
 
       <h2 class="pc-vh">Overzicht van alle decors</h2>
+      {%- capture pc_help_li -%}
+        <li class="pc-m pc-help" style="--o: {{ pc_help_at | minus: 1 | times: 10 | plus: 5 }}">
+          <p class="pc-help__k">Persoonlijk advies · Studio Herwen</p>
+          <p class="pc-help__h">Twijfel je over een decor of de maat?</p>
+          <p class="pc-help__t">Stel je vraag aan ons team. We helpen je kiezen en rekenen mee.</p>
+          <div class="pc-help__row">
+            <button type="button" class="is-ink" data-pc-chat hidden>{{ pc_ic_chat }} Chat</button>
+            <a href="tel:{{ pc_tel }}">{{ pc_ic_tel }} Bel</a>
+            <a href="https://wa.me/{{ pc_wa }}?text={{ pc_wa_text | url_encode }}" target="_blank" rel="noopener">{{ pc_ic_wa }} WhatsApp</a>
+          </div>
+          <p class="pc-help__st"><span class="pc-dot" data-pc-dot hidden></span><span data-pc-st>Telefonisch bereikbaar: {{ pc_hours }}</span></p>
+        </li>
+      {%- endcapture -%}
+      {%- assign pc_n = 0 -%}
       <ul class="pc-grid" role="list">
         {%- for p in collection.products -%}
           {%- if pd_hidden contains p.handle -%}{%- continue -%}{%- endif -%}
+          {%- assign pc_n = pc_n | plus: 1 -%}
+          {%- if pc_n == pc_help_at -%}{{ pc_help_li }}{%- endif -%}
           {%- liquid
             capture code
               render 'pd-decor', product: p, part: 'code'
@@ -261,7 +361,20 @@
             assign alt_room = eyebrow | append: ' wandpaneel ' | append: label | append: ' · sfeerbeeld' | strip
             assign alt_panel = eyebrow | append: ' wandpaneel ' | append: label | append: ' · paneel' | strip
           -%}
-          <li class="pc-card">
+          {%- comment -%} Mobiel (één kolom): houtdecors van licht naar donker, volgorde uit Thema-instellingen › Puredeco · decors {%- endcomment -%}
+          {%- liquid
+            assign pc_o = pc_n | times: 10
+            if collection.handle == 'hout-1' and settings.pd_decor_order != blank
+              assign pc_o = pc_n | plus: 100 | times: 10
+              for dp in settings.pd_decor_order
+                if dp.id == p.id
+                  assign pc_o = forloop.index | times: 10
+                  break
+                endif
+              endfor
+            endif
+          -%}
+          <li class="pc-card" style="--o: {{ pc_o }}">
             <a class="pc-card__media" href="{{ p.url }}" tabindex="-1" aria-hidden="true">
               {%- if room != blank -%}
                 {%- if current_page == 1 and forloop.index <= 4 -%}{%- assign img_load = 'eager' -%}{%- else -%}{%- assign img_load = 'lazy' -%}{%- endif -%}
@@ -346,6 +459,78 @@
     <span data-pc-toast-t></span>
     <a href="/pages/sample">Bekijk je samples →</a>
   </div>
+
+  {%- comment -%} Mobiel: vaste onderbalk (filter, advies, stalen) en de panelen die eruit openen {%- endcomment -%}
+  {%- assign pc_has_filter = false -%}
+  {%- if pc_ov -%}{%- if s.show_filters or s.show_sort -%}{%- assign pc_has_filter = true -%}{%- endif -%}{%- endif -%}
+  <div class="pc-m pc-dock{% if pc_has_filter %} has-filter{% endif %}" data-pc-dock>
+    {%- if pc_has_filter -%}<button type="button" class="pc-dock__b" data-pc-open="filter" aria-haspopup="dialog"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg> Filter</button>{%- endif -%}
+    <button type="button" class="pc-dock__b" data-pc-open="help" aria-haspopup="dialog">{{ pc_ic_chat }} Advies<span class="pc-dot" data-pc-dot hidden></span></button>
+    <a class="pc-dock__b is-ink" href="/pages/sample" data-pc-mine>Gratis stalen →</a>
+  </div>
+
+  <div class="pc-m pc-sheet" data-pc-sheet="help" role="dialog" aria-modal="true" aria-labelledby="pc-help-t" hidden>
+    <div class="pc-sheet__bg" data-pc-close></div>
+    <div class="pc-sheet__in">
+      <button type="button" class="pc-sheet__x" data-pc-close aria-label="Sluiten">×</button>
+      <p class="pc-sheet__k">Persoonlijk advies</p>
+      <p class="pc-sheet__h" id="pc-help-t">Hoe kunnen we helpen?</p>
+      <p class="pc-sheet__st"><span class="pc-dot" data-pc-dot hidden></span><span data-pc-st>Bereikbaar: {{ pc_hours }}</span></p>
+      <button type="button" class="pc-opt is-ink" data-pc-chat hidden><span class="pc-opt__i">{{ pc_ic_chat }}</span><span><b>Chat met ons</b><small>Direct een vraag stellen</small></span><span aria-hidden="true">→</span></button>
+      <a class="pc-opt" href="tel:{{ pc_tel }}"><span class="pc-opt__i">{{ pc_ic_tel }}</span><span><b>Bel {{ pc_phone }}</b><small>{{ pc_hours }}</small></span><span aria-hidden="true">→</span></a>
+      <a class="pc-opt" href="https://wa.me/{{ pc_wa }}?text={{ pc_wa_text | url_encode }}" target="_blank" rel="noopener"><span class="pc-opt__i">{{ pc_ic_wa }}</span><span><b>WhatsApp</b><small>Stuur ook een foto van je wand mee</small></span><span aria-hidden="true">→</span></a>
+      <a class="pc-opt" href="/pages/showroom"><span class="pc-opt__i">{{ pc_ic_cal }}</span><span><b>Afspraak in Studio Herwen</b><small>{{ s.studio_hours | default: 'Do, vr en za · 10–15 uur, op afspraak' }}</small></span><span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+
+  {%- if pc_has_filter -%}
+    {%- assign sort_now = collection.sort_by | default: collection.default_sort_by -%}
+    <div class="pc-m pc-sheet" data-pc-sheet="filter" role="dialog" aria-modal="true" aria-labelledby="pc-filter-t" hidden>
+      <div class="pc-sheet__bg" data-pc-close></div>
+      <div class="pc-sheet__in">
+        <button type="button" class="pc-sheet__x" data-pc-close aria-label="Sluiten">×</button>
+        <p class="pc-sheet__h" id="pc-filter-t">Filter en sorteer</p>
+        <div class="pc-sheet__slot" data-pc-fslot></div>
+        {%- if collection.handle != '8mm-naadloos' -%}
+          <p class="pc-sheet__l">Uitvoering</p>
+          <div class="pc-sheet__chips"><a class="pc-chip" href="/collections/8mm-naadloos">Alleen naadloos · 8 mm</a></div>
+        {%- endif -%}
+        {%- if s.show_sort -%}
+          <p class="pc-sheet__l">Sorteer</p>
+          <div class="pc-sheet__chips">
+            {%- for option in collection.sort_options -%}
+              {%- liquid
+                assign sl = ''
+                case option.value
+                  when 'manual'
+                    assign sl = 'Uitgelicht'
+                  when 'best-selling'
+                    assign sl = 'Best verkocht'
+                  when 'price-ascending'
+                    assign sl = 'Prijs laag–hoog'
+                  when 'price-descending'
+                    assign sl = 'Prijs hoog–laag'
+                  when 'created-descending'
+                    assign sl = 'Nieuwste'
+                endcase
+              -%}
+              {%- if sl != blank -%}<button type="button" class="pc-chip{% if option.value == sort_now %} is-on{% endif %}" data-pc-sortv="{{ option.value }}" aria-pressed="{% if option.value == sort_now %}true{% else %}false{% endif %}">{{ sl }}</button>{%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+        <p class="pc-sheet__l">Collecties</p>
+        <div class="pc-sheet__chips">
+          {%- for line in nav -%}
+            {%- assign pair = line | strip | split: '|' -%}
+            {%- if pair.size == 2 -%}{%- assign nh = pair[0] | strip -%}{%- unless nh == collection.handle -%}<a class="pc-chip" href="/collections/{{ nh }}">{{ pair[1] | strip }}</a>{%- endunless -%}{%- endif -%}
+          {%- endfor -%}
+        </div>
+        <button type="button" class="pc-sheet__go" data-pc-close>Toon decors</button>
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="pc-after" data-pc-after></div>
 
   {%- comment -%} Tekst over de collectie {%- endcomment -%}
   {%- if seo_body != blank -%}
@@ -442,9 +627,11 @@
   function get() { try { return JSON.parse(localStorage.getItem(KEY) || '[]') || []; } catch (e) { return []; } }
   function put(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} }
   var btns = [].slice.call(root.querySelectorAll('[data-pc-sample]'));
+  var mine = root.querySelector('[data-pc-mine]');
   function paint() {
     var c = get();
     btns.forEach(function (b) { var on = c.some(function (x) { return x.id === b.dataset.id; }); b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+    if (mine) mine.textContent = c.length ? 'Mijn stalen · ' + c.length + '/' + MAX + ' →' : 'Gratis stalen →';
   }
   function say(t) { tt.textContent = t; toast.hidden = false; clearTimeout(timer); timer = setTimeout(function () { toast.hidden = true; }, 4000); }
   btns.forEach(function (b) {
@@ -457,6 +644,65 @@
     });
   });
   paint();
+
+  /* Mobiel: intro en sterke punten na de decors, filters in het paneel. Terug op hun plek bij een breder scherm. */
+  var mq = window.matchMedia('(max-width: 749px)');
+  var after = root.querySelector('[data-pc-after]'), fslot = root.querySelector('[data-pc-fslot]');
+  var intro = root.querySelector('.pc-head__intro'), usp = root.querySelector('.pd-usp'), filters = root.querySelector('.pc-filters');
+  var moves = [];
+  function mark(el, to) { if (!el || !to) return; var m = document.createComment('pc'); el.parentNode.insertBefore(m, el); moves.push([el, m, to]); }
+  mark(intro && intro.parentNode, after); mark(usp, after); mark(filters, fslot);
+  function place() { moves.forEach(function (x) { if (mq.matches) x[2].appendChild(x[0]); else x[1].parentNode.insertBefore(x[0], x[1].nextSibling); }); }
+  place();
+  if (mq.addEventListener) mq.addEventListener('change', place);
+
+  /* Vaste look-balk onder de vaste kop */
+  function top() { var h = document.querySelector('[is="sticky-header"]'); root.style.setProperty('--pc-top', (h ? Math.round(h.getBoundingClientRect().height) : 0) + 'px'); }
+  top(); window.addEventListener('resize', top);
+
+  /* Panelen */
+  var opened = null, opener = null;
+  function shut() { if (!opened) return; opened.hidden = true; document.documentElement.classList.remove('pc-sheet-open'); opened = null; if (opener) opener.focus(); }
+  function open(name, from) {
+    var el = root.querySelector('[data-pc-sheet="' + name + '"]'); if (!el) return;
+    shut(); opener = from || null; el.hidden = false; opened = el; document.documentElement.classList.add('pc-sheet-open');
+    var f = el.querySelector('.pc-sheet__x'); if (f) f.focus();
+  }
+  root.addEventListener('click', function (e) {
+    var o = e.target.closest('[data-pc-open]'); if (o) { open(o.dataset.pcOpen, o); return; }
+    if (e.target.closest('[data-pc-close]')) { shut(); return; }
+    var sv = e.target.closest('[data-pc-sortv]');
+    if (sv) { var u = new URL(window.location.href); u.searchParams.set('sort_by', sv.dataset.pcSortv); u.searchParams.delete('page'); u.hash = 'decors'; window.location.href = u.toString(); }
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') shut(); });
+
+  /* Shopify-chat openen vanuit onze eigen knoppen; lukt dat niet, dan blijven de knoppen verborgen en de chatbol staan */
+  function chatReady() {
+    var c = document.querySelector('shopify-chat');
+    if (!c || typeof c.show !== 'function') return false;
+    document.documentElement.classList.add('pc-own-chat');
+    [].forEach.call(root.querySelectorAll('[data-pc-chat]'), function (b) {
+      b.hidden = false;
+      b.addEventListener('click', function () { shut(); try { c.show(); } catch (e) {} });
+    });
+    return true;
+  }
+  if (!chatReady() && window.customElements) {
+    customElements.whenDefined('shopify-chat').then(function () { setTimeout(chatReady, 300); });
+  }
+
+  /* Bereikbaar: groene stip binnen de openingstijden (tijd in Nederland), anders grijs met een andere tekst */
+  if (root.dataset.days) {
+    var now = new Date(), d, h;
+    try {
+      var parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Amsterdam', weekday: 'short', hour: 'numeric', hour12: false }).formatToParts(now);
+      parts.forEach(function (p) { if (p.type === 'weekday') d = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(p.value); if (p.type === 'hour') h = parseInt(p.value, 10) % 24; });
+    } catch (e) { d = now.getDay(); h = now.getHours(); }
+    var days = root.dataset.days.split(',').map(function (x) { return parseInt(x, 10) % 7; });
+    var isOpen = days.indexOf(d) > -1 && h >= parseInt(root.dataset.from, 10) && h < parseInt(root.dataset.to, 10);
+    [].forEach.call(root.querySelectorAll('[data-pc-dot]'), function (x) { x.hidden = false; x.classList.toggle('is-off', !isOpen); });
+    [].forEach.call(root.querySelectorAll('[data-pc-st]'), function (x) { x.textContent = isOpen ? 'Nu bereikbaar · ' + x.textContent.replace(/^[^:]*:\s*/, '') : 'Laat een bericht achter via chat of WhatsApp'; });
+  }
 })();
 </script>
 
@@ -473,7 +719,19 @@
     { "type": "range", "id": "per_page", "label": "Producten per pagina", "min": 12, "max": 48, "step": 4, "default": 24 },
     { "type": "checkbox", "id": "show_filters", "label": "Filters tonen", "default": true },
     { "type": "checkbox", "id": "show_sort", "label": "Sorteren tonen", "default": true },
-    { "type": "range", "id": "sample_max", "label": "Maximaal aantal samples", "min": 1, "max": 6, "step": 1, "default": 5 }
+    { "type": "range", "id": "sample_max", "label": "Maximaal aantal samples", "min": 1, "max": 6, "step": 1, "default": 5 },
+    { "type": "header", "content": "Mobiel" },
+    { "type": "text", "id": "overview_handles", "label": "Overzichtscollecties (compact raster met filter)", "info": "Handles, komma-gescheiden. Alle andere collecties tonen op mobiel één kolom met grote beelden.", "default": "wandpanelen" },
+    { "type": "textarea", "id": "looks", "label": "Looks met staal", "info": "Eén per regel: handle|naam|decorcode voor het staal.", "default": "hout-1|Hout|811\njapandi|Japandi|824\nleer|Leer|830\ndoorlopend-marmer|Marmer|\nkunst|Art|842" },
+    { "type": "header", "content": "Contact (mobiel)" },
+    { "type": "text", "id": "phone", "label": "Telefoon", "default": "0316 700 214" },
+    { "type": "text", "id": "whatsapp", "label": "WhatsApp-nummer (internationaal, zonder +)", "default": "31316700214" },
+    { "type": "text", "id": "phone_hours", "label": "Bereikbaarheid telefoon/WhatsApp", "default": "Ma–za · 10–16 uur" },
+    { "type": "text", "id": "studio_hours", "label": "Openingstijden studio", "default": "Do, vr en za · 10–15 uur, op afspraak" },
+    { "type": "checkbox", "id": "show_status", "label": "Toon 'Nu bereikbaar' (groene stip)", "info": "Zet uit tijdens vakanties of sluitingsdagen.", "default": true },
+    { "type": "text", "id": "open_days", "label": "Bereikbaar op dagen", "info": "1 = maandag … 6 = zaterdag, 7 = zondag", "default": "1,2,3,4,5,6" },
+    { "type": "range", "id": "open_from", "label": "Bereikbaar vanaf (uur)", "min": 6, "max": 14, "step": 1, "default": 10 },
+    { "type": "range", "id": "open_to", "label": "Bereikbaar tot (uur)", "min": 12, "max": 22, "step": 1, "default": 16 }
   ],
   "blocks": [
     {
