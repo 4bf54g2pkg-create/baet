@@ -3,6 +3,8 @@
 {%- endcomment -%}
 <footer class="pdf" role="contentinfo">
   <div class="pdf__wrap">
+    {%- comment -%} Home: de afsluiter erboven heeft al 'Plan een afspraak in de studio'; studio en nieuwsbrief hier weglaten (korter) {%- endcomment -%}
+    {%- unless template.name == 'index' -%}
     <div class="pdf__top">
       <div class="pdf__visit">
         {%- if section.settings.claim != blank -%}
@@ -30,6 +32,7 @@
         {%- endform -%}
       </div>
     </div>
+    {%- endunless -%}
 
     <div class="pdf__contact-m">
       <a class="pdf__btn" href="https://wa.me/{{ section.settings.whatsapp }}" target="_blank" rel="noopener"><span class="pdf__wa" aria-hidden="true">●</span> WhatsApp</a>

@@ -120,7 +120,8 @@
     </div>
   </section>
 
-  {%- comment -%} Eerste project {%- endcomment -%}
+  {%- comment -%} Eerste project: pas tonen als het project is afgerond (instelling 'Toon eerste project') {%- endcomment -%}
+  {%- if s.show_first -%}
   <section class="ph-s pp-first">
     <div class="ph-wrap pp-first__grid">
       <div class="pp-first__tiles">
@@ -151,6 +152,7 @@
       </div>
     </div>
   </section>
+  {%- endif -%}
 
   {%- comment -%} Documentatie: alleen tonen wat echt bestaat {%- endcomment -%}
   {%- if s.doc_1_url != blank or s.doc_2_url != blank or s.doc_3_url != blank or s.doc_4_url != blank -%}
@@ -222,6 +224,7 @@
     { "type": "image_picker", "id": "sector_image_2", "label": "Beeld horeca" },
     { "type": "image_picker", "id": "sector_image_3", "label": "Beeld kantoren" },
     { "type": "image_picker", "id": "sector_image_4", "label": "Beeld retail" },
+    { "type": "checkbox", "id": "show_first", "label": "Toon eerste project", "info": "Uit tot het project is afgerond", "default": false },
     { "type": "text", "id": "first_label", "label": "Label eerste project", "default": "In voorbereiding" },
     { "type": "image_picker", "id": "first_image_1", "label": "Eerste project · voor" },
     { "type": "image_picker", "id": "first_image_2", "label": "Eerste project · tijdens" },

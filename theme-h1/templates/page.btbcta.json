@@ -374,7 +374,10 @@
         "sector_image_1": "shopify://shop_images/pd-sector-hotels-810-led.jpg",
         "sector_image_2": "shopify://shop_images/pd-sector-horeca-691-led.jpg",
         "sector_image_3": "shopify://shop_images/pd-sector-kantoren.jpg",
-        "sector_image_4": "shopify://shop_images/pd-sector-retail.jpg"
+        "sector_image_4": "shopify://shop_images/pd-sector-retail.jpg",
+        "show_first": false,
+        "doc_2_title": "Montagehandleiding",
+        "doc_2_url": "https://cdn.shopify.com/s/files/1/0940/4075/2394/files/PureDeco-montagehandleiding.pdf"
       }
     }
   },
