@@ -1,3 +1,6 @@
 node_modules/
 .DS_Store
 *.log
+
+# Ruwe Shopify-orderdumps: tussenresultaat, bevat klantnummers en is altijd opnieuw op te halen
+ads/raw/
