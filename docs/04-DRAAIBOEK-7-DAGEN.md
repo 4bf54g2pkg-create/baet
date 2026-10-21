@@ -42,11 +42,30 @@ en `adscale_purchase` staat correct op Secundair met identieke cijfers.
 **Waar:** Google Ads → **Doelen** → **Conversies** → **Overzicht** → klik op de groep
 **"Toevoegen aan winkelwagen"**.
 
-**Wat je doet:** zet **beide** acties op **Secundair**, niet alleen één van de twee.
-1. Open de eerste actie → **Instellingen bewerken** → **Primaire of secundaire actie** →
-   **Secundair** → **Opslaan**.
-2. Hetzelfde voor de tweede.
-3. Controleer in het overzicht dat **"Aankoop"** daarna de enige primaire conversieactie is.
+**De waarschuwing "Vereist aandacht" zelf gaat over iets anders.** De letterlijke tekst in het
+account is: *"Sommige van uw verbeterde conversies zijn niet verwerkt, omdat er geen css-kiezer of
+JavaScript-variabele voor door gebruikers verstrekte gegevens is gevonden."* Getroffen actie:
+`add_item_to_cart`, methode TAG, gemeld 19 oktober 2026. Dat is dus **verbeterde conversies**, niet
+de dubbeltelling. Oorzaak: verbeterde conversies wil een e-mailadres of telefoonnummer hashen, maar
+iemand die een paneel in zijn mandje legt heeft nog niets ingevuld. Er is niets te lezen.
+
+Die melding **kost je geen geld**: `add_item_to_cart` draagt 0 bij aan de kolom Conversies. De
+enige schade is dat deze waarschuwing echte waarschuwingen kan ondersneeuwen.
+
+**Wat je doet:**
+1. Doelen → Conversies → Overzicht → klik op **`add_item_to_cart`**.
+2. Zoek in de detailpagina het blok **Verbeterde conversies** en zet het **uit voor deze actie**.
+   Doe dit niet accountbreed: op `Aankoop` is verbeterde conversies juist waardevol, want bij het
+   afrekenen geeft de klant wél een e-mailadres.
+3. Zet `add_item_to_cart` in dezelfde schermen op **Secundair**.
+4. Archiveer `add_to_cart` en `Winkelwagen` — nul conversies in 90 dagen, er valt geen historie te
+   verliezen.
+5. Zet de drie **Local actions** (Website visits, Other engagements, Directions) op **Secundair**.
+   Een paginaweergave als primair conversiedoel hoort nergens in een webshopaccount.
+6. Archiveer de twintig verweesde `adscale_purchase_XX`-acties.
+7. Controleer dat **`Aankoop`** daarna de enige primaire conversieactie is, en kijk in de
+   detailpagina of verbeterde conversies daar aanstaat en werkt. Dat laatste is via de API niet uit
+   te lezen.
 
 Je verliest hier geen meting mee: de cijfers blijven zichtbaar in de rapportage, ze wegen alleen
 niet meer mee in het bieden. Een winkelwagen is een diagnostisch signaal, geen biedoel.
