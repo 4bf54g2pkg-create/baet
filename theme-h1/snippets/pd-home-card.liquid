@@ -1,0 +1,80 @@
+{%- comment -%}
+  Puredeco · productkaart voor de homepage (bestsellers), zelfde opbouw als de kaart op de collectiepagina.
+  p: product, i: positie (1-4)
+{%- endcomment -%}
+{%- liquid
+  capture code
+    render 'pd-decor', product: p, part: 'code'
+  endcapture
+  capture name
+    render 'pd-decor', product: p, part: 'name'
+  endcapture
+  capture eyebrow
+    render 'pd-decor', product: p, part: 'eyebrow'
+  endcapture
+  assign code = code | strip
+  assign name = name | strip
+  assign eyebrow = eyebrow | strip
+  assign room = p.media[1] | default: p.featured_image
+  assign v = p.selected_or_first_available_variant
+  assign finishes = ''
+  assign size = ''
+  assign f5 = false
+  assign f8 = false
+  for o in p.options_with_values
+    assign on = o.name | downcase
+    if on contains 'afwerking'
+      for ov in o.values
+        assign ok = ov | downcase | remove: ' '
+        if ok contains '8mm'
+          assign f8 = true
+        elsif ok contains '5mm'
+          assign f5 = true
+        endif
+      endfor
+    elsif on contains 'formaat'
+      assign size = o.values | last | downcase | remove: 'cm' | remove: ' ' | replace: '×', 'x' | split: 'x' | join: ' × ' | append: ' cm'
+    endif
+  endfor
+  if f5 and f8
+    assign finishes = '5 mm stomp of 8 mm naadloos'
+  elsif f8
+    assign finishes = '8 mm naadloos'
+  elsif f5
+    assign finishes = '5 mm stomp'
+  endif
+  capture swatch
+    render 'pd-swatch', product: p, width: 240
+  endcapture
+  capture sw_zoom
+    render 'pd-swatch', product: p, part: 'zoom'
+  endcapture
+  assign label = code | append: ' ' | append: name | strip
+  assign alt_room = eyebrow | append: ' wandpaneel ' | append: label | append: ' · sfeerbeeld' | strip
+-%}
+<li class="pc-card">
+  <a class="pc-card__media" href="{{ p.url }}" tabindex="-1" aria-hidden="true">
+    {%- if room != blank -%}{{ room | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 990px) 21vw, 64vw', alt: alt_room, class: 'pc-card__room' }}{%- endif -%}
+    {%- if swatch != blank -%}<span class="pc-card__sw{% if sw_zoom contains '1' %} is-zoom{% endif %}"><img src="{{ swatch | strip }}" alt="" loading="lazy" width="240" height="240"></span>{%- endif -%}
+  </a>
+  <div class="pc-card__body">
+    <p class="pc-card__eyebrow">{{ eyebrow | default: 'Wandpaneel' }}</p>
+    <h3 class="pc-card__name"><a href="{{ p.url }}"><span>{{ code }}</span> {{ name }}</a></h3>
+    <p class="pc-card__spec">{% if size != blank %}<span class="pc-card__size">{{ size }}</span>{% endif %}{% if finishes != blank %}<span class="pc-card__fin">{{ finishes }}</span>{% endif %}</p>
+    <div class="pc-card__foot">
+      <p class="pc-card__price">
+        {%- if p.price_varies -%}<span class="pc-card__from">vanaf</span> {% endif -%}
+        <strong>{{ p.price_min | money }}</strong>
+        <span class="pc-card__unit">per paneel</span>
+        {%- capture m2 -%}{%- render 'pd-m2', product: p, part: 'min' -%}{%- endcapture -%}
+        {%- assign m2 = m2 | strip -%}
+        {%- if m2 != blank -%}<span class="pc-card__m2">≈ {{ m2 }} per m²</span>{%- endif -%}
+      </p>
+      {%- if v and code != blank -%}
+        <button type="button" class="pc-card__smp" data-pc-sample data-id="{{ v.id }}" data-url="{{ p.url }}" data-title="{{ p.title | escape }}" data-label="{{ label | escape }}" data-img="{{ swatch | strip }}" aria-pressed="false" aria-label="Staal van {{ label | escape }} toevoegen">
+          <span class="off">+ Staal</span><span class="on">✓ Staal</span>
+        </button>
+      {%- endif -%}
+    </div>
+  </div>
+</li>

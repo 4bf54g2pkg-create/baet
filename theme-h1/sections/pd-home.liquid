@@ -1,8 +1,10 @@
 {%- comment -%}
-  Puredeco · homepage volgens het ontwerp "The Puredeco Finish".
-  Hero · beton ciré en travertin · merkverhaal · gebouwd om te blijven · van ver / van dichtbij · Puredeco Projects ·
-  collecties · in het interieur · montage · The Puredeco Edit.
-  Beelden: instelbaar in de editor; zonder keuze worden bestaande productbeelden gebruikt.
+  Puredeco · homepage v4 (artboards homepage-mobiel / homepage-desktop, akkoord 21 okt 2026).
+  Hero · vertrouwensbalk · bestsellers per look · naadloos of strakke naad · van ver één vlak · waarom Puredeco ·
+  shop per look · beton ciré en travertin · Puredeco Projects · wat klanten zeggen · montage · The Puredeco Edit ·
+  wandpanelen specialist. De afsluiter Studio Herwen is een eigen sectie (pd-home-cta).
+  Mobiel: swipe-rijen, wisselknop naadloos/strakke naad, uitklapbaar specialistenblok en een vaste onderbalk.
+  Merkverhaal en In het interieur zijn vervallen; het grote dealerblok staat standaard uit (tekstlink onder Projects).
 {%- endcomment -%}
 {%- liquid
   assign p811 = all_products['811-hout-walnut-classic']
@@ -15,7 +17,7 @@
 
   assign s = section.settings
   assign hero_d = s.hero_image | default: p811.media[3]
-  assign hero_m = s.hero_image_mobile | default: hero_d
+  assign hero_m = s.hero_room_mobile | default: p811.media[1] | default: s.hero_image_mobile | default: hero_d
   assign wall_p = s.wall_product | default: p824
   assign wall_img = s.wall_image | default: wall_p.media[1]
   assign wall_pack = wall_p.media.first
@@ -24,11 +26,20 @@
     render 'pd-decor', product: wall_p, part: 'full'
   endcapture
   assign wall_code = wall_code | strip
-  assign film = shop.metafields.puredeco.montage_video.value
-  assign film_m = shop.metafields.puredeco.montage_video_mobile.value
--%}
+  assign pdf = s.pdf_url | default: 'https://cdn.shopify.com/s/files/1/0940/4075/2394/files/PureDeco-montagehandleiding.pdf'
+  assign projects_url = s.projects_url | default: '/pages/form'
 
-<div class="ph">
+  assign ph_phone = s.phone | default: '0316 700 214'
+  assign ph_tel = ph_phone | remove: ' ' | remove_first: '0' | prepend: '+31'
+  assign ph_wa = s.whatsapp | default: '31316700214' | remove: ' ' | remove: '+'
+  assign ph_hours = s.phone_hours | default: 'Ma–za · 10–16 uur'
+-%}
+{%- capture ic_chat -%}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>{%- endcapture -%}
+{%- capture ic_tel -%}<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/></svg>{%- endcapture -%}
+{%- capture ic_wa -%}<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-4-1z"/></svg>{%- endcapture -%}
+{%- capture ic_cal -%}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="5" width="16" height="15"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>{%- endcapture -%}
+
+<div class="ph ph-v4" data-ph data-max="5"{% if s.show_status %} data-days="{{ s.open_days | default: '1,2,3,4,5,6' }}" data-from="{{ s.open_from | default: 10 }}" data-to="{{ s.open_to | default: 16 }}"{% endif %}>
 
   {%- comment -%} 1 · Hero {%- endcomment -%}
   <section class="ph-hero">
@@ -44,99 +55,126 @@
     </div>
     <div class="ph-wrap ph-hero__in">
       <p class="ph-k ph-k--light">{{ s.hero_eyebrow }}</p>
-      <h2 class="ph-hero__h">{{ s.hero_heading | default: 'Een nieuwe wand,<br>zonder breekwerk.' }}</h2>
+      <h2 class="ph-hero__h">{{ s.hero_heading | default: 'Wandpanelen in hout-, steen- en stoflook' }}</h2>
       {%- if s.hero_sub != blank -%}<p class="ph-hero__sub">{{ s.hero_sub }}</p>{%- endif -%}
+      {%- if s.hero_price != blank -%}<p class="ph-hero__price">{{ s.hero_price }}</p>{%- endif -%}
       <div class="ph-btns">
-        <a class="ph-btn ph-btn--paper" href="{{ s.hero_url_1 | default: '/collections/wandpanelen' }}">Ontdek de collecties</a>
-        <a class="ph-btn ph-btn--line-light" href="{{ s.hero_url_2 | default: '/pages/form' }}">Voor projecten</a>
+        <a class="ph-btn ph-btn--paper" href="{{ s.hero_url_1 | default: '/collections/wandpanelen' }}">{{ s.hero_btn_1 | default: 'Bekijk alle wandpanelen' }}</a>
+        <a class="ph-btn ph-btn--line-light" href="{{ s.hero_url_samples | default: '/pages/sample' }}">{{ s.hero_btn_2 | default: 'Bestel gratis stalen' }}</a>
       </div>
+      <nav class="ph-hero__chips" aria-label="Wandpanelen per look">
+        <a href="/collections/hout-1">Hout</a>
+        <a href="/collections/japandi">Japandi</a>
+        <a href="{{ p691.url | default: '/collections/wandpanelen' }}">Beton ciré</a>
+        <a href="{{ p851.url | default: '/collections/wandpanelen' }}">Travertin</a>
+        <a href="/collections/leer">Leer</a>
+        <a href="/collections/kunst">Art</a>
+        <a href="/collections/doorlopend-marmer">Marmer</a>
+      </nav>
     </div>
     {%- if s.hero_caption_photo != blank -%}<p class="ph-hero__cap ph-hero__cap--l">{{ s.hero_caption_photo }}</p>{%- endif -%}
     {%- if s.hero_caption != blank -%}<p class="ph-hero__cap{% if s.hero_caption_photo != blank %} ph-hero__cap--d{% endif %}">{{ s.hero_caption }}</p>{%- endif -%}
   </section>
 
-  {%- comment -%} 1a · Sterke punten (snippets/pd-usp.liquid) {%- endcomment -%}
-  {%- if s.show_usp -%}{%- render 'pd-usp', style: 'row', wrap: true -%}{%- endif -%}
+  {%- comment -%} 2 · Vertrouwensbalk: op mobiel één regel om te swipen {%- endcomment -%}
+  {%- if s.show_usp -%}
+  <div class="ph-tb" role="list">
+    <div class="ph-tb__i" role="listitem"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><span><b>{{ s.google_score | default: '4,9 / 5' }}</b>op Google Reviews</span></div>
+    <div class="ph-tb__i is-hot" role="listitem"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2 6h12v10H2zM14 10h4l3 3v3h-7"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><span><b>Gratis bezorgd</b>vanaf € 600 in Nederland</span></div>
+    <div class="ph-tb__i is-hot" role="listitem"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="1.5"/><path d="M2.5 9.5h19M6 15h4"/></svg><span><b>Betaal flexibel</b>achteraf of gespreid met Klarna</span></div>
+    <div class="ph-tb__i" role="listitem"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></svg><span><b>Op voorraad</b>in 3–6 werkdagen in huis</span></div>
+    <div class="ph-tb__i" role="listitem"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="4" y="3" width="10" height="14"/><rect x="10" y="7" width="10" height="14"/></svg><span><b>Tot 5 stalen gratis</b>alleen € 6,95 verzending</span></div>
+    <div class="ph-tb__i" role="listitem"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 11l8-6 8 6v9H4z"/><path d="M10 20v-5h4v5"/></svg><span><b>Studio Herwen</b>alle decors op ware grootte</span></div>
+  </div>
+  {%- endif -%}
 
-  {%- comment -%} 1b · Uitgelicht: beton ciré en travertin {%- endcomment -%}
-  {%- if s.show_stone -%}
-  <section class="ph-s ph-stone" id="beton-travertin">
+  {%- comment -%} 3 · Bestsellers per look (keuze in de editor; zonder keuze de bestsellers van de laatste 90 dagen, één per look) {%- endcomment -%}
+  {%- if s.show_best -%}
+  {%- liquid
+    assign best = s.bestsellers
+    if best == blank or best.size == 0
+      assign best_h = '670-glanzend-marmer-pandora-slate,823-japanse-stof-japandi-taupe,812-hout-walnut-deep,831-leer-leather-sand' | split: ','
+    endif
+  -%}
+  <section class="ph-s ph-best">
     <div class="ph-wrap">
-      <div class="ph-stone__head">
+      <div class="ph-headrow">
         <div>
-          <p class="ph-k ph-k--light">Uitgelicht · steenlook</p>
-          <h2 class="ph-h2 ph-stone__h">Beton ciré en travertin</h2>
+          <p class="ph-k ph-k--bronze">{{ s.best_kicker | default: 'Bestsellers · laatste 90 dagen' }}</p>
+          <h2 class="ph-h2">{{ s.best_heading | default: 'Bestsellers per look' }}</h2>
         </div>
-        <p class="ph-lead ph-stone__lead">De rust van beton ciré en de warmte van travertin, als wandpaneel met een kern van bamboe. Zonder stucwerk en zonder zware natuursteen. Waterbestendig, dus ook voor de badkamer.</p>
+        <a class="ph-link" href="/collections/wandpanelen"><span class="ph-dk">Alle wandpanelen →</span><span class="ph-mb">Bekijk alle →</span></a>
       </div>
-      <div class="ph-stone__grid">
-        {%- liquid
-          assign st_p = 'concrete-smoke-691-betonlook|wandpaneel-travertine-ivory-851' | split: '|'
-          assign st_n = 'Beton ciré|Travertin' | split: '|'
-          assign st_c = '691 Concrete Smoke|851 Travertine Ivory' | split: '|'
-          assign st_t = 'De look van beton ciré in rokerig grijs. 5 mm dun; met een ingefreesde achterkant en warmte ook voor ronde wanden.|De look van travertin in warm ivoor. 8 mm met kliksysteem, de panelen sluiten vrijwel naadloos aan.' | split: '|'
-          assign st_room = '1|1' | split: '|'
-          assign st_tex = '2|3' | split: '|'
-        -%}
-        {%- for h in st_p -%}
-          {%- liquid
-            assign ix = forloop.index0
-            assign sp = all_products[h]
-            assign ri = st_room[ix] | plus: 0
-            assign ti = st_tex[ix] | plus: 0
-            assign room = sp.media[ri] | default: sp.featured_image
-            assign texture = sp.media[ti]
-            assign st_alt = st_n[ix] | append: ' · ' | append: st_c[ix]
-          -%}
-          {%- if sp != blank -%}
-          <article class="ph-stone__item">
-            <a class="ph-stone__img" href="{{ sp.url }}" aria-label="{{ st_c[ix] }} bekijken">
-              {%- if room != blank -%}{{ room | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '500, 900, 1400', sizes: '(min-width: 990px) 42vw, 92vw', alt: st_alt }}{%- endif -%}
-              <span class="ph-tag ph-tag--corner">Visualisatie</span>
-              {%- if texture != blank -%}<span class="ph-stone__sw">{{ texture | image_url: width: 400 | image_tag: loading: 'lazy', alt: '' }}</span>{%- endif -%}
-            </a>
-            <div class="ph-stone__row">
-              <h3 class="ph-stone__name">{{ st_n[ix] }}</h3>
-              <span class="ph-stone__code">{{ st_c[ix] }}</span>
-            </div>
-            <p class="ph-stone__t">{{ st_t[ix] }}</p>
-            <div class="ph-stone__btns">
-              <a class="ph-btn ph-btn--paper" href="{{ sp.url }}">Bekijk {{ st_c[ix] | split: ' ' | first }}</a>
-              <a class="ph-link ph-link--light" href="/pages/sample">Gratis sample →</a>
-            </div>
-          </article>
+      <div class="pc pc--ov ph-best__pc">
+        <ul class="pc-grid ph-best__grid" role="list">
+          {%- if best != blank and best.size > 0 -%}
+            {%- for p in best limit: 4 -%}{%- render 'pd-home-card', p: p, i: forloop.index -%}{%- endfor -%}
+          {%- else -%}
+            {%- for h in best_h -%}{%- assign p = all_products[h] -%}{%- if p != blank -%}{%- render 'pd-home-card', p: p, i: forloop.index -%}{%- endif -%}{%- endfor -%}
           {%- endif -%}
-        {%- endfor -%}
+        </ul>
       </div>
     </div>
   </section>
   {%- endif -%}
 
-  {%- comment -%} 2 · Merkverhaal {%- endcomment -%}
-  <section class="ph-s ph-story">
-    <div class="ph-wrap ph-story__grid">
-      <div class="ph-story__side">
-        <p class="ph-k ph-k--bronze">Waarom Puredeco</p>
-        {%- assign story_img = s.story_image | default: images['pd-merkverhaal-812.jpg'] -%}
-        {%- if story_img != blank -%}
-          <figure class="ph-story__img">
-            {{ story_img | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400, 700, 1000', sizes: '(min-width: 990px) 28vw, 80vw', alt: s.story_caption }}
-            {%- if s.story_caption != blank -%}<figcaption>{{ s.story_caption }}</figcaption>{%- endif -%}
-          </figure>
-        {%- endif -%}
+  {%- comment -%} 4 · Naadloos of met een strakke naad. Mobiel: wisselknop, één kaart tegelijk {%- endcomment -%}
+  {%- if s.show_naad -%}
+  {%- assign naad_face = p811.featured_image -%}
+  <section class="ph-s ph-naad" data-ph-naad>
+    <div class="ph-wrap">
+      <p class="ph-k ph-k--bronze">Kies je uitvoering</p>
+      <h2 class="ph-h2">Naadloos of met een strakke naad</h2>
+      <div class="ph-naad__seg" role="tablist" aria-label="Uitvoering">
+        <button type="button" role="tab" aria-selected="true" aria-controls="ph-naad-sig" data-ph-seg="sig">Naadloos<small>Signature · 8 mm</small></button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="ph-naad-lin" data-ph-seg="lin">Strakke naad<small>Linea · 5 mm</small></button>
       </div>
-      <div class="ph-story__main">
-        <p class="ph-story__h">Een wand is het grootste vlak in een interieur. Hij moet er goed uitzien, en dat jarenlang blijven doen.</p>
-        <p class="ph-story__t">Daarom bouwen we onze panelen rond een kern van bamboe: stevig, vormvast en snel hernieuwbaar. Met een formaat van 280 cm van vloer tot plafond en een kliksysteem dat strak aansluit, oogt de wand als één geheel. Voor een woonkamer en voor een hotel.</p>
-        <p class="ph-story__sig">{% if s.founder != blank %}{{ s.founder }} · {% endif %}Studio Herwen</p>
+      <div class="ph-naad__g">
+        <article class="ph-naad__c" id="ph-naad-sig" data-ph-card="sig" role="tabpanel">
+          <div class="ph-naad__face">{%- if naad_face != blank -%}{{ naad_face | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '700, 1000, 1400', sizes: '(min-width: 750px) 45vw, 92vw', alt: 'Naadloze wand in 811 Walnut Classic' }}{%- endif -%}</div>
+          <div class="ph-naad__sec">
+            <svg viewBox="0 0 316 64" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <rect x="16" y="22" width="248" height="3.5" fill="#7A4F36"/>
+              <g fill="none" stroke="#151413" stroke-width="1" stroke-linejoin="round"><path d="M16 22 H140 V28 H150 V36 H140 V42 H16 Z"/><path d="M140 22 H264 V42 H140 V36 H150 V28 H140"/></g>
+              <g stroke="#6E675E" stroke-width="0.6" opacity=".55"><line x1="16" y1="32" x2="140" y2="32" stroke-dasharray="2 3"/><line x1="150" y1="32" x2="264" y2="32" stroke-dasharray="2 3"/></g>
+              <g stroke="#151413" stroke-width="0.8"><line x1="278" y1="22" x2="278" y2="42"/><line x1="274" y1="22" x2="282" y2="22"/><line x1="274" y1="42" x2="282" y2="42"/></g>
+              <text x="286" y="35" font-size="9" fill="#151413" font-family="inherit">8 mm</text>
+              <text x="140" y="58" font-size="8" fill="#6E675E" text-anchor="middle" letter-spacing="1.5" font-family="inherit">KLIK · NAADLOOS</text>
+            </svg>
+          </div>
+          <div class="ph-naad__t">
+            <span class="ph-naad__badge">Signature · 8 mm</span>
+            <h3 class="ph-naad__h">Naadloos</h3>
+            <p class="ph-naad__spec">Kliksysteem · vrijwel naadloos*</p>
+            <div class="ph-naad__pr"><span>vanaf <b>{{ s.price_sig | default: '€ 119,95' }}</b> per paneel<small>122 cm breed</small></span><a href="/collections/8mm-naadloos">Naadloze wandpanelen →</a></div>
+          </div>
+        </article>
+        <article class="ph-naad__c" id="ph-naad-lin" data-ph-card="lin" role="tabpanel">
+          <div class="ph-naad__face">{%- if naad_face != blank -%}{{ naad_face | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '700, 1000, 1400', sizes: '(min-width: 750px) 45vw, 92vw', alt: 'Wand met strakke naad in 811 Walnut Classic' }}{%- endif -%}<i class="ph-naad__seam"></i></div>
+          <div class="ph-naad__sec">
+            <svg viewBox="0 0 316 64" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <rect x="16" y="25" width="126.5" height="2.5" fill="#7A4F36"/><rect x="145.5" y="25" width="118.5" height="2.5" fill="#7A4F36"/>
+              <g fill="none" stroke="#151413" stroke-width="1"><rect x="16" y="25" width="126.5" height="12.5"/><rect x="145.5" y="25" width="118.5" height="12.5"/></g>
+              <rect x="142.5" y="25" width="3" height="12.5" fill="#151413"/>
+              <g stroke="#151413" stroke-width="0.8"><line x1="278" y1="25" x2="278" y2="37.5"/><line x1="274" y1="25" x2="282" y2="25"/><line x1="274" y1="37.5" x2="282" y2="37.5"/></g>
+              <text x="286" y="34.5" font-size="9" fill="#151413" font-family="inherit">5 mm</text>
+              <text x="144" y="58" font-size="8" fill="#6E675E" text-anchor="middle" letter-spacing="1.5" font-family="inherit">STOMP · ZICHTBARE NAAD</text>
+            </svg>
+          </div>
+          <div class="ph-naad__t">
+            <span class="ph-naad__badge ph-naad__badge--std">Linea · 5 mm</span>
+            <h3 class="ph-naad__h">Met een strakke naad</h3>
+            <p class="ph-naad__spec">Stomp · zichtbare naad</p>
+            <div class="ph-naad__pr"><span>vanaf <b>{{ s.price_lin | default: '€ 89,95' }}</b> per paneel<small>122 cm breed</small></span><a href="/collections/wandpanelen">Alle decors →</a></div>
+          </div>
+        </article>
       </div>
+      <p class="ph-naad__foot">* Naadloos op een vlakke, rechte ondergrond.</p>
     </div>
   </section>
+  {%- endif -%}
 
-  {%- comment -%} 3 · Waarom Puredeco: één blok (artboard WaaromPuredeco, akkoord 14 okt). Vervangt "Het verschil zit vanbinnen" + de vier kaarten. {%- endcomment -%}
-  {%- render 'pd-waarom' -%}
-
-  {%- comment -%} 4 · Van ver één vlak, van dichtbij materiaal {%- endcomment -%}
+  {%- comment -%} 5 · Van ver één vlak, van dichtbij materiaal {%- endcomment -%}
   <section class="ph-s ph-near">
     <div class="ph-wrap">
       <div class="ph-near__head">
@@ -164,88 +202,18 @@
     </div>
   </section>
 
-  {%- comment -%} 5 · Puredeco Projects {%- endcomment -%}
-  <section class="ph-s ph-pro">
-    <div class="ph-wrap">
-      <div class="ph-pro__head">
-        <div>
-          <p class="ph-k ph-k--bronze">Puredeco Projects</p>
-          <h2 class="ph-h2">Wanden voor hotels, horeca en kantoren</h2>
-        </div>
-        <p class="ph-lead">Voor architecten, interieurbouwers en aannemers. Grote vlakken snel en strak gemonteerd, in een materiaal dat tegen intensief gebruik kan. Met projectprijzen, een toplaag in jouw kleur en één vast aanspreekpunt.</p>
-      </div>
-      <div class="ph-pro__grid">
-        {%- liquid
-          assign sec_titles = 'Hotels|Horeca en restaurants|Kantoren|Retail en showrooms' | split: '|'
-          assign sec_texts = "Kamers, gangen en lobby's: dezelfde wand in elke kamer.|Lounges, bars en restaurants: sfeer bij avondlicht, makkelijk schoon te houden.|Ontvangst, vergaderruimte, akoestiek met akupanelen.|Snel omgebouwd, strak resultaat, toplaag in huisstijlkleur." | split: '|'
-          assign sec_fallback = '811-hout-walnut-classic|843-art-stucco-light-shadow|824-japanse-stof-japandi-taupe-dark|830-leer-leather-taup' | split: '|'
-        -%}
-        {%- for t in sec_titles -%}
-          {%- liquid
-            assign i = forloop.index
-            assign key = 'sector_image_' | append: i
-            assign simg = s[key]
-            assign is_vis = false
-            if simg == blank
-              assign simg = all_products[sec_fallback[forloop.index0]].media.first
-            else
-              assign is_vis = true
-            endif
-          -%}
-          <a class="ph-pro__card" href="{{ s.projects_url | default: '/pages/form' }}">
-            <span class="ph-pro__img{% if is_vis == false %} ph-pro__img--tex{% endif %}">
-              {%- if simg != blank -%}{{ simg | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400, 700, 900', sizes: '(min-width: 990px) 22vw, 45vw', alt: t }}{%- endif -%}
-              {%- if is_vis and s.sector_visual -%}<span class="ph-tag">Visualisatie</span>{%- endif -%}
-            </span>
-            <span class="ph-h3">{{ t }}</span>
-            <span class="ph-t">{{ sec_texts[forloop.index0] }}</span>
-          </a>
-        {%- endfor -%}
-      </div>
-      <div class="ph-pro__facts">
-        <p><strong>Projectprijzen</strong>op aanvraag</p>
-        <p><strong>Toplaag in jouw kleur</strong>vanaf 150 m²</p>
-        <p><strong>Samples en stalen</strong>voor je presentatie</p>
-        <p><strong>Vast aanspreekpunt</strong>van offerte tot levering</p>
-        <a class="ph-btn ph-btn--ink" href="{{ s.projects_url | default: '/pages/form' }}">Bespreek je project</a>
-      </div>
-    </div>
-  </section>
+  {%- comment -%} 6 · Waarom Puredeco (opbouw toplaag en bamboekern) {%- endcomment -%}
+  {%- render 'pd-waarom' -%}
 
-  {%- comment -%} 5b · Dealers: tweede zakelijke ingang naast Projects (artboard Dealers, punt 02) {%- endcomment -%}
-  {%- if s.show_dealers -%}
-  <section class="ph-s ph-dealer" id="dealers">
-    <div class="ph-wrap ph-dealer__grid">
-      <div class="ph-dealer__img">
-        {%- if s.dealer_image != blank -%}
-          {{ s.dealer_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '500, 800, 1200', sizes: '(min-width: 990px) 45vw, 100vw', alt: 'Showroomdisplay met Puredeco-wandpanelen' }}
-          {%- if s.dealer_is_visual -%}<span class="ph-tag">Visualisatie van het showroomdisplay</span>{%- endif -%}
-        {%- endif -%}
-      </div>
-      <div class="ph-dealer__txt">
-        <p class="ph-k ph-k--bronze">Voor showrooms en vakhandel</p>
-        <h2 class="ph-h2">Word dealer van Puredeco</h2>
-        <p class="ph-lead">Verkoop onze wandpanelen in je eigen zaak. Je krijgt een showroomdisplay met onze hardlopers, zakelijke prijzen en persoonlijke ondersteuning. We werken met een beperkt aantal partners per regio.</p>
-        <ul class="ph-dealer__list" role="list">
-          <li><strong>Showroomdisplay</strong>met onze populairste panelen</li>
-          <li><strong>Zakelijke prijzen</strong>na inloggen met je zakelijke account</li>
-          <li><strong>Exclusief in je regio</strong>beperkt aantal partners</li>
-        </ul>
-        <div class="ph-dealer__cta">
-          <a class="ph-btn ph-btn--ink" href="{{ s.dealer_url | default: '/pages/verkoopparters' }}">Word dealer</a>
-          <a class="ph-link" href="{{ routes.account_login_url }}">Al zakelijk klant? Inloggen →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-  {%- endif -%}
-
-  {%- comment -%} 6 · Collecties {%- endcomment -%}
+  {%- comment -%} 7 · Shop per look {%- endcomment -%}
   <section class="ph-s ph-coll">
     <div class="ph-wrap">
       <div class="ph-headrow">
-        <h2 class="ph-h2">De collecties</h2>
-        <a class="ph-link" href="/collections/wandpanelen">Alle decors →</a>
+        <div>
+          <p class="ph-k ph-k--bronze">Alle collecties</p>
+          <h2 class="ph-h2">Shop per look</h2>
+        </div>
+        <a class="ph-link" href="/collections/wandpanelen"><span class="ph-dk">Alle wandpanelen →</span><span class="ph-mb">Bekijk alle →</span></a>
       </div>
       <div class="ph-coll__grid">
         {%- liquid
@@ -283,7 +251,7 @@
             endif
           -%}
           <a class="ph-coll__item" href="{{ url }}">
-            <span class="ph-coll__img">{%- if cimg != blank -%}{{ cimg | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400, 700, 1000', sizes: '(min-width: 990px) 28vw, 45vw', alt: n }}{%- endif -%}</span>
+            <span class="ph-coll__img">{%- if cimg != blank -%}{{ cimg | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300, 500, 800', sizes: '(min-width: 990px) 15vw, 42vw', alt: n }}{%- endif -%}</span>
             <span class="ph-coll__row"><span class="ph-coll__name">{{ n }}</span><span class="ph-coll__meta">{{ c_meta[ix] }}</span></span>
           </a>
         {%- endfor -%}
@@ -291,43 +259,143 @@
     </div>
   </section>
 
-  {%- comment -%} 7 · In het interieur {%- endcomment -%}
-  <section class="ph-s ph-insp">
+  {%- comment -%} 8 · Uitgelicht: beton ciré en travertin {%- endcomment -%}
+  {%- if s.show_stone -%}
+  <section class="ph-s ph-stone" id="beton-travertin">
     <div class="ph-wrap">
-      <h2 class="ph-h2">Puredeco in het interieur</h2>
-      <div class="ph-insp__grid ph-swipe">
+      <div class="ph-stone__head">
+        <div>
+          <p class="ph-k ph-k--light">Uitgelicht · steenlook</p>
+          <h2 class="ph-h2 ph-stone__h">Beton ciré en travertin</h2>
+        </div>
+        <p class="ph-lead ph-stone__lead">De rust van beton ciré en de warmte van travertin, als wandpaneel met een kern van bamboe. Zonder stucwerk en zonder zware natuursteen. Waterbestendig, dus ook voor de badkamer.</p>
+      </div>
+      <div class="ph-stone__grid">
         {%- liquid
-          assign insp = '810-hout-noir-oak:1|824-japanse-stof-japandi-taupe-dark:2|812-hout-walnut-deep:2|843-art-stucco-light-shadow:1|830-leer-leather-taup:1' | split: '|'
+          assign st_p = 'concrete-smoke-691-betonlook|wandpaneel-travertine-ivory-851' | split: '|'
+          assign st_n = 'Beton ciré|Travertin' | split: '|'
+          assign st_c = '691 Concrete Smoke|851 Travertine Ivory' | split: '|'
+          assign st_t = 'De look van beton ciré in rokerig grijs. 5 mm dun; met een ingefreesde achterkant en warmte ook voor ronde wanden.|De look van travertin in warm ivoor. 8 mm met kliksysteem, de panelen sluiten vrijwel naadloos aan.' | split: '|'
+          assign st_room = '1|1' | split: '|'
+          assign st_tex = '2|3' | split: '|'
         -%}
-        {%- for it in insp -%}
+        {%- for h in st_p -%}
           {%- liquid
-            assign pp = it | split: ':'
-            assign ip = all_products[pp[0]]
-            assign mi = pp[1] | plus: 0
-            assign im = ip.media[mi] | default: ip.featured_image
-            capture iname
-              render 'pd-decor', product: ip, part: 'full'
-            endcapture
+            assign ix = forloop.index0
+            assign sp = all_products[h]
+            assign ri = st_room[ix] | plus: 0
+            assign ti = st_tex[ix] | plus: 0
+            assign room = sp.media[ri] | default: sp.featured_image
+            assign texture = sp.media[ti]
+            assign st_alt = st_n[ix] | append: ' · ' | append: st_c[ix]
           -%}
-          {%- if ip != blank -%}
-            <a class="ph-insp__item{% if forloop.first %} ph-insp__item--big{% endif %}" href="{{ ip.url }}">
-              {%- if im != blank -%}{{ im | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '500, 900, 1400', sizes: '(min-width: 990px) 45vw, 80vw', alt: iname | strip }}{%- endif -%}
-              <span class="ph-insp__cap">{% if forloop.first %}<strong>{{ iname | strip }}</strong> · Shop deze wand →{% else %}{{ iname | strip }}{% endif %}</span>
-              <span class="ph-tag ph-tag--corner">Visualisatie</span>
+          {%- if sp != blank -%}
+          <article class="ph-stone__item">
+            <a class="ph-stone__img" href="{{ sp.url }}" aria-label="{{ st_c[ix] }} bekijken">
+              {%- if room != blank -%}{{ room | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '500, 900, 1400', sizes: '(min-width: 990px) 42vw, 82vw', alt: st_alt }}{%- endif -%}
+              {%- if texture != blank -%}<span class="ph-stone__sw">{{ texture | image_url: width: 400 | image_tag: loading: 'lazy', alt: '' }}</span>{%- endif -%}
             </a>
+            <div class="ph-stone__row">
+              <h3 class="ph-stone__name">{{ st_n[ix] }}</h3>
+              <span class="ph-stone__code">{{ st_c[ix] }}</span>
+            </div>
+            <p class="ph-stone__t">{{ st_t[ix] }}</p>
+            <div class="ph-stone__btns">
+              <a class="ph-btn ph-btn--paper" href="{{ sp.url }}">Bekijk {{ st_c[ix] | split: ' ' | first }}</a>
+              <a class="ph-link ph-link--light" href="/pages/sample">Gratis staal →</a>
+            </div>
+          </article>
           {%- endif -%}
         {%- endfor -%}
       </div>
-      <p class="ph-note">Visualisaties zijn gemarkeerd. Echte projecten krijgen locatie en ontwerper.</p>
+    </div>
+  </section>
+  {%- endif -%}
+
+  {%- comment -%} 9 · Puredeco Projects: wanden voor hotels, horeca en kantoren {%- endcomment -%}
+  <section class="ph-s ph-pro">
+    <div class="ph-wrap">
+      <div class="ph-pro__head">
+        <div>
+          <p class="ph-k ph-k--bronze">Puredeco Projects</p>
+          <h2 class="ph-h2">Wanden voor hotels, horeca en kantoren</h2>
+        </div>
+        <p class="ph-lead">Voor architecten, interieurbouwers en aannemers. Grote vlakken snel en strak gemonteerd, in een materiaal dat tegen intensief gebruik kan. Met projectprijzen, een toplaag in jouw kleur en één vast aanspreekpunt.</p>
+      </div>
+      <div class="ph-pro__grid">
+        {%- liquid
+          assign sec_titles = 'Hotels|Horeca en restaurants|Kantoren|Retail en showrooms' | split: '|'
+          assign sec_texts = "Kamers, gangen en lobby's: dezelfde wand in elke kamer.|Lounges, bars en restaurants: sfeer bij avondlicht, makkelijk schoon te houden.|Ontvangst, vergaderruimte, akoestiek met akupanelen.|Snel omgebouwd, strak resultaat, toplaag in huisstijlkleur." | split: '|'
+          assign sec_fallback = '811-hout-walnut-classic|843-art-stucco-light-shadow|824-japanse-stof-japandi-taupe-dark|830-leer-leather-taup' | split: '|'
+        -%}
+        {%- for t in sec_titles -%}
+          {%- liquid
+            assign i = forloop.index
+            assign key = 'sector_image_' | append: i
+            assign simg = s[key]
+            assign is_vis = false
+            if simg == blank
+              assign simg = all_products[sec_fallback[forloop.index0]].media.first
+            else
+              assign is_vis = true
+            endif
+          -%}
+          <a class="ph-pro__card" href="{{ projects_url }}">
+            <span class="ph-pro__img{% if is_vis == false %} ph-pro__img--tex{% endif %}">
+              {%- if simg != blank -%}{{ simg | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400, 700, 900', sizes: '(min-width: 990px) 22vw, 64vw', alt: t }}{%- endif -%}
+            </span>
+            <span class="ph-h3">{{ t }}</span>
+            <span class="ph-t">{{ sec_texts[forloop.index0] }}</span>
+          </a>
+        {%- endfor -%}
+      </div>
+      <div class="ph-pro__facts">
+        <p><strong>Projectprijzen</strong>op aanvraag</p>
+        <p><strong>Toplaag in jouw kleur</strong>vanaf 150 m²</p>
+        <p><strong>Samples en stalen</strong>voor je presentatie</p>
+        <p><strong>Vast aanspreekpunt</strong>van offerte tot levering</p>
+        <a class="ph-btn ph-btn--ink" href="{{ projects_url }}">Bespreek je project</a>
+      </div>
+      <a class="ph-link ph-pro__dl" href="{{ s.dealer_url | default: '/pages/verkoopparters' }}">Showroom of vakhandel? Word dealer →</a>
     </div>
   </section>
 
-  {%- comment -%} 8 · Montage {%- endcomment -%}
+  {%- comment -%} Dealers als eigen blok: standaard uit, de tekstlink hierboven vervangt het {%- endcomment -%}
+  {%- if s.show_dealers -%}
+  <section class="ph-s ph-dealer" id="dealers">
+    <div class="ph-wrap ph-dealer__grid">
+      <div class="ph-dealer__img">
+        {%- if s.dealer_image != blank -%}
+          {{ s.dealer_image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '500, 800, 1200', sizes: '(min-width: 990px) 45vw, 100vw', alt: 'Showroomdisplay met Puredeco-wandpanelen' }}
+        {%- endif -%}
+      </div>
+      <div class="ph-dealer__txt">
+        <p class="ph-k ph-k--bronze">Voor showrooms en vakhandel</p>
+        <h2 class="ph-h2">Word dealer van Puredeco</h2>
+        <p class="ph-lead">Verkoop onze wandpanelen in je eigen zaak. Je krijgt een showroomdisplay met onze hardlopers, zakelijke prijzen en persoonlijke ondersteuning. We werken met een beperkt aantal partners per regio.</p>
+        <div class="ph-dealer__cta">
+          <a class="ph-btn ph-btn--ink" href="{{ s.dealer_url | default: '/pages/verkoopparters' }}">Word dealer</a>
+          <a class="ph-link" href="{{ routes.account_login_url }}">Al zakelijk klant? Inloggen →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+
+  {%- comment -%} 10 · Wat klanten zeggen: Google-score en de sterkste klantreviews {%- endcomment -%}
+  {%- if s.show_reviews -%}
+    {%- render 'pd-reviews', part: 'section', score: s.google_score_big, score_note: 'op Google Reviews', pick: s.review_pick, hide_count: true -%}
+  {%- endif -%}
+
+  {%- comment -%} 11 · Montage {%- endcomment -%}
   <section class="ph-s ph-mont" id="ph-montage">
     <div class="ph-wrap">
       <div class="ph-headrow">
         <h2 class="ph-h2">Snel geplaatst, strak resultaat</h2>
-        {%- if film != blank -%}<button type="button" class="ph-link ph-linkbtn" data-ph-film-open>Bekijk de montagefilm →</button>{%- endif -%}
+        <div class="ph-mont__links">
+          <a class="ph-link" href="/pages/installatie">Alles over installatie →</a>
+          <a class="ph-link" href="{{ pdf }}" target="_blank" rel="noopener">Montagehandleiding (PDF) →</a>
+        </div>
       </div>
       <ol class="ph-mont__row ph-swipe">
         {%- liquid
@@ -345,16 +413,9 @@
         {%- endfor -%}
       </ol>
     </div>
-    {%- if film != blank -%}
-      <dialog class="ph-film" data-ph-film>
-        <button type="button" class="ph-film__x" data-ph-film-close aria-label="Sluiten">×</button>
-        <template data-ph-film-land>{{ film | video_tag: controls: true, muted: true, playsinline: true, preload: 'auto', class: 'ph-film__v' }}</template>
-        {%- if film_m != blank -%}<template data-ph-film-port>{{ film_m | video_tag: controls: true, muted: true, playsinline: true, preload: 'auto', class: 'ph-film__v' }}</template>{%- endif -%}
-      </dialog>
-    {%- endif -%}
   </section>
 
-  {%- comment -%} 9 · The Puredeco Edit {%- endcomment -%}
+  {%- comment -%} 12 · The Puredeco Edit {%- endcomment -%}
   <section class="ph-s ph-edit">
     <div class="ph-wrap ph-edit__grid">
       <div>
@@ -380,7 +441,7 @@
           <a class="ph-chip ph-chip--line" href="/pages/sample">+ decor toevoegen</a>
         </div>
         <div class="ph-btns">
-          <a class="ph-btn ph-btn--ink" href="/pages/sample">Vraag samples aan</a>
+          <a class="ph-btn ph-btn--ink" href="/pages/sample">Bestel gratis stalen</a>
         </div>
       </div>
       <div class="ph-edit__box" aria-hidden="true">
@@ -391,28 +452,161 @@
       </div>
     </div>
   </section>
+
+  {%- comment -%} 13 · Wandpanelen specialist voor interieur & projecten. Mobiel uitklapbaar; de tekst staat altijd in de HTML {%- endcomment -%}
+  {%- if s.show_spec -%}
+  <section class="ph-s ph-spec">
+    <div class="ph-wrap">
+      <div class="ph-spec__head">
+        <p class="ph-k ph-k--bronze">Over PureDeco</p>
+        <h2 class="ph-h2">{{ s.spec_heading | default: 'Wandpanelen specialist voor interieur & projecten' }}</h2>
+        {%- if s.spec_intro != blank -%}<p class="ph-spec__lead">{{ s.spec_intro }}</p>{%- endif -%}
+      </div>
+      <div class="ph-spec__g">
+        {%- liquid
+          assign sp_links = '/collections/wandpanelen|' | append: projects_url | append: '|/blogs/nieuws/de-voordelen-van-bamboepanelen-een-duurzame-en-stijlvolle-keuze-voor-je-interieur'
+          assign sp_links = sp_links | split: '|'
+          assign sp_lbl = 'Alle wandpanelen →|Puredeco Projects →|Waarom bamboe →' | split: '|'
+        -%}
+        {%- for n in (1..3) -%}
+          {%- liquid
+            assign kt = 'spec_t' | append: n
+            assign kx = 'spec_x' | append: n
+          -%}
+          {%- if s[kt] != blank -%}
+            <details class="ph-spec__i" data-ph-spec{% if forloop.first %} open{% endif %}>
+              <summary>{{ s[kt] }}<i aria-hidden="true"></i></summary>
+              <div class="ph-spec__x">{{ s[kx] }}</div>
+              <a class="ph-link" href="{{ sp_links[forloop.index0] }}">{{ sp_lbl[forloop.index0] }}</a>
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+
+  {%- comment -%} Mobiel: vaste onderbalk na de hero en adviespaneel (chat, bellen, WhatsApp, studio) {%- endcomment -%}
+  {%- if s.show_dock -%}
+  <div class="ph-dock" data-ph-dock aria-hidden="true">
+    <button type="button" class="ph-dock__b" data-ph-open aria-haspopup="dialog" tabindex="-1">{{ ic_chat }} Advies<span class="pc-dot" data-ph-dot hidden></span></button>
+    <a class="ph-dock__b" href="/pages/sample" data-ph-mine tabindex="-1">Gratis stalen</a>
+    <a class="ph-dock__b is-ink" href="/collections/wandpanelen" tabindex="-1">Wandpanelen →</a>
+  </div>
+  <div class="pc-sheet ph-sheet" data-ph-sheet role="dialog" aria-modal="true" aria-labelledby="ph-help-t" hidden>
+    <div class="pc-sheet__bg" data-ph-close></div>
+    <div class="pc-sheet__in">
+      <button type="button" class="pc-sheet__x" data-ph-close aria-label="Sluiten">×</button>
+      <p class="pc-sheet__k">Persoonlijk advies</p>
+      <p class="pc-sheet__h" id="ph-help-t">Hoe kunnen we helpen?</p>
+      <p class="pc-sheet__st"><span class="pc-dot" data-ph-dot hidden></span><span data-ph-st>Bereikbaar: {{ ph_hours }}</span></p>
+      <button type="button" class="pc-opt is-ink" data-ph-chat hidden><span class="pc-opt__i">{{ ic_chat }}</span><span><b>Chat met ons</b><small>Direct een vraag stellen</small></span><span aria-hidden="true">→</span></button>
+      <a class="pc-opt" href="tel:{{ ph_tel }}"><span class="pc-opt__i">{{ ic_tel }}</span><span><b>Bel {{ ph_phone }}</b><small>{{ ph_hours }}</small></span><span aria-hidden="true">→</span></a>
+      <a class="pc-opt" href="https://wa.me/{{ ph_wa }}?text={{ 'Hallo Puredeco, ik heb een vraag over wandpanelen.' | url_encode }}" target="_blank" rel="noopener"><span class="pc-opt__i">{{ ic_wa }}</span><span><b>WhatsApp</b><small>Stuur ook een foto van je wand mee</small></span><span aria-hidden="true">→</span></a>
+      <a class="pc-opt" href="/pages/showroom"><span class="pc-opt__i">{{ ic_cal }}</span><span><b>Afspraak in Studio Herwen</b><small>{{ s.studio_hours | default: 'Do, vr en za · 10–15 uur, op afspraak' }}</small></span><span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+  {%- endif -%}
+  <div class="pc-toast ph-toast" data-ph-toast hidden role="status" aria-live="polite"><span data-ph-toast-t></span> <a href="/pages/sample">Bekijk je stalen →</a></div>
 </div>
 
 <script>
 (function () {
-  var d = document.querySelector('[data-ph-film]');
-  var open = document.querySelector('[data-ph-film-open]');
-  if (!d || !open) return;
-  open.addEventListener('click', function () {
-    if (!d.querySelector('video')) {
-      var port = d.querySelector('template[data-ph-film-port]');
-      var tpl = (port && window.matchMedia('(max-width: 749px)').matches) ? port : d.querySelector('template[data-ph-film-land]');
-      var v = tpl.content.querySelector('video').cloneNode(true);
-      d.appendChild(v);
-      d.classList.toggle('is-port', tpl === port);
-    }
-    if (d.showModal) d.showModal(); else d.setAttribute('open', '');
-    var v2 = d.querySelector('video'); var p = v2.play(); if (p && p.catch) p.catch(function () {});
+  var root = document.querySelector('[data-ph]');
+  if (!root) return;
+  var mq = window.matchMedia('(max-width: 749px)');
+
+  /* Naadloos of strakke naad: wisselknop op mobiel */
+  var naad = root.querySelector('[data-ph-naad]');
+  if (naad) {
+    var segs = naad.querySelectorAll('[data-ph-seg]'), cards = naad.querySelectorAll('[data-ph-card]');
+    var pick = function (k) {
+      [].forEach.call(segs, function (b) { b.setAttribute('aria-selected', b.dataset.phSeg === k ? 'true' : 'false'); });
+      [].forEach.call(cards, function (c) { c.classList.toggle('is-off', c.dataset.phCard !== k); });
+    };
+    [].forEach.call(segs, function (b) { b.addEventListener('click', function () { pick(b.dataset.phSeg); }); });
+    pick('sig');
+  }
+
+  /* Specialistenblok: op desktop altijd open */
+  var specs = root.querySelectorAll('[data-ph-spec]');
+  function specOpen() { if (!mq.matches) [].forEach.call(specs, function (d) { d.open = true; }); }
+  specOpen();
+  if (mq.addEventListener) mq.addEventListener('change', specOpen);
+
+  /* Stalen kiezen vanaf de bestsellers (zelfde lijst als de collectiepagina) */
+  var KEY = 'pd-edit', MAX = parseInt(root.dataset.max, 10) || 5;
+  var toast = root.querySelector('[data-ph-toast]'), tt = root.querySelector('[data-ph-toast-t]'), timer;
+  var mine = root.querySelector('[data-ph-mine]');
+  function get() { try { return JSON.parse(localStorage.getItem(KEY) || '[]') || []; } catch (e) { return []; } }
+  function put(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} }
+  function paint() {
+    var c = get();
+    [].forEach.call(root.querySelectorAll('[data-pc-sample]'), function (b) { var on = c.some(function (x) { return x.id === b.dataset.id; }); b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+    if (mine) mine.textContent = c.length ? 'Mijn stalen · ' + c.length + '/' + MAX : 'Gratis stalen';
+  }
+  function say(t) { if (!toast) return; tt.textContent = t; toast.hidden = false; clearTimeout(timer); timer = setTimeout(function () { toast.hidden = true; }, 4000); }
+  root.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-pc-sample]'); if (!b) return;
+    var c = get(), i = c.findIndex(function (x) { return x.id === b.dataset.id; });
+    if (i > -1) { c.splice(i, 1); put(c); paint(); say(b.dataset.label + ' verwijderd · ' + c.length + ' van ' + MAX + ' gekozen'); return; }
+    if (c.length >= MAX) { say('Je hebt al ' + MAX + ' samples gekozen'); return; }
+    c.push({ id: b.dataset.id, url: b.dataset.url, title: b.dataset.title, label: b.dataset.label, img: b.dataset.img }); put(c); paint();
+    say(b.dataset.label + ' toegevoegd · ' + c.length + ' van ' + MAX + ' gekozen');
   });
-  function close() { var v = d.querySelector('video'); if (v) v.pause(); if (d.close) d.close(); else d.removeAttribute('open'); }
-  d.querySelector('[data-ph-film-close]').addEventListener('click', close);
-  d.addEventListener('click', function (e) { if (e.target === d) close(); });
-  d.addEventListener('cancel', function () { var v = d.querySelector('video'); if (v) v.pause(); });
+  paint();
+
+  /* Vaste onderbalk: zichtbaar zodra de hero uit beeld is, verborgen bij de footer */
+  var dock = root.querySelector('[data-ph-dock]'), hero = root.querySelector('.ph-hero');
+  if (dock && hero && 'IntersectionObserver' in window) {
+    var heroIn = true, footIn = false;
+    var foot = document.querySelector('.pdf, footer');
+    var upd = function () {
+      var on = mq.matches && !heroIn && !footIn;
+      dock.classList.toggle('is-on', on);
+      dock.setAttribute('aria-hidden', on ? 'false' : 'true');
+      [].forEach.call(dock.querySelectorAll('a,button'), function (x) { x.tabIndex = on ? 0 : -1; });
+      document.documentElement.classList.toggle('ph-has-dock', on);
+    };
+    new IntersectionObserver(function (en) { heroIn = en[0].isIntersecting; upd(); }).observe(hero);
+    if (foot) new IntersectionObserver(function (en) { footIn = en[0].isIntersecting; upd(); }).observe(foot);
+    if (mq.addEventListener) mq.addEventListener('change', upd);
+  }
+
+  /* Adviespaneel */
+  var sheet = root.querySelector('[data-ph-sheet]'), opener = null;
+  function shut() { if (!sheet || sheet.hidden) return; sheet.hidden = true; document.documentElement.classList.remove('pc-sheet-open'); if (opener) opener.focus(); }
+  root.addEventListener('click', function (e) {
+    var o = e.target.closest('[data-ph-open]');
+    if (o && sheet) { opener = o; sheet.hidden = false; document.documentElement.classList.add('pc-sheet-open'); var x = sheet.querySelector('.pc-sheet__x'); if (x) x.focus(); return; }
+    if (e.target.closest('[data-ph-close]')) shut();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') shut(); });
+
+  /* Shopify-chat vanuit het adviespaneel; lukt dat niet, dan blijft de chatknop verborgen */
+  function chatReady() {
+    var c = document.querySelector('shopify-chat');
+    if (!c || typeof c.show !== 'function') return false;
+    document.documentElement.classList.add('ph-own-chat');
+    [].forEach.call(root.querySelectorAll('[data-ph-chat]'), function (b) {
+      b.hidden = false;
+      b.addEventListener('click', function () { shut(); try { c.show(); } catch (e) {} });
+    });
+    return true;
+  }
+  if (!chatReady() && window.customElements) customElements.whenDefined('shopify-chat').then(function () { setTimeout(chatReady, 300); });
+
+  /* Bereikbaar: groene stip binnen de openingstijden (tijd in Nederland) */
+  if (root.dataset.days) {
+    var now = new Date(), d, h;
+    try {
+      new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Amsterdam', weekday: 'short', hour: 'numeric', hour12: false }).formatToParts(now).forEach(function (p) { if (p.type === 'weekday') d = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(p.value); if (p.type === 'hour') h = parseInt(p.value, 10) % 24; });
+    } catch (e) { d = now.getDay(); h = now.getHours(); }
+    var days = root.dataset.days.split(',').map(function (x) { return parseInt(x, 10) % 7; });
+    var isOpen = days.indexOf(d) > -1 && h >= parseInt(root.dataset.from, 10) && h < parseInt(root.dataset.to, 10);
+    [].forEach.call(root.querySelectorAll('[data-ph-dot]'), function (x) { x.hidden = false; x.classList.toggle('is-off', !isOpen); });
+    [].forEach.call(root.querySelectorAll('[data-ph-st]'), function (x) { x.textContent = isOpen ? 'Nu bereikbaar · ' + x.textContent.replace(/^[^:]*:\s*/, '') : 'Laat een bericht achter via chat of WhatsApp'; });
+  }
 })();
 </script>
 
@@ -424,37 +618,80 @@
   "settings": [
     { "type": "header", "content": "Hero" },
     { "type": "image_picker", "id": "hero_image", "label": "Beeld desktop" },
-    { "type": "image_picker", "id": "hero_image_mobile", "label": "Beeld mobiel" },
-    { "type": "text", "id": "hero_eyebrow", "label": "Regel boven de titel", "default": "Wandpanelen met bamboekern · voor wonen en projecten" },
-    { "type": "text", "id": "hero_caption", "label": "Bijschrift (decor in beeld)", "info": "Bijvoorbeeld: 811 Walnut Classic · Signature. Leeg = geen bijschrift." },
-    { "type": "text", "id": "hero_caption_photo", "label": "Bijschrift links (echte productfoto)", "info": "Voor een beeld met links het echte oppervlak. Op mobiel staat alleen dit bijschrift, omdat daar alleen het oppervlak in beeld is." },
-    { "type": "url", "id": "hero_url_1", "label": "Link collecties" },
-    { "type": "url", "id": "hero_url_2", "label": "Link projecten" },
-    { "type": "header", "content": "Merkverhaal" },
-    { "type": "text", "id": "founder", "label": "Naam oprichter", "info": "Leeg = alleen 'Studio Herwen'." },
-    { "type": "checkbox", "id": "show_stone", "label": "Toon blok beton ciré en travertin onder de hero", "default": true },
-    { "type": "image_picker", "id": "story_image", "label": "Beeld merkverhaal" },
-    { "type": "text", "id": "story_caption", "label": "Bijschrift beeld merkverhaal", "default": "812 Walnut Deep · visualisatie" },
+    { "type": "image_picker", "id": "hero_room_mobile", "label": "Beeld mobiel (interieur)", "info": "Leeg = het interieurbeeld van 811 Walnut Classic." },
+    { "type": "image_picker", "id": "hero_image_mobile", "label": "Beeld mobiel (reserve)" },
+    { "type": "text", "id": "hero_eyebrow", "label": "Regel boven de titel", "default": "Met een kern van bamboe · voor wonen en projecten" },
+    { "type": "text", "id": "hero_heading", "label": "Kop hero (mag <br> bevatten)", "default": "Wandpanelen in hout-, steen- en stoflook" },
+    { "type": "textarea", "id": "hero_sub", "label": "Regel onder de kop hero", "default": "Waterbestendig, in één stuk tot 280 cm en zelf te plaatsen over bestaande tegels." },
+    { "type": "text", "id": "hero_price", "label": "Prijsregel", "default": "Vanaf <b>€ 89,95</b> per paneel van 122 cm breed" },
+    { "type": "text", "id": "hero_btn_1", "label": "Knop 1", "default": "Bekijk alle wandpanelen" },
+    { "type": "url", "id": "hero_url_1", "label": "Link knop 1" },
+    { "type": "text", "id": "hero_btn_2", "label": "Knop 2", "default": "Bestel gratis stalen" },
+    { "type": "url", "id": "hero_url_samples", "label": "Link knop 2" },
+    { "type": "url", "id": "hero_url_2", "label": "Link projecten (oud)" },
+    { "type": "text", "id": "hero_caption", "label": "Bijschrift desktop (decor in beeld)", "info": "Bijvoorbeeld: 811 Walnut Classic. Leeg = geen bijschrift." },
+    { "type": "text", "id": "hero_caption_photo", "label": "Bijschrift mobiel", "info": "Bijvoorbeeld: 811 Walnut Classic · Signature." },
+    { "type": "header", "content": "Vertrouwensbalk" },
+    { "type": "checkbox", "id": "show_usp", "label": "Toon de vertrouwensbalk onder de hero", "default": true },
+    { "type": "text", "id": "google_score", "label": "Google-score in de balk", "default": "4,9 / 5" },
+    { "type": "header", "content": "Bestsellers per look" },
+    { "type": "checkbox", "id": "show_best", "label": "Toon bestsellers", "default": true },
+    { "type": "product_list", "id": "bestsellers", "label": "Bestsellers (max. 4)", "limit": 4, "info": "Leeg = 670, 823, 812 en 831 (bestsellers laatste 90 dagen, één per look)." },
+    { "type": "text", "id": "best_kicker", "label": "Regel boven de titel", "default": "Bestsellers · laatste 90 dagen" },
+    { "type": "text", "id": "best_heading", "label": "Titel", "default": "Bestsellers per look" },
+    { "type": "header", "content": "Naadloos of strakke naad" },
+    { "type": "checkbox", "id": "show_naad", "label": "Toon blok naadloos of strakke naad", "default": true },
+    { "type": "text", "id": "price_sig", "label": "Vanafprijs Signature", "default": "€ 119,95" },
+    { "type": "text", "id": "price_lin", "label": "Vanafprijs Linea", "default": "€ 89,95" },
     { "type": "header", "content": "Van ver / van dichtbij" },
     { "type": "product", "id": "wall_product", "label": "Decor" },
     { "type": "image_picker", "id": "wall_image", "label": "Beeld hele wand" },
     { "type": "image_picker", "id": "wall_detail", "label": "Beeld structuur" },
+    { "type": "header", "content": "Beton ciré en travertin" },
+    { "type": "checkbox", "id": "show_stone", "label": "Toon blok beton ciré en travertin", "default": true },
     { "type": "header", "content": "Puredeco Projects" },
     { "type": "url", "id": "projects_url", "label": "Link projectaanvraag" },
-    { "type": "text", "id": "hero_heading", "label": "Kop hero (mag <br> bevatten)", "default": "Een nieuwe wand,<br>zonder breekwerk." },
-    { "type": "textarea", "id": "hero_sub", "label": "Regel onder de kop hero", "default": "Waterbestendig, in één stuk tot 280 cm hoog en te plaatsen over bestaande tegels." },
-    { "type": "checkbox", "id": "show_usp", "label": "Toon rij sterke punten onder de hero", "default": true },
-    { "type": "checkbox", "id": "show_dealers", "label": "Toon blok 'Word dealer' onder Projects", "default": true },
-    { "type": "image_picker", "id": "dealer_image", "label": "Beeld dealers (showroomdisplay)" },
-    { "type": "checkbox", "id": "dealer_is_visual", "label": "Beeld dealers is een visualisatie (toont label)", "default": true },
-    { "type": "url", "id": "dealer_url", "label": "Link dealerpagina" },
     { "type": "image_picker", "id": "sector_image_1", "label": "Beeld hotels" },
     { "type": "image_picker", "id": "sector_image_2", "label": "Beeld horeca" },
     { "type": "image_picker", "id": "sector_image_3", "label": "Beeld kantoren" },
     { "type": "image_picker", "id": "sector_image_4", "label": "Beeld retail" },
     { "type": "checkbox", "id": "sector_visual", "label": "Sectorbeelden zijn visualisaties", "default": true },
+    { "type": "url", "id": "dealer_url", "label": "Link dealerpagina" },
+    { "type": "checkbox", "id": "show_dealers", "label": "Toon het grote blok 'Word dealer'", "info": "Uit = alleen de tekstlink onder Projects.", "default": false },
+    { "type": "image_picker", "id": "dealer_image", "label": "Beeld dealers (showroomdisplay)" },
+    { "type": "checkbox", "id": "dealer_is_visual", "label": "Beeld dealers is een visualisatie", "default": true },
+    { "type": "header", "content": "Wat klanten zeggen" },
+    { "type": "checkbox", "id": "show_reviews", "label": "Toon reviews", "default": true },
+    { "type": "text", "id": "google_score_big", "label": "Google-score (groot)", "default": "4,9" },
+    { "type": "text", "id": "review_pick", "label": "Reviews om te tonen", "info": "Woorden uit de reviews, komma-gescheiden. Leeg = alle reviews.", "default": "fabrieksfouten,Prachtig materiaal,Heel mooi. Gemakkelijk" },
+    { "type": "header", "content": "Montage" },
+    { "type": "url", "id": "pdf_url", "label": "Montagehandleiding (PDF)", "info": "Leeg = PureDeco-montagehandleiding.pdf uit Bestanden" },
     { "type": "header", "content": "The Puredeco Edit" },
-    { "type": "text", "id": "edit_note", "label": "Extra regel (verzendkosten, levertijd)", "info": "Alleen invullen als het klopt, bijvoorbeeld: Binnen 2 werkdagen in huis." }
+    { "type": "text", "id": "edit_note", "label": "Extra regel (verzendkosten, levertijd)" },
+    { "type": "header", "content": "Wandpanelen specialist" },
+    { "type": "checkbox", "id": "show_spec", "label": "Toon het specialistenblok", "default": true },
+    { "type": "text", "id": "spec_heading", "label": "Titel", "default": "Wandpanelen specialist voor interieur & projecten" },
+    { "type": "textarea", "id": "spec_intro", "label": "Intro", "default": "PureDeco is dé wandpanelen specialist van Nederland. Wandpanelen met een kern van bamboe in hout, Japandi, leer, marmer, beton ciré en travertin: voor thuis en voor projecten." },
+    { "type": "text", "id": "spec_t1", "label": "Onderwerp 1", "default": "Dé wandpanelen specialist van Nederland" },
+    { "type": "richtext", "id": "spec_x1", "label": "Tekst 1", "default": "<p>Met een breed assortiment hoogwaardige toplagen zoals leer, hout, Japandi en marmer bieden wij wandpanelen voor iedere stijl en ruimte. Wandpanelen vind je overal, maar bij PureDeco maken we het verschil met kwaliteit, duurzaamheid en unieke afwerkingen.</p>" },
+    { "type": "text", "id": "spec_t2", "label": "Onderwerp 2", "default": "Maatwerk & projecten" },
+    { "type": "richtext", "id": "spec_x2", "label": "Tekst 2", "default": "<p>Voor grotere projecten ontwikkelen wij wandpanelen met gepersonaliseerde toplagen, volledig afgestemd op de gewenste uitstraling. Van kantoren en retail tot horeca, hotels, ziekenhuizen en overheidsinstanties: wij denken mee van concept tot realisatie.</p>" },
+    { "type": "text", "id": "spec_t3", "label": "Onderwerp 3", "default": "Beter voor de natuur, beter voor jou" },
+    { "type": "richtext", "id": "spec_x3", "label": "Tekst 3", "default": "<p>Wandpanelen met een kern van bamboe, een snel hernieuwbare grondstof, en toplagen van 100% gerecyclede materialen. Design en een hoogwaardige afwerking, met een bewuste keuze voor mens en milieu.</p>" },
+    { "type": "header", "content": "Mobiel: onderbalk en advies" },
+    { "type": "checkbox", "id": "show_dock", "label": "Toon de vaste onderbalk op mobiel", "default": true },
+    { "type": "text", "id": "phone", "label": "Telefoon", "default": "0316 700 214" },
+    { "type": "text", "id": "whatsapp", "label": "WhatsApp-nummer", "default": "31316700214" },
+    { "type": "text", "id": "phone_hours", "label": "Bereikbaar", "default": "Ma–za · 10–16 uur" },
+    { "type": "text", "id": "studio_hours", "label": "Openingstijden studio", "default": "Do, vr en za · 10–15 uur, op afspraak" },
+    { "type": "checkbox", "id": "show_status", "label": "Toon of we nu bereikbaar zijn (groene stip)", "default": true },
+    { "type": "text", "id": "open_days", "label": "Bereikbare dagen (1 = ma … 6 = za, 7 = zo)", "default": "1,2,3,4,5,6" },
+    { "type": "number", "id": "open_from", "label": "Vanaf (uur)", "default": 10 },
+    { "type": "number", "id": "open_to", "label": "Tot (uur)", "default": 16 },
+    { "type": "header", "content": "Oude blokken (standaard uit)" },
+    { "type": "text", "id": "founder", "label": "Naam oprichter" },
+    { "type": "image_picker", "id": "story_image", "label": "Beeld merkverhaal" },
+    { "type": "text", "id": "story_caption", "label": "Bijschrift beeld merkverhaal", "default": "812 Walnut Deep · visualisatie" }
   ],
   "presets": [{ "name": "Puredeco homepage" }],
   "enabled_on": { "templates": ["index"] }

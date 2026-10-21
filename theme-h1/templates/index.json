@@ -1273,9 +1273,9 @@
         "hero_image": "shopify://shop_images/pd-home-hero-811.jpg",
         "hero_image_mobile": "shopify://shop_images/pd-home-hero-811-mobiel.jpg",
         "sector_visual": true,
-        "hero_caption": "811 Walnut Classic · interieur: visualisatie",
+        "hero_caption": "811 Walnut Classic",
         "show_stone": true,
-        "hero_caption_photo": "811 Walnut Classic · Signature · echte productfoto",
+        "hero_caption_photo": "811 Walnut Classic · Signature",
         "story_image": "shopify://shop_images/pd-merkverhaal-812.jpg",
         "story_caption": "812 Walnut Deep · visualisatie",
         "sector_image_1": "shopify://shop_images/pd-sector-hotels-810-led.jpg",
@@ -1284,14 +1284,17 @@
         "sector_image_4": "shopify://shop_images/pd-sector-retail.jpg",
         "edit_note": "Je betaalt € 6,95 verzending; binnen 3–5 werkdagen in huis.",
         "dealer_image": "shopify://shop_images/pd-showroomdisplay.jpg",
-        "hero_heading": "Een nieuwe wand,<br>zonder breekwerk.",
-        "hero_sub": "Waterbestendig, in één stuk tot 280 cm hoog en te plaatsen over bestaande tegels.",
-        "show_usp": true
+        "hero_heading": "Wandpanelen in hout-, steen- en stoflook",
+        "hero_sub": "Waterbestendig, in één stuk tot 280 cm en zelf te plaatsen over bestaande tegels.",
+        "show_usp": true,
+        "hero_eyebrow": "Met een kern van bamboe · voor wonen en projecten"
       }
     },
     "pd_home_cta": {
       "type": "pd-home-cta",
-      "settings": {}
+      "settings": {
+        "show_project": false
+      }
     }
   },
   "order": [

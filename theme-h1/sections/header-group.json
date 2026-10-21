@@ -101,10 +101,22 @@
             "position": "left"
           },
           "disabled": true
+        },
+        "text_pdKlarna": {
+          "type": "text",
+          "settings": {
+            "text": "Betaal flexibel met Klarna · achteraf of gespreid",
+            "position": "center",
+            "highlight_text": "",
+            "highlight_text_style": "button",
+            "highlight_text_color": "",
+            "highlight_text_background_color": ""
+          }
         }
       },
       "block_order": [
         "text_YYJRm3",
+        "text_pdKlarna",
         "text_kwEfnk",
         "text_4WYCgn",
         "language_country_MyFf6D",

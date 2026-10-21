@@ -7,7 +7,7 @@
     </div>
     <div class="ph-cta__btns">
       <a class="ph-btn ph-btn--ink ph-btn--block" href="{{ section.settings.url_1 | default: '/pages/showroom' }}">Plan een afspraak in de studio</a>
-      <a class="ph-btn ph-btn--line ph-btn--block" href="{{ section.settings.url_2 | default: '/pages/form' }}">Projectaanvraag voor professionals</a>
+      {%- if section.settings.show_project -%}<a class="ph-btn ph-btn--line ph-btn--block" href="{{ section.settings.url_2 | default: '/pages/form' }}">Projectaanvraag voor professionals</a>{%- endif -%}
       <p class="ph-cta__tel">Of bel en app: <a href="tel:+31316700214">0316 700 214</a> · <a href="https://wa.me/31316700214" target="_blank" rel="noopener">WhatsApp</a> · {{ section.settings.hours }}</p>
     </div>
   </div>
@@ -22,6 +22,7 @@
     { "type": "text", "id": "heading", "label": "Titel", "default": "Kom het verschil voelen in Herwen" },
     { "type": "textarea", "id": "text", "label": "Tekst", "default": "Alle decors op ware grootte. Neem je maten of je bouwtekening mee; we rekenen je wand of je project voor je uit." },
     { "type": "url", "id": "url_1", "label": "Link afspraak" },
+    { "type": "checkbox", "id": "show_project", "label": "Toon knop projectaanvraag", "default": true },
     { "type": "url", "id": "url_2", "label": "Link projectaanvraag" },
     { "type": "text", "id": "hours", "label": "Openingstijden", "default": "ma–za 10–16 uur" }
   ],

@@ -170,8 +170,8 @@
     </div>
 {% comment %} booking_cta {% endcomment %}
     <div class="header__icons header__icons--right flex justify-end z-1">
-      {%- if template.name == 'product' or template.name == 'collection' -%}
-        {%- comment -%} Product- en collectiepagina mobiel: zoekbalk ingeklapt tot een icoon {%- endcomment -%}
+      {%- if template.name == 'product' or template.name == 'collection' or template.name == 'index' -%}
+        {%- comment -%} Product-, collectie- en homepage mobiel: zoekbalk ingeklapt tot een icoon {%- endcomment -%}
         <a class="pd-msearch" href="{{ routes.search_url }}" aria-label="Zoeken"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></a>
       {%- endif -%}
       <div class="cta_top_icon_text">

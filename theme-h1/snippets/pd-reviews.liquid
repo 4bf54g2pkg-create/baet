@@ -3,6 +3,7 @@
   Testreviews en dubbele, niet-geverifieerde reviews vallen er zo vanzelf uit.
   part: 'stars'   → regel met sterren onder de productnaam (alleen als het product zelf nog geen reviews heeft)
   part: 'section' → blok "Wat klanten zeggen"
+    optioneel: score (bijv. '4,9'), score_note (bijv. 'op Google Reviews'), pick (woorden, komma-gescheiden: alleen die reviews), hide_count
   Geen eigen JSON-LD: winkelreviews horen niet als productbeoordeling in Google.
 {%- endcomment -%}
 {%- liquid
@@ -20,6 +21,7 @@
     assign pr_avg_txt = pr_avg | append: '' | replace: '.', ','
     assign pr_pct = pr_avg | divided_by: 5.0 | times: 100
   endif
+  assign pr_pick = pick | split: ','
   assign pr_months = 'januari,februari,maart,april,mei,juni,juli,augustus,september,oktober,november,december' | split: ','
 -%}
 {%- if pr_n > 0 -%}
@@ -34,14 +36,31 @@
           <h2 class="pd-h2" id="pdr-title">Wat klanten zeggen</h2>
         </div>
         <div class="pdr__sum">
-          <span class="pdr__big">{{ pr_avg_txt }}</span>
-          <div><span class="pdr-stars" style="--pct: {{ pr_pct }}%" aria-hidden="true">★★★★★</span><small>op basis van {{ pr_n }} reviews over Puredeco</small></div>
+          {%- if score != blank -%}
+            <span class="pdr__big">{{ score }}</span>
+            <div><span class="pdr-stars" style="--pct: 100%" aria-hidden="true">★★★★★</span><small>{{ score_note }}</small></div>
+          {%- else -%}
+            <span class="pdr__big">{{ pr_avg_txt }}</span>
+            <div><span class="pdr-stars" style="--pct: {{ pr_pct }}%" aria-hidden="true">★★★★★</span><small>op basis van {{ pr_n }} reviews over Puredeco</small></div>
+          {%- endif -%}
         </div>
       </div>
       <ul class="pdr__row" role="list">
         {%- assign pr_i = 0 -%}
         {%- for r in pr_all -%}
-          {%- if r.verified_buyer == true -%}
+          {%- liquid
+            assign pr_show = r.verified_buyer
+            if pr_show and pr_pick.size > 0
+              assign pr_show = false
+              for w in pr_pick
+                assign w = w | strip
+                if w != blank and r.body contains w
+                  assign pr_show = true
+                endif
+              endfor
+            endif
+          -%}
+          {%- if pr_show == true -%}
             {%- liquid
               assign pr_i = pr_i | plus: 1
               assign r_name = r.reviewer_name
@@ -75,7 +94,7 @@
       </ul>
       <div class="pdr__ft">
         <span class="pdr__src">Reviews via Judge.me</span>
-        {%- if pr_n > 6 -%}<button type="button" class="pdr__all" data-pdr-all aria-expanded="false">Toon alle {{ pr_n }} reviews</button>{%- endif -%}
+        {%- if pr_n > 6 and pr_pick.size == 0 and hide_count != true -%}<button type="button" class="pdr__all" data-pdr-all aria-expanded="false">Toon alle {{ pr_n }} reviews</button>{%- endif -%}
       </div>
     </div>
   </section>
