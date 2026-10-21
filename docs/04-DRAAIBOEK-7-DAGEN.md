@@ -34,7 +34,7 @@ Maar daartegenover staan 77 aankopen met **€ 2.958,15**: slechts **2,1%** van 
 wordt betaald, en 117 van de 231 toevoegingen worden weer verwijderd. Staat deze actie op Primair
 en loopt er ergens een waarde-gebaseerde biedstrategie, dan optimaliseert Google op € 143.572 aan
 mandjes in plaats van op € 2.958 aan omzet: een factor **48**. Dat is een plausibele verklaring voor
-het gedrag van PMax (€ 104,55 per conversie, ROAS 0,55, twee periodes op rij).
+het gedrag van PMax (€ 69,70 per conversie, ROAS 0,55, twee periodes op rij).
 
 "Aankoop" is wél goed ingericht: dat is de enige primaire aankoopactie (11,00 conversies, €843,65),
 en `adscale_purchase` staat correct op Secundair met identieke cijfers.
@@ -248,14 +248,14 @@ naar €20/dag.** **Betrouwbaarheid:** middel-hoog. **Prioriteit:** 2. **Herbeoo
 
 ### 3.2 Google: brandcampagnes verdubbelen
 
-**Waarom:** samen €48,74 in 14 dagen voor 9 conversies = **€5,42 gemiddeld**, zes keer goedkoper
-dan het accountgemiddelde van €26,83. Ze zijn gelimiteerd door hun eigen minibudget, niet door de
+**Waarom:** samen €48,74 in 14 dagen voor 11 conversies = **€4,43 gemiddeld**, vijf keer goedkoper
+dan het accountgemiddelde van €23,48. Ze zijn gelimiteerd door hun eigen minibudget, niet door de
 markt.
 
 | Campagne | Nu | Naar | Onderbouwing |
 |---|---:|---:|---|
 | Brand \| PureDeco Protection NL-BE | € 1,65/d | **€ 4,00/d** | € 5,79/transactie, ROAS 15,08, CTR 42,11% |
-| Brand \| PureDeco Protection | € 1,83/d | **€ 4,00/d** | € 5,11/transactie, CTR 38,30% |
+| Brand \| PureDeco Protection | € 1,83/d | **€ 4,00/d** | € 3,65/conversie, CTR 38,30% |
 
 **Waar:** Google Ads → **Campagnes** → campagne selecteren → **Instellingen** → **Budget**.
 
@@ -267,7 +267,7 @@ niet zomaar op aan slecht verkeer. **Betrouwbaarheid:** hoog. **Prioriteit:** 2.
 
 | Campagne | Nu | Naar | Onderbouwing |
 |---|---:|---:|---|
-| Shopping \| Bamboepanelen | € 5,43/d | **€ 9,00/d** | € 15,20/conversie zit ruim onder het plafond. CPC is €0,07 — uitzonderlijk goedkoop. |
+| Shopping \| Bamboepanelen | € 5,43/d | **€ 5,43/d, niet verhogen** | € 19,00/conversie zit onder het plafond, maar de groep ging al van €22,64 naar €75,98 en van €754,85 conversiewaarde naar **€0,00**. Eerst uitzoeken waarom er geen panelen meer uit komen. |
 
 **Maar let op:** 1.024 klikken leverden 707 sessies en 5 conversies = 0,49% conversieratio, en de
 kosten per transactie liepen op van €11,32 naar €15,20 terwijl de kosten 236% stegen. Dit is een
@@ -284,7 +284,7 @@ Slate (19). Kijk of de feed en de productgroepen daarop staan afgestemd.
 
 ## DAG 4 — PMax-besluit
 
-**De cijfers:** €209,10 in 14 dagen voor 2 transacties = **€104,55 per conversie**, 3,1× het
+**De cijfers:** €209,10 in 14 dagen voor 3 conversies = **€69,70 per conversie**, 2,1× het
 plafond van €33,26. ROAS 0,55 tegen een break-even van 1,35. Dit is geen uitschieter: vorige
 periode was het €107,22. Twee periodes, 28 dagen, €423,55 besteed, 4 transacties.
 **Geschat verlies: €142,58 per 14 dagen.**
@@ -411,7 +411,8 @@ Beslispunten:
 ## Bijlage — Windsor schrijfrechten aanzetten
 
 Als je dit aanzet, kan ik de **Meta**-budgetwijzigingen van dag 3 zelf doorvoeren in plaats van ze
-alleen voor te schrijven. Google Ads blijft buiten bereik, want die connector is niet gekoppeld.
+alleen voor te schrijven. De Google Ads-connector is sinds 21 oktober wel gekoppeld, maar alleen om
+te lezen: ik verander niets in je account zonder dat je daar per wijziging toestemming voor geeft.
 
 **Wat er nu misgaat.** Elke poging tot een schrijfactie geeft letterlijk deze foutmelding:
 

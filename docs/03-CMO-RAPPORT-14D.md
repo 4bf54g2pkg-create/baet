@@ -15,15 +15,16 @@ Verplicht vooraf, omdat het de betrouwbaarheid van elk cijfer hieronder bepaalt.
 |---|---|---|---|
 | Shopify Admin API + ShopifyQL | Volledig (lezen) | Order- en orderregelniveau | Gerealiseerde omzet, marge, orders, AOV, kortingen, retouren, nieuwe klanten, staalcohort |
 | Meta Ads (via Windsor.ai) | Volledig (lezen) | **Per advertentie**, incl. actietypes en actiewaarden | Meta-kosten, bereik, frequentie, CTR, CPC, CPM, conversies, conversiewaarde |
-| Google Analytics 4 (via Windsor.ai) | Volledig (lezen) | Campagneniveau + kanaalniveau | Google-kosten en -klikken per campagne, last-click transacties en omzet per kanaal |
-| Google Ads API | **Geen toegang** | — | — |
+| Google Analytics 4 (via Windsor.ai) | Volledig (lezen) | Campagneniveau + kanaalniveau | Last-click transacties en omzet per kanaal, add-to-cart-events. Google-kosten komen sinds 21 okt uit Google Ads zelf. |
+| Google Ads API (via Windsor.ai) | Volledig (lezen) | **Per advertentiegroep en per advertentie**, incl. conversieacties | Google-kosten, impressies, klikken, conversies, conversiewaarde, conversieactie-instellingen |
 | Google Ads CSV-export (handmatig) | Eenmalig, 19 sep – 18 okt 2026 | Zoekterm + campagne + advertentiegroep | Zoektermverspilling, campagnetypetotalen |
 | Google Tag Manager | **Geen toegang** | — | — |
 | Merchant Center | **Geen toegang** | — | — |
 
 ### Wat dit rapport niet kan
-1. **Google Ads per advertentie is niet beschikbaar.** De Windsor-connector `google_ads` is niet gekoppeld; de Supermetrics-proefperiode is op 9 oktober 2026 verlopen. Google wordt daarom op **campagneniveau** geanalyseerd met kosten en klikken uit GA4. Die GA4-kosten zijn gevalideerd: over 19 sep – 18 okt sommeren ze tot **€1.124,73 en 2.634 klikken**, precies gelijk aan de accounttotalen in de Google Ads-export. De kostenbasis is dus betrouwbaar; alleen het niveau is grover.
-2. **Geen browserinspectie, geen tag-debugger, geen dataLayer-inspectie.** De trackingaudit in deel 4 is gebaseerd op de HTML-broncode van puredeco.nl, de ruwe actietypes uit de Meta API, de GA4-data en twee schermafbeeldingen van Google Ads Conversies. Waar iets alleen *aannemelijk* is, staat dat erbij.
+1. **Google Ads per advertentiegroep is nu wél beschikbaar.** De Windsor-connector `google_ads` is op 21 oktober 2026 gekoppeld (account 832-898-5831). Deel 2b en deel 5 staan daarom op **advertentiegroepniveau met Google's eigen cijfers**, niet meer op de GA4-reconstructie. Die reconstructie blijkt achteraf exact te hebben geklopt: GA4 gaf €563,48 over 7–20 oktober, Google Ads geeft €563,48. De eerdere kostenbasis was dus goed; alleen het niveau was grover en de conversies kwamen uit een andere meting.
+   **Wat nog niet kan:** één niveau dieper dan de advertentiegroep levert de connector voor Search alleen een enkele samengevoegde advertentie per groep, en voor PMax niets — PMax heeft geen advertentiegroepen die de API teruggeeft. Per *individuele* advertentie binnen een groep is dus nog niet mogelijk; per advertentiegroep wel, en dat is het niveau waarop je budget verlegt.
+2. **Geen browserinspectie, geen tag-debugger, geen dataLayer-inspectie.** De trackingaudit in deel 4 is gebaseerd op de HTML-broncode van puredeco.nl, de ruwe actietypes uit de Meta API, de GA4-data en de conversieactie-instellingen uit de Google Ads API. Waar iets alleen *aannemelijk* is, staat dat erbij.
 3. **Geen Conversions API-, Event Match Quality- of domeinverificatiegegevens.** Die velden levert de connector niet.
 4. **Er is geen incrementaliteitstest gedaan.** Alle "winst per advertentie" hieronder is attributiewinst, geen bewezen incrementele winst.
 
@@ -110,30 +111,91 @@ Alle zeven advertenties zitten in één campagne, **"Puredeco - onfluence"**, ve
 
 **Metrieken die verbeterden:** CTR steeg op alle zeven advertenties, CPC daalde op alle zeven, CPM daalde op vijf van de zeven. Meta wordt goedkoper en de creatives worden beter aangeklikt. Frequentie is nergens alarmerend (hoogste 2,57 over 14 dagen); er is **geen creative fatigue** aantoonbaar.
 
-### 2b. Google — per campagne (7–20 okt)
+### 2b. Google — per advertentiegroep, twee periodes
 
-Per advertentie niet beschikbaar (zie deel 0). Kosten en klikken komen uit GA4; omzet is GA4 last-click.
+Bron: Google Ads API via Windsor.ai, account 832-898-5831. Conversies en conversiewaarde zijn Google's eigen kolom **Conversies**, die over venster B volledig uit de actie `Aankoop` komt. Waarde is inclusief btw, zoals Shopify hem doorgeeft; de ROAS-kolom rekent ex btw tegen een break-even van **1,35**.
 
-| # | Campagne | Type | Kosten | Impr. | Klikken | CTR | CPC | Sessies | Trans. | GA4-omzet | ROAS² | €/trans. | Vorige €/trans. | Status |
-|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| 1 | PMAX - Campagne - PureDeco.nl | Perf. Max | € 209,10 | 14.833 | 439 | 2,96% | € 0,48 | 249 | 2 | € 139,95 | **0,55** | **€ 104,55** | € 107,22 | 🔴 ROOD |
-| 2 | Search \| Wandpanelen | Search | € 152,68 | 2.603 | 167 | 6,42% | € 0,91 | 123 | 5 | € 279,90 | 1,52 | € 30,54 | € 106,16 | 🟡 GEEL |
-| 3 | Search \| Concurrenten | Search | € 76,99 | 1.352 | 88 | 6,51% | € 0,87 | 66 | **0** | € 0,00 | **0,00** | — | — | 🔴 ROOD (al gestopt) |
-| 4 | Shopping \| Bamboepanelen | Shopping | € 75,98 | 40.619 | 1.024 | 2,52% | **€ 0,07** | 707 | 5 | € 0,00 | — | € 15,20 | € 11,32 | 🟡 GEEL |
-| 5 | Brand \| PureDeco Protection | Search | € 25,57 | 235 | 90 | 38,30% | € 0,28 | 85 | 5 | € 0,00 | — | **€ 5,11** | € 10,93 | 🟢 GROEN |
-| 6 | Brand \| PureDeco Protection NL-BE | Search | € 23,17 | 228 | 96 | 42,11% | € 0,24 | 88 | 4 | € 422,80 | **15,08** | **€ 5,79** | € 11,20 | 🟢 GROEN |
-| | **Totaal Google** | | **€ 563,48** | **59.870** | **1.904** | **3,18%** | **€ 0,30** | **1.318** | **21** | **€ 842,65** | **1,24** | **€ 26,83** | € 62,48 | |
+| # | Campagne | Advertentiegroep | Kosten | Impr. | Klikken | CTR | CPC | Conv. | Waarde | €/conv. | ROAS | Status |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| 1 | PMAX | *(geen groepen)* | € 209,10 | 14.833 | 439 | 2,96% | € 0,48 | 3 | € 139,95 | € 69,70 | **0,55** | 🔴 ROOD |
+| 2 | Search \| Wandpanelen | **Wandpanelen algemeen** | € 117,56 | 1.922 | 123 | 6,40% | € 0,96 | **6** | € 279,90 | **€ 19,59** | **1,97** | 🟢 **GROEN** |
+| 3 | Search \| Concurrenten | Paneli | € 76,02 | 1.194 | 87 | 7,29% | € 0,87 | **0** | € 0,00 | — | **0,00** | 🔴 ROOD (gestopt) |
+| 4 | Shopping \| Bamboepanelen | Bamboepanelen | € 75,98 | 40.619 | 1.024 | 2,52% | **€ 0,07** | 4 | € 0,00 | € 19,00 | — | 🟡 GEEL |
+| 5 | Brand \| Protection | Brand - PureDeco | € 25,57 | 235 | 90 | 38,30% | € 0,28 | **7** | € 0,00 | **€ 3,65** | — | 🟢 GROEN |
+| 6 | Brand \| Protection NL-BE | Advertentiegroep 1 | € 23,17 | 228 | 96 | 42,11% | € 0,24 | 4 | € 422,80 | **€ 5,79** | **15,08** | 🟢 GROEN |
+| 7 | Search \| Wandpanelen | Japandi | € 20,98 | 289 | 23 | 7,96% | € 0,91 | **0** | € 0,00 | — | **0,00** | 🔴 ROOD |
+| 8 | Search \| Wandpanelen | Ruimtegericht | € 10,21 | 326 | 18 | 5,52% | € 0,57 | **0** | € 0,00 | — | **0,00** | 🔴 ROOD |
+| 9 | Search \| Wandpanelen | Hout | € 3,93 | 66 | 3 | 4,55% | € 1,31 | **0** | € 0,00 | — | **0,00** | 🔴 ROOD |
+| 10 | Search \| Concurrenten | Benacci | € 0,97 | 146 | 1 | 0,68% | € 0,97 | 0 | € 0,00 | — | 0,00 | 🔴 ROOD (gestopt) |
+| 11 | Search \| Concurrenten | Thuispaneel | € 0,00 | 12 | 0 | 0,00% | — | 0 | € 0,00 | — | — | ⚫ inactief |
+| | **Totaal Google** | | **€ 563,48** | **59.870** | **1.904** | **3,18%** | **€ 0,30** | **24** | **€ 842,65** | **€ 23,48** | **1,24** | |
 
-² ROAS = GA4-omzet ex btw / kosten. Break-even is **1,35**.
+#### Wat hieronder verborgen zat op campagneniveau
 
-**Google totaal zit met een ROAS van 1,24 onder break-even (1,35)** op gerealiseerde omzet alleen.
+**Search | Wandpanelen is geen gemiddelde van 🟡 geel — het is één winnaar en drie lekken.**
 
-Reken je de staalaanvragen mee, dan ziet het er anders uit. Van de 21 transacties leverden **10 exact €0,00 omzet** op (de 5 van Shopping en de 5 van Brand | Protection) — dat zijn per definitie staalorders. De overige 11 transacties delen samen €842,65, oftewel €76,60 gemiddeld, terwijl een paneelorder gemiddeld boven de €250 ligt: daar zitten dus naar schatting 3 paneelorders en 8 staalaanvragen in. Omdat ik dat niet exact kan splitsen (daarvoor is transactie-ID-niveau nodig dat GA4 hier niet levert) geef ik een bandbreedte:
+| Advertentiegroep | Kosten | Klikken | Conv. | €/conv. |
+|---|---:|---:|---:|---:|
+| Wandpanelen algemeen | € 117,56 | 123 | **6** | **€ 19,59** |
+| Japandi | € 20,98 | 23 | 0 | — |
+| Ruimtegericht | € 10,21 | 18 | 0 | — |
+| Hout | € 3,93 | 3 | 0 | — |
+| **Samen** | **€ 152,68** | **167** | **6** | **€ 25,45** |
 
-- **Ondergrens** (10 staalaanvragen): €696,40 ex btw omzet × 73,9% = €514,64 brutomarge + 10 × €33,26 = €332,60 toekomstwaarde = €847,24 → **ROI +50%**
-- **Bovengrens** (18 staalaanvragen): €514,64 + 18 × €33,26 = €598,68 → €1.113,32 → **ROI +98%**
+Op campagneniveau las dit als €25,45 per conversie: acceptabel, niet opwindend. In werkelijkheid doet **één groep alle conversies op €19,59** — ruim onder het plafond van €33,26 — terwijl drie groepen samen **€35,12 verbrandden zonder één conversie**. Dat verandert het advies van *behouden* naar *opschalen, en drie groepen pauzeren*.
 
-Google is dus winstgevend, maar **de helft tot twee derde van dat resultaat is verwachte toekomstwaarde, geen geld op de bank.**
+**Search | Concurrenten was één advertentiegroep, niet drie.** Van de €76,99 ging **€76,02 naar de groep "Paneli"** met 87 klikken en nul conversies. Benacci kostte €0,97, Thuispaneel niets. Je besluit om die campagne te stoppen was nog scherper onderbouwd dan op campagneniveau te zien was.
+
+#### De belangrijkste bevinding: de ROAS is in twee weken ingestort
+
+Dit was onzichtbaar zolang Google op GA4-cijfers stond. Zelfde kosten, heel andere uitkomst:
+
+| | 23 sep – 6 okt | 7 – 20 okt | Verschil |
+|---|---:|---:|---:|
+| Kosten | € 562,30 | € 563,48 | +0,2% |
+| Klikken | 993 | 1.904 | **+91,7%** |
+| Conversies (`Aankoop`) | 10 | **24** | **+140%** |
+| Conversiewaarde (`Aankoop`) | € 2.269,20 | **€ 842,65** | **−62,9%** |
+| Kosten per conversie | € 56,23 | **€ 23,48** | −58,2% |
+| **Waarde per conversie** | **€ 226,92** | **€ 35,11** | **−84,5%** |
+| **ROAS ex btw** | **3,33** | **1,24** | **break-even is 1,35** |
+
+**Google Ads is in veertien dagen van ruim winstgevend naar onder break-even gegaan, bij vrijwel identieke kosten.** Niet omdat er minder gebeurde — er gebeurde twee keer zo veel — maar omdat wat er gebeurde veel minder waard was.
+
+**Waar de waarde verdween, per groep:**
+
+| Advertentiegroep | Vorige periode | Deze periode |
+|---|---|---|
+| Brand - PureDeco | 4 conv · **€ 1.521,30** | 7 conv · **€ 0,00** |
+| Shopping \| Bamboepanelen | 4 conv · **€ 754,85** | 4 conv · **€ 0,00** |
+| Wandpanelen algemeen | 1 conv · € 0,00 | 6 conv · € 279,90 |
+| Brand NL-BE | 0 conv · € 0,00 | 4 conv · € 422,80 |
+| PMAX | 2 conv · € 6,95 | 3 conv · € 139,95 |
+
+Brand en Shopping leverden vorige periode samen **€2.276,15** en deze periode **€0,00** — terwijl ze méér conversies registreerden en meer kostten. Shopping ging van €22,64 naar €75,98 met vijf keer zo veel klikken (202 → 1.024) en bracht niets op.
+
+#### Wat die €0,00 betekent, en waarom Shopify het bevestigt
+
+Een conversie met waarde €0,00 is geen meetfout: het is een **gratis staalorder**. Google krijgt de productwaarde doorgegeven, en een gratis staal heeft productwaarde €0,00 — de klant betaalt alleen €6,95 verzendkosten. Shopify laat exact hetzelfde patroon zien bij de Meta-orders in deel 7: 25 orders, €0,00 brutobedrag, €166,80 total sales die volledig uit verzendkosten bestaat.
+
+Shopify bevestigt de verschuiving onafhankelijk over dezelfde twee periodes:
+
+| | 23 sep – 6 okt | 7 – 20 okt |
+|---|---:|---:|
+| Orders | 76 | 105 |
+| Netto AOV | € 73,38 | **€ 44,07** |
+| Staalorders | 65 | **90** |
+| Panelen verkocht | 70 | **36** |
+
+Twee onafhankelijke bronnen, dezelfde beweging: **meer orders, minder waarde per order, verschoven naar stalen.**
+
+#### Het vermoedelijke mechanisme
+
+De conversieactie `Aankoop` telt een staalorder van €6,95 en een paneelorder van €250 als **één conversie**, en staat op *veel per klik*. Een biedstrategie die op conversie-aantal of op doel-CPA optimaliseert, kiest dan onvermijdelijk de goedkope en frequente conversie. Google is dus niet stuk — Google doet precies wat de conversieactie hem vraagt, en dat is: koop zo veel staalaanvragen als je kunt.
+
+Dit is een vermoeden over de oorzaak, geen bewijs. Wat **wel** vaststaat: de mix is verschoven, in twee bronnen, en de ROAS is onder break-even gezakt. Dat is genoeg om te handelen. Twee dingen houden me van zekerheid af: de aantallen zijn klein (10 tegen 24 conversies), en ik kan de biedstrategie per campagne niet uitlezen — die staat niet in de velden die de connector teruggeeft.
+
+**Dit is de belangrijkste wijziging in dit rapport.** In deel 8 staat het als kans 1.
 
 ### 2c. Top 10 om te behouden of op te schalen
 
@@ -143,7 +205,7 @@ Er zijn er maar vijf die het verdienen; ik verzin de rest niet.
 |---|---|---|---|---|
 | 1 | Meta | diaan creator 1 | CPA €10,80 bij 22 conversies = 32% van het plafond. CPA verbeterde van €15,30 naar €10,80 bij 14% minder budget. | Budget +75% |
 | 2 | Google | Brand \| PureDeco Protection NL-BE | €5,79 per transactie, ROAS 15,08, 42% CTR. Goedkoopste conversie in het hele account. | Budget verdubbelen |
-| 3 | Google | Brand \| PureDeco Protection | €5,11 per transactie, 38% CTR. Beschermt je eigen merknaam. | Budget verdubbelen |
+| 3 | Google | Brand \| PureDeco Protection | €3,65 per conversie, 38% CTR. Goedkoopste conversiebron in het account. | Budget verdubbelen |
 | 4 | Meta | Marmerlook va 125 | CPA €14,33 bij 16 conversies, laagste frequentie (1,83) van de grote drie = meeste ruimte om op te schalen. | Budget +40% |
 | 5 | Meta | diaan creator 2 | CPA verbeterde van €33,22 naar €15,14. Nog maar 3 conversies, dus voorzichtig. | Budget +75% (vanaf laag niveau) |
 
@@ -151,7 +213,7 @@ Er zijn er maar vijf die het verdienen; ik verzin de rest niet.
 
 | Rang | Platform | Waar | Kosten 14d | Geschat verlies | Bewijs |
 |---|---|---|---:|---:|---|
-| 1 | Google | PMAX - Campagne | € 209,10 | **−€ 142,58** | 2 transacties, €104,55 per stuk tegen een plafond van €33,26. ROAS 0,55. Twee periodes op rij hetzelfde (€107,22 vorige periode). |
+| 1 | Google | PMAX - Campagne | € 209,10 | **−€ 123,63** | 3 conversies, €69,70 per stuk tegen een plafond van €33,26. ROAS 0,55. Twee periodes op rij (28 dagen, €423,55, 5 conversies, ROAS 0,29). Winst = €85,47 brutomarge op €139,95 conversiewaarde min €209,10 mediakosten. |
 | 2 | Google | Search \| Concurrenten | € 76,99 | **−€ 76,99** | 0 conversies in 14 dagen, 0 in de 14 daarvoor, 0 over de hele 30-daagse export. Jij hebt deze al gestopt — goed besluit. |
 | 3 | Meta | zakelijk verbouwen | € 246,07 | risico, geen verlies | CPA verslechterde van €14,78 naar €24,61 (+66%) terwijl het budget met 67% omhoog ging. Hoogste frequentie (2,57) en laagste conversieratio (0,75%) van de drie grote. Nog wel onder het plafond. |
 | 4 | Google | Zoektermen: concurrentmerken | € 64,96³ | −€ 64,96 | `thuispaneel` €20,52 · `paneli` €10,99 · `benacci` €8,72 · `akupanel` €7,56 · `wooduo`, `enmod`, `pure panels`, `style for walls`, `full decor`, `woodupp`. Samen 0 conversies. |
@@ -217,7 +279,7 @@ Meta claimt 54 aankopen, Google-campagnes 21 GA4-transacties, samen 75. Shopify 
 | Google Ads: slapende add-to-cart-acties | 🔴 **Probleem** | Er zijn **drie** conversieacties in de categorie ADD_TO_CART, alle drie ENABLED: `add_to_cart` (websitetag, veel per klik), `Winkelwagen` (GA4-import) en `add_item_to_cart` (websitetag, één per klik). Van de eerste twee is over **90 dagen geen enkele conversie** gemeten. Alleen `add_item_to_cart` meet daadwerkelijk: 141 conversies met € 113.386,01 over 90 dagen, 56 met € 95.316,99 over 14 dagen. | Drie acties in één doelgroep waarvan twee niets meten, is precies waar Google "Vereist aandacht" voor gebruikt. | De twee slapende archiveren, `add_item_to_cart` op Secundair. Vereist jouw toestemming. |
 | Google Ads: `add_item_to_cart` is primair maar telt niet mee | 🟡 Verdacht | `conversion_action_primary_for_goal` staat op **True**, maar de actie draagt **0** bij aan de kolom Conversies terwijl ze 56 conversies met € 95.316,99 in "Alle conversies" heeft. Die twee uitspraken spreken elkaar tegen. | Nu weegt die € 95.317 niet mee in het bieden — dat is geluk, niet ontwerp. Zodra iemand de doelinstelling op accountniveau aanpast, gaat Google wél op mandjeswaarde bieden. | Op Secundair zetten maakt het expliciet in plaats van per ongeluk goed. |
 | Google Ads: Local actions als primair doel | 🟡 Verdacht | Drie Google-hosted acties staan op `primary_for_goal = True`: **Local actions - Website visits** (categorie **PAGE_VIEW**), **Local actions - Other engagements** (ENGAGEMENT) en **Local actions - Directions** (GET_DIRECTIONS). Samen 21 conversies over 14 dagen, 129 over 90 dagen. | Ze dragen 0 bij aan de kolom Conversies, dus nu geen effect. Maar een paginaweergave als primair conversiedoel hoort nergens in een webshopaccount. | Alle drie op Secundair. |
-| Google Ads "Toevoegen aan winkelwagen" | 🔴 **Probleem** | Twee problemen tegelijk. Ten eerste staan er **twee** primaire conversieacties voor hetzelfde event, status "Vereist aandacht". Ten tweede, en zwaarder: de **conversiewaarde** van deze actie is enorm. GA4 meet over dezelfde 14 dagen 231 add-to-cart-acties met 995 artikelen en een waarde van **€ 143.571,55** — € 144,29 per artikel, precies de gemiddelde paneelprijs, dus de tag rekent correct. Maar daar staan 77 purchase-events met **€ 2.958,15** tegenover: **2,1%** van de mandjeswaarde wordt daadwerkelijk betaald, en 117 van de 231 toevoegingen worden weer verwijderd. | Dubbel geteld in het biedsignaal, én een conversiewaarde die 48× hoger is dan de werkelijke omzet. Elke waarde-gebaseerde biedstrategie stuurt daarmee op mandjes in plaats van op verkopen. Dit is een plausibele verklaring voor het gedrag van PMax (€ 104,55 per conversie, ROAS 0,55, twee periodes op rij). | **"Toevoegen aan winkelwagen" volledig op Secundair zetten**, niet alleen één van de twee. Het is een diagnostisch signaal, geen biedoel. Vereist jouw toestemming. |
+| Google Ads "Toevoegen aan winkelwagen" | 🟡 Verdacht, inmiddels deels opgelost | Van de **drie** ADD_TO_CART-acties meet alleen `add_item_to_cart` iets: 56 conversies met € 95.316,99 over 14 dagen, 141 met € 113.386,01 over 90 dagen. Die waarde is correct gemeten — GA4 komt over dezelfde periode op 231 add-to-cart-acties met € 143.571,55, oftewel € 144,29 per artikel, precies de gemiddelde paneelprijs. Maar er staan 77 purchase-events met € 2.958,15 tegenover: **2,1%** van de mandjeswaarde wordt daadwerkelijk betaald en 117 van de 231 toevoegingen worden weer verwijderd. De actie staat per 21 oktober op **Secundair** en draagt 0 bij aan de kolom Conversies. | Nu geen: de € 95.317 weegt niet mee in het bieden. Het risico zit in de omkeerbaarheid — zet iemand de doelinstelling op accountniveau om, dan biedt Google op mandjeswaarde in plaats van op € 843 omzet. | Zo laten. De twee slapende acties archiveren, zodat niemand ze per ongeluk primair maakt. |
 | "Er ontbreekt een Google-tag op uw website" (waarschuwing bij Search \| Concurrenten) | 🟡 Verdacht → **vals alarm** | Er staan 0 `googletagmanager.com` container-scripts in de pagina-broncode. Shopify laadt pixels via de gesandboxte Customer Events-omgeving, waar Google's crawler niet bij kan. | Geen. De conversies komen aantoonbaar binnen (11,00 aankopen gemeten). | Negeren. Dit is het normale gedrag van Shopify-webpixels. |
 | Shopify metafields `foxtheme.code_head` / `code_body` | ✅ Correct (leeg) | Beide bevestigd leeg via de Admin API. Er wordt dus niets dubbel via het thema geïnjecteerd. | — | Niets doen |
 | **Conversiewaarde van een staalorder = € 6,95** | 🔴 **Probleem** | Het staalproduct staat op €0,00; de €6,95 is een verzendkostenregel. Zowel Meta's `purchase` als GA4's `purchase_revenue` als Shopify's `net_sales` lezen een staalorder daarom als €0 product / €6,95 waarde, terwijl de werkelijke verwachte waarde **€33,26** is — een onderwaardering van 4,8×. | **Dit is de grootste trackingfout in het account.** Elke waarde-gebaseerde biedstrategie stuurt wég van je meest winstgevende conversie. | Een aparte conversieactie voor staalaanvragen met een vaste waarde van €25–33 (zie actieplan). Vereist jouw toestemming. |
@@ -229,7 +291,7 @@ Meta claimt 54 aankopen, Google-campagnes 21 GA4-transacties, samen 75. Shopify 
 | Consent Mode v2 | ⚫ **Niet verifieerbaar** | Geen toegang tot GTM of de browserconsole. | Onbekend. Als Consent Mode niet goed staat, worden conversies structureel onder gerapporteerd. | Handmatige controle in Google Tag Assistant nodig. |
 | Meta Conversions API / Event Match Quality / deduplicatie via `event_id` / domeinverificatie | ⚫ **Niet verifieerbaar** | De connector levert deze velden niet. | Als CAPI ontbreekt of niet dedupliceert, kan Meta conversies dubbel tellen. Gezien aankopen > checkouts is dat niet uit te sluiten. | Controleren in Meta Events Manager → Diagnostiek. |
 | Enhanced Conversions (Google) | ⚫ **Niet verifieerbaar** | Niet te zien zonder Google Ads API-toegang. | Onbekend. | Controleren onder Doelen → Conversies → Instellingen. |
-| Merchant Center feedkwaliteit | ⚫ **Niet verifieerbaar** | Geen toegang. | Onbekend. Relevant omdat Shopping 1.024 klikken leverde met 0,49% conversie. | Feedfouten controleren in Merchant Center. |
+| Merchant Center feedkwaliteit | ⚫ **Niet verifieerbaar** | Geen toegang. | Onbekend. Relevant omdat Shopping 1.024 klikken leverde met 0,39% conversie en €0,00 productomzet. | Feedfouten controleren in Merchant Center. |
 
 **Is de tracking goed genoeg om budgetbeslissingen op te baseren?** Voor **aantallen** ja: de conversieaantallen van Meta (54), GA4 (26) en Shopify (25) zijn onderling consistent zodra je rekening houdt met de attributievensters, en Google's 31,0 conversies tegen GA4's 26 transacties is een verschil van 19% — binnen de normale bandbreedte tussen attributiemodellen. Voor **waardes** nee: de staalorder-waardering van €6,95 en de onverifieerbare Meta-omzet maken elke ROAS-gebaseerde beslissing onbetrouwbaar. **Stuur daarom op CPA tegen het plafond van €33,26, niet op ROAS.**
 
@@ -237,15 +299,43 @@ Meta claimt 54 aankopen, Google-campagnes 21 GA4-transacties, samen 75. Shopify 
 
 ## 5. Google Ads — diepteanalyse
 
-### 1. Welke campagnes leveren daadwerkelijk winst op?
-Twee, met zekerheid: **Brand | PureDeco Protection NL-BE** (€5,79 per transactie, ROAS 15,08) en **Brand | PureDeco Protection** (€5,11 per transactie). Samen kosten ze €48,74 in 14 dagen — **3,5% van je totale advertentiebudget** — en ze zijn je goedkoopste conversiebron. **Shopping | Bamboepanelen** is grensgevallig winstgevend: €15,20 per conversie tegen een plafond van €33,26, maar alle 5 conversies waren staalaanvragen.
+Alle cijfers hieronder komen nu uit Google Ads zelf, per advertentiegroep. Waar ze afwijken van een eerdere versie van dit rapport komt dat doordat GA4 last-click transacties telde en Google zijn eigen conversieactie `Aankoop`.
 
-**Search | Wandpanelen** verbeterde dramatisch: van €106,16 naar €30,54 per transactie, en van ROAS 0 naar 1,52 (break-even 1,35). Dit was vorige periode mijn zorgenkind en is nu net winstgevend. Houden en optimaliseren, niet opschalen tot er meer data is.
+### 1. Welke advertentiegroepen leveren daadwerkelijk winst op?
+
+Vier, en één ervan was op campagneniveau onzichtbaar:
+
+| Advertentiegroep | Kosten | Conv. | €/conv. | Oordeel |
+|---|---:|---:|---:|---|
+| Brand - PureDeco | € 25,57 | 7 | **€ 3,65** | 🟢 goedkoopste conversiebron in het account |
+| Brand NL-BE | € 23,17 | 4 | **€ 5,79** | 🟢 ROAS 15,08 |
+| **Wandpanelen algemeen** | € 117,56 | 6 | **€ 19,59** | 🟢 **nieuw zichtbaar** |
+| Shopping \| Bamboepanelen | € 75,98 | 4 | € 19,00 | 🟡 winstgevend, maar zie hieronder |
+
+De twee brandgroepen kosten samen **€48,74 — 3,5% van je totale advertentiebudget** — en leveren 11 conversies à €4,43. Dat is 5× goedkoper dan het accountgemiddelde van €23,48.
+
+**Wandpanelen algemeen is de echte vondst.** Op campagneniveau ging deze groep verscholen achter drie niet-converterende groepen in dezelfde campagne, waardoor Search | Wandpanelen las als €25,45 per conversie. Los gemeten is het **€19,59** — onder het plafond van €33,26, met 6 conversies en €279,90 waarde. Dit is de enige groep in het account die zowel volume als waarde levert. Mijn eerdere advies was *houden en optimaliseren, niet opschalen*. **Dat draai ik om: deze groep verdient meer budget.**
+
+**Shopping | Bamboepanelen verdient een waarschuwing.** €19,00 per conversie is winstgevend als alle vier staalaanvragen zijn (4 × €33,26 = €133,04 tegen €75,98 kosten). Maar de groep ging van €22,64 naar €75,98, van 202 naar 1.024 klikken, en van **€754,85 conversiewaarde naar €0,00** — bij hetzelfde aantal conversies. Hij is dus drie en een half keer zo groot geworden en verkoopt geen panelen meer, alleen stalen. Als staalmachine werkt hij; als paneelverkoop is hij stilgevallen.
 
 ### 2. Waar wordt budget verspild?
-**PMax, €209,10 in 14 dagen voor 2 transacties.** €104,55 per conversie is 3,1× het plafond. Dit is geen eenmalige uitschieter: vorige periode was het €107,22. Twee periodes, 28 dagen, €423,55 besteed, 4 transacties. Daarnaast €64,96 aan concurrentmerken en €25,75 aan Engelse/buitenlandse zoektermen (gemeten over 19 sep–18 okt), allebei met 0 conversies.
+
+**PMax, €209,10 voor 3 conversies.** €69,70 per conversie is 2,1× het plafond van €33,26. Geen uitschieter: vorige periode €214,45 voor 2 conversies. **Twee periodes, 28 dagen, €423,55 besteed, 5 conversies, €146,90 conversiewaarde.** Dat is een ROAS van 0,29 ex btw tegen een break-even van 1,35.
+
+**Drie dode advertentiegroepen binnen Search | Wandpanelen, €35,12:**
+
+| Groep | Kosten | Klikken | Conv. |
+|---|---:|---:|---:|
+| Japandi | € 20,98 | 23 | 0 |
+| Ruimtegericht | € 10,21 | 18 | 0 |
+| Hout | € 3,93 | 3 | 0 |
+
+Samen 44 klikken, nul conversies, twee periodes op rij (vorige periode €53,10 voor 62 klikken en 1 conversie). Japandi is het pijnlijkst: **Wandpaneel Japandi 824 Taupe is je bestverkopende paneel** met 28 orders en €693,97 netto-omzet, en de advertentiegroep die er specifiek op mikt converteert niet. Het probleem zit dus niet in de vraag maar in de advertentie of de landingspagina.
+
+**Search | Concurrenten, €76,99 — waarvan €76,02 naar één groep.** "Paneli" nam 99% van het budget met 87 klikken en nul conversies. Al gestopt.
 
 ### 3. Welke producten verdienen meer budget?
+
 Op basis van de bestverkopende panelen in de laatste 14 dagen (Shopify, netto-omzet):
 
 | Product | Orders | Netto-omzet |
@@ -258,22 +348,41 @@ Op basis van de bestverkopende panelen in de laatste 14 dagen (Shopify, netto-om
 
 **Wandpaneel Doorlopend Marmer 689** is de interessantste: 5 orders, €495,04 netto, bij een stukprijs van €599 incl. btw. Dat is je hoogste contributiemarge per order in het hele assortiment. En het sluit aan op je best presterende Meta-creative, *Marmerlook va 125*. Marmer verdient meer budget in Shopping en in Meta.
 
+Let wel op de tegenstelling bij de top twee: Japandi en Hout verkopen uitstekend organisch, maar hun eigen advertentiegroepen converteren nul. Meer budget naar die groepen lost dat niet op — eerst uitzoeken waarom de klik niet landt.
+
 ### 4. Welke producten moeten minder gepromoot worden?
-Dat kan ik **niet betrouwbaar bepalen**: Shopping-prestaties per product vereisen Google Ads- of Merchant Center-toegang, die ik niet heb. Wat ik wel zie: Shopping heet "Bamboepanelen" maar bamboe staat in geen enkele top-25 verkooplijst van de afgelopen 14 dagen. Dat is een hypothese om te controleren, geen conclusie.
+
+Shopping-prestaties **per product** kan ik nog niet bepalen: dat vraagt Merchant Center-velden die de connector niet levert. Wat ik nu wel zie: de groep heet "Bamboepanelen", trok 40.619 impressies en 1.024 klikken tegen €0,07 per klik, en leverde €0,00 productomzet. Bamboe staat in geen enkele top-25 verkooplijst van de afgelopen 14 dagen. De combinatie van heel goedkope klikken, enorm volume en nul paneelomzet wijst erop dat deze campagne vooral op brede, laagwaardige zoekvraag draait. Dat is een hypothese om te controleren zodra Merchant Center-data beschikbaar is, geen conclusie.
 
 ### 5. Welke zoektermen of campagnes zijn inefficiënt?
+
 Concrete uitsluitingslijst, allemaal met 0 conversies over 19 sep–18 okt:
 
 **Concurrentmerken (€64,96):** `thuispaneel`, `paneli`, `benacci`, `akupanel`, `wooduo`, `enmod`, `pure panels`, `style for walls`, `full decor`, `woodupp`
 **Engels/buitenlands (€25,75, 60 termen):** `wall decor panels`, `panel ryflowany na wymiar`, `steel wall cladding`, `marble wall panels`, `travertine wall panels`, `marble and wood review`, `deco wall tiles`, `fluted wall panel`, `white panels`, `dekor panel` en 50 vergelijkbare
 
-Binnen **Search | Concurrenten** (al gestopt) ging €85,60 van de €138,83 zoekwoordbudget naar het brede zoekwoord `paneli` en €42,43 naar AI Max voor 30 klikken, met kwaliteitsscore 3.
+Binnen **Search | Concurrenten** (al gestopt) ging €85,60 van de €138,83 zoekwoordbudget naar het brede zoekwoord `paneli` en €42,43 naar AI Max voor 30 klikken, met kwaliteitsscore 3. Dat strookt met wat de advertentiegroepdata nu laat zien: de groep "Paneli" was de hele campagne.
 
 ### 6. Zijn de biedstrategieën passend bij de marges?
-**Nee, en dat is structureel.** Elke waarde-gebaseerde biedstrategie in dit account optimaliseert naar een conversiewaarde die voor een staalorder €6,95 is terwijl die order €33,26 waard is. De biedmachine ziet je winstgevendste conversie als je waardeloosste. Zolang de staalaanvraag niet correct gewaardeerd is, is **"Conversies maximaliseren" met een CPA-doel van €25 de juiste strategie** — niet "Conversiewaarde maximaliseren" of tROAS.
+
+**Nee, en nu is het aantoonbaar in plaats van aannemelijk.**
+
+De conversieactie `Aankoop` telt een gratis staalorder en een paneelorder van €250 als **één conversie**, en staat op *veel per klik*. Een biedstrategie die op conversie-aantal of doel-CPA optimaliseert, kiest dan de goedkope en frequente conversie. Dat is precies wat er gebeurde: conversies +140%, waarde per conversie −84,5%, ROAS van 3,33 naar 1,24 bij gelijke kosten (deel 2b).
+
+Het scherpste bewijs staat in de €0,00-kolom. Brand - PureDeco en Shopping leverden vorige periode samen €2.276,15; deze periode €0,00, bij **meer** conversies. Een conversie van €0,00 is een gratis staal: productwaarde nul, €6,95 verzendkosten.
+
+**Advies ongewijzigd, maar met meer urgentie: "Conversies maximaliseren" met een CPA-doel van €25** — niet "Conversiewaarde maximaliseren" of tROAS. Een waardestrategie op een conversieactie die stalen op €0,00 zet, optimaliseert naar niets.
+
+**Wat ik hier níet kan controleren:** welke biedstrategie elke campagne op dit moment gebruikt. Dat veld geeft de connector niet terug. Kijk in Google Ads per campagne onder *Biedingen* en vergelijk het met het bovenstaande voordat je iets verandert.
 
 ### 7. Waar ligt de grootste kans op winstgevende groei?
-Bij **de brandcampagnes**: samen €48,74 voor 9 conversies à €5,42 gemiddeld. Dat is 6× goedkoper dan het accountgemiddelde (€26,83). Ze zijn gelimiteerd door hun eigen minibudget, niet door de markt. Hier is vrijwel risicoloos volume te halen.
+
+Twee, in deze volgorde:
+
+1. **De brandcampagnes.** €48,74 voor 11 conversies à €4,43 — 5× goedkoper dan het accountgemiddelde. Ze zijn gelimiteerd door hun eigen minibudget, niet door de markt. Vrijwel risicoloos volume.
+2. **Wandpanelen algemeen.** €19,59 per conversie met echte paneelomzet (€279,90). Dit is de enige groep die volume én waarde levert. Het budget dat nu naar PMax en de drie dode groepen gaat (€244,22 samen) hoort hier en bij brand.
+
+Maar de grootste winst zit niet in budget verleggen: **zet eerst de conversiemeting recht.** Zolang `Aankoop` een staal en een paneel gelijkstelt, stuurt elke euro die je bijschuift naar de verkeerde uitkomst. Dat is kans 1 in deel 8.
 
 ---
 
@@ -350,27 +459,40 @@ Meta rapporteert op 7-daagse klik + 1-daagse weergave (af te leiden uit het feit
 **Nee.** 90% van de klanten in deze periode is nieuw, wat erop wijst dat de advertenties nieuw publiek aantrekken — maar het bewijst niet dat die mensen zonder advertenties níet gekomen waren. De grootste omzetbron is de bucket zónder referrer (€4.700,65), en die kan net zo goed uit organisch, mond-tot-mond of een eerder staal komen. **De enige manier om incrementaliteit vast te stellen is een holdout-test.** Die staat in het actieplan als optie, niet als aanbeveling: bij dit volume (13 paneelorders per 14 dagen) duurt een statistisch betrouwbare test maanden.
 
 ### Waarom halveerde de paneelverkoop?
-Ik kan dit niet verklaren uit de beschikbare data en wil er niet naar gissen. Wat ik kan uitsluiten: het is niet de advertentiekwaliteit (CTR en CPC verbeterden overal), niet retouren (slechts één gedeeltelijk gerestitueerde order deze periode), niet kortingen (die daalden van €1.596 naar €330). Wat het **kan** zijn, in volgorde van waarschijnlijkheid:
-1. **Toeval bij lage volumes.** 13 versus 11 paneelorders — maar 36 versus 70 panelen. Het verschil zit in de ordergrootte: vorige periode had drie grote orders (14, 11 en 4+6 panelen). Eén projectorder minder verklaart het grootste deel van het verschil.
-2. Een seizoens- of prijsverandering die ik niet kan zien.
-3. Een verslechterde paneel-landingspagina of voorraadprobleem.
 
-Punt 1 is de meest waarschijnlijke verklaring en belangrijk voor de interpretatie: **lees de −48,6% niet als een trend maar als volatiliteit bij kleine aantallen.** Over de volle 28 dagen samen: 106 panelen, €10.500,88 ex btw, 69,7% marge.
+Hier kan ik nu meer over zeggen dan in de eerste versie van dit rapport, omdat de Google-data per advertentiegroep een tweede verklaring toevoegt die ik eerder niet kon zien.
+
+Wat ik kan **uitsluiten**: het is niet de advertentiekwaliteit (CTR en CPC verbeterden overal), niet retouren (één gedeeltelijk gerestitueerde order), niet kortingen (die daalden van €1.596 naar €330).
+
+Twee verklaringen die elkaar niet uitsluiten en vermoedelijk beide meespelen:
+
+1. **Volatiliteit bij lage volumes.** 13 versus 11 paneelorders — maar 36 versus 70 panelen. Het verschil zit in de ordergrootte: vorige periode had drie grote orders (14, 11 en 4+6 panelen). Eén projectorder minder verklaart het grootste deel van het verschil in *stuks*.
+2. **De advertentiemix verschoof naar stalen.** Dit is nieuw. Google Ads ging in dezelfde twee periodes van 10 naar 24 conversies terwijl de conversiewaarde van €2.269,20 naar €842,65 zakte (deel 2b). Brand - PureDeco en Shopping leverden samen €2.276,15 en daarna €0,00, bij méér conversies. Google kocht dus twee keer zo veel orders van een vijfde van de waarde. Shopify ziet precies dezelfde beweging: staalorders van 65 naar 90, netto AOV van €73,38 naar €44,07.
+
+**Twee onafhankelijke bronnen wijzen dezelfde kant op**, en dat maakt verklaring 2 sterker dan ik hem eerder kon maken. Het vermoedelijke mechanisme staat in deel 5 onder vraag 6: `Aankoop` telt een gratis staal en een paneelorder als dezelfde conversie, dus de biedmachine koopt de goedkope.
+
+Wat dat betekent voor de interpretatie: **lees de −48,6% panelen niet als één ding.** Het stuks-verschil is grotendeels volatiliteit; de verschuiving in ordersamenstelling is structureel en wél beïnvloedbaar. Over de volle 28 dagen samen: 106 panelen, €10.500,88 ex btw, 69,7% marge.
 
 ---
 
-## 8. Top 5 optimalisatiekansen, op verwachte winst
+## 8. Optimalisatiekansen, op verwachte winst
 
 | # | Kans | Verwachte winst per 14 dagen | Mediakosten | Betrouwbaarheid |
 |---|---|---:|---:|---|
 | 1 | **Opvolging van staalaanvragers.** 90 staalaanvragen in 14 dagen, 7,7% koopt door, mediaan na 16 dagen. Tilt een e-mail/SMS-flow dat naar 12%, dan zijn dat ~4 extra paneelorders. | **+€ 1.838** | € 0 | Middel — 7,7% is gemeten, 12% is een aanname |
-| 2 | **Retargeting op afgebroken paneelwinkelwagens.** 131 add-to-carts met €19.384,66 waarde, 0 paneelorders in last-click. Zelfs 2% herstel is één paneelorder. | **+€ 150 tot € 450** | € 100–150 | Middel |
-| 3 | **PMax stoppen of herbouwen.** €209,10 voor 2 conversies à €104,55. Stoppen bespaart direct. | **+€ 142** | − € 209 | **Hoog** — twee periodes bevestigd |
-| 4 | **Brandcampagnes verdubbelen.** €5,42 gemiddeld per conversie bij €48,74 totaalbudget. | **+€ 110 tot € 250** | + € 49 | Hoog |
-| 5 | **Staalaanvraag correct gaan waarderen in de conversietracking** (€25–33 i.p.v. €6,95). | niet direct, maar het repareert elke biedstrategie | € 0 | Hoog |
-| 6 | **Zakelijk aankooppad bouwen.** 14 gestarte checkouts met €3.106,86 waarde uit de zakelijke doelgroep, 10 orders à €6,95 als resultaat. | onbekend | € 0 | Laag — hypothese |
+| 2 | **De conversiemeting rechtzetten.** `Aankoop` stelt een gratis staal gelijk aan een paneelorder van €250, en de ROAS zakte in twee weken van 3,33 naar 1,24 bij gelijke kosten. Herstel naar het oude niveau is **€1.426 meer conversiewaarde** bij hetzelfde budget. | **+€ 300 tot € 1.400** | € 0 | **Middel-hoog** — de instorting is gemeten in twee bronnen; hoeveel ervan terugkomt is een aanname |
+| 3 | **Retargeting op afgebroken paneelwinkelwagens.** 131 add-to-carts met €19.384,66 waarde, 0 paneelorders in last-click. Zelfs 2% herstel is één paneelorder. | **+€ 150 tot € 450** | € 100–150 | Middel |
+| 4 | **PMax stoppen of herbouwen.** €209,10 voor 3 conversies à €69,70, twee periodes op rij (28 dagen, €423,55, 5 conversies, ROAS 0,29). | **+€ 90 tot € 124** | − € 209 | **Hoog** — twee periodes bevestigd |
+| 5 | **Wandpanelen algemeen opschalen.** €19,59 per conversie met echte paneelomzet; de enige groep die volume én waarde levert. | **+€ 100 tot € 250** | + € 100 | Middel-hoog |
+| 6 | **Brandcampagnes verdubbelen.** €4,43 gemiddeld per conversie bij €48,74 totaalbudget. | **+€ 110 tot € 250** | + € 49 | Hoog |
+| 7 | **Drie dode advertentiegroepen pauzeren** (Japandi, Ruimtegericht, Hout). €35,12 voor 44 klikken en nul conversies, twee periodes op rij. | **+€ 35** | − € 35 | **Hoog** |
+| 8 | **Zakelijk aankooppad bouwen.** 14 gestarte checkouts met €3.106,86 waarde uit de zakelijke doelgroep, 10 orders à €6,95 als resultaat. | onbekend | € 0 | Laag — hypothese |
 
-**Kans 1 is groter dan alle budgetwijzigingen in dit rapport samen.** Je koopt al 90 staalaanvragen per 14 dagen tegen een goede prijs; je laat 92% ervan onbenut weglopen.
+**Kans 1 is nog steeds groter dan alle budgetwijzigingen in dit rapport samen.** Je koopt al 90 staalaanvragen per 14 dagen tegen een goede prijs en laat 92% ervan onbenut weglopen.
+
+**Kans 2 is nieuw en verandert de volgorde van de rest.** Kansen 4 tot en met 7 zijn budget verleggen, en budget verleggen werkt alleen als de meting klopt. Zolang `Aankoop` een staal en een paneel gelijkstelt, stuurt elke euro die je verschuift naar de verkeerde uitkomst. Doe kans 2 vóór 4 tot 7.
+
+**Let op bij kans 7:** Japandi converteert nul, terwijl *Wandpaneel Japandi 824 Taupe* je bestverkopende paneel is (28 orders, €693,97). Pauzeren bespaart €20,98, maar de echte vraag is waarom die klik niet landt. Pauzeer de groep, maar zet het uitzoeken op de lijst.
 
 ---
 
@@ -485,6 +607,8 @@ Meta: diaan creator 1 €40, Marmerlook €30, zakelijk verbouwen €15, diaan c
 ### 1. Hoe gezond zijn mijn advertenties op dit moment?
 **Redelijk gezond maar snel verslechterend.** Op accountniveau is de ROI +117% en zit je ruim boven break-even (MER 3,29 tegen een break-even van 1,35). Maar de contributiewinst viel in 14 dagen met 44% terug (€2.953 → €1.651) terwijl je 7% méér besteedde, en de advertentiekosten per verkocht paneel verdubbelden van €18,73 naar €39,06. De advertenties zelf werden beter (CTR omhoog, CPC omlaag op alle zeven Meta-advertenties); wat verslechterde is de **mix**: je koopt steeds meer gratis staalaanvragen en steeds minder paneelorders.
 
+Google Ads maakt dat het scherpst zichtbaar. Bij vrijwel identieke kosten (€562,30 → €563,48) ging het van **10 conversies met €2.269,20 naar 24 conversies met €842,65** — ROAS van **3,33 naar 1,24**, onder de break-even van 1,35. Twee keer zo veel gebeurtenissen, een vijfde van de waarde per gebeurtenis. Shopify bevestigt het onafhankelijk: netto AOV van €73,38 naar €44,07, staalorders van 65 naar 90.
+
 ### 2. Verdienen mijn advertenties echt geld, of lijkt dat alleen zo door platformattributie?
 **Deels echt, en de platformcijfers zijn beduidend te rooskleurig.** Meta claimt €1.674,38 omzet. GA4 ziet €0,00 uit Paid Social. Shopify ziet €0,00 productomzet uit facebook en instagram. Alle 25 Meta-orders in Shopify waren gratis stalen waarvan alleen de €6,95 verzendkosten binnenkwamen. Meta's ROAS van 1,99 kun je niet gebruiken.
 
@@ -493,7 +617,7 @@ Wat **wel** echt is: Google leverde €1.039,10 netto-omzet uit 23 Shopify-order
 ### 3. Welke advertenties moet ik vandaag pauzeren?
 | Pauzeren | Kosten/14d | Reden |
 |---|---:|---|
-| **PMAX - Campagne** (of 14 dagen op proef met uitsluitingen) | € 209,10 | €104,55 per conversie, 3,1× het plafond, twee periodes op rij |
+| **PMAX - Campagne** (of 14 dagen op proef met uitsluitingen) | € 209,10 | €69,70 per conversie, 2,1× het plafond, twee periodes op rij, ROAS 0,29 over 28 dagen |
 | **Search \| Concurrenten** — houd gestopt | € 76,99 | 0 conversies in 30 dagen, kwaliteitsscore 3 |
 | **video 3** | € 12,89 | 0 conversies |
 | **Video led profiel japans** | € 5,02 | 0 conversies |
@@ -504,15 +628,15 @@ Wat **wel** echt is: Google leverde €1.039,10 netto-omzet uit 23 Shopify-order
 |---|---:|---:|---|
 | **diaan creator 1** | € 16,98/dag | € 30/dag | CPA €10,80 = 32% van het plafond; CR 1,97% is bijna 3× het accountgemiddelde |
 | **Marmerlook va 125** | € 16,37/dag | € 24/dag | CPA €14,33, laagste frequentie (1,83) = meeste kopruimte, hoogste add-to-cart-waarde |
-| **Brand \| Protection NL-BE** | € 1,65/dag | € 4/dag | €5,79 per transactie, ROAS 15,08 |
-| **Brand \| Protection** | € 1,83/dag | € 4/dag | €5,11 per transactie, 38% CTR |
+| **Brand \| Protection NL-BE** | € 1,65/dag | € 4/dag | €5,79 per conversie, ROAS 15,08 |
+| **Brand \| Protection** | € 1,83/dag | € 4/dag | €3,65 per conversie, 38% CTR |
 | **diaan creator 2** | € 3,24/dag | € 8/dag | CPA verbeterde van €33,22 naar €15,14 |
 
 ### 5. Waar verlies ik het meeste geld?
 In volgorde:
 1. **Niet bij de advertenties, maar bij de opvolging.** 90 staalaanvragen in 14 dagen, waarvan 92% nooit terugkomt. Elke procentpunt die je die 7,7% kunt verhogen is ~€414 brutowinst per 14 dagen (0,9 extra paneelorder × €459,70 brutomarge), zonder één euro extra media.
 2. **131 afgebroken paneelwinkelwagens met €19.384,66 waarde**, en geen enkele retargeting-advertentie die ze terugroept.
-3. **PMax:** €209,10 per 14 dagen voor 2 conversies, dus circa €142 aantoonbaar verlies.
+3. **PMax:** €209,10 per 14 dagen voor 3 conversies, dus circa €124 aantoonbaar verlies. Over 28 dagen: €423,55 voor 5 conversies, ROAS 0,29.
 4. **Search | Concurrenten:** €76,99 volledig verloren (al gestopt).
 5. **Zoektermverspilling:** €90,71 per 30 dagen aan concurrentmerken en buitenlandse zoektermen.
 6. **De zakelijke doelgroep:** 14 gestarte checkouts met €3.106,86 aan panelen in de winkelwagen, waarvan 10 orders van €6,95 overbleven. Dat is geen advertentieprobleem maar een ontbrekend zakelijk aankooppad.
@@ -522,7 +646,7 @@ In volgorde:
 
 **Praktische consequentie:** stuur op **kosten per conversie tegen een plafond van €33,26 en een streefdoel van €25**. Gebruik geen ROAS en geen waarde-gebaseerd bieden tot de staalconversie correct gewaardeerd is.
 
-Drie dingen zijn bovendien niet verifieerbaar vanuit deze omgeving en kunnen de cijfers nog verschuiven: Consent Mode v2, Meta's Conversions API/deduplicatie, en de Merchant Center-feedkwaliteit. Daarvoor is browsertoegang of Google Ads API-toegang nodig.
+Drie dingen blijven niet verifieerbaar vanuit deze omgeving en kunnen de cijfers nog verschuiven: Consent Mode v2, Meta's Conversions API/deduplicatie, en de Merchant Center-feedkwaliteit. Daarvoor is browsertoegang of Merchant Center-toegang nodig; de Google Ads API is sinds 21 oktober wel beschikbaar en heeft de conversieactie-analyse in deel 4 mogelijk gemaakt.
 
 ### 7. Wat zijn de drie belangrijkste acties die ik nu moet uitvoeren?
 1. **Beantwoord één vraag: is die €6,95 kostprijs per zending of per staaltje?** 287 staaltjes in 90 orders, de klant betaalt één keer €6,95. Per zending klopt mijn hele analyse. Per staaltje verlies je €1.369 per 14 dagen en moet het Meta-budget onmiddellijk terug. Dit is het enige getal dat mijn conclusie kan omdraaien.
@@ -548,7 +672,7 @@ En het ongemakkelijke deel: op €120/dag is het maximum dat dit account kan opl
 | Break-even ROAS 1,35 | €4.136,71 / €3.056,71 | idem |
 | Staalwaarde €33,26 | 0,077 × (€752,62 / 1,21) × 0,739 | `ads/cohort-staalaanvragers.json`, 365 rijpe cohortleden |
 | Meta CPA €15,60 | €842,66 / 54 | Windsor → facebook, 7–20 okt |
-| Google-kosten €563,48 | som van 6 campagnes | Windsor → googleanalytics4, gevalideerd tegen Google-export |
+| Google-kosten €563,48 | som van 11 advertentiegroepen | Windsor → google_ads, account 832-898-5831. Identiek aan de eerdere GA4-reconstructie, die daarmee achteraf gevalideerd is |
 | Meta-waarde €1.674,38 | som van `onsite_web_app_purchase` actiewaarden | Windsor → facebook, actiewaarden per advertentie |
 | Paid Social omzet €0,00 | GA4 `purchase_revenue`, kanaal Paid Social | Windsor → googleanalytics4, beide periodes |
 | Zoektermverspilling €90,71 | €64,96 merken + €25,75 buitenlands | `ads/raw/zoektermen.csv`, 19 sep–18 okt |
