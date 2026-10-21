@@ -214,7 +214,7 @@ Er zijn er maar vijf die het verdienen; ik verzin de rest niet.
 | Rang | Platform | Waar | Kosten 14d | Geschat verlies | Bewijs |
 |---|---|---|---:|---:|---|
 | 1 | Google | PMAX - Campagne | € 209,10 | **−€ 123,63** | 3 conversies, €69,70 per stuk tegen een plafond van €33,26. ROAS 0,55. Twee periodes op rij (28 dagen, €423,55, 5 conversies, ROAS 0,29). Winst = €85,47 brutomarge op €139,95 conversiewaarde min €209,10 mediakosten. |
-| 2 | Google | Search \| Concurrenten | € 76,99 | **−€ 76,99** | 0 conversies in 14 dagen, 0 in de 14 daarvoor, 0 over de hele 30-daagse export. Jij hebt deze al gestopt — goed besluit. |
+| 2 | Google | Search \| Concurrenten | € 76,99 | **−€ 76,99** | 0 conversies in 14 dagen, 0 in de 14 daarvoor, 0 over de hele 30-daagse export. **Correctie 21 okt: deze campagne is níét gestopt.** Bij de controle na golf 1 bleek de advertentiegroep Paneli nog op ENABLED te staan, met €36,37 uitgegeven in de laatste 7 dagen. Ik nam eerder aan dat hij gestopt was; dat was onjuist. |
 | 3 | Meta | zakelijk verbouwen | € 246,07 | risico, geen verlies | CPA verslechterde van €14,78 naar €24,61 (+66%) terwijl het budget met 67% omhoog ging. Hoogste frequentie (2,57) en laagste conversieratio (0,75%) van de drie grote. Nog wel onder het plafond. |
 | 4 | Google | Zoektermen: concurrentmerken | € 64,96³ | −€ 64,96 | `thuispaneel` €20,52 · `paneli` €10,99 · `benacci` €8,72 · `akupanel` €7,56 · `wooduo`, `enmod`, `pure panels`, `style for walls`, `full decor`, `woodupp`. Samen 0 conversies. |
 | 5 | Google | Zoektermen: Engels/buitenlands | € 25,75³ | −€ 25,75 | 60 zoektermen zonder Nederlands woord, 0 conversies. O.a. `wall decor panels`, `panel ryflowany na wymiar`, `steel wall cladding`, `marble and wood review`. |
@@ -361,7 +361,7 @@ Concrete uitsluitingslijst, allemaal met 0 conversies over 19 sep–18 okt:
 **Concurrentmerken (€64,96):** `thuispaneel`, `paneli`, `benacci`, `akupanel`, `wooduo`, `enmod`, `pure panels`, `style for walls`, `full decor`, `woodupp`
 **Engels/buitenlands (€25,75, 60 termen):** `wall decor panels`, `panel ryflowany na wymiar`, `steel wall cladding`, `marble wall panels`, `travertine wall panels`, `marble and wood review`, `deco wall tiles`, `fluted wall panel`, `white panels`, `dekor panel` en 50 vergelijkbare
 
-Binnen **Search | Concurrenten** (al gestopt) ging €85,60 van de €138,83 zoekwoordbudget naar het brede zoekwoord `paneli` en €42,43 naar AI Max voor 30 klikken, met kwaliteitsscore 3. Dat strookt met wat de advertentiegroepdata nu laat zien: de groep "Paneli" was de hele campagne.
+Binnen **Search | Concurrenten** (die op 21 oktober nog bleek te draaien, zie deel 2d) ging €85,60 van de €138,83 zoekwoordbudget naar het brede zoekwoord `paneli` en €42,43 naar AI Max voor 30 klikken, met kwaliteitsscore 3. Dat strookt met wat de advertentiegroepdata nu laat zien: de groep "Paneli" was de hele campagne.
 
 ### 6. Zijn de biedstrategieën passend bij de marges?
 
@@ -637,7 +637,7 @@ In volgorde:
 1. **Niet bij de advertenties, maar bij de opvolging.** 90 staalaanvragen in 14 dagen, waarvan 92% nooit terugkomt. Elke procentpunt die je die 7,7% kunt verhogen is ~€414 brutowinst per 14 dagen (0,9 extra paneelorder × €459,70 brutomarge), zonder één euro extra media.
 2. **131 afgebroken paneelwinkelwagens met €19.384,66 waarde**, en geen enkele retargeting-advertentie die ze terugroept.
 3. **PMax:** €209,10 per 14 dagen voor 3 conversies, dus circa €124 aantoonbaar verlies. Over 28 dagen: €423,55 voor 5 conversies, ROAS 0,29.
-4. **Search | Concurrenten:** €76,99 volledig verloren (al gestopt).
+4. **Search | Concurrenten:** €76,99 volledig verloren, en de campagne blijkt op 21 oktober nog te draaien — €36,37 in de laatste 7 dagen, nog steeds zonder één conversie.
 5. **Zoektermverspilling:** €90,71 per 30 dagen aan concurrentmerken en buitenlandse zoektermen.
 6. **De zakelijke doelgroep:** 14 gestarte checkouts met €3.106,86 aan panelen in de winkelwagen, waarvan 10 orders van €6,95 overbleven. Dat is geen advertentieprobleem maar een ontbrekend zakelijk aankooppad.
 
