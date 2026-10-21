@@ -3673,7 +3673,7 @@ html.pc-inf .pc-pages { display: none; }
 .ph-v4 .ph-hero__chips { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2.2rem; }
 .ph-v4 .ph-hero__chips a { font-size: 1.3rem; padding: 0.7rem 1.3rem; border: 1px solid rgba(245, 242, 236, 0.55); color: #F5F2EC; text-decoration: none; }
 .ph-v4 .ph-hero__chips a:hover { background: #F5F2EC; color: #151413; }
-@media (min-width: 990px) { .ph-v4 .ph-hero__cap--l { display: none; } .ph-v4 .ph-hero__cap--d { right: 2rem; bottom: 2rem; } }
+@media (min-width: 990px) { .ph-v4 .ph-hero__cap--l { display: none; } .ph-v4 .ph-hero__cap--d { right: 9.6rem; bottom: 2.4rem; } }
 
 /* Vertrouwensbalk */
 .ph-tb { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); background: #F5F2EC; border-bottom: 1px solid #DDD6CA; }
