@@ -1,5 +1,13 @@
 # Advertentie-ROI per advertentie — Meta Ads en Google Ads
 
+> ⚠️ **VERVALLEN CIJFERS — lees eerst `03-CMO-RAPPORT-14D.md`.**
+> Twee getallen in dit document zijn te hoog. De marge van 78,6% en de break-even ROAS van 1,26
+> zijn berekend op regelprijzen **zonder de orderkortingen af te trekken**. Met de kortingen
+> correct toegerekend is de marge **73,9%** (7–20 okt) respectievelijk **67,0%** (23 sep–6 okt) en
+> de break-even ROAS **1,35** respectievelijk **1,49**. Daardoor zakt ook de verwachte brutowinst
+> per staalaanvraag van €45,83 naar **€33,26**. De analyse-opzet en de cohortmethode in dit
+> document blijven geldig; alleen die bedragen zijn achterhaald.
+
 **Periode advertenties: laatste 30 dagen** (12 september — 12 oktober 2026). Daarvoor stond de meting
 niet goed, dus oudere perioden blijven eruit. **Het doorkooppercentage van staalaanvragers** komt uit
 een langere orderhistorie (12 mei — 12 oktober 2026), omdat een staal dat vandaag de deur uitgaat nog
