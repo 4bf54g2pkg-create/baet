@@ -42,7 +42,7 @@ Is de **€6,95 kostprijs van een staal per zending of per staaltje?** 90 staalo
 | Meta Ads spend | € 842,66 | € 748,51 | +12,6% |
 | **Totale advertentiekosten** | **€ 1.406,14** | **€ 1.310,81** | **+7,3%** |
 | Platformgerapporteerde ROAS (Meta + Google samen) | 1,79 | 2,31 | −22,5% |
-| Blended MER (netto-omzet / ad spend) | 3,29 | 4,26 | **−22,7%** |
+| Blended MER (netto-omzet / ad spend) | 3,29 | 4,25 | **−22,6%** |
 | Contributiewinst na advertenties | **€ 1.650,57** | **€ 2.953,36** | **−44,1%** |
 | ROI op advertentiebudget | **117%** | **225%** | −108 pp |
 | Aantal bestellingen | 105 | 76 | **+38,2%** |

@@ -1,250 +1,56 @@
 <div class="pd">
 
   <header class="pd-head" id="overzicht">
-    <h1 class="pd-title">Advertentie-ROI per advertentie</h1>
-    <p class="pd-lede">In 30 dagen ging er <span class="pd-m dash-skeleton" data-source="totalen" data-field="kosten_totaal" data-row="0">&mdash;</span> naar Meta en Google Ads. Dat leverde <span class="pd-m dash-skeleton" data-source="totalen" data-field="brutowinst_nu" data-row="0">&mdash;</span> brutowinst op uit orders die nu al binnen zijn, plus <span class="pd-m dash-skeleton" data-source="totalen" data-field="pijplijn" data-row="0">&mdash;</span> aan verwachte winst uit de staalaanvragen die er nog in zitten. De brutomarge op een verkocht paneel is <span class="pd-m dash-skeleton" data-source="marge" data-field="marge" data-row="0">&mdash;</span>, berekend uit de orderregels van de winkel en een inkoopprijs van &euro;&nbsp;30 per paneel.</p>
-    <p class="pd-note">Laatste 30 dagen &middot; Meta Ads en Google Ads &middot; bedragen in euro</p>
+    <h1 class="pd-title">Advertentierendement, 14 dagen</h1>
+    <p class="pd-lede" id="pd-lede">&mdash;</p>
+    <p class="pd-note" id="pd-periode">&mdash;</p>
   </header>
 
   <section class="pd-tiles" aria-label="Kerncijfers">
     <div class="pd-tile">
+      <p class="pd-tile-label">Contributiewinst na advertenties</p>
+      <p class="pd-tile-value pd-sign dash-skeleton" data-source="totalen" data-field="contributiewinst" data-row="0">&mdash;</p>
+      <p class="pd-tile-sub"><span class="pd-delta dash-skeleton" data-source="totalen" data-field="contributiewinst_delta_pct" data-row="0">&mdash;</span> tegen de vorige 14 dagen</p>
+    </div>
+    <div class="pd-tile">
       <p class="pd-tile-label">Advertentiekosten</p>
       <p class="pd-tile-value dash-skeleton" data-source="totalen" data-field="kosten_totaal" data-row="0">&mdash;</p>
-      <p class="pd-tile-sub">Meta + Google Ads, 30 dagen</p>
+      <p class="pd-tile-sub"><span class="pd-delta dash-skeleton" data-source="totalen" data-field="kosten_delta_pct" data-row="0">&mdash;</span> &middot; Meta <span class="pd-m dash-skeleton" data-source="totalen" data-field="kosten_meta" data-row="0">&mdash;</span>, Google <span class="pd-m dash-skeleton" data-source="totalen" data-field="kosten_google" data-row="0">&mdash;</span></p>
     </div>
     <div class="pd-tile">
-      <p class="pd-tile-label">Brutowinst nu</p>
-      <p class="pd-tile-value pd-sign dash-skeleton" data-source="totalen" data-field="brutowinst_nu" data-row="0">&mdash;</p>
-      <p class="pd-tile-sub">Uit orders die al geplaatst zijn</p>
+      <p class="pd-tile-label">ROI op advertentiebudget</p>
+      <p class="pd-tile-value pd-sign dash-skeleton" data-source="totalen" data-field="roi" data-row="0">&mdash;</p>
+      <p class="pd-tile-sub">Vorige periode <span class="pd-m dash-skeleton" data-source="totalen" data-field="roi_vorig" data-row="0">&mdash;</span></p>
     </div>
     <div class="pd-tile">
-      <p class="pd-tile-label">Pijplijnwaarde</p>
-      <p class="pd-tile-value pd-sign dash-skeleton" data-source="totalen" data-field="pijplijn" data-row="0">&mdash;</p>
-      <p class="pd-tile-sub">Verwachte winst uit de staalaanvragen, v&oacute;&oacute;r de kostprijs van de stalen</p>
+      <p class="pd-tile-label">Verkochte panelen</p>
+      <p class="pd-tile-value dash-skeleton" data-source="marge" data-field="paneel_stuks" data-where="periode=huidig">&mdash;</p>
+      <p class="pd-tile-sub"><span class="pd-delta dash-skeleton" data-source="totalen" data-field="panelen_delta_pct" data-row="0">&mdash;</span> &middot; vorige periode <span class="pd-m dash-skeleton" data-source="marge" data-field="paneel_stuks" data-where="periode=vorig">&mdash;</span></p>
     </div>
     <div class="pd-tile">
-      <p class="pd-tile-label">Brutomarge op panelen</p>
-      <p class="pd-tile-value dash-skeleton" data-source="marge" data-field="marge" data-row="0">&mdash;</p>
-      <p class="pd-tile-sub">Break-even ROAS <span class="pd-m dash-skeleton" data-source="marge" data-field="break_even_roas" data-row="0">&mdash;</span></p>
+      <p class="pd-tile-label">Advertentiekosten per verkocht paneel</p>
+      <p class="pd-tile-value dash-skeleton" data-source="totalen" data-field="kosten_per_paneel" data-row="0">&mdash;</p>
+      <p class="pd-tile-sub">Vorige periode <span class="pd-m dash-skeleton" data-source="totalen" data-field="kosten_per_paneel_vorig" data-row="0">&mdash;</span></p>
     </div>
     <div class="pd-tile pd-tile-warn">
-      <p class="pd-tile-label">Een staal mag kosten</p>
-      <p class="pd-tile-value dash-skeleton" data-source="staalkosten" data-field="break_even_staal" data-row="0">&mdash;</p>
-      <p class="pd-tile-sub">Daarboven kost de staalmachine geld. De werkelijke kostprijs is onbekend.</p>
+      <p class="pd-tile-label">Een conversie mag kosten</p>
+      <p class="pd-tile-value dash-skeleton" data-source="staalwaarde" data-field="winst_per_aanvraag" data-row="0">&mdash;</p>
+      <p class="pd-tile-sub">Verwachte brutowinst per staalaanvraag. Streefdoel &euro;&nbsp;25, zodat er marge zit tussen doel en plafond.</p>
     </div>
   </section>
 
-  <section class="pd-section" id="winst">
-    <h2 class="pd-h2">Meta Ads per advertentie</h2>
-    <p class="pd-sub">Spend, clicks en conversies komen uit het advertentieaccount. Elke advertentie levert twee soorten conversies: paneelorders, die nu al winst maken, en staalaanvragen, die pas later betalen. De eerste staan in <em>brutowinst nu</em>, de tweede in <em>pijplijnwaarde</em>. Bij elkaar is dat de verwachte totale brutowinst &mdash; nog zonder de kostprijs van de verstuurde stalen.</p>
-
+  <section class="pd-section" id="dashboard">
+    <h2 class="pd-h2">Management dashboard</h2>
+    <p class="pd-sub">De laatste 14 volledige dagen tegen de 14 dagen daarvoor. <em>Netto-omzet</em> is de winkelomzet exclusief btw, na kortingen en retouren. <em>Contributiewinst na advertenties</em> is de brutomarge op de verkochte panelen min de advertentiekosten; betaalproviderkosten, werkelijke verzendkosten en overhead zitten er niet in, de marge op accessoires ook niet. <em>Blended MER</em> is netto-omzet gedeeld door advertentiekosten.</p>
     <div class="pd-card">
-      <h3 class="pd-h3">Verwachte totale brutowinst per advertentie</h3>
-      <p class="pd-cardnote">Links van de nullijn kost de advertentie geld, rechts levert hij op. De bovenste staaf per advertentie is wat al binnen is, de onderste wat er uit de staalaanvragen nog aan zit te komen.</p>
-      <div class="pd-chartbox" id="pd-winst-box" data-source="meta_winst">
-        <svg class="pd-svg" id="pd-winst-chart" width="100%" role="img" aria-label="Verwachte totale brutowinst per Meta-advertentie"></svg>
-        <div class="pd-tip" hidden></div>
-      </div>
-    </div>
-
-    <div class="pd-card">
-      <h3 class="pd-h3">Alle cijfers per advertentie</h3>
       <div class="pd-tablebox">
-        <table class="pd-table" id="pd-meta-table" data-source="meta_ads" data-row-key="ad_name">
-          <thead>
-            <tr>
-              <th scope="col" data-field="ad_name">Advertentie</th>
-              <th scope="col" data-field="adset_name">Advertentieset</th>
-              <th scope="col" class="pd-r" data-field="spend">Spend</th>
-              <th scope="col" class="pd-r" data-field="clicks">Clicks</th>
-              <th scope="col" class="pd-r" data-source="meta_roi" data-field="cpc">CPC</th>
-              <th scope="col" class="pd-r" data-field="actions_omni_purchase">Conversies</th>
-              <th scope="col" class="pd-r" data-source="meta_roi" data-field="kosten_per_conversie">Kosten / conversie</th>
-              <th scope="col" class="pd-r" data-field="action_values_omni_purchase">Waarde (Meta)</th>
-              <th scope="col" class="pd-r" data-source="meta_winst" data-field="netto_waarde">Netto waarde</th>
-              <th scope="col" class="pd-r" data-source="meta_roi" data-field="roas">ROAS</th>
-              <th scope="col" class="pd-r" data-source="meta_winst" data-field="brutowinst_nu">Brutowinst nu</th>
-              <th scope="col" class="pd-r" data-source="meta_winst" data-field="staalconversies">Staalaanvragen</th>
-              <th scope="col" class="pd-r" data-source="meta_winst" data-field="pijplijn">Pijplijn</th>
-              <th scope="col" class="pd-r" data-source="meta_winst" data-field="verwacht_totaal">Verwacht totaal</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="pd-section" id="staal">
-    <h2 class="pd-h2">Wat een staalaanvraag werkelijk waard is</h2>
-    <p class="pd-sub">Dit is het getal waar de hele advertentiestrategie op draait, en het staat in de winkeladministratie zelf: van elke klant die een gratis staal aanvroeg is te zien of hij later panelen kocht. Alleen klanten die minstens 30 dagen de kans hebben gehad tellen mee. Dit komt uit de orders, niet uit advertentietags &mdash; de meting van advertenties staat hier buiten.</p>
-
-    <div class="pd-card">
-      <h3 class="pd-h3">Van staal naar klant</h3>
-      <div class="pd-tablebox">
-        <table class="pd-table pd-table-def">
-          <tbody>
-            <tr><th scope="row">Staalaanvragers met minstens 30 dagen de kans</th><td class="pd-r pd-m dash-skeleton" data-source="staalwaarde" data-field="rijpe_aanvragers" data-row="0">&mdash;</td></tr>
-            <tr><th scope="row">Daarvan kocht later panelen</th><td class="pd-r pd-m dash-skeleton" data-source="staalwaarde" data-field="doorgekomen" data-row="0">&mdash;</td></tr>
-            <tr><th scope="row">Doorkooppercentage</th><td class="pd-r pd-m dash-skeleton" data-source="staalwaarde" data-field="doorkooppercentage" data-row="0">&mdash;</td></tr>
-            <tr><th scope="row">Mediaan aantal dagen tot de paneelorder</th><td class="pd-r pd-m dash-skeleton" data-source="staalwaarde" data-field="mediaan_dagen" data-row="0">&mdash;</td></tr>
-            <tr><th scope="row">Gemiddelde paneelomzet per doorgekomen klant</th><td class="pd-r pd-m dash-skeleton" data-source="staalwaarde" data-field="omzet_per_doorgekomen" data-row="0">&mdash;</td></tr>
-            <tr><th scope="row">Verwachte brutowinst per staalaanvraag</th><td class="pd-r pd-m dash-skeleton" data-source="staalwaarde" data-field="winst_per_aanvraag" data-row="0">&mdash;</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="pd-cardnote">Verwachte brutowinst per staalaanvraag = doorkooppercentage &times; gemiddelde paneelomzet &times; brutomarge. Dat is wat ongeveer één aangevraagd staal oplevert, gemiddeld over alle aanvragers, ook de meesten die nooit terugkomen.</p>
-    </div>
-
-    <div class="pd-card">
-      <h3 class="pd-h3">Mag je zoveel stalen weggeven?</h3>
-      <div class="pd-tablebox">
-        <table class="pd-table pd-table-def">
-          <tbody>
-            <tr><th scope="row">Staalorders in 30 dagen</th><td class="pd-r pd-m dash-skeleton" data-source="staalkosten" data-field="staalorders" data-row="0">&mdash;</td></tr>
-            <tr><th scope="row">Weggegeven stalen</th><td class="pd-r"><span class="pd-m dash-skeleton" data-source="staalkosten" data-field="stalen" data-row="0">&mdash;</span> stuks (<span class="pd-m dash-skeleton" data-source="staalkosten" data-field="stalen_per_order" data-row="0">&mdash;</span> per order)</td></tr>
-            <tr><th scope="row">Verhouding staal tegenover verkocht paneel</th><td class="pd-r"><span class="pd-m dash-skeleton" data-source="staalkosten" data-field="stalen_per_paneel" data-row="0">&mdash;</span> staal per verkocht paneel</td></tr>
-            <tr><th scope="row">Verzendkosten die de klant betaalt, per staalorder</th><td class="pd-r pd-m dash-skeleton" data-source="staalkosten" data-field="verzend_per_order" data-row="0">&mdash;</td></tr>
-            <tr><th scope="row">Advertentiekosten per toegeschreven conversie</th><td class="pd-r pd-m dash-skeleton" data-source="staalkosten" data-field="kosten_per_conversie" data-row="0">&mdash;</td></tr>
-            <tr><th scope="row">Ruimte die overblijft per staalorder</th><td class="pd-r pd-m dash-skeleton" data-source="staalkosten" data-field="ruimte_per_order" data-row="0">&mdash;</td></tr>
-            <tr><th scope="row">Break-even kostprijs per staal</th><td class="pd-r pd-m dash-skeleton" data-source="staalkosten" data-field="break_even_staal" data-row="0">&mdash;</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="pd-cardnote"><strong>Dit is de enige vraag die nog open staat, en hij beslist alles.</strong> Als een staal minder kost dan het bedrag hierboven, dan is de staalmachine winstgevend en mogen de advertenties die stalen aanbrengen juist harder lopen. Kost een staal meer, dan is elk extra staal verlies, hoe goedkoop de klik ook was. De kostprijs van een staal staat niet in Shopify: die moet erbij komen.</p>
-      <p class="pd-cardnote">Wat de orderregels wél laten zien: de gratis stalen staan in de catalogus onder dezelfde artikelnamen en maten als de volwaardige panelen, met prijs nul. Als dat werkelijk panelen van volle maat zijn, kost elk staal de volle inkoopprijs en loopt de rekening in 30 dagen op tot <span class="pd-m dash-skeleton" data-source="staalkosten" data-field="inkoop_als_volle_panelen" data-row="0">&mdash;</span>.</p>
-    </div>
-  </section>
-
-  <section class="pd-section" id="marge">
-    <h2 class="pd-h2">De marge, uit de orderregels</h2>
-    <p class="pd-sub">Niet aangenomen maar gerekend, per orderregel. In de catalogus bestaat er niets tussen een gratis staal van &euro;&nbsp;0,00 en een paneel van &euro;&nbsp;89,95; daartussen zitten alleen profielen, montagekit, sierlatten en akoestische panelen, waarvan de inkoopprijs niet bekend is.</p>
-    <div class="pd-card">
-      <h3 class="pd-h3">De rekensom</h3>
-      <div class="pd-tablebox">
-        <table class="pd-table pd-table-def">
-          <tbody>
-            <tr><th scope="row">Verkochte panelen</th><td class="pd-r"><span class="pd-m dash-skeleton" data-source="marge" data-field="panelen" data-row="0">&mdash;</span> stuks</td></tr>
-            <tr><th scope="row">Paneelomzet</th><td class="pd-r pd-m dash-skeleton" data-source="marge" data-field="paneelomzet" data-row="0">&mdash;</td></tr>
-            <tr><th scope="row">Gemiddelde verkoopprijs per paneel</th><td class="pd-r pd-m dash-skeleton" data-source="marge" data-field="gemiddelde_paneelprijs" data-row="0">&mdash;</td></tr>
-            <tr><th scope="row">Inkoopwaarde</th><td class="pd-r pd-m dash-skeleton" data-source="marge" data-field="inkoopwaarde" data-row="0">&mdash;</td></tr>
-            <tr><th scope="row">Brutowinst op panelen</th><td class="pd-r pd-m dash-skeleton" data-source="marge" data-field="brutowinst_panelen" data-row="0">&mdash;</td></tr>
-            <tr><th scope="row">Brutomarge</th><td class="pd-r pd-m dash-skeleton" data-source="marge" data-field="marge" data-row="0">&mdash;</td></tr>
-            <tr><th scope="row">Break-even ROAS</th><td class="pd-r pd-m dash-skeleton" data-source="marge" data-field="break_even_roas" data-row="0">&mdash;</td></tr>
-            <tr><th scope="row">Gemiddelde paneelomzet per paneelorder</th><td class="pd-r pd-m dash-skeleton" data-source="marge" data-field="gem_paneelorder" data-row="0">&mdash;</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="pd-cardnote">Buiten de rekensom: <span class="pd-m dash-skeleton" data-source="marge" data-field="overigomzet" data-row="0">&mdash;</span> aan profielen, montagekit, sierlatten en akoestische panelen, en de gratis stalen.</p>
-    </div>
-    <div class="pd-card">
-      <h3 class="pd-h3">Alle verkochte panelen per prijs</h3>
-      <div class="pd-chartbox" id="pd-prijs-box" data-source="prijsverdeling">
-        <svg class="pd-svg" id="pd-prijs-chart" width="100%" role="img" aria-label="Verkochte panelen per prijspunt"></svg>
-        <div class="pd-tip" hidden></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="pd-section" id="google">
-    <h2 class="pd-h2">Google Ads per campagne en advertentiegroep</h2>
-    <p class="pd-sub">Google Ads is niet als eigen bron gekoppeld; kosten, clicks, transacties en omzet komen uit Google Analytics 4, dat de gekoppelde Google Ads-kosten meeleest. Toewijzing is laatste klik. Performance Max heeft geen advertentiegroepen, dus die kosten staan alleen op campagneniveau.</p>
-
-    <div class="pd-card">
-      <h3 class="pd-h3">Verwachte totale brutowinst per campagne</h3>
-      <div class="pd-chartbox" id="pd-gwinst-box" data-source="google_winst">
-        <svg class="pd-svg" id="pd-gwinst-chart" width="100%" role="img" aria-label="Verwachte totale brutowinst per Google Ads-campagne"></svg>
-        <div class="pd-tip" hidden></div>
-      </div>
-    </div>
-
-    <div class="pd-card">
-      <h3 class="pd-h3">Per campagne</h3>
-      <div class="pd-tablebox">
-        <table class="pd-table" id="pd-g-table" data-source="google_campagnes" data-row-key="session_google_ads_campaign_name">
-          <thead>
-            <tr>
-              <th scope="col" data-field="session_google_ads_campaign_name">Campagne</th>
-              <th scope="col" class="pd-r" data-field="advertiser_ad_cost">Kosten</th>
-              <th scope="col" class="pd-r" data-field="advertiser_ad_clicks">Clicks</th>
-              <th scope="col" class="pd-r" data-source="google_roi" data-field="cpc">CPC</th>
-              <th scope="col" class="pd-r" data-field="transactions">Transacties</th>
-              <th scope="col" class="pd-r" data-source="google_roi" data-field="kosten_per_transactie">Kosten / transactie</th>
-              <th scope="col" class="pd-r" data-field="purchase_revenue">Productomzet</th>
-              <th scope="col" class="pd-r" data-source="google_roi" data-field="roas">ROAS</th>
-              <th scope="col" class="pd-r" data-source="google_winst" data-field="brutowinst_nu">Brutowinst nu</th>
-              <th scope="col" class="pd-r" data-source="google_winst" data-field="pijplijn">Pijplijn</th>
-              <th scope="col" class="pd-r" data-source="google_winst" data-field="verwacht_totaal">Verwacht totaal</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="pd-card">
-      <h3 class="pd-h3">Per advertentiegroep</h3>
-      <div class="pd-tablebox">
-        <table class="pd-table" id="pd-gg-table" data-source="google_groepen" data-row-key="session_google_ads_campaign_name,session_google_ads_ad_group_name">
-          <thead>
-            <tr>
-              <th scope="col" data-field="session_google_ads_campaign_name">Campagne</th>
-              <th scope="col" data-field="session_google_ads_ad_group_name">Advertentiegroep</th>
-              <th scope="col" class="pd-r" data-field="advertiser_ad_cost">Kosten</th>
-              <th scope="col" class="pd-r" data-field="advertiser_ad_clicks">Clicks</th>
-              <th scope="col" class="pd-r" data-source="groep_roi" data-field="cpc">CPC</th>
-              <th scope="col" class="pd-r" data-field="transactions">Transacties</th>
-              <th scope="col" class="pd-r" data-field="purchase_revenue">Productomzet</th>
-              <th scope="col" class="pd-r" data-source="groep_roi" data-field="roas">ROAS</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-      <p class="pd-cardnote">Van de Google Ads-kosten is <span class="pd-m dash-skeleton" data-source="groep_dekking" data-field="niet_toewijsbaar" data-row="0">&mdash;</span> hier niet op advertentiegroep terug te vinden: Performance Max kent geen advertentiegroepen, en een deel van de klikken komt binnen zonder advertentiegroep in de meting.</p>
-    </div>
-  </section>
-
-  <section class="pd-section" id="afstemming">
-    <h2 class="pd-h2">Drie bronnen, dezelfde advertenties, drie antwoorden</h2>
-    <p class="pd-sub">Voor precies dezelfde Meta-advertenties en dezelfde 30 dagen rapporteren Meta, Google Analytics 4 en de Shopify-administratie een andere omzet. Dat komt doordat een staalorder in de advertentieplatforms meetelt als aankoop met de verzendkosten als waarde, terwijl de productomzet ervan nul is. Daarom staat de waarde van een staalaanvraag hierboven apart gerekend in plaats van uit de platformcijfers te komen.</p>
-
-    <div class="pd-card">
-      <h3 class="pd-h3">Omzet toegeschreven aan Facebook en Instagram</h3>
-      <div class="pd-chartbox" id="pd-rec-box" data-source="afstemming">
-        <svg class="pd-svg" id="pd-rec-chart" width="100%" role="img" aria-label="Omzet toegeschreven aan Facebook en Instagram per bron"></svg>
-        <div class="pd-tip" hidden></div>
-      </div>
-      <div class="pd-tablebox">
-        <table class="pd-table" id="pd-rec-table" data-source="afstemming" data-row-key="bron">
-          <thead>
-            <tr>
-              <th scope="col" data-field="bron">Bron</th>
-              <th scope="col" class="pd-r" data-field="orders">Orders</th>
-              <th scope="col" class="pd-r" data-field="waarde">Omzet</th>
-              <th scope="col" data-field="toewijzing">Toewijzing</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="pd-card">
-      <h3 class="pd-h3">Wat de winkel boekt per orderbron</h3>
-      <div class="pd-tablebox">
-        <table class="pd-table" id="pd-sh-table" data-source="shopify_bronnen" data-row-key="order_referrer_name,order_referrer_source">
-          <thead>
-            <tr>
-              <th scope="col" data-field="order_referrer_name">Verwijzer</th>
-              <th scope="col" data-field="order_referrer_source">Kanaal</th>
-              <th scope="col" class="pd-r" data-field="orders">Orders</th>
-              <th scope="col" class="pd-r" data-field="gross_sales">Brutoproductomzet</th>
-              <th scope="col" class="pd-r" data-field="shipping_charges">Verzendkosten</th>
-              <th scope="col" class="pd-r" data-source="shopify_roi" data-field="product_per_order">Product / order</th>
-              <th scope="col" class="pd-r" data-field="total_sales">Totale omzet</th>
-            </tr>
-          </thead>
+        <table class="pd-table" id="pd-kpi" data-source="kpi_tabel" data-row-key="kpi">
+          <thead><tr>
+            <th data-field="kpi">KPI</th>
+            <th class="pd-r" data-field="huidig">Laatste 14 dagen</th>
+            <th class="pd-r" data-field="vorig">Vorige 14 dagen</th>
+            <th class="pd-r" data-field="verschil_pct">Verschil</th>
+          </tr></thead>
           <tbody></tbody>
         </table>
       </div>
@@ -252,30 +58,138 @@
   </section>
 
   <section class="pd-section" id="verloop">
-    <h2 class="pd-h2">Dagelijkse advertentiekosten</h2>
+    <h2 class="pd-h2">Kosten en omzet per dag</h2>
+    <p class="pd-sub">Advertentiekosten als staven, de netto winkelomzet als lijn, alles in euro op dezelfde as. De stippellijn is de grens tussen de twee vergelijkingsperiodes. De omzet per dag is op kasbasis: een retour wordt geboekt op de dag van de terugbetaling, niet op de dag van de oorspronkelijke order.</p>
     <div class="pd-card">
-      <h3 class="pd-h3">Meta tegenover Google Ads</h3>
-      <div class="pd-chartbox" id="pd-daily-box" data-source="meta_dagen google_dagen">
-        <svg class="pd-svg" id="pd-daily-chart" width="100%" role="img" aria-label="Dagelijkse advertentiekosten Meta tegenover Google Ads"></svg>
-        <div class="pd-tip" hidden></div>
+      <div class="pd-chartbox" id="pd-chartbox" data-source="dagen">
+        <svg class="pd-svg" id="pd-chart" width="100%" role="img" aria-label="Advertentiekosten en netto-omzet per dag"></svg>
+      </div>
+      <div class="pd-legend">
+        <span><i style="background: var(--cds-chart-muted)"></i>Google Ads</span>
+        <span><i id="pd-lg-meta"></i>Meta Ads</span>
+        <span><i id="pd-lg-omzet" style="border-radius: 999px; height: 3px; width: 16px"></i>Netto-omzet Shopify</span>
       </div>
     </div>
   </section>
 
+  <section class="pd-section" id="meta">
+    <h2 class="pd-h2">Meta per individuele advertentie</h2>
+    <p class="pd-sub">Alle zeven advertenties zitten in &eacute;&eacute;n campagne, verdeeld over twee ad sets. <em>Winst</em> en <em>ROI</em> zijn gerekend op de verwachte brutowinst per staalaanvraag, niet op de omzet die Meta zelf rapporteert &mdash; de kaart onder &ldquo;Wat Meta claimt&rdquo; legt uit waarom dat moet. Dit is dus verwachte toekomstige winst, geen geld dat al binnen is. Advertenties zonder conversies staan er ook in.</p>
+    <div class="pd-card">
+      <div class="pd-tablebox">
+        <table class="pd-table" id="pd-meta" data-source="meta_per_ad" data-row-key="advertentie">
+          <thead><tr>
+            <th data-field="advertentie">Advertentie</th>
+            <th data-field="ad_set">Ad set</th>
+            <th class="pd-r" data-field="kosten">Kosten</th>
+            <th class="pd-r" data-field="impressies">Impressies</th>
+            <th class="pd-r" data-field="klikken">Klikken</th>
+            <th class="pd-r" data-field="ctr">CTR</th>
+            <th class="pd-r" data-field="cpc">CPC</th>
+            <th class="pd-r" data-field="cpm">CPM</th>
+            <th class="pd-r" data-field="conversies">Conv.</th>
+            <th class="pd-r" data-field="cr">CR</th>
+            <th class="pd-r" data-field="cpa">CPA</th>
+            <th class="pd-r" data-field="cpa_vorig">CPA vorige</th>
+            <th class="pd-r" data-field="winst">Winst</th>
+            <th class="pd-r" data-field="roi">ROI</th>
+            <th data-field="status">Status</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="pd-cardnote"><strong>Indeling.</strong> Groen: CPA onder &euro;&nbsp;25 bij vijf of meer conversies. Geel: CPA onder het plafond, maar met te weinig conversies voor zekerheid of met een verslechterende CPA. Rood: CPA boven het plafond bij drie of meer conversies, of meer dan &euro;&nbsp;50 besteed zonder &eacute;&eacute;n conversie. Grijs: te weinig besteed om iets te kunnen zeggen.</p>
+    </div>
+  </section>
+
+  <section class="pd-section" id="google">
+    <h2 class="pd-h2">Google per campagne</h2>
+    <p class="pd-sub">Per advertentie is voor Google niet beschikbaar: de Google&nbsp;Ads-connector is niet gekoppeld. Kosten, klikken en impressies komen daarom uit Google&nbsp;Analytics&nbsp;4, dat de gekoppelde Google&nbsp;Ads-kosten meekrijgt. Die kostenbasis is gevalideerd: over 19 september tot 18 oktober sommeerde hij exact naar de accounttotalen in de Google&nbsp;Ads-export. <em>ROAS</em> is de GA4-omzet exclusief btw gedeeld door de kosten; de break-even staat in de kolomkop.</p>
+    <div class="pd-card">
+      <div class="pd-tablebox">
+        <table class="pd-table" id="pd-google" data-source="google_per_campagne" data-row-key="campagne">
+          <thead><tr>
+            <th data-field="campagne">Campagne</th>
+            <th class="pd-r" data-field="kosten">Kosten</th>
+            <th class="pd-r" data-field="impressies">Impressies</th>
+            <th class="pd-r" data-field="klikken">Klikken</th>
+            <th class="pd-r" data-field="ctr">CTR</th>
+            <th class="pd-r" data-field="cpc">CPC</th>
+            <th class="pd-r" data-field="transacties">Transacties</th>
+            <th class="pd-r" data-field="omzet">GA4-omzet</th>
+            <th class="pd-r" data-field="roas">ROAS</th>
+            <th class="pd-r" data-field="kosten_per_trans">Per transactie</th>
+            <th class="pd-r" data-field="kosten_per_trans_vorig">Vorige periode</th>
+            <th data-field="status">Status</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="pd-section" id="attributie">
+    <h2 class="pd-h2">Wat Meta claimt, en wat de winkel ziet</h2>
+    <p class="pd-sub">Drie onafhankelijke bronnen over dezelfde 14 dagen. Als Meta werkelijk paneelomzet opleverde, zou die in minstens &eacute;&eacute;n van de andere twee terug moeten komen.</p>
+    <div class="pd-grid2">
+      <div class="pd-card">
+        <h3 class="pd-h3">Drie bronnen, dezelfde periode</h3>
+        <div class="pd-tablebox">
+          <table class="pd-table" id="pd-attr" data-source="attributie" data-row-key="bron">
+            <thead><tr>
+              <th data-field="bron">Bron</th>
+              <th class="pd-r" data-field="orders">Orders</th>
+              <th class="pd-r" data-field="paneelomzet">Paneelomzet</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p class="pd-cardnote">Meta rekent met zeven dagen na een klik plus &eacute;&eacute;n dag na een weergave; GA4 en Shopify kijken naar de laatste klik. Dat Meta meer orders claimt is daarmee te verklaren. Dat het verschil in <em>omzet</em> zo groot is, niet: een deel van wat Meta rapporteert is de &euro;&nbsp;6,95 verzendkosten die de klant voor zijn gratis staal betaalt, en dat is precies de kostprijs.</p>
+      </div>
+      <div class="pd-card">
+        <h3 class="pd-h3">De staalmachine</h3>
+        <p class="pd-kv">Staalaanvragen in deze periode: <strong class="dash-skeleton" data-source="marge" data-field="staal_orders" data-where="periode=huidig">&mdash;</strong>, met <strong class="dash-skeleton" data-source="marge" data-field="staal_stuks" data-where="periode=huidig">&mdash;</strong> staaltjes.</p>
+        <p class="pd-kv">Van de staalaanvragers die minstens 30 dagen de kans hadden, kocht <strong class="dash-skeleton" data-source="staalwaarde" data-field="doorkoop" data-row="0">&mdash;</strong> later panelen: <strong class="dash-skeleton" data-source="staalwaarde" data-field="doorgekocht" data-row="0">&mdash;</strong> van <strong class="dash-skeleton" data-source="staalwaarde" data-field="rijp" data-row="0">&mdash;</strong> mensen.</p>
+        <p class="pd-kv">Een doorkoper bestelt gemiddeld <strong class="dash-skeleton" data-source="staalwaarde" data-field="gem_omzet" data-row="0">&mdash;</strong> aan panelen, inclusief btw.</p>
+        <p class="pd-kv">Verwachte brutowinst per staalaanvraag: <strong class="dash-skeleton" data-source="staalwaarde" data-field="winst_per_aanvraag" data-row="0">&mdash;</strong>. Dat is het plafond van wat een conversie mag kosten.</p>
+        <p class="pd-cardnote">De kostprijs van een staalzending is &euro;&nbsp;6,95 en dat is precies wat de klant betaalt, ongeacht hoeveel staaltjes erin zitten. De staaltransactie is dus kostenneutraal en er hoeft niets van de verwachte winst af. Het doorkooppercentage komt uit de orders van de winkel zelf, niet uit advertentietags, dus de kwaliteit van die tags speelt er geen rol in.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pd-section" id="marge">
+    <h2 class="pd-h2">Marge en break-even</h2>
+    <p class="pd-sub">Gerekend uit de orderregels van de winkel. Een regel vanaf &euro;&nbsp;89 per stuk is een verkocht paneel; in de catalogus zit niets tussen een gratis staal van &euro;&nbsp;0 en dat bedrag, op profielen, montagekit en akoestische panelen na. Kortingen op orderniveau worden proportioneel over de regels verdeeld &mdash; zonder die stap valt de marge te hoog uit.</p>
+    <div class="pd-card">
+      <div class="pd-tablebox">
+        <table class="pd-table" id="pd-marge" data-source="marge" data-row-key="periode">
+          <thead><tr>
+            <th data-field="periode">Periode</th>
+            <th class="pd-r" data-field="paneel_orders">Paneelorders</th>
+            <th class="pd-r" data-field="paneel_stuks">Panelen</th>
+            <th class="pd-r" data-field="paneel_omzet">Paneelomzet ex btw</th>
+            <th class="pd-r" data-field="per_paneel">Per paneel</th>
+            <th class="pd-r" data-field="inkoop">Inkoop</th>
+            <th class="pd-r" data-field="brutomarge">Brutomarge</th>
+            <th class="pd-r" data-field="marge_pct">Marge</th>
+            <th class="pd-r" data-field="break_even_roas">Break-even ROAS</th>
+            <th class="pd-r" data-field="staal_orders">Staalorders</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="pd-cardnote">Inkoopprijs &euro;&nbsp;30 per paneel, zoals opgegeven. Van accessoires en profielen is de inkoopprijs onbekend, dus die omzet blijft buiten de marge: dat maakt de contributiewinst eerder te laag dan te hoog.</p>
+    </div>
+  </section>
+
   <section class="pd-section" id="methode">
-    <h2 class="pd-h2">Hoe dit gemeten is, en wat het niet zegt</h2>
+    <h2 class="pd-h2">Wat dit dashboard niet kan</h2>
     <div class="pd-prose">
-      <h3 class="pd-h3">Waarom 30 dagen voor de advertenties, en langer voor de stalen</h3>
-      <p>De advertentiecijfers staan op 30 dagen omdat de meting daarvoor niet goed stond; oudere perioden zouden het beeld vertekenen. Het doorkooppercentage van staalaanvragers komt uit een langere orderhistorie, omdat een staal dat vandaag de deur uitgaat nog niet gekocht kan hebben. Dat getal komt uit de orders van de winkel zelf, niet uit advertentietags, dus de kwaliteit van die tags speelt er geen rol in. Alleen aanvragers die minstens 30 dagen de kans hebben gehad tellen mee.</p>
-
-      <h3 class="pd-h3">De begrippen</h3>
-      <p><strong>Brutowinst nu</strong> is de netto waarde van de toegeschreven orders maal de brutomarge, min de advertentiekosten. <strong>Netto waarde</strong> is de conversiewaarde van Meta min &euro;&nbsp;6,95 per conversie, omdat dat bedrag de verzendkosten van een staalorder is en geen productomzet. <strong>Pijplijnwaarde</strong> is het aantal toegeschreven staalaanvragen maal de verwachte brutowinst per staalaanvraag. <strong>Verwacht totaal</strong> is de som van die twee. Een staalaanvraag wordt afgeleid uit het verschil tussen de conversies en de orders die wél productomzet hadden.</p>
-      <p>Verder zitten er geen kosten in: niet de kostprijs van een verstuurd staal, niet de verzendkosten die PureDeco zelf betaalt, geen verwerking, geen retouren en geen vaste lasten. De echte nettowinst ligt dus onder de getallen hier.</p>
-      <p><strong>Kosten per conversie</strong> en <strong>CPC</strong> zijn de enige cijfers waarover alle bronnen het eens zijn, omdat ze geen toewijzing van omzet nodig hebben.</p>
-
-      <h3 class="pd-h3">Wat dit dashboard niet kan</h3>
-      <p>Het kan niet zeggen welk deel van de omzet ook zonder advertenties was gekomen. Daarvoor is een test nodig waarin een deel van het bereik bewust geen advertenties ziet. Het doorkooppercentage is gemeten over alle staalaanvragers, niet alleen die uit advertenties; of een aanvrager uit een advertentie net zo vaak terugkomt als een aanvrager uit organisch zoekverkeer is hier niet te zien. En door de korte periode van 30 dagen verschuift één grote order de winst van een advertentie merkbaar.</p>
-      <p>Op advertentieniveau is Google Ads hier niet te splitsen: zonder gekoppeld Google Ads-account gaat de granulariteit tot advertentiegroep.</p>
+      <p><strong>Google per advertentie.</strong> Niet beschikbaar. De Google&nbsp;Ads-connector is niet gekoppeld en de Supermetrics-proefperiode verliep op 9 oktober 2026. Google staat hier op campagneniveau, met kosten uit GA4.</p>
+      <p><strong>Geen tagcontrole in de browser.</strong> Consent&nbsp;Mode&nbsp;v2, de Meta Conversions&nbsp;API, Event&nbsp;Match&nbsp;Quality en de feedkwaliteit in Merchant&nbsp;Center zijn hiervandaan niet te verifi&euml;ren.</p>
+      <p><strong>Geen incrementaliteit.</strong> Alle winst per advertentie is attributiewinst. Of die orders zonder advertenties ook waren gekomen, kan alleen een holdout-test uitwijzen. Bij dertien paneelorders per veertien dagen duurt zo'n test maanden.</p>
+      <p><strong>Tel de platformen niet bij elkaar op.</strong> Meta en Google kunnen dezelfde order claimen. Order-ID's komen niet terug in de platformrapportages waartoe dit dashboard toegang heeft, dus dubbeltelling is niet uit te sluiten. Gebruik voor elke budgetbeslissing het Shopify-totaal als noemer.</p>
+      <p><strong>Shopify-omzet is geen bewijs.</strong> Dat de winkelomzet stijgt of daalt zegt op zichzelf niets over het effect van advertenties. In deze periode gebeurde juist het omgekeerde van wat je zou hopen: de kosten stegen en de netto-omzet daalde.</p>
     </div>
   </section>
 
@@ -337,14 +251,34 @@
   [data-dash-source-state="refreshing"] { opacity: .5; transition: opacity var(--cds-dur-slow); }
 </style>
 
+<style>
+  .pd-grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); gap: var(--cds-gap-md); margin-top: var(--cds-gap-md); }
+  .pd-grid2 > .pd-card { margin-top: 0; }
+  .pd-pill { display: inline-block; padding: 1px 7px; border-radius: 999px; font-size: var(--cds-font-size-caption); white-space: nowrap; border: 1px solid var(--color-border-line); }
+  .pd-pill-groen { color: var(--color-ok); }
+  .pd-pill-geel { color: var(--color-warn); }
+  .pd-pill-rood { color: var(--color-bad); }
+  .pd-pill-grijs { color: var(--color-fg-muted); }
+  .pd-delta { font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+  .pd-table th.pd-r, .pd-table td.pd-r { text-align: right; }
+  .pd-table tbody th[scope="row"] { font-weight: 400; white-space: normal; }
+  .pd-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin-top: var(--cds-gap-sm); }
+  .pd-legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .pd-legend i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+  .pd-kv { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin: 0 0 var(--cds-gap-xs); }
+  .pd-kv strong { color: var(--color-fg); font-weight: var(--cds-font-weight-medium); }
+</style>
+
 <script>
-  dash.loader('shopify_bronnen', {
-    description: 'Het antwoord van Shopify Analytics als rijen: elke cel bij de naam van haar kolom, geldbedragen en aantallen als getal.',
-    fn: ({ answer }) => {
-      let a = answer;
+(function () {
+  'use strict';
+
+  dash.loader('shopify_dagen', {
+    description: 'Het antwoord van Shopify Analytics als een rij per dag: elke cel bij de naam van haar kolom, geldbedragen en aantallen als getal, de datum als jjjj-mm-dd.',
+    fn: function (ctx) {
+      var a = ctx.answer;
       if (typeof a === 'string') {
-        const s = a.indexOf('{');
-        const e = a.lastIndexOf('}');
+        var s = a.indexOf('{'), e = a.lastIndexOf('}');
         if (s < 0 || e < s) throw new Error('Shopify gaf geen JSON terug: ' + a.slice(0, 200));
         a = JSON.parse(a.slice(s, e + 1));
       }
@@ -353,828 +287,787 @@
       if (!Array.isArray(a.columns) || !Array.isArray(a.rows)) {
         throw new Error('Geen kolommen of rijen in het antwoord. Sleutels: ' + Object.keys(a).join(', '));
       }
-      const namen = a.columns.map((c) => String(c.name));
-      const getallig = new Set(['MONEY', 'INTEGER', 'FLOAT', 'DECIMAL', 'PERCENT']);
-      const isGetal = a.columns.map((c) => getallig.has(String(c.dataType).toUpperCase()));
-      const data = a.rows.map((cellen) => {
-        const rij = {};
-        namen.forEach((n, i) => { rij[n] = isGetal[i] ? Number(cellen[i]) : cellen[i]; });
+      var namen = a.columns.map(function (c) { return String(c.name); });
+      var getallig = { MONEY: 1, INTEGER: 1, FLOAT: 1, DECIMAL: 1, PERCENT: 1 };
+      var isGetal = a.columns.map(function (c) { return !!getallig[String(c.dataType).toUpperCase()]; });
+      var data = a.rows.map(function (cellen) {
+        var rij = {};
+        namen.forEach(function (n, i) {
+          rij[n] = isGetal[i] ? Number(cellen[i]) : (n === 'day' ? String(cellen[i]).slice(0, 10) : cellen[i]);
+        });
         return rij;
       });
-      return { data, columns: namen, meta: a.query ? [{ label: 'ShopifyQL', value: String(a.query), type: 'code', lang: 'sql' }] : [] };
-    },
+      return {
+        data: data,
+        columns: namen,
+        meta: a.query ? [{ label: 'ShopifyQL', value: String(a.query), type: 'code', lang: 'sql' }] : []
+      };
+    }
+  });
+
+  dash.loader('shopify_bronnen', {
+    description: 'Het antwoord van Shopify Analytics als een rij per verwijzer per dag, zodat de pagina er zelf een periode uit kan nemen.',
+    fn: function (ctx) {
+      var a = ctx.answer;
+      if (typeof a === 'string') {
+        var s = a.indexOf('{'), e = a.lastIndexOf('}');
+        if (s < 0 || e < s) throw new Error('Shopify gaf geen JSON terug: ' + a.slice(0, 200));
+        a = JSON.parse(a.slice(s, e + 1));
+      }
+      if (!a || typeof a !== 'object') throw new Error('Onbegrepen antwoord van Shopify Analytics.');
+      if (a.error || a.errors) throw new Error(String(a.error || JSON.stringify(a.errors)).slice(0, 300));
+      if (!Array.isArray(a.columns) || !Array.isArray(a.rows)) {
+        throw new Error('Geen kolommen of rijen in het antwoord. Sleutels: ' + Object.keys(a).join(', '));
+      }
+      var namen = a.columns.map(function (c) { return String(c.name); });
+      var getallig = { MONEY: 1, INTEGER: 1, FLOAT: 1, DECIMAL: 1, PERCENT: 1 };
+      var isGetal = a.columns.map(function (c) { return !!getallig[String(c.dataType).toUpperCase()]; });
+      var data = a.rows.map(function (cellen) {
+        var rij = {};
+        namen.forEach(function (n, i) {
+          rij[n] = isGetal[i] ? Number(cellen[i]) : (n === 'day' ? String(cellen[i]).slice(0, 10) : cellen[i]);
+        });
+        return rij;
+      });
+      return {
+        data: data,
+        columns: namen,
+        meta: a.query ? [{ label: 'ShopifyQL', value: String(a.query), type: 'code', lang: 'sql' }] : []
+      };
+    }
   });
 
   dash.loader('shopify_regels', {
-    description: 'Het antwoord van de Shopify Admin API omgezet naar een rij per orderregel: ordernummer, datum, klantnummer, artikel, aantal stuks, prijs per stuk en het ordertotaal.',
-    fn: ({ answer }) => {
-      let a = answer;
+    description: 'Het antwoord van de Shopify Admin API omgezet naar een rij per orderregel: ordernummer, datum, artikel, aantal stuks, prijs per stuk, het regeltotaal na regelkorting, en de korting die op de hele order zit. Die orderkorting wordt op de pagina proportioneel over de regels verdeeld.',
+    fn: function (ctx) {
+      var a = ctx.answer;
       if (typeof a === 'string') {
-        const s = a.indexOf('{');
-        const e = a.lastIndexOf('}');
+        var s = a.indexOf('{'), e = a.lastIndexOf('}');
         if (s < 0 || e < s) throw new Error('Shopify gaf geen JSON terug: ' + a.slice(0, 200));
         a = JSON.parse(a.slice(s, e + 1));
       }
       if (!a || typeof a !== 'object') throw new Error('Onbegrepen antwoord van de Shopify Admin API.');
       if (a.errors) throw new Error(String(JSON.stringify(a.errors)).slice(0, 300));
-      const orders = (((a.data || {}).orders || {}).nodes) || null;
+      var orders = (((a.data || {}).orders || {}).nodes) || null;
       if (!Array.isArray(orders)) throw new Error('Geen orders in het antwoord. Sleutels: ' + Object.keys(a).join(', '));
-      const data = [];
-      orders.forEach((o) => {
-        const datum = String(o.createdAt || '').slice(0, 10);
-        const klant = o.customer && o.customer.id ? String(o.customer.id).split('/').pop() : '';
-        const ordertotaal = Number((((o.currentTotalPriceSet || {}).shopMoney || {}).amount) || 0);
-        const regels = ((o.lineItems || {}).nodes) || [];
-        regels.forEach((li, i) => {
+      var geld = function (set) { return Number((((set || {}).shopMoney || {}).amount) || 0); };
+      var data = [];
+      orders.forEach(function (o) {
+        var regels = ((o.lineItems || {}).nodes) || [];
+        var orderkorting = geld(o.currentTotalDiscountsSet);
+        var regelsom = 0, regelkorting = 0;
+        regels.forEach(function (li) {
+          var stuk = geld(li.originalUnitPriceSet), n = Number(li.quantity || 0);
+          var tot = geld(li.discountedTotalSet);
+          regelsom += tot;
+          regelkorting += stuk * n - tot;
+        });
+        var restkorting = Math.max(orderkorting - regelkorting, 0);
+        regels.forEach(function (li, i) {
+          var tot = geld(li.discountedTotalSet);
+          var aandeel = regelsom > 0 ? tot / regelsom : 0;
           data.push({
             regel: String(o.name) + '-' + (i + 1),
             order: String(o.name),
-            datum: datum,
-            klant: klant,
+            datum: String(o.createdAt || '').slice(0, 10),
             artikel: String(li.title || ''),
             stuks: Number(li.quantity || 0),
-            stukprijs: Number((((li.originalUnitPriceSet || {}).shopMoney || {}).amount) || 0),
-            ordertotaal: ordertotaal,
+            stukprijs: geld(li.originalUnitPriceSet),
+            regeltotaal: tot,
+            netto: tot - restkorting * aandeel,
+            ordertotaal: geld(o.currentTotalPriceSet)
           });
         });
       });
-      return { data, columns: ['regel', 'order', 'datum', 'klant', 'artikel', 'stuks', 'stukprijs', 'ordertotaal'] };
-    },
+      return { data: data, columns: ['regel', 'order', 'datum', 'artikel', 'stuks', 'stukprijs', 'regeltotaal', 'netto', 'ordertotaal'] };
+    }
   });
 
+  // ---- Vensters -------------------------------------------------------------
+  dash.calc('venster', {
+    title: 'De twee vergelijkingsperiodes',
+    description: 'De laatste 14 volledige dagen en de 14 dagen daarvoor, afgeleid uit de nieuwste dag in de Meta-data. Die reeks loopt altijd tot en met gisteren, dus vandaag telt nooit half mee.',
+    inputs: ['meta_ads_dagen'],
+    fn: function (meta_ads_dagen) {
+      var dagen = meta_ads_dagen.map(function (r) { return String(r.date).slice(0, 10); }).sort();
+      var tot = dagen[dagen.length - 1];
+      var schuif = function (d, n) {
+        return new Date(new Date(d + 'T00:00:00Z').getTime() + n * 86400000).toISOString().slice(0, 10);
+      };
+      return [{
+        huidig_van: schuif(tot, -13), huidig_tot: tot,
+        vorig_van: schuif(tot, -27), vorig_tot: schuif(tot, -14),
+        dagen: 14
+      }];
+    }
+  });
+
+  // ---- Marge uit de orderregels --------------------------------------------
   dash.calc('marge', {
-    title: 'Brutomarge uit de orderregels',
-    description: 'Uit de orderregels van de laatste 30 dagen, geteld vanaf de nieuwste orderdatum in de data. Een regel vanaf 89,95 euro per stuk is een verkocht paneel; in de catalogus bestaat er niets tussen een gratis staal van 0 euro en dat bedrag, op profielen, montagekit, sierlatten en akoestische panelen na. De brutomarge is de paneelomzet min 30 euro inkoop per paneel, gedeeld door de paneelomzet; de break-even ROAS is daar de omgekeerde van.',
-    inputs: ['shopify_regels'],
-    fn: (shopify_regels) => {
-      const PANEELPRIJS = 89.95;
-      const INKOOP_PER_PANEEL = 30;
-      const DAGEN = 30;
-      const laatste = shopify_regels.map((r) => r.datum).sort().pop() || '';
-      const grens = new Date(new Date(laatste + 'T00:00:00Z').getTime() - DAGEN * 86400000).toISOString().slice(0, 10);
-      const venster = shopify_regels.filter((r) => r.datum > grens);
-      const panelen = venster.filter((r) => Number(r.stukprijs) >= PANEELPRIJS);
-      const overig = venster.filter((r) => Number(r.stukprijs) > 0 && Number(r.stukprijs) < PANEELPRIJS);
-      const stuks = panelen.reduce((t, r) => t + Number(r.stuks), 0);
-      const omzet = panelen.reduce((t, r) => t + Number(r.stukprijs) * Number(r.stuks), 0);
-      const winst = omzet - INKOOP_PER_PANEEL * stuks;
-      const paneelorders = new Set(panelen.map((r) => r.order));
-      return [{
-        vanaf: grens,
-        tot: laatste,
-        inkoop_per_paneel: INKOOP_PER_PANEEL,
-        panelen: stuks,
-        paneelomzet: omzet,
-        gemiddelde_paneelprijs: stuks ? omzet / stuks : null,
-        inkoopwaarde: INKOOP_PER_PANEEL * stuks,
-        brutowinst_panelen: winst,
-        marge: omzet ? winst / omzet : null,
-        break_even_roas: winst > 0 ? omzet / winst : null,
-        paneelorders: paneelorders.size,
-        gem_paneelorder: paneelorders.size ? omzet / paneelorders.size : null,
-        overigomzet: overig.reduce((t, r) => t + Number(r.stukprijs) * Number(r.stuks), 0),
-      }];
-    },
-  });
-
-  dash.calc('prijsverdeling', {
-    title: 'Verkochte panelen per prijspunt',
-    description: 'De verkochte panelen uit dezelfde 30 dagen, geteld per prijs per stuk.',
-    inputs: ['shopify_regels', 'marge'],
-    fn: (shopify_regels, marge) => {
-      const grens = (marge[0] || {}).vanaf;
-      const per = new Map();
-      shopify_regels
-        .filter((r) => r.datum > grens && Number(r.stukprijs) >= 89.95)
-        .forEach((r) => {
-          const prijs = Number(r.stukprijs);
-          const rij = per.get(prijs) || { stukprijs: prijs, stuks: 0, omzet: 0 };
-          rij.stuks += Number(r.stuks);
-          rij.omzet += prijs * Number(r.stuks);
-          per.set(prijs, rij);
-        });
-      return Array.from(per.values()).sort((a, b) => a.stukprijs - b.stukprijs);
-    },
-  });
-
-  dash.calc('staalwaarde', {
-    title: 'Wat een staalaanvraag oplevert',
-    description: 'Uit de orderhistorie van de winkel: per klant die ooit een gratis staal aanvroeg of hij daarna panelen kocht. Alleen aanvragers die minstens 30 dagen de kans hebben gehad tellen mee. De verwachte brutowinst per staalaanvraag is het doorkooppercentage maal de gemiddelde paneelomzet per doorgekomen klant maal de brutomarge.',
-    inputs: ['staal_cohort', 'marge'],
-    fn: (staal_cohort, marge) => {
-      const m = (marge[0] || {}).marge;
-      const rijp = staal_cohort.filter((k) => String(k.rijp_30_dagen) === 'ja');
-      const door = rijp.filter((k) => String(k.later_panelen_gekocht) === 'ja');
-      const omzet = door.reduce((t, k) => t + Number(k.paneelomzet_daarna || 0), 0);
-      const dagen = door.map((k) => Number(k.dagen_tot_eerste_paneelorder)).filter((d) => isFinite(d)).sort((a, b) => a - b);
-      const rate = rijp.length ? door.length / rijp.length : null;
-      const perDoor = door.length ? omzet / door.length : null;
-      return [{
-        aanvragers: staal_cohort.length,
-        rijpe_aanvragers: rijp.length,
-        doorgekomen: door.length,
-        doorkooppercentage: rate,
-        mediaan_dagen: dagen.length ? dagen[Math.floor(dagen.length / 2)] : null,
-        paneelomzet_doorgekomen: omzet,
-        omzet_per_doorgekomen: perDoor,
-        winst_per_aanvraag: rate != null && perDoor != null && m != null ? rate * perDoor * m : null,
-      }];
-    },
-  });
-
-  dash.calc('staalkosten', {
-    title: 'Hoeveel een staal mag kosten',
-    description: 'Een staalorder brengt de verwachte brutowinst van een staalaanvraag op plus de verzendkosten die de klant betaalt, en kost de advertentiekosten per toegeschreven conversie. Wat overblijft is de ruimte voor de fysieke staalorder; gedeeld door het aantal stalen per order is dat de break-even kostprijs per staal. Het laatste getal rekent voor wat het zou kosten als elk weggegeven staal een volwaardig paneel is tegen de inkoopprijs.',
-    inputs: ['shopify_regels', 'marge', 'staalwaarde', 'meta_ads', 'google_campagnes'],
-    fn: (shopify_regels, marge, staalwaarde, meta_ads, google_campagnes) => {
-      const grens = (marge[0] || {}).vanaf;
-      const inkoop = (marge[0] || {}).inkoop_per_paneel;
-      const panelen = (marge[0] || {}).panelen;
-      const winstPerAanvraag = (staalwaarde[0] || {}).winst_per_aanvraag;
-      const venster = shopify_regels.filter((r) => r.datum > grens);
-      const metPaneel = new Set(venster.filter((r) => Number(r.stukprijs) >= 89.95).map((r) => r.order));
-      const staalregels = venster.filter((r) => Number(r.stukprijs) === 0 && !metPaneel.has(r.order));
-      const staalorders = new Map();
-      staalregels.forEach((r) => { staalorders.set(r.order, Number(r.ordertotaal)); });
-      const stalen = staalregels.reduce((t, r) => t + Number(r.stuks), 0);
-      const verzend = Array.from(staalorders.values()).reduce((t, v) => t + v, 0);
-      const spend = meta_ads.reduce((t, a) => t + Number(a.spend || 0), 0)
-        + google_campagnes.reduce((t, c) => t + Number(c.advertiser_ad_cost || 0), 0);
-      const conversies = meta_ads.reduce((t, a) => t + Number(a.actions_omni_purchase || 0), 0)
-        + google_campagnes.reduce((t, c) => t + Number(c.transactions || 0), 0);
-      const perOrder = staalorders.size ? verzend / staalorders.size : null;
-      const perConversie = conversies ? spend / conversies : null;
-      const perStaalOrder = staalorders.size ? stalen / staalorders.size : null;
-      const ruimte = winstPerAanvraag != null && perOrder != null && perConversie != null
-        ? winstPerAanvraag + perOrder - perConversie : null;
-      return [{
-        staalorders: staalorders.size,
-        stalen: stalen,
-        stalen_per_order: perStaalOrder,
-        stalen_per_paneel: panelen ? stalen / panelen : null,
-        verzend_totaal: verzend,
-        verzend_per_order: perOrder,
-        kosten_per_conversie: perConversie,
-        ruimte_per_order: ruimte,
-        break_even_staal: ruimte != null && perStaalOrder ? ruimte / perStaalOrder : null,
-        inkoop_als_volle_panelen: inkoop * stalen,
-      }];
-    },
-  });
-
-  dash.calc('meta_roi', {
-    title: 'Meta: ROAS en kosten per advertentie',
-    description: 'Per advertentie uit de cijfers van het advertentieaccount: CPC = spend / clicks, kosten per conversie = spend / conversies, ROAS = conversiewaarde / spend.',
-    inputs: ['meta_ads'],
-    fn: (meta_ads) => meta_ads.map((ad) => ({
-      ad_name: ad.ad_name,
-      cpc: Number(ad.clicks) ? Number(ad.spend) / Number(ad.clicks) : null,
-      kosten_per_conversie: Number(ad.actions_omni_purchase) ? Number(ad.spend) / Number(ad.actions_omni_purchase) : null,
-      waarde_per_conversie: Number(ad.actions_omni_purchase) ? Number(ad.action_values_omni_purchase) / Number(ad.actions_omni_purchase) : null,
-      roas: Number(ad.spend) ? Number(ad.action_values_omni_purchase) / Number(ad.spend) : null,
-    })),
-  });
-
-  dash.calc('meta_winst', {
-    title: 'Meta: brutowinst en pijplijn per advertentie',
-    description: 'Netto waarde is de conversiewaarde van Meta min 6,95 euro verzendkosten per conversie, nooit minder dan nul. Brutowinst nu is die netto waarde maal de brutomarge, min de spend. Het aantal paneelorders wordt geschat als de netto waarde gedeeld door de gemiddelde paneelomzet per paneelorder; de overige conversies zijn staalaanvragen en krijgen de verwachte brutowinst per staalaanvraag als pijplijnwaarde. Verwacht totaal is de som van beide.',
-    inputs: ['meta_ads', 'marge', 'staalwaarde'],
-    fn: (meta_ads, marge, staalwaarde) => {
-      const VERZENDTARIEF = 6.95;
-      const m = (marge[0] || {}).marge;
-      const gemPaneelorder = (marge[0] || {}).gem_paneelorder;
-      const winstPerAanvraag = (staalwaarde[0] || {}).winst_per_aanvraag;
-      return meta_ads.map((ad) => {
-        const conversies = Number(ad.actions_omni_purchase);
-        const netto = Math.max(0, Number(ad.action_values_omni_purchase) - VERZENDTARIEF * conversies);
-        const nu = m == null ? null : netto * m - Number(ad.spend);
-        const paneelorders = gemPaneelorder ? Math.min(conversies, netto / gemPaneelorder) : 0;
-        const stalen = Math.max(0, conversies - paneelorders);
-        const pijplijn = winstPerAanvraag == null ? null : stalen * winstPerAanvraag;
-        return {
-          ad_name: ad.ad_name,
-          netto_waarde: netto,
-          brutowinst_nu: nu,
-          staalconversies: stalen,
-          pijplijn: pijplijn,
-          verwacht_totaal: nu == null || pijplijn == null ? null : nu + pijplijn,
-        };
-      });
-    },
-  });
-
-  dash.calc('google_roi', {
-    title: 'Google Ads: ROAS per campagne',
-    description: 'Per campagne uit de GA4-cijfers: CPC = kosten / clicks, kosten per transactie = kosten / transacties, ROAS = productomzet / kosten.',
-    inputs: ['google_campagnes'],
-    fn: (google_campagnes) => google_campagnes.map((c) => ({
-      session_google_ads_campaign_name: c.session_google_ads_campaign_name,
-      cpc: Number(c.advertiser_ad_clicks) ? Number(c.advertiser_ad_cost) / Number(c.advertiser_ad_clicks) : null,
-      kosten_per_transactie: Number(c.transactions) ? Number(c.advertiser_ad_cost) / Number(c.transactions) : null,
-      roas: Number(c.advertiser_ad_cost) ? Number(c.purchase_revenue) / Number(c.advertiser_ad_cost) : null,
-    })),
-  });
-
-  dash.calc('google_winst', {
-    title: 'Google Ads: brutowinst en pijplijn per campagne',
-    description: 'De GA4-productomzet is al zonder verzendkosten en gaat ongewijzigd maal de brutomarge, min de kosten. Het aantal paneelorders wordt geschat als die omzet gedeeld door de gemiddelde paneelomzet per paneelorder; de overige transacties zijn staalaanvragen en krijgen de verwachte brutowinst per staalaanvraag als pijplijnwaarde.',
-    inputs: ['google_campagnes', 'marge', 'staalwaarde'],
-    fn: (google_campagnes, marge, staalwaarde) => {
-      const m = (marge[0] || {}).marge;
-      const gemPaneelorder = (marge[0] || {}).gem_paneelorder;
-      const winstPerAanvraag = (staalwaarde[0] || {}).winst_per_aanvraag;
-      return google_campagnes.map((c) => {
-        const transacties = Number(c.transactions);
-        const omzet = Number(c.purchase_revenue);
-        const nu = m == null ? null : omzet * m - Number(c.advertiser_ad_cost);
-        const paneelorders = gemPaneelorder ? Math.min(transacties, omzet / gemPaneelorder) : 0;
-        const stalen = Math.max(0, transacties - paneelorders);
-        const pijplijn = winstPerAanvraag == null ? null : stalen * winstPerAanvraag;
-        return {
-          session_google_ads_campaign_name: c.session_google_ads_campaign_name,
-          brutowinst_nu: nu,
-          staalconversies: stalen,
-          pijplijn: pijplijn,
-          verwacht_totaal: nu == null || pijplijn == null ? null : nu + pijplijn,
-        };
-      });
-    },
-  });
-
-  dash.calc('groep_roi', {
-    title: 'Google Ads: ROAS per advertentiegroep',
-    description: 'Per advertentiegroep uit de GA4-cijfers: CPC = kosten / clicks, ROAS = productomzet / kosten.',
-    inputs: ['google_groepen'],
-    fn: (google_groepen) => google_groepen.map((g) => ({
-      session_google_ads_campaign_name: g.session_google_ads_campaign_name,
-      session_google_ads_ad_group_name: g.session_google_ads_ad_group_name,
-      cpc: Number(g.advertiser_ad_clicks) ? Number(g.advertiser_ad_cost) / Number(g.advertiser_ad_clicks) : null,
-      roas: Number(g.advertiser_ad_cost) ? Number(g.purchase_revenue) / Number(g.advertiser_ad_cost) : null,
-    })),
-  });
-
-  dash.calc('groep_dekking', {
-    title: 'Google Ads-kosten zonder advertentiegroep',
-    description: 'De som van de kosten per campagne min de som van de kosten per advertentiegroep: het deel van de Google Ads-kosten dat in de meting geen advertentiegroep draagt.',
-    inputs: ['google_campagnes', 'google_groepen'],
-    fn: (google_campagnes, google_groepen) => {
-      const som = (rows, kolom) => rows.reduce((t, r) => t + Number(r[kolom] || 0), 0);
-      return [{
-        kosten_campagnes: som(google_campagnes, 'advertiser_ad_cost'),
-        kosten_groepen: som(google_groepen, 'advertiser_ad_cost'),
-        niet_toewijsbaar: som(google_campagnes, 'advertiser_ad_cost') - som(google_groepen, 'advertiser_ad_cost'),
-      }];
-    },
-  });
-
-  dash.calc('totalen', {
-    title: 'Totalen over beide kanalen',
-    description: 'De opgetelde advertentiekosten, de opgetelde brutowinst uit orders die al binnen zijn, en de opgetelde pijplijnwaarde van de toegeschreven staalaanvragen.',
-    inputs: ['meta_ads', 'google_campagnes', 'meta_winst', 'google_winst'],
-    fn: (meta_ads, google_campagnes, meta_winst, google_winst) => {
-      const som = (rows, kolom) => rows.reduce((t, r) => t + Number(r[kolom] || 0), 0);
-      const metaSpend = som(meta_ads, 'spend');
-      const googleKosten = som(google_campagnes, 'advertiser_ad_cost');
-      const nu = som(meta_winst, 'brutowinst_nu') + som(google_winst, 'brutowinst_nu');
-      const pijplijn = som(meta_winst, 'pijplijn') + som(google_winst, 'pijplijn');
-      return [{
-        kosten_totaal: metaSpend + googleKosten,
-        meta_spend: metaSpend,
-        meta_waarde: som(meta_ads, 'action_values_omni_purchase'),
-        meta_conversies: som(meta_ads, 'actions_omni_purchase'),
-        meta_roas: metaSpend ? som(meta_ads, 'action_values_omni_purchase') / metaSpend : null,
-        meta_winst_nu: som(meta_winst, 'brutowinst_nu'),
-        google_kosten: googleKosten,
-        google_omzet: som(google_campagnes, 'purchase_revenue'),
-        google_roas: googleKosten ? som(google_campagnes, 'purchase_revenue') / googleKosten : null,
-        google_winst_nu: som(google_winst, 'brutowinst_nu'),
-        brutowinst_nu: nu,
-        pijplijn: pijplijn,
-        verwacht_totaal: nu + pijplijn,
-      }];
-    },
-  });
-
-  dash.calc('afstemming', {
-    title: 'Social-omzet volgens drie bronnen',
-    description: 'Dezelfde Meta-advertenties en dezelfde periode, zoals elk van de drie bronnen ze toeschrijft aan Facebook en Instagram. Meta uit het advertentieaccount, GA4 uit de bron/medium-rijen van facebook en instagram, Shopify uit de orderrijen met verwijzer facebook of instagram.',
-    inputs: ['meta_ads', 'ga4_kanalen', 'shopify_bronnen'],
-    fn: (meta_ads, ga4_kanalen, shopify_bronnen) => {
-      const som = (rows, kolom) => rows.reduce((t, r) => t + Number(r[kolom] || 0), 0);
-      const ga4 = ga4_kanalen.filter((r) => /facebook|instagram|^ig \/|^fb \//.test(String(r.session_source_medium)));
-      const shop = shopify_bronnen.filter((r) => r.order_referrer_name === 'facebook' || r.order_referrer_name === 'instagram');
-      return [
-        { bron: 'Meta Ads Manager', orders: som(meta_ads, 'actions_omni_purchase'), waarde: som(meta_ads, 'action_values_omni_purchase'), toewijzing: '7 dagen na klik, 1 dag na weergave, over apparaten heen' },
-        { bron: 'GA4 laatste klik', orders: som(ga4, 'transactions'), waarde: som(ga4, 'purchase_revenue'), toewijzing: 'laatste klik van de sessie' },
-        { bron: 'Shopify administratie', orders: som(shop, 'orders'), waarde: som(shop, 'gross_sales'), toewijzing: 'verwijzer van de order, brutoproductomzet' },
+    title: 'Marge en break-even per periode',
+    description: 'Per periode: hoeveel panelen er zijn verkocht, voor hoeveel omzet exclusief btw na alle kortingen, en wat daar na 30 euro inkoop per paneel van overblijft. Een regel vanaf 89 euro per stuk is een paneel, een regel tot 7,50 euro een gratis staal, de rest accessoires. De break-even ROAS is de paneelomzet gedeeld door de brutomarge. Naast de twee periodes staat er een regel „samen” over alle 28 dagen: bij dertien paneelorders per veertien dagen is dat de stabielere marge, en die wordt gebruikt om de waarde van een staalaanvraag te rekenen.',
+    inputs: ['shopify_regels', 'venster'],
+    fn: function (shopify_regels, venster) {
+      var v = venster[0];
+      var PANEEL = 89, STAAL = 7.5, INKOOP = 30, BTW = 1.21;
+      var perioden = [
+        { periode: 'huidig', van: v.huidig_van, tot: v.huidig_tot },
+        { periode: 'vorig', van: v.vorig_van, tot: v.vorig_tot },
+        { periode: 'samen', van: v.vorig_van, tot: v.huidig_tot }
       ];
-    },
+      return perioden.map(function (p) {
+        var rijen = shopify_regels.filter(function (r) { return r.datum >= p.van && r.datum <= p.tot; });
+        var stuks = 0, omzet = 0, acc = 0, staalStuks = 0;
+        var paneelOrders = {}, staalOrders = {};
+        rijen.forEach(function (r) {
+          var prijs = Number(r.stukprijs), n = Number(r.stuks), netto = Number(r.netto);
+          if (prijs >= PANEEL) { stuks += n; omzet += netto; paneelOrders[r.order] = 1; }
+          else if (prijs <= STAAL) { staalStuks += n; staalOrders[r.order] = 1; }
+          else { acc += netto; }
+        });
+        var ex = omzet / BTW, inkoop = stuks * INKOOP, bruto = ex - inkoop;
+        return {
+          periode: p.periode, van: p.van, tot: p.tot,
+          paneel_orders: Object.keys(paneelOrders).length,
+          paneel_stuks: stuks,
+          paneel_omzet: ex,
+          per_paneel: stuks ? ex / stuks : 0,
+          inkoop: inkoop,
+          brutomarge: bruto,
+          marge_pct: ex ? bruto / ex : 0,
+          break_even_roas: bruto > 0 ? ex / bruto : 0,
+          accessoires: acc / BTW,
+          staal_orders: Object.keys(staalOrders).length,
+          staal_stuks: staalStuks
+        };
+      });
+    }
   });
 
-  dash.calc('shopify_roi', {
-    title: 'Shopify: productomzet per order',
-    description: 'Per orderbron de brutoproductomzet gedeeld door het aantal orders.',
-    inputs: ['shopify_bronnen'],
-    fn: (shopify_bronnen) => shopify_bronnen.map((bron) => ({
-      order_referrer_name: bron.order_referrer_name,
-      order_referrer_source: bron.order_referrer_source,
-      product_per_order: Number(bron.orders) ? Number(bron.gross_sales) / Number(bron.orders) : null,
-    })),
+  // ---- Shopify per periode --------------------------------------------------
+  dash.calc('shopify_kpi', {
+    title: 'Winkelcijfers per periode',
+    description: 'De dagreeks van Shopify opgeteld over de twee periodes: orders, bruto- en netto-omzet, kortingen, retouren, verzendkosten en de gemiddelde orderwaarde op basis van de netto-omzet.',
+    inputs: ['shopify_dagen', 'venster'],
+    fn: function (shopify_dagen, venster) {
+      var v = venster[0];
+      var perioden = [
+        { periode: 'huidig', van: v.huidig_van, tot: v.huidig_tot },
+        { periode: 'vorig', van: v.vorig_van, tot: v.vorig_tot }
+      ];
+      return perioden.map(function (p) {
+        var rijen = shopify_dagen.filter(function (r) { return r.day >= p.van && r.day <= p.tot; });
+        var som = function (k) { return rijen.reduce(function (t, r) { return t + Number(r[k] || 0); }, 0); };
+        var orders = som('orders'), netto = som('net_sales');
+        return {
+          periode: p.periode,
+          orders: orders,
+          gross_sales: som('gross_sales'),
+          discounts: som('discounts'),
+          sales_reversals: som('sales_reversals'),
+          net_sales: netto,
+          shipping_charges: som('shipping_charges'),
+          total_sales: som('total_sales'),
+          aov: orders ? netto / orders : 0
+        };
+      });
+    }
   });
+
+  // ---- Waarde van een staalaanvraag ----------------------------------------
+  dash.calc('staalwaarde', {
+    title: 'Verwachte winst per staalaanvraag',
+    description: 'Uit het cohort van staalaanvragers die minstens 30 dagen de kans hadden om terug te komen: welk deel later panelen kocht en voor hoeveel. Maal de brutomarge over de volle 28 dagen en gedeeld door de btw geeft de verwachte brutowinst per staalaanvraag. De kostprijs van een staalzending is 6,95 euro en dat is precies wat de klant betaalt, dus er gaat niets van af.',
+    inputs: ['staal_cohort', 'marge'],
+    fn: function (staal_cohort, marge) {
+      var BTW = 1.21;
+      var basis = marge.filter(function (r) { return r.periode === 'samen'; })[0] || { marge_pct: 0 };
+      var rijp = staal_cohort.filter(function (r) { return String(r.rijp_30_dagen) === 'ja'; });
+      var koop = rijp.filter(function (r) { return String(r.later_panelen_gekocht) === 'ja'; });
+      var omzet = koop.reduce(function (t, r) { return t + Number(r.paneelomzet_daarna || 0); }, 0);
+      var gem = koop.length ? omzet / koop.length : 0;
+      var dk = rijp.length ? koop.length / rijp.length : 0;
+      return [{
+        rijp: rijp.length,
+        doorgekocht: koop.length,
+        doorkoop: dk,
+        gem_omzet: gem,
+        winst_per_aanvraag: dk * (gem / BTW) * Number(basis.marge_pct || 0),
+        streefdoel: 25
+      }];
+    }
+  });
+
+  // ---- Meta per advertentie -------------------------------------------------
+  dash.calc('meta_per_ad', {
+    title: 'Meta per advertentie, twee periodes',
+    description: 'De dagreeks per advertentie opgeteld over de huidige periode, met de CPA van de vorige periode ernaast. Winst is het aantal conversies maal de verwachte winst per staalaanvraag, min de kosten; ROI is die winst gedeeld door de kosten. De status volgt uit de CPA tegen het plafond en het aantal conversies.',
+    inputs: ['meta_ads_dagen', 'venster', 'staalwaarde'],
+    fn: function (meta_ads_dagen, venster, staalwaarde) {
+      var v = venster[0];
+      var plafond = Number(staalwaarde[0].winst_per_aanvraag || 0);
+      var streef = Number(staalwaarde[0].streefdoel || 25);
+      var tel = function (van, tot) {
+        var uit = {};
+        meta_ads_dagen.forEach(function (r) {
+          var d = String(r.date).slice(0, 10);
+          if (d < van || d > tot) return;
+          var k = String(r.ad_name || '');
+          if (!uit[k]) uit[k] = { advertentie: k, ad_set: String(r.adset_name || ''), kosten: 0, impressies: 0, klikken: 0, conversies: 0, waarde: 0 };
+          var o = uit[k];
+          o.kosten += Number(r.spend || 0);
+          o.impressies += Number(r.impressions || 0);
+          o.klikken += Number(r.clicks || 0);
+          o.conversies += Number(r.actions_omni_purchase || 0);
+          o.waarde += Number(r.action_values_omni_purchase || 0);
+        });
+        return uit;
+      };
+      var nu = tel(v.huidig_van, v.huidig_tot);
+      var toen = tel(v.vorig_van, v.vorig_tot);
+      return Object.keys(nu).map(function (k) {
+        var o = nu[k], p = toen[k] || { kosten: 0, conversies: 0 };
+        var cpa = o.conversies ? o.kosten / o.conversies : null;
+        var cpaV = p.conversies ? p.kosten / p.conversies : null;
+        var winst = o.conversies * plafond - o.kosten;
+        var status;
+        if (cpa === null) status = o.kosten > 50 ? 'rood' : 'grijs';
+        else if (cpa > plafond && o.conversies >= 3) status = 'rood';
+        else if (cpa <= streef && o.conversies >= 5) status = (cpaV !== null && cpa > cpaV * 1.4) ? 'geel' : 'groen';
+        else status = 'geel';
+        return {
+          advertentie: k, ad_set: o.ad_set,
+          kosten: o.kosten, impressies: o.impressies, klikken: o.klikken,
+          ctr: o.impressies ? o.klikken / o.impressies : 0,
+          cpc: o.klikken ? o.kosten / o.klikken : 0,
+          cpm: o.impressies ? o.kosten / o.impressies * 1000 : 0,
+          conversies: o.conversies,
+          cr: o.klikken ? o.conversies / o.klikken : 0,
+          cpa: cpa, cpa_vorig: cpaV, kosten_vorig: p.kosten,
+          waarde: o.waarde, winst: winst,
+          roi: o.kosten ? winst / o.kosten : 0,
+          status: status
+        };
+      }).sort(function (a, b) { return b.kosten - a.kosten; });
+    }
+  });
+
+  // ---- Google per campagne -------------------------------------------------
+  dash.calc('google_per_campagne', {
+    title: 'Google per campagne, twee periodes',
+    description: 'De campagnecijfers over de laatste 14 dagen, met de vorige 14 dagen als het verschil tussen de reeks van 28 dagen en die van 14 dagen. ROAS is de GA4-omzet gedeeld door 1,21 en dan door de kosten, zodat hij vergelijkbaar is met de break-even ROAS op de paneelmarge. Een campagne waarvan de kosten per transactie meer dan een kwart verslechterden kan niet groen zijn, hoe goedkoop de klik ook is.',
+    inputs: ['google_campagnes_14d', 'google_campagnes_28d', 'marge'],
+    fn: function (google_campagnes_14d, google_campagnes_28d, marge) {
+      var BTW = 1.21;
+      var huidig = marge.filter(function (r) { return r.periode === 'huidig'; })[0] || { break_even_roas: 0 };
+      var hoop = function (rijen) {
+        var uit = {};
+        rijen.forEach(function (r) {
+          var k = String(r.session_google_ads_campaign_name || '');
+          if (!uit[k]) uit[k] = { kosten: 0, impressies: 0, klikken: 0, transacties: 0, omzet: 0 };
+          var o = uit[k];
+          o.kosten += Number(r.advertiser_ad_cost || 0);
+          o.impressies += Number(r.advertiser_ad_impressions || 0);
+          o.klikken += Number(r.advertiser_ad_clicks || 0);
+          o.transacties += Number(r.transactions || 0);
+          o.omzet += Number(r.purchase_revenue || 0);
+        });
+        return uit;
+      };
+      var nu = hoop(google_campagnes_14d), alles = hoop(google_campagnes_28d);
+      return Object.keys(nu).map(function (k) {
+        var o = nu[k], a = alles[k] || { kosten: 0, transacties: 0 };
+        var kostenV = Math.max(a.kosten - o.kosten, 0);
+        var transV = Math.max(a.transacties - o.transacties, 0);
+        var perTrans = o.transacties ? o.kosten / o.transacties : null;
+        var perTransV = transV ? kostenV / transV : 0;
+        var roas = o.kosten ? (o.omzet / BTW) / o.kosten : 0;
+        var be = Number(huidig.break_even_roas || 0);
+        var status;
+        if (o.kosten < 15) status = 'grijs';
+        else if (!o.transacties) status = 'rood';
+        else if (perTrans > 50) status = 'rood';
+        else if (perTrans > perTransV * 1.25 && perTransV > 0) status = 'geel';
+        else if (perTrans <= 20 || (roas > 0 && be > 0 && roas >= be * 2)) status = 'groen';
+        else status = 'geel';
+        return {
+          campagne: k, kosten: o.kosten, impressies: o.impressies, klikken: o.klikken,
+          ctr: o.impressies ? o.klikken / o.impressies : 0,
+          cpc: o.klikken ? o.kosten / o.klikken : 0,
+          transacties: o.transacties, omzet: o.omzet, roas: roas,
+          kosten_per_trans: perTrans,
+          kosten_per_trans_vorig: transV ? perTransV : null,
+          kosten_vorig: kostenV,
+          status: status
+        };
+      }).sort(function (a, b) { return b.kosten - a.kosten; });
+    }
+  });
+
+  // ---- Totalen --------------------------------------------------------------
+  dash.calc('totalen', {
+    title: 'Totalen en verschillen',
+    description: 'De advertentiekosten van beide platformen bij elkaar, de contributiewinst als de brutomarge op de panelen min die kosten, en de ROI daarvan. De vorige periode is op dezelfde manier gerekend, zodat de verschillen kloppen.',
+    inputs: ['meta_per_ad', 'google_per_campagne', 'marge', 'shopify_kpi'],
+    fn: function (meta_per_ad, google_per_campagne, marge, shopify_kpi) {
+      var som = function (rijen, k) { return rijen.reduce(function (t, r) { return t + Number(r[k] || 0); }, 0); };
+      var mNu = som(meta_per_ad, 'kosten'), mToen = som(meta_per_ad, 'kosten_vorig');
+      var gNu = som(google_per_campagne, 'kosten'), gToen = som(google_per_campagne, 'kosten_vorig');
+      var pak = function (rijen, p) { return rijen.filter(function (r) { return r.periode === p; })[0] || {}; };
+      var mgNu = pak(marge, 'huidig'), mgToen = pak(marge, 'vorig');
+      var shNu = pak(shopify_kpi, 'huidig'), shToen = pak(shopify_kpi, 'vorig');
+      var kNu = mNu + gNu, kToen = mToen + gToen;
+      var cNu = Number(mgNu.brutomarge || 0) - kNu, cToen = Number(mgToen.brutomarge || 0) - kToen;
+      var deel = function (a, b) { return b ? a / b - 1 : 0; };
+      return [{
+        kosten_meta: mNu, kosten_google: gNu, kosten_totaal: kNu,
+        kosten_meta_vorig: mToen, kosten_google_vorig: gToen, kosten_totaal_vorig: kToen,
+        kosten_delta_pct: deel(kNu, kToen),
+        contributiewinst: cNu, contributiewinst_vorig: cToen,
+        contributiewinst_delta_pct: deel(cNu, cToen),
+        roi: kNu ? cNu / kNu : 0, roi_vorig: kToen ? cToen / kToen : 0,
+        mer: kNu ? Number(shNu.net_sales || 0) / kNu : 0,
+        mer_vorig: kToen ? Number(shToen.net_sales || 0) / kToen : 0,
+        platform_roas: kNu ? (som(meta_per_ad, 'waarde') + som(google_per_campagne, 'omzet')) / kNu : 0,
+        kosten_per_paneel: Number(mgNu.paneel_stuks || 0) ? kNu / Number(mgNu.paneel_stuks) : 0,
+        kosten_per_paneel_vorig: Number(mgToen.paneel_stuks || 0) ? kToen / Number(mgToen.paneel_stuks) : 0,
+        panelen_delta_pct: deel(Number(mgNu.paneel_stuks || 0), Number(mgToen.paneel_stuks || 0))
+      }];
+    }
+  });
+
+  // ---- De tabel van het management dashboard -------------------------------
+  dash.calc('kpi_tabel', {
+    title: 'De rijen van het management dashboard',
+    description: 'De KPI-tabel: per regel de waarde van de laatste 14 dagen, die van de 14 dagen daarvoor en het procentuele verschil. De eenheid zegt hoe de pagina de waarde moet opmaken en of een stijging goed of slecht is.',
+    inputs: ['totalen', 'shopify_kpi', 'marge'],
+    fn: function (totalen, shopify_kpi, marge) {
+      var t = totalen[0];
+      var pak = function (rijen, p) { return rijen.filter(function (r) { return r.periode === p; })[0] || {}; };
+      var shNu = pak(shopify_kpi, 'huidig'), shToen = pak(shopify_kpi, 'vorig');
+      var mgNu = pak(marge, 'huidig'), mgToen = pak(marge, 'vorig');
+      var rij = function (kpi, h, v, eenheid, omhoog) {
+        return { kpi: kpi, huidig: h, vorig: v, verschil_pct: v ? h / v - 1 : 0, eenheid: eenheid, omhoog_is_goed: omhoog };
+      };
+      return [
+        rij('Shopify netto-omzet', Number(shNu.net_sales || 0), Number(shToen.net_sales || 0), 'euro', true),
+        rij('Google Ads spend', t.kosten_google, t.kosten_google_vorig, 'euro', null),
+        rij('Meta Ads spend', t.kosten_meta, t.kosten_meta_vorig, 'euro', null),
+        rij('Totale advertentiekosten', t.kosten_totaal, t.kosten_totaal_vorig, 'euro', null),
+        rij('Blended MER (netto-omzet / spend)', t.mer, t.mer_vorig, 'ratio', true),
+        rij('Contributiewinst na advertenties', t.contributiewinst, t.contributiewinst_vorig, 'euro', true),
+        rij('ROI op advertentiebudget', t.roi, t.roi_vorig, 'procent', true),
+        rij('Aantal bestellingen', Number(shNu.orders || 0), Number(shToen.orders || 0), 'aantal', true),
+        rij('Gemiddelde orderwaarde (netto)', Number(shNu.aov || 0), Number(shToen.aov || 0), 'euro', true),
+        rij('Verkochte panelen', Number(mgNu.paneel_stuks || 0), Number(mgToen.paneel_stuks || 0), 'aantal', true),
+        rij('Staalorders', Number(mgNu.staal_orders || 0), Number(mgToen.staal_orders || 0), 'aantal', true),
+        rij('Advertentiekosten per verkocht paneel', t.kosten_per_paneel, t.kosten_per_paneel_vorig, 'euro', false),
+        rij('Brutomarge op panelen', Number(mgNu.marge_pct || 0), Number(mgToen.marge_pct || 0), 'procent', true),
+        rij('Break-even ROAS', Number(mgNu.break_even_roas || 0), Number(mgToen.break_even_roas || 0), 'ratio', false),
+        rij('Kortingen', Math.abs(Number(shNu.discounts || 0)), Math.abs(Number(shToen.discounts || 0)), 'euro', false),
+        rij('Retouren en terugbetalingen', Math.abs(Number(shNu.sales_reversals || 0)), Math.abs(Number(shToen.sales_reversals || 0)), 'euro', false)
+      ];
+    }
+  });
+
+  // ---- Attributie: drie bronnen --------------------------------------------
+  dash.calc('attributie', {
+    title: 'Meta volgens drie bronnen',
+    description: 'Dezelfde periode volgens Meta zelf, volgens GA4 op laatste klik, en volgens de verwijzer die Shopify bij de order opslaat. De paneelomzet van Shopify is de productomzet; verzendkosten op een gratis staal tellen daar niet in mee.',
+    inputs: ['meta_per_ad', 'ga4_kanalen_14d', 'shopify_bronnen', 'venster'],
+    fn: function (meta_per_ad, ga4_kanalen_14d, shopify_bronnen, venster) {
+      var v = venster[0];
+      var mOrders = meta_per_ad.reduce(function (t, r) { return t + Number(r.conversies || 0); }, 0);
+      var mWaarde = meta_per_ad.reduce(function (t, r) { return t + Number(r.waarde || 0); }, 0);
+      var ps = ga4_kanalen_14d.filter(function (r) { return String(r.session_default_channel_group) === 'Paid Social'; });
+      var gOrders = ps.reduce(function (t, r) { return t + Number(r.transactions || 0); }, 0);
+      var gOmzet = ps.reduce(function (t, r) { return t + Number(r.purchase_revenue || 0); }, 0);
+      var sh = shopify_bronnen.filter(function (r) {
+        var d = String(r.day).slice(0, 10);
+        var n = String(r.order_referrer_name || '').toLowerCase();
+        return d >= v.huidig_van && d <= v.huidig_tot && (n === 'facebook' || n === 'instagram');
+      });
+      var sOrders = sh.reduce(function (t, r) { return t + Number(r.orders || 0); }, 0);
+      var sOmzet = sh.reduce(function (t, r) { return t + Number(r.gross_sales || 0); }, 0);
+      return [
+        { bron: 'Meta Ads (7 dagen klik + 1 dag weergave)', orders: mOrders, paneelomzet: mWaarde },
+        { bron: 'GA4, kanaal Paid Social (laatste klik)', orders: gOrders, paneelomzet: gOmzet },
+        { bron: 'Shopify, verwijzer facebook of instagram', orders: sOrders, paneelomzet: sOmzet }
+      ];
+    }
+  });
+
+  // ---- Dagreeks voor de grafiek --------------------------------------------
+  dash.calc('dagen', {
+    title: 'Kosten en netto-omzet per dag',
+    description: 'Per dag over de hele reeks van 28 dagen: de Meta-spend, de Google-kosten uit GA4, die twee bij elkaar, en de netto winkelomzet van die dag. De dag waarop de twee vergelijkingsperiodes elkaar raken komt eruit als periode-aanduiding.',
+    inputs: ['meta_ads_dagen', 'google_dagen', 'shopify_dagen', 'venster'],
+    fn: function (meta_ads_dagen, google_dagen, shopify_dagen, venster) {
+      var v = venster[0];
+      var kaart = {};
+      var zorg = function (d) {
+        if (!kaart[d]) kaart[d] = { datum: d, kosten_meta: 0, kosten_google: 0, kosten_totaal: 0, netto_omzet: 0, periode: '' };
+        return kaart[d];
+      };
+      meta_ads_dagen.forEach(function (r) {
+        var d = String(r.date).slice(0, 10);
+        if (d < v.vorig_van || d > v.huidig_tot) return;
+        zorg(d).kosten_meta += Number(r.spend || 0);
+      });
+      google_dagen.forEach(function (r) {
+        var d = String(r.date).slice(0, 10);
+        if (d < v.vorig_van || d > v.huidig_tot) return;
+        zorg(d).kosten_google += Number(r.advertiser_ad_cost || 0);
+      });
+      shopify_dagen.forEach(function (r) {
+        var d = String(r.day).slice(0, 10);
+        if (d < v.vorig_van || d > v.huidig_tot) return;
+        zorg(d).netto_omzet += Number(r.net_sales || 0);
+      });
+      return Object.keys(kaart).sort().map(function (d) {
+        var o = kaart[d];
+        o.kosten_totaal = o.kosten_meta + o.kosten_google;
+        o.periode = d >= v.huidig_van ? 'huidig' : 'vorig';
+        return o;
+      });
+    }
+  });
+
+}());
 </script>
 
 <script>
-  (function () {
-    const geld2 = new Intl.NumberFormat('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    const geld0 = new Intl.NumberFormat('nl-NL', { maximumFractionDigits: 0 });
-    const een = new Intl.NumberFormat('nl-NL', { maximumFractionDigits: 1 });
-    const echt = (v) => v !== null && v !== undefined && v !== '' && isFinite(Number(v));
-    const fmt = {
-      eur: (v) => (echt(v) ? (Number(v) < 0 ? '−€ ' + geld2.format(-Number(v)) : '€ ' + geld2.format(Number(v))) : '—'),
-      eur0: (v) => (echt(v) ? (Number(v) < 0 ? '−€ ' + geld0.format(Math.round(-Number(v))) : '€ ' + geld0.format(Math.round(Number(v)))) : '—'),
-      num: (v) => (echt(v) ? geld0.format(Number(v)) : '—'),
-      num1: (v) => (echt(v) ? een.format(Number(v)) : '—'),
-      dec: (v) => (echt(v) ? geld2.format(Number(v)) : '—'),
-      pct: (v) => (echt(v) ? geld0.format(Math.round(Number(v) * 100)) + '%' : '—'),
-      pct1: (v) => (echt(v) ? een.format(Number(v) * 100) + '%' : '—'),
-      dagen: (v) => (echt(v) ? geld0.format(Number(v)) + ' dagen' : '—'),
-      txt: (v) => (v === null || v === undefined || v === '' ? '—' : String(v)),
-    };
-    const MUTED = 'var(--cds-chart-muted)';
-    const SLECHT = 'var(--cds-chart-status-critical)';
+(function () {
+  'use strict';
+  var geld2 = new Intl.NumberFormat('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  var geld0 = new Intl.NumberFormat('nl-NL', { maximumFractionDigits: 0 });
+  var een = new Intl.NumberFormat('nl-NL', { maximumFractionDigits: 1 });
+  var echt = function (v) { return v !== null && v !== undefined && v !== '' && isFinite(Number(v)); };
+  var fmt = {
+    eur: function (v) { return echt(v) ? (Number(v) < 0 ? '−€ ' + geld2.format(-Number(v)) : '€ ' + geld2.format(Number(v))) : '—'; },
+    eur0: function (v) { return echt(v) ? (Number(v) < 0 ? '−€ ' + geld0.format(Math.round(-Number(v))) : '€ ' + geld0.format(Math.round(Number(v)))) : '—'; },
+    num: function (v) { return echt(v) ? geld0.format(Number(v)) : '—'; },
+    num1: function (v) { return echt(v) ? een.format(Number(v)) : '—'; },
+    dec: function (v) { return echt(v) ? geld2.format(Number(v)) : '—'; },
+    pct: function (v) { return echt(v) ? geld0.format(Math.round(Number(v) * 100)) + '%' : '—'; },
+    pct1: function (v) { return echt(v) ? een.format(Number(v) * 100) + '%' : '—'; },
+    pct2: function (v) { return echt(v) ? geld2.format(Number(v) * 100) + '%' : '—'; },
+    delta: function (v) { if (!echt(v)) return '—'; var n = Number(v) * 100; return (n > 0 ? '+' : n < 0 ? '−' : '') + een.format(Math.abs(n)) + '%'; },
+    txt: function (v) { return (v === null || v === undefined || v === '') ? '—' : String(v); }
+  };
+  var STATUSNAAM = { groen: 'Opschalen', geel: 'Optimaliseren', rood: 'Pauzeren', grijs: 'Te weinig data' };
 
-    const rows = (id) => {
-      const s = dash.data(id);
-      return s.status === 'ok' && Array.isArray(s.data) ? s.data : [];
-    };
-    const staat = (ids) => {
-      const lijst = ids.map((id) => dash.data(id));
-      if (lijst.some((s) => s.status === 'error' || s.status === 'connect' || s.status === 'declined')) return 'error';
-      if (lijst.every((s) => s.status === 'ok')) return 'ok';
-      return 'loading';
-    };
+  var rijenVan = function (id) { var s = dash.data(id); return s.status === 'ok' && Array.isArray(s.data) ? s.data : []; };
+  var staatVan = function (ids) {
+    var lijst = ids.map(function (id) { return dash.data(id); });
+    if (lijst.some(function (s) { return s.status === 'error' || s.status === 'connect' || s.status === 'declined'; })) return 'error';
+    if (lijst.every(function (s) { return s.status === 'ok'; })) return 'ok';
+    return 'loading';
+  };
 
-    const VELD = {
-      kosten_totaal: fmt.eur0, brutowinst_nu: fmt.eur0, pijplijn: fmt.eur0, verwacht_totaal: fmt.eur0,
-      meta_spend: fmt.eur0, meta_waarde: fmt.eur0, meta_roas: fmt.dec, google_kosten: fmt.eur0,
-      google_omzet: fmt.eur0, google_roas: fmt.dec, niet_toewijsbaar: fmt.eur0, waarde: fmt.eur0, orders: fmt.num,
-      inkoop_per_paneel: fmt.eur0, panelen: fmt.num, paneelomzet: fmt.eur, gemiddelde_paneelprijs: fmt.eur,
-      inkoopwaarde: fmt.eur, brutowinst_panelen: fmt.eur, marge: fmt.pct1, break_even_roas: fmt.dec,
-      gem_paneelorder: fmt.eur, overigomzet: fmt.eur, paneelorders: fmt.num,
-      aanvragers: fmt.num, rijpe_aanvragers: fmt.num, doorgekomen: fmt.num, doorkooppercentage: fmt.pct1,
-      mediaan_dagen: fmt.dagen, paneelomzet_doorgekomen: fmt.eur, omzet_per_doorgekomen: fmt.eur,
-      winst_per_aanvraag: fmt.eur, staalorders: fmt.num, stalen: fmt.num, stalen_per_order: fmt.num1,
-      stalen_per_paneel: fmt.num1, verzend_totaal: fmt.eur, verzend_per_order: fmt.eur,
-      kosten_per_conversie: fmt.eur, ruimte_per_order: fmt.eur, break_even_staal: fmt.eur,
-      inkoop_als_volle_panelen: fmt.eur0,
-    };
-    function vulMarks() {
-      document.querySelectorAll('.pd-m, .pd-tile-value').forEach((el) => {
-        const id = el.dataset.source;
-        const veld = el.dataset.field;
-        if (!id || !veld) return;
-        const bron = dash.data(id);
-        let rij = null;
-        if (bron.status === 'ok' && Array.isArray(bron.data)) {
-          if (el.dataset.where) {
-            const paren = el.dataset.where.split('&').map((p) => p.split('='));
-            rij = bron.data.find((r) => paren.every(([k, v]) => String(r[decodeURIComponent(k)]) === decodeURIComponent(v))) || null;
-          } else {
-            rij = bron.data[Number(el.dataset.row || 0)] || null;
-          }
+  var VELD = {
+    kosten_totaal: fmt.eur0, kosten_meta: fmt.eur0, kosten_google: fmt.eur0,
+    contributiewinst: fmt.eur0, contributiewinst_delta_pct: fmt.delta, kosten_delta_pct: fmt.delta,
+    panelen_delta_pct: fmt.delta, roi: fmt.pct, roi_vorig: fmt.pct,
+    kosten_per_paneel: fmt.eur, kosten_per_paneel_vorig: fmt.eur,
+    mer: fmt.dec, platform_roas: fmt.dec,
+    paneel_stuks: fmt.num, paneel_orders: fmt.num, paneel_omzet: fmt.eur, per_paneel: fmt.eur,
+    inkoop: fmt.eur, brutomarge: fmt.eur, marge_pct: fmt.pct1, break_even_roas: fmt.dec,
+    staal_orders: fmt.num, staal_stuks: fmt.num,
+    rijp: fmt.num, doorgekocht: fmt.num, doorkoop: fmt.pct1, gem_omzet: fmt.eur,
+    winst_per_aanvraag: fmt.eur, streefdoel: fmt.eur,
+    net_sales: fmt.eur0, orders: fmt.num, aov: fmt.eur
+  };
+
+  function vulMarks() {
+    document.querySelectorAll('.pd-m, .pd-tile-value, .pd-delta, .pd-kv strong').forEach(function (el) {
+      var id = el.dataset.source, veld = el.dataset.field;
+      if (!id || !veld) return;
+      var bron = dash.data(id), rij = null;
+      if (bron.status === 'ok' && Array.isArray(bron.data)) {
+        if (el.dataset.where) {
+          var paren = el.dataset.where.split('&').map(function (p) { return p.split('='); });
+          rij = bron.data.filter(function (r) {
+            return paren.every(function (p) { return String(r[decodeURIComponent(p[0])]) === decodeURIComponent(p[1]); });
+          })[0] || null;
+        } else {
+          rij = bron.data[Number(el.dataset.row || 0)] || null;
         }
-        const f = VELD[veld] || fmt.txt;
-        const waarde = rij ? rij[veld] : null;
-        el.textContent = rij ? f(waarde) : '—';
-        el.classList.toggle('dash-skeleton', bron.status === 'loading' || bron.status === 'missing');
-        if (el.classList.contains('pd-sign')) {
-          el.classList.toggle('pd-good', echt(waarde) && Number(waarde) > 0);
-          el.classList.toggle('pd-bad', echt(waarde) && Number(waarde) < 0);
-        }
-      });
-    }
-
-    const cel = (tekst, klasse) => {
-      const td = document.createElement('td');
-      td.textContent = tekst;
-      if (klasse) td.className = klasse;
-      return td;
-    };
-    function vulTabel(tabelId, kolommen, data, sleutel) {
-      const body = document.querySelector('#' + tabelId + ' tbody');
-      if (!body) return;
-      body.replaceChildren();
-      data.forEach((r) => {
-        const tr = document.createElement('tr');
-        tr.dataset.key = sleutel.length === 1
-          ? String(r[sleutel[0]])
-          : sleutel.map((k) => encodeURIComponent(String(r[k]))).join(',');
-        kolommen.forEach((k) => {
-          let klasse = k.klasse || '';
-          if (k.teken && echt(r[k.veld])) klasse += Number(r[k.veld]) < 0 ? ' pd-bad' : ' pd-good';
-          tr.append(cel(k.f(r[k.veld]), klasse.trim() || null));
-        });
-        body.append(tr);
-      });
-    }
-
-    function tipHelper(box) {
-      const tip = box.querySelector('.pd-tip');
-      return {
-        toon(kop, regels, event) {
-          const kinderen = [];
-          const h = document.createElement('div');
-          h.className = 'pd-tip-head';
-          h.textContent = kop;
-          kinderen.push(h);
-          regels.forEach((r) => {
-            const d = document.createElement('div');
-            d.className = 'pd-tip-row';
-            if (r.kleur) {
-              const sw = document.createElement('span');
-              sw.className = 'pd-tip-sw';
-              sw.style.background = r.kleur;
-              d.append(sw);
-            }
-            const n = document.createElement('span');
-            n.textContent = r.naam + ': ' + r.waarde;
-            d.append(n);
-            kinderen.push(d);
-          });
-          tip.replaceChildren(...kinderen);
-          tip.hidden = false;
-          const kader = box.getBoundingClientRect();
-          const tw = tip.offsetWidth;
-          let links = event.clientX - kader.left + 14;
-          if (links + tw > kader.width) links = Math.max(0, event.clientX - kader.left - tw - 14);
-          tip.style.left = links + 'px';
-          tip.style.top = Math.max(0, event.clientY - kader.top - 12) + 'px';
-        },
-        weg() { tip.hidden = true; },
-      };
-    }
-
-    function mislukt(box, svgEl, hoogte) {
-      d3.select(svgEl).selectAll('*').remove();
-      d3.select(svgEl).attr('height', hoogte).attr('viewBox', null);
-      let f = box.querySelector('.pd-fail');
-      if (!f) {
-        f = document.createElement('div');
-        f.className = 'pd-fail';
-        const dot = document.createElement('span');
-        dot.className = 'pd-fail-dot';
-        const txt = document.createElement('span');
-        txt.className = 'pd-fail-txt';
-        txt.textContent = 'Kon niet laden';
-        f.append(dot, txt);
-        box.append(f);
       }
-      f.style.minHeight = hoogte + 'px';
-      f.hidden = false;
-    }
-    const geenFout = (box) => { const f = box.querySelector('.pd-fail'); if (f) f.hidden = true; };
-
-    function staven(svgEl, box, data, opties) {
-      const series = opties.series;
-      const breedte = Math.max(280, box.clientWidth);
-      const dik = series.length > 1 ? 11 : 16;
-      const rijH = series.length * (dik + 2) + 16;
-      const boven = 6;
-      const onder = series.length > 1 ? 34 : 26;
-      const hoogte = boven + data.length * rijH + onder;
-      const svg = d3.select(svgEl);
-      svg.selectAll('*').remove();
-      svg.attr('viewBox', '0 0 ' + breedte + ' ' + hoogte).attr('height', hoogte);
-      if (!data.length) return;
-
-      const kort = (t) => (t.length > 34 ? t.slice(0, 33) + '…' : t);
-      const meet = svg.append('g').attr('font-size', 11).attr('opacity', 0);
-      const meetBreedte = (t) => meet.append('text').text(t).node().getComputedTextLength();
-      let labelB = 0;
-      data.forEach((r) => { labelB = Math.max(labelB, meetBreedte(kort(r.label))); });
-      labelB = Math.min(labelB, Math.max(80, breedte * 0.34));
-      let waardeB = 0;
-      data.forEach((r) => r.display.forEach((d) => { waardeB = Math.max(waardeB, meetBreedte(d)); }));
-      meet.remove();
-
-      const alle = [];
-      data.forEach((r) => r.values.forEach((v) => alle.push(Number(v) || 0)));
-      const minW = Math.min(0, d3.min(alle));
-      const maxW = Math.max(0, d3.max(alle), opties.minMax || 0);
-      const negatief = minW < 0;
-      const links = labelB + 10 + (negatief ? waardeB + 8 : 0);
-      const rechts = breedte - waardeB - 8;
-      const x = d3.scaleLinear([minW * 1.04, maxW * 1.04], [links, Math.max(links + 40, rechts)]);
-      const y = d3.scaleBand(data.map((r) => r.label), [boven, boven + data.length * rijH]).paddingInner(0.28);
-      const onderkant = boven + data.length * rijH;
-      const tikken = x.ticks(Math.max(2, Math.round((rechts - links) / 100)));
-
-      svg.append('g').selectAll('line').data(tikken).join('line')
-        .attr('x1', (d) => x(d)).attr('x2', (d) => x(d))
-        .attr('y1', boven).attr('y2', onderkant)
-        .attr('stroke', (d) => (d === 0 ? 'var(--cds-chart-axis)' : 'var(--cds-chart-grid)'));
-
-      const as = svg.append('g').attr('transform', 'translate(0,' + (onderkant + 4) + ')')
-        .call(d3.axisBottom(x).tickValues(tikken).tickFormat(opties.tickFormat).tickSize(0).tickPadding(6));
-      as.attr('font-size', null).attr('font-family', null);
-      as.select('.domain').remove();
-      as.selectAll('text').attr('fill', 'var(--color-fg-muted)').attr('font-size', 10);
-
-      const tip = tipHelper(box);
-      data.forEach((r) => {
-        const basis = y(r.label);
-        svg.append('text')
-          .attr('x', labelB).attr('y', basis + y.bandwidth() / 2)
-          .attr('text-anchor', 'end').attr('dominant-baseline', 'middle')
-          .attr('font-size', 11).attr('fill', 'var(--color-fg)')
-          .text(kort(r.label));
-        series.forEach((s, si) => {
-          const v = Number(r.values[si]) || 0;
-          const yy = basis + si * (dik + 2) + (y.bandwidth() - series.length * (dik + 2) + 2) / 2;
-          const kleur = r.colors && r.colors[si] ? r.colors[si] : s.kleur;
-          svg.append('rect')
-            .attr('x', Math.min(x(0), x(v))).attr('y', yy)
-            .attr('width', Math.max(1, Math.abs(x(v) - x(0)))).attr('height', dik)
-            .attr('rx', 4).attr('fill', kleur)
-            .on('pointerenter pointermove', function (event) {
-              tip.toon(r.label, series.map((ss, i) => ({
-                naam: ss.naam, waarde: r.display[i],
-                kleur: r.colors && r.colors[i] ? r.colors[i] : ss.kleur,
-              })).concat(r.extra || []), event);
-            })
-            .on('pointerleave', tip.weg);
-          svg.append('text')
-            .attr('x', v < 0 ? x(v) - 6 : x(v) + 6).attr('y', yy + dik / 2)
-            .attr('text-anchor', v < 0 ? 'end' : 'start')
-            .attr('dominant-baseline', 'middle')
-            .attr('font-size', 10).attr('fill', 'var(--color-fg-muted)')
-            .text(r.display[si]);
-        });
-      });
-
-      if (series.length > 1) {
-        const legenda = svg.append('g');
-        let dx = links;
-        series.forEach((s) => {
-          legenda.append('rect').attr('x', dx).attr('y', hoogte - 13).attr('width', 8).attr('height', 8).attr('rx', 2).attr('fill', s.kleur);
-          legenda.append('text').attr('x', dx + 12).attr('y', hoogte - 9).attr('dominant-baseline', 'middle')
-            .attr('font-size', 10).attr('fill', 'var(--color-fg-muted)').text(s.naam);
-          dx += 12 + s.naam.length * 6.2 + 16;
-        });
-      }
-    }
-
-    const euroTik = (d) => (d < 0 ? '−€' : '€') + geld0.format(Math.abs(d));
-
-    dash.onData(() => {
-      vulMarks();
-
-      /* Meta */
-      const metaAds = rows('meta_ads').slice().sort((a, b) => Number(b.spend) - Number(a.spend));
-      const metaRoi = new Map(rows('meta_roi').map((r) => [r.ad_name, r]));
-      const metaWinst = new Map(rows('meta_winst').map((r) => [r.ad_name, r]));
-      const wBox = document.getElementById('pd-winst-box');
-      const wSvg = document.getElementById('pd-winst-chart');
-      if (staat(['meta_ads', 'meta_winst', 'marge', 'staalwaarde']) === 'error') {
-        mislukt(wBox, wSvg, 280);
-      } else {
-        geenFout(wBox);
-        const data = rows('meta_winst').slice()
-          .filter((r) => isFinite(Number(r.verwacht_totaal)))
-          .sort((a, b) => Number(b.verwacht_totaal) - Number(a.verwacht_totaal));
-        staven(wSvg, wBox, data.map((r) => ({
-          label: r.ad_name,
-          values: [Number(r.brutowinst_nu), Number(r.pijplijn)],
-          display: [fmt.eur0(r.brutowinst_nu), fmt.eur0(r.pijplijn)],
-          colors: [Number(r.brutowinst_nu) < 0 ? SLECHT : dash.colors[0], dash.colors[1]],
-          extra: [
-            { naam: 'verwacht totaal', waarde: fmt.eur0(r.verwacht_totaal) },
-            { naam: 'staalaanvragen', waarde: fmt.num1(r.staalconversies) },
-          ],
-        })), {
-          series: [{ naam: 'brutowinst nu', kleur: dash.colors[0] }, { naam: 'pijplijn uit staalaanvragen', kleur: dash.colors[1] }],
-          tickFormat: euroTik,
-        });
-      }
-      vulTabel('pd-meta-table', [
-        { veld: 'ad_name', f: fmt.txt },
-        { veld: 'adset_name', f: fmt.txt },
-        { veld: 'spend', f: fmt.eur, klasse: 'pd-r' },
-        { veld: 'clicks', f: fmt.num, klasse: 'pd-r' },
-        { veld: 'cpc', f: fmt.eur, klasse: 'pd-r' },
-        { veld: 'actions_omni_purchase', f: fmt.num, klasse: 'pd-r' },
-        { veld: 'kosten_per_conversie', f: fmt.eur, klasse: 'pd-r' },
-        { veld: 'action_values_omni_purchase', f: fmt.eur, klasse: 'pd-r' },
-        { veld: 'netto_waarde', f: fmt.eur, klasse: 'pd-r' },
-        { veld: 'roas', f: fmt.dec, klasse: 'pd-r' },
-        { veld: 'brutowinst_nu', f: fmt.eur, klasse: 'pd-r', teken: true },
-        { veld: 'staalconversies', f: fmt.num1, klasse: 'pd-r' },
-        { veld: 'pijplijn', f: fmt.eur, klasse: 'pd-r' },
-        { veld: 'verwacht_totaal', f: fmt.eur, klasse: 'pd-r', teken: true },
-      ], metaAds.map((a) => Object.assign({}, a, metaRoi.get(a.ad_name) || {}, metaWinst.get(a.ad_name) || {})), ['ad_name']);
-
-      /* prijsverdeling */
-      const pBox = document.getElementById('pd-prijs-box');
-      const pSvg = document.getElementById('pd-prijs-chart');
-      if (staat(['prijsverdeling']) === 'error') {
-        mislukt(pBox, pSvg, 240);
-      } else {
-        geenFout(pBox);
-        staven(pSvg, pBox, rows('prijsverdeling').map((r) => ({
-          label: fmt.eur(r.stukprijs) + ' per stuk',
-          values: [Number(r.stuks)],
-          display: [fmt.num(r.stuks) + ' stuks'],
-          colors: [dash.colors[0]],
-          extra: [{ naam: 'omzet', waarde: fmt.eur(r.omzet) }],
-        })), {
-          series: [{ naam: 'verkochte panelen', kleur: dash.colors[0] }],
-          tickFormat: (d) => geld0.format(d),
-        });
-      }
-
-      /* Google */
-      const gCamp = rows('google_campagnes').slice().sort((a, b) => Number(b.advertiser_ad_cost) - Number(a.advertiser_ad_cost));
-      const gRoi = new Map(rows('google_roi').map((r) => [r.session_google_ads_campaign_name, r]));
-      const gWinst = new Map(rows('google_winst').map((r) => [r.session_google_ads_campaign_name, r]));
-      const gwBox = document.getElementById('pd-gwinst-box');
-      const gwSvg = document.getElementById('pd-gwinst-chart');
-      if (staat(['google_campagnes', 'google_winst', 'marge', 'staalwaarde']) === 'error') {
-        mislukt(gwBox, gwSvg, 280);
-      } else {
-        geenFout(gwBox);
-        const data = rows('google_winst').slice()
-          .filter((r) => isFinite(Number(r.verwacht_totaal)))
-          .sort((a, b) => Number(b.verwacht_totaal) - Number(a.verwacht_totaal));
-        staven(gwSvg, gwBox, data.map((r) => ({
-          label: r.session_google_ads_campaign_name,
-          values: [Number(r.brutowinst_nu), Number(r.pijplijn)],
-          display: [fmt.eur0(r.brutowinst_nu), fmt.eur0(r.pijplijn)],
-          colors: [Number(r.brutowinst_nu) < 0 ? SLECHT : dash.colors[0], dash.colors[1]],
-          extra: [{ naam: 'verwacht totaal', waarde: fmt.eur0(r.verwacht_totaal) }],
-        })), {
-          series: [{ naam: 'brutowinst nu', kleur: dash.colors[0] }, { naam: 'pijplijn uit staalaanvragen', kleur: dash.colors[1] }],
-          tickFormat: euroTik,
-        });
-      }
-      vulTabel('pd-g-table', [
-        { veld: 'session_google_ads_campaign_name', f: fmt.txt },
-        { veld: 'advertiser_ad_cost', f: fmt.eur, klasse: 'pd-r' },
-        { veld: 'advertiser_ad_clicks', f: fmt.num, klasse: 'pd-r' },
-        { veld: 'cpc', f: fmt.eur, klasse: 'pd-r' },
-        { veld: 'transactions', f: fmt.num, klasse: 'pd-r' },
-        { veld: 'kosten_per_transactie', f: fmt.eur, klasse: 'pd-r' },
-        { veld: 'purchase_revenue', f: fmt.eur, klasse: 'pd-r' },
-        { veld: 'roas', f: fmt.dec, klasse: 'pd-r' },
-        { veld: 'brutowinst_nu', f: fmt.eur, klasse: 'pd-r', teken: true },
-        { veld: 'pijplijn', f: fmt.eur, klasse: 'pd-r' },
-        { veld: 'verwacht_totaal', f: fmt.eur, klasse: 'pd-r', teken: true },
-      ], gCamp.map((c) => Object.assign({}, c, gRoi.get(c.session_google_ads_campaign_name) || {}, gWinst.get(c.session_google_ads_campaign_name) || {})), ['session_google_ads_campaign_name']);
-
-      const gGroep = rows('google_groepen').slice().sort((a, b) => Number(b.advertiser_ad_cost) - Number(a.advertiser_ad_cost));
-      const ggRoi = new Map(rows('groep_roi').map((r) => [r.session_google_ads_campaign_name + '\u0000' + r.session_google_ads_ad_group_name, r]));
-      vulTabel('pd-gg-table', [
-        { veld: 'session_google_ads_campaign_name', f: fmt.txt },
-        { veld: 'session_google_ads_ad_group_name', f: fmt.txt },
-        { veld: 'advertiser_ad_cost', f: fmt.eur, klasse: 'pd-r' },
-        { veld: 'advertiser_ad_clicks', f: fmt.num, klasse: 'pd-r' },
-        { veld: 'cpc', f: fmt.eur, klasse: 'pd-r' },
-        { veld: 'transactions', f: fmt.num, klasse: 'pd-r' },
-        { veld: 'purchase_revenue', f: fmt.eur, klasse: 'pd-r' },
-        { veld: 'roas', f: fmt.dec, klasse: 'pd-r' },
-      ], gGroep.map((g) => Object.assign({}, g, ggRoi.get(g.session_google_ads_campaign_name + '\u0000' + g.session_google_ads_ad_group_name) || {})),
-        ['session_google_ads_campaign_name', 'session_google_ads_ad_group_name']);
-
-      /* Afstemming */
-      const recBox = document.getElementById('pd-rec-box');
-      const recSvg = document.getElementById('pd-rec-chart');
-      const afst = rows('afstemming');
-      if (staat(['afstemming']) === 'error') {
-        mislukt(recBox, recSvg, 160);
-      } else {
-        geenFout(recBox);
-        staven(recSvg, recBox, afst.map((r, i) => ({
-          label: r.bron,
-          values: [Number(r.waarde) || 0],
-          display: [fmt.eur0(r.waarde)],
-          colors: [i === afst.length - 1 ? dash.colors[0] : MUTED],
-          extra: [{ naam: 'orders', waarde: fmt.num(r.orders) }],
-        })), {
-          series: [{ naam: 'omzet toegeschreven aan social', kleur: dash.colors[0] }],
-          tickFormat: (d) => '€' + geld0.format(d),
-        });
-      }
-      vulTabel('pd-rec-table', [
-        { veld: 'bron', f: fmt.txt },
-        { veld: 'orders', f: fmt.num, klasse: 'pd-r' },
-        { veld: 'waarde', f: fmt.eur, klasse: 'pd-r' },
-        { veld: 'toewijzing', f: fmt.txt },
-      ], afst, ['bron']);
-
-      const shop = rows('shopify_bronnen').slice().sort((a, b) => Number(b.orders) - Number(a.orders));
-      const shopRoi = new Map(rows('shopify_roi').map((r) => [r.order_referrer_name + '\u0000' + r.order_referrer_source, r]));
-      vulTabel('pd-sh-table', [
-        { veld: 'order_referrer_name', f: (v) => (v ? String(v) : 'onbekend') },
-        { veld: 'order_referrer_source', f: (v) => (v ? String(v) : 'onbekend') },
-        { veld: 'orders', f: fmt.num, klasse: 'pd-r' },
-        { veld: 'gross_sales', f: fmt.eur, klasse: 'pd-r' },
-        { veld: 'shipping_charges', f: fmt.eur, klasse: 'pd-r' },
-        { veld: 'product_per_order', f: fmt.eur, klasse: 'pd-r' },
-        { veld: 'total_sales', f: fmt.eur, klasse: 'pd-r' },
-      ], shop.map((r) => Object.assign({}, r, shopRoi.get(r.order_referrer_name + '\u0000' + r.order_referrer_source) || {})),
-        ['order_referrer_name', 'order_referrer_source']);
-
-      /* Dagelijkse kosten */
-      const dBox = document.getElementById('pd-daily-box');
-      const dSvg = document.getElementById('pd-daily-chart');
-      if (staat(['meta_dagen', 'google_dagen']) === 'error') {
-        mislukt(dBox, dSvg, 240);
-      } else {
-        geenFout(dBox);
-        const mReeks = rows('meta_dagen').map((r) => ({ dag: new Date(String(r.date).slice(0, 10) + 'T00:00:00Z'), v: Number(r.spend) || 0 })).filter((r) => !isNaN(r.dag));
-        const gReeks = rows('google_dagen').map((r) => ({ dag: new Date(String(r.date).slice(0, 10) + 'T00:00:00Z'), v: Number(r.advertiser_ad_cost) || 0 })).filter((r) => !isNaN(r.dag));
-        const breedte = Math.max(280, dBox.clientWidth);
-        const hoogte = 240;
-        const svg = d3.select(dSvg);
-        svg.selectAll('*').remove();
-        svg.attr('viewBox', '0 0 ' + breedte + ' ' + hoogte).attr('height', hoogte);
-        const alles = mReeks.concat(gReeks);
-        if (alles.length) {
-          const reeksen = [
-            { naam: 'Meta', data: mReeks, kleur: dash.colors[0] },
-            { naam: 'Google Ads', data: gReeks, kleur: dash.colors[1] },
-          ].filter((r) => r.data.length);
-          const meet = svg.append('g').attr('font-size', 10).attr('opacity', 0);
-          const maxY = d3.max(alles, (r) => r.v) || 1;
-          const yTikken = d3.scaleLinear([0, maxY], [0, 1]).ticks(4);
-          let yB = 0;
-          yTikken.forEach((t) => { yB = Math.max(yB, meet.append('text').text('€' + geld0.format(t)).node().getComputedTextLength()); });
-          let eindB = 0;
-          reeksen.forEach((r) => { eindB = Math.max(eindB, meet.append('text').text(r.naam).node().getComputedTextLength()); });
-          meet.remove();
-          const m = { top: 14, right: eindB + 14, bottom: 26, left: yB + 10 };
-          const x = d3.scaleUtc(d3.extent(alles, (r) => r.dag), [m.left, breedte - m.right]);
-          const y = d3.scaleLinear([0, maxY * 1.05], [hoogte - m.bottom, m.top]);
-          svg.append('g').selectAll('line').data(yTikken).join('line')
-            .attr('x1', m.left).attr('x2', breedte - m.right)
-            .attr('y1', (d) => y(d)).attr('y2', (d) => y(d))
-            .attr('stroke', 'var(--cds-chart-grid)');
-          const asX = svg.append('g').attr('transform', 'translate(0,' + (hoogte - m.bottom) + ')')
-            .call(d3.axisBottom(x).ticks(Math.max(2, Math.round(breedte / 110))).tickFormat(d3.utcFormat('%-d %b')).tickSize(0).tickPadding(6));
-          asX.attr('font-size', null).attr('font-family', null);
-          asX.select('.domain').attr('stroke', 'var(--cds-chart-axis)');
-          asX.selectAll('text').attr('fill', 'var(--color-fg-muted)').attr('font-size', 10);
-          const asY = svg.append('g').attr('transform', 'translate(' + m.left + ',0)')
-            .call(d3.axisLeft(y).tickValues(yTikken).tickFormat((d) => '€' + geld0.format(d)).tickSize(0).tickPadding(6));
-          asY.attr('font-size', null).attr('font-family', null);
-          asY.select('.domain').remove();
-          asY.selectAll('text').attr('fill', 'var(--color-fg-muted)').attr('font-size', 10);
-          const lijn = d3.line().x((d) => x(d.dag)).y((d) => y(d.v));
-          reeksen.forEach((r) => {
-            const geordend = r.data.slice().sort((a, b) => a.dag - b.dag);
-            svg.append('path').datum(geordend).attr('fill', 'none')
-              .attr('stroke', r.kleur).attr('stroke-width', 2)
-              .attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round')
-              .attr('d', lijn);
-            const laatste = geordend[geordend.length - 1];
-            svg.append('text').attr('x', x(laatste.dag) + 6).attr('y', y(laatste.v))
-              .attr('dominant-baseline', 'middle').attr('font-size', 10)
-              .attr('fill', r.kleur).text(r.naam);
-          });
-          const tip = tipHelper(dBox);
-          const perDag = new Map();
-          reeksen.forEach((r, i) => r.data.forEach((p) => {
-            const k = +p.dag;
-            if (!perDag.has(k)) perDag.set(k, { dag: p.dag, v: [] });
-            perDag.get(k).v[i] = p.v;
-          }));
-          const punten = Array.from(perDag.values()).sort((a, b) => a.dag - b.dag);
-          const zoek = d3.bisector((d) => d.dag).center;
-          svg.append('rect')
-            .attr('x', m.left).attr('y', m.top)
-            .attr('width', Math.max(1, breedte - m.right - m.left)).attr('height', hoogte - m.bottom - m.top)
-            .attr('fill', 'transparent')
-            .on('pointerenter pointermove', function (event) {
-              const kader = dSvg.getBoundingClientRect();
-              const ux = (event.clientX - kader.left) * (breedte / (kader.width || breedte));
-              const d = punten[zoek(punten, x.invert(ux))];
-              if (!d) return;
-              tip.toon(d3.utcFormat('%-d %b %Y')(d.dag), reeksen.map((r, i) => ({
-                naam: r.naam, waarde: fmt.eur(d.v[i]), kleur: r.kleur,
-              })), event);
-            })
-            .on('pointerleave', tip.weg);
-        }
+      var f = VELD[veld] || fmt.txt;
+      var waarde = rij ? rij[veld] : null;
+      el.textContent = rij ? f(waarde) : '—';
+      el.classList.toggle('dash-skeleton', bron.status === 'loading' || bron.status === 'missing');
+      if (el.classList.contains('pd-sign') || el.classList.contains('pd-delta')) {
+        el.classList.toggle('pd-good', echt(waarde) && Number(waarde) > 0);
+        el.classList.toggle('pd-bad', echt(waarde) && Number(waarde) < 0);
       }
     });
+  }
 
-    const secties = Array.from(document.querySelectorAll('.pd-head[id], .pd-section[id]'));
-    let huidig = '';
-    window.addEventListener('scroll', () => {
-      let beste = secties[0];
-      secties.forEach((s) => { if (s.getBoundingClientRect().top <= window.innerHeight * 0.35) beste = s; });
-      if (beste && beste.id !== huidig) { huidig = beste.id; dash.setLink(huidig); }
-    }, { passive: true });
-    const genoemd = document.getElementById(location.hash.slice(1));
-    if (genoemd) { genoemd.scrollIntoView(); dash.setLink(genoemd.id); }
-  })();
+  function cel(tekst, klasse) {
+    var td = document.createElement('td');
+    td.textContent = tekst;
+    if (klasse) td.className = klasse;
+    return td;
+  }
+  function statusCel(code) {
+    var td = document.createElement('td');
+    var span = document.createElement('span');
+    span.className = 'pd-pill pd-pill-' + code;
+    span.textContent = STATUSNAAM[code] || code;
+    td.append(span);
+    return td;
+  }
+  function vulTabel(id, kolommen, data, sleutel) {
+    var body = document.querySelector('#' + id + ' tbody');
+    if (!body) return;
+    body.replaceChildren();
+    data.forEach(function (r) {
+      var tr = document.createElement('tr');
+      tr.dataset.key = String(r[sleutel]);
+      kolommen.forEach(function (k) {
+        if (k.status) { tr.append(statusCel(r[k.veld])); return; }
+        var klasse = k.klasse || '';
+        if (k.teken && echt(r[k.veld])) klasse += Number(r[k.veld]) < 0 ? ' pd-bad' : ' pd-good';
+        tr.append(cel(k.f(r[k.veld]), klasse.trim() || null));
+      });
+      body.append(tr);
+    });
+  }
+
+  // ---- De grafiek -----------------------------------------------------------
+  var geanimeerd = false;
+  function tekenGrafiek(rijen, state) {
+    var box = document.getElementById('pd-chartbox');
+    var svgEl = document.getElementById('pd-chart');
+    if (!box || !svgEl) return;
+    var svg = d3.select(svgEl);
+    svg.selectAll('*').remove();
+    var oudeTip = box.querySelector('.pd-tip');
+    if (oudeTip) oudeTip.remove();
+    var oudeFail = box.querySelector('.pd-fail');
+    if (oudeFail) oudeFail.remove();
+    var breedte = Math.max(box.clientWidth || 600, 280);
+    var hoogte = breedte < 520 ? 240 : 300;
+    svgEl.setAttribute('viewBox', '0 0 ' + breedte + ' ' + hoogte);
+    svgEl.style.minHeight = hoogte + 'px';
+    if (state === 'error') {
+      var fail = document.createElement('div');
+      fail.className = 'pd-fail';
+      var dot = document.createElement('span'); dot.className = 'pd-fail-dot';
+      var txt = document.createElement('span'); txt.className = 'pd-fail-txt'; txt.textContent = 'Kon niet laden';
+      fail.append(dot, txt);
+      box.append(fail);
+      return;
+    }
+    if (!rijen.length) return;
+
+    var meet = svg.append('g').attr('opacity', 0);
+    var maxY = d3.max(rijen, function (r) { return Math.max(Number(r.kosten_totaal) || 0, Number(r.netto_omzet) || 0); }) || 1;
+    var minY = Math.min(0, d3.min(rijen, function (r) { return Number(r.netto_omzet) || 0; }) || 0);
+    var yFmt = function (v) { return '€ ' + geld0.format(v); };
+    var proefY = meet.selectAll('text').data([minY, maxY]).join('text').text(function (d) { return yFmt(d); });
+    var linksMarge = 8;
+    proefY.each(function () { linksMarge = Math.max(linksMarge, this.getComputedTextLength() + 10); });
+    var proefX = meet.append('text').text('30 sep');
+    var labelBreedte = proefX.node().getComputedTextLength() + 8;
+    meet.remove();
+
+    var marge = { top: 10, right: 8, bottom: 26, left: linksMarge };
+    var iw = Math.max(breedte - marge.left - marge.right, 40);
+    var ih = Math.max(hoogte - marge.top - marge.bottom, 60);
+    var g = svg.append('g').attr('transform', 'translate(' + marge.left + ',' + marge.top + ')');
+
+    var x = d3.scaleBand().domain(rijen.map(function (r) { return r.datum; })).range([0, iw]).padding(0.22);
+    var y = d3.scaleLinear([minY, maxY * 1.06], [ih, 0]).nice();
+
+    y.ticks(5).forEach(function (t) {
+      g.append('line').attr('x1', 0).attr('x2', iw).attr('y1', y(t)).attr('y2', y(t))
+        .attr('stroke', t === 0 ? 'var(--cds-chart-axis)' : 'var(--cds-chart-grid)').attr('stroke-width', 1);
+      g.append('text').attr('x', -6).attr('y', y(t)).attr('dy', '0.32em').attr('text-anchor', 'end')
+        .attr('fill', 'var(--color-fg-muted)').attr('font-size', 'var(--cds-font-size-caption)').text(yFmt(t));
+    });
+
+    var stapX = Math.max(1, Math.ceil(rijen.length / Math.max(2, Math.floor(iw / labelBreedte))));
+    rijen.forEach(function (r, i) {
+      if (i % stapX) return;
+      var dt = new Date(r.datum + 'T00:00:00Z');
+      g.append('text').attr('x', x(r.datum) + x.bandwidth() / 2).attr('y', ih + 16).attr('text-anchor', 'middle')
+        .attr('fill', 'var(--color-fg-muted)').attr('font-size', 'var(--cds-font-size-caption)')
+        .text(d3.utcFormat('%-d %b')(dt));
+    });
+
+    var bw = Math.min(x.bandwidth(), 28);
+    var dx = (x.bandwidth() - bw) / 2;
+    rijen.forEach(function (r) {
+      var g0 = Number(r.kosten_google) || 0, m0 = Number(r.kosten_meta) || 0;
+      var basis = x(r.datum) + dx;
+      g.append('rect').attr('x', basis).attr('width', bw)
+        .attr('y', y(g0)).attr('height', Math.max(y(0) - y(g0), 0))
+        .attr('fill', 'var(--cds-chart-muted)').attr('rx', 2);
+      g.append('rect').attr('x', basis).attr('width', bw)
+        .attr('y', y(g0 + m0)).attr('height', Math.max(y(g0) - y(g0 + m0), 0))
+        .attr('fill', dash.colors[0]).attr('rx', 2);
+    });
+
+    var lijn = d3.line()
+      .x(function (r) { return x(r.datum) + x.bandwidth() / 2; })
+      .y(function (r) { return y(Number(r.netto_omzet) || 0); });
+    g.append('path').datum(rijen).attr('fill', 'none').attr('stroke', dash.colors[1])
+      .attr('stroke-width', 2).attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round')
+      .attr('d', lijn).attr('class', 'pd-anim');
+
+    var grensRij = rijen.filter(function (r) { return r.periode === 'huidig'; })[0];
+    if (grensRij) {
+      var gx = x(grensRij.datum) - x.step() * 0.11;
+      g.append('line').attr('x1', gx).attr('x2', gx).attr('y1', 0).attr('y2', ih)
+        .attr('stroke', 'var(--cds-chart-reference)').attr('stroke-width', 1).attr('stroke-dasharray', '3 3');
+    }
+
+    var tip = document.createElement('div');
+    tip.className = 'pd-tip';
+    tip.style.display = 'none';
+    box.append(tip);
+    var regel = function (kleur, naam, waarde) {
+      var r = document.createElement('div'); r.className = 'pd-tip-row';
+      if (kleur) { var sw = document.createElement('i'); sw.className = 'pd-tip-sw'; sw.style.background = kleur; r.append(sw); }
+      var t = document.createElement('span'); t.textContent = naam + ' ' + waarde; r.append(t);
+      return r;
+    };
+    g.selectAll('.pd-hit').data(rijen).join('rect').attr('class', 'pd-hit')
+      .attr('x', function (r) { return x(r.datum); }).attr('y', 0)
+      .attr('width', x.step()).attr('height', ih).attr('fill', 'transparent')
+      .on('mouseenter mousemove', function (ev, r) {
+        var kop = document.createElement('div');
+        kop.className = 'pd-tip-head';
+        kop.textContent = d3.utcFormat('%-d %B')(new Date(r.datum + 'T00:00:00Z'));
+        tip.replaceChildren(kop,
+          regel(dash.colors[0], 'Meta', fmt.eur(r.kosten_meta)),
+          regel('var(--cds-chart-muted)', 'Google', fmt.eur(r.kosten_google)),
+          regel(dash.colors[1], 'Netto-omzet', fmt.eur(r.netto_omzet)));
+        tip.style.display = '';
+        var bb = box.getBoundingClientRect();
+        var px = ev.clientX - bb.left + 12, py = ev.clientY - bb.top + 12;
+        tip.style.left = Math.min(Math.max(px, 4), Math.max(bb.width - tip.offsetWidth - 4, 4)) + 'px';
+        tip.style.top = Math.min(Math.max(py, 4), Math.max(bb.height - tip.offsetHeight - 4, 4)) + 'px';
+      })
+      .on('mouseleave', function () { tip.style.display = 'none'; });
+
+    if (!geanimeerd) { geanimeerd = true; svg.selectAll('.pd-anim').attr('data-pd-first', '1'); }
+  }
+
+  // ---- Alles samen ----------------------------------------------------------
+  dash.onData(function () {
+    vulMarks();
+
+    var v = (rijenVan('venster')[0]) || null;
+    var nl = function (d) { return d ? d3.utcFormat('%-d %B %Y')(new Date(d + 'T00:00:00Z')) : '—'; };
+    var periodeEl = document.getElementById('pd-periode');
+    if (periodeEl) {
+      periodeEl.textContent = v
+        ? nl(v.huidig_van) + ' t/m ' + nl(v.huidig_tot) + ', tegen ' + nl(v.vorig_van) + ' t/m ' + nl(v.vorig_tot) + ' · bedragen in euro'
+        : 'Laatste 14 volledige dagen tegen de 14 dagen daarvoor';
+      periodeEl.classList.toggle('dash-skeleton', !v);
+    }
+
+    var t = (rijenVan('totalen')[0]) || null;
+    var mg = rijenVan('marge').filter(function (r) { return r.periode === 'huidig'; })[0] || null;
+    var lede = document.getElementById('pd-lede');
+    if (lede) {
+      if (t && mg) {
+        lede.textContent = 'In veertien dagen ging er ' + fmt.eur0(t.kosten_totaal) + ' naar Meta en Google Ads. '
+          + 'Daar staan ' + fmt.num(mg.paneel_stuks) + ' verkochte panelen tegenover, met ' + fmt.eur0(mg.brutomarge)
+          + ' brutomarge, dus ' + fmt.eur0(t.contributiewinst) + ' contributiewinst na advertenties: een ROI van '
+          + fmt.pct(t.roi) + '. De advertentiekosten per verkocht paneel zijn ' + fmt.eur(t.kosten_per_paneel)
+          + ', tegen ' + fmt.eur(t.kosten_per_paneel_vorig) + ' de periode ervoor.';
+        lede.classList.remove('dash-skeleton');
+      } else {
+        lede.textContent = '—';
+        lede.classList.add('dash-skeleton');
+      }
+    }
+
+    vulTabel('pd-kpi', [
+      { veld: 'kpi', f: fmt.txt },
+      { veld: 'huidig', f: fmt.txt, klasse: 'pd-r' },
+      { veld: 'vorig', f: fmt.txt, klasse: 'pd-r' },
+      { veld: 'verschil_pct', f: fmt.delta, klasse: 'pd-r' }
+    ], rijenVan('kpi_tabel').map(function (r) {
+      var f = r.eenheid === 'euro' ? fmt.eur : r.eenheid === 'ratio' ? fmt.dec : r.eenheid === 'procent' ? fmt.pct1 : fmt.num;
+      return { kpi: r.kpi, huidig: f(r.huidig), vorig: f(r.vorig), verschil_pct: r.verschil_pct };
+    }), 'kpi');
+    document.querySelectorAll('#pd-kpi tbody tr').forEach(function (tr) {
+      var r = rijenVan('kpi_tabel').filter(function (x) { return x.kpi === tr.dataset.key; })[0];
+      var cel3 = tr.children[3];
+      if (!r || !cel3 || r.omhoog_is_goed === null || !echt(r.verschil_pct)) return;
+      var goed = Number(r.verschil_pct) > 0 ? r.omhoog_is_goed : !r.omhoog_is_goed;
+      cel3.className = 'pd-r ' + (Number(r.verschil_pct) === 0 ? '' : goed ? 'pd-good' : 'pd-bad');
+    });
+
+    vulTabel('pd-meta', [
+      { veld: 'advertentie', f: fmt.txt },
+      { veld: 'ad_set', f: fmt.txt },
+      { veld: 'kosten', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'impressies', f: fmt.num, klasse: 'pd-r' },
+      { veld: 'klikken', f: fmt.num, klasse: 'pd-r' },
+      { veld: 'ctr', f: fmt.pct1, klasse: 'pd-r' },
+      { veld: 'cpc', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'cpm', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'conversies', f: fmt.num, klasse: 'pd-r' },
+      { veld: 'cr', f: fmt.pct2, klasse: 'pd-r' },
+      { veld: 'cpa', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'cpa_vorig', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'winst', f: fmt.eur, klasse: 'pd-r', teken: true },
+      { veld: 'roi', f: fmt.pct, klasse: 'pd-r', teken: true },
+      { veld: 'status', status: true }
+    ], rijenVan('meta_per_ad'), 'advertentie');
+
+    vulTabel('pd-google', [
+      { veld: 'campagne', f: fmt.txt },
+      { veld: 'kosten', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'impressies', f: fmt.num, klasse: 'pd-r' },
+      { veld: 'klikken', f: fmt.num, klasse: 'pd-r' },
+      { veld: 'ctr', f: fmt.pct1, klasse: 'pd-r' },
+      { veld: 'cpc', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'transacties', f: fmt.num, klasse: 'pd-r' },
+      { veld: 'omzet', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'roas', f: fmt.dec, klasse: 'pd-r' },
+      { veld: 'kosten_per_trans', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'kosten_per_trans_vorig', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'status', status: true }
+    ], rijenVan('google_per_campagne'), 'campagne');
+
+    vulTabel('pd-attr', [
+      { veld: 'bron', f: fmt.txt },
+      { veld: 'orders', f: fmt.num, klasse: 'pd-r' },
+      { veld: 'paneelomzet', f: fmt.eur, klasse: 'pd-r' }
+    ], rijenVan('attributie'), 'bron');
+
+    vulTabel('pd-marge', [
+      { veld: 'periode_label', f: fmt.txt },
+      { veld: 'paneel_orders', f: fmt.num, klasse: 'pd-r' },
+      { veld: 'paneel_stuks', f: fmt.num, klasse: 'pd-r' },
+      { veld: 'paneel_omzet', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'per_paneel', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'inkoop', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'brutomarge', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'marge_pct', f: fmt.pct1, klasse: 'pd-r' },
+      { veld: 'break_even_roas', f: fmt.dec, klasse: 'pd-r' },
+      { veld: 'staal_orders', f: fmt.num, klasse: 'pd-r' }
+    ], rijenVan('marge').filter(function (r) { return r.periode !== 'samen'; }).map(function (r) {
+      var kopie = {};
+      Object.keys(r).forEach(function (k) { kopie[k] = r[k]; });
+      kopie.periode_label = r.periode === 'huidig' ? 'Laatste 14 dagen' : 'Vorige 14 dagen';
+      return kopie;
+    }), 'periode');
+
+    var lgMeta = document.getElementById('pd-lg-meta');
+    if (lgMeta) lgMeta.style.background = dash.colors[0];
+    var lgOmzet = document.getElementById('pd-lg-omzet');
+    if (lgOmzet) lgOmzet.style.background = dash.colors[1];
+
+    tekenGrafiek(rijenVan('dagen'), staatVan(['dagen', 'meta_ads_dagen', 'google_dagen', 'shopify_dagen']));
+  });
+}());
 </script>
