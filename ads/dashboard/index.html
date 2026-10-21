@@ -103,24 +103,48 @@
   </section>
 
   <section class="pd-section" id="google">
-    <h2 class="pd-h2">Google per campagne</h2>
-    <p class="pd-sub">Per advertentie is voor Google niet beschikbaar: de Google&nbsp;Ads-connector is niet gekoppeld. Kosten, klikken en impressies komen daarom uit Google&nbsp;Analytics&nbsp;4, dat de gekoppelde Google&nbsp;Ads-kosten meekrijgt. Die kostenbasis is gevalideerd: over 19 september tot 18 oktober sommeerde hij exact naar de accounttotalen in de Google&nbsp;Ads-export. <em>ROAS</em> is de GA4-omzet exclusief btw gedeeld door de kosten; de break-even staat in de kolomkop.</p>
+    <h2 class="pd-h2">Google per advertentiegroep</h2>
+    <p class="pd-sub">Sinds 21&nbsp;oktober komen deze cijfers uit Google&nbsp;Ads zelf in plaats van uit een reconstructie via Google&nbsp;Analytics&nbsp;4. Die reconstructie blijkt achteraf exact te hebben geklopt &mdash; beide bronnen geven &euro;&nbsp;563,48 over 7&ndash;20&nbsp;oktober &mdash; maar het campagneniveau verborg dat &eacute;&eacute;n advertentiegroep al het werk deed en drie andere niets opleverden. <em>Conversies</em> is Google&rsquo;s eigen kolom, die volledig uit de actie <em>Aankoop</em> komt. <em>ROAS</em> is de conversiewaarde gedeeld door 1,21 en dan door de kosten. PMax heeft geen advertentiegroepen die de API teruggeeft en staat daarom als campagne.</p>
     <div class="pd-card">
       <div class="pd-tablebox">
-        <table class="pd-table" id="pd-google" data-source="google_per_campagne" data-row-key="campagne">
+        <table class="pd-table" id="pd-google" data-source="google_per_groep" data-row-key="groep">
           <thead><tr>
             <th data-field="campagne">Campagne</th>
+            <th data-field="groep">Advertentiegroep</th>
             <th class="pd-r" data-field="kosten">Kosten</th>
             <th class="pd-r" data-field="impressies">Impressies</th>
             <th class="pd-r" data-field="klikken">Klikken</th>
             <th class="pd-r" data-field="ctr">CTR</th>
             <th class="pd-r" data-field="cpc">CPC</th>
-            <th class="pd-r" data-field="transacties">Transacties</th>
-            <th class="pd-r" data-field="omzet">GA4-omzet</th>
+            <th class="pd-r" data-field="conversies">Conversies</th>
+            <th class="pd-r" data-field="waarde">Waarde</th>
             <th class="pd-r" data-field="roas">ROAS</th>
-            <th class="pd-r" data-field="kosten_per_trans">Per transactie</th>
-            <th class="pd-r" data-field="kosten_per_trans_vorig">Vorige periode</th>
+            <th class="pd-r" data-field="kosten_per_conv">Per conversie</th>
+            <th class="pd-r" data-field="kosten_per_conv_vorig">Vorige periode</th>
             <th data-field="status">Status</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="pd-section" id="conversieacties">
+    <h2 class="pd-h2">Waar Google op biedt</h2>
+    <p class="pd-sub">Elke actie die op <strong>primair</strong> staat, stuurt je biedstrategie&euml;n. Een actie die geen aankoop is maar wel primair staat, laat Google bieden op iets dat je geen geld oplevert &mdash; die staat hier rood. De kolom <em>Conversies</em> telt alleen mee in het bieden; <em>Alle conversies</em> is wat de actie werkelijk registreert, ook als dat buiten het biedsignaal valt.</p>
+    <div class="pd-card">
+      <div class="pd-tablebox">
+        <table class="pd-table" id="pd-conversieacties" data-source="conversieacties" data-row-key="actie">
+          <thead><tr>
+            <th data-field="actie">Conversieactie</th>
+            <th data-field="categorie">Categorie</th>
+            <th data-field="primair">Primair</th>
+            <th data-field="telling">Telling</th>
+            <th class="pd-r" data-field="conversies">Conversies</th>
+            <th class="pd-r" data-field="waarde">Waarde</th>
+            <th class="pd-r" data-field="alle_conversies">Alle conv.</th>
+            <th class="pd-r" data-field="alle_waarde">Alle conv.waarde</th>
+            <th data-field="status">Oordeel</th>
           </tr></thead>
           <tbody></tbody>
         </table>
@@ -185,7 +209,8 @@
   <section class="pd-section" id="methode">
     <h2 class="pd-h2">Wat dit dashboard niet kan</h2>
     <div class="pd-prose">
-      <p><strong>Google per advertentie.</strong> Niet beschikbaar. De Google&nbsp;Ads-connector is niet gekoppeld en de Supermetrics-proefperiode verliep op 9 oktober 2026. Google staat hier op campagneniveau, met kosten uit GA4.</p>
+      <p><strong>Google per individuele advertentie.</strong> Niet beschikbaar. De connector geeft voor Search &eacute;&eacute;n samengevoegde advertentie per advertentiegroep terug en voor PMax niets. Per advertentiegroep kan wel, en dat is het niveau waarop je budget verlegt.</p>
+      <p><strong>Biedstrategie per campagne.</strong> Niet uit te lezen. Welke strategie elke campagne gebruikt, geeft de connector niet terug &mdash; dat staat alleen in Google&nbsp;Ads zelf, onder <em>Biedingen</em>.</p>
       <p><strong>Geen tagcontrole in de browser.</strong> Consent&nbsp;Mode&nbsp;v2, de Meta Conversions&nbsp;API, Event&nbsp;Match&nbsp;Quality en de feedkwaliteit in Merchant&nbsp;Center zijn hiervandaan niet te verifi&euml;ren.</p>
       <p><strong>Geen incrementaliteit.</strong> Alle winst per advertentie is attributiewinst. Of die orders zonder advertenties ook waren gekomen, kan alleen een holdout-test uitwijzen. Bij dertien paneelorders per veertien dagen duurt zo'n test maanden.</p>
       <p><strong>Tel de platformen niet bij elkaar op.</strong> Meta en Google kunnen dezelfde order claimen. Order-ID's komen niet terug in de platformrapportages waartoe dit dashboard toegang heeft, dus dubbeltelling is niet uit te sluiten. Gebruik voor elke budgetbeslissing het Shopify-totaal als noemer.</p>
@@ -553,50 +578,50 @@
   });
 
   // ---- Google per campagne -------------------------------------------------
-  dash.calc('google_per_campagne', {
-    title: 'Google per campagne, twee periodes',
-    description: 'De campagnecijfers over de laatste 14 dagen, met de vorige 14 dagen als het verschil tussen de reeks van 28 dagen en die van 14 dagen. ROAS is de GA4-omzet gedeeld door 1,21 en dan door de kosten, zodat hij vergelijkbaar is met de break-even ROAS op de paneelmarge. Een campagne waarvan de kosten per transactie meer dan een kwart verslechterden kan niet groen zijn, hoe goedkoop de klik ook is.',
-    inputs: ['google_campagnes_14d', 'google_campagnes_28d', 'marge'],
-    fn: function (google_campagnes_14d, google_campagnes_28d, marge) {
-      var BTW = 1.21;
+  dash.calc('google_per_groep', {
+    title: 'Google per advertentiegroep, twee periodes',
+    description: 'De advertentiegroepen over de laatste 14 dagen, met de vorige 14 dagen als het verschil tussen de reeks van 28 dagen en die van 14 dagen. ROAS is de conversiewaarde gedeeld door 1,21 en dan door de kosten, zodat hij vergelijkbaar is met de break-even ROAS op de paneelmarge. Het plafond van 33,26 euro per conversie is de gemeten waarde van een staalaanvraag: duurder dan dat is een conversie verlieslatend. Een groep waarvan de kosten per conversie meer dan een kwart verslechterden kan niet groen zijn, hoe goedkoop de klik ook is.',
+    inputs: ['google_groepen_14d', 'google_groepen_28d', 'marge'],
+    fn: function (google_groepen_14d, google_groepen_28d, marge) {
+      var BTW = 1.21, PLAFOND = 33.26;
       var huidig = marge.filter(function (r) { return r.periode === 'huidig'; })[0] || { break_even_roas: 0 };
       var hoop = function (rijen) {
         var uit = {};
         rijen.forEach(function (r) {
-          var k = String(r.session_google_ads_campaign_name || '');
-          if (!uit[k]) uit[k] = { kosten: 0, impressies: 0, klikken: 0, transacties: 0, omzet: 0 };
-          var o = uit[k];
-          o.kosten += Number(r.advertiser_ad_cost || 0);
-          o.impressies += Number(r.advertiser_ad_impressions || 0);
-          o.klikken += Number(r.advertiser_ad_clicks || 0);
-          o.transacties += Number(r.transactions || 0);
-          o.omzet += Number(r.purchase_revenue || 0);
+          var groep = r.ad_group_name ? String(r.ad_group_name) : 'PMAX (geen advertentiegroepen)';
+          if (!uit[groep]) uit[groep] = { campagne: String(r.campaign || ''), kosten: 0, impressies: 0, klikken: 0, conversies: 0, waarde: 0 };
+          var o = uit[groep];
+          o.kosten += Number(r.spend || 0);
+          o.impressies += Number(r.impressions || 0);
+          o.klikken += Number(r.clicks || 0);
+          o.conversies += Number(r.conversions || 0);
+          o.waarde += Number(r.conversion_value || 0);
         });
         return uit;
       };
-      var nu = hoop(google_campagnes_14d), alles = hoop(google_campagnes_28d);
+      var nu = hoop(google_groepen_14d), alles = hoop(google_groepen_28d);
       return Object.keys(nu).map(function (k) {
-        var o = nu[k], a = alles[k] || { kosten: 0, transacties: 0 };
+        var o = nu[k], a = alles[k] || { kosten: 0, conversies: 0 };
         var kostenV = Math.max(a.kosten - o.kosten, 0);
-        var transV = Math.max(a.transacties - o.transacties, 0);
-        var perTrans = o.transacties ? o.kosten / o.transacties : null;
-        var perTransV = transV ? kostenV / transV : 0;
-        var roas = o.kosten ? (o.omzet / BTW) / o.kosten : 0;
+        var convV = Math.max(a.conversies - o.conversies, 0);
+        var perConv = o.conversies ? o.kosten / o.conversies : null;
+        var perConvV = convV ? kostenV / convV : 0;
+        var roas = o.kosten ? (o.waarde / BTW) / o.kosten : 0;
         var be = Number(huidig.break_even_roas || 0);
         var status;
-        if (o.kosten < 15) status = 'grijs';
-        else if (!o.transacties) status = 'rood';
-        else if (perTrans > 50) status = 'rood';
-        else if (perTrans > perTransV * 1.25 && perTransV > 0) status = 'geel';
-        else if (perTrans <= 20 || (roas > 0 && be > 0 && roas >= be * 2)) status = 'groen';
+        if (o.kosten < 5) status = 'grijs';
+        else if (!o.conversies) status = 'rood';
+        else if (perConv > PLAFOND) status = 'rood';
+        else if (perConv > perConvV * 1.25 && perConvV > 0) status = 'geel';
+        else if (perConv <= 20 || (roas > 0 && be > 0 && roas >= be * 2)) status = 'groen';
         else status = 'geel';
         return {
-          campagne: k, kosten: o.kosten, impressies: o.impressies, klikken: o.klikken,
+          groep: k, campagne: o.campagne, kosten: o.kosten, impressies: o.impressies, klikken: o.klikken,
           ctr: o.impressies ? o.klikken / o.impressies : 0,
           cpc: o.klikken ? o.kosten / o.klikken : 0,
-          transacties: o.transacties, omzet: o.omzet, roas: roas,
-          kosten_per_trans: perTrans,
-          kosten_per_trans_vorig: transV ? perTransV : null,
+          conversies: o.conversies, waarde: o.waarde, roas: roas,
+          kosten_per_conv: perConv,
+          kosten_per_conv_vorig: convV ? perConvV : null,
           kosten_vorig: kostenV,
           status: status
         };
@@ -604,15 +629,63 @@
     }
   });
 
+  // ---- Conversieacties: waar het biedsignaal vandaan komt -------------------
+  dash.calc('conversieacties', {
+    title: 'Conversieacties en hun rol in het bieden',
+    description: 'De instellingen van elke conversieactie naast wat die actie werkelijk registreerde. Google kan die twee niet in een opvraging leveren, dus ze komen uit twee queries die hier op naam samengevoegd worden. Een actie die verwijderd is, is verwijderd gebleven: daarom wint de status REMOVED als een naam in de periode beide statussen had. Het oordeel is rood zodra een actie primair staat terwijl hij geen aankoop meet, want dan stuurt hij het bieden naar iets anders dan omzet.',
+    inputs: ['google_conversieacties', 'google_conversie_volume'],
+    fn: function (google_conversieacties, google_conversie_volume) {
+      var inst = {};
+      google_conversieacties.forEach(function (r) {
+        var naam = String(r.conversion_action_name || '');
+        var st = String(r.conversion_action_status || '');
+        if (!inst[naam] || st === 'REMOVED') {
+          inst[naam] = {
+            categorie: String(r.conversion_action_category || ''),
+            primair: String(r.conversion_action_primary_for_goal || '') === 'True',
+            telling: String(r.conversion_action_counting_type || ''),
+            verwijderd: st === 'REMOVED'
+          };
+        }
+      });
+      var vol = {};
+      google_conversie_volume.forEach(function (r) {
+        var naam = String(r.conversion_action_name || '');
+        if (!vol[naam]) vol[naam] = { conversies: 0, waarde: 0, alle: 0, alle_waarde: 0 };
+        vol[naam].conversies += Number(r.conversions || 0);
+        vol[naam].waarde += Number(r.conversion_value || 0);
+        vol[naam].alle += Number(r.all_conversions || 0);
+        vol[naam].alle_waarde += Number(r.all_conversions_value || 0);
+      });
+      return Object.keys(inst).map(function (naam) {
+        var i = inst[naam], v = vol[naam] || { conversies: 0, waarde: 0, alle: 0, alle_waarde: 0 };
+        var status;
+        if (i.verwijderd) status = 'grijs';
+        else if (i.primair && i.categorie !== 'PURCHASE') status = 'rood';
+        else if (i.primair) status = 'groen';
+        else status = 'grijs';
+        return {
+          actie: naam,
+          categorie: i.categorie,
+          primair: i.verwijderd ? 'Verwijderd' : (i.primair ? 'Primair' : 'Secundair'),
+          telling: i.telling === 'ONE_PER_CLICK' ? 'Een per klik' : (i.telling === 'MANY_PER_CLICK' ? 'Veel per klik' : i.telling),
+          conversies: v.conversies, waarde: v.waarde,
+          alle_conversies: v.alle, alle_waarde: v.alle_waarde,
+          status: status
+        };
+      }).sort(function (a, b) { return b.alle_waarde - a.alle_waarde; });
+    }
+  });
+
   // ---- Totalen --------------------------------------------------------------
   dash.calc('totalen', {
     title: 'Totalen en verschillen',
     description: 'De advertentiekosten van beide platformen bij elkaar, de contributiewinst als de brutomarge op de panelen min die kosten, en de ROI daarvan. De vorige periode is op dezelfde manier gerekend, zodat de verschillen kloppen.',
-    inputs: ['meta_per_ad', 'google_per_campagne', 'marge', 'shopify_kpi'],
-    fn: function (meta_per_ad, google_per_campagne, marge, shopify_kpi) {
+    inputs: ['meta_per_ad', 'google_per_groep', 'marge', 'shopify_kpi'],
+    fn: function (meta_per_ad, google_per_groep, marge, shopify_kpi) {
       var som = function (rijen, k) { return rijen.reduce(function (t, r) { return t + Number(r[k] || 0); }, 0); };
       var mNu = som(meta_per_ad, 'kosten'), mToen = som(meta_per_ad, 'kosten_vorig');
-      var gNu = som(google_per_campagne, 'kosten'), gToen = som(google_per_campagne, 'kosten_vorig');
+      var gNu = som(google_per_groep, 'kosten'), gToen = som(google_per_groep, 'kosten_vorig');
       var pak = function (rijen, p) { return rijen.filter(function (r) { return r.periode === p; })[0] || {}; };
       var mgNu = pak(marge, 'huidig'), mgToen = pak(marge, 'vorig');
       var shNu = pak(shopify_kpi, 'huidig'), shToen = pak(shopify_kpi, 'vorig');
@@ -628,7 +701,7 @@
         roi: kNu ? cNu / kNu : 0, roi_vorig: kToen ? cToen / kToen : 0,
         mer: kNu ? Number(shNu.net_sales || 0) / kNu : 0,
         mer_vorig: kToen ? Number(shToen.net_sales || 0) / kToen : 0,
-        platform_roas: kNu ? (som(meta_per_ad, 'waarde') + som(google_per_campagne, 'omzet')) / kNu : 0,
+        platform_roas: kNu ? (som(meta_per_ad, 'waarde') + som(google_per_groep, 'waarde')) / kNu : 0,
         kosten_per_paneel: Number(mgNu.paneel_stuks || 0) ? kNu / Number(mgNu.paneel_stuks) : 0,
         kosten_per_paneel_vorig: Number(mgToen.paneel_stuks || 0) ? kToen / Number(mgToen.paneel_stuks) : 0,
         panelen_delta_pct: deel(Number(mgNu.paneel_stuks || 0), Number(mgToen.paneel_stuks || 0))
@@ -700,9 +773,9 @@
   // ---- Dagreeks voor de grafiek --------------------------------------------
   dash.calc('dagen', {
     title: 'Kosten en netto-omzet per dag',
-    description: 'Per dag over de hele reeks van 28 dagen: de Meta-spend, de Google-kosten uit GA4, die twee bij elkaar, en de netto winkelomzet van die dag. De dag waarop de twee vergelijkingsperiodes elkaar raken komt eruit als periode-aanduiding.',
-    inputs: ['meta_ads_dagen', 'google_dagen', 'shopify_dagen', 'venster'],
-    fn: function (meta_ads_dagen, google_dagen, shopify_dagen, venster) {
+    description: 'Per dag over de hele reeks van 28 dagen: de Meta-spend, de Google-kosten uit Google Ads, die twee bij elkaar, en de netto winkelomzet van die dag. De dag waarop de twee vergelijkingsperiodes elkaar raken komt eruit als periode-aanduiding.',
+    inputs: ['meta_ads_dagen', 'google_ads_dagen', 'shopify_dagen', 'venster'],
+    fn: function (meta_ads_dagen, google_ads_dagen, shopify_dagen, venster) {
       var v = venster[0];
       var kaart = {};
       var zorg = function (d) {
@@ -714,10 +787,10 @@
         if (d < v.vorig_van || d > v.huidig_tot) return;
         zorg(d).kosten_meta += Number(r.spend || 0);
       });
-      google_dagen.forEach(function (r) {
+      google_ads_dagen.forEach(function (r) {
         var d = String(r.date).slice(0, 10);
         if (d < v.vorig_van || d > v.huidig_tot) return;
-        zorg(d).kosten_google += Number(r.advertiser_ad_cost || 0);
+        zorg(d).kosten_google += Number(r.spend || 0);
       });
       shopify_dagen.forEach(function (r) {
         var d = String(r.day).slice(0, 10);
@@ -1025,18 +1098,31 @@
 
     vulTabel('pd-google', [
       { veld: 'campagne', f: fmt.txt },
+      { veld: 'groep', f: fmt.txt },
       { veld: 'kosten', f: fmt.eur, klasse: 'pd-r' },
       { veld: 'impressies', f: fmt.num, klasse: 'pd-r' },
       { veld: 'klikken', f: fmt.num, klasse: 'pd-r' },
       { veld: 'ctr', f: fmt.pct1, klasse: 'pd-r' },
       { veld: 'cpc', f: fmt.eur, klasse: 'pd-r' },
-      { veld: 'transacties', f: fmt.num, klasse: 'pd-r' },
-      { veld: 'omzet', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'conversies', f: fmt.num, klasse: 'pd-r' },
+      { veld: 'waarde', f: fmt.eur, klasse: 'pd-r' },
       { veld: 'roas', f: fmt.dec, klasse: 'pd-r' },
-      { veld: 'kosten_per_trans', f: fmt.eur, klasse: 'pd-r' },
-      { veld: 'kosten_per_trans_vorig', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'kosten_per_conv', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'kosten_per_conv_vorig', f: fmt.eur, klasse: 'pd-r' },
       { veld: 'status', status: true }
-    ], rijenVan('google_per_campagne'), 'campagne');
+    ], rijenVan('google_per_groep'), 'groep');
+
+    vulTabel('pd-conversieacties', [
+      { veld: 'actie', f: fmt.txt },
+      { veld: 'categorie', f: fmt.txt },
+      { veld: 'primair', f: fmt.txt },
+      { veld: 'telling', f: fmt.txt },
+      { veld: 'conversies', f: fmt.num, klasse: 'pd-r' },
+      { veld: 'waarde', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'alle_conversies', f: fmt.num, klasse: 'pd-r' },
+      { veld: 'alle_waarde', f: fmt.eur, klasse: 'pd-r' },
+      { veld: 'status', status: true }
+    ], rijenVan('conversieacties'), 'actie');
 
     vulTabel('pd-attr', [
       { veld: 'bron', f: fmt.txt },
@@ -1067,7 +1153,7 @@
     var lgOmzet = document.getElementById('pd-lg-omzet');
     if (lgOmzet) lgOmzet.style.background = dash.colors[1];
 
-    tekenGrafiek(rijenVan('dagen'), staatVan(['dagen', 'meta_ads_dagen', 'google_dagen', 'shopify_dagen']));
+    tekenGrafiek(rijenVan('dagen'), staatVan(['dagen', 'meta_ads_dagen', 'google_ads_dagen', 'shopify_dagen']));
   });
 }());
 </script>
