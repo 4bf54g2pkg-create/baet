@@ -91,23 +91,33 @@
         <h1 class="pc-head__h">{{ h1 }}</h1>
         {%- if pc_panels -%}
           {%- assign h1_dc = h1 | downcase -%}
-          <p class="pc-m pc-m__meta">{% unless h1_dc contains 'bamboe' %}Met bamboekern{% if pc_min > 0 %} · {% endif %}{% endunless %}{% if pc_min > 0 %}{% if h1_dc contains 'bamboe' %}Vanaf{% else %}vanaf{% endif %} {{ pc_min | money }} per paneel{% endif %}</p>
+          <p class="pc-m__meta">{% unless h1_dc contains 'bamboe' %}Met bamboekern{% if pc_min > 0 %} · {% endif %}{% endunless %}{% if pc_min > 0 %}{% if h1_dc contains 'bamboe' %}Vanaf{% else %}vanaf{% endif %} {{ pc_min | money }} per paneel{% endif %}</p>
           <ul class="pc-m pc-m__trust" role="list">
-            <li>Gratis stalen, € 6,95 verzending</li>
-            <li>Op voorraad in 3–6 werkdagen in huis</li>
-            <li>30 dagen bedenktijd</li>
-            <li><a href="/pages/showroom">Studio in Herwen</a></li>
+            <li>{{ s.google_score | default: '4,9 / 5' }} op Google</li>
+            <li>Gratis bezorgd vanaf € 600</li>
+            <li>Gratis stalen</li>
+            <li>Op voorraad in 3–6 werkdagen</li>
+            <li>Betaal flexibel met Klarna</li>
           </ul>
         {%- endif -%}
       </div>
-      <ul class="pc-usp" role="list">
-        <li><strong>{{ pd_count }}</strong> {% if pd_count == 1 %}decor{% else %}decors{% endif %}</li>
-        <li>Gratis samples · € 6,95 verzending</li>
-        <li><a href="/pages/showroom">Bekijk ze in Studio Herwen</a></li>
-      </ul>
+      {%- if pc_panels -%}
+        <ul class="pc-usp pc-usp--ticks" role="list">
+          <li>{{ s.google_score | default: '4,9 / 5' }} op Google Reviews</li>
+          <li>Gratis bezorgd vanaf € 600</li>
+          <li>Gratis stalen, € 6,95 verzending</li>
+          <li>Op voorraad in 3–6 werkdagen</li>
+        </ul>
+      {%- else -%}
+        <ul class="pc-usp" role="list">
+          <li><strong>{{ pd_count }}</strong> {% if pd_count == 1 %}decor{% else %}decors{% endif %}</li>
+          <li>Gratis samples · € 6,95 verzending</li>
+          <li><a href="/pages/showroom">Bekijk ze in Studio Herwen</a></li>
+        </ul>
+      {%- endif -%}
     </div>
     {%- if seo_intro != blank and current_page == 1 -%}
-      <div class="ph-wrap"><div class="pc-head__intro">{{ seo_intro }}</div></div>
+      <div class="ph-wrap pc-head__iw"><div class="pc-head__intro">{{ seo_intro }}</div>{%- if seo_body != blank -%}<a class="pc-head__more" href="#gids">Lees meer over {{ h1 | downcase }} ↓</a>{%- endif -%}</div>
     {%- endif -%}
   </header>
 
@@ -140,18 +150,32 @@
             -%}
             <a class="pc-look{% if lh == collection.handle %} is-on{% endif %}" href="/collections/{{ lh }}"{% if lh == collection.handle %} aria-current="page"{% endif %}><i aria-hidden="true"{% if lsw != blank %} style="background-image: url('{{ lsw }}')"{% endif %}></i><span>{{ ll }}</span></a>
           {%- endfor -%}
+          {%- assign lx = s.looks_more | newline_to_br | split: '<br />' -%}
+          {%- for line in lx -%}
+            {%- assign lk = line | strip | split: '|' -%}
+            {%- if lk.size < 2 -%}{%- continue -%}{%- endif -%}
+            {%- assign lh = lk[0] | strip -%}
+            <a class="pc-look pc-look--txt{% if lh == collection.handle %} is-on{% endif %}" href="/collections/{{ lh }}"{% if lh == collection.handle %} aria-current="page"{% endif %}><span>{{ lk[1] | strip }}</span></a>
+          {%- endfor -%}
         </div>
+        {%- if s.show_sort -%}
+          {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+          <label class="pc-sort pc-looks__sort">
+            <span>Sorteren</span>
+            <select data-pc-sort aria-label="Sorteren">
+              {%- for option in collection.sort_options -%}
+                <option value="{{ option.value }}"{% if option.value == sort_by %} selected{% endif %}>{{ option.name }}</option>
+              {%- endfor -%}
+            </select>
+          </label>
+        {%- endif -%}
       </div>
     </nav>
   {%- endif -%}
-  {%- comment -%} Sterke punten: alleen bij wandpanelen, niet bij akupanelen en accessoires {%- endcomment -%}
-  {%- unless collection.handle == 'akupanelen' or collection.handle == 'accessoires' or current_page > 1 -%}
-    {%- render 'pd-usp', style: 'row', wrap: true -%}
-  {%- endunless -%}
 
   {%- comment -%} Collectienavigatie: interne links met beschrijvende ankertekst {%- endcomment -%}
   {%- assign nav = s.nav | newline_to_br | split: '<br />' -%}
-  <nav class="pc-nav" aria-label="Collecties">
+  <nav class="pc-nav{% if pc_panels %} pc-nav--looks{% endif %}" aria-label="Collecties">
     <div class="ph-wrap">
       <ul class="pc-nav__list" role="list">
         {%- for line in nav -%}
@@ -174,7 +198,7 @@
   <section class="pc-shop" id="decors">
     <div class="ph-wrap">
 
-      <div class="pc-bar">
+      <div class="pc-bar{% if pc_panels %} pc-bar--looks{% endif %}">
         <p class="pc-bar__count"><strong>{{ pd_count }}</strong> {% if pd_count == 1 %}decor{% else %}decors{% endif %}</p>
         {%- if s.show_filters and collection.filters.size > 0 -%}
           {%- comment -%}
@@ -280,7 +304,7 @@
             {%- if active_q != blank -%}<a rel="nofollow" class="pc-clear" href="{{ collection.url }}?sort_by={{ sort_q }}#decors">Wis filters</a>{%- endif -%}
           </div>
         {%- endif -%}
-        {%- if s.show_sort -%}
+        {%- if s.show_sort and pc_panels == false -%}
           {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
           <label class="pc-sort">
             <span>Sorteren</span>
@@ -539,12 +563,17 @@
     </div>
   {%- endif -%}
 
+  {%- comment -%} Sterke punten: onder de decors, vóór de gids (alleen bij wandpanelen). Mobiel verplaatst het script ze naar pc-after. {%- endcomment -%}
+  {%- unless collection.handle == 'akupanelen' or collection.handle == 'accessoires' or current_page > 1 -%}
+    {%- render 'pd-usp', style: 'row', wrap: true -%}
+  {%- endunless -%}
+
   <div class="pc-after" data-pc-after></div>
 
   {%- comment -%} Tekst over de collectie {%- endcomment -%}
   {%- if seo_body != blank -%}
     {%- if current_page == 1 -%}
-      <section class="ph-s pc-guide">
+      <section class="ph-s pc-guide" id="gids">
         <div class="ph-wrap">
           <div class="pc-rte pc-guide__in">{{ seo_body }}</div>
         </div>
@@ -777,6 +806,8 @@
     { "type": "range", "id": "sample_max", "label": "Maximaal aantal samples", "min": 1, "max": 6, "step": 1, "default": 5 },
     { "type": "header", "content": "Mobiel" },
     { "type": "text", "id": "overview_handles", "label": "Overzichtscollecties (compact raster met filter)", "info": "Handles, komma-gescheiden. Alle andere collecties tonen op mobiel één kolom met grote beelden.", "default": "wandpanelen" },
+    { "type": "textarea", "id": "looks_more", "label": "Extra knoppen in de look-rij", "info": "Eén per regel: handle|naam. Op mobiel alleen in het overzicht.", "default": "8mm-naadloos|Naadloos 8 mm\nakupanelen|Akupanelen\naccessoires|Accessoires" },
+    { "type": "text", "id": "google_score", "label": "Google-score bij de vinkjes", "default": "4,9 / 5" },
     { "type": "textarea", "id": "looks", "label": "Looks met staal", "info": "Eén per regel: handle|naam|decorcode voor het staal.", "default": "hout-1|Hout|811\njapandi|Japandi|824\nleer|Leer|830\ndoorlopend-marmer|Marmer|\nkunst|Art|842" },
     { "type": "header", "content": "Contact (mobiel)" },
     { "type": "text", "id": "phone", "label": "Telefoon", "default": "0316 700 214" },
