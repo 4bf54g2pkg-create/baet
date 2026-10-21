@@ -17,25 +17,44 @@ waarde-optimalisatie in Meta. Beide sturen weg van je winstgevendste conversie.
 
 ## DAG 1 — Twee ingrepen, nul risico
 
-### 1.1 Google Ads: dubbele primaire winkelwagenconversie oplossen
+### 1.1 Google Ads: de winkelwagenconversie op Secundair zetten
 
-**Waarom:** er staan **twee** primaire conversieacties voor "Toevoegen aan winkelwagen", met de
-status "Vereist aandacht". Als een biedstrategie hierop meeweegt, wordt het signaal verdubbeld.
-"Aankoop" is goed ingericht: dat is de enige primaire aankoopactie (11,00 conversies, €843,65), en
-`adscale_purchase` staat correct op Secundair met identieke cijfers.
+**Waarom:** twee problemen in één conversieactie.
+
+Ten eerste staan er **twee** primaire conversieacties voor "Toevoegen aan winkelwagen", met de
+status "Vereist aandacht". Dat verdubbelt het signaal.
+
+Ten tweede, en zwaarder: de **conversiewaarde** van deze actie is enorm. GA4 meet over 7–20 oktober
+231 toevoegingen aan de winkelwagen met 995 artikelen en een waarde van **€ 143.571,55**. Per
+artikel is dat € 144,29 — precies de gemiddelde paneelprijs, dus de tag rekent correct en het
+bedrag is niet fout. Het is hoog omdat mensen gemiddeld 4,3 panelen tegelijk in het mandje leggen
+en een paneel € 90 tot € 599 kost.
+
+Maar daartegenover staan 77 aankopen met **€ 2.958,15**: slechts **2,1%** van die mandjeswaarde
+wordt betaald, en 117 van de 231 toevoegingen worden weer verwijderd. Staat deze actie op Primair
+en loopt er ergens een waarde-gebaseerde biedstrategie, dan optimaliseert Google op € 143.572 aan
+mandjes in plaats van op € 2.958 aan omzet: een factor **48**. Dat is een plausibele verklaring voor
+het gedrag van PMax (€ 104,55 per conversie, ROAS 0,55, twee periodes op rij).
+
+"Aankoop" is wél goed ingericht: dat is de enige primaire aankoopactie (11,00 conversies, €843,65),
+en `adscale_purchase` staat correct op Secundair met identieke cijfers.
 
 **Waar:** Google Ads → **Doelen** → **Conversies** → **Overzicht** → klik op de groep
 **"Toevoegen aan winkelwagen"**.
 
-**Wat je doet:**
-1. Je ziet twee conversieacties in die groep. Noteer van beide de naam en het aantal conversies.
-2. Houd de actie met het **hoogste aantal conversies** op **Primair**.
-3. Open de andere → **Instellingen bewerken** → **Primaire of secundaire actie** → zet op
+**Wat je doet:** zet **beide** acties op **Secundair**, niet alleen één van de twee.
+1. Open de eerste actie → **Instellingen bewerken** → **Primaire of secundaire actie** →
    **Secundair** → **Opslaan**.
+2. Hetzelfde voor de tweede.
+3. Controleer in het overzicht dat **"Aankoop"** daarna de enige primaire conversieactie is.
+
+Je verliest hier geen meting mee: de cijfers blijven zichtbaar in de rapportage, ze wegen alleen
+niet meer mee in het bieden. Een winkelwagen is een diagnostisch signaal, geen biedoel.
 
 **Let op:** zet *nooit* `adscale_purchase` op Primair. Dan verdubbelt je aankoopsignaal onmiddellijk.
 
-**Verwacht effect:** schoner biedsignaal, geen direct zichtbaar verschil in conversieaantallen.
+**Verwacht effect:** schoner biedsignaal, en het wegnemen van een conversiewaarde die 48× hoger is
+dan de werkelijke omzet. Geen verschil in conversieaantallen.
 **Risico:** nihil. **Betrouwbaarheid:** hoog. **Prioriteit:** 1.
 
 ### 1.2 Bevestig dat Search | Concurrenten uit blijft
