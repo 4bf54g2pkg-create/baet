@@ -3852,7 +3852,7 @@ html.pc-inf .pc-pages { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .ph-dock { transition: none; } }
 
-/* Collectie: compacte kop (artboard collectie-wandpanelen, akkoord 21 okt 2026). Decors direct in beeld; tekst en voordelen onder de decors. */
+/* Collectie: compacte kop (artboard collectie-wandpanelen, akkoord 21 okt 2026). Voordelen bovenaan op desktop, onder de decors op mobiel. */
 .pc-m__meta b { color: #151413; font-weight: 600; }
 @media (min-width: 750px) {
   .pc .pc-head { padding: 0.8rem 0 2rem; }
@@ -3881,7 +3881,6 @@ html.pc-inf .pc-pages { display: none; }
   .pc-looks__sort { flex: none; display: flex; align-items: center; gap: 1rem; font-size: 1.3rem; color: #6E675E; }
   .pc-nav--looks, .pc-bar--looks { display: none !important; }
   .pc .pc-shop { padding-top: 2.8rem; }
-  .pc > .pd-usp { margin-top: 4rem; }
 }
 @media (max-width: 749px) {
   .pc-head__more { display: none; }

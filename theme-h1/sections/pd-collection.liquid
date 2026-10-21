@@ -121,6 +121,11 @@
     {%- endif -%}
   </header>
 
+  {%- comment -%} Sterke punten bovenaan (desktop); mobiel verplaatst het script ze naar onder de decors {%- endcomment -%}
+  {%- unless collection.handle == 'akupanelen' or collection.handle == 'accessoires' or current_page > 1 -%}
+    {%- render 'pd-usp', style: 'row', wrap: true -%}
+  {%- endunless -%}
+
   {%- comment -%} Mobiel: looks met echt staal (overzicht: vaste chips; collectie: tegels). Links naar de bestaande collecties. {%- endcomment -%}
   {%- if pc_panels -%}
     {%- assign looks = s.looks | newline_to_br | split: '<br />' -%}
@@ -562,11 +567,6 @@
       </div>
     </div>
   {%- endif -%}
-
-  {%- comment -%} Sterke punten: onder de decors, vóór de gids (alleen bij wandpanelen). Mobiel verplaatst het script ze naar pc-after. {%- endcomment -%}
-  {%- unless collection.handle == 'akupanelen' or collection.handle == 'accessoires' or current_page > 1 -%}
-    {%- render 'pd-usp', style: 'row', wrap: true -%}
-  {%- endunless -%}
 
   <div class="pc-after" data-pc-after></div>
 
