@@ -102,13 +102,27 @@ Shopify kent drie `abandonmentType`-waarden: `BROWSE`, `CART` en `CHECKOUT`. All
 
 Ik heb dit geprobeerd en de poging **afgekeurd op eigen controle**. De DNS-weg vanuit deze container geeft onbetrouwbare antwoorden: een controlevraag op `shopify.com` leverde "geen MX en geen SPF" op, wat onmogelijk is. Alles wat ik over jouw DNS zou zeggen, zou op dezelfde fout berusten.
 
+Vijf routes geprobeerd, alle vijf dood:
+
+| Route | Uitkomst |
+|---|---|
+| dnspython via UDP naar 8.8.8.8 en 1.1.1.1 | lege antwoorden, controledomein faalt ook |
+| dnspython via TCP | time-out |
+| Systeemresolver uit `/etc/resolv.conf` | `NXDOMAIN` voor `shopify.com` — aantoonbaar onjuist |
+| `curl` naar dns.google, cloudflare-dns.com, mxtoolbox | HTTP 403 van de uitgaande proxy |
+| Interne fetch-tool | `getaddrinfo ENOTFOUND` |
+
+Alleen A-records komen correct door; alle andere recordtypes worden onderweg verminkt. Dit is een beperking van mijn omgeving, niet van jouw domein.
+
 **Wat ik wél weet:** `puredeco.nl` wijst naar `23.227.38.65`, een Shopify-adres, en de site antwoordt met status 200.
 
 **Wat jij moet aanleveren** — ga naar https://mxtoolbox.com/SuperTool.aspx en voer uit:
 
+Nu bekend is dat er een Zoho-omgeving draait, is de vraag scherper geworden: **staan Zoho én Shopify allebei in het SPF-record?** Zoho Mail verzendt al namens `puredeco.nl`, dus er is vrijwel zeker een SPF-record met een Zoho-insluiting. Ontbreekt Shopify daarin, dan faalt de authenticatie van elke mail die Shopify namens `info@puredeco.nl` verstuurt — precies de mails die deze audit moet gaan inrichten.
+
 | Lookup | Invoer | Waar ik op let |
 |---|---|---|
-| SPF Record Lookup | `puredeco.nl` | Bestaat er een `v=spf1`-record en staat Shopify erin |
+| SPF Record Lookup | `puredeco.nl` | Bestaat er een `v=spf1`-record, en staan **zowel Zoho als Shopify** erin |
 | DMARC Lookup | `puredeco.nl` | Bestaat `_dmarc`, en staat `p=` op none, quarantine of reject |
 | MX Lookup | `puredeco.nl` | Waar komt mail op `info@puredeco.nl` binnen |
 | DKIM Lookup | `puredeco.nl` met selector `shopifyemail` | Of Shopify's DKIM-sleutel aanwezig is |
@@ -135,11 +149,15 @@ Het zichtbare afzenderadres, het technische verzenddomein en het reply-to-adres 
 
 **Wat jij moet doen:** stuur vanaf een privéadres een mail naar `info@puredeco.nl` en bevestig dat hij aankomt, en in welke mailbox.
 
-### 3.5 Verzendt een systeem buiten Shopify mogelijk toch iets? [ONBEKEND]
+### 3.5 Verzendt een systeem buiten Shopify mogelijk toch iets? **Nee.** [FEIT, aangevuld 22 okt]
 
-**Zoho Flow** staat geïnstalleerd met leesrechten op orders. Als daarachter Zoho Campaigns of Zoho CRM hangt, kan daar opvolging lopen die Shopify niet registreert — mijn uitlezing zou die niet zien.
+Twee onafhankelijke controles sluiten dit uit.
 
-**Wat jij moet aanleveren:** laat weten of er een Zoho-omgeving actief is en wat die met je orders doet.
+**Live themacode doorzocht.** Homepage (1.018.141 bytes) en winkelwagenpagina (428.267 bytes) opgehaald en doorzocht op 21 bekende e-mailmarketingsystemen: Klaviyo, Omnisend, Mailchimp, Privy, ActiveCampaign, Brevo, Drip, HubSpot, MailerLite, Attentive, Postscript, Recart, CartHook en andere. **Nul treffers.** De enige externe scripts zijn `cdn.jsdelivr.net`, `cdn.nfcube.com` (de Instafeed-app), `cdn.shopify.com` en `shop.app`. Er is dus ook geen systeem via themacode ingeschoten in plaats van als app.
+
+**Zoho bevestigd door de eigenaar, maar het kan geen verlaten checkouts zien.** Er draait een Zoho-omgeving. Zoho Flow heeft in Shopify echter alleen `read_all_orders`, `read_orders` en `customer_read_orders` — **uitsluitend orders, geen checkouts**. Een verlaten checkout is geen order. Zoho kan die gegevens dus niet eens ophalen, laat staan erop opvolgen.
+
+**Consequentie voor fase 2:** het bestaan van Zoho is wél relevant voor de keuze van het verzendsysteem en voor de SPF-configuratie, want Zoho Mail verzendt al namens `puredeco.nl`.
 
 ### 3.6 Statistieken over aflevering, opens en klikken [ONBEKEND — en logisch]
 
@@ -199,7 +217,7 @@ Bijbehorende vragen uit de opdracht, met de stand van zaken:
 | 2 | Screenshot **Instellingen → Meldingen → Afzender-e-mail** met verificatiestatus | Shopify |
 | 3 | Uitkomsten van vier MXToolbox-lookups: SPF, DMARC, MX, DKIM (selector `shopifyemail`) | mxtoolbox.com |
 | 4 | Bevestiging dat een testmail naar `info@puredeco.nl` aankomt, en waar | jouw mailbox |
-| 5 | Of er een Zoho-omgeving actief is en wat die doet | jij |
+| 5 | ~~Of er een Zoho-omgeving actief is~~ — **beantwoord 22 okt: ja, en hij werkt** | ✅ |
 | 6 | Of je bereid bent Shopify Email te installeren (gratis tot 10.000 mails per maand) | jouw besluit |
 
 Met 1 tot en met 4 kan ik fase 2 afmaken: de herstelreeks, de afzenderconfiguratie, de vergelijking van oplossingen, de juridische toets en de concrete e-mailteksten.
