@@ -33,6 +33,55 @@ Is de **€6,95 kostprijs van een staal per zending of per staaltje?** 90 staalo
 
 ---
 
+## 0b. Uitvoeringslog
+
+Wat er sinds dit rapport daadwerkelijk is gewijzigd, en door wie. Elke regel is na uitvoering teruggelezen uit de API, niet aangenomen.
+
+### 21 oktober — conversiemeting opgeschoond (door Okan)
+
+| Wijziging | Bevestigd |
+|---|---|
+| `add_item_to_cart` van Primair naar Secundair | ✅ `primary_for_goal = False` |
+| Conversieacties `add_item_to_cart`, `add_to_cart` en `Winkelwagen` verwijderd | ✅ status `REMOVED` |
+| Doel "Toevoegen aan winkelwagen" daarmee leeg | ✅ melding *Verkeerd ingesteld* verdwenen |
+
+Aanleiding: het doel had nul primaire conversieacties, wat Google als fout markeert, en `add_item_to_cart` gaf bovendien een fout op verbeterde conversies omdat er bij het toevoegen aan een winkelwagen nog geen klantgegevens zijn om te hashen.
+
+### 21–22 oktober — golf 1, verlies stoppen (uitgevoerd via de API)
+
+| Wijziging | ID | Kosten per 14 dagen | Conversies |
+|---|---|---:|---:|
+| PMAX - Campagne gepauzeerd | `22857363558` | € 209,10 | 3 |
+| Advertentiegroep Japandi gepauzeerd | `202915420520` | € 20,98 | 0 |
+| Advertentiegroep Ruimtegericht gepauzeerd | `185251756695` | € 10,21 | 0 |
+| Advertentiegroep Hout gepauzeerd | `197164623341` | € 3,93 | 0 |
+| Campagne Search \| Concurrenten gepauzeerd | `22385224201` | € 76,99 | 0 |
+| | **Samen** | **€ 321,21** | **3** |
+
+Bevestigd op 22 oktober met een venster van één dag, omdat een venster van een week dubbele rijen geeft wanneer een status er middenin wijzigt. Alleen vier campagnes gaven daarna nog uit: Shopping | Bamboepanelen, Wandpanelen algemeen, Brand | Protection en Brand | Protection NL-BE.
+
+**Alles is omkeerbaar** via `enable_campaign` en `enable_ad_group`.
+
+### Voorspelling waarop golf 1 wordt afgerekend
+
+| | Baseline 7–20 okt | Voorspeld na golf 1 |
+|---|---:|---:|
+| Kosten per 14 dagen | € 563,48 | **€ 242,27** |
+| Kosten per dag | € 40,25 | **€ 17,31** |
+| Conversies | 24 | ~21 |
+| Kosten per conversie | € 23,48 | **€ 11,54** |
+| ROAS ex btw | 1,24 | **2,40** |
+
+Meta Ads is **bewust onveranderd gelaten** tot 4 november, zodat deze meting alleen het Google-effect toont. Metingen staan ingepland op 24 oktober (controle), 28 oktober (eerste signaal) en 4 november (de beslissing).
+
+### Nog openstaand bij Okan
+
+- Drie `Local actions` en `Clicks to call` op Secundair — een paginaweergave hoort geen primair conversiedoel te zijn
+- Shopify → Instellingen → Meldingen → *Verlaten afrekenpoging* aanzetten
+- De vier grootste verlaten winkelwagens benaderen (€ 2.303,80 aan panelen)
+
+---
+
 ## 1. Management dashboard
 
 | KPI | 7–20 okt | 23 sep–6 okt | Verschil |
@@ -110,6 +159,27 @@ Alle zeven advertenties zitten in één campagne, **"Puredeco - onfluence"**, ve
 **Meta's eigen ROAS-claim:** €1.674,38 conversiewaarde / €842,66 = **1,99**. Die mag je niet gebruiken — zie deel 3.
 
 **Metrieken die verbeterden:** CTR steeg op alle zeven advertenties, CPC daalde op alle zeven, CPM daalde op vijf van de zeven. Meta wordt goedkoper en de creatives worden beter aangeklikt. Frequentie is nergens alarmerend (hoogste 2,57 over 14 dagen); er is **geen creative fatigue** aantoonbaar.
+
+
+#### Twee periodes naast elkaar, per advertentie (28-daagse uitlezing, 22 okt)
+
+| Advertentie | Kosten 28d | Aankopen | Geclaimde waarde | Per aankoop | Waarde per aankoop |
+|---|---:|---:|---:|---:|---:|
+| diaan creator 1 | € 506,97 | 36 | € 752,28 | € 14,08 | € 20,90 |
+| Marmerlook va 125 | € 415,61 | 27 | € 1.749,35 | € 15,39 | **€ 64,79** |
+| zakelijk verbouwen | € 393,76 | 23 | € 1.989,64 | € 17,12 | **€ 86,51** |
+| Nieuwe wandpanelen | € 170,16 | 6 | € 41,70 | € 28,36 | **€ 6,95** |
+| diaan creator 2 | € 77,81 | 4 | € 27,80 | € 19,45 | **€ 6,95** |
+| video 3 | € 23,23 | **0** | € 0,00 | — | — |
+| Video led profiel japans | € 15,08 | **0** | € 0,00 | — | — |
+
+**Die € 6,95 is hard bewijs.** *Nieuwe wandpanelen* claimt € 41,70 op 6 aankopen: exact 6 × € 6,95. *diaan creator 2*: € 27,80 op 4 aankopen, exact 4 × € 6,95. Die twee advertenties leveren **uitsluitend gratis staalorders**, en Meta boekt de verzendkosten als aankoopwaarde. Hetzelfde patroon als de € 0,00-conversies bij Google in deel 2b, maar hier direct afleesbaar.
+
+**Meta heeft nauwelijks verspilling.** Elke converterende advertentie zit tussen € 14,08 en € 28,36 per aankoop, allemaal onder het plafond van € 33,26. Waar Google € 321,21 aan aantoonbaar verlies had, heeft Meta **€ 38,31**: de twee video's met nul aankopen in beide periodes.
+
+**Meta wordt goedkoper terwijl het groeit:** vorige 14 dagen € 763,73 voor 42 aankopen (€ 18,18), laatste 14 dagen € 838,89 voor 54 aankopen (**€ 15,53**).
+
+⚠️ Na golf 1 is Meta **78% van het totale advertentiebudget** (€ 59,92 per dag tegen € 17,31 voor Google). Snijd daar niet in tot de meting van 4 november binnen is, anders is niet meer te zeggen welk platform welk effect had.
 
 ### 2b. Google — per advertentiegroep, twee periodes
 
