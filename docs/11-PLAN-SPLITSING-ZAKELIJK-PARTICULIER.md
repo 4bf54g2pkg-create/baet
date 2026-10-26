@@ -1,6 +1,11 @@
 # Plan: zakelijk scheiden van particulier in Meta Ads
 
 **26 oktober 2026.** Uitvoeringsplan naar aanleiding van de audit
+> **LET OP — fase 1 van dit plan is achterhaald.** Zie `12-WAARDE-STAALAANVRAAG.md`:
+> een staalaanvraag is € 32,88 waard, dus de aangepaste conversie van € 20 zou de
+> efficiëntste inkoop van het account uit het signaal snijden. De splitsing zelf
+> (fase 2 t/m 5) blijft wel de juiste ingreep, met het herziene budgetadvies.
+
 (`10-AUDIT-META-ADS.md`). **Er is nog niets gewijzigd.**
 
 ---
