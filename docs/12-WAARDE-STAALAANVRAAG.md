@@ -194,3 +194,126 @@ dus je kunt dan méér voor een staalaanvraag betalen dan je concurrent.
 De opvolgflow uit `05-OPVOLGFLOW-STALEN.md` is daarmee niet een los klusje maar de
 hoogst renderende onbenutte ingreep in het hele bedrijf — hoger dan welke
 budgetverschuiving in Meta ook.
+
+---
+
+# AANVULLING — Zoho doet wél opvolging (correctie op punt 7)
+
+**26 oktober 2026.** De opdrachtgever meldde: "zoho doen we al opvolging."
+Dat is juist, en punt 7 hierboven is daarmee gedeeltelijk onjuist. Hieronder wat ik
+in Shopify heb kunnen vaststellen.
+
+## De app en wat hij mag
+
+[FEIT] In de 24 geïnstalleerde apps staat:
+
+| App | Ontwikkelaar | Toegangsrechten |
+|---|---|---|
+| **Zoho Flow** | PureDeco (eigen app) | `read_all_orders`, `read_orders`, `customer_read_orders` |
+
+Drie rechten, alle drie alleen-lezen en alle drie op **orders**.
+
+Daaruit volgt precies waarom mijn eerdere bevinding en jouw uitspraak allebei kloppen:
+
+| Groep | Kan Zoho die zien? | Wordt er opgevolgd? |
+|---|---|---|
+| **Staalbestellers** (plaatsten een order van € 6,95) | **Ja** — dat is een order | **Ja**, volgens jou |
+| **Verlaten checkouts** (bestelden nooit) | **Nee** — geen checkout-recht | **Nee**, 0% herstel staat overeind |
+
+Een staalaanvraag ís een order. Een verlaten checkout is dat niet. Zoho Flow heeft
+geen enkel checkout-recht, dus die groep is technisch onbereikbaar voor deze app.
+**Mijn conclusie "nog nooit een opvolgmail verstuurd" ging over verlaten checkouts
+en blijft daar geldig; voor staalbestellers was hij onjuist.**
+
+[FEIT] Zoho Flow heeft ook geen `write_marketing_events`. Daarom is in Shopify geen
+spoor van die mails te zien: geen marketingactiviteiten, geen toeschrijving. Niet
+omdat er niets gebeurt, maar omdat deze app het niet terugmeldt.
+
+## Wat dit met mijn rekensom doet
+
+**Punt 7 hierboven is ingetrokken.** Ik schreef dat de 7,0% conversie "zonder enige
+opvolging" wordt gehaald en dat opvolging circa € 1.000 extra marge per maand zou
+opleveren. Als Zoho al mailt, is **7,0% juist de mét-opvolging-score**. De winst zit
+dan niet in opvolging *toevoegen* maar in de bestaande flow *verbeteren* — en dat is
+een kleinere, maar concretere kans.
+
+De waarde van een staalaanvraag (€ 32,88) verandert hier niet door: die is gemeten op
+de werkelijke uitkomst, inclusief wat Zoho al doet.
+
+## Drie dingen die nu wél de echte vragen zijn
+
+### 1. Mogen die mensen gemaild worden?
+
+[FEIT] Steekproef van 60 staalaanvragers uit het cohort, marketingtoestemming in Shopify:
+
+| | Aantal | Aandeel |
+|---|---:|---:|
+| `SUBSCRIBED` | 11 | **18,3%** |
+| `NOT_SUBSCRIBED` | 49 | **81,7%** |
+
+*Methodologische kanttekening:* ik wilde dit over alle 499 meten, maar Shopify's
+`customersCount` negeerde mijn filters — alle vier de varianten gaven 685 terug.
+Die uitkomst is dus onbruikbaar en ik heb hem verworpen. Bovenstaande cijfers komen
+uit een handmatige steekproef van 60 klanten op klantniveau.
+
+**Ruim vier op de vijf staalbestellers heeft geen marketingtoestemming in Shopify.**
+Als Zoho die groep marketingmails stuurt, is de vraag op welke grondslag. Een
+servicebericht over het bestelde staal is verdedigbaar; een reeks met aanbiedingen
+is dat niet zonder toestemming. Dat is geen verwijt en ik ben geen jurist — maar het
+moet je wel bekend zijn welke grondslag Zoho gebruikt.
+
+Opvallend in dezelfde steekproef, met de nadruk op *klein*:
+
+| | Herhaalorder | |
+|---|---:|---:|
+| Mét toestemming (n=11) | 5 | **45,5%** |
+| Zonder toestemming (n=49) | 6 | **12,2%** |
+
+[VERMOEDEN] Dat verschil is groot, maar n=11 is te klein om er beleid op te bouwen,
+en het is waarschijnlijk deels omgekeerde causaliteit: wie zich inschrijft, had al
+meer koopintentie. Toch wijst het dezelfde kant op: de bereikbare groep is waar de
+conversie zit, en die groep is nu 18%.
+
+### 2. Komen die mails aan? Dit is nu de hoogste prioriteit
+
+Hier komt de SPF-controle terug die al sinds de audit openstaat, en nu is hij
+dringend geworden. Als Zoho mail verstuurt namens `puredeco.nl` en SPF en DKIM zijn
+daar niet op ingericht, dan landt je opvolging in de spambox. **Dan is die 7,0%
+geen inhoudelijk resultaat maar een technisch geremd resultaat** — en is de
+goedkoopste winst in je hele bedrijf een DNS-record.
+
+Dat maakt deze vier controles nu de belangrijkste openstaande actie:
+
+| Controle op `puredeco.nl` | Waar het om gaat |
+|---|---|
+| **SPF** | Staan **Zoho én Shopify** er beide in? Eén SPF-record, beide verzenders erin. |
+| **DKIM** | Is er een Zoho-selector, naast `shopifyemail`? |
+| **DMARC** | Bestaat het record, en op welk beleid? |
+| **MX** | Waar komt inkomende post binnen? |
+
+### 3. Verlaten checkouts blijven volledig onbenut
+
+Dat is een andere groep en Zoho kan er niet bij. 28 echte prospects,
+€ 9.088,45 aan waarde, 0% herstel. Daarvoor is nog steeds geen oplossing ingericht.
+
+## Wat ik van jou nodig heb om de Zoho-flow te kunnen beoordelen
+
+Ik kan niet in Zoho kijken — die connector is niet gekoppeld, en bij drie bronnen
+is er ook geen plek voor. Om te kunnen zeggen of de flow goed of slecht presteert:
+
+1. Welk Zoho-product? (Campaigns, Marketing Automation, CRM)
+2. Hoeveel mails zitten er in de reeks, en op welke dagen na de staalorder?
+3. Open- en klikpercentages
+4. Op welke grondslag wordt er gemaild — toestemming of service?
+
+Met de open- en klikcijfers plus de uitkomst die ik in Shopify kan meten
+(staal → paneelorder per maandcohort) kan ik de flow wél beoordelen en gericht
+verbeteren. Zonder die cijfers is elk advies over de inhoud gokken.
+
+## Voetnoot bij de maandcijfers
+
+Ik heb gekeken of er een moment is waarop de conversie omhoog springt — dat zou
+aangeven wanneer de Zoho-flow is gaan draaien. Conversie binnen 30 dagen per
+maandcohort: mei 3,4%, juni 8,2%, juli 3,8%, augustus 6,0%, september 12,5% (n=32).
+Te veel ruis en te kleine aantallen om er iets uit te lezen. Geen bewijs voor of
+tegen een effect.
