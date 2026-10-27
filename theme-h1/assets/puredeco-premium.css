@@ -3895,3 +3895,14 @@ html.pc-inf .pc-pages { display: none; }
   .pc-after .pd-usp__list::-webkit-scrollbar { display: none; }
   .pc-after .pd-usp__list li { flex: 0 0 62%; padding: 1.6rem; border: 1px solid #DDD6CA; background: #FBF9F5; scroll-snap-align: start; }
 }
+
+/* Praktijkvideo: bronvermelding als link */
+.pdh__proj-note a { color: inherit; text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+.pdh__proj-note a:hover { color: #151413; }
+
+/* Homepage · Van ver één vlak: echte opname */
+.ph-near__video { display: block; width: 100%; height: 100%; object-fit: cover; background: #2A2724; }
+.ph-near__play { display: inline-block; width: 0; height: 0; margin-right: 0.7rem; border-left: 0.7rem solid currentColor; border-top: 0.45rem solid transparent; border-bottom: 0.45rem solid transparent; vertical-align: 0.05rem; }
+.ph-near__item--pack { background: #FBFBFA; }
+.ph-near__item--pack img { object-fit: contain; padding: 6% 0; }
+.ph-near__item--pack .ph-near__cap { background: rgba(21, 20, 19, 0.82); }

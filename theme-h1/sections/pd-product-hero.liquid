@@ -86,7 +86,11 @@
                     {%- endfor -%}
                   </ol>
                 {%- endif -%}
-                <p class="pdh__proj-note">Zelf geplaatst · zonder stof en stucwerk</p>
+                {%- liquid
+                  assign pj_note = product.metafields.puredeco.project_note.value | default: 'Zelf geplaatst · zonder stof en stucwerk'
+                  assign pj_link = product.metafields.puredeco.project_link.value
+                -%}
+                <p class="pdh__proj-note">{% if pj_link != blank %}<a href="{{ pj_link }}" target="_blank" rel="noopener">{{ pj_note }} →</a>{% else %}{{ pj_note }}{% endif %}</p>
               </div>
               <p class="pdh__proj-pill" aria-hidden="true"><span>In de praktijk</span><b data-pdh-proj-step></b></p>
             </div>
@@ -694,6 +698,31 @@
 </script>
 
 <script type="application/ld+json">{{ product | structured_data }}</script>
+{%- if pdh_proj != blank -%}
+  {%- liquid
+    assign pv_label = pdh_name
+    if pdh_code != blank
+      assign pv_label = pdh_code | append: ' ' | append: pdh_name
+    endif
+    assign pv_cap = product.metafields.puredeco.project_caption.value | default: 'in een echt project'
+    assign pv_secs = pdh_proj.duration | divided_by: 1000.0 | round
+    assign pv_hi = pdh_proj.sources | where: 'format', 'mp4' | sort: 'height' | last
+  -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": {{ 'Wandpaneel ' | append: pv_label | append: ' ' | append: pv_cap | json }},
+  "description": {{ pdh_proj.alt | default: pv_label | json }},
+  "thumbnailUrl": [{{ pdh_proj.preview_image | image_url: width: 1080 | prepend: 'https:' | json }}],
+  {%- assign pv_date = product.metafields.puredeco.project_video_date.value | default: product.updated_at -%}
+  "uploadDate": {{ pv_date | date: '%Y-%m-%d' | json }},
+  "duration": "PT{{ pv_secs }}S",
+  {%- if pv_hi %}"contentUrl": {{ pv_hi.url | prepend: 'https:' | replace: 'https:https:', 'https:' | json }},{% endif %}
+  "inLanguage": "nl"
+}
+</script>
+{%- endif -%}
 {%- if pdh_decor != blank -%}
   {%- liquid
     assign dv_label = pdh_name

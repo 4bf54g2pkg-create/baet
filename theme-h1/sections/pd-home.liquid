@@ -26,6 +26,7 @@
     render 'pd-decor', product: wall_p, part: 'full'
   endcapture
   assign wall_code = wall_code | strip
+  assign wall_vid = wall_p.metafields.puredeco.project_video.value
   assign pdf = s.pdf_url | default: 'https://cdn.shopify.com/s/files/1/0940/4075/2394/files/PureDeco-montagehandleiding.pdf'
   assign projects_url = s.projects_url | default: '/pages/form'
 
@@ -179,14 +180,28 @@
     <div class="ph-wrap">
       <div class="ph-near__head">
         <h2 class="ph-h2 ph-h2--xl ph-light">Van ver één vlak.<br>Van dichtbij materiaal.</h2>
-        <p class="ph-near__lead">{{ wall_code }}. Op normale kijkafstand een rustige wand; van dichtbij de structuur van het decor.</p>
+        <p class="ph-near__lead">{{ wall_code }}. Op normale kijkafstand een rustige{% if wall_vid != blank %}, naadloze{% endif %} wand; van dichtbij de structuur van het decor.</p>
       </div>
       <div class="ph-near__grid ph-swipe">
         <a class="ph-near__item ph-near__item--wall" href="{{ wall_p.url }}">
-          {%- if wall_img != blank -%}{{ wall_img | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '600, 1000, 1400', sizes: '(min-width: 990px) 40vw, 85vw', alt: wall_code }}{%- endif -%}
-          <span class="ph-near__cap">De hele wand</span>
+          {%- if wall_vid != blank -%}
+            {%- comment -%} Echte opname bij een klant: speelt zonder geluid in een lus zodra het blok in beeld komt; bij 'beweging beperken' alleen het stilstaande beeld {%- endcomment -%}
+            {%- liquid
+              assign wv_hls = wall_vid.sources | where: 'format', 'm3u8' | first
+              assign wv_mp4 = wall_vid.sources | where: 'format', 'mp4' | sort: 'height' | last
+            -%}
+            <video class="ph-near__video" data-ph-near-video muted loop playsinline preload="none" disableremoteplayback
+              poster="{{ wall_vid.preview_image | image_url: width: 1000 }}" aria-label="{{ wall_vid.alt | default: wall_code | escape }}">
+              {%- if wv_hls -%}<source data-src="{{ wv_hls.url }}" type="application/x-mpegURL">{%- endif -%}
+              {%- if wv_mp4 -%}<source data-src="{{ wv_mp4.url }}" type="video/mp4">{%- endif -%}
+            </video>
+            <span class="ph-near__cap"><i class="ph-near__play" aria-hidden="true"></i>{{ wall_p.metafields.puredeco.project_note.value | default: 'Echte opname' }}</span>
+          {%- else -%}
+            {%- if wall_img != blank -%}{{ wall_img | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '600, 1000, 1400', sizes: '(min-width: 990px) 40vw, 85vw', alt: wall_code }}{%- endif -%}
+            <span class="ph-near__cap">De hele wand</span>
+          {%- endif -%}
         </a>
-        <a class="ph-near__item" href="{{ wall_p.url }}">
+        <a class="ph-near__item ph-near__item--pack" href="{{ wall_p.url }}">
           {%- if wall_pack != blank -%}{{ wall_pack | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '500, 800, 1000', sizes: '(min-width: 990px) 28vw, 85vw', alt: wall_code }}{%- endif -%}
           <span class="ph-near__cap">Het paneel</span>
         </a>
@@ -515,6 +530,18 @@
   var root = document.querySelector('[data-ph]');
   if (!root) return;
   var mq = window.matchMedia('(max-width: 749px)');
+
+  /* Van ver één vlak: echte opname pas laden en spelen als het blok in beeld is */
+  var nv = root.querySelector('[data-ph-near-video]');
+  if (nv && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    new IntersectionObserver(function (en) {
+      if (en[0].isIntersecting) {
+        var srcs = nv.querySelectorAll('source[data-src]');
+        if (srcs.length) { [].forEach.call(srcs, function (x) { x.src = x.getAttribute('data-src'); x.removeAttribute('data-src'); }); nv.load(); }
+        var pr = nv.play(); if (pr && pr.catch) pr.catch(function () {});
+      } else { nv.pause(); }
+    }, { rootMargin: '200px 0px' }).observe(nv);
+  }
 
   /* Naadloos of strakke naad: wisselknop op mobiel */
   var naad = root.querySelector('[data-ph-naad]');
