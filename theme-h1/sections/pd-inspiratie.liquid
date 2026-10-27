@@ -1,12 +1,16 @@
 {%- comment -%}
-  Puredeco · inspiratiepagina (blog 'nieuws', URL blijft /blogs/nieuws). Artboard: docs/ontwerp-puredeco-finish/InspiratieV2.dc.html
-  Per ruimte (visualisatie op schaal met een echt decor, assets/pd-vis-<ruimte>.jpg), per materiaal (collecties), advies, projecten en vragen.
-  Gegevens per artikel/gids: snippets/pd-insp.liquid en snippets/pd-gids-tekst.liquid. Visualisaties: tools/render (altijd met label 'Visualisatie').
-  Gidslinks: bestaat het artikel 'wandpanelen-<ruimte>' in deze blog, dan daarheen; anders (alleen H1-test) naar de voorbeeldweergave ?view=gids-<ruimte>.
+  Puredeco · inspiratiepagina (blog 'nieuws', URL blijft /blogs/nieuws). Artboard: docs/ontwerp-puredeco-finish/InspiratieV3-*.png
+  Echte wanden voorop: hero = projectvideo van een product (puredeco.project_video, stappen uit project_steps),
+  blokken 'Wanden van klanten' (video of foto per blok, met decor), per ruimte zonder renders (staal van het decor),
+  per materiaal, 'Van paneel tot wand' (echte montage- en buigvideo), advies, projecten en vragen.
+  Gegevens per artikel/gids: snippets/pd-insp.liquid. Renders staan alleen nog in de gidsen.
+  Gidslinks: bestaat het artikel 'wandpanelen-<ruimte>' in deze blog, dan daarheen; anders (alleen H1-test) naar ?view=gids-<ruimte>.
 {%- endcomment -%}
 {%- liquid
+  assign s = section.settings
   assign insp_url = blog.url
   assign gids_bk_url = insp_url | append: '?view=gids-badkamer'
+  assign gids_buig_url = insp_url | append: '?view=gids-buigen'
   assign guide_urls = ''
   for a in blog.articles limit: 50
     assign ah = a.handle | split: '/' | last
@@ -15,6 +19,9 @@
     endif
     if ah == 'wandpanelen-badkamer'
       assign gids_bk_url = a.url
+    endif
+    if ah == 'wandpanelen-buigen'
+      assign gids_buig_url = a.url
     endif
   endfor
 
@@ -35,44 +42,216 @@
   endfor
 
   assign rooms = 'badkamer,toilet,keuken,woonkamer,slaapkamer,kantoor' | split: ','
+  assign room_name = 'Badkamer,Toilet,Keuken,Woonkamer,Slaapkamer,Kantoor' | split: ','
   assign room_ttl = 'Wandpanelen in de badkamer|Wandpanelen in het toilet|Wandpanelen in de keuken|Wandpanelen in de woonkamer|Wandpanelen in de slaapkamer|Wandpanelen op kantoor' | split: '|'
-  assign room_sub = '851 Travertine Ivory · decors, plaatsen en kosten|666 White Slate · over de tegels|670 Pandora Slate · keukenwand en achterwand|811 Walnut Classic · tv-wand van vloer tot plafond|646 Khaki · leer achter het bed|619 Jade · met akupanelen' | split: '|'
+  assign room_sub = '851 Travertine Ivory · over de tegels|666 White Slate · vaak één paneel|670 Pandora Slate · keukenwand|811 Walnut Classic · tv-wand|812 Walnut Deep · achter het bed|619 Jade · met akupanelen' | split: '|'
+  assign room_p = 'wandpaneel-travertine-ivory-851,666-glanzend-marmer-white-slate,670-glanzend-marmer-pandora-slate,811-hout-walnut-classic,812-hout-walnut-deep,619-japanse-stof-japaneses-style-jade' | split: ','
+
+  comment
+    Hero: projectvideo van het gekozen product
+  endcomment
+  assign hp = s.hero_product
+  assign hv = hp.metafields.puredeco.project_video.value
+  assign h_caption = hp.metafields.puredeco.project_caption.value
+  assign h_note = hp.metafields.puredeco.project_note.value
+  assign h_steps = hp.metafields.puredeco.project_steps.value | split: '|'
+  capture h_code
+    render 'pd-decor', product: hp, part: 'code'
+  endcapture
+  capture h_name
+    render 'pd-decor', product: hp, part: 'name'
+  endcapture
+  assign h_label = h_code | strip | append: ' ' | append: h_name | strip
+  assign h_v = hp.selected_or_first_available_variant
+  capture h_swatch
+    render 'pd-swatch', product: hp, width: 240
+  endcapture
+  if hv
+    assign hv_hls = hv.sources | where: 'format', 'm3u8' | first
+    assign hv_mp4 = hv.sources | where: 'format', 'mp4' | sort: 'height' | last
+  endif
 -%}
 
-<div class="pdi" data-pdi>
+<div class="pdi pdi3" data-pdi3 data-max="5">
   <div class="pdi-wrap">
     <nav class="pdi-crumb" aria-label="Kruimelpad"><a href="{{ routes.root_url }}">Home</a><span aria-hidden="true">·</span><span>Inspiratie</span></nav>
-
-    <header class="pdi-head">
-      <div>
-        <p class="pdi-k">Inspiratie &amp; advies</p>
-        <h1 class="pdi-h1">{{ section.settings.heading | default: 'Wandpanelen voor elke ruimte' }}</h1>
-      </div>
-      <p class="pdi-intro">{{ section.settings.intro | default: 'Per ruimte uitgelegd: welke decors passen, hoe je plaatst en wat een wand kost. Met visualisaties en tekeningen op schaal en projecten van klanten.' }}</p>
-    </header>
-    <ul class="pdi-facts" role="list">
-      <li>Panelen <strong>tot 280 cm</strong> hoog, 122 cm breed</li>
-      {%- if min_m2 > 0 -%}<li>Vanaf <strong>{{ min_m2 | money }} per m²</strong></li>{%- endif -%}
-      <li><a href="/pages/sample"><strong>Tot 5 stalen gratis</strong></a> · € 6,95 verzending</li>
-      <li><a href="/pages/showroom">Studio <strong>Herwen</strong></a> op afspraak</li>
-    </ul>
   </div>
 
-  {%- assign hero = 'pd-vis-woonkamer.jpg' -%}
-  <figure class="pdi-hero pdi-wrap">
-    <div class="pdi-hero__media">
-      <img src="{{ hero | asset_img_url: '1800x' }}" srcset="{{ hero | asset_img_url: '900x' }} 900w, {{ hero | asset_img_url: '1200x' }} 1200w, {{ hero | asset_img_url: '1800x' }} 1800w" sizes="(min-width: 1320px) 1176px, 100vw" width="1800" height="1200" fetchpriority="high" alt="Visualisatie: tv-wand van vloer tot plafond met wandpanelen in 811 Walnut Classic">
-      {%- comment -%} Korte camerabeweging (visualisatie, tools/render/video_woonkamer.py). Laadt pas na de pagina en niet bij 'minder beweging'. {%- endcomment -%}
-      <video class="pdi-hero__vid" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-pdi-vid="{{ 'pd-vis-woonkamer.mp4' | asset_url }}"></video>
-    </div>
-    <figcaption><span class="pdi-tag pdi-tag--vis">Visualisatie</span><span>Tv-wand in 811 Walnut Classic · Signature 8 mm · 4 panelen van 122 × 280 cm</span></figcaption>
-  </figure>
+  <div class="pdi-wrap pdi3-top">
+    <header class="pdi3-head">
+      <p class="pdi-k">Inspiratie &amp; advies</p>
+      <h1 class="pdi-h1">{{ s.heading | default: 'Wandpanelen voor elke ruimte' }}</h1>
+      <p class="pdi3-intro">{{ s.intro | default: 'Echte wanden van klanten, per ruimte uitgelegd. Kies je decor en bestel gratis stalen.' }}</p>
+      <ul class="pdi3-facts" role="list">
+        <li>Panelen tot 280 cm hoog, 122 cm breed</li>
+        {%- if min_m2 > 0 -%}<li>Vanaf {{ min_m2 | money }} per m²</li>{%- endif -%}
+        <li><a href="/pages/sample">Tot 5 stalen gratis</a> · € 6,95 verzending</li>
+        <li><a href="/pages/showroom">Studio Herwen</a> op afspraak</li>
+      </ul>
+      <nav class="pdi3-chips pdi3-chips--d" aria-label="Per ruimte">
+        {%- for r in rooms -%}
+          {%- liquid
+            assign i = forloop.index0
+            assign guide_key = '|wandpanelen-' | append: r | append: '='
+            assign link = insp_url | append: '?view=gids-' | append: r
+            assign gu = '|' | append: guide_urls
+            if gu contains guide_key
+              assign link = gu | split: guide_key | last | split: '|' | first
+            endif
+            assign rp = all_products[room_p[i]]
+            capture sw
+              render 'pd-swatch', product: rp, width: 80
+            endcapture
+          -%}
+          <a class="pdi3-chip" href="{{ link }}">{% if rp %}<img src="{{ sw | strip }}" alt="" width="22" height="22" loading="lazy">{% endif %}{{ room_name[i] }}</a>
+        {%- endfor -%}
+      </nav>
+    </header>
 
-  {%- comment -%} Per ruimte {%- endcomment -%}
+    {%- if hv -%}
+      <div class="pdi3-film">
+        <figure class="pdi3-hero pdi3-v" data-pdi3-hero>
+          {{ hv.preview_image | image_url: width: 1080 | image_tag: widths: '540, 720, 900, 1080', sizes: '(min-width: 990px) 38vw, 100vw', fetchpriority: 'high', loading: 'eager', alt: hv.alt, class: 'pdi3-v__poster' }}
+          <video class="pdi3-v__vid" data-pdi3-vid muted loop playsinline preload="none" disableremoteplayback aria-hidden="true" tabindex="-1">
+            {%- if hv_hls -%}<source data-src="{{ hv_hls.url }}" type="application/x-mpegURL">{%- endif -%}
+            {%- if hv_mp4 -%}<source data-src="{{ hv_mp4.url }}" type="video/mp4">{%- endif -%}
+          </video>
+          <span class="pdi3-real"><i></i>Echte opname</span>
+          <figcaption class="pdi3-cap">
+            <span class="pdi3-cap__t">{{ h_label }}{% if h_caption != blank %}, {{ h_caption }}{% endif %}</span>
+            {%- if h_note != blank -%}<span class="pdi3-cap__s">{{ h_note | replace: 'Echte opname bij', 'Geplaatst bij' }}</span>{%- endif -%}
+          </figcaption>
+          <span class="pdi3-prog" aria-hidden="true"><b data-pdi3-prog></b></span>
+        </figure>
+        {%- if s.hero_img_2 != blank or s.hero_img_3 != blank -%}
+          <div class="pdi3-side">
+            {%- for img in (2..3) -%}
+              {%- liquid
+                if forloop.index == 1
+                  assign si = s.hero_img_2
+                else
+                  assign si = s.hero_img_3
+                endif
+                assign st = h_steps[forloop.index] | split: '@'
+              -%}
+              {%- if si != blank -%}
+                <button type="button" class="pdi3-side__b" data-pdi3-seek="{{ st[1] | default: 0 }}">
+                  {{ si | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '19vw', loading: 'lazy', alt: si.alt }}
+                  <span>{{ st[0] }}</span>
+                </button>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+      {%- if h_steps.size > 1 -%}
+        <ol class="pdi3-steps" role="list">
+          {%- for step in h_steps -%}
+            {%- assign st = step | split: '@' -%}
+            <li><button type="button" data-pdi3-seek="{{ st[1] | default: 0 }}"{% if forloop.first %} class="is-on"{% endif %}>{{ st[0] }}</button></li>
+          {%- endfor -%}
+        </ol>
+      {%- endif -%}
+      <div class="pdi3-act">
+        <a class="pdi3-btn" href="{{ hp.url }}">Bekijk {{ h_label }}</a>
+        {%- if h_v -%}
+          <button type="button" class="pdi3-btn pdi3-btn--l" data-pc-sample data-id="{{ h_v.id }}" data-url="{{ hp.url }}" data-title="{{ hp.title | escape }}" data-label="{{ h_label | escape }}" data-img="{{ h_swatch | strip }}" aria-pressed="false" aria-label="Staal van {{ h_label | escape }} toevoegen"><span class="off">+ Gratis staal</span><span class="on">✓ Staal gekozen</span></button>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <nav class="pdi3-chips pdi3-chips--m" aria-label="Per ruimte">
+    {%- for r in rooms -%}
+      {%- liquid
+        assign i = forloop.index0
+        assign guide_key = '|wandpanelen-' | append: r | append: '='
+        assign link = insp_url | append: '?view=gids-' | append: r
+        assign gu = '|' | append: guide_urls
+        if gu contains guide_key
+          assign link = gu | split: guide_key | last | split: '|' | first
+        endif
+        assign rp = all_products[room_p[i]]
+        capture sw
+          render 'pd-swatch', product: rp, width: 80
+        endcapture
+      -%}
+      <a class="pdi3-chip" href="{{ link }}">{% if rp %}<img src="{{ sw | strip }}" alt="" width="22" height="22" loading="lazy">{% endif %}{{ room_name[i] }}</a>
+    {%- endfor -%}
+  </nav>
+
+  {%- comment -%} Wanden van klanten: alleen echt beeld (blokken) {%- endcomment -%}
+  {%- assign n_wand = section.blocks | where: 'type', 'wand' | size -%}
+  {%- if n_wand > 0 or request.design_mode -%}
+  <section class="pdi-sec" aria-labelledby="pdi-wand">
+    <div class="pdi-wrap pdi3-sechead">
+      <div><p class="pdi-k">Echt geplaatst</p><h2 class="pdi-h2" id="pdi-wand">Wanden van klanten</h2></div>
+      <a class="pdi3-lnk pdi3-lnk--d" href="https://www.instagram.com/puredeco.nl/" target="_blank" rel="noopener">Deel jouw wand: tag @puredeco.nl</a>
+    </div>
+    <ul class="pdi3-rail pdi3-rail--{{ n_wand | at_most: 4 }}" role="list" data-pdi3-rail>
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'wand' -%}
+          {%- liquid
+            assign b = block.settings
+            assign bp = b.product
+            assign ba = nil
+            if b.artikel != blank
+              assign ba = blog.articles | where: 'handle', b.artikel | first
+              unless ba
+                assign bh = 'nieuws/' | append: b.artikel
+                assign ba = blog.articles | where: 'handle', bh | first
+              endunless
+            endif
+            capture b_code
+              render 'pd-decor', product: bp, part: 'code'
+            endcapture
+            capture b_name
+              render 'pd-decor', product: bp, part: 'name'
+            endcapture
+            assign b_label = b_code | strip | append: ' ' | append: b_name | strip
+            assign b_img = b.image | default: ba.image
+            if b.video
+              assign bv_hls = b.video.sources | where: 'format', 'm3u8' | first
+              assign bv_mp4 = b.video.sources | where: 'format', 'mp4' | sort: 'height' | last
+            endif
+            assign b_alt = b.title | append: ', ' | append: b_label | strip
+          -%}
+          <li class="pdi3-card" {{ block.shopify_attributes }}>
+            <a class="pdi3-v pdi3-card__m" href="{% if ba %}{{ ba.url }}{% elsif bp %}{{ bp.url }}{% else %}#{% endif %}">
+              {%- if b.video -%}
+                {%- assign b_poster = b.image | default: b.video.preview_image -%}
+                {{ b_poster | image_url: width: 720, height: 900, crop: 'center' | image_tag: widths: '360, 540, 720', sizes: '(min-width: 990px) 24vw, 72vw', loading: 'lazy', alt: b.video.alt | default: b_alt, class: 'pdi3-v__poster' }}
+                <video class="pdi3-v__vid" data-pdi3-lazy muted loop playsinline preload="none" disableremoteplayback aria-hidden="true" tabindex="-1">
+                  {%- if bv_hls -%}<source data-src="{{ bv_hls.url }}" type="application/x-mpegURL">{%- endif -%}
+                  {%- if bv_mp4 -%}<source data-src="{{ bv_mp4.url }}" type="video/mp4">{%- endif -%}
+                </video>
+                <span class="pdi3-real"><i></i>Echte opname</span>
+              {%- elsif b_img -%}
+                {{ b_img | image_url: width: 720, height: 900, crop: 'center' | image_tag: widths: '360, 540, 720', sizes: '(min-width: 990px) 24vw, 72vw', loading: 'lazy', alt: b_alt, class: 'pdi3-v__poster' }}
+                <span class="pdi3-real pdi3-real--ph"><i></i>Echte foto</span>
+              {%- endif -%}
+              <span class="pdi3-cap"><span class="pdi3-cap__t">{{ b.title }}</span>{% if b.sub != blank %}<span class="pdi3-cap__s">{{ b.sub }}</span>{% endif %}</span>
+            </a>
+            <p class="pdi3-card__meta">
+              {%- if bp -%}<a href="{{ bp.url }}"><strong>{{ b_label }}</strong></a>{%- endif -%}
+              {%- if ba -%}<a href="{{ ba.url }}">Lees het project →</a>{%- elsif bp -%}<a href="{{ bp.url }}">Shop dit decor →</a>{%- endif -%}
+            </p>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if request.design_mode -%}
+        <li class="pdi3-card pdi3-card--add"><span>Voeg een blok "Wand van een klant" toe: video of foto, decor en tekst.</span></li>
+      {%- endif -%}
+    </ul>
+    <p class="pdi-wrap pdi3-lnk--m"><a class="pdi3-lnk" href="https://www.instagram.com/puredeco.nl/" target="_blank" rel="noopener">Jouw wand op deze pagina? Tag @puredeco.nl</a></p>
+  </section>
+  {%- endif -%}
+
+  {%- comment -%} Per ruimte (zonder renders: het echte decor als staal) {%- endcomment -%}
   <section class="pdi-sec pdi-wrap" aria-labelledby="pdi-rooms">
     <p class="pdi-k">Per ruimte</p>
     <h2 class="pdi-h2" id="pdi-rooms">Waar komt je wand?</h2>
-    <ul class="pdi-rooms" role="list">
+    <ul class="pdi3-rooms" role="list">
       {%- for r in rooms -%}
         {%- liquid
           assign i = forloop.index0
@@ -82,22 +261,22 @@
           if gu contains guide_key
             assign link = gu | split: guide_key | last | split: '|' | first
           endif
-          assign vis = 'pd-vis-' | append: r | append: '.jpg'
+          assign rp = all_products[room_p[i]]
+          capture sw
+            render 'pd-swatch', product: rp, width: 240
+          endcapture
+          capture zoom
+            render 'pd-swatch', product: rp, part: 'zoom'
+          endcapture
         -%}
-        <li class="pdi-room">
-          <a href="{{ link }}" class="pdi-room__a">
-            <span class="pdi-room__img">
-              <img src="{{ vis | asset_img_url: '900x' }}" srcset="{{ vis | asset_img_url: '600x' }} 600w, {{ vis | asset_img_url: '900x' }} 900w, {{ vis | asset_img_url: '1200x' }} 1200w" sizes="(min-width: 990px) 30vw, (min-width: 600px) 45vw, 78vw" width="1800" height="1200" loading="lazy" alt="Visualisatie: {{ room_ttl[i] | downcase }}">
-              <span class="pdi-tag pdi-tag--vis">Visualisatie</span>
-            </span>
-            <h3 class="pdi-room__t">{{ room_ttl[i] }}</h3>
-            <span class="pdi-room__s">{{ room_sub[i] }}</span>
-            <span class="pdi-room__go">Lees de gids →</span>
-          </a>
-        </li>
+        <li><a href="{{ link }}" class="pdi3-room">
+          <span class="pdi3-room__sw{% if zoom contains '1' %} is-zoom{% endif %}">{% if rp %}<img src="{{ sw | strip }}" alt="" width="240" height="240" loading="lazy">{% endif %}</span>
+          <span><span class="pdi3-room__t">{{ room_name[i] }}</span><span class="pdi3-room__s">{{ room_sub[i] }}</span></span>
+          <span class="pdi3-room__go" aria-hidden="true">→</span>
+          <span class="visually-hidden">{{ room_ttl[i] }}: lees de gids</span>
+        </a></li>
       {%- endfor -%}
     </ul>
-    <p class="pdi-note">Visualisaties op schaal met het echte decor uit de collectie: panelen van 122 cm breed en tot 280 cm hoog. In elke gids staat ook een tekening op schaal.</p>
   </section>
 
   {%- comment -%} Per materiaal {%- endcomment -%}
@@ -106,22 +285,19 @@
     assign mat_c = 'hout-1,japandi,leer,kunst,8mm-naadloos,doorlopend-marmer,akupanelen,wandpanelen' | split: ','
     assign mat_p = '811-hout-walnut-classic,619-japanse-stof-japaneses-style-jade,646-leer-khaki-leather,842-art-stucco-light,wandpaneel-travertine-ivory-851,677-doorlopend-marmer-italian-white-slate,driezijdige-akupanelen,urban-smoke-692-marmerlook' | split: ','
   -%}
-  <section class="pdi-sec pdi-wrap pdi-split" aria-labelledby="pdi-mat">
-    <div>
-      <p class="pdi-k">Per materiaal</p>
-      <h2 class="pdi-h2" id="pdi-mat">Kies je uitstraling</h2>
-      <p class="pdi-note">Elke tegel opent de collectie.</p>
-    </div>
-    <ul class="pdi-mats" role="list">
+  <section class="pdi-sec" aria-labelledby="pdi-mat">
+    <div class="pdi-wrap"><p class="pdi-k">Per materiaal</p><h2 class="pdi-h2" id="pdi-mat">Kies je uitstraling</h2></div>
+    <ul class="pdi3-mats" role="list">
       {%- for m in mats -%}
         {%- assign mp = all_products[mat_p[forloop.index0]] -%}
         <li><a href="/collections/{{ mat_c[forloop.index0] }}">
-          {%- comment -%} Productfoto's: smalle uitsnede uit het midden (toont het materiaal); de akupanelen-foto is een interieurfoto en blijft heel. {%- endcomment -%}
           {%- if mp.featured_image == blank -%}
           {%- elsif mp.handle contains 'akupanelen' -%}
-            {{ mp.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', widths: '200, 400', sizes: '(min-width: 990px) 14vw, 45vw', alt: '' , class: 'pdi-mat__img' }}
+            {{ mp.featured_image | image_url: width: 400, height: 534, crop: 'center' | image_tag: loading: 'lazy', widths: '200, 400', sizes: '(min-width: 990px) 12vw, 32vw', alt: '', class: 'pdi3-mat__img' }}
           {%- else -%}
-            {{ mp.featured_image | image_url: width: 300, height: 900, crop: 'center' | image_tag: loading: 'lazy', widths: '200, 300', sizes: '(min-width: 990px) 14vw, 45vw', alt: '' , class: 'pdi-mat__img' }}
+            {%- capture msw -%}{%- render 'pd-swatch', product: mp, width: 400 -%}{%- endcapture -%}
+            {%- capture mz -%}{%- render 'pd-swatch', product: mp, part: 'zoom' -%}{%- endcapture -%}
+            <span class="pdi3-mat__sw{% if mz contains '1' %} is-zoom{% endif %}"><img src="{{ msw | strip }}" alt="" width="400" height="400" loading="lazy" class="pdi3-mat__img"></span>
           {%- endif -%}
           <span>{{ m }} →</span>
         </a></li>
@@ -129,135 +305,208 @@
     </ul>
   </section>
 
-  {%- comment -%} Advies {%- endcomment -%}
-  {%- liquid
-    assign advies = ''
-    for a in blog.articles limit: 50
-      capture kind
-        render 'pd-insp', key: a.handle, part: 'kind'
-      endcapture
-      if kind == 'advies'
-        capture o
-          render 'pd-insp', key: a.handle, part: 'order'
-        endcapture
-        assign advies = advies | append: o | append: ':' | append: a.handle | append: ','
-      endif
-    endfor
-    assign advies = advies | split: ',' | sort
-  -%}
-  <section class="pdi-sec pdi-wrap pdi-split" aria-labelledby="pdi-adv">
-    <div>
-      <p class="pdi-k">Zelf aan de slag</p>
-      <h2 class="pdi-h2" id="pdi-adv">Advies en plaatsen</h2>
+  {%- comment -%} Van paneel tot wand: echte montage- en buigvideo {%- endcomment -%}
+  {%- if s.how_video != blank or s.bend_video != blank -%}
+  <section class="pdi-sec pdi-wrap pdi3-how" aria-labelledby="pdi-how">
+    <div class="pdi3-how__t">
+      <p class="pdi-k">Zelf plaatsen</p>
+      <h2 class="pdi-h2" id="pdi-how">Van paneel tot wand</h2>
+      <p class="pdi3-intro">{{ s.how_text | default: 'Op maat zagen, kit erop en plaatsen. Zonder stof en stucwerk.' }}</p>
+      <p class="pdi3-links"><a class="pdi3-lnk" href="/pages/installatie">Montage stap voor stap</a>{% if s.pdf_url != blank %}<a class="pdi3-lnk" href="{{ s.pdf_url }}" target="_blank" rel="noopener">Handleiding (pdf)</a>{% endif %}</p>
     </div>
-    <ol class="pdi-list" role="list">
-      {%- assign n = 0 -%}
-      {%- for entry in advies -%}
-        {%- if forloop.index == 2 -%}
-          {%- assign n = n | plus: 1 -%}
-          <li><a href="{{ gids_bk_url }}"><span class="pdi-list__n">{{ n | prepend: '0' }}</span><span><span class="pdi-list__t">Wandpanelen in de badkamer</span><span class="pdi-list__s">Decors, Linea of Signature, kosten en plaatsen over tegels</span></span><span class="pdi-list__go">Lezen →</span></a></li>
-        {%- endif -%}
-        {%- assign h = entry | split: ':' | last -%}
-        {%- assign a = blog.articles | where: 'handle', h | first -%}
-        {%- if a -%}
-          {%- assign n = n | plus: 1 -%}
-          <li><a href="{{ a.url }}"><span class="pdi-list__n">{{ n | prepend: '0' }}</span><span><span class="pdi-list__t">{% render 'pd-insp', key: h, part: 'ttl' %}</span><span class="pdi-list__s">{% render 'pd-insp', key: h, part: 'lead' %}</span></span><span class="pdi-list__go">Lezen →</span></a></li>
-        {%- endif -%}
-      {%- endfor -%}
-      {%- if advies.size < 2 -%}
-        {%- assign n = n | plus: 1 -%}
-        <li><a href="{{ gids_bk_url }}"><span class="pdi-list__n">{{ n | prepend: '0' }}</span><span><span class="pdi-list__t">Wandpanelen in de badkamer</span><span class="pdi-list__s">Decors, Linea of Signature, kosten en plaatsen over tegels</span></span><span class="pdi-list__go">Lezen →</span></a></li>
-      {%- endif -%}
-    </ol>
-  </section>
-
-  {%- comment -%} Projecten {%- endcomment -%}
-  {%- liquid
-    assign projs = ''
-    for a in blog.articles limit: 50
-      capture kind
-        render 'pd-insp', key: a.handle, part: 'kind'
-      endcapture
-      if kind == 'project'
-        capture o
-          render 'pd-insp', key: a.handle, part: 'order'
-        endcapture
-        assign projs = projs | append: o | append: ':' | append: a.handle | append: ','
-      endif
-    endfor
-    assign projs = projs | split: ',' | sort
-  -%}
-  {%- if projs.size > 0 -%}
-  <section class="pdi-sec pdi-wrap" aria-labelledby="pdi-proj">
-    <p class="pdi-k">Uit de praktijk</p>
-    <h2 class="pdi-h2" id="pdi-proj">Projecten van klanten</h2>
-    <ul class="pdi-proj" role="list">
-      {%- for entry in projs -%}
-        {%- liquid
-          assign h = entry | split: ':' | last
-          assign a = blog.articles | where: 'handle', h | first
-          capture photo
-            render 'pd-insp', key: h, part: 'photo'
-          endcapture
-          capture decors
-            render 'pd-insp', key: h, part: 'decors'
-          endcapture
-          assign d1 = decors | strip | split: ',' | first
-          assign dp = all_products[d1]
-        -%}
-        {%- if a -%}
-        <li><a href="{{ a.url }}">
-          <span class="pdi-proj__img">
-            {%- if photo == 'echt' and a.image -%}
-              {{ a.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400, 600, 900', sizes: '(min-width: 990px) 25vw, 50vw', alt: a.title | escape }}
-              <span class="pdi-tag">Echte foto</span>
-            {%- elsif dp.featured_image -%}
-              {{ dp.featured_image | image_url: width: 300, height: 900, crop: 'center' | image_tag: loading: 'lazy', widths: '200, 300', sizes: '(min-width: 990px) 25vw, 50vw', alt: dp.title | escape }}
-              <span class="pdi-tag pdi-tag--decor">Decor</span>
-            {%- endif -%}
-          </span>
-          <span class="pdi-k pdi-k--stone">{% render 'pd-insp', key: h, part: 'room' %}</span>
-          <span class="pdi-proj__t">{% render 'pd-insp', key: h, part: 'ttl' %}</span>
-          <span class="pdi-proj__s">{% render 'pd-insp', key: h, part: 'lead' %}</span>
+    <ul class="pdi3-how__m{% if s.how_image != blank %} has-3{% endif %}" role="list">
+      {%- if s.how_image != blank -%}
+        <li class="pdi3-how__x"><a class="pdi3-v" href="/pages/installatie">
+          {{ s.how_image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '(min-width: 990px) 17vw, 45vw', loading: 'lazy', alt: s.how_image.alt, class: 'pdi3-v__poster' }}
+          <span class="pdi3-real"><i></i>Echte opname</span>
+          <span class="pdi3-cap"><span class="pdi3-cap__t">Op maat zagen</span></span>
         </a></li>
+      {%- endif -%}
+      {%- for vid in (1..2) -%}
+        {%- liquid
+          if forloop.index == 1
+            assign hw = s.how_video
+            assign hw_t = 'Plaatsen'
+            assign hw_s = 'Meten · zagen · tegen de wand'
+            assign hw_u = '/pages/installatie'
+          else
+            assign hw = s.bend_video
+            assign hw_t = 'Ronde wand'
+            assign hw_s = 'Infrezen · verwarmen · buigen'
+            assign hw_u = gids_buig_url
+          endif
+        -%}
+        {%- if hw != blank -%}
+          {%- liquid
+            assign hw_hls = hw.sources | where: 'format', 'm3u8' | first
+            assign hw_mp4 = hw.sources | where: 'format', 'mp4' | sort: 'height' | last
+          -%}
+          <li><a class="pdi3-v" href="{{ hw_u }}">
+            {{ hw.preview_image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '(min-width: 990px) 17vw, 45vw', loading: 'lazy', alt: hw.alt, class: 'pdi3-v__poster' }}
+            <video class="pdi3-v__vid" data-pdi3-lazy muted loop playsinline preload="none" disableremoteplayback aria-hidden="true" tabindex="-1">
+              {%- if hw_hls -%}<source data-src="{{ hw_hls.url }}" type="application/x-mpegURL">{%- endif -%}
+              {%- if hw_mp4 -%}<source data-src="{{ hw_mp4.url }}" type="video/mp4">{%- endif -%}
+            </video>
+            <span class="pdi3-real"><i></i>Echte opname</span>
+            <span class="pdi3-cap"><span class="pdi3-cap__t">{{ hw_t }}</span><span class="pdi3-cap__s">{{ hw_s }}</span></span>
+          </a>
+          {%- if forloop.index == 2 -%}<a class="pdi3-lnk pdi3-how__g" href="{{ gids_buig_url }}">Gids ronde wanden →</a>{%- endif -%}
+          </li>
         {%- endif -%}
       {%- endfor -%}
     </ul>
   </section>
   {%- endif -%}
 
-  {%- comment -%} Veelgestelde vragen (teksten uit de goedgekeurde collectie- en productteksten) {%- endcomment -%}
-  <section class="pdi-sec pdi-wrap pdi-split" aria-labelledby="pdi-faq">
-    <div>
+  {%- comment -%} Advies en projecten {%- endcomment -%}
+  {%- liquid
+    assign advies = ''
+    assign projs = ''
+    for a in blog.articles limit: 50
+      capture kind
+        render 'pd-insp', key: a.handle, part: 'kind'
+      endcapture
+      capture o
+        render 'pd-insp', key: a.handle, part: 'order'
+      endcapture
+      if kind == 'advies'
+        assign advies = advies | append: o | append: ':' | append: a.handle | append: ','
+      elsif kind == 'project'
+        assign projs = projs | append: o | append: ':' | append: a.handle | append: ','
+      endif
+    endfor
+    assign advies = advies | split: ',' | sort
+    assign projs = projs | split: ',' | sort
+  -%}
+  <div class="pdi-sec pdi-wrap pdi3-two">
+    <section aria-labelledby="pdi-adv">
+      <p class="pdi-k">Advies</p>
+      <h2 class="pdi-h2" id="pdi-adv">Goed om te weten</h2>
+      <ol class="pdi-list pdi3-list" role="list">
+        {%- assign n = 0 -%}
+        {%- for entry in advies -%}
+          {%- if forloop.index == 2 -%}
+            {%- assign n = n | plus: 1 -%}
+            <li><a href="{{ gids_bk_url }}"><span class="pdi-list__n">{{ n | prepend: '0' }}</span><span><span class="pdi-list__t">Wandpanelen in de badkamer</span><span class="pdi-list__s">Decors, Linea of Signature, kosten en plaatsen over tegels</span></span><span class="pdi-list__go">Lezen →</span></a></li>
+          {%- endif -%}
+          {%- assign h = entry | split: ':' | last -%}
+          {%- assign a = blog.articles | where: 'handle', h | first -%}
+          {%- if a -%}
+            {%- assign n = n | plus: 1 -%}
+            <li><a href="{{ a.url }}"><span class="pdi-list__n">{{ n | prepend: '0' }}</span><span><span class="pdi-list__t">{% render 'pd-insp', key: h, part: 'ttl' %}</span><span class="pdi-list__s">{% render 'pd-insp', key: h, part: 'lead' %}</span></span><span class="pdi-list__go">Lezen →</span></a></li>
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if advies.size < 2 -%}
+          {%- assign n = n | plus: 1 -%}
+          <li><a href="{{ gids_bk_url }}"><span class="pdi-list__n">{{ n | prepend: '0' }}</span><span><span class="pdi-list__t">Wandpanelen in de badkamer</span><span class="pdi-list__s">Decors, Linea of Signature, kosten en plaatsen over tegels</span></span><span class="pdi-list__go">Lezen →</span></a></li>
+        {%- endif -%}
+        {%- assign n = n | plus: 1 -%}
+        <li><a href="{{ gids_buig_url }}"><span class="pdi-list__n">{{ n | prepend: '0' }}</span><span><span class="pdi-list__t">Wandpanelen buigen voor ronde wanden</span><span class="pdi-list__s">Infrezen, verwarmen en buigen, met video</span></span><span class="pdi-list__go">Lezen →</span></a></li>
+      </ol>
+      {%- if projs.size > 0 -%}
+        <p class="pdi-k pdi-k--stone pdi3-sub">Projecten</p>
+        <ul class="pdi-list pdi3-list pdi3-list--p" role="list">
+          {%- for entry in projs -%}
+            {%- assign h = entry | split: ':' | last -%}
+            {%- assign a = blog.articles | where: 'handle', h | first -%}
+            {%- if a -%}
+              <li><a href="{{ a.url }}"><span class="pdi-list__n">{% render 'pd-insp', key: h, part: 'room' %}</span><span><span class="pdi-list__t">{% render 'pd-insp', key: h, part: 'ttl' %}</span><span class="pdi-list__s">{% render 'pd-insp', key: h, part: 'lead' %}</span></span><span class="pdi-list__go">Lezen →</span></a></li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </section>
+
+    {%- comment -%} Veelgestelde vragen (teksten uit de goedgekeurde collectie- en productteksten) {%- endcomment -%}
+    <section aria-labelledby="pdi-faq">
       <p class="pdi-k">Veelgestelde vragen</p>
       <h2 class="pdi-h2" id="pdi-faq">Kort antwoord</h2>
-    </div>
-    <div class="pdi-faq">
-      <details><summary>Wat is het verschil tussen Linea en Signature?</summary><p>Linea is 5 mm: de panelen stuiten tegen elkaar en je ziet een naad, die je afwerkt met een tussenprofiel of kit in kleur. Signature is 8 mm met een kliksysteem; op een vlakke, rechte ondergrond is de naad vrijwel onzichtbaar.</p></details>
-      <details><summary>Hoeveel panelen heb ik nodig voor mijn wand?</summary><p>Een paneel is 122 cm breed. Deel de breedte van je wand door 1,22 en rond naar boven af. Een wand van 4,50 m breed geeft 3,7: je hebt dus 4 panelen nodig. Op elke productpagina rekent de calculator het voor je uit.</p></details>
-      <details><summary>Kan ik wandpanelen in de badkamer gebruiken?</summary><p>Ja. De panelen zijn waterbestendig en geschikt voor badkamer en keuken. Vermijd wel plekken waar water blijft staan.</p></details>
-      <details><summary>Kan ik eerst een staal bekijken?</summary><p>Ja. Bestel tot vijf stalen gratis; je betaalt alleen € 6,95 verzending. Of bekijk de panelen op ware grootte in onze studio in Herwen.</p></details>
-    </div>
-  </section>
-
-  <div class="pdi-wrap pdi-close">
-    <p>Eerst voelen? <a href="/pages/sample">Bestel tot 5 stalen gratis →</a></p>
+      <div class="pdi-faq">
+        <details><summary>Wat is het verschil tussen Linea en Signature?</summary><p>Linea is 5 mm: de panelen stuiten tegen elkaar en je ziet een naad, die je afwerkt met een tussenprofiel of kit in kleur. Signature is 8 mm met een kliksysteem; op een vlakke, rechte ondergrond is de naad vrijwel onzichtbaar.</p></details>
+        <details><summary>Hoeveel panelen heb ik nodig voor mijn wand?</summary><p>Een paneel is 122 cm breed. Deel de breedte van je wand door 1,22 en rond naar boven af. Een wand van 4,50 m breed geeft 3,7: je hebt dus 4 panelen nodig. Op elke productpagina rekent de calculator het voor je uit.</p></details>
+        <details><summary>Kan ik wandpanelen in de badkamer gebruiken?</summary><p>Ja. De panelen zijn waterbestendig en geschikt voor badkamer en keuken. Vermijd wel plekken waar water blijft staan.</p></details>
+        <details><summary>Kan ik eerst een staal bekijken?</summary><p>Ja. Bestel tot vijf stalen gratis; je betaalt alleen € 6,95 verzending. Of bekijk de panelen op ware grootte in onze studio in Herwen.</p></details>
+      </div>
+    </section>
   </div>
+
+  <div class="pdi3-close">
+    <div class="pdi-wrap pdi3-close__in">
+      <div><p class="pdi-k">Eerst voelen</p><h2 class="pdi-h2">Tot 5 stalen gratis, alleen € 6,95 verzending</h2></div>
+      <div class="pdi3-close__b"><a class="pdi3-btn pdi3-btn--w" href="/pages/sample">Bestel gratis stalen</a><a class="pdi3-btn pdi3-btn--o" href="/pages/showroom">Plan een bezoek aan de studio</a></div>
+    </div>
+  </div>
+
+  <div class="pc-toast pdi3-toast" data-pdi3-toast hidden role="status" aria-live="polite"><span data-pdi3-toast-t></span> <a href="/pages/sample">Bekijk je stalen →</a></div>
 </div>
 
 <script>
   (function () {
-    var v = document.querySelector('[data-pdi-vid]');
-    if (!v || !window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var start = function () {
-      v.src = v.getAttribute('data-pdi-vid');
-      v.addEventListener('playing', function () { v.classList.add('is-on'); }, { once: true });
-      var p = v.play(); if (p && p.catch) p.catch(function () {});
-    };
-    if (document.readyState === 'complete') start(); else window.addEventListener('load', start, { once: true });
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (e) { if (!v.src) return; e[0].isIntersecting ? v.play().catch(function () {}) : v.pause(); }).observe(v);
+    var root = document.querySelector('[data-pdi3]');
+    if (!root) return;
+    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* Video's: bronnen pas laden als ze bijna in beeld zijn; HLS eerst (Safari), anders mp4 */
+    function load(v) {
+      if (v.dataset.on) return; v.dataset.on = '1';
+      var canHls = v.canPlayType('application/vnd.apple.mpegurl') || v.canPlayType('application/x-mpegURL');
+      [].forEach.call(v.querySelectorAll('source'), function (s) {
+        if (/mpegurl/i.test(s.type) && !canHls) { s.remove(); return; }
+        s.src = s.dataset.src;
+      });
+      v.load();
+      v.addEventListener('playing', function () { v.parentNode.classList.add('is-on'); }, { once: true });
     }
+    function play(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+    var vids = root.querySelectorAll('[data-pdi3-vid], [data-pdi3-lazy]');
+    if (!still && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          var v = e.target;
+          if (e.isIntersecting) { load(v); play(v); } else if (v.dataset.on) { v.pause(); }
+        });
+      }, { rootMargin: '200px 0px' });
+      var hero = root.querySelector('[data-pdi3-vid]');
+      var watch = function () { [].forEach.call(vids, function (v) { io.observe(v); }); };
+      if (hero && document.readyState !== 'complete') window.addEventListener('load', watch, { once: true }); else watch();
+    }
+
+    /* Hero: stappen springen naar het moment in de video */
+    var hv = root.querySelector('[data-pdi3-vid]'), prog = root.querySelector('[data-pdi3-prog]');
+    var steps = [].slice.call(root.querySelectorAll('.pdi3-steps [data-pdi3-seek]'));
+    if (hv) {
+      root.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-pdi3-seek]'); if (!b || still) return;
+        load(hv); hv.currentTime = parseFloat(b.dataset.pdi3Seek) || 0; play(hv);
+      });
+      hv.addEventListener('timeupdate', function () {
+        if (!hv.duration) return;
+        if (prog) prog.style.width = (hv.currentTime / hv.duration * 100) + '%';
+        var on = 0;
+        steps.forEach(function (s, i) { if (hv.currentTime + 0.05 >= (parseFloat(s.dataset.pdi3Seek) || 0)) on = i; });
+        steps.forEach(function (s, i) { s.classList.toggle('is-on', i === on); });
+      });
+    }
+
+    /* Gratis staal (zelfde lijst als collectie en homepage) */
+    var KEY = 'pd-edit', MAX = parseInt(root.dataset.max, 10) || 5;
+    var toast = root.querySelector('[data-pdi3-toast]'), tt = root.querySelector('[data-pdi3-toast-t]'), timer;
+    function get() { try { return JSON.parse(localStorage.getItem(KEY) || '[]') || []; } catch (e) { return []; } }
+    function put(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} }
+    function paint() {
+      var c = get();
+      [].forEach.call(root.querySelectorAll('[data-pc-sample]'), function (b) { var on = c.some(function (x) { return x.id === b.dataset.id; }); b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+    }
+    function say(t) { if (!toast) return; tt.textContent = t; toast.hidden = false; clearTimeout(timer); timer = setTimeout(function () { toast.hidden = true; }, 4000); }
+    root.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-pc-sample]'); if (!b) return;
+      var c = get(), i = c.findIndex(function (x) { return x.id === b.dataset.id; });
+      if (i > -1) { c.splice(i, 1); put(c); paint(); say(b.dataset.label + ' verwijderd · ' + c.length + ' van ' + MAX + ' gekozen'); return; }
+      if (c.length >= MAX) { say('Je hebt al ' + MAX + ' stalen gekozen'); return; }
+      c.push({ id: b.dataset.id, url: b.dataset.url, title: b.dataset.title, label: b.dataset.label, img: b.dataset.img }); put(c); paint();
+      say(b.dataset.label + ' toegevoegd · ' + c.length + ' van ' + MAX + ' gekozen');
+    });
+    paint();
   })();
 </script>
 
@@ -274,7 +523,7 @@
     },
     {
       "@type": "CollectionPage",
-      "name": {{ section.settings.heading | default: 'Wandpanelen voor elke ruimte' | json }},
+      "name": {{ s.heading | default: 'Wandpanelen voor elke ruimte' | json }},
       "url": {{ shop.url | append: insp_url | json }},
       "inLanguage": "nl",
       "hasPart": [
@@ -300,6 +549,54 @@
         {%- endfor %}
       ]
     },
+    {%- comment -%} Echte video's op deze pagina {%- endcomment -%}
+    {%- if hv -%}
+    {
+      "@type": "VideoObject",
+      "name": {{ 'Wandpaneel ' | append: h_label | append: ', ' | append: h_caption | json }},
+      "description": {{ hv.alt | default: h_label | json }},
+      "thumbnailUrl": {{ hv.preview_image | image_url: width: 1080 | prepend: 'https:' | json }},
+      "uploadDate": {{ hp.metafields.puredeco.project_video_date.value | default: hp.updated_at | date: '%Y-%m-%d' | json }},
+      "duration": {{ hv.duration | divided_by: 1000 | prepend: 'PT' | append: 'S' | json }}{% if hv_mp4 %},
+      "contentUrl": {{ hv_mp4.url | json }}{% endif %}
+    },
+    {%- endif -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'wand' and block.settings.video -%}
+        {%- assign bv = block.settings.video -%}
+        {%- assign bv_mp4 = bv.sources | where: 'format', 'mp4' | sort: 'height' | last -%}
+    {
+      "@type": "VideoObject",
+      "name": {{ block.settings.title | json }},
+      "description": {{ bv.alt | default: block.settings.title | json }},
+      "thumbnailUrl": {{ bv.preview_image | image_url: width: 1080 | prepend: 'https:' | json }},
+      "uploadDate": {{ block.settings.date | default: '2026-10-27' | json }},
+      "duration": {{ bv.duration | divided_by: 1000 | prepend: 'PT' | append: 'S' | json }}{% if bv_mp4 %},
+      "contentUrl": {{ bv_mp4.url | json }}{% endif %}
+    },
+      {%- endif -%}
+    {%- endfor -%}
+    {%- for vid in (1..2) -%}
+      {%- liquid
+        if forloop.index == 1
+          assign hw = s.how_video
+        else
+          assign hw = s.bend_video
+        endif
+      -%}
+      {%- if hw != blank -%}
+        {%- assign hw_mp4 = hw.sources | where: 'format', 'mp4' | sort: 'height' | last -%}
+    {
+      "@type": "VideoObject",
+      "name": {% if forloop.index == 1 %}"Wandpanelen plaatsen: meten, zagen en tegen de wand"{% else %}"Wandpaneel buigen voor een ronde wand"{% endif %},
+      "description": {{ hw.alt | json }},
+      "thumbnailUrl": {{ hw.preview_image | image_url: width: 1080 | prepend: 'https:' | json }},
+      "uploadDate": "2026-10-27",
+      "duration": {{ hw.duration | divided_by: 1000 | prepend: 'PT' | append: 'S' | json }}{% if hw_mp4 %},
+      "contentUrl": {{ hw_mp4.url | json }}{% endif %}
+    },
+      {%- endif -%}
+    {%- endfor %}
     {
       "@type": "FAQPage",
       "mainEntity": [
@@ -320,7 +617,32 @@
   "class": "pd-insp-section",
   "settings": [
     { "type": "text", "id": "heading", "label": "Kop (H1)", "default": "Wandpanelen voor elke ruimte" },
-    { "type": "textarea", "id": "intro", "label": "Intro", "default": "Per ruimte uitgelegd: welke decors passen, hoe je plaatst en wat een wand kost. Met visualisaties en tekeningen op schaal en projecten van klanten." }
+    { "type": "textarea", "id": "intro", "label": "Intro", "default": "Echte wanden van klanten, per ruimte uitgelegd. Kies je decor en bestel gratis stalen." },
+    { "type": "header", "content": "Hero (echte opname)" },
+    { "type": "product", "id": "hero_product", "label": "Product met projectvideo", "info": "Gebruikt de velden puredeco.project_video, project_caption, project_steps en project_note." },
+    { "type": "image_picker", "id": "hero_img_2", "label": "Desktop: beeld stap 2" },
+    { "type": "image_picker", "id": "hero_img_3", "label": "Desktop: beeld stap 3" },
+    { "type": "header", "content": "Van paneel tot wand" },
+    { "type": "textarea", "id": "how_text", "label": "Tekst", "default": "Op maat zagen, kit erop en plaatsen. Zonder stof en stucwerk." },
+    { "type": "image_picker", "id": "how_image", "label": "Desktop: beeld op maat zagen" },
+    { "type": "video", "id": "how_video", "label": "Video plaatsen" },
+    { "type": "video", "id": "bend_video", "label": "Video ronde wand (buigen)" },
+    { "type": "url", "id": "pdf_url", "label": "Handleiding (pdf)" }
+  ],
+  "blocks": [
+    {
+      "type": "wand",
+      "name": "Wand van een klant",
+      "settings": [
+        { "type": "video", "id": "video", "label": "Video (echte opname)" },
+        { "type": "image_picker", "id": "image", "label": "Foto", "info": "Zonder video de foto van de kaart; met video het stilstaande beeld vóór het afspelen" },
+        { "type": "product", "id": "product", "label": "Decor" },
+        { "type": "text", "id": "title", "label": "Titel", "default": "Wand van een klant" },
+        { "type": "text", "id": "sub", "label": "Ondertitel" },
+        { "type": "text", "id": "artikel", "label": "Projectartikel (handle, optioneel)", "info": "Zonder artikel gaat de kaart naar het decor. De foto van het artikel wordt gebruikt als er geen video of foto is." },
+        { "type": "text", "id": "date", "label": "Datum opname (JJJJ-MM-DD, voor Google)" }
+      ]
+    }
   ],
   "presets": [{ "name": "Puredeco inspiratie" }]
 }

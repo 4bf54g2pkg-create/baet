@@ -1,1 +1,13 @@
-{"sections":{"pd_buigen":{"type":"pd-buigen","settings":{}}},"order":["pd_buigen"]}
+{
+  "sections": {
+    "pd_buigen": {
+      "type": "pd-buigen",
+      "settings": {
+        "video": "shopify://files/videos/wandpanelen-buigen-ronde-wand.mp4"
+      }
+    }
+  },
+  "order": [
+    "pd_buigen"
+  ]
+}

@@ -11,3 +11,8 @@ Ook bekeken: IMG_7946, 7955, 7958 (tweede upload). Ontbreken nog: IMG_7941 (staa
 
 Bewerking (build.py): per shot vidstab, 0,8× (25 fps), 4:5-uitsnede 1080×1350, licht contrast, 0,5 s overvloeiers,
 naadloze lus, geen geluid, geen metadata.
+
+## In de H1-kopie (27 okt 2026)
+Shopify › Bestanden: wandpanelen-plaatsen-echte-opname.mp4, wandpanelen-buigen-ronde-wand.mp4,
+wandpanelen-op-maat-zagen.jpg. Gebruikt in sections/pd-inspiratie.liquid ('Van paneel tot wand') en als video
+in de gids ronde wanden (templates/blog.gids-buigen.json en article.buigen.json, instelling 'video').

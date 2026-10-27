@@ -4,9 +4,58 @@
       "type": "pd-inspiratie",
       "settings": {
         "heading": "Wandpanelen voor elke ruimte",
-        "intro": "Per ruimte uitgelegd: welke decors passen, hoe je plaatst en wat een wand kost. Met visualisaties en tekeningen op schaal en projecten van klanten."
-      }
+        "intro": "Echte wanden van klanten, per ruimte uitgelegd. Kies je decor en bestel gratis stalen.",
+        "hero_product": "812-hout-walnut-deep",
+        "hero_img_2": "shopify://shop_images/wandpaneel-812-walnut-deep-om-de-hoek.jpg",
+        "hero_img_3": "shopify://shop_images/wandpaneel-812-walnut-deep-nerf-detail.jpg",
+        "how_text": "Op maat zagen, kit erop en plaatsen. Zonder stof en stucwerk.",
+        "how_image": "shopify://shop_images/wandpanelen-op-maat-zagen.jpg",
+        "how_video": "shopify://files/videos/wandpanelen-plaatsen-echte-opname.mp4",
+        "bend_video": "shopify://files/videos/wandpanelen-buigen-ronde-wand.mp4",
+        "pdf_url": "https://cdn.shopify.com/s/files/1/0940/4075/2394/files/PureDeco-montagehandleiding.pdf"
+      },
+      "blocks": {
+        "wand_670": {
+          "type": "wand",
+          "settings": {
+            "video": "shopify://files/videos/670-montage-4x5.mp4",
+            "product": "670-glanzend-marmer-pandora-slate",
+            "title": "Toilet over de tegels",
+            "sub": "Zelf gezaagd en geplaatst",
+            "artikel": "",
+            "date": "2026-10-06",
+            "image": "shopify://shop_images/wandpaneel-670-pandora-slate-toilet.jpg"
+          }
+        },
+        "wand_692": {
+          "type": "wand",
+          "settings": {
+            "video": "shopify://files/videos/692-urban-smoke-decorvideo.mp4",
+            "product": "urban-smoke-692-marmerlook",
+            "title": "Marmer in Studio Herwen",
+            "sub": "Op ware grootte",
+            "artikel": "",
+            "date": "2026-10-08"
+          }
+        },
+        "wand_keuken": {
+          "type": "wand",
+          "settings": {
+            "product": "670-glanzend-marmer-pandora-slate",
+            "title": "Keukenwand",
+            "sub": "Over de bestaande wand",
+            "artikel": "inspiratie-showcase-keukenwand-met-luxe-marmerlook-wandpaneel-pandora-slate-glans"
+          }
+        }
+      },
+      "block_order": [
+        "wand_670",
+        "wand_692",
+        "wand_keuken"
+      ]
     }
   },
-  "order": ["pd_inspiratie"]
+  "order": [
+    "pd_inspiratie"
+  ]
 }
