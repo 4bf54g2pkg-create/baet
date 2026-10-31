@@ -186,9 +186,31 @@ leegliep.
 | Golf 1 beoordeeld op Google's eigen kosten per conversie | Vanaf nu meet ik elke ingreep op **Shopify-orders**, niet op platformattributie |
 | Op dag 7 "geslaagd" gemeld bij −56% kosten | Een kostendaling is geen resultaat. Het resultaat is orders. |
 | Twee keer een winstbedrag genoemd uit een venster van 7 dagen | Bij ~1 paneelorder per dag noem ik **geen** winstbedrag onder de 30 dagen |
-| Gisteren een vaste klant als "nieuwe klant via advertenties" gepresenteerd | Orders via Draft Orders tel ik niet mee als advertentieresultaat |
+| Gisteren een vaste klant als "nieuwe klant via advertenties" gepresenteerd | Ik leun op jouw kennis van de klant, niet op een veld in Shopify (zie correctie 31 okt) |
 
 De rode draad: ik heb gestuurd op wat de platformen rapporteren in plaats van op
 wat er in je winkel gebeurt. Dat is precies de fout die ik in de Meta-audit bij het
 algoritme aanwees — daar telde een staal van € 6,95 even zwaar als een order van
 € 1.500. Ik maakte dezelfde fout een niveau hoger.
+
+---
+
+## Correctie 31 oktober — het veld "Draft Orders" is geen bewijs
+
+Op 29 oktober stelde ik de meetregel op: *orders via Draft Orders tel ik niet mee
+als advertentieresultaat*. Die regel is onbruikbaar en ik trek hem in.
+
+Reden: bij controle van de orders #2589 t/m #2599 staat bij **elke order**
+`app: "Draft Orders"` — ook bij staalorders van € 6,95 waarvan het eerste bezoek
+aantoonbaar via Instagram, Facebook of Google kwam. Het veld onderscheidt dus niet
+tussen een handmatig aangemaakte order en een order uit de webshop; het geldt voor
+100% van de orders. Had ik de regel toegepast, dan had ik élke order uit de
+advertentiemeting geschrapt.
+
+Wat wél klopte aan 29 oktober: order #2584 was een vaste klant en geen
+advertentieresultaat. Dat weet ik omdat **jij het zei**, niet omdat het veld het
+aantoonde. Die onderbouwing haal ik hierboven recht.
+
+Nieuwe meetregel: de bron van een order bepaal ik uit
+`customerJourneySummary.firstVisit` (bron + landingspagina) en uit het
+orderbedrag (€ 6,95 = staal), en bij twijfel vraag ik het je. Nooit uit `app`.
