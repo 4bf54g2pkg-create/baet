@@ -8,3 +8,10 @@ Bewerking: zelfde recept als megaklushuis (vidstab, 0,8×, 4:5), uitsnede 720×9
 0,5 s overvloeiers, naadloze lus, geen geluid, geen metadata. Lengte 14,4 s.
 In de winkel: wandpaneel-689-beverly-gold-slate-wolfstudio.mp4 en poster wandpaneel-689-beverly-gold-slate-nis.jpg.
 In de H1-kopie: eerste blok 'Wand van een klant' op de inspiratiepagina (templates/blog.json, wand_689).
+
+## Versie 2 (31 okt 2026, in gebruik)
+wandpaneel-689-beverly-gold-slate-echte-wand.mp4 (15,5 s, W2.json): opent ingezoomd op de twee panelen naast elkaar
+op de grond (zoom 1,95 → 1,0), dan nis, resultaat, hele wandkast. Productvelden 689: project_video, project_caption
+"in een wastafelnis", project_steps (0 · 3,4 · 6,1 · 9,4 s), project_note "Geplaatst door WolfStudio". Geen link, geen datum.
+Inspiratiekaart wand_689 gebruikt dezelfde video. Bij 812 zijn project_link en project_video_date verwijderd.
+VideoObject uploadDate valt zonder datumveld terug op de publicatiedatum van het product.

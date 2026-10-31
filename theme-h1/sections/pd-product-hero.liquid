@@ -715,7 +715,7 @@
   "name": {{ 'Wandpaneel ' | append: pv_label | append: ' ' | append: pv_cap | json }},
   "description": {{ pdh_proj.alt | default: pv_label | json }},
   "thumbnailUrl": [{{ pdh_proj.preview_image | image_url: width: 1080 | prepend: 'https:' | json }}],
-  {%- assign pv_date = product.metafields.puredeco.project_video_date.value | default: product.updated_at -%}
+  {%- assign pv_date = product.metafields.puredeco.project_video_date.value | default: product.published_at | default: product.created_at -%}
   "uploadDate": {{ pv_date | date: '%Y-%m-%d' | json }},
   "duration": "PT{{ pv_secs }}S",
   {%- if pv_hi %}"contentUrl": {{ pv_hi.url | prepend: 'https:' | replace: 'https:https:', 'https:' | json }},{% endif %}
@@ -729,7 +729,7 @@
     if pdh_code != blank
       assign dv_label = pdh_code | append: ' ' | append: pdh_name
     endif
-    assign dv_date = product.metafields.puredeco.decor_video_date.value | default: product.updated_at
+    assign dv_date = product.metafields.puredeco.decor_video_date.value | default: product.published_at | default: product.created_at
     assign dv_secs = pdh_decor.duration | divided_by: 1000.0 | round
     assign dv_hi = pdh_decor.sources | where: 'format', 'mp4' | sort: 'height' | last
   -%}

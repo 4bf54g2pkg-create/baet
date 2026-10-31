@@ -556,7 +556,7 @@
       "name": {{ 'Wandpaneel ' | append: h_label | append: ', ' | append: h_caption | json }},
       "description": {{ hv.alt | default: h_label | json }},
       "thumbnailUrl": {{ hv.preview_image | image_url: width: 1080 | prepend: 'https:' | json }},
-      "uploadDate": {{ hp.metafields.puredeco.project_video_date.value | default: hp.updated_at | date: '%Y-%m-%d' | json }},
+      "uploadDate": {{ hp.metafields.puredeco.project_video_date.value | default: hp.published_at | default: hp.created_at | date: '%Y-%m-%d' | json }},
       "duration": {{ hv.duration | divided_by: 1000 | prepend: 'PT' | append: 'S' | json }}{% if hv_mp4 %},
       "contentUrl": {{ hv_mp4.url | json }}{% endif %}
     },
