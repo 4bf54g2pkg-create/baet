@@ -1125,3 +1125,60 @@ voorzichtigste belofte is. Backup van het origineel bewaard.
   nu niet. Ter beoordeling.
 - Het uitgeschakelde blok `badge_bLtcDA` bevat nog demotekst van de
   themaleverancier: "garace - where design meet function -".
+
+### 31 oktober 2026 — controle: werken staalbestellingen in H1-Kopie?
+
+**Opzet is anders dan live.** Live gebruikt de eigen selector van de Product
+Samples-app (`product_samples_selector`, ingeschakeld). H1-Kopie zet die **uit**
+en vervangt hem door `pd-samples.liquid` met `pd-sample-app.liquid`, dat de app
+*programmatisch* aanstuurt:
+
+1. schrijft de keuze in `localStorage` onder `product_samples` als
+   `{ variant-id: product-JSON }`
+2. vuurt `reInitWidget.productSamples` en `renderWidget.productSamples` af op `<body>`
+3. wacht maximaal 15 s op `[data-samples-widget]`, `[data-samples-widget-checkout]`
+   en voldoende `.product-samples-item`
+4. klikt die afrekenknop aan; de app maakt er een **conceptorder** van
+
+Dat laatste verklaart waarom élke order in Shopify `app: "Draft Orders"` toont —
+zie de correctie eerder in dit document.
+
+**Wat geverifieerd is**
+
+| Controle | Methode | Uitkomst |
+|---|---|---|
+| App-embed aan in H1-Kopie | `settings_data.json` | ✅ `product-samples/blocks/sample-page-sticky` = AAN |
+| Selectors bestaan bij runtime | Chromium op de live samplepagina | ✅ `[data-samples-widget]`, `-checkout`, `-trigger` alle aanwezig |
+| localStorage + events sturen de app aan | exact de stappen van `pd-sample-app.liquid` nagebootst | ✅ 2 stalen gerenderd, knop "Afrekenen" bruikbaar, **in 16 ms** |
+| Foutafhandeling | `pd-samples.liquid:230,233` | ✅ "Dat lukte niet. Probeer het opnieuw of app ons." |
+
+Een eerder vermoeden van mij — dat `[data-samples-widget]` niet zou bestaan omdat
+het niet in de ruwe HTML staat — bleek **onjuist**: de app rendert het met
+JavaScript. Getest vóór gemeld.
+
+**Wat NIET geverifieerd is**
+
+- De klik zelf en de conceptorder die eruit volgt. Dat zou een echte bestelling
+  aanmaken, dus niet gedaan.
+- De eigen UI van `pd-samples.liquid`: niet te renderen zonder preview.
+- Of € 0 per staal en € 6,95 verzending correct op de afrekenpagina komen.
+- Mobiel gedrag.
+
+**Twee aandachtspunten**
+
+1. `pd-sample-app.liquid` zet `document.documentElement.classList.add('pd-sample-checkout')`,
+   maar in `puredeco-premium.css` staat **geen enkele regel** voor
+   `pd-sample-checkout` (0 treffers). De widget blijft dus verborgen via
+   `.product-samples-widget{display:none!important}`. De klik werkt op een
+   verborgen element, maar als de app een laad- of foutmelding in die widget
+   toont, ziet de klant daar niets van. Te bevestigen met een preview.
+2. De hele flow leunt op interne details van een externe app: een
+   localStorage-sleutel, twee ongedocumenteerde events en drie data-attributen.
+   Werkt de app-leverancier die bij, dan breekt de belangrijkste funnel van de
+   winkel **stil**. Live loopt dit risico niet, want daar wordt de eigen UI van
+   de app gebruikt.
+
+**Bijvangst:** `mida_recorder` (sessie-opname) staat in H1-Kopie **uit**, terwijl
+hij op live actief is — in de browsertest verschenen zes
+`mida-session-recording-*` sleutels in localStorage. Publicatie van H1-Kopie zou
+dat privacypunt uit het auditrapport dus vanzelf oplossen.
