@@ -1078,3 +1078,50 @@ praktijk, functionele tests en echte Core Web Vitals.
 
 **Niet gedaan:** geen enkele schrijfactie, geen destructieve test, geen
 betaling, geen wijziging aan thema, winkel, advertenties of tracking.
+
+---
+
+## Wijzigingslog
+
+### 31 oktober 2026 — AUDIT-002 uitgevoerd, mét correctie op de bevinding
+
+**Correctie op dit rapport.** Ik beschreef AUDIT-002 als "twee verschillende
+levertijdbeloftes op dezelfde pagina" in H1-Kopie. Dat was te stellig. Bij
+controle blijkt de sectie `image_with_text_Nr7UQi`, die "binnen 2 werkdagen"
+bevat, in H1-Kopie **uitgeschakeld** (`"disabled": true`). Daar rendert de
+tegenspraak dus niet; alleen "binnen 3–5 werkdagen in huis" uit `pd_samples`
+is zichtbaar.
+
+**Waar het wél speelt: de live site.** `curl https://puredeco.nl/pages/sample`
+toont "Je ontvangt de samples gratis binnen 2 werkdagen". In het live thema
+staat die sectie dus wél aan. Het live thema is read-only — daar raak ik niets
+aan, en de Shopify-tool blokkeert schrijfacties op het MAIN-thema ook technisch.
+**Dit blijft dus openstaan tot de eigenaar het zelf aanpast of H1-Kopie wordt
+gepubliceerd.**
+
+**Uitgevoerd in H1-Kopie (194824929546):**
+
+| | |
+|---|---|
+| Bestand | `templates/page.sample.json` |
+| Wijziging | "gratis binnen 2 werkdagen" → "gratis binnen 3–5 werkdagen" |
+| Gewijzigde regels | 1 (diff geverifieerd) |
+| Grootte | 18.796 → 18.799 bytes |
+| MD5 na upload | `7cdacf59cc0a0ada46cb9f2d6ce9ccc0` — komt overeen met het lokaal voorbereide bestand |
+
+Gekozen voor 3–5 werkdagen omdat dat de waarde is die in vier van de vijf
+plaatsen in het thema staat en die daadwerkelijk rendert, en omdat het de
+voorzichtigste belofte is. Backup van het origineel bewaard.
+
+**Niet gewijzigd, wel opgemerkt tijdens deze bewerking:**
+
+- Dezelfde zin zegt "gratis", terwijl stalen € 6,95 verzendkosten hebben. Elders
+  in het thema staat consequent "Gratis stalen · € 6,95 verzending". Niet
+  aangepast — de opdracht was uitsluitend de levertijd.
+- De uitgeschakelde sectie `testimonials_CJrwjK` bevat vier hardgecodeerde
+  reviews met naam ("- Thomas", "- Sanne", "- OBE Accounting",
+  "- Maxibedden Uw slaapspecialist"). Die komen niet uit Judge.me en worden niet
+  op echtheid gecontroleerd zoals `pd-reviews.liquid` dat wel doet. Ze renderen
+  nu niet. Ter beoordeling.
+- Het uitgeschakelde blok `badge_bLtcDA` bevat nog demotekst van de
+  themaleverancier: "garace - where design meet function -".
