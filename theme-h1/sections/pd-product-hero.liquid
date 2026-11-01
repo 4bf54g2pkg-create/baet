@@ -163,10 +163,12 @@
           </div>
 
           {%- assign pdh_tex = pdh_pack | image_url: width: 2400 -%}
+          {%- if section.settings.show_structuur -%}
           <div class="pdh__view" data-view="structuur">
             <div class="pdh__texture pdh__texture--close" style="background-image: url('{{ pdh_tex }}');" role="img" aria-label="Structuur van {{ pdh_name }} van dichtbij"></div>
             <p class="pdh__caption">Structuur van dichtbij · uit de productfoto</p>
           </div>
+          {%- endif -%}
 
           <div class="pdh__view" data-view="aansluiting">
             <div class="pdh__joint" data-pdh-joint>
@@ -200,7 +202,7 @@
         {%- if pdh_decor != blank -%}<button type="button" data-pdh-view="video"><span class="pdh__playmark" aria-hidden="true"></span>Video</button>{%- endif -%}
         {%- if pdh_pack -%}
           <button type="button"{% if pdh_first == 'specimen' %} class="is-active"{% endif %} data-pdh-view="specimen">Paneel</button>
-          <button type="button" data-pdh-view="structuur">Structuur</button>
+          {%- if section.settings.show_structuur -%}<button type="button" data-pdh-view="structuur">Structuur</button>{%- endif -%}
           <button type="button" data-pdh-view="aansluiting">Aansluiting</button>
         {%- endif -%}
         {%- if pdh_video or pdh_ext or pdh_film != blank -%}<button type="button" data-pdh-view="film">Montage</button>{%- endif -%}
@@ -1184,7 +1186,8 @@
   "class": "pd-hero-section",
   "settings": [
     { "type": "video", "id": "video", "label": "Film voor alle decors (optioneel)", "info": "Een productvideo van het decor zelf gaat voor." },
-    { "type": "text", "id": "preorder_date", "label": "Pre-order: verwachte levering vanaf", "default": "29 december", "info": "Zelfde datum als in de Rez-app." }
+    { "type": "text", "id": "preorder_date", "label": "Pre-order: verwachte levering vanaf", "default": "29 december", "info": "Zelfde datum als in de Rez-app." },
+    { "type": "checkbox", "id": "show_structuur", "label": "Weergave 'Structuur' tonen", "default": false, "info": "Tijdelijk uit: alleen Interieur, Paneel, Aansluiting en Montage." }
   ],
   "blocks": [{ "type": "@app" }],
   "presets": [{ "name": "Puredeco product" }],
