@@ -1,0 +1,84 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{background:#ECE7DE;font-family:Inter,sans-serif;color:#151413;padding:48px 56px;width:1880px}
+h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:52px;letter-spacing:-.01em}
+.lead{font-size:18px;color:#5b554d;margin:10px 0 36px;max-width:1100px;line-height:1.5}
+.row{display:flex;gap:36px;align-items:flex-start}
+.col{width:410px}
+.tag{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#8B6B4A;margin-bottom:6px}
+.tag.rec{color:#2f7a4a}
+.t{font-size:20px;font-weight:600;margin-bottom:12px}
+.ph{width:410px;height:684px;border-radius:38px;border:10px solid #151413;overflow:hidden;position:relative;background:#F5F2EC;box-shadow:0 20px 50px rgba(0,0,0,.18)}
+.ph>img{width:390px;display:block}
+.note{font-size:14.5px;line-height:1.55;color:#3a3733;margin-top:14px}
+.note b{color:#151413}
+.dim{position:absolute;inset:0;background:rgba(20,19,18,.45)}
+/* nu */
+.inbox{position:absolute;left:10px;right:10px;bottom:10px;top:120px;background:#fff;border-radius:22px;padding:26px 22px;display:flex;flex-direction:column;gap:14px}
+.inbox h3{font-size:19px;font-weight:600}
+.inbox p{font-size:14px;color:#555}
+.btn{border-radius:12px;padding:13px;text-align:center;font-weight:600;font-size:15px}
+.btn.b{background:#5433EB;color:#fff}.btn.o{border:1px solid #ccc}
+.x{position:absolute;right:12px;top:-6px;font-size:28px;color:#e04b3a;font-weight:700}
+.bad{position:absolute;background:#e04b3a;color:#fff;font-size:12px;font-weight:600;padding:4px 8px;border-radius:4px}
+/* pill */
+.wa{position:absolute;right:14px;display:flex;align-items:center;gap:9px;background:#151413;color:#F5F2EC;border-radius:999px;padding:10px 16px 10px 11px;box-shadow:0 8px 22px rgba(0,0,0,.25);font-size:14.5px;font-weight:500}
+.wa i{width:28px;height:28px;border-radius:50%;background:#25D366;display:grid;place-items:center}
+.wa small{display:block;font-size:11px;opacity:.7;font-weight:400}
+.wa .dot{position:absolute;left:31px;top:9px;width:9px;height:9px;border-radius:50%;background:#7CE08F;border:2px solid #151413}
+/* whatsapp mock */
+.wam{position:absolute;inset:0;background:#EFE7DD url() ;display:flex;flex-direction:column}
+.wah{background:#075E54;color:#fff;padding:44px 16px 14px;display:flex;align-items:center;gap:12px}
+.wah .av{width:38px;height:38px;border-radius:50%;background:#F5F2EC;color:#151413;display:grid;place-items:center;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600}
+.wah b{font-size:16px}.wah small{display:block;font-size:12px;opacity:.8}
+.wab{flex:1;padding:18px 12px}
+.bub{background:#fff;border-radius:10px;padding:10px 12px;font-size:13.5px;max-width:82%;box-shadow:0 1px 1px rgba(0,0,0,.08);color:#333}
+.wain{display:flex;gap:8px;padding:10px;align-items:flex-end;background:#F0F0F0}
+.wain .f{flex:1;background:#fff;border-radius:20px;padding:10px 14px;font-size:14px;line-height:1.4;color:#111}
+.wain .s{width:42px;height:42px;border-radius:50%;background:#25D366;display:grid;place-items:center;color:#fff;font-size:18px}
+/* sheet */
+.sheet{position:absolute;left:0;right:0;bottom:0;background:#F5F2EC;border-radius:20px 20px 0 0;padding:20px 18px 26px}
+.sheet h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:28px;margin-bottom:4px}
+.sheet p.s{font-size:13px;color:#6b645b;margin-bottom:14px}
+.opt{display:flex;align-items:center;gap:12px;border:1px solid #DDD5C9;background:#FBF9F5;padding:13px 14px;margin-bottom:8px}
+.opt.ink{background:#151413;color:#F5F2EC;border-color:#151413}
+.opt .ic{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#ECE7DE;flex:none}
+.opt.ink .ic{background:#25D366}
+.opt b{font-size:15px;font-weight:600;display:block}.opt small{font-size:12px;opacity:.75}
+.opt .ar{margin-left:auto}
+.grab{width:40px;height:4px;border-radius:2px;background:#cfc7bb;margin:0 auto 14px}
+</style></head><body>
+<h1>Chat · laagdrempelig</h1>
+<p class="lead">Nu opent de chatknop Shopify Inbox met de vraag om in te loggen, deels in het Engels. Elke extra stap kost aanvragen. Voorstel: één knop die direct WhatsApp opent, zonder inloggen, met het product van de pagina al in het bericht.</p>
+<div class="row">
+
+<div class="col"><div class="tag">Nu</div><div class="t">Shopify Inbox vraagt om in te loggen</div>
+<div class="ph"><img src="base-sample.png"><div class="dim"></div>
+<div class="inbox"><h3>Start a new chat?</h3><p>Sign in to save your chat history, or continue without signing in.</p><div class="btn b">Inloggen</div><div class="btn o">Continue without signing in</div>
+<span class="bad" style="left:22px;bottom:22px">Extra stap · Engels · ligt over ‘Aanvragen’</span></div></div>
+<p class="note">Klant moet eerst kiezen tussen inloggen en doorgaan. Op mobiel lag de knop bovendien over <b>Aanvragen</b> en <b>In winkelmand</b>.</p></div>
+
+<div class="col"><div class="tag rec">Optie A · aanbevolen</div><div class="t">Eén knop: ‘Vraag het ons’ via WhatsApp</div>
+<div class="ph"><img src="base-pdp.png">
+<div class="wa" style="bottom:86px"><i><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1 1 2 1.3 2.3 1.4.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg></i><span class="dot"></span><span>Vraag het ons<small>via WhatsApp · geen inlog</small></span></div>
+</div>
+<p class="note"><b>Eén tik</b> opent WhatsApp. Staat altijd boven de vaste balk, dus nooit meer over ‘In winkelmand’ of ‘Aanvragen’. Op desktop opent WhatsApp Web.</p></div>
+
+<div class="col"><div class="tag rec">Optie A · na de tik</div><div class="t">Bericht staat al klaar, met product</div>
+<div class="ph"><div class="wam"><div class="wah"><div class="av">PD</div><div><b>PureDeco</b><small>WhatsApp Business</small></div></div>
+<div class="wab"></div>
+<div class="wain"><div class="f">Hoi PureDeco, ik heb een vraag over <b>812 Walnut Deep</b>.<br>puredeco.nl/products/812-hout-walnut-deep</div><div class="s">➤</div></div></div></div>
+<p class="note">Jullie zien meteen over welk decor het gaat. Op de samplepagina: ‘vraag over stalen’, op andere pagina’s: ‘vraag over wandpanelen’. Klant kan een foto van de wand sturen.</p></div>
+
+<div class="col"><div class="tag">Optie B</div><div class="t">Eerst kiezen: WhatsApp, bellen of mail</div>
+<div class="ph"><img src="base-sample.png"><div class="dim"></div>
+<div class="sheet"><div class="grab"></div><h3>Vraag het ons</h3><p class="s">Geen account nodig</p>
+<div class="opt ink"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2z"/></svg></span><span><b>WhatsApp</b><small>Snelst · ook een foto van je wand</small></span><span class="ar">→</span></div>
+<div class="opt"><span class="ic">☎</span><span><b>Bel 0316 700 214</b><small>Direct iemand aan de lijn</small></span><span class="ar">→</span></div>
+<div class="opt"><span class="ic">✉</span><span><b>Mail info@puredeco.nl</b><small>Voor offertes en tekeningen</small></span><span class="ar">→</span></div>
+<div class="opt"><span class="ic">⌂</span><span><b>Studio Herwen</b><small>Panelen zien en voelen, op afspraak</small></span><span class="ar">→</span></div></div></div>
+<p class="note">Meer keus, maar <b>één tik extra</b>. Dit paneel bestaat al als ‘Advies’ op home en collecties; we zouden het overal gebruiken.</p></div>
+
+</div></body></html>
