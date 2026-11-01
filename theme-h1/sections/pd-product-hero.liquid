@@ -542,8 +542,8 @@
   var walls = [{ w: '4,20', h: '2,60', example: true }], active = 0;
   function num(v) { var n = parseFloat(String(v).replace(',', '.')); return n > 0 ? n : 0; }
   function fmt(n, d) { return n.toFixed(d).replace('.', ','); }
-  /* De calculator rekent altijd met panelen van 280 cm lang. */
-  function panel() { var d = dims(current); return { h: 2.8, w: (d && d.w) || 1.22 }; }
+  /* De calculator rekent met de hoogte en breedte van het gekozen formaat (260 of 280 cm); zonder leesbaar formaat 280 × 122 cm. */
+  function panel() { var d = dims(current); return { h: (d && d.h) || 2.8, w: (d && d.w) || 1.22 }; }
   function wallCalc(wl, d) {
     var W = num(wl.w), H = num(wl.h);
     if (!W || !H) return null;
