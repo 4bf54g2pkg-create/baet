@@ -4067,3 +4067,12 @@ html.pc-inf .pc-pages { display: none; }
   .pdi3-close__b { display: flex; gap: 1rem; }
 }
 @media (prefers-reduced-motion: reduce) { .pdi3-v__vid { display: none; } }
+
+/* Chatknop boven de vaste balken op mobiel, inclusief het onzichtbare klikvlak van de chat */
+@media (max-width: 1099px) {
+  html.pdh-has-bar shopify-chat { transform: translateY(-7.8rem); }
+  html.pdh-has-bar shopify-chat::part(activator) { transform: scale(0.86); }
+}
+@media (max-width: 989px) {
+  html:has(.pse-bar.is-on) shopify-chat { transform: translateY(-7.8rem); }
+}
