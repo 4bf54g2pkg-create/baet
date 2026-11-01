@@ -55,4 +55,5 @@ Thema: "Hyper kopie 5 okt (H1-test)" 194824929546. Live nu: "Hyper" 188874326282
 - De productpagina's zelf blijven bestaan en gepubliceerd (Google Shopping landt erop: /products/hout 222 sessies in 90 dagen).
 - Getest: zoeken op 811, 812 en 842 geeft 1 resultaat (het losse decorproduct); de zoeksuggesties idem.
 - `solide-kleuren` blijft zichtbaar: de losse producten 656–659 staan op concept, dus dit is de enige plek voor die kleuren.
-- Nog open (winkeldata, wacht op akkoord): prijzen verzamelproducten vs. losse producten, 843 op 260x122, decorkiezer 842/843, 260-varianten 811/812 uit `hout`.
+- Gedaan (winkeldata): 843 Stucco Shadow formaat 280x122 → 260x122; decorkiezer (custom.sibling_products) van 842 en 843 = 840, 841, 842, 843. Gecontroleerd: alle vier tonen 'Art · 4 decors' en 260 × 122 cm; calculator 843 bij 4,20 × 2,70 m = 8 panelen.
+- Nog open (winkeldata, wacht op akkoord): prijzen verzamelproducten vs. losse producten, 260-varianten 811/812 uit `hout`.
