@@ -39,3 +39,11 @@ Thema: "Hyper kopie 5 okt (H1-test)" 194824929546. Live nu: "Hyper" 188874326282
 - custom.sibling_products van alle houtdecors (602, 607, 615, 810, 811, 812, 813 en 'hout') bevat nu dezelfde 7 decors.
 - H1-kopie: houtvolgorde (pd_decor_order) 607 · 813 · 602 · 615 · 811 · 812 · 810; houttekst "zeven decors" + tabelrij 813;
   813 in de lijst naadloze houtdecors; kiezer meldt nu ook decors die alleen als Signature (8 mm) bestaan.
+
+## Stalen na aanpassing app (1 nov 2026, echte test, geen simulatie)
+- App-zichtbaarheid nu: themes 188874326282 (Hyper) en 194824929546 (H1-kopie).
+- /pages/sample na kiezen op collectie (813), homepage (670) en inspiratiepagina (812): #D1603 en #D1604, beide 3 stalen à € 0, verzending € 6,95.
+- Productpagina 689 → samplelade: #D1601 (1 staal, € 6,95).
+- #D1600 bevatte maar 1 van 3 stalen: gemaakt op het moment dat de app-instellingen net waren gewijzigd. De app wist zijn eigen lijst
+  als zijn instellingen veranderen (main.min.js: isAppSettingsChanged → clear). Daarna 3× herhaald zonder fout.
+- Testconcepten van deze sessie: #D1597, #D1598, #D1600–#D1604. #D1599 (824 Taupe, 20:41) is niet van deze test.
