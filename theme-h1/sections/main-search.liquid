@@ -23,6 +23,26 @@
   if enable_filtering or enable_sorting or enable_layout_switching
     assign show_toolbar = true
   endif
+
+  comment
+    Puredeco: verzamelproducten (oude producten met meerdere decors, zoals /products/hout) niet tonen in zoeken,
+    anders staat hetzelfde decor er dubbel. De pagina's zelf blijven bestaan voor Google Shopping.
+    Lijst: Thema-instellingen > Puredeco > Niet tonen in zoeken.
+  endcomment
+  assign pd_hide = settings.pd_search_hide | newline_to_br | replace: '<br />', ',' | strip_newlines | remove: ' '
+  assign pd_hide = ',' | append: pd_hide | append: ','
+  assign pd_hidden = 0
+  if search.performed
+    for item in search.results
+      if item.object_type == 'product'
+        assign pd_k = ',' | append: item.handle | append: ','
+        if pd_hide contains pd_k
+          assign pd_hidden = pd_hidden | plus: 1
+        endif
+      endif
+    endfor
+  endif
+  assign pd_count = search.results_count | minus: pd_hidden
 -%}
 {%- capture image_sizes -%}
 (max-width: 767px) calc((100vw - 38px) / {{ columns_mobile }}),
@@ -34,7 +54,7 @@
 {%- endif -%}
 {%- endcapture -%}
 <div
-  class="collection {{ section.index }} page-width page-width--{{ section.settings.container }} template-search{% unless search.performed and search.results_count > 0 %} template-search--empty{% endunless %} section--padding color-{{ section.settings.color_scheme }}"
+  class="collection {{ section.index }} page-width page-width--{{ section.settings.container }} template-search{% unless search.performed and pd_count > 0 %} template-search--empty{% endunless %} section--padding color-{{ section.settings.color_scheme }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   <div data-motion="fade-up" class="template-search__header grid gap-6">
@@ -52,13 +72,13 @@
     </div>
     {%- if search.performed -%}
       {%- unless section.settings.enable_filtering or section.settings.enable_sorting -%}
-        {%- if search.results_count > 0 -%}
+        {%- if pd_count > 0 -%}
           <p role="status" class="m-0 text-center">
-            {{ 'templates.search.results_with_count_and_term' | t: terms: search.terms, count: search.results_count }}
+            {{ 'templates.search.results_with_count_and_term' | t: terms: search.terms, count: pd_count }}
           </p>
         {%- endif -%}
       {%- endunless -%}
-      {%- if search.results_count == 0 and search.filters == empty -%}
+      {%- if pd_count == 0 and search.filters == empty -%}
         <div class="text-center grid gap-1">
           <h4>{{ 'templates.search.no_results_text' | t: terms: search.terms }}</h4>
           <p class="m-0">{{ 'templates.search.no_results_message' | t }}</p>
@@ -67,7 +87,7 @@
     {%- endif -%}
   </div>
   {% paginate search.results by section.settings.products_per_page %}
-    {%- if search.results_count > 0 -%}
+    {%- if pd_count > 0 -%}
       <div class="sticky-element grid gap-5 z-9" style="--sticky-offset: 0px;">
         {%- if show_toolbar -%}
           <div class="collection__toolbar flex flex-wrap items-end md:items-center justify-between gap-x-2">
@@ -76,8 +96,8 @@
                 {%- render 'loading-spinner' -%}
                 <p id="ProductCount" class="m-0 text-subtext" role="status">
                   {%- liquid
-                    if search.results_count
-                      echo 'templates.search.results_with_count' | t: terms: search.terms, count: search.results_count
+                    if pd_count > 0
+                      echo 'templates.search.results_with_count' | t: terms: search.terms, count: pd_count
                     elsif search.products_count == search.results_count
                       echo 'products.facets.product_count_simple' | t: count: search.products_count
                     else
@@ -136,7 +156,7 @@
       -%}
     {%- endif -%}
     <div class="collection__content flex">
-      {%- if search.results_count > 0 -%}
+      {%- if pd_count > 0 -%}
         <div
           class="no-js-hidden hidden{% if enable_filtering and filter_type == 'vertical' %} xl:block{% endif %}"
           id="FacetFiltersContainer"
@@ -148,7 +168,7 @@
       {%- endif -%}
       <div class="flex flex-col flex-grow" id="ProductGridWrapper">
         <div id="ProductGridContainer">
-          {%- if search.results_count > 0 -%}
+          {%- if pd_count > 0 -%}
             <div
               id="ProductsList"
               class="grid-list products-list products-list--list-{{ settings.pcard_list_style }} f-grid f-grid--gap-{{ section.settings.column_gap }} f-grid--row-gap-{{ section.settings.row_gap }}"
@@ -163,6 +183,8 @@
               {%- for item in search.results -%}
                 {%- case item.object_type -%}
                   {%- when 'product' -%}
+                    {%- assign pd_k = ',' | append: item.handle | append: ',' -%}
+                    {%- unless pd_hide contains pd_k -%}
                     <div class="f-column card">
                       {%- render 'card-product',
                         product: item,
@@ -173,6 +195,7 @@
                         index: forloop.index
                       -%}
                     </div>
+                    {%- endunless -%}
                   {%- when 'article' -%}
                     <div class="f-column card">
                       <div

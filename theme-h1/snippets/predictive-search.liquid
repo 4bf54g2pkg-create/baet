@@ -8,6 +8,21 @@
   if shop_types.first == blank
     assign shop_types = shop_types | slice: 1, shop_types.size
   endif
+
+  comment
+    Puredeco: verzamelproducten niet tonen in de zoeksuggesties (zie sections/main-search.liquid).
+  endcomment
+  assign pd_hide = settings.pd_search_hide | newline_to_br | replace: '<br />', ',' | strip_newlines | remove: ' '
+  assign pd_hide = ',' | append: pd_hide | append: ','
+  assign pd_products = 0
+  if predictive_search.performed
+    for product in predictive_search.resources.products
+      assign pd_k = ',' | append: product.handle | append: ','
+      unless pd_hide contains pd_k
+        assign pd_products = pd_products | plus: 1
+      endunless
+    endfor
+  endif
 -%}
 {{ settings.form_field }}
 {{ settings.background }}
@@ -139,14 +154,14 @@
         >
           {%- if predictive_search.performed -%}
             {%- if predictive_search.resources.queries.size > 0
-              or predictive_search.resources.products.size > 0
+              or pd_products > 0
               or predictive_search.resources.collections.size > 0
               or predictive_search.resources.articles.size > 0
               or predictive_search.resources.pages.size > 0
             -%}
               <div class="flex w-full flex-col gap-y-6 md:flex-row">
                 <div class="flex flex-col flex-grow search__box-products order-last md:order-first">
-                  {%- if predictive_search.resources.products.size > 0 -%}
+                  {%- if pd_products > 0 -%}
                     <div class="flex flex-col gap-5 lg:gap-6 predictive-search-result search__box-item predictive-search-result--products">
                       <h4 class="h4 predictive-search-result__heading">
                         {{- 'templates.search.products' | t -}}
@@ -158,6 +173,8 @@
                           class="f-grid f-grid--gap-{{ settings.search_products_column_gap }} f-grid--row-gap-{{ settings.search_products_row_gap }} swipe-mobile__inner"
                         >
                           {%- for product in predictive_search.resources.products -%}
+                            {%- assign pd_k = ',' | append: product.handle | append: ',' -%}
+                            {%- if pd_hide contains pd_k -%}{%- continue -%}{%- endif -%}
                             {%- render 'card-product',
                               product: product,
                               section: section,
@@ -192,7 +209,7 @@
                     </div>
                   {%- endif -%}
                 </div>
-                <div class="search__box-others flex flex-col gap-6 lg:gap-8{% if predictive_search.resources.products.size == 0 %} no-products{% endif %}">
+                <div class="search__box-others flex flex-col gap-6 lg:gap-8{% if pd_products == 0 %} no-products{% endif %}">
                   {%- if predictive_search.resources.queries.size > 0 -%}
                     <div class="grid gap-3 predictive-search-result search__box-item predictive-search-result--queries">
                       <h4 class="h6 predictive-search-result__heading">

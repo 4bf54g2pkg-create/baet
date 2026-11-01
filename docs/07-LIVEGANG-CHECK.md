@@ -47,3 +47,12 @@ Thema: "Hyper kopie 5 okt (H1-test)" 194824929546. Live nu: "Hyper" 188874326282
 - #D1600 bevatte maar 1 van 3 stalen: gemaakt op het moment dat de app-instellingen net waren gewijzigd. De app wist zijn eigen lijst
   als zijn instellingen veranderen (main.min.js: isAppSettingsChanged → clear). Daarna 3× herhaald zonder fout.
 - Testconcepten van deze sessie: #D1597, #D1598, #D1600–#D1604. #D1599 (824 Taupe, 20:41) is niet van deze test.
+
+## Zoeken: verzamelproducten verborgen (H1-kopie)
+
+- Oude verzamelproducten (meerdere decors in één product) staan niet meer in de zoekresultaten en zoeksuggesties: `hout`, `wandpaneel-art`, `metaal`, `leer`, `doorlopend-marmer`.
+- Lijst aanpasbaar: Thema-instellingen › Puredeco · decors › Niet tonen in zoeken (één handle per regel).
+- De productpagina's zelf blijven bestaan en gepubliceerd (Google Shopping landt erop: /products/hout 222 sessies in 90 dagen).
+- Getest: zoeken op 811, 812 en 842 geeft 1 resultaat (het losse decorproduct); de zoeksuggesties idem.
+- `solide-kleuren` blijft zichtbaar: de losse producten 656–659 staan op concept, dus dit is de enige plek voor die kleuren.
+- Nog open (winkeldata, wacht op akkoord): prijzen verzamelproducten vs. losse producten, 843 op 260x122, decorkiezer 842/843, 260-varianten 811/812 uit `hout`.

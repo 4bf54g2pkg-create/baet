@@ -1932,6 +1932,14 @@
         "label": "Volgorde decors",
         "limit": 50,
         "info": "Bepaalt de volgorde in de decorkiezer onder de prijs en in 'Vergelijk de houttinten'. Zet ze van licht naar donker; decors van een serie die niet in deze lijst staan, komen erachter."
+      },
+      { "type": "header", "content": "Zoeken" },
+      {
+        "type": "textarea",
+        "id": "pd_search_hide",
+        "label": "Niet tonen in zoeken",
+        "default": "hout\nwandpaneel-art\nmetaal\nleer\ndoorlopend-marmer",
+        "info": "Eén producthandle per regel. Voor de oude verzamelproducten met meerdere decors, zodat een decor niet dubbel in de zoekresultaten en zoeksuggesties staat. De productpagina zelf blijft bereikbaar (Google Shopping)."
       }
     ]
   }
