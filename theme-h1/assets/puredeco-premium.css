@@ -4092,3 +4092,8 @@ html.pde-open .pd-wa, html.pc-sheet-open .pd-wa { opacity: 0; pointer-events: no
   html:has(.pc-dock, .pdn-dock, .ph-dock.is-on) .pd-wa { opacity: 0; pointer-events: none; }
 }
 @media print { .pd-wa { display: none; } }
+
+/* Vaste balken en WhatsApp-knop weg zolang winkelwagen of menu open is, anders liggen ze over 'Afrekenen' */
+body.modal-show .pdh__bar, html:has(cart-drawer[open]) .pdh__bar,
+body.modal-show .pse-bar, html:has(cart-drawer[open]) .pse-bar,
+body.modal-show .pd-wa, html:has(cart-drawer[open]) .pd-wa { transform: translateY(150%) !important; opacity: 0 !important; pointer-events: none !important; }
