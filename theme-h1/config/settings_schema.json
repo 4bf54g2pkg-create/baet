@@ -1940,6 +1940,14 @@
         "label": "Niet tonen in zoeken",
         "default": "hout\nwandpaneel-art\nmetaal\nleer\ndoorlopend-marmer",
         "info": "Eén producthandle per regel. Voor de oude verzamelproducten met meerdere decors, zodat een decor niet dubbel in de zoekresultaten en zoeksuggesties staat. De productpagina zelf blijft bereikbaar (Google Shopping)."
+      },
+      { "type": "header", "content": "WhatsApp-knop" },
+      {
+        "type": "text",
+        "id": "pd_whatsapp",
+        "label": "WhatsApp-nummer",
+        "default": "31316700214",
+        "info": "Internationaal, zonder + of spaties (0316 700 214 = 31316700214). Gebruikt door de zwevende knop 'Vraag het ons'."
       }
     ]
   }

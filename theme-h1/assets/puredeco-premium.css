@@ -4076,3 +4076,19 @@ html.pc-inf .pc-pages { display: none; }
 @media (max-width: 989px) {
   html:has(.pse-bar.is-on) shopify-chat { transform: translateY(-7.8rem); }
 }
+
+/* Zwevende knop 'Vraag het ons' via WhatsApp (vervangt Shopify Inbox) */
+.pd-wa { position: fixed; right: 1.6rem; bottom: calc(1.6rem + env(safe-area-inset-bottom)); z-index: 38; display: flex; align-items: center; gap: 0.9rem; padding: 0.9rem 1.6rem 0.9rem 1rem; border-radius: 999px; background: #151413; color: #F5F2EC; text-decoration: none; font-size: 1.45rem; font-weight: 500; line-height: 1.15; box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22); transition: transform 0.3s ease, opacity 0.2s ease; }
+.pd-wa:hover { color: #F5F2EC; transform: translateY(-2px); }
+.pd-wa__i { position: relative; flex: none; display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 50%; background: #25D366; }
+.pd-wa__t small { display: block; font-size: 1.1rem; font-weight: 400; opacity: 0.72; }
+html.pde-open .pd-wa, html.pc-sheet-open .pd-wa { opacity: 0; pointer-events: none; }
+@media (max-width: 1099px) {
+  html.pdh-has-bar .pd-wa { transform: translateY(-7.4rem); }
+}
+@media (max-width: 989px) {
+  html:has(.pse-bar.is-on) .pd-wa { transform: translateY(-6.2rem); }
+  /* Pagina's met een eigen onderbalk (Advies met WhatsApp erin): geen tweede knop */
+  html:has(.pc-dock, .pdn-dock, .ph-dock.is-on) .pd-wa { opacity: 0; pointer-events: none; }
+}
+@media print { .pd-wa { display: none; } }
