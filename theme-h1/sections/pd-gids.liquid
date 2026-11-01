@@ -111,7 +111,7 @@
       <figure class="pdg-vis">
         {%- capture vis_alt -%}Visualisatie: {{ label | downcase }} met wandpanelen in {% render 'pd-decor', product: tex_p, part: 'full' %}{%- endcapture -%}
         <img src="{{ vis | asset_img_url: '1200x' }}" srcset="{{ vis | asset_img_url: '600x' }} 600w, {{ vis | asset_img_url: '900x' }} 900w, {{ vis | asset_img_url: '1200x' }} 1200w, {{ vis | asset_img_url: '1800x' }} 1800w" sizes="(min-width: 990px) 56vw, 100vw" width="1800" height="1200" alt="{{ vis_alt | strip | escape }}" fetchpriority="high">
-        <figcaption><span class="pdi-tag pdi-tag--vis">Visualisatie</span><span class="pdg-vis__cap">Wand in {% render 'pd-decor', product: tex_p, part: 'full' %} · op schaal, met het echte decor</span></figcaption>
+        <figcaption><span class="pdg-vis__cap">Wand in {% render 'pd-decor', product: tex_p, part: 'full' %} · op schaal, met het echte decor</span></figcaption>
       </figure>
       {%- endif -%}
     </header>

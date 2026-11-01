@@ -127,7 +127,7 @@
                   <li class="pse-item" data-group="{{ g | handle }}">
                     <button type="button" class="pse-tile{% if zoom contains '1' %} pse-tile--zoom{% endif %}" data-pse-add data-id="{{ v.id }}" data-url="{{ p.url }}" data-title="{{ p.title | escape }}" data-label="{{ code }} {{ name | escape }}" data-img="{{ thumb | strip }}" aria-pressed="false" aria-label="Staal {{ code }} {{ name | escape }} kiezen">
                       <img class="pse-tile__sw" src="{{ sw | strip }}" alt="" loading="lazy" width="600" height="600">
-                      {%- if room != blank -%}<img class="pse-tile__room" src="{{ room | image_url: width: 600 }}" alt="" loading="lazy" width="600" height="600"><span class="pse-tile__vis">In een interieur · visualisatie</span>{%- endif -%}
+                      {%- if room != blank -%}<img class="pse-tile__room" src="{{ room | image_url: width: 600 }}" alt="" loading="lazy" width="600" height="600">{%- endif -%}
                       <span class="pse-tile__badge" data-pse-n aria-hidden="true">+</span>
                     </button>
                     <p class="pse-item__name"><strong>{{ code }}</strong> {{ name }}</p>

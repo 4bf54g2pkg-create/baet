@@ -28,7 +28,7 @@
     <figure class="st-hero__img vp-hero__img">
       {%- if s.hero_image != blank -%}
         {{ s.hero_image | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600, 900, 1200, 1400', sizes: '(min-width: 990px) 50vw, 100vw', alt: 'Showroomdisplay met Puredeco-wandpanelen' }}
-        {%- if s.hero_is_visual -%}<span class="ph-tag">Visualisatie van het showroomdisplay</span>{%- endif -%}
+        
       {%- endif -%}
     </figure>
   </section>

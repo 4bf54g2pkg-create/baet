@@ -109,7 +109,7 @@
                 -%}
                 {%- assign pdh_mfile = m.src | split: '?' | first | split: '/' | last -%}
                 <figure class="pdh__slide">
-                  {%- if pdh_mfile contains 'generated' -%}<span class="pdh__vis">Visualisatie</span>{%- endif -%}
+                  
                   {{ m | image_url: width: 2400 | image_tag:
                     loading: ld,
                     widths: '750, 1100, 1500, 1900, 2400',

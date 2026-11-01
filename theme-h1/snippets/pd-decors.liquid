@@ -230,7 +230,7 @@
                     <img class="pdv__sw" src="{{ psw | strip }}" alt="{{ pc }} {{ pn | escape }}, close-up van het decor" width="600" height="600" loading="lazy">
                     {%- if pvis -%}{{ pvis | image_url: width: 900 | image_tag: loading: 'lazy', widths: '450, 700, 900', sizes: '(min-width: 990px) 16vw, 46vw', alt: '', class: 'pdv__vis' }}{%- endif -%}
                     {%- if pon -%}<span class="pdv__b">Je bekijkt dit decor</span>{%- endif -%}
-                    {%- if pvis_gen -%}<span class="pdv__v">Visualisatie</span>{%- endif -%}
+                    
                   </span>
                   <span class="pdv__tx">
                     <span class="pdv__code">{{ pc }}</span>

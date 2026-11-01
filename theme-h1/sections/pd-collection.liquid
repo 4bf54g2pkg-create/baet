@@ -414,7 +414,7 @@
                 {%- if current_page == 1 and forloop.index <= 2 -%}{%- assign img_prio = 'high' -%}{%- else -%}{%- assign img_prio = 'auto' -%}{%- endif -%}
                 {{ room | image_url: width: 900 | image_tag: loading: img_load, fetchpriority: img_prio, widths: '360, 540, 720, 900', sizes: '(min-width: 1200px) 23vw, (min-width: 990px) 30vw, 48vw', alt: alt_room, class: 'pc-card__room' }}
               {%- endif -%}
-              {%- if room != panel -%}<span class="pc-card__vis">Visualisatie</span>{%- endif -%}
+              
               {%- liquid
                 assign pc_pre = true
                 for pv in p.variants
