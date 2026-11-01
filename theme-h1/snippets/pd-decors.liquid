@@ -85,6 +85,7 @@
       render 'pd-decor', product: product, part: 'name'
     endcapture
     assign dg_lin_only = ''
+    assign dg_sig_only = ''
     assign dg_lin_n = 0
     assign dg_sig_n = 0
   -%}
@@ -105,16 +106,22 @@
                 render 'pd-swatch', product: p, width: 200
               endcapture
               assign p_sig = false
+              assign p_lin = false
               for o in p.options_with_values
                 for v in o.values
                   assign kk = v | downcase | remove: ' ' | slice: 0, 3
                   if kk == '8mm'
                     assign p_sig = true
+                  elsif kk == '5mm'
+                    assign p_lin = true
                   endif
                 endfor
               endfor
               if p_sig
                 assign dg_sig_n = dg_sig_n | plus: 1
+                unless p_lin
+                  assign dg_sig_only = dg_sig_only | append: pc | strip | append: '|'
+                endunless
               else
                 assign dg_lin_n = dg_lin_n | plus: 1
                 assign dg_lin_only = dg_lin_only | append: pc | strip | append: '|'
@@ -134,6 +141,9 @@
       {%- assign dl = dg_lin_only | split: '|' -%}
       <p class="pdk__note">
         {%- for c in dl -%}{%- if forloop.last and forloop.length > 1 %} en {% elsif forloop.index > 1 %}, {% endif -%}{{ c }}{%- endfor %} {% if dl.size == 1 %}is er{% else %}zijn er{% endif %} alleen als Linea (5 mm).
+        {%- if dg_sig_only != blank -%}
+          {%- assign ds = dg_sig_only | split: '|' %} {% for c in ds -%}{%- if forloop.last and forloop.length > 1 %} en {% elsif forloop.index > 1 %}, {% endif -%}{{ c }}{%- endfor %} {% if ds.size == 1 %}is er{% else %}zijn er{% endif %} alleen als Signature (8 mm).
+        {%- endif -%}
       </p>
     {%- endif -%}
   </div>

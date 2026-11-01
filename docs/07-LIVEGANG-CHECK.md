@@ -29,3 +29,13 @@ Thema: "Hyper kopie 5 okt (H1-test)" 194824929546. Live nu: "Hyper" 188874326282
 ## Na livegang
 - Eén echte stalenbestelling vanaf een telefoon plaatsen en de afrekenpagina controleren.
 - Gidsen als artikelen aanmaken (nu ?view=gids-…, noindex).
+
+## 813 Natural Oak (1 nov 2026)
+- Product stond op actief maar niet in het kanaal Online Store: nu gepubliceerd in Online Store (alleen dat kanaal).
+- Eigen Google-titel/-omschrijving leeggemaakt (zoals de andere decors); het thema maakt nu "Houten wandpaneel 813 Natural Oak | 8 mm naadloos | PureDeco".
+  De oude omschrijving noemde ten onrechte 5 mm en 260 cm.
+- Alt-teksten in de vaste opbouw (PureDeco Wandpaneel Hout 813 …, sfeerbeeld (visualisatie), detailaanzicht).
+- Staal pd-staal-813.jpg (600×600) uit de productfoto.
+- custom.sibling_products van alle houtdecors (602, 607, 615, 810, 811, 812, 813 en 'hout') bevat nu dezelfde 7 decors.
+- H1-kopie: houtvolgorde (pd_decor_order) 607 · 813 · 602 · 615 · 811 · 812 · 810; houttekst "zeven decors" + tabelrij 813;
+  813 in de lijst naadloze houtdecors; kiezer meldt nu ook decors die alleen als Signature (8 mm) bestaan.
