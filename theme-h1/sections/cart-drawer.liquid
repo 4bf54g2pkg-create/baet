@@ -546,6 +546,7 @@
             {%- elsif pd_pre_week != blank -%}
               <p class="pd-cart-mix">Pre-order: we leveren in <b>{{ pd_pre_week }}</b>. Je prijs staat vast.</p>
             {%- endif -%}
+            {%- render 'pd-bf', part: 'cart' -%}
           <div class="drawer__footer-head grid gap-4">
             {%- render 'gift-wrapping',
               section_id: section.id,

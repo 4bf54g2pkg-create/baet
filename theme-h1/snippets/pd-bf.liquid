@@ -7,7 +7,8 @@
     p2  = Black Friday voor iedereen
   Elementen met data-bf="p1 vip p2" zijn alleen in die fases zichtbaar. Na de eindtijd springt alles terug.
   Testen in een niet-gepubliceerd thema: ?bf=p1, ?bf=vip, ?bf=p2 of ?bf=off (geldt voor dat tabblad).
-  Montagekit: 1 gratis High Tack-koker bij elk paneel (korting in Shopify: koop 1 paneel, krijg 1 kit).
+  Montagekit: 1 gratis High Tack-koker bij elk paneel; het magazijn legt ze bij elke Wandweek-bestelling in het pakket
+  (geen Shopify-korting: Rez hangt een pre-orderplan aan de koker, waardoor 'koop X krijg Y' niet werkt).
   Gebruik: render 'pd-bf', part: 'head' | 'bar' | 'hero' | 'col' | 'card' | 'pdp' | 'popup' | 'count' | 'cart'
 {%- endcomment -%}
 {%- liquid
@@ -122,7 +123,7 @@
         <h2 class="pbf-hero__h">Hoe groter je wand, hoe groter je korting.</h2>
         <div data-bf="vip"><p class="pbf-hero__sub">Nu alleen voor VIP's: log in met je VIP-e-mailadres. Iedereen shopt mee vanaf vrijdag 27 november 08:00.</p></div>
         {{ bf_tier_list }}
-        <p class="pbf-kit">Gratis High Tack Montagekit: 1 koker bij elk paneel</p>
+        <p class="pbf-kit">Gratis High Tack Montagekit: 1 koker bij elk paneel, zit vanzelf in je pakket</p>
         <div class="ph-btns">
           <a class="ph-btn ph-btn--paper" href="/collections/wandpanelen">Shop de Wandweek</a>
           <a class="ph-btn ph-btn--line-light" href="/products/813-hout-natural-oak">Reken je wand uit</a>
@@ -163,41 +164,25 @@
 {%- when 'pdp' -%}
   {%- if bf_on -%}
   <div data-bf="p1"><p class="pbf-pdp pbf-pdp--soft"><b>De Wandweek · 26–30 november.</b> VIP's krijgen tot {{ bf_vmax }}% korting en shoppen 12 uur eerder. <a href="/pages/wandweek">Word VIP →</a></p></div>
-  <div data-bf="vip p2"><p class="pbf-pdp"><b>Black Friday:</b> {{ bf_tier_txt }}. Gratis High Tack Montagekit: 1 koker bij elk paneel.{% if bf_is_vip %} <b>Jij bent VIP:</b> +{{ bf_vip_x }}% extra.{% endif %}<span data-bf="vip"> Nu alleen voor VIP's; iedereen vanaf vrijdag 27 november 08:00.</span></p></div>
+  <div data-bf="vip p2"><p class="pbf-pdp"><b>Black Friday:</b> {{ bf_tier_txt }}. Gratis High Tack Montagekit: 1 koker bij elk paneel, zit vanzelf in je pakket.{% if bf_is_vip %} <b>Jij bent VIP:</b> +{{ bf_vip_x }}% extra.{% endif %}<span data-bf="vip"> Nu alleen voor VIP's; iedereen vanaf vrijdag 27 november 08:00.</span></p></div>
   {%- endif -%}
 
 {%- when 'cart' -%}
-  {%- comment -%} Winkelwagen: gratis kokers in één tik toevoegen (alleen als de kit-korting voor deze klant geldt) {%- endcomment -%}
+  {%- comment -%} Winkelwagen: melding dat de gratis kokers vanzelf in het pakket gaan (alleen als de actie voor deze klant geldt) {%- endcomment -%}
   {%- if bf_on -%}
   {%- liquid
-    assign kit_p = all_products['hack-tack-montagekit']
-    assign kit_v = kit_p.selected_or_first_available_variant
     assign n_pan = 0
-    assign n_kit = 0
     for it in cart.items
-      if it.product.handle == 'hack-tack-montagekit'
-        assign n_kit = n_kit | plus: it.quantity
-      else
-        assign it_cols = it.product.collections | map: 'handle'
-        if it_cols contains 'wandpanelen'
-          assign n_pan = n_pan | plus: it.quantity
-        endif
+      assign it_cols = it.product.collections | map: 'handle'
+      if it_cols contains 'wandpanelen'
+        assign n_pan = n_pan | plus: it.quantity
       endif
     endfor
-    assign n_miss = n_pan | minus: n_kit
   -%}
-  {%- if kit_v and n_pan > 0 -%}
+  {%- if n_pan > 0 -%}
   <div data-bf="{% if bf_is_vip %}vip {% endif %}p2">
     <div class="pbf-kitbox">
-      {%- if n_miss > 0 -%}
-        <p><b>Je krijgt {{ n_pan }} High Tack-{% if n_pan == 1 %}koker{% else %}kokers{% endif %} gratis</b>1 koker bij elk paneel, tijdens Black Friday. Leg ze in je winkelwagen, dan rekenen we ze in de kassa voor € 0.</p>
-        <button type="button" class="pbf-kitbox__btn" data-pbf-kit="{{ kit_v.id }}" data-qty="{{ n_miss }}">Voeg {% if n_kit > 0 %}nog {% endif %}{{ n_miss }} gratis {% if n_miss == 1 %}koker{% else %}kokers{% endif %} toe</button>
-      {%- elsif n_miss == 0 -%}
-        <p class="pbf-kitbox__ok">✓ {{ n_kit }} gratis {% if n_kit == 1 %}koker{% else %}kokers{% endif %} in je winkelwagen, genoeg voor {{ n_pan }} {% if n_pan == 1 %}paneel{% else %}panelen{% endif %}</p>
-      {%- else -%}
-        {%- assign n_extra = n_miss | abs -%}
-        <p class="pbf-kitbox__ok">✓ {{ n_pan }} gratis {% if n_pan == 1 %}koker{% else %}kokers{% endif %} · de {{ n_extra }} extra {% if n_extra == 1 %}koker rekenen{% else %}kokers rekenen{% endif %} we gewoon (€ {{ kit_v.price | money_without_currency }} per stuk)</p>
-      {%- endif -%}
+      <p><b>+ {{ n_pan }} gratis High Tack-{% if n_pan == 1 %}koker{% else %}kokers{% endif %}</b>1 koker bij elk paneel, tijdens Black Friday. Die stoppen we vanzelf in je pakket; je hoeft niets te doen.</p>
     </div>
   </div>
   {%- endif -%}
@@ -328,16 +313,6 @@
       document.querySelectorAll('[data-bf-count]').forEach(function (el) { el.textContent = txt; });
     }
     tick(); setInterval(tick, 30000);
-    /* Winkelwagen: gratis kokers toevoegen en de lade verversen */
-    document.addEventListener('click', function (e) {
-      var b = e.target.closest && e.target.closest('[data-pbf-kit]');
-      if (!b) return;
-      b.disabled = true; b.textContent = 'Toevoegen…';
-      fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ items: [{ id: Number(b.dataset.pbfKit), quantity: Number(b.dataset.qty) }] }) })
-        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-        .then(function () { document.dispatchEvent(new CustomEvent('cart:refresh', { detail: { open: true } })); if (window.gtag) gtag('event', 'wandweek_kit_add', { aantal: Number(b.dataset.qty) }); })
-        .catch(function () { b.disabled = false; b.textContent = 'Dat lukte niet, probeer opnieuw'; });
-    });
   })();
   </script>
   {%- endif -%}
