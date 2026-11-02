@@ -21,6 +21,7 @@ Voor de videograaf, deze week. **Drie video's**, één halve draaidag in Studio 
 - Geen "waterdicht", "100% waterbestendig", "270° buigbaar" of andere claims die we niet kunnen onderbouwen.
 - Geen "gratis staal" zonder dat de € 6,95 verzending erbij gezegd of getoond wordt.
 - Geen "tot 25%" zonder dat in beeld staat dat het voor VIP's vanaf € 1.500 is (kleine tekst onderin is genoeg).
+- "Normaal € 679,80" alleen als dat de laagste prijs van de afgelopen 30 dagen is (813 vóór publicatie checken).
 - In de aanloop geen "nu korting": de korting geldt pas vanaf 26/27 november. Wel: "in De Wandweek", "vanaf 26 november".
 
 ## Overzicht
@@ -60,45 +61,96 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 
 ---
 
-## Video 1 · "Iedereen profiteert" (aanloop, 30 sec)
+## Hoe we het viraal maken (geldt voor alle 3)
 
-**Online:** 13 t/m 25 november, in de advertenties. Maak ook een **15 sec-versie** (shot 1, 2, 4 en 6).
+- **Hook in de eerste 2 seconden**, met beweging en tekst in beeld. Nooit beginnen met een logo.
+- **Eén gedachte per zin**, maximaal 8 woorden. Snel gemonteerd: elke 1,5–2 seconden een nieuw beeld.
+- **Concreet in plaats van vaag:** "€ 611,82 in plaats van € 679,80" werkt beter dan "10% korting".
+- **Gezicht in beeld**: de spreker praat recht in de camera, alsof het een vriend is. Geen reclamestem.
+- **Ondertitels groot, in het midden**, woord voor woord (zoals CapCut).
+- **Laat ze reageren:** sluit af met een vraag ("Welke kleur kies jij?"). Reacties zorgen voor bereik.
+- **Loop:** het laatste beeld lijkt op het eerste, zodat de video vanzelf opnieuw begint.
+- **Drie hooks per video opnemen.** Dezelfde video met een andere openingszin; in de advertenties testen we welke het beste werkt.
 
-| # | Beeld | Gesproken tekst | Tekst in beeld |
+---
+
+## Video 1 · "Wacht met kopen. Niet met kiezen." (aanloop, 30 sec + 15 sec)
+
+**Online:** 13 t/m 25 november, in de advertenties. Klaar uiterlijk 11 november.
+
+**Drie hooks (alle drie opnemen, eerste 2 seconden):**
+- **Hook A:** Spreker loopt met een paneel van 2,80 m het beeld in en zet het neer. *"Ga je dit jaar je wand doen? Wacht met kopen. Niet met kiezen."*
+- **Hook B:** Close-up van een hand over de nerf, dan uitzoomen naar een complete wand. *"Deze wand wil je. En vanaf 26 november krijg je 'm met korting."*
+- **Hook C:** Spreker met een telefoon, scherm "uitverkocht". *"Jouw kleur uitverkocht op Black Friday? Bij ons maakt dat niks uit."*
+
+| Tijd | Beeld | Gesproken | Tekst in beeld |
 |---|---|---|---|
-| 1 | Close-up hand over de nerf van 813 Natural Oak, licht van opzij | "Black Friday bij PureDeco heet dit jaar De Wandweek." | DE WANDWEEK · 26–30 NOVEMBER |
-| 2 | Spreker voor wand 813 | "Hoe groter je wand, hoe groter je korting. Tot twintig procent, plus een gratis montagekoker bij elk paneel." | 10% · 15% · 20% + gratis koker bij elk paneel |
-| 3 | Handen openen een staalpakket, vijf stalen op tafel, staal tegen de muur in daglicht | "Twijfel je over de kleur? Bestel nu tot vijf stalen, dan weet je het zeker." | Tot 5 gratis stalen · € 6,95 verzending |
-| 4 | Spreker voor wand 620 Light Brown | "En is jouw decor uitverkocht? Dan krijg je tóch de korting. Je bestelt met pre-order en betaalt nu maar de helft." | Uitverkocht? Korting geldt óók · nu maar 50% betalen |
-| 5 | Spreker, glimlach | "Word nu VIP: vijf procent extra en twaalf uur eerder shoppen." | VIP: +5% en 12 uur eerder |
-| 6 | Telefoon: VIP-pagina, vinger tikt op "Zet me op de VIP-lijst" | "Iedereen kan meedoen. Link staat hieronder." | puredeco.nl/wandweek · tot 25% voor VIP's vanaf € 1.500 |
+| 0–2 s | Hook A, B of C | (zie hierboven) | WACHT MET KOPEN. NIET MET KIEZEN. |
+| 2–6 s | Spreker voor wand 813, recht in de camera | "Op 26 november start De Wandweek." | DE WANDWEEK · 26–30 NOV |
+| 6–9 s | Snelle cut: kleine wand → grote wand | "Hoe groter je wand, hoe groter je korting." | tot 20% korting |
+| 9–11 s | Koker wordt opengeklikt (geluid!) | "En bij elk paneel een gratis montagekoker." | + gratis koker bij elk paneel |
+| 11–17 s | Staalpakket op de deurmat, uitpakken, staal tegen de muur | "Dus kies nú. Bestel tot vijf stalen. Hou ze tegen je eigen muur." | tot 5 stalen · € 6,95 verzending |
+| 17–23 s | Spreker voor wand 620, buigt naar de camera | "En is jouw kleur straks uitverkocht? Dan krijg je tóch de korting. Je betaalt nu maar de helft." | Uitverkocht? Toch korting · nu maar 50% |
+| 23–27 s | Spreker, glimlach | "Word VIP: vijf procent extra, en jij shopt twaalf uur eerder dan de rest." | VIP: +5% · 12 uur eerder |
+| 27–30 s | Spreker pakt het paneel weer op (loop naar hook A) | "Link staat hieronder. Welke kleur wordt het bij jou?" | puredeco.nl/wandweek · tot 25% voor VIP's vanaf € 1.500 |
 
-## Video 2 · "De Wandweek is begonnen" (live, 30 sec)
+**15 sec-versie:** hook → 2–9 s → 17–23 s → eind.
 
-**Online:** 26 t/m 30 november. Hetzelfde beeld, **drie eindkaarten** (alleen de laatste 3 seconden verschillen):
-- **A · VIP-avond** (do 26/11 tot 20:00): "Vanavond 20:00 · eerst voor VIP's · log in met je VIP-e-mailadres"
-- **B · Nu live** (vr 27 t/m zo 29/11): "Nu live · t/m maandag 30 november 23:59"
-- **C · Laatste dag** (ma 30/11): "Laatste dag · vannacht 23:59 voorbij"
+**Caption (Instagram/TikTok):**
+> Wacht met kopen. Niet met kiezen. 👀 Op 26 november start De Wandweek: hoe groter je wand, hoe groter je korting. Ook als je kleur uitverkocht is. Bestel nu je stalen en word VIP (link in bio). Welke kleur wordt het? 👇
+> #wandpanelen #interieur #woonkamer #blackfriday #japandi #houtenwand #wandinspiratie #diy
 
-| # | Beeld | Gesproken tekst | Tekst in beeld |
+---
+
+## Video 2 · "Ik reken het even voor je uit." (live, 30 sec · 3 eindkaarten)
+
+**Online:** 26 t/m 30 november. Eindkaart A (do 26/11), B (vr 27–zo 29/11), C (ma 30/11).
+
+**Drie hooks:**
+- **Hook A:** Spreker houdt de telefoon in de camera. *"Wat kost zo'n wand nou écht? Ik reken het even voor je uit."*
+- **Hook B:** Wand 813 achter de spreker. *"Deze wand. Vier panelen. Kijk wat je deze week betaalt."*
+- **Hook C:** Spreker wijst naar een leeg stuk muur. *"Zeg niet dat je dit niet zelf kan. En zeker niet dat het te duur is."*
+
+| Tijd | Beeld | Gesproken | Tekst in beeld |
 |---|---|---|---|
-| 1 | Spreker voor wand 813, energiek | "De Wandweek is begonnen." | DE WANDWEEK IS BEGONNEN |
-| 2 | Telefoon: productpagina 813, duim vult 4,20 × 2,60 m in, calculator toont "€ 679,80 → € 611,82 met 10%" | "Vul de maat van je wand in en je ziet meteen je korting. Hoe groter je wand, hoe meer korting." | 10% vanaf € 400 · 15% vanaf € 800 · 20% vanaf € 1.500 |
-| 3 | Close-up: High Tack-koker | "Plus een gratis koker bij elk paneel." | + gratis koker bij elk paneel |
-| 4 | Telefoon: productpagina 620 met het blok "Nu te betalen / Restbedrag" | "Uitverkocht? Dan bestel je met pre-order, met dezelfde korting. Je betaalt nu maar de helft." | Ook op pre-order · nu 50% betalen · levering week 2 |
-| 5 | Eindkaart A, B of C | (geen tekst, of de tekst van de eindkaart voorlezen) | zie hierboven |
+| 0–2 s | Hook A, B of C | (zie hierboven) | WAT KOST ZO'N WAND ÉCHT? |
+| 2–7 s | Telefoon: productpagina 813, duim typt 4,20 × 2,60 | "Wand van 4,20 bij 2,60. Dat zijn vier panelen." | 4,20 × 2,60 m = 4 panelen |
+| 7–11 s | Close-up calculator: doorgestreept bedrag | "Normaal 679 euro 80. Deze week: 611 euro 82." | ~~€ 679,80~~ € 611,82 |
+| 11–14 s | Calculator: "Nog 1 paneel erbij = 15%" | "Grotere wand? Dan gaat de korting omhoog. Tot twintig procent." | 10% · 15% · 20% |
+| 14–17 s | Vier kokers op tafel, één voor één neergezet | "En die vier montagekokers? Gratis." | 4 kokers: € 0 |
+| 17–23 s | Telefoon: productpagina 620, blok "Nu te betalen" | "Kleur uitverkocht? Bestel 'm met pre-order. Zelfde korting, en je betaalt nu maar de helft." | Ook op pre-order · nu 50% |
+| 23–27 s | Spreker | "Dus nee, je hoeft niet te wachten tot volgend jaar." | |
+| 27–30 s | Eindkaart A, B of C | Lees de eindkaart voor | A: Vanavond 20:00 · eerst VIP's / B: Nu live · t/m ma 23:59 / C: Laatste dag · vannacht 23:59 |
 
-## Video 3 · "Montage + gratis kit" (45 sec)
+**Caption:**
+> Ik reken het even voor je uit 🧮 4 panelen van € 679,80 voor € 611,82, met 4 montagekokers gratis. Uitverkocht? Pre-order met dezelfde korting en betaal nu maar de helft. Alleen in De Wandweek, t/m maandag 23:59. Hoe groot is jouw wand? 👇
+> #wandpanelen #blackfriday #interieur #woonkamer #houtenwand #japandi #slaapkamer #diy
 
-**Online:** 27 t/m 30 november, met eindkaart "Gratis kit in De Wandweek". Daarna blijvend te gebruiken met eindkaart "Montagehandleiding".
+---
 
-| # | Beeld | Gesproken tekst | Tekst in beeld |
+## Video 3 · "Dit is alles wat je nodig hebt." (montage + kit, 45 sec)
+
+**Online:** 27 t/m 30 november; daarna blijvend (eindkaart zonder actie).
+
+**Drie hooks:**
+- **Hook A:** Overhead: zaag, kitpistool, één koker en een paneel op de vloer. *"Dit is alles wat je nodig hebt voor een nieuwe wand."*
+- **Hook B:** Snel vooruit: lege wand → af in 2 seconden, dan terug naar het begin. *"Van dit… naar dit. En je doet het zelf."*
+- **Hook C:** Close-up koker die wordt opengeklikt. *"Deze koker is het hele geheim."*
+
+| Tijd | Beeld | Gesproken | Tekst in beeld |
 |---|---|---|---|
-| 1 | Lege wand, rolmaat | "Zo zet je zelf een PureDeco-wand." | Zelf je wand zetten |
-| 2 | Paneel op maat zagen (zaagsnede close-up) | "Meten en op maat zagen." | |
-| 3 | High Tack-koker in kitpistool, rupsen op de achterkant | "High Tack erop. Eén koker per paneel." | 1 koker per paneel |
-| 4 | Paneel tegen de wand, aandrukken, waterpas | "Tegen de wand, aandrukken, waterpas. Klaar." | |
-| 5 | Afgewerkte wand, rustige pan | "In De Wandweek krijg je die koker gratis, bij elk paneel." | Gratis koker bij elk paneel · t/m 30/11 |
+| 0–3 s | Hook A, B of C | (zie hierboven) | ALLES WAT JE NODIG HEBT |
+| 3–9 s | Rolmaat langs de muur, potlood | "Meet je muur op." | 1 · meten |
+| 9–16 s | Zaag door het paneel (geluid laten horen) | "Zaag het paneel op maat." | 2 · zagen |
+| 16–24 s | Kitpistool, rupsen High Tack op de achterkant | "High Tack erop. Eén koker per paneel." | 3 · 1 koker per paneel |
+| 24–32 s | Paneel tegen de muur, aandrukken, waterpas | "Tegen de muur, aandrukken, recht zetten." | 4 · plaatsen |
+| 32–38 s | Langzame pan over de af wand, licht van opzij | "Klaar. Dat was het." | |
+| 38–43 s | Spreker naast de wand | "En deze week krijg je die koker gratis. Bij elk paneel." | Gratis koker bij elk paneel · t/m 30/11 |
+| 43–45 s | Terug naar het overhead-beeld van hook A (loop) | "Durf jij het aan? Laat het weten." | Montagehandleiding: puredeco.nl/pages/installatie |
+
+**Caption:**
+> Dit is alles wat je nodig hebt 🪚 Meten, zagen, High Tack erop, plaatsen. Deze week krijg je bij elk paneel een gratis koker (t/m maandag 23:59). Durf jij het aan? 👇
+> #diy #wandpanelen #klussen #interieur #houtenwand #woonkamer #blackfriday #zelfdoen
 
 ---
 
