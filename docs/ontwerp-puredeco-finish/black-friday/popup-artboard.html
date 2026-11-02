@@ -61,6 +61,18 @@ h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:54px}
 .mm .fan{right:10px;bottom:-6px;transform:scale(.62);transform-origin:right bottom}
 .mm .card{left:12px;bottom:12px;width:150px;padding:9px 11px}.mm .card b{font-size:18px}.mm .card span{font-size:10.5px}
 .mm .x{width:30px;height:30px;font-size:15px;right:10px;top:10px}
+.cd{position:absolute;inset:0;background:#F5F2EC;z-index:1}
+.cd .dh{display:flex;justify-content:space-between;padding:16px 18px;border-bottom:1px solid #DDD6CA;font-size:18px}
+.cd .it{display:flex;gap:11px;padding:12px 18px;border-bottom:1px solid #EAE4DA;font-size:12.5px;line-height:1.4}
+.cd .th{width:58px;height:58px;background-size:cover;background-position:center;flex:none;border:1px solid #E4DDD1}
+.cd .d{flex:1}.cd .p{text-align:right;white-space:nowrap}
+.cd s{color:#8a837a}
+.kitbox{margin:12px 18px;border:1.5px solid #151413;background:#FBF9F5;padding:12px;font-size:12.5px;line-height:1.45}
+.kitbox b{display:block;font-size:13.5px}
+.kitbtn{margin-top:10px;background:#151413;color:#F5F2EC;text-align:center;padding:11px;font-size:13px}
+.kitok{margin:12px 18px;background:#EDE3D3;padding:10px 12px;font-size:12px}
+.cd .tot{padding:8px 18px;font-size:13px}.cd .tot div{display:flex;justify-content:space-between;padding:3px 0}.cd .tot .g{font-weight:600;font-size:14.5px;border-top:1px solid #DDD6CA;margin-top:4px;padding-top:7px}
+.cd .go{margin:10px 18px;background:#151413;color:#F5F2EC;text-align:center;padding:13px;font-size:14px}
 .col{display:flex;flex-direction:column}
 .cond{font-size:11.5px;line-height:1.45;color:#6E675E;margin-top:8px;max-width:360px}
 .cond b{color:#151413}
@@ -85,7 +97,7 @@ h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:54px}
 .vp .k{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#6E675E}
 .vp .hh{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:30px;line-height:1.04;margin-top:6px}
 .vp .hh em{font-style:normal;color:#8C6A4A;display:block}
-.vp .perks{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px}
+.vp .perks{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:12px}
 .vp .perks div{border:1px solid #DDD6CA;background:#FBF9F5;padding:7px;font-size:10px;line-height:1.35;color:#6E675E}
 .vp .perks b{display:block;font-size:11px;color:#151413}
 .vp .f{border-bottom:1px solid #151413;font-size:11px;color:#8a837a;padding:9px 0 6px;margin-top:8px}
@@ -96,7 +108,7 @@ h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:54px}
 hr{border:0;border-top:1px solid #d4ccbf;margin:40px 0 30px}
 </style></head><body>
 <h1>Pop-up De Wandweek</h1>
-<p class="lead">Versie 3: <b>"tot 25% korting" direct zichtbaar</b>, zonder extra regel eronder. Dezelfde belofte in de pop-up, de homepage-hero (fase 1) en op de VIP-pagina. Geïnspireerd op de voorbeeld-pop-up, maar dan in PureDeco-stijl: rustig, echt beeld (813 Natural Oak) en <b>stalen als het "cadeau"</b> in plaats van kerstballen. Twee stappen: eerst e-mail, dan meteen je gratis staal kiezen. Alleen voordelen die ook echt kloppen; de montagekit noemen we hier niet, zodat de tekst klopt welke kit-keuze je in stap 3 ook maakt.</p>
+<p class="lead">Versie 3: <b>"tot 25% korting" direct zichtbaar</b>, zonder extra regel eronder. Dezelfde belofte in de pop-up, de homepage-hero (fase 1) en op de VIP-pagina. Geïnspireerd op de voorbeeld-pop-up, maar dan in PureDeco-stijl: rustig, echt beeld (813 Natural Oak) en <b>stalen als het "cadeau"</b> in plaats van kerstballen. Twee stappen: eerst e-mail, dan meteen je gratis staal kiezen. Montagekit volgens keuze A: <b>1 gratis High Tack-koker bij elk paneel</b>, voor iedereen in de Wandweek.</p>
 
 <div class="row">
   <div class="col">
@@ -106,7 +118,7 @@ hr{border:0;border-top:1px solid #d4ccbf;margin:40px 0 30px}
         <div class="dots"><i class="on"></i><i></i></div>
         <span class="badge">DE WANDWEEK · BLACK FRIDAY</span>
         <p class="h">Word VIP: tot 25% korting<em>en shop 12 uur eerder</em></p>
-        <div class="chips"><span>Gratis staal thuis</span><span>12 uur eerder</span><span>+5% extra</span></div>
+        <div class="chips"><span>Gratis staal thuis</span><span>12 uur eerder</span><span>+5% extra</span><span>Gratis montagekit</span></div>
         <div class="inp">Je e-mailadres</div>
         <div class="btn">Zet me op de VIP-lijst</div>
         <div class="no">Nee, bedankt</div>
@@ -160,6 +172,7 @@ hr{border:0;border-top:1px solid #d4ccbf;margin:40px 0 30px}
       <div class="mm-in">
         <span class="badge">DE WANDWEEK · BLACK FRIDAY</span>
         <p class="h">Word VIP: tot 25% korting<em>en shop 12 uur eerder</em></p>
+        <div class="chips" style="margin-top:10px"><span style="font-size:10.5px;padding:5px 7px">Gratis staal</span><span style="font-size:10.5px;padding:5px 7px">+5% extra</span><span style="font-size:10.5px;padding:5px 7px">Gratis montagekit</span></div>
         <div class="inp">Je e-mailadres</div>
         <div class="btn">Zet me op de VIP-lijst</div>
         <div class="no">Nee, bedankt</div>
@@ -211,7 +224,7 @@ hr{border:0;border-top:1px solid #d4ccbf;margin:40px 0 30px}
       <div class="hero"><div class="hero-in">
         <p class="k">De Wandweek · Black Friday 26–30 november</p>
         <p class="hh">Word VIP: tot 25% korting<em>en shop 12 uur eerder</em></p>
-        <p class="s">Kies eerst een gratis staal, dan weet je zeker welke wand je in de Wandweek koopt.</p>
+        <p class="s">+ gratis montagekit: 1 koker bij elk paneel. Kies eerst een gratis staal, dan weet je zeker welke wand je in de Wandweek koopt.</p>
         <div class="b1">Word VIP + kies je staal</div>
         <div class="b2">Bekijk alle wandpanelen</div>
       </div></div>
@@ -227,7 +240,7 @@ hr{border:0;border-top:1px solid #d4ccbf;margin:40px 0 30px}
       <div class="vp"><div class="vp-img"></div><div class="vp-in">
         <p class="k">De Wandweek · VIP</p>
         <p class="hh">Word VIP: tot 25% korting<em>en shop 12 uur eerder</em></p>
-        <div class="perks"><div><b>Gratis staal</b>€ 6,95 korting op je Wandweek-bestelling</div><div><b>12 uur eerder</b>do 26 nov om 20:00</div><div><b>+5% extra</b>bovenop 10–20%: tot 25%</div></div>
+        <div class="perks"><div><b>Gratis staal</b>€ 6,95 korting op je Wandweek-bestelling</div><div><b>12 uur eerder</b>do 26 nov om 20:00</div><div><b>+5% extra</b>bovenop 10–20%: tot 25%</div><div><b>Gratis montagekit</b>1 koker bij elk paneel</div></div>
         <div class="f">Voornaam</div><div class="f">E-mailadres</div>
         <div class="chk"><i></i><span>Ja, stuur me de VIP-toegang en tips voor mijn wand per e-mail. Afmelden kan altijd.</span></div>
         <div class="go">Zet me op de VIP-lijst</div>
@@ -248,6 +261,47 @@ hr{border:0;border-top:1px solid #d4ccbf;margin:40px 0 30px}
       <b>Waarom het getal nu wel vooraan staat:</b> een concreet getal levert meer aanmeldingen op dan alleen "12 uur eerder".<br>
       <b>Tegen uitstel van aankopen in november:</b> de pop-up en hero sturen eerst op een gratis staal. Wie een wand van € 1.500 koopt, wil die eerst voelen, dus de wachttijd wordt nuttig gebruikt.<br>
       <b>Te checken door jou:</b> is 25% bij € 1.500+ voor VIP's financieel in orde?
+    </p>
+  </div>
+</div>
+
+<hr>
+<div class="row">
+  <div class="col">
+    <div class="tag">Winkelwagen · Black Friday</div><div class="t">De kit in één tik erbij</div>
+    <div class="ph" style="background:#F5F2EC"><div class="cd">
+      <div class="dh"><span>Je winkelwagen (8)</span><span>✕</span></div>
+      <div class="it"><div class="th" style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/bamboepanelen-hout-813-natural-oak-packshot.jpg?v=1793440327&width=200')"></div><div class="d"><b>813 Natural Oak</b> · 8 mm<br>8 × € 169,95</div><div class="p">€ 1.359,60</div></div>
+      <div class="kitbox"><b>Je krijgt 8 High Tack-kokers gratis</b>1 koker bij elk paneel, tijdens Black Friday. Leg ze in je winkelwagen, dan rekenen we ze in de kassa voor € 0.<div class="kitbtn">Voeg mijn 8 gratis kokers toe</div></div>
+      <div class="tot"><div><span>Subtotaal</span><span>€ 1.359,60</span></div><div><span>Black Friday 15%</span><span>− € 203,94</span></div><div class="g"><span>Totaal</span><span>€ 1.155,66</span></div></div>
+      <div class="go">Afrekenen</div>
+    </div></div>
+    <p class="note" style="max-width:390px">Het aantal kokers volgt het aantal panelen in de winkelwagen. Shopify geeft de korting pas als de kokers erin liggen; daarom deze knop.</p>
+  </div>
+
+  <div class="col">
+    <div class="tag">Na de tik</div><div class="t">Gratis in de winkelwagen</div>
+    <div class="ph" style="background:#F5F2EC"><div class="cd">
+      <div class="dh"><span>Je winkelwagen (16)</span><span>✕</span></div>
+      <div class="it"><div class="th" style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/bamboepanelen-hout-813-natural-oak-packshot.jpg?v=1793440327&width=200')"></div><div class="d"><b>813 Natural Oak</b> · 8 mm<br>8 × € 169,95</div><div class="p">€ 1.359,60</div></div>
+      <div class="it"><div class="th" style="background:#EDE6DB"></div><div class="d"><b>High Tack Montagekit</b> · 290 ml<br>8 × € 8,95 · Black Friday-cadeau</div><div class="p"><s>€ 71,60</s><br>€ 0,00</div></div>
+      <div class="kitok">✓ 8 gratis kokers toegevoegd, genoeg voor 8 panelen</div>
+      <div class="tot"><div><span>Subtotaal</span><span>€ 1.359,60</span></div><div><span>Black Friday 15%</span><span>− € 203,94</span></div><div class="g"><span>Totaal</span><span>€ 1.155,66</span></div></div>
+      <div class="go">Afrekenen</div>
+    </div></div>
+    <p class="note" style="max-width:390px">Haalt de klant een paneel weg, dan past de knop zich aan ("Je hebt 1 koker te veel; die rekenen we gewoon"). De korting telt nooit meer kokers dan panelen.</p>
+  </div>
+
+  <div class="col" style="max-width:820px;padding-top:30px">
+    <div class="tag">Overal dezelfde tekst</div><div class="t">Wat er in H3 verandert (Black Friday-fase)</div>
+    <p class="note" style="font-size:16px;line-height:1.75">
+      <b>Balk:</b> "Black Friday · 10–20% korting + gratis montagekit bij elk paneel · t/m ma 23:59"<br>
+      <b>Hero:</b> "Gratis High Tack Montagekit: 1 koker bij elk paneel"<br>
+      <b>Collectieband:</b> "10% vanaf € 400 · 15% vanaf € 800 · 20% vanaf € 1.500 · gratis montagekit bij elk paneel"<br>
+      <b>Productpagina:</b> "Gratis High Tack Montagekit: 1 koker bij elk paneel."<br>
+      <b>Calculator:</b> "€ 679,80 → € 611,82 met 10% · + 4 gratis kokers"<br>
+      <b>Vervalt:</b> "vanaf € 600" en het VIP-voordeel "montagekit vanaf € 400".<br><br>
+      <b>In Shopify (stap 3):</b> automatische korting "Koop 1 paneel, krijg 1 High Tack Montagekit gratis", onbeperkt per bestelling. VIP's vanaf do 26/11 20:00, iedereen vanaf vr 27/11 08:00, t/m ma 30/11 23:59. Samen te gebruiken met de staffel.
     </p>
   </div>
 </div>
