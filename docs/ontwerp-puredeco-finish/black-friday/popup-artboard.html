@@ -1,0 +1,174 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E8E2D7;font-family:'Hanken Grotesk',sans-serif;color:#151413;padding:48px 56px 56px;width:2300px}
+h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:54px}
+.lead{font-size:18px;color:#5b554d;margin:10px 0 34px;max-width:1700px;line-height:1.5}
+.lead b{color:#151413}
+.row{display:flex;gap:40px;align-items:flex-start}
+.tag{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#8C6A4A;margin-bottom:6px}
+.t{font-size:19px;font-weight:600;margin-bottom:12px}
+.note{font-size:14.5px;line-height:1.55;color:#3a3733;margin-top:14px;max-width:880px}
+.note b{color:#151413}
+.serif{font-family:'Cormorant Garamond',serif}
+/* desktop frame */
+.dk{width:1060px;height:640px;position:relative;overflow:hidden;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,.18);background:#F5F2EC url('nu-home-desktop.png') top center/cover}
+.dk:before{content:"";position:absolute;inset:0;background:rgba(21,20,19,.55)}
+.modal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:860px;height:500px;background:#F5F2EC;display:flex;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.m-l{flex:0 0 50%;padding:34px 40px 26px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.m-r{flex:1;position:relative;background:#cbb79c url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/generated_2Fshopify_3Af9yvx9-zm.myshopify.com_2F1793565871079_0.png?v=1793565889&width=900') center 35%/cover}
+.x{position:absolute;right:14px;top:14px;width:34px;height:34px;border-radius:50%;background:#F5F2EC;display:flex;align-items:center;justify-content:center;font-size:18px;z-index:3}
+.dots{display:flex;gap:6px;margin-bottom:14px}.dots i{width:24px;height:3px;background:#DDD6CA;display:block}.dots i.on{background:#151413}
+.badge{display:inline-block;padding:6px 14px;background:#151413;color:#F5F2EC;font-size:11px;letter-spacing:.16em;font-weight:600}
+.badge.live{background:#8C6A4A}
+.h{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:42px;line-height:1.02;margin-top:14px}
+.h em{font-style:normal;color:#8C6A4A;display:block}
+.sub{font-size:14px;line-height:1.5;color:#3A3733;margin-top:10px;max-width:360px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.chips span{font-size:12px;padding:6px 10px;border:1px solid #DDD6CA;background:#FBF9F5}
+.inp{width:100%;margin-top:16px;border-bottom:1px solid #151413;text-align:left;padding:11px 2px;font-size:14px;color:#8a837a}
+.btn{width:100%;margin-top:12px;background:#151413;color:#F5F2EC;padding:14px;font-size:14.5px;font-weight:500}
+.no{margin-top:10px;font-size:12.5px;text-decoration:underline;color:#3A3733}
+.fine{margin-top:10px;font-size:10.5px;line-height:1.5;color:#6E675E;max-width:360px}
+/* stickers on image */
+.card{position:absolute;left:22px;bottom:22px;background:#F5F2EC;padding:14px 16px;width:200px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.card small{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#8C6A4A}
+.card b{display:block;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:24px;line-height:1.05;margin-top:4px}
+.card span{display:block;font-size:12px;color:#3A3733;margin-top:6px}
+.fan{position:absolute;right:26px;bottom:26px;width:170px;height:150px}
+.fan i{position:absolute;width:92px;height:92px;background-size:cover;background-position:center;border:5px solid #F5F2EC;box-shadow:0 10px 24px rgba(0,0,0,.3)}
+.fan i:nth-child(1){left:0;top:40px;transform:rotate(-12deg)}
+.fan i:nth-child(2){left:38px;top:18px;transform:rotate(-2deg)}
+.fan i:nth-child(3){left:76px;top:30px;transform:rotate(10deg)}
+.cap{position:absolute;right:14px;top:58px;background:rgba(245,242,236,.92);font-size:10.5px;padding:4px 8px}
+/* step 2 */
+.sw{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;margin-top:14px}
+.sw div{position:relative;height:66px;background-size:cover;background-position:center;border:1px solid #DDD6CA}
+.sw div.on{outline:2px solid #151413;outline-offset:2px}
+.sw div.on:after{content:'✓';position:absolute;right:4px;top:4px;width:18px;height:18px;background:#151413;color:#F5F2EC;font-size:11px;display:flex;align-items:center;justify-content:center}
+.sw span{position:absolute;left:0;right:0;bottom:0;background:rgba(245,242,236,.9);font-size:9.5px;padding:2px 4px;text-align:left}
+.ok{width:46px;height:46px;border-radius:50%;background:#151413;color:#F5F2EC;display:flex;align-items:center;justify-content:center;font-size:22px}
+.lnk{margin-top:10px;font-size:12.5px;text-decoration:underline}
+/* phone */
+.ph{width:390px;height:780px;border-radius:38px;border:10px solid #151413;overflow:hidden;position:relative;background:#F5F2EC url('nu-home-mobiel.png') top center/cover;box-shadow:0 20px 50px rgba(0,0,0,.18);flex:none}
+.ph:before{content:"";position:absolute;inset:0;background:rgba(21,20,19,.55)}
+.mm{position:absolute;left:14px;right:14px;top:50%;transform:translateY(-50%);background:#F5F2EC;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.mm-img{height:190px;position:relative;background:#cbb79c url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/generated_2Fshopify_3Af9yvx9-zm.myshopify.com_2F1793565871079_0.png?v=1793565889&width=600') center 30%/cover}
+.mm-in{padding:18px 20px 16px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.mm .h{font-size:31px;margin-top:10px}
+.mm .sub{font-size:13px}
+.mm .fan{right:10px;bottom:-6px;transform:scale(.62);transform-origin:right bottom}
+.mm .card{left:12px;bottom:12px;width:150px;padding:9px 11px}.mm .card b{font-size:18px}.mm .card span{font-size:10.5px}
+.mm .x{width:30px;height:30px;font-size:15px;right:10px;top:10px}
+.col{display:flex;flex-direction:column}
+hr{border:0;border-top:1px solid #d4ccbf;margin:40px 0 30px}
+</style></head><body>
+<h1>Pop-up De Wandweek</h1>
+<p class="lead">Geïnspireerd op de voorbeeld-pop-up, maar dan in PureDeco-stijl: rustig, echt beeld (813 Natural Oak) en <b>stalen als het "cadeau"</b> in plaats van kerstballen. Twee stappen: eerst e-mail, dan meteen je gratis staal kiezen. Alleen voordelen die ook echt kloppen; de montagekit noemen we hier niet, zodat de tekst klopt welke kit-keuze je in stap 3 ook maakt.</p>
+
+<div class="row">
+  <div class="col">
+    <div class="tag">Desktop · fase 1 (3–26 november) · stap 1</div><div class="t">Aanmelden in één veld</div>
+    <div class="dk"><div class="modal">
+      <div class="m-l">
+        <div class="dots"><i class="on"></i><i></i></div>
+        <span class="badge">DE WANDWEEK · BLACK FRIDAY</span>
+        <p class="h">Shop 12 uur eerder<em>+5% extra korting</em></p>
+        <p class="sub">Word VIP van De Wandweek. Je shopt al op <b>donderdag 26 november om 20:00</b>, vóór iedereen, en krijgt een gratis staal thuis.</p>
+        <div class="chips"><span>Gratis staal thuis</span><span>12 uur eerder</span><span>+5% extra</span></div>
+        <div class="inp">Je e-mailadres</div>
+        <div class="btn">Zet me op de VIP-lijst</div>
+        <div class="no">Nee, bedankt</div>
+        <p class="fine">Je krijgt de VIP-toegang en tips voor je wand per e-mail. Afmelden kan altijd. · Privacy</p>
+      </div>
+      <div class="m-r"><div class="x">✕</div><span class="cap">813 Natural Oak</span>
+        <div class="card"><small>VIP-avond</small><b>Do 26 nov<br>20:00</b><span>12 uur vóór iedereen</span></div>
+        <div class="fan"><i style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/bamboepanelen-hout-813-natural-oak-packshot.jpg?v=1793440327&width=300')"></i><i style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/wandpaneel-travertine-ivory-851.png?v=1790065039&width=300')"></i><i style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/wandpaneel-812-walnut-deep-houtlook.jpg?v=1793107446&width=300')"></i></div>
+      </div>
+    </div></div>
+    <p class="note">Midden in beeld, links de tekst, rechts het sfeerbeeld met drie echte stalen. <b>Desktop: alleen bij het verlaten van de pagina</b> (muis naar de tabbladen). Eén keer per bezoeker, nooit op productpagina's en nooit in de kassa. "Nee, bedankt" sluit hem voorgoed.</p>
+  </div>
+
+  <div class="col">
+    <div class="tag">Desktop · stap 2 (na aanmelden)</div><div class="t">Meteen je staal kiezen</div>
+    <div class="dk"><div class="modal">
+      <div class="m-l">
+        <div class="dots"><i></i><i class="on"></i></div>
+        <div class="ok">✓</div>
+        <p class="h" style="font-size:34px">Je staat op de VIP-lijst</p>
+        <p class="sub">Kies nu je gratis staal (max. 3). Je betaalt alleen € 6,95 verzending, en die krijg je als VIP terug bij je bestelling.</p>
+        <div class="sw">
+          <div class="on" style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/bamboepanelen-hout-813-natural-oak-packshot.jpg?v=1793440327&width=300')"><span>813 Natural Oak</span></div>
+          <div style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/wandpaneel-812-walnut-deep-houtlook.jpg?v=1793107446&width=300')"><span>812 Walnut Deep</span></div>
+          <div class="on" style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/wandpaneel-travertine-ivory-851.png?v=1790065039&width=300')"><span>851 Travertine</span></div>
+          <div style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/621_274c4ece-1c7d-4234-a9c5-6f79e08f171a.jpg?v=1776592819&width=300')"><span>821 Japandi Light</span></div>
+          <div style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/830.jpg?v=1776592869&width=300')"><span>830 Leather Taupe</span></div>
+          <div style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/wandpaneel-concrete-smoke-691_fcda9e8e-253b-47d7-9421-0ab97bef29c4.png?v=1790064874&width=300')"><span>691 Concrete Smoke</span></div>
+        </div>
+        <div class="btn">Bestel mijn 2 stalen</div>
+        <div class="lnk">Zet 26/11 20:00 in je agenda</div>
+      </div>
+      <div class="m-r"><div class="x">✕</div><span class="cap">813 Natural Oak</span>
+        <div class="card"><small>Je bent VIP</small><b>Tot donderdag<br>26 november</b><span>We mailen je om 20:00 je link</span></div>
+      </div>
+    </div></div>
+    <p class="note">De stalen gaan via de bestaande staal-lijst naar de staalkassa, dus het is een echte bestelling. Zo wordt een aanmelding meteen een <b>staal in huis</b>: de sterkste voorspeller van een wandbestelling in de Wandweek.</p>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col">
+    <div class="tag">Mobiel · fase 1 · stap 1</div><div class="t">Na 20 seconden, midden in beeld</div>
+    <div class="ph"><div class="mm">
+      <div class="mm-img"><div class="x">✕</div>
+        <div class="card"><small>VIP-avond</small><b>Do 26 nov 20:00</b><span>12 uur vóór iedereen</span></div>
+        <div class="fan"><i style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/bamboepanelen-hout-813-natural-oak-packshot.jpg?v=1793440327&width=300')"></i><i style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/wandpaneel-travertine-ivory-851.png?v=1790065039&width=300')"></i><i style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/wandpaneel-812-walnut-deep-houtlook.jpg?v=1793107446&width=300')"></i></div>
+      </div>
+      <div class="mm-in">
+        <span class="badge">DE WANDWEEK · BLACK FRIDAY</span>
+        <p class="h">Shop 12 uur eerder<em>+5% extra korting</em></p>
+        <p class="sub">Word VIP: gratis staal thuis en op donderdag 26 november om 20:00 al shoppen.</p>
+        <div class="inp">Je e-mailadres</div>
+        <div class="btn">Zet me op de VIP-lijst</div>
+        <div class="no">Nee, bedankt</div>
+        <p class="fine">VIP-toegang en tips per e-mail. Afmelden kan altijd. · Privacy</p>
+      </div>
+    </div></div>
+    <p class="note" style="max-width:390px">Kaart met beeld bovenaan, groot genoeg om te tikken. Niet op productpagina's (daar staat de koopbalk) en niet als de winkelwagen open is.</p>
+  </div>
+
+  <div class="col">
+    <div class="tag">Mobiel · VIP-avond 26 nov 20:00 – 27 nov 08:00</div><div class="t">"Nu live", voor wie nog geen VIP is</div>
+    <div class="ph"><div class="mm">
+      <div class="mm-img"><div class="x">✕</div>
+        <div class="card"><small>Nu live</small><b>VIP-avond</b><span>tot vrijdag 08:00</span></div>
+      </div>
+      <div class="mm-in">
+        <span class="badge live">NU LIVE · VIP-AVOND</span>
+        <p class="h">Black Friday is begonnen<em>tot 25% korting</em></p>
+        <p class="sub">Nog geen VIP? Meld je aan en shop vanavond al mee, 12 uur vóór iedereen.</p>
+        <div class="inp">Je e-mailadres</div>
+        <div class="btn">Ik wil vanavond al shoppen</div>
+        <div class="no">Nee, ik wacht tot vrijdag 08:00</div>
+        <p class="fine">Je ontvangt meteen een inlogcode per e-mail. Afmelden kan altijd. · Privacy</p>
+      </div>
+    </div></div>
+    <p class="note" style="max-width:390px">Alleen bouwen als mijn test in stap 3 laat zien dat een nieuwe VIP <b>direct</b> korting krijgt na inloggen. Anders laten we deze variant weg.</p>
+  </div>
+
+  <div class="col" style="max-width:820px;padding-top:30px">
+    <div class="tag">Spelregels</div><div class="t">Opvallend, maar niet irritant</div>
+    <p class="note" style="font-size:16px;line-height:1.7">
+      <b>Wanneer:</b> mobiel na 20 seconden, desktop bij het verlaten van de pagina. Eén keer per bezoeker (ook na "Nee, bedankt").<br>
+      <b>Waar niet:</b> productpagina's, winkelwagen open, kassa, de VIP-pagina zelf, en bij wie al VIP is.<br>
+      <b>Fase 2 (vanaf 27 nov 08:00):</b> geen pop-up meer; dan doen de balk, de hero en de staffel het werk.<br>
+      <b>AVG:</b> het doel staat bij het veld (VIP-toegang en tips per e-mail), afmelden kan altijd, link naar privacy.<br>
+      <b>Meten:</b> GA4-events voor tonen, aanmelden en stalen bestellen vanuit de pop-up.<br>
+      <b>Vervangt:</b> de eenvoudige pop-up die nu in H3 staat.
+    </p>
+  </div>
+</div>
+</body></html>
