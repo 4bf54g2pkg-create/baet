@@ -106,29 +106,43 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 
 ---
 
-## Video 2 · "Ik reken het even voor je uit." (live, 30 sec · 3 eindkaarten)
+## Video 2 · "Ik reken het even voor je uit" (live, 30 sec · 3 eindkaarten)
 
 **Online:** 26 t/m 30 november. Eindkaart A (do 26/11), B (vr 27–zo 29/11), C (ma 30/11).
+**Vorm:** de bedragen worden steeds beter. Elke 3 seconden een nieuw getal in beeld, zodat kijkers willen zien waar het eindigt.
+**Rekenvoorbeeld:** 813 Natural Oak, € 169,95 per paneel (alle bedragen nagerekend).
 
-**Drie hooks:**
+**Drie hooks (alle drie opnemen):**
 - **Hook A:** Spreker houdt de telefoon in de camera. *"Wat kost zo'n wand nou écht? Ik reken het even voor je uit."*
-- **Hook B:** Wand 813 achter de spreker. *"Deze wand. Vier panelen. Kijk wat je deze week betaalt."*
-- **Hook C:** Spreker wijst naar een leeg stuk muur. *"Zeg niet dat je dit niet zelf kan. En zeker niet dat het te duur is."*
+- **Hook B:** Spreker voor wand 813. *"Iedereen vraagt wat zo'n wand kost. Hier is het antwoord."*
+- **Hook C:** Spreker met de telefoon. *"Zo bespaar je 382 euro op één wand."*
 
 | Tijd | Beeld | Gesproken | Tekst in beeld |
 |---|---|---|---|
 | 0–2 s | Hook A, B of C | (zie hierboven) | WAT KOST ZO'N WAND ÉCHT? |
-| 2–7 s | Telefoon: productpagina 813, duim typt 4,20 × 2,60 | "Wand van 4,20 bij 2,60. Dat zijn vier panelen." | 4,20 × 2,60 m = 4 panelen |
-| 7–11 s | Close-up calculator: doorgestreept bedrag | "Normaal 679 euro 80. Deze week: 611 euro 82." | ~~€ 679,80~~ € 611,82 |
-| 11–14 s | Calculator: "Nog 1 paneel erbij = 15%" | "Grotere wand? Dan gaat de korting omhoog. Tot twintig procent." | 10% · 15% · 20% |
-| 14–17 s | Vier kokers op tafel, één voor één neergezet | "En die vier montagekokers? Gratis." | 4 kokers: € 0 |
-| 17–23 s | Telefoon: productpagina 620, blok "Nu te betalen" | "Jouw kleur uitverkocht? Maakt niet uit. Bestel 'm met pre-order: zelfde korting, en je betaalt nu maar de helft." | Ook op pre-order · nu 50% |
-| 23–27 s | Spreker | "Dus nee, je hoeft niet te wachten tot volgend jaar." | |
-| 27–30 s | Eindkaart A, B of C | Lees de eindkaart voor | A: Vanavond 20:00 · eerst VIP's / B: Nu live · t/m ma 23:59 / C: Laatste dag · vannacht 23:59 |
+| 2–6 s | Telefoon: duim typt 4,20 × 2,60 in de calculator | "Wand van 4,20 bij 2,60. Vier panelen. Normaal 679 euro 80." | 4 panelen · € 679,80 |
+| 6–9 s | Close-up: bedrag springt naar € 611,82 (swipe-geluid) | "Deze week: 611 euro 82." | € 611,82 · −10% |
+| 9–13 s | Cut naar een grote wand | "Grotere wand? Negen panelen. Dan is het twintig procent." | 9 panelen · −20% · € 1.223,64 |
+| 13–16 s | Spreker trekt de wenkbrauwen op | "En ben je VIP? Vijfentwintig procent. Dat is 382 euro minder." | VIP · −25% · € 1.147,16 |
+| 16–19 s | Kokers één voor één op tafel gezet | "De kokers om ze op te plakken? Gratis. Eén bij elk paneel." | + gratis koker bij elk paneel |
+| 19–25 s | Telefoon: productpagina 620 met "Nu te betalen" | "Jouw kleur uitverkocht? Maakt niet uit. Je krijgt tóch korting, en je betaalt nu maar de helft." | UITVERKOCHT? TOCH KORTING · nu maar 50% |
+| 25–27 s | Spreker, recht in de camera | "Dus nee. Je hoeft niet tot volgend jaar te wachten." | |
+| 27–30 s | Eindkaart A, B of C | Lees de eindkaart voor, plus: "Zet je maten in de comments, dan reken ik het voor je uit." | A: Vanavond 20:00 · eerst VIP's / B: Nu live · t/m ma 23:59 / C: Laatste dag · vannacht 23:59 |
+
+**15 sec-versie:** hook → 2–9 s → 19–25 s → eindkaart.
 
 **Caption:**
-> Ik reken het even voor je uit 🧮 4 panelen van € 679,80 voor € 611,82, met 4 montagekokers gratis. Uitverkocht? Pre-order met dezelfde korting en betaal nu maar de helft. Alleen in De Wandweek, t/m maandag 23:59. Hoe groot is jouw wand? 👇
+> Wat kost zo'n wand nou écht? 🧮
+> 4 panelen: € 679,80 → € 611,82
+> 9 panelen: −20%, als VIP zelfs −25% (€ 382 minder)
+> \+ bij elk paneel een gratis montagekoker
+> Kleur uitverkocht? Maakt niet uit: je krijgt tóch korting en betaalt nu maar de helft.
+> Alleen in De Wandweek, t/m maandag 23:59. Zet je maten in de comments, dan rekenen we het voor je uit 👇
 > #wandpanelen #blackfriday #interieur #woonkamer #houtenwand #japandi #slaapkamer #diy
+
+**Reactie-tip:** reken elke reactie met maten echt uit ("4,80 × 2,60 = 4 panelen, € 611,82 deze week"). Dat levert veel reacties op, en dus bereik. Maak van de beste reactie een korte antwoordvideo.
+
+**Check vóór publicatie:** "normaal € 679,80" mag alleen als 813 de afgelopen 30 dagen niet goedkoper was dan € 169,95 per paneel.
 
 ---
 
