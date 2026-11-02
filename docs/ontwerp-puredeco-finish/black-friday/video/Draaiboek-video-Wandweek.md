@@ -29,7 +29,7 @@ Voor de videograaf, deze week. **Drie video's**, één halve draaidag in Studio 
 | Video | Lengte | Online | Doel |
 |---|---|---|---|
 | **1 · Iedereen profiteert** (aanloop) | 30 sec + 15 sec-versie | 13 t/m 25 november (advertenties) | VIP-aanmeldingen en stalen |
-| **2 · De Wandweek is begonnen** (live) | 30 sec | 26 t/m 30 november, met 3 eindkaarten | Kopen |
+| **2 · NU LIVE** | 30 sec + 15 sec | 27 t/m 30 november (+ varianten VIP-avond en laatste dag) | Kopen |
 | **3 · Montage, klik en kwaliteit** | 45 sec | 27 t/m 30 november, daarna blijvend (zonder kit-eindkaart) | Drempel "kan ik dit zelf?" weg |
 
 ## Formaten
@@ -114,43 +114,48 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 
 ---
 
-## Video 2 · "Ik reken het even voor je uit" (live, 30 sec · 3 eindkaarten)
+## Video 2 · "NU LIVE" (Black Friday, 30 sec)
 
-**Online:** 26 t/m 30 november. Eindkaart A (do 26/11), B (vr 27–zo 29/11), C (ma 30/11).
-**Vorm:** de bedragen worden steeds beter. Elke 3 seconden een nieuw getal in beeld, zodat kijkers willen zien waar het eindigt.
-**Rekenvoorbeeld:** 813 Natural Oak, € 169,95 per paneel (alle bedragen nagerekend).
+**Online:** vrijdag 27 november 08:00 t/m maandag 30 november 23:59. Plus twee varianten met één andere zin (zie onder).
+**Vorm:** hoog tempo, alsof je een deur opengooit. Bovenin de hele video een rood/zwart label **NU LIVE**. Elke 2–3 seconden een nieuw voordeel, als een aftelling.
 
 **Drie hooks (alle drie opnemen):**
-- **Hook A:** Spreker houdt de telefoon in de camera. *"Wat kost zo'n wand nou écht? Ik reken het even voor je uit."*
-- **Hook B:** Spreker voor wand 813. *"Iedereen vraagt wat zo'n wand kost. Hier is het antwoord."*
-- **Hook C:** Spreker met de telefoon. *"Zo bespaar je 382 euro op één wand."*
+- **Hook A:** Spreker trekt een doek weg van wand 813. *"Het is zover. Black Friday is live."*
+- **Hook B:** Telefoon in de camera, meldingsgeluid. *"Dit is je seintje: De Wandweek is live."*
+- **Hook C:** Spreker, recht in de camera. *"Je hebt tot maandag middernacht. Let's go."*
 
 | Tijd | Beeld | Gesproken | Tekst in beeld |
 |---|---|---|---|
-| 0–2 s | Hook A, B of C | (zie hierboven) | WAT KOST ZO'N WAND ÉCHT? |
-| 2–6 s | Telefoon: duim typt 4,20 × 2,60 in de calculator | "Wand van 4,20 bij 2,60. Vier panelen. Normaal 679 euro 80." | 4 panelen · € 679,80 |
-| 6–9 s | Close-up: bedrag springt naar € 611,82 (swipe-geluid) | "Deze week: 611 euro 82." | € 611,82 · −10% |
-| 9–13 s | Cut naar een grote wand | "Grotere wand? Negen panelen. Dan is het twintig procent." | 9 panelen · −20% · € 1.223,64 |
-| 13–16 s | Spreker trekt de wenkbrauwen op | "En ben je VIP? Vijfentwintig procent. Dat is 382 euro minder." | VIP · −25% · € 1.147,16 |
-| 16–19 s | Kokers één voor één op tafel gezet | "De kokers om ze op te plakken? Gratis. Eén bij elk paneel." | + gratis koker bij elk paneel |
-| 19–25 s | Telefoon: productpagina 620 met "Nu te betalen" | "Jouw kleur uitverkocht? Maakt niet uit. Je krijgt tóch korting, en je betaalt nu maar de helft." | UITVERKOCHT? TOCH KORTING · nu maar 50% |
-| 25–27 s | Spreker, recht in de camera | "Dus nee. Je hoeft niet tot volgend jaar te wachten." | |
-| 27–30 s | Eindkaart A, B of C; spreker wijst naar beneden | Lees de eindkaart voor, plus: "Klik hieronder. En zet je maten in de comments, dan reken ik het voor je uit." | 👇 KLIK HIERONDER · puredeco.nl · A: Vanavond 20:00 · eerst VIP's / B: Nu live · t/m ma 23:59 / C: Laatste dag · vannacht 23:59 |
+| 0–2 s | Hook A, B of C | (zie hierboven) | NU LIVE · DE WANDWEEK |
+| 2–6 s | Drie blokken poppen één voor één in beeld (montage) | "Hoe groter je wand, hoe meer korting. Tien, vijftien, tot twintig procent." | 10% · 15% · 20% |
+| 6–11 s | Telefoon: duim vult 4,20 × 2,60 in, bedrag springt om (swipe-geluid) | "Vier panelen? Van 679 euro 80 naar 611 euro 82." | ~~€ 679,80~~ € 611,82 |
+| 11–14 s | Koker wordt opengeklikt (geluid hard) | "Bij elk paneel een gratis montagekoker. Zit vanzelf in je pakket." | + gratis koker bij elk paneel |
+| 14–20 s | Spreker voor wand 620, buigt naar de camera | "Jouw kleur uitverkocht? Maakt niet uit. Je krijgt tóch korting, en je betaalt nu maar de helft." | UITVERKOCHT? TOCH KORTING · nu maar 50% |
+| 20–24 s | Spreker knipoogt, telefoon met "Inloggen" in de kassa | "Ben je VIP? Log in, en er gaat nog vijf procent af." | VIP: +5% · log in met je VIP-e-mailadres |
+| 24–27 s | Telefoon: aftelklok uit de site in beeld | "Tot en met maandag middernacht. Daarna is het echt voorbij." | t/m ma 30 nov 23:59 |
+| 27–30 s | Spreker wijst met beide handen naar beneden | "Klik hieronder en kies je wand. Welke kleur wordt het?" | 👇 KLIK HIERONDER · puredeco.nl |
 
-**15 sec-versie:** hook → 2–9 s → 19–25 s → eindkaart.
+**15 sec-versie:** hook → 2–6 s → 14–20 s → 27–30 s.
+
+**Varianten (zelfde beeld, één zin anders inspreken):**
+- **VIP-avond (do 26/11, 20:00 tot vr 08:00):** hook wordt *"Het is zover. Voor VIP's is Black Friday nu live."*; 24–27 s wordt *"Log in met je VIP-e-mailadres. Iedereen anders: morgen om acht uur."* Label: **NU LIVE VOOR VIP'S**.
+- **Laatste dag (ma 30/11):** 24–27 s wordt *"Laatste dag. Vannacht om twaalf uur is het voorbij."* Label: **LAATSTE DAG**.
+
+**Link in beeld:** vanaf seconde 0 een vast labeltje **puredeco.nl** bovenin, naast **NU LIVE**. Advertentieknop **"Nu kopen"** naar `puredeco.nl/collections/wandpanelen?utm_source=meta&utm_campaign=wandweek`.
 
 **Caption:**
-> Wat kost zo'n wand nou écht? 🧮
-> 4 panelen: € 679,80 → € 611,82
-> 9 panelen: −20%, als VIP zelfs −25% (€ 382 minder)
+> 🔴 NU LIVE: De Wandweek
+> Hoe groter je wand, hoe meer korting: 10, 15, tot 20%
+> 4 panelen: ~~€ 679,80~~ € 611,82
 > \+ bij elk paneel een gratis montagekoker
-> Kleur uitverkocht? Maakt niet uit: je krijgt tóch korting en betaalt nu maar de helft.
-> Alleen in De Wandweek, t/m maandag 23:59. Zet je maten in de comments, dan rekenen we het voor je uit 👇
+> Kleur uitverkocht? Maakt niet uit: je krijgt tóch korting en betaalt nu maar de helft
+> VIP? Log in voor 5% extra
+> Tot en met maandag 23:59 👉 klik hieronder. Welke kleur wordt het? 👇
 > #wandpanelen #blackfriday #interieur #woonkamer #houtenwand #japandi #slaapkamer #diy
 
-**Reactie-tip:** reken elke reactie met maten echt uit ("4,80 × 2,60 = 4 panelen, € 611,82 deze week"). Dat levert veel reacties op, en dus bereik. Maak van de beste reactie een korte antwoordvideo.
+**Reactie-tip:** vraagt iemand naar een maat, reken het uit ("4,80 × 2,60 = 4 panelen, € 611,82 deze week"). Maak van de beste reactie een korte antwoordvideo; dat geeft extra bereik midden in de actie.
 
-**Check vóór publicatie:** "normaal € 679,80" mag alleen als 813 de afgelopen 30 dagen niet goedkoper was dan € 169,95 per paneel.
+**Check vóór publicatie:** "van € 679,80" mag alleen als 813 de afgelopen 30 dagen niet goedkoper was dan € 169,95 per paneel.
 
 ---
 
@@ -216,6 +221,6 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 ## Opleveren
 
 - **Uiterlijk 11 november:** video 1 (30 sec en 15 sec).
-- **Uiterlijk 19 november:** video 2 (met eindkaarten A, B en C) en video 3.
+- **Uiterlijk 19 november:** video 2 (met de varianten VIP-avond en laatste dag) en video 3.
 - Elke video in 9:16, 4:5 en 16:9, met en zonder ondertiteling.
 - Bestandsnamen: `WW26_V1_iedereen_30s_9x16.mp4`, `WW26_V2_live_B_4x5.mp4` enz.
