@@ -184,7 +184,9 @@
         
                                 {%- for property in item.properties -%}
                                   {%- assign property_first_char = property.first | slice: 0 -%}
-                                  {%- if property.last != blank and property_first_char != '_' -%}
+                                  {%- if property.first == 'Pre-order' and property.last != blank -%}
+                                    <span class="pd-cart-pre">Pre-order · {{ property.last | remove_first: 'Levering ' | remove_first: 'Verwachte levering vanaf ' }}</span>
+                                  {%- elsif property.last != blank and property_first_char != '_' -%}
                                     <div class="flex gap-1 text-sm text-subtext">
                                       <dt>{{ property.first }}:&nbsp;</dt>
                                       <dd>
@@ -518,6 +520,26 @@
           id="CartDrawerFooter-{{ section.id }}"
           class="drawer__footer cart-drawer__footer grid gap-3{% if cart == empty %} hidden{% endif %}"
         >
+            {%- liquid
+              comment
+                Puredeco: gemengde bestelling (pre-order + op voorraad) -> een levering, vooraf gemeld.
+              endcomment
+              assign pd_pre_week = ''
+              assign pd_has_stock = false
+              for item in cart.items
+                if item.properties['Pre-order'] != blank
+                  assign pd_pre_week = item.properties['Pre-order'] | remove_first: 'Levering ' | remove_first: 'Verwachte levering vanaf '
+                elsif item.final_line_price > 0
+                  assign pd_has_stock = true
+                endif
+              endfor
+              assign pd_wa = settings.pd_whatsapp | default: '31316700214' | remove: '+' | remove: ' ' | remove: '-'
+            -%}
+            {%- if pd_pre_week != blank and pd_has_stock -%}
+              <p class="pd-cart-mix">Je bestelling komt in <b>één levering in {{ pd_pre_week }}</b>, zodra alles binnen is. Wil je de producten die op voorraad zijn liever alvast? <a href="https://wa.me/{{ pd_wa }}?text={{ 'Hoi PureDeco, kan het deel van mijn bestelling dat op voorraad is alvast komen?' | url_encode }}" target="_blank" rel="noopener">App ons</a>.</p>
+            {%- elsif pd_pre_week != blank -%}
+              <p class="pd-cart-mix">Pre-order: we leveren in <b>{{ pd_pre_week }}</b>. Je prijs staat vast en annuleren kan kosteloos tot we verzenden.</p>
+            {%- endif -%}
           <div class="drawer__footer-head grid gap-4">
             {%- render 'gift-wrapping',
               section_id: section.id,

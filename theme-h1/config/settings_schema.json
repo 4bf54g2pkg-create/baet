@@ -1941,6 +1941,14 @@
         "default": "hout\nwandpaneel-art\nmetaal\nleer\ndoorlopend-marmer",
         "info": "Eén producthandle per regel. Voor de oude verzamelproducten met meerdere decors, zodat een decor niet dubbel in de zoekresultaten en zoeksuggesties staat. De productpagina zelf blijft bereikbaar (Google Shopping)."
       },
+      { "type": "header", "content": "Pre-order" },
+      {
+        "type": "text",
+        "id": "pd_preorder_levering",
+        "label": "Pre-order: levering",
+        "default": "week 1 (4–8 januari)",
+        "info": "Voor alle decors die op pre-order staan. Per decor anders? Vul het productveld puredeco.levering in. Het deel vóór de haakjes (bijv. 'week 1') komt op de collectiekaart en in de vaste balk. Zet dezelfde datum in de Rez-app."
+      },
       { "type": "header", "content": "WhatsApp-knop" },
       {
         "type": "text",

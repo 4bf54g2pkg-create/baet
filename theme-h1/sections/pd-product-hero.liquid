@@ -54,7 +54,10 @@
     Voorraadstanden: op voorraad · pre-order (voorraad op, doorverkopen aan) · tijdelijk uitverkocht (doorverkopen uit).
     Uit het assortiment: alleen verborgen in dit thema, het product blijft in Shopify bestaan.
   endcomment
-  assign pdh_pre_date = section.settings.preorder_date | default: '29 december'
+  comment
+    Leverweek pre-order: productveld puredeco.levering > thema-instelling pd_preorder_levering > oude sectie-instelling.
+  endcomment
+  assign pdh_pre_date = product.metafields.puredeco.levering.value | default: settings.pd_preorder_levering | default: section.settings.preorder_date | default: 'week 1 (4–8 januari)'
   assign pdh_retired = false
   if product.handle == '668-glanzend-marmer-florentine-limestone'
     assign pdh_retired = true
@@ -251,7 +254,7 @@
         {%- form 'product', product, id: pdh_form_id, class: 'pdh__form', novalidate: 'novalidate', data-type: 'add-to-cart-form', is: 'product-form' -%}
           <input type="hidden" name="id" value="{{ pdh_variant.id }}" data-pdh-id>
           <input type="hidden" name="selling_plan" value="" disabled data-pdh-plan>
-          <input type="hidden" name="properties[Pre-order]" value="Verwachte levering vanaf {{ pdh_pre_date | escape }}" disabled data-pdh-preprop>
+          <input type="hidden" name="properties[Pre-order]" value="Levering {{ pdh_pre_date | escape }}" disabled data-pdh-preprop>
 
           {%- unless product.has_only_default_variant -%}
             {%- for option in product.options_with_values -%}
@@ -403,7 +406,7 @@
           <div class="product-form__error-message pdh__error" role="alert" hidden></div>
           <p class="pdh__stock" data-pdh-stock aria-live="polite"><span class="pdh__sdot" aria-hidden="true"></span><span data-pdh-stock-text>Op voorraad</span></p>
 
-          <p class="pdh__prenote" data-pdh-prenote hidden>Je betaalt nu het volledige bedrag. We verzenden zodra de nieuwe voorraad binnen is. Je 30 dagen bedenktijd gaat in bij ontvangst.</p>
+          <ul class="pdh__prenote" data-pdh-prenote hidden><li>Je prijs staat vast, ook als we later leveren</li><li>Kosteloos annuleren tot we verzenden</li><li>30 dagen bedenktijd na ontvangst</li></ul>
           <button type="button" class="pdh__notify-link" data-pdh-notify-open hidden>Liever eerst een seintje? Mail me zodra hij op voorraad is</button>
 
           <div class="pdh__notify" data-pdh-notify hidden>
@@ -922,14 +925,15 @@
     root.setAttribute('data-stock', st);
     var cta = root.querySelector('[data-pdh-cta]');
     var ctaText = st === 'pre' ? 'Pre-order plaatsen' : (st === 'out' ? 'Tijdelijk uitverkocht' : 'In winkelmand');
+    var barText = st === 'pre' ? 'Pre-order · ' + preDate.split(' (')[0] : ctaText;
     cta.disabled = st === 'out';
     cta.classList.toggle('pdh__cta--pre', st === 'pre');
     root.querySelector('[data-pdh-cta-text]').textContent = ctaText;
     var barBtn = root.querySelector('.pdh__bar-cta');
-    if (barBtn) { var bTx = barBtn.querySelector('[data-pdh-bar-text]'); if (bTx) bTx.textContent = ctaText; else barBtn.textContent = ctaText; barBtn.classList.toggle('pdh__cta--pre', st === 'pre'); barBtn.disabled = st === 'out'; }
+    if (barBtn) { var bTx = barBtn.querySelector('[data-pdh-bar-text]'); if (bTx) bTx.textContent = barText; else barBtn.textContent = barText; barBtn.classList.toggle('pdh__cta--pre', st === 'pre'); barBtn.disabled = st === 'out'; }
     root.querySelector('[data-pdh-stock]').setAttribute('data-state', st);
     root.querySelector('[data-pdh-stock-text]').innerHTML =
-      st === 'pre' ? '<b>Pre-order</b> · verwachte levering vanaf <b>' + preDate + '</b>'
+      st === 'pre' ? '<b>Pre-order</b> · levering <b>' + preDate.split(' (')[0] + '</b>' + (preDate.indexOf(' (') > -1 ? ' (' + preDate.split(' (')[1] : '')
       : (st === 'out' ? '<b>Tijdelijk uitverkocht</b> in deze uitvoering' : '<b>Op voorraad</b> · ' + deliveryWindow());
     var pill = root.querySelector('[data-pdh-pill]'); if (pill) pill.hidden = st !== 'pre';
     var plan = root.querySelector('[data-pdh-plan]');

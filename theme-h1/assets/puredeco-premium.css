@@ -4097,3 +4097,12 @@ html.pde-open .pd-wa, html.pc-sheet-open .pd-wa { opacity: 0; pointer-events: no
 body.modal-show .pdh__bar, html:has(cart-drawer[open]) .pdh__bar,
 body.modal-show .pse-bar, html:has(cart-drawer[open]) .pse-bar,
 body.modal-show .pd-wa, html:has(cart-drawer[open]) .pd-wa { transform: translateY(150%) !important; opacity: 0 !important; pointer-events: none !important; }
+
+/* Pre-order: zekerheden op de productpagina, label en melding in de winkelwagen */
+ul.pdh__prenote { list-style: none; }
+ul.pdh__prenote li { position: relative; padding-left: 2.2rem; }
+ul.pdh__prenote li + li { margin-top: 0.3rem; }
+ul.pdh__prenote li::before { content: '✓'; position: absolute; left: 0.2rem; top: 0; color: #8C6A4A; font-weight: 700; }
+.pd-cart-pre { display: inline-block; margin-top: 0.4rem; padding: 0.2rem 0.7rem; background: #8C6A4A; color: #F5F2EC; font-size: 1.15rem; letter-spacing: 0.02em; }
+.pd-cart-mix { margin: 0; padding: 1.1rem 1.3rem; background: #EFE6D6; color: #3A3733; font-size: 1.3rem; line-height: 1.5; }
+.pd-cart-mix a { color: inherit; text-decoration: underline; }
