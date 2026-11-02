@@ -1962,16 +1962,14 @@
   {
     "name": "Puredeco · Black Friday",
     "settings": [
-      { "type": "paragraph", "content": "De Wandweek 2026. De site schakelt zelf om op de tijden hieronder (Nederlandse tijd, notatie JJJJ-MM-DDTUU:MM). Na de eindtijd is alles weer normaal. De korting zelf staat in Shopify › Kortingen." },
+      { "type": "paragraph", "content": "De Wandweek 2026. De site schakelt zelf om op de tijden hieronder (Nederlandse tijd, notatie JJJJ-MM-DDTUU:MM). Na de eindtijd is alles weer normaal. De kortingen zelf (staffel, VIP, montagekit, gratis bezorging) staan in Shopify › Kortingen en moeten dezelfde tijden hebben." },
       { "type": "checkbox", "id": "bf_on", "label": "Black Friday-inrichting aan", "default": true },
       { "type": "text", "id": "bf_p1", "label": "Fase 1 · inschrijven vanaf", "default": "2026-11-03T00:00" },
       { "type": "text", "id": "bf_vip", "label": "VIP-avond vanaf", "default": "2026-11-26T20:00" },
       { "type": "text", "id": "bf_p2", "label": "Black Friday voor iedereen vanaf", "default": "2026-11-27T08:00" },
       { "type": "text", "id": "bf_end", "label": "Einde (tot en met)", "default": "2026-11-30T23:59" },
       { "type": "text", "id": "bf_tiers", "label": "Staffel (bedrag:procent)", "default": "400:10,800:15,1500:20", "info": "Moet gelijk zijn aan de kortingen in Shopify." },
-      { "type": "number", "id": "bf_kit_min", "label": "Gratis montagekit vanaf (€)", "default": 600 },
       { "type": "number", "id": "bf_vip_extra", "label": "VIP-extra (procentpunt)", "default": 5 },
-      { "type": "number", "id": "bf_vip_kit_min", "label": "VIP: montagekit vanaf (€)", "default": 400 },
       { "type": "text", "id": "bf_vip_tag", "label": "Klanttag voor VIP's", "default": "wandweek-vip" },
       { "type": "image_picker", "id": "bf_hero_image", "label": "Beeld homepage (standaard sfeerbeeld 813 Natural Oak)" }
     ]

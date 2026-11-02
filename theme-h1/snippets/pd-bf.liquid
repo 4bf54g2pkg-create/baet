@@ -1,13 +1,14 @@
 {%- comment -%}
-  Puredeco · Black Friday 2026 "De Wandweek" (artboard BlackFriday-site, akkoord 2 nov 2026).
+  Puredeco · Black Friday 2026 "De Wandweek" (artboards BlackFriday-site en Popup-Wandweek, akkoord 2 nov 2026).
   Eén bestand voor alle onderdelen; welke fase zichtbaar is, bepaalt de tijdschakelaar in part 'head'
   (klok van de bezoeker, Nederlandse tijd). Fases:
     p1  = inschrijven (VIP's + stalen), prijzen normaal
-    vip = VIP-avond: korting alleen voor VIP's
+    vip = VIP-avond: korting alleen voor VIP's (ingelogd, tag uit de instellingen)
     p2  = Black Friday voor iedereen
   Elementen met data-bf="p1 vip p2" zijn alleen in die fases zichtbaar. Na de eindtijd springt alles terug.
   Testen in een niet-gepubliceerd thema: ?bf=p1, ?bf=vip, ?bf=p2 of ?bf=off (geldt voor dat tabblad).
-  Gebruik: render 'pd-bf', part: 'head' | 'bar' | 'hero' | 'col' | 'card' | 'pdp' | 'popup'
+  Montagekit: 1 gratis High Tack-koker bij elk paneel (korting in Shopify: koop 1 paneel, krijg 1 kit).
+  Gebruik: render 'pd-bf', part: 'head' | 'bar' | 'hero' | 'col' | 'card' | 'pdp' | 'popup' | 'count' | 'cart'
 {%- endcomment -%}
 {%- liquid
   assign bf_on = settings.bf_on
@@ -20,8 +21,6 @@
   assign bf_end = settings.bf_end | default: '2026-11-30T23:59'
   assign bf_tiers = settings.bf_tiers | default: '400:10,800:15,1500:20' | remove: ' ' | split: ','
   assign bf_vip_x = settings.bf_vip_extra | default: 5
-  assign bf_kit = settings.bf_kit_min | default: 600
-  assign bf_vkit = settings.bf_vip_kit_min | default: 400
   assign bf_tag = settings.bf_vip_tag | default: 'wandweek-vip'
   assign bf_is_vip = false
   if customer and customer.tags contains bf_tag
@@ -31,11 +30,10 @@
   assign bf_last = bf_tiers | last | split: ':'
   assign bf_pmin = bf_first | last
   assign bf_pmax = bf_last | last
+  assign bf_vmax = bf_pmax | plus: bf_vip_x
   assign bf_week = settings.pd_preorder_levering | default: 'week 2 (11–15 januari)' | split: ' (' | first
 -%}
 {%- capture bf_tier_txt -%}{%- for t in bf_tiers -%}{%- assign tp = t | split: ':' -%}{{ tp | last }}% vanaf € {{ tp | first | times: 100 | money_without_currency | remove: ',00' }}{%- unless forloop.last %} · {% endunless -%}{%- endfor -%}{%- endcapture -%}
-{%- capture bf_kit_money -%}€ {{ bf_kit | times: 100 | money_without_currency | remove: ',00' }}{%- endcapture -%}
-{%- capture bf_vkit_money -%}€ {{ bf_vkit | times: 100 | money_without_currency | remove: ',00' }}{%- endcapture -%}
 {%- capture bf_tier_list -%}
   <ol class="pbf-tiers">
     {%- for t in bf_tiers -%}{%- assign tp = t | split: ':' -%}
@@ -67,7 +65,6 @@
     window.PDBF = {
       ph: ph, vip: vip, end: c.end, p2At: c.p2, tiers: tiers,
       extra: vip ? {{ bf_vip_x | times: 1 }} : 0,
-      kit: (vip ? {{ bf_vkit | times: 100 }} : {{ bf_kit | times: 100 }}),
       active: function () { return ph === 'p2' || (ph === 'vip' && vip); },
       pct: function (cents) {
         if (!this.active()) return 0;
@@ -84,9 +81,9 @@
 {%- when 'bar' -%}
   {%- if bf_on -%}
   <div class="pbf-bars">
-    <div data-bf="p1"><a class="pbf-bar" href="/pages/wandweek"><b>De Wandweek</b> · 26–30 november<span class="pbf-d"> · VIP's shoppen 12 uur eerder</span> <span class="pbf-arrow">→</span></a></div>
-    <div data-bf="vip"><a class="pbf-bar" href="/pages/wandweek"><b>VIP-avond is open</b><span class="pbf-d"> · alleen met je persoonlijke link</span> · iedereen vanaf vr 08:00</a></div>
-    <div data-bf="p2"><a class="pbf-bar" href="/collections/wandpanelen"><b>Black Friday</b> · {{ bf_pmin }}–{{ bf_pmax }}% korting + gratis montagekit<span class="pbf-d"> vanaf {{ bf_kit_money }}</span> · t/m ma<span class="pbf-d"> 30 november</span> 23:59</a></div>
+    <div data-bf="p1"><a class="pbf-bar" href="/pages/wandweek"><b>De Wandweek</b> · VIP's tot {{ bf_vmax }}% korting<span class="pbf-d"> en 12 uur eerder</span> <span class="pbf-arrow">→</span></a></div>
+    <div data-bf="vip"><a class="pbf-bar" href="/pages/wandweek"><b>VIP-avond is open</b><span class="pbf-d"> · log in met je VIP-e-mailadres</span> · iedereen vanaf vr 08:00</a></div>
+    <div data-bf="p2"><a class="pbf-bar" href="/collections/wandpanelen"><b>Black Friday</b> · {{ bf_pmin }}–{{ bf_pmax }}% korting + gratis montagekit<span class="pbf-d"> bij elk paneel</span> · t/m ma<span class="pbf-d"> 30 november</span> 23:59</a></div>
   </div>
   {%- endif -%}
 
@@ -107,14 +104,13 @@
       {{ bf_pic }}
       <div class="pbf-hero__in">
         <p class="ph-k ph-k--light">De Wandweek · Black Friday 26–30 november</p>
-        <h2 class="pbf-hero__h">Voel je wand eerst. Koop hem met Black Friday.</h2>
-        <p class="pbf-hero__sub">Word VIP: kies een gratis staal, shop 12 uur eerder en krijg meer dan iedereen.</p>
-        <ul class="pbf-perks"><li>Gratis staal thuis</li><li>12 uur eerder: 26/11 20:00</li><li>+{{ bf_vip_x }}% en montagekit vanaf {{ bf_vkit_money }}</li></ul>
+        <h2 class="pbf-hero__h">Word VIP: tot {{ bf_vmax }}% korting<em>en shop 12 uur eerder</em></h2>
+        <p class="pbf-hero__sub">+ gratis montagekit: 1 koker bij elk paneel. Kies eerst een gratis staal, dan weet je zeker welke wand je in de Wandweek koopt.</p>
+        <ul class="pbf-perks"><li>Gratis staal thuis</li><li>12 uur eerder</li><li>+{{ bf_vip_x }}% extra</li><li>Gratis montagekit</li></ul>
         <div class="ph-btns">
           <a class="ph-btn ph-btn--paper" href="/pages/wandweek">Word VIP + kies je staal</a>
           <a class="ph-btn ph-btn--line-light" href="/collections/wandpanelen">Bekijk alle wandpanelen</a>
         </div>
-        <p class="pbf-hero__small">Aanmelden is gratis · geen account nodig</p>
       </div>
     </section>
   </div>
@@ -124,9 +120,9 @@
       <div class="pbf-hero__in">
         <p class="ph-k ph-k--light"><span data-bf="vip">Black Friday · VIP-avond</span><span data-bf="p2">Black Friday · nog <span class="pbf-count" data-bf-count></span></span></p>
         <h2 class="pbf-hero__h">Hoe groter je wand, hoe groter je korting.</h2>
-        <div data-bf="vip"><p class="pbf-hero__sub">Nu alleen voor VIP's, met je persoonlijke link. Iedereen shopt mee vanaf vrijdag 27 november 08:00.</p></div>
+        <div data-bf="vip"><p class="pbf-hero__sub">Nu alleen voor VIP's: log in met je VIP-e-mailadres. Iedereen shopt mee vanaf vrijdag 27 november 08:00.</p></div>
         {{ bf_tier_list }}
-        <p class="pbf-kit">Gratis High Tack Montagekit vanaf {{ bf_kit_money }} · 1 koker per paneel</p>
+        <p class="pbf-kit">Gratis High Tack Montagekit: 1 koker bij elk paneel</p>
         <div class="ph-btns">
           <a class="ph-btn ph-btn--paper" href="/collections/wandpanelen">Shop de Wandweek</a>
           <a class="ph-btn ph-btn--line-light" href="/products/813-hout-natural-oak">Reken je wand uit</a>
@@ -142,14 +138,14 @@
     <div class="pbf-band">
       <div class="ph-wrap">
         <p class="pbf-band__h">Black Friday: hoe groter je wand, hoe groter je korting</p>
-        <p class="pbf-band__t">{{ bf_tier_txt }} · gratis montagekit vanaf {{ bf_kit_money }}<span data-bf="vip"> · nu alleen voor VIP's, iedereen vanaf vr 27/11 08:00</span></p>
+        <p class="pbf-band__t">{{ bf_tier_txt }} · gratis montagekit bij elk paneel<span data-bf="vip"> · nu alleen voor VIP's, iedereen vanaf vr 27/11 08:00</span></p>
       </div>
     </div>
   </div>
   <div data-bf="p1">
     <div class="pbf-band pbf-band--soft">
       <div class="ph-wrap">
-        <p class="pbf-band__t"><b>De Wandweek · 26–30 november.</b> Word VIP: gratis staal en 12 uur eerder shoppen. <a href="/pages/wandweek">Word VIP →</a></p>
+        <p class="pbf-band__t"><b>De Wandweek · 26–30 november.</b> Word VIP: tot {{ bf_vmax }}% korting en 12 uur eerder shoppen. <a href="/pages/wandweek">Word VIP →</a></p>
       </div>
     </div>
   </div>
@@ -166,45 +162,156 @@
 
 {%- when 'pdp' -%}
   {%- if bf_on -%}
-  <div data-bf="p1"><p class="pbf-pdp pbf-pdp--soft"><b>De Wandweek · 26–30 november.</b> Word VIP en shop 12 uur eerder met extra korting. <a href="/pages/wandweek">Word VIP →</a></p></div>
-  <div data-bf="vip p2"><p class="pbf-pdp"><b>Black Friday:</b> {{ bf_tier_txt }}. Gratis High Tack Montagekit vanaf {{ bf_kit_money }}, 1 koker per paneel.{% if bf_is_vip %} <b>Jij bent VIP:</b> +{{ bf_vip_x }}% extra en de montagekit al vanaf {{ bf_vkit_money }}.{% endif %}<span data-bf="vip"> Nu alleen voor VIP's; iedereen vanaf vrijdag 27 november 08:00.</span></p></div>
+  <div data-bf="p1"><p class="pbf-pdp pbf-pdp--soft"><b>De Wandweek · 26–30 november.</b> VIP's krijgen tot {{ bf_vmax }}% korting en shoppen 12 uur eerder. <a href="/pages/wandweek">Word VIP →</a></p></div>
+  <div data-bf="vip p2"><p class="pbf-pdp"><b>Black Friday:</b> {{ bf_tier_txt }}. Gratis High Tack Montagekit: 1 koker bij elk paneel.{% if bf_is_vip %} <b>Jij bent VIP:</b> +{{ bf_vip_x }}% extra.{% endif %}<span data-bf="vip"> Nu alleen voor VIP's; iedereen vanaf vrijdag 27 november 08:00.</span></p></div>
+  {%- endif -%}
+
+{%- when 'cart' -%}
+  {%- comment -%} Winkelwagen: gratis kokers in één tik toevoegen (alleen als de kit-korting voor deze klant geldt) {%- endcomment -%}
+  {%- if bf_on -%}
+  {%- liquid
+    assign kit_p = all_products['hack-tack-montagekit']
+    assign kit_v = kit_p.selected_or_first_available_variant
+    assign n_pan = 0
+    assign n_kit = 0
+    for it in cart.items
+      if it.product.handle == 'hack-tack-montagekit'
+        assign n_kit = n_kit | plus: it.quantity
+      else
+        assign it_cols = it.product.collections | map: 'handle'
+        if it_cols contains 'wandpanelen'
+          assign n_pan = n_pan | plus: it.quantity
+        endif
+      endif
+    endfor
+    assign n_miss = n_pan | minus: n_kit
+  -%}
+  {%- if kit_v and n_pan > 0 -%}
+  <div data-bf="{% if bf_is_vip %}vip {% endif %}p2">
+    <div class="pbf-kitbox">
+      {%- if n_miss > 0 -%}
+        <p><b>Je krijgt {{ n_pan }} High Tack-{% if n_pan == 1 %}koker{% else %}kokers{% endif %} gratis</b>1 koker bij elk paneel, tijdens Black Friday. Leg ze in je winkelwagen, dan rekenen we ze in de kassa voor € 0.</p>
+        <button type="button" class="pbf-kitbox__btn" data-pbf-kit="{{ kit_v.id }}" data-qty="{{ n_miss }}">Voeg {% if n_kit > 0 %}nog {% endif %}{{ n_miss }} gratis {% if n_miss == 1 %}koker{% else %}kokers{% endif %} toe</button>
+      {%- elsif n_miss == 0 -%}
+        <p class="pbf-kitbox__ok">✓ {{ n_kit }} gratis {% if n_kit == 1 %}koker{% else %}kokers{% endif %} in je winkelwagen, genoeg voor {{ n_pan }} {% if n_pan == 1 %}paneel{% else %}panelen{% endif %}</p>
+      {%- else -%}
+        {%- assign n_extra = n_miss | abs -%}
+        <p class="pbf-kitbox__ok">✓ {{ n_pan }} gratis {% if n_pan == 1 %}koker{% else %}kokers{% endif %} · de {{ n_extra }} extra {% if n_extra == 1 %}koker rekenen{% else %}kokers rekenen{% endif %} we gewoon (€ {{ kit_v.price | money_without_currency }} per stuk)</p>
+      {%- endif -%}
+    </div>
+  </div>
+  {%- endif -%}
   {%- endif -%}
 
 {%- when 'popup' -%}
   {%- if bf_on and bf_is_vip == false and template.name != 'product' and template.suffix != 'wandweek' -%}
+  {%- liquid
+    assign p813 = all_products['813-hout-natural-oak']
+    assign pop_img = settings.bf_hero_image | default: p813.media[1] | default: p813.featured_media
+    assign pop_list = '813-hout-natural-oak|813 Natural Oak,812-hout-walnut-deep|812 Walnut Deep,wandpaneel-travertine-ivory-851|851 Travertine Ivory,821-japanse-stof-japandi-light|821 Japandi Light,830-leer-leather-taup|830 Leather Taupe,concrete-smoke-691-betonlook|691 Concrete Smoke' | split: ','
+  -%}
   <div data-bf="p1">
-    <div class="pbf-pop" data-pbf-pop hidden role="dialog" aria-modal="false" aria-labelledby="pbf-pop-h">
-      <button type="button" class="pbf-pop__x" data-pbf-pop-x aria-label="Sluiten">×</button>
-      <p class="ph-k">Black Friday komt eraan</p>
-      <p class="pbf-pop__h" id="pbf-pop-h">Shop 12 uur eerder dan iedereen</p>
-      <p class="pbf-pop__t">Word VIP van De Wandweek: gratis staal en vroege toegang op 26 november om 20:00.</p>
-      {%- form 'customer', id: 'pbf-pop-form', class: 'pbf-pop__f' -%}
-        <input type="hidden" name="contact[tags]" value="{{ bf_tag }},newsletter,wandweek-popup">
-        <input type="hidden" name="contact[accepts_marketing]" value="true">
-        <label class="visually-hidden" for="pbf-pop-mail">E-mailadres</label>
-        <input id="pbf-pop-mail" type="email" name="contact[email]" required autocomplete="email" placeholder="E-mailadres">
-        <button type="submit" class="ph-btn ph-btn--ink">Word VIP</button>
-      {%- endform -%}
-      <p class="pbf-pop__s">Geen account nodig · afmelden kan altijd · <a href="/policies/privacy-policy">Privacy</a></p>
+    <div class="pbf-pop" data-pbf-pop hidden role="dialog" aria-modal="true" aria-labelledby="pbf-pop-h">
+      <div class="pbf-pop__bg" data-pbf-pop-x></div>
+      <div class="pbf-pop__card">
+        <div class="pbf-pop__img">
+          {{ pop_img | image_url: width: 900 | image_tag: loading: 'lazy', widths: '450, 700, 900', sizes: '(min-width: 990px) 430px, 100vw', alt: '' }}
+          <div class="pbf-pop__tag"><small data-pbf-s1>VIP-avond</small><small data-pbf-s2 hidden>Je bent VIP</small><b>Do 26 nov 20:00</b><span>12 uur vóór iedereen</span></div>
+          <div class="pbf-pop__fan" aria-hidden="true">
+            {%- for i in (0..2) -%}{%- assign pl = pop_list[forloop.index0] | split: '|' -%}{%- assign pp = all_products[pl[0]] -%}<i style="background-image:url('{{ pp.featured_media | image_url: width: 240 }}')"></i>{%- endfor -%}
+          </div>
+        </div>
+        <button type="button" class="pbf-pop__x" data-pbf-pop-x aria-label="Sluiten">✕</button>
+
+        <div class="pbf-pop__in" data-pbf-step="1">
+          <div class="pbf-pop__dots" aria-hidden="true"><i class="on"></i><i></i></div>
+          <span class="pbf-pop__badge">De Wandweek · Black Friday</span>
+          <p class="pbf-pop__h" id="pbf-pop-h">Word VIP: tot {{ bf_vmax }}% korting<em>en shop 12 uur eerder</em></p>
+          <div class="pbf-pop__chips"><span>Gratis staal thuis</span><span>12 uur eerder</span><span>+{{ bf_vip_x }}% extra</span><span>Gratis montagekit</span></div>
+          {%- form 'customer', id: 'pbf-pop-form', class: 'pbf-pop__f' -%}
+            <input type="hidden" name="contact[tags]" value="{{ bf_tag }},newsletter,wandweek-popup">
+            <input type="hidden" name="contact[accepts_marketing]" value="true">
+            <label class="visually-hidden" for="pbf-pop-mail">E-mailadres</label>
+            <input id="pbf-pop-mail" type="email" name="contact[email]" required autocomplete="email" placeholder="Je e-mailadres">
+            <button type="submit" class="pbf-pop__go">Zet me op de VIP-lijst</button>
+          {%- endform -%}
+          <button type="button" class="pbf-pop__no" data-pbf-pop-x>Nee, bedankt</button>
+          <p class="pbf-pop__fine">Je krijgt de VIP-toegang en tips voor je wand per e-mail. Afmelden kan altijd. · <a href="/policies/privacy-policy">Privacy</a></p>
+        </div>
+
+        <div class="pbf-pop__in" data-pbf-step="2" hidden>
+          <div class="pbf-pop__dots" aria-hidden="true"><i></i><i class="on"></i></div>
+          <span class="pbf-pop__ok" aria-hidden="true">✓</span>
+          <p class="pbf-pop__h pbf-pop__h--s">Je staat op de VIP-lijst</p>
+          <p class="pbf-pop__t">Kies nu je gratis staal (max. 3). Je betaalt alleen € 6,95 verzending; die krijg je als korting terug op je Wandweek-bestelling.</p>
+          <div class="pbf-pop__sw" data-pbf-sw>
+            {%- for row in pop_list -%}
+              {%- assign pl = row | split: '|' -%}{%- assign pp = all_products[pl[0]] -%}
+              {%- if pp and pp.available -%}
+                <button type="button" aria-pressed="false" data-id="{{ pp.selected_or_first_available_variant.id }}" data-url="{{ pp.url }}" data-title="{{ pp.title | escape }}" data-label="{{ pl[1] }}" data-img="{{ pp.featured_media | image_url: width: 240 }}" style="background-image:url('{{ pp.featured_media | image_url: width: 240 }}')"><span>{{ pl[1] }}</span></button>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          <button type="button" class="pbf-pop__go" data-pbf-smp disabled>Kies je stalen</button>
+          <a class="pbf-pop__lnk" href="#" data-pbf-ics download="wandweek-vip.ics">Zet 26/11 20:00 in je agenda</a>
+        </div>
+      </div>
     </div>
   </div>
   <script>
   (function () {
     var pop = document.querySelector('[data-pbf-pop]');
     if (!pop || !window.PDBF || PDBF.ph !== 'p1') return;
-    var seen = false; try { seen = localStorage.getItem('pd-bf-pop') === '1'; } catch (e) {}
-    if (seen || /customer_posted=true/.test(location.search)) return;
+    var LS = function (k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } };
+    var sent = /customer_posted=true/.test(location.search) && LS('pd-bf-pop-sent') === '1';
     var shown = false;
-    function show() {
-      if (shown || document.querySelector('cart-drawer[open]')) return;
-      shown = true; pop.hidden = false; requestAnimationFrame(function () { pop.classList.add('is-on'); });
-      try { localStorage.setItem('pd-bf-pop', '1'); } catch (e) {}
-      if (window.gtag) gtag('event', 'wandweek_popup_view');
+    function show(step) {
+      if (shown) return; shown = true;
+      if (step === 2) {
+        pop.querySelector('[data-pbf-step="1"]').hidden = true;
+        pop.querySelector('[data-pbf-step="2"]').hidden = false;
+        pop.querySelector('[data-pbf-s1]').hidden = true; pop.querySelector('[data-pbf-s2]').hidden = false;
+        LS('pd-bf-pop-sent', '2');
+      }
+      pop.hidden = false; document.documentElement.classList.add('pbf-pop-open');
+      requestAnimationFrame(function () { pop.classList.add('is-on'); });
+      LS('pd-bf-pop', '1');
+      if (window.gtag) gtag('event', step === 2 ? 'wandweek_popup_staal' : 'wandweek_popup_view');
     }
-    pop.querySelector('[data-pbf-pop-x]').addEventListener('click', function () { pop.classList.remove('is-on'); setTimeout(function () { pop.hidden = true; }, 250); });
-    pop.querySelector('form').addEventListener('submit', function () { if (window.gtag) gtag('event', 'wandweek_vip_signup', { place: 'popup' }); });
-    if (window.matchMedia('(max-width: 989px)').matches) setTimeout(show, 20000);
-    else document.addEventListener('mouseout', function (e) { if (!e.relatedTarget && e.clientY < 8) show(); });
+    function hide() { pop.classList.remove('is-on'); document.documentElement.classList.remove('pbf-pop-open'); setTimeout(function () { pop.hidden = true; }, 250); }
+    pop.querySelectorAll('[data-pbf-pop-x]').forEach(function (b) { b.addEventListener('click', hide); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pop.hidden) hide(); });
+    pop.querySelector('form').addEventListener('submit', function () { LS('pd-bf-pop-sent', '1'); if (window.gtag) gtag('event', 'wandweek_vip_signup', { place: 'popup' }); });
+    /* Stap 2: stalen kiezen (max. 3) en via de samplebox afronden op /pages/sample */
+    var picks = [], go = pop.querySelector('[data-pbf-smp]');
+    pop.querySelectorAll('[data-pbf-sw] button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var i = picks.indexOf(b);
+        if (i > -1) picks.splice(i, 1); else if (picks.length < 3) picks.push(b);
+        pop.querySelectorAll('[data-pbf-sw] button').forEach(function (x) { x.setAttribute('aria-pressed', picks.indexOf(x) > -1 ? 'true' : 'false'); });
+        go.disabled = !picks.length;
+        go.textContent = picks.length ? 'Bestel mijn ' + picks.length + (picks.length === 1 ? ' staal' : ' stalen') : 'Kies je stalen';
+      });
+    });
+    go.addEventListener('click', function () {
+      var box = []; try { box = JSON.parse(localStorage.getItem('pd-edit') || '[]') || []; } catch (e) {}
+      picks.forEach(function (b) {
+        if (box.length >= 5 || box.some(function (x) { return x.id === b.dataset.id; })) return;
+        box.push({ id: b.dataset.id, url: b.dataset.url, title: b.dataset.title, label: b.dataset.label, img: b.dataset.img });
+      });
+      LS('pd-edit', JSON.stringify(box));
+      if (window.gtag) gtag('event', 'wandweek_popup_stalen', { aantal: picks.length });
+      location.href = '/pages/sample';
+    });
+    var ics = pop.querySelector('[data-pbf-ics]');
+    if (ics) ics.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//PureDeco//Wandweek//NL', 'BEGIN:VEVENT', 'UID:wandweek-2026@puredeco.nl', 'DTSTAMP:20261102T000000Z', 'DTSTART:20261126T190000Z', 'DTEND:20261126T200000Z', 'SUMMARY:PureDeco Wandweek: VIP-avond open', 'DESCRIPTION:Log in met je VIP-e-mailadres op puredeco.nl', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n'));
+    if (sent) { show(2); return; }
+    if (LS('pd-bf-pop')) return;
+    if (window.matchMedia('(max-width: 989px)').matches) {
+      setTimeout(function () { if (!document.querySelector('cart-drawer[open]')) show(1); }, 20000);
+    } else {
+      document.addEventListener('mouseout', function (e) { if (!e.relatedTarget && e.clientY < 8) show(1); });
+    }
   })();
   </script>
   {%- endif -%}
@@ -221,6 +328,16 @@
       document.querySelectorAll('[data-bf-count]').forEach(function (el) { el.textContent = txt; });
     }
     tick(); setInterval(tick, 30000);
+    /* Winkelwagen: gratis kokers toevoegen en de lade verversen */
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('[data-pbf-kit]');
+      if (!b) return;
+      b.disabled = true; b.textContent = 'Toevoegen…';
+      fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ items: [{ id: Number(b.dataset.pbfKit), quantity: Number(b.dataset.qty) }] }) })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function () { document.dispatchEvent(new CustomEvent('cart:refresh', { detail: { open: true } })); if (window.gtag) gtag('event', 'wandweek_kit_add', { aantal: Number(b.dataset.qty) }); })
+        .catch(function () { b.disabled = false; b.textContent = 'Dat lukte niet, probeer opnieuw'; });
+    });
   })();
   </script>
   {%- endif -%}

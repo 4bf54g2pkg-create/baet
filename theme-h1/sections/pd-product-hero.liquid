@@ -647,16 +647,14 @@
     var pct = B.pct(sum), html = '';
     if (pct) {
       var net = sum - Math.round(sum * pct / 100);
-      html += '<p class="pdc__bf-l"><s>' + money(sum) + '</s> <b>' + money(net) + '</b> met ' + pct + '% Black Friday' + (sum >= B.kit ? ' · + gratis montagekit (' + n + (n === 1 ? ' koker' : ' kokers') + ')' : '') + '</p>';
+      html += '<p class="pdc__bf-l"><s>' + money(sum) + '</s> <b>' + money(net) + '</b> met ' + pct + '% Black Friday · + ' + n + ' gratis ' + (n === 1 ? 'koker' : 'kokers') + '</p>';
+    } else {
+      html += '<p class="pdc__bf-l">+ ' + n + ' gratis High Tack-' + (n === 1 ? 'koker' : 'kokers') + ', 1 bij elk paneel</p>';
     }
     var nx = B.next(sum);
     if (nx && current.price) {
       var k = Math.ceil((nx.min - sum) / current.price);
       if (k <= 3) html += '<p class="pdc__bf-n">Nog ' + k + (k === 1 ? ' paneel' : ' panelen') + ' erbij (' + money(sum + k * current.price) + ') = ' + nx.pct + '% korting</p>';
-    }
-    if (!pct && sum < B.kit && current.price) {
-      var kk = Math.ceil((B.kit - sum) / current.price);
-      if (kk <= 3 && !html) html += '<p class="pdc__bf-n">Nog ' + kk + (kk === 1 ? ' paneel' : ' panelen') + ' erbij voor de gratis montagekit</p>';
     }
     el.innerHTML = html; el.hidden = !html;
   }

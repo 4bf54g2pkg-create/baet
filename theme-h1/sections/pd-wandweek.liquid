@@ -8,7 +8,6 @@
   assign s = section.settings
   assign bf_tag = settings.bf_vip_tag | default: 'wandweek-vip'
   assign bf_vip_x = settings.bf_vip_extra | default: 5
-  assign bf_vkit = settings.bf_vip_kit_min | default: 400
   assign p813 = all_products['813-hout-natural-oak']
   assign img = s.image | default: p813.media[1] | default: p813.featured_media
 -%}
@@ -16,7 +15,7 @@
   <div class="pww__media">{{ img | image_url: width: 1400 | image_tag: loading: 'eager', widths: '600, 900, 1200, 1400', sizes: '(min-width: 990px) 45vw, 100vw', alt: 'Wandpaneel 813 Natural Oak in een woonkamer' }}</div>
   <div class="pww__in">
     <p class="ph-k">De Wandweek · VIP</p>
-    <h1 class="pww__h">Voel je wand eerst. Koop hem met Black Friday.</h1>
+    <h1 class="pww__h">Word VIP: tot {{ settings.bf_tiers | default: '400:10,800:15,1500:20' | split: ',' | last | split: ':' | last | plus: bf_vip_x }}% korting<em>en shop 12 uur eerder</em></h1>
 
     <div data-bf="vip p2">
       <div class="pww__live">
@@ -28,7 +27,8 @@
     <ul class="pww__perks">
       <li><b>Gratis staal</b><span>€ 6,95 korting op je Wandweek-bestelling (je staalverzending terug)</span></li>
       <li><b>12 uur eerder</b><span>26 november om 20:00</span></li>
-      <li><b>Meer voordeel</b><span>+{{ bf_vip_x }}% en montagekit vanaf € {{ bf_vkit | times: 100 | money_without_currency | remove: ',00' }}</span></li>
+      <li><b>+{{ bf_vip_x }}% extra</b><span>bovenop 10–20%: tot {{ settings.bf_tiers | default: '400:10,800:15,1500:20' | split: ',' | last | split: ':' | last | plus: bf_vip_x }}%</span></li>
+      <li><b>Gratis montagekit</b><span>1 koker bij elk paneel, voor iedereen in de Wandweek</span></li>
     </ul>
 
     {%- form 'customer', id: 'pww-form', class: 'pww__form' -%}
