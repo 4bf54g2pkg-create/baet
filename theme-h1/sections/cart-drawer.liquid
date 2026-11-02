@@ -538,7 +538,7 @@
             {%- if pd_pre_week != blank and pd_has_stock -%}
               <p class="pd-cart-mix">Je bestelling komt in <b>één levering in {{ pd_pre_week }}</b>, zodra alles binnen is. Wil je de producten die op voorraad zijn liever alvast? <a href="https://wa.me/{{ pd_wa }}?text={{ 'Hoi PureDeco, kan het deel van mijn bestelling dat op voorraad is alvast komen?' | url_encode }}" target="_blank" rel="noopener">App ons</a>.</p>
             {%- elsif pd_pre_week != blank -%}
-              <p class="pd-cart-mix">Pre-order: we leveren in <b>{{ pd_pre_week }}</b>. Je prijs staat vast en annuleren kan kosteloos tot we verzenden.</p>
+              <p class="pd-cart-mix">Pre-order: we leveren in <b>{{ pd_pre_week }}</b>. Je prijs staat vast.</p>
             {%- endif -%}
           <div class="drawer__footer-head grid gap-4">
             {%- render 'gift-wrapping',
