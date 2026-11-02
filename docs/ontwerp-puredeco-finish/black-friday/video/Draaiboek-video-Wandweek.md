@@ -211,13 +211,13 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 
 **Los van Black Friday, blijvend te gebruiken.** Voor aannemers, chaletbouwers, interieurbouwers, architecten, hotels en zorg.
 **Kanalen:** LinkedIn (hoofdkanaal, hook A, 1:1 en 16:9), Instagram/TikTok/Facebook (hook B, 9:16 en 4:5), YouTube (16:9).
-**Toon:** de oprichter praat zelf, kort en direct. Geen reclamestem, geen intro.
+**Toon:** een model presenteert, kort en direct. Geen reclamestem, geen intro.
 
 **Waarom dit werkt:**
 - **Seconde 1 = actie:** een vraag, een klop op de wand of een herkenbaar probleem. Nooit een logo of introductie.
 - **Open vraag:** "Wat hebben ze gemeen?" De kijker wil het antwoord weten en kijkt door.
 - **Tempo:** om de 1,5 seconde een nieuw beeld, grote tekst per woord.
-- **Persoonlijk:** "Je hebt geen accountmanager. Je hebt mij."
+- **Vertrouwen:** "Eén project. Eén aanspreekpunt."
 - **Loop:** het eindbeeld is gelijk aan het beginbeeld (klop op de wand), zodat de video naadloos doorloopt.
 
 **Vier hooks (alle vier opnemen):**
@@ -226,8 +226,8 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 |---|---|---|---|
 | **A · Raadsel** (LinkedIn, hoofdversie) | Drie beelden naast elkaar: hotelkamer, ziekenhuisgang, chalet | "Een hotel. Een ziekenhuis. Een chalet. Wat hebben ze gemeen?" | WAT HEBBEN DEZE 3 GEMEEN? |
 | **B · POV** (Instagram/TikTok) | Aannemer om 7:00 op een lege bouwplaats, kijkt op zijn telefoon | (geen tekst, alleen een zucht) | POV: maandag 7:00. Je ploeg staat klaar. Je panelen niet. |
-| **C · Kracht** | Oprichter tilt een paneel van 280 cm alleen op en loopt ermee weg | "280 centimeter. Eén baan. En ik til hem in m'n eentje." | 280 CM. ÉÉN BAAN. |
-| **D · Aanspreken** | Oprichter recht in de camera, pallets erachter | "Aannemers. Chaletbouwers. Interieurbouwers. Dit is voor jullie." | AANNEMER? KIJK DIT. |
+| **C · Kracht** | Model tilt een paneel van 280 cm alleen op en loopt ermee weg | "280 centimeter. Eén baan. En je tilt hem in je eentje." | 280 CM. ÉÉN BAAN. |
+| **D · Aanspreken** | Model recht in de camera, pallets erachter | "Aannemers. Chaletbouwers. Interieurbouwers. Dit is voor jullie." | AANNEMER? KIJK DIT. |
 
 **Script na de hook:**
 
@@ -237,11 +237,11 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 | 5–10 s | Harde cuts, 1 seconde per beeld: hotel, ziekenhuis, chalet, restaurant, kantoor | "Hotels. Ziekenhuizen. Chalets. Restaurants. Kantoren. We hebben het allemaal gedaan." | HOTELS · ZORG · CHALETS · HORECA |
 | 10–14 s | Vrachtwagen wordt geladen, planning op een tablet | "En elke keer dezelfde vraag: komt het op tijd? Ja. In één keer, of per verdieping. Wanneer jij bouwt." | WANNEER JIJ BOUWT. |
 | 14–20 s | Snelle close-ups: klop op het paneel, zijkant met bamboekern, macro van de naad, paneel van 280 cm, kleurstalen | "Kwaliteitspanelen met een kern van bamboe. Naadloos. 280 centimeter per baan, geen stucwerk. En vanaf 250 m² in jouw eigen kleur." | BAMBOEKERN · NAADLOOS · 280 CM · JOUW KLEUR VANAF 250 M² |
-| 20–24 s | Oprichter, dichtbij | "En je hebt geen accountmanager. Je hebt mij." | JE HEBT MIJ. |
-| 24–28 s | Oprichter wijst naar beneden | "Vul het formulier hieronder in, en ik stuur je de projectsamples." | 👇 VUL HET FORMULIER IN · projectsamples |
+| 20–24 s | Model, dichtbij | "Eén project. Eén aanspreekpunt. Van het eerste sample tot het laatste paneel." | 1 PROJECT · 1 AANSPREEKPUNT |
+| 24–28 s | Model wijst naar beneden | "Vul het formulier hieronder in, en we sturen je de projectsamples." | 👇 VUL HET FORMULIER IN · projectsamples |
 | 28–30 s | Hand klopt op dezelfde wand als bij de start (loop) | (niets) | puredeco.nl › Zakelijk |
 
-**15 sec-versie:** hook → 5–10 s → "Je hebt geen accountmanager. Je hebt mij." → "Vul het formulier hieronder in, en ik stuur je de projectsamples."
+**15 sec-versie:** hook → 5–10 s → "Eén project. Eén aanspreekpunt." → "Vul het formulier hieronder in, en we sturen je de projectsamples."
 
 **Link en knop:** advertentieknop **"Meer informatie"** naar `puredeco.nl/pages/form?utm_source=linkedin&utm_campaign=projects` (Meta: `utm_source=meta`). Vanaf seconde 0 een vast labeltje **puredeco.nl › Zakelijk** in beeld. Op LinkedIn kan ook een **Lead Gen-formulier** in de advertentie (aanvraag zonder de app te verlaten): zelfde vragen als het formulier op de site.
 
@@ -249,30 +249,30 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 > Een hotel. Een ziekenhuis. Een chalet. Wat hebben ze gemeen?
 > Dezelfde wand. Van ons.
 > ✔️ Levering in één keer of per verdieping, afgestemd op je bouwplanning
-> ✔️ Geen accountmanager: je hebt direct de oprichter aan de lijn
+> ✔️ Eén vast aanspreekpunt, van het eerste sample tot het laatste paneel
 > ✔️ Kwaliteitspanelen met een bamboekern, naadloos
 > ✔️ 280 cm per baan: geen stucwerk, korte stilstand
 > ✔️ Vanaf 250 m² de toplaag in jouw eigen kleur
 > ✔️ Nabestellen uit dezelfde serie
-> 👉 Vul het formulier in via de link en ik stuur je de projectsamples.
+> 👉 Vul het formulier in via de link en we sturen je de projectsamples.
 > #aannemer #chaletbouw #interieurbouw #hotelinterieur #zorgbouw #recreatiebouw #architectuur #wandafwerking
 
 **Caption Instagram/TikTok:**
 > Een hotel, een ziekenhuis en een chalet. Wat ze gemeen hebben? Deze wand. 🏨🏥🏡
 > Bamboekern · naadloos · 280 cm per baan · eigen kleur vanaf 250 m²
-> 👉 Vul het formulier in (link in bio / knop hieronder) en ik stuur je de projectsamples. Tag een aannemer die dit moet zien 👇
+> 👉 Vul het formulier in (link in bio / knop hieronder) en we sturen je de projectsamples. Tag een aannemer die dit moet zien 👇
 
-**Vaste serie erbij: "Raad waar deze hangt."** Elke week een korte video (15 sec) over één project: hotel, ziekenhuis, chalet. Zelfde opening (klop op de wand), oprichter: "Raad waar deze hangt." Reveal in seconde 8. Gratis bereik en een portfolio dat niet op de website hoeft.
+**Vaste serie erbij: "Raad waar deze hangt."** Elke week een korte video (15 sec) over één project: hotel, ziekenhuis, chalet. Zelfde opening (klop op de wand), model: "Raad waar deze hangt." Reveal in seconde 8. Gratis bereik en een portfolio dat niet op de website hoeft.
 
 **Alles moet kloppen. Gebruik alleen wat waar is:**
 - **Ervaring met hotels, ziekenhuizen en chaletbouwers is bevestigd door PureDeco** (2 november 2026; niet alles staat op de website). Namen, logo's en herkenbare beelden van een klant alleen met toestemming van die klant.
-- **Hook C alleen als het waar is:** de oprichter moet het paneel van 280 cm echt alleen kunnen tillen. Anders hook C laten vallen.
+- **Hook C klopt:** één persoon kan een paneel van 280 cm alleen optillen (bevestigd door PureDeco, 2 november 2026).
 - **Eigen kleur vanaf 250 m²** (besluit 2 november 2026; staat zo in H3).
 - **Ziekenhuizen/zorg:** geen claims over hygiëne of "antibacterieel". Wel: "makkelijk schoon te maken met een vochtige doek".
 - **Geen superlatieven die we niet kunnen bewijzen** ("de beste", "uitzonderlijk"). Laat de kwaliteit zien: bamboekern, naadloze klik, 280 cm per baan.
 - **Geen vaste levertijd noemen** voor standaardpanelen. Maatwerkkleur: 10–14 weken.
 - **Geen "waterdicht" of "100% waterbestendig".**
-- **Formulier:** wie het invult, krijgt binnen een werkdag reactie van de oprichter (anders werkt "ik stuur je" averechts).
+- **Formulier:** wie het invult, krijgt binnen een werkdag reactie van het vaste aanspreekpunt (anders werkt "we sturen je" averechts).
 
 **Opnamelocatie:** het liefst op een echt project (hotel, zorg of chalet, met toestemming). Bestaande projectfoto's en -video's (met toestemming) in de snelle cuts van hook A en 5–10 s. Pallets, vrachtwagen en de opgebouwde wand in Studio Herwen, op dezelfde draaidag als video 1–3.
 
@@ -288,13 +288,13 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 6. Een wand van 4,20 m in één beeld (laat de schaal zien).
 7. Extreme close-up: twee 8 mm-panelen die in elkaar klikken (macro, met geluid).
 8. Zijkant van een paneel waarop je de lagen ziet: toplaag en bamboekern.
-9. Zakelijk: pallets met panelen, vrachtwagen die laadt, de oprichter met een tablet en een bouwtekening.
+9. Zakelijk: pallets met panelen, vrachtwagen die laadt, het model met een tablet en een bouwtekening.
 10. Zakelijk: bestaande foto's en video's van projecten in hotels, ziekenhuizen en chalets (alleen met toestemming van de klant).
 
 ## Opleveren
 
 - **Uiterlijk 11 november:** video 1 (30 sec en 15 sec).
 - **Uiterlijk 19 november:** video 2 (met de varianten VIP-avond en laatste dag) en video 3.
-- **Video 4 (zakelijk):** los van Black Friday. Mag na 19 november, eventueel op dezelfde draaidag opnemen (oprichter + pallets) en later monteren.
+- **Video 4 (zakelijk):** los van Black Friday. Mag na 19 november, eventueel op dezelfde draaidag opnemen (model + pallets) en later monteren.
 - Elke video in 9:16, 4:5 en 16:9, met en zonder ondertiteling.
 - Bestandsnamen: `WW26_V1_iedereen_30s_9x16.mp4`, `WW26_V2_live_B_4x5.mp4` enz.
