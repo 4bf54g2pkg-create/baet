@@ -243,7 +243,7 @@
           <div class="pbf-pop__dots" aria-hidden="true"><i></i><i class="on"></i></div>
           <span class="pbf-pop__ok" aria-hidden="true">✓</span>
           <p class="pbf-pop__h pbf-pop__h--s">Je staat op de VIP-lijst</p>
-          <p class="pbf-pop__t">Kies nu je gratis staal (max. 3). Je betaalt alleen € 6,95 verzending; die krijg je als korting terug op je Wandweek-bestelling.</p>
+          <p class="pbf-pop__t">Kies nu je gratis stalen (max. 5). Je betaalt alleen € 6,95 verzending; die krijg je als korting terug op je Wandweek-bestelling.</p>
           <div class="pbf-pop__sw" data-pbf-sw>
             {%- for row in pop_list -%}
               {%- assign pl = row | split: '|' -%}{%- assign pp = all_products[pl[0]] -%}
@@ -282,12 +282,12 @@
     pop.querySelectorAll('[data-pbf-pop-x]').forEach(function (b) { b.addEventListener('click', hide); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pop.hidden) hide(); });
     pop.querySelector('form').addEventListener('submit', function () { LS('pd-bf-pop-sent', '1'); if (window.gtag) gtag('event', 'wandweek_vip_signup', { place: 'popup' }); });
-    /* Stap 2: stalen kiezen (max. 3) en via de samplebox afronden op /pages/sample */
+    /* Stap 2: stalen kiezen (max. 5) en via de samplebox afronden op /pages/sample */
     var picks = [], go = pop.querySelector('[data-pbf-smp]');
     pop.querySelectorAll('[data-pbf-sw] button').forEach(function (b) {
       b.addEventListener('click', function () {
         var i = picks.indexOf(b);
-        if (i > -1) picks.splice(i, 1); else if (picks.length < 3) picks.push(b);
+        if (i > -1) picks.splice(i, 1); else if (picks.length < 5) picks.push(b);
         pop.querySelectorAll('[data-pbf-sw] button').forEach(function (x) { x.setAttribute('aria-pressed', picks.indexOf(x) > -1 ? 'true' : 'false'); });
         go.disabled = !picks.length;
         go.textContent = picks.length ? 'Bestel mijn ' + picks.length + (picks.length === 1 ? ' staal' : ' stalen') : 'Kies je stalen';
