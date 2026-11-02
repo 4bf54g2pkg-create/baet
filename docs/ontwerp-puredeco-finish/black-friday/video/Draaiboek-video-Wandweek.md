@@ -207,62 +207,74 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 
 ---
 
-## Video 4 · "Een leverancier waar je op kunt bouwen" (zakelijk, 40 sec)
+## Video 4 · "Wat hebben deze 3 gemeen?" (zakelijk, 30 sec + 15 sec)
 
-**Los van Black Friday, blijvend te gebruiken.** Voor aannemers, interieurbouwers, architecten en hospitality.
-**Kanalen:** LinkedIn (hoofdkanaal, 1:1 en 16:9), Instagram/Facebook (4:5 en 9:16), YouTube (16:9).
-**Toon:** zakelijk maar menselijk. De oprichter praat zelf, op een (project)locatie of in Studio Herwen tussen pallets panelen. Geen reclamestem.
-**Vorm:** "3 redenen" met teller, zoals video 1, plus een stille onthulling van een grote projectwand.
+**Los van Black Friday, blijvend te gebruiken.** Voor aannemers, chaletbouwers, interieurbouwers, architecten, hotels en zorg.
+**Kanalen:** LinkedIn (hoofdkanaal, hook A, 1:1 en 16:9), Instagram/TikTok/Facebook (hook B, 9:16 en 4:5), YouTube (16:9).
+**Toon:** de oprichter praat zelf, kort en direct. Geen reclamestem, geen intro.
 
-**Drie hooks (alle drie opnemen):**
-- **Hook A (hoofdversie):** Oprichter loopt langs pallets met panelen, kijkt in de camera. *"Als aannemer wil je maar één ding van een leverancier: dat hij levert."*
-- **Hook B:** Snelle cuts: hotelkamer → ziekenhuisgang → chalet → kantoor. *"Hotels. Ziekenhuizen. Chalets. Ze hangen al vol met onze wanden."*
-- **Hook B2 (reserve):** Grote wand in een hotelgang of lobby, camera rijdt erlangs. *"Je opdrachtgever wil een wow-wand. Jij wilt een leverancier die op tijd levert. Kan allebei."*
-- **Hook C:** Close-up: hand klopt op een paneel, dan op de bamboekern aan de zijkant. *"Dit paneel is gemaakt voor plekken waar elke dag honderden mensen langslopen."*
+**Waarom dit werkt:**
+- **Seconde 1 = actie:** een vraag, een klop op de wand of een herkenbaar probleem. Nooit een logo of introductie.
+- **Open vraag:** "Wat hebben ze gemeen?" De kijker wil het antwoord weten en kijkt door.
+- **Tempo:** om de 1,5 seconde een nieuw beeld, grote tekst per woord.
+- **Persoonlijk:** "Je hebt geen accountmanager. Je hebt mij."
+- **Loop:** het eindbeeld is gelijk aan het beginbeeld (klop op de wand), zodat de video naadloos doorloopt.
+
+**Vier hooks (alle vier opnemen):**
+
+| Hook | Beeld 0–3 s | Gesproken | Tekst in beeld |
+|---|---|---|---|
+| **A · Raadsel** (LinkedIn, hoofdversie) | Drie beelden naast elkaar: hotelkamer, ziekenhuisgang, chalet | "Een hotel. Een ziekenhuis. Een chalet. Wat hebben ze gemeen?" | WAT HEBBEN DEZE 3 GEMEEN? |
+| **B · POV** (Instagram/TikTok) | Aannemer om 7:00 op een lege bouwplaats, kijkt op zijn telefoon | (geen tekst, alleen een zucht) | POV: maandag 7:00. Je ploeg staat klaar. Je panelen niet. |
+| **C · Kracht** | Oprichter tilt een paneel van 280 cm alleen op en loopt ermee weg | "280 centimeter. Eén baan. En ik til hem in m'n eentje." | 280 CM. ÉÉN BAAN. |
+| **D · Aanspreken** | Oprichter recht in de camera, pallets erachter | "Aannemers. Chaletbouwers. Interieurbouwers. Dit is voor jullie." | AANNEMER? KIJK DIT. |
+
+**Script na de hook:**
 
 | Tijd | Beeld | Gesproken | Tekst in beeld |
 |---|---|---|---|
-| 0–3 s | Hook A, B of C | (zie hierboven) | A: "DAT HIJ LEVERT." |
-| 3–6 s | Oprichter, medium shot | "Wij zijn PureDeco. Wij leveren wandpanelen aan hotels, ziekenhuizen, chaletbouwers en aannemers." | PUREDECO PROJECTS |
-| 6–12 s | Pallets worden geladen, vrachtwagen, planning op een tablet | "Eén. Je kunt op ons bouwen. We leveren in één keer of per verdieping, precies wanneer jij bouwt. En je belt direct met de oprichter." | 1/3 · levering in fases · direct contact met de oprichter |
-| 12–20 s | Close-ups: hand over de nerf, zijkant met bamboekern, één paneel van 280 cm dat in één baan staat | "Twee. Kwaliteit die je voelt. Een kern van bamboe, een toplaag die je ziet én voelt, brandklasse B1. Eén paneel van 280 centimeter per baan: geen stucwerk, korte stilstand." | 2/3 · bamboekern · brandklasse B1 · 280 cm per baan |
-| 20–28 s | Snelle beelden van echte projecten: hotelkamer, ziekenhuisgang, chalet, restaurant, kantoor; daarna kleurstalen naast elkaar | "Drie. Ervaring. Van hotels en ziekenhuizen tot chalets en restaurants: we hebben het allemaal gedaan. En vanaf 150 vierkante meter maken we de toplaag in jóuw kleur." | 3/3 · hotels · zorg · chaletbouw · horeca · eigen kleur vanaf 150 m² |
-| 28–32 s | Oprichter | "En heb je later nog een paneel nodig? Dan bestel je gewoon bij, uit dezelfde serie." | nabestellen uit dezelfde serie |
-| 32–36 s | Stilte. Langzame rijder langs een grote afgewerkte projectwand | (niets zeggen, alleen muziek) | |
-| 36–40 s | Oprichter wijst naar beneden | "Zoek je een partner waar je op kunt bouwen? Klik hieronder en vraag projectsamples aan." | 👇 KLIK HIERONDER · projectsamples aanvragen · puredeco.nl › Zakelijk |
+| 3–5 s | Hand klopt op een afgewerkte wand | "Deze wand." (bij hook B: "Daarom bellen aannemers ons.") | DEZE WAND. |
+| 5–10 s | Harde cuts, 1 seconde per beeld: hotel, ziekenhuis, chalet, restaurant, kantoor | "Hotels. Ziekenhuizen. Chalets. Restaurants. Kantoren. We hebben het allemaal gedaan." | HOTELS · ZORG · CHALETS · HORECA |
+| 10–14 s | Vrachtwagen wordt geladen, planning op een tablet | "En elke keer dezelfde vraag: komt het op tijd? Ja. In één keer, of per verdieping. Wanneer jij bouwt." | WANNEER JIJ BOUWT. |
+| 14–20 s | Snelle close-ups: klop op het paneel, zijkant met bamboekern, macro van de naad, paneel van 280 cm, kleurstalen | "Kwaliteitspanelen met een kern van bamboe. Naadloos. 280 centimeter per baan, geen stucwerk. En vanaf 200 m² in jouw eigen kleur." | BAMBOEKERN · NAADLOOS · 280 CM · JOUW KLEUR VANAF 200 M² |
+| 20–24 s | Oprichter, dichtbij | "En je hebt geen accountmanager. Je hebt mij." | JE HEBT MIJ. |
+| 24–28 s | Oprichter wijst naar beneden | "Vul het formulier hieronder in, en ik stuur je de projectsamples." | 👇 VUL HET FORMULIER IN · projectsamples |
+| 28–30 s | Hand klopt op dezelfde wand als bij de start (loop) | (niets) | puredeco.nl › Zakelijk |
 
-**Link en knop:** advertentieknop **"Meer informatie"** naar `puredeco.nl/pages/form?utm_source=linkedin&utm_campaign=projects` (Meta: `utm_source=meta`). Vanaf seconde 0 een vast labeltje **puredeco.nl › Zakelijk** in beeld.
+**15 sec-versie:** hook → 5–10 s → "Je hebt geen accountmanager. Je hebt mij." → "Vul het formulier hieronder in, en ik stuur je de projectsamples."
 
-**15 sec-versie (LinkedIn-feed):** hook A → 6–12 s → 12–20 s ingekort tot *"Bamboekern, brandklasse B1, 280 cm per baan."* → 36–40 s.
+**Link en knop:** advertentieknop **"Meer informatie"** naar `puredeco.nl/pages/form?utm_source=linkedin&utm_campaign=projects` (Meta: `utm_source=meta`). Vanaf seconde 0 een vast labeltje **puredeco.nl › Zakelijk** in beeld. Op LinkedIn kan ook een **Lead Gen-formulier** in de advertentie (aanvraag zonder de app te verlaten): zelfde vragen als het formulier op de site.
 
 **Caption LinkedIn:**
-> Als aannemer wil je maar één ding van een leverancier: dat hij levert.
-> Hotels, ziekenhuizen, chaletbouwers en aannemers werken al met PureDeco Projects. Waarom:
+> Een hotel. Een ziekenhuis. Een chalet. Wat hebben ze gemeen?
+> Dezelfde wand. Van ons.
 > ✔️ Levering in één keer of per verdieping, afgestemd op je bouwplanning
-> ✔️ Direct contact met de oprichter, korte lijnen
-> ✔️ Kern van bamboe, toplaag van gerecycled PVC, brandklasse B1
+> ✔️ Geen accountmanager: je hebt direct de oprichter aan de lijn
+> ✔️ Kwaliteitspanelen met een bamboekern, naadloos
 > ✔️ 280 cm per baan: geen stucwerk, korte stilstand
-> ✔️ Vanaf 150 m² de toplaag in jouw kleur
+> ✔️ Vanaf 200 m² de toplaag in jouw eigen kleur
 > ✔️ Nabestellen uit dezelfde serie
-> ✔️ Ervaring in hotels, zorg, chaletbouw, horeca en kantoren
-> Aan welk project werk jij nu? Vraag projectsamples aan via de link, of stuur ons een bericht.
-> #aannemer #interieurbouw #hospitality #hotelinterieur #zorgbouw #chaletbouw #recreatiebouw #architectuur #wandafwerking
+> 👉 Vul het formulier in via de link en ik stuur je de projectsamples.
+> #aannemer #chaletbouw #interieurbouw #hotelinterieur #zorgbouw #recreatiebouw #architectuur #wandafwerking
 
-**Caption Instagram (korter):**
-> Hotels. Ziekenhuizen. Chalets. Ze hangen al vol met onze wanden. 🏨🏥🏡
-> Bamboekern · brandklasse B1 · 280 cm per baan · eigen kleur vanaf 150 m²
-> 👉 Klik hieronder voor projectsamples. Tag een aannemer die dit moet zien 👇
+**Caption Instagram/TikTok:**
+> Een hotel, een ziekenhuis en een chalet. Wat ze gemeen hebben? Deze wand. 🏨🏥🏡
+> Bamboekern · naadloos · 280 cm per baan · eigen kleur vanaf 200 m²
+> 👉 Vul het formulier in (link in bio / knop hieronder) en ik stuur je de projectsamples. Tag een aannemer die dit moet zien 👇
 
-**Reactie-tip:** beantwoord elke projectvraag binnen een uur met een concreet vervolg ("Stuur je tekening, dan rekenen we de m² uit en sturen we projectsamples"). Tag-reacties ("@collega kijk") zijn op LinkedIn goud: like en bedank ze.
+**Vaste serie erbij: "Raad waar deze hangt."** Elke week een korte video (15 sec) over één project: hotel, ziekenhuis, chalet. Zelfde opening (klop op de wand), oprichter: "Raad waar deze hangt." Reveal in seconde 8. Gratis bereik en een portfolio dat niet op de website hoeft.
 
 **Alles moet kloppen. Gebruik alleen wat waar is:**
-- **Ervaring met hotels, ziekenhuizen en chaletbouwers is bevestigd door PureDeco** (2 november 2026; niet alles staat op de website). Noem een **naam** van een hotel, ziekenhuis of bouwer alleen met toestemming van die klant. Gebruik voor projectbeelden alleen foto's of video's waar de klant akkoord mee is.
-- **Ziekenhuizen/zorg:** geen claims over hygiëne, "antibacterieel" of "geschikt voor OK/cleanroom". Wel: "makkelijk schoon te maken met een vochtige doek" en "brandklasse B1".
-- **Geen superlatieven die we niet kunnen bewijzen** ("de beste", "uitzonderlijk"). Wel bewijs dat je ziet: bamboekern, B1, 280 cm, eigen kleur, nabestellen.
-- **Geen levertijd noemen** voor standaardpanelen zonder dat die vaststaat. Maatwerkkleur: 10–14 weken (staat op de site).
+- **Ervaring met hotels, ziekenhuizen en chaletbouwers is bevestigd door PureDeco** (2 november 2026; niet alles staat op de website). Namen, logo's en herkenbare beelden van een klant alleen met toestemming van die klant.
+- **Hook C alleen als het waar is:** de oprichter moet het paneel van 280 cm echt alleen kunnen tillen. Anders hook C laten vallen.
+- **Eigen kleur vanaf 200 m²** (besluit 2 november 2026). Let op: de website noemt nog 150 m²; die moet gelijk worden getrokken voordat de video online gaat.
+- **Ziekenhuizen/zorg:** geen claims over hygiëne of "antibacterieel". Wel: "makkelijk schoon te maken met een vochtige doek".
+- **Geen superlatieven die we niet kunnen bewijzen** ("de beste", "uitzonderlijk"). Laat de kwaliteit zien: bamboekern, naadloze klik, 280 cm per baan.
+- **Geen vaste levertijd noemen** voor standaardpanelen. Maatwerkkleur: 10–14 weken.
 - **Geen "waterdicht" of "100% waterbestendig".**
+- **Formulier:** wie het invult, krijgt binnen een werkdag reactie van de oprichter (anders werkt "ik stuur je" averechts).
 
-**Opnamelocatie:** het liefst op een echt project (hotel, zorg of chalet, met toestemming). Bestaande projectfoto's en -video's van eerdere klanten (met toestemming) kunnen in de snelle cuts van hook B en 20–28 s. Anders in Studio Herwen met pallets panelen, een vrachtwagen die laadt en een opgebouwde wand van minimaal 3 banen breed.
+**Opnamelocatie:** het liefst op een echt project (hotel, zorg of chalet, met toestemming). Bestaande projectfoto's en -video's (met toestemming) in de snelle cuts van hook A en 5–10 s. Pallets, vrachtwagen en de opgebouwde wand in Studio Herwen, op dezelfde draaidag als video 1–3.
 
 ---
 
