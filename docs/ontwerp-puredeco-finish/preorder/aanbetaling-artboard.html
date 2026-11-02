@@ -1,0 +1,119 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E8E2D7;font-family:'Hanken Grotesk',sans-serif;color:#151413;padding:48px 56px 56px;width:1990px}
+h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:54px}
+.lead{font-size:18px;color:#5b554d;margin:10px 0 34px;max-width:1500px;line-height:1.5}
+.row{display:flex;gap:34px;align-items:flex-start}
+.col{width:410px}
+.tag{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#8C6A4A;margin-bottom:6px}
+.t{font-size:19px;font-weight:600;margin-bottom:12px}
+.ph{width:410px;height:820px;border-radius:38px;border:10px solid #151413;overflow:hidden;position:relative;background:#F5F2EC;box-shadow:0 20px 50px rgba(0,0,0,.18)}
+.note{font-size:14.5px;line-height:1.55;color:#3a3733;margin-top:14px}
+.note b{color:#151413}
+.in{padding:16px 18px}
+.band{background:#151413;color:#F5F2EC;font-size:11.5px;letter-spacing:.12em;text-align:center;padding:9px 0}
+.eyebrow{font-size:11px;letter-spacing:.2em;color:#6E675E;text-transform:uppercase}
+.serif{font-family:'Cormorant Garamond',serif}
+.price{font-size:28px;font-weight:500;margin-top:4px}
+.small{font-size:12.5px;color:#6E675E}
+.calc{margin-top:10px;background:#FBF9F5;border:1px solid #E4DDD1;padding:11px;font-size:12.5px;line-height:1.5}
+.calc .big{font-family:'Cormorant Garamond',serif;font-size:21px}
+.strike{text-decoration:line-through;color:#8a837a}
+.pay{margin-top:12px;border:1.5px solid #8C6A4A;background:#FBF6EE}
+.pay .h{background:#8C6A4A;color:#F5F2EC;font-size:12.5px;padding:7px 12px;font-weight:600;letter-spacing:.02em}
+.pay .r{display:flex;justify-content:space-between;padding:9px 12px;font-size:13.5px}
+.pay .r + .r{border-top:1px solid #E4DDD1}
+.pay .r small{display:block;font-size:11.5px;color:#6E675E;margin-top:2px}
+.pay .r b{font-size:15px}
+.cta{margin-top:12px;background:#8C6A4A;color:#F5F2EC;text-align:center;padding:14px 10px;font-size:15px;font-weight:500}
+.stock{display:flex;gap:9px;align-items:flex-start;margin-top:10px;font-size:13px;line-height:1.45}
+.dot{width:9px;height:9px;border-radius:50%;background:#8C6A4A;margin-top:5px;flex:none}
+.box{margin-top:9px;background:#EDE3D3;padding:10px 12px;font-size:12.5px;line-height:1.55}
+.box div{display:flex;gap:7px}
+.box div:before{content:'✓';color:#8C6A4A;font-weight:700}
+.bar{position:absolute;left:0;right:0;bottom:0;display:flex;gap:8px;padding:10px;background:#F5F2EC;border-top:1px solid #DDD6CA}
+.bar .s{flex:0 0 38%;border:1px solid #151413;display:flex;align-items:center;gap:8px;padding:6px;font-size:12.5px}
+.bar .s i{width:28px;height:28px;background:#7d6f5f;display:block}
+.bar .c{flex:1;background:#8C6A4A;color:#F5F2EC;display:flex;align-items:center;justify-content:center;font-size:13px;text-align:center;line-height:1.25}
+/* cart */
+.dh{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid #DDD6CA;font-size:19px}
+.it{display:flex;gap:11px;padding:12px 18px;border-bottom:1px solid #EAE4DA}
+.it .th{width:62px;height:62px;background-size:cover;background-position:center;flex:none}
+.it .d{flex:1;font-size:13px;line-height:1.4}
+.it .p{font-size:13px;text-align:right}
+.mini{display:inline-block;margin-top:4px;font-size:11px;padding:2px 6px;background:#8C6A4A;color:#F5F2EC}
+.tot{padding:8px 18px;font-size:13.5px}
+.tot div{display:flex;justify-content:space-between;padding:3px 0}
+.tot .g{font-weight:600;font-size:15px;border-top:1px solid #DDD6CA;margin-top:4px;padding-top:7px}
+.split{margin:6px 18px 0;border:1.5px solid #8C6A4A;background:#FBF6EE;font-size:13.5px}
+.split div{display:flex;justify-content:space-between;padding:8px 12px}
+.split div + div{border-top:1px solid #E4DDD1;color:#6E675E}
+.btnk{margin:12px 18px;background:#151413;color:#F5F2EC;text-align:center;padding:14px;font-size:15px}
+/* checkout */
+.co{background:#fff;height:100%}
+.co .top{padding:14px 18px;border-bottom:1px solid #e6e6e6;font-family:'Cormorant Garamond',serif;font-size:20px;text-align:center}
+.co .sum{background:#FAFAFA;padding:14px 18px;border-bottom:1px solid #e6e6e6;font-size:13px}
+.co .sum div{display:flex;justify-content:space-between;padding:4px 0}
+.co .sum .g{font-weight:600;font-size:15px;padding-top:8px;border-top:1px solid #e6e6e6;margin-top:6px}
+.co .sec{padding:14px 18px;font-size:13px}
+.co h4{font-size:15px;font-weight:600;margin-bottom:8px}
+.opt{border:1px solid #d9d9d9;padding:11px 12px;display:flex;justify-content:space-between;align-items:center;font-size:13.5px}
+.opt + .opt{border-top:0}
+.opt.on{border:1.5px solid #151413}
+.opt small{color:#6E675E}
+.cbtn{margin:14px 18px;background:#151413;color:#fff;text-align:center;padding:15px;font-size:15px;font-weight:600}
+/* mail */
+.mail{width:410px;background:#fff;border:1px solid #DDD6CA;box-shadow:0 12px 30px rgba(0,0,0,.08);margin-bottom:18px}
+.mail .mh{padding:12px 16px;border-bottom:1px solid #eee;font-size:12px;color:#6E675E}
+.mail .mh b{color:#151413;font-size:13.5px;display:block;margin-top:2px}
+.mail .mb{padding:16px;font-size:13.5px;line-height:1.55}
+.mail .mb h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:24px;margin-bottom:8px}
+.mail .pb{margin:10px 0;border-left:3px solid #8C6A4A;padding:8px 12px;background:#F7F2EA}
+.mail .btn{display:inline-block;margin-top:10px;padding:11px 16px;background:#151413;color:#fff;font-size:13px}
+</style></head><body>
+<h1>Pre-order met 50% aanbetaling</h1>
+<p class="lead">Is een decor op, dan betaalt de klant tijdens Black Friday <b>nu de helft</b> en <b>de rest vlak vóór levering</b>. De korting staat vast op het moment van bestellen. Voorbeeld: 4 panelen 620 Light Brown, € 679,80 − 10% Black Friday = € 611,82 → nu € 305,91, rest € 305,91 vóór levering in week 1 (4–8 januari).</p>
+<div class="row">
+
+<div class="col"><div class="tag">Productpagina · mobiel</div><div class="t">Nu de helft, de rest bij levering</div>
+<div class="ph"><div class="band">BLACK FRIDAY · T/M MAANDAG 30 NOVEMBER</div><div class="in">
+<div class="eyebrow">Japandi · 620</div><div class="serif" style="font-size:32px;line-height:1.05;margin-top:4px">Light Brown</div>
+<div class="price">€ 169,95</div><div class="small">per paneel · 280 × 122 cm</div>
+<div class="calc">Jouw wand 4,20 × 2,60 m · 4 panelen<br><span class="strike">€ 679,80</span> &nbsp;<span class="big">€ 611,82</span> &nbsp;met 10% Black Friday</div>
+<div class="pay"><div class="h">Pre-order · 50% aanbetaling</div>
+<div class="r"><span>Nu te betalen<small>bij je bestelling</small></span><b>€ 305,91</b></div>
+<div class="r"><span>Restbedrag<small>vlak vóór levering in week 1</small></span><b>€ 305,91</b></div></div>
+<div class="cta">Pre-order · betaal nu 50%</div>
+<div class="stock"><span class="dot"></span><span><b>Pre-order</b> · levering week 1 (4–8 januari)</span></div>
+<div class="box"><div>Je Black Friday-korting staat vast</div><div>Kosteloos annuleren tot we verzenden, aanbetaling terug</div><div>30 dagen bedenktijd na ontvangst</div></div>
+</div><div class="bar"><div class="s"><i></i>Gratis staal</div><div class="c">Pre-order · nu 50%</div></div></div>
+<p class="note">Het bedrag van de aanbetaling volgt de calculator: <b>de helft van de wand ná korting</b>. Zonder calculator staat er "Nu 50%, de rest vóór levering".</p></div>
+
+<div class="col"><div class="tag">Winkelwagen</div><div class="t">Wat je nu betaalt, en wat later</div>
+<div class="ph"><div class="dh"><span>Je winkelwagen (1)</span><span>✕</span></div>
+<div class="it"><div class="th" style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/generated_2Fshopify_3Af9yvx9-zm.myshopify.com_2F1776693455240_0.png?v=1776775314&width=200')"></div><div class="d"><b>620 Light Brown</b> · 8 mm<br>4 × € 169,95<br><span class="mini">Pre-order · 50% aanbetaling · levering week 1</span></div><div class="p">€ 679,80</div></div>
+<div class="it"><div class="th" style="background:#e9e4dc"></div><div class="d"><b>Montagepakket</b><br>Black Friday-cadeau</div><div class="p"><span class="strike">€ 35,80</span><br>€ 0,00</div></div>
+<div class="tot"><div><span>Subtotaal</span><span>€ 679,80</span></div><div><span>Black Friday 10%</span><span>− € 67,98</span></div><div class="g"><span>Totaal</span><span>€ 611,82</span></div></div>
+<div class="split"><div><b>Nu te betalen</b><b>€ 305,91</b></div><div><span>Vóór levering (week 1)</span><span>€ 305,91</span></div></div>
+<div class="btnk">Afrekenen · € 305,91</div>
+<p style="font-size:12px;color:#6E675E;padding:0 18px;line-height:1.5">Het restbedrag vragen we vlak voor levering via een betaalverzoek (iDEAL) of het wordt automatisch afgeschreven als je met creditcard of Apple Pay betaalt.</p>
+</div>
+<p class="note">De knop noemt het <b>bedrag van vandaag</b>. Zo is er bij het afrekenen geen verrassing.</p></div>
+
+<div class="col"><div class="tag">Kassa (Shopify)</div><div class="t">Shopify toont "nu" en "later" zelf</div>
+<div class="ph"><div class="co"><div class="top">PureDeco</div>
+<div class="sum"><div><span>620 Light Brown × 4 · Pre-order</span><span>€ 679,80</span></div><div><span>Montagepakket</span><span>Gratis</span></div><div><span>Black Friday 10%</span><span>− € 67,98</span></div><div><span>Verzending</span><span>Gratis</span></div><div class="g"><span>Totaal</span><span>€ 611,82</span></div><div><span><b>Nu te betalen</b></span><span><b>€ 305,91</b></span></div><div><span>Later te betalen</span><span>€ 305,91</span></div></div>
+<div class="sec"><h4>Betaling</h4><div class="opt on"><span>iDEAL</span><small>restbedrag via betaalverzoek</small></div><div class="opt"><span>Creditcard</span><small>rest automatisch</small></div><div class="opt"><span>Apple Pay</span><small></small></div></div>
+<div class="cbtn">Nu betalen · € 305,91</div></div></div>
+<p class="note">Bij een pre-order met aanbetaling toont Shopify in de kassa zelf het bedrag van nu en van later. <b>iDEAL kan niet later automatisch afschrijven</b>: die klanten krijgen voor de levering een betaalverzoek.</p></div>
+
+<div class="col"><div class="tag">E-mails</div><div class="t">Bevestiging en restbetaling</div>
+<div class="mail"><div class="mh">Onderwerp<b>Je pre-order #1742: € 305,91 betaald, rest vóór levering</b></div><div class="mb"><h3>Dank je, Sanne</h3>
+<div class="pb">4 × 620 Light Brown · levering <b>week 1 (4–8 januari)</b><br>Betaald: <b>€ 305,91</b> · Nog te betalen: <b>€ 305,91</b></div>
+Je Black Friday-korting staat vast. Een paar dagen voor de levering sturen we je het betaalverzoek voor het restbedrag. Annuleren kan kosteloos tot we verzenden; je krijgt dan je aanbetaling terug.</div></div>
+<div class="mail"><div class="mh">Onderwerp<b>Je panelen komen eraan: betaal het restbedrag van € 305,91</b></div><div class="mb">Je 620 Light Brown is binnen en we bezorgen in <b>week 1</b>. Betaal het restbedrag, dan plannen we meteen je bezorging.<br><span class="btn">Betaal € 305,91 met iDEAL</span><p style="font-size:12px;color:#6E675E;margin-top:10px">Niet betaald binnen 7 dagen? We bellen je eerst. Wil je toch annuleren, dan krijg je je aanbetaling terug.</p></div></div>
+<p class="note">Voorbeeldnamen en ordernummer zijn fictief. Het restbedrag vraag je pas als de panelen echt binnen zijn.</p></div>
+
+</div></body></html>
