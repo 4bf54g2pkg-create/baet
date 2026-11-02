@@ -30,7 +30,7 @@ Voor de videograaf, deze week. **Drie video's**, één halve draaidag in Studio 
 |---|---|---|---|
 | **1 · Iedereen profiteert** (aanloop) | 30 sec + 15 sec-versie | 13 t/m 25 november (advertenties) | VIP-aanmeldingen en stalen |
 | **2 · De Wandweek is begonnen** (live) | 30 sec | 26 t/m 30 november, met 3 eindkaarten | Kopen |
-| **3 · Montage + gratis kit** | 40 sec | 27 t/m 30 november, daarna blijvend (zonder kit-eindkaart) | Drempel "kan ik dit zelf?" weg |
+| **3 · Montage, klik en kwaliteit** | 45 sec | 27 t/m 30 november, daarna blijvend (zonder kit-eindkaart) | Drempel "kan ik dit zelf?" weg |
 
 ## Formaten
 
@@ -154,40 +154,51 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 
 ---
 
-## Video 3 · "Dit is alles wat je nodig hebt" (montage + kit, 40 sec)
+## Video 3 · "Dit is alles wat je nodig hebt" (montage + klik + kwaliteit, 45 sec)
 
 **Online:** 27 t/m 30 november; daarna blijvend (eindkaart zonder actie).
-**Vorm:** stappen met een teller (1/4 t/m 4/4), echte geluiden hard in de mix (rolmaat, zaag, kitpistool, paneel tegen de muur) en een stille onthulling van de wand. Dit soort "kijk hoe het gaat"-video's wordt vaak tot het einde bekeken en bewaard.
+**Vorm:** stappen met een teller (1/4 t/m 4/4), echte geluiden hard in de mix, het **klik-moment** in close-up als hoogtepunt, dan kwaliteit die je kunt zien en voelen, en een stille onthulling.
+**Decor:** 813 Natural Oak, **8 mm Signature** (alleen de 8 mm-panelen hebben het kliksysteem). Ondergrond vlak en recht.
 
 **Drie hooks (alle drie opnemen):**
 - **Hook A (hoofdversie):** Overhead op de vloer: rolmaat, zaag, kitpistool, één koker en een paneel. *"Dit is alles wat je nodig hebt voor een nieuwe wand."*
-- **Hook B:** Lege wand die in 2 seconden af is, dan terug naar het begin. *"Van dit… naar dit. En je doet het zelf."*
-- **Hook C:** Close-up van een koker die wordt opengeklikt. *"Deze koker is het hele geheim."*
+- **Hook B:** Extreme close-up: twee panelen klikken in elkaar en de naad verdwijnt. *"Kijk naar de naad. Zie je 'm nog?"*
+- **Hook C:** Close-up van een koker die wordt opengeklikt. *"Deze koker en één klik. Meer is het niet."*
 
 | Tijd | Beeld | Gesproken | Tekst in beeld |
 |---|---|---|---|
 | 0–3 s | Hook A: overhead, hand legt als laatste de koker neer | "Dit is alles wat je nodig hebt voor een nieuwe wand." | ALLES WAT JE NODIG HEBT |
 | 3–5 s | Spreker kijkt in de camera | "Je doet het zelf. Kijk." | |
-| 5–10 s | Rolmaat schiet uit (geluid), potloodstreep | "Eén. Meten." | 1/4 · meten |
-| 10–16 s | Zaag door het paneel, zaagsel in het licht (geluid) | "Twee. Op maat zagen." | 2/4 · zagen |
-| 16–22 s | Kitpistool, rupsen High Tack op de achterkant (geluid van het pistool) | "Drie. High Tack erop. Eén koker per paneel." | 3/4 · 1 koker per paneel |
-| 22–28 s | Paneel tegen de muur, handen drukken aan, waterpas klikt | "Vier. Tegen de muur. Aandrukken. Recht." | 4/4 · plaatsen |
-| 28–32 s | Stilte. Langzame pan over de af wand, licht van opzij | (niets zeggen, alleen muziek) | |
-| 32–37 s | Spreker naast de wand, koker in de hand | "En deze week krijg je die koker gratis. Bij elk paneel. Zit vanzelf in je pakket." | + gratis koker bij elk paneel · t/m 30/11 |
-| 37–40 s | Spreker wijst naar beneden, dan terug naar het overhead-beeld (loop) | "Klik hieronder voor je wand. En tag degene met wie je dit gaat doen." | 👇 KLIK HIERONDER · puredeco.nl/wandpanelen |
+| 5–10 s | Rolmaat schiet uit, potloodstreep, zaag door het paneel (geluid) | "Eén. Meten en op maat zagen." | 1/4 · meten en zagen |
+| 10–15 s | Kitpistool, rupsen High Tack op de achterkant | "Twee. High Tack erop. Eén koker per paneel." | 2/4 · 1 koker per paneel |
+| 15–20 s | Eerste paneel tegen de muur, waterpas klikt | "Drie. Het eerste paneel precies waterpas." | 3/4 · eerste paneel waterpas |
+| 20–27 s | **Extreme close-up:** tweede paneel klikt in het eerste (klik hard in de mix), hand strijkt over de naad | "Vier. En dan het mooiste: de volgende klik je erin. Kijk naar de naad… bijna niet te zien." | 4/4 · 8 mm kliksysteem · naad vrijwel onzichtbaar |
+| 27–34 s | Close-up hand over de nerf, dan de zijkant van een paneel met de lagen (toplaag + bamboekern) | "En dit is geen plaatje. De nerf voel je. Daaronder zit een kern van bamboe: stevig, en toch licht." | toplaag die je voelt · kern van bamboe · brandklasse B1 |
+| 34–37 s | Snelle cut: brede panelen naast elkaar, doek over het oppervlak | "Nooit oliën of lakken. En 122 centimeter breed, dus de helft minder naden." | niets oliën of lakken · 122 cm breed |
+| 37–40 s | Stilte. Langzame pan over de af wand, licht van opzij | (niets zeggen, alleen muziek) | |
+| 40–43 s | Spreker naast de wand, koker in de hand | "En deze week krijg je die koker gratis. Bij elk paneel." | + gratis koker bij elk paneel · t/m 30/11 |
+| 43–45 s | Spreker wijst naar beneden, dan terug naar het overhead-beeld (loop) | "Klik hieronder. En tag degene met wie je dit gaat doen." | 👇 KLIK HIERONDER · puredeco.nl/wandpanelen |
 
-**Na Black Friday (blijvende versie):** 32–37 s wordt *"Alles staat stap voor stap in onze montagehandleiding."* met tekst in beeld **Montagehandleiding: puredeco.nl/pages/installatie**.
+**Na Black Friday (blijvende versie):** 40–43 s wordt *"Alles staat stap voor stap in onze montagehandleiding."* met tekst in beeld **Montagehandleiding: puredeco.nl/pages/installatie**.
 
-**Link in beeld:** net als bij video 1 vanaf seconde 0 een vast labeltje **puredeco.nl** bovenin. Advertentieknop **"Nu kopen"** naar `puredeco.nl/collections/wandpanelen?utm_source=meta&utm_campaign=wandweek`.
+**Link in beeld:** vanaf seconde 0 een vast labeltje **puredeco.nl** bovenin. Advertentieknop **"Nu kopen"** naar `puredeco.nl/collections/wandpanelen?utm_source=meta&utm_campaign=wandweek`.
+
+**Opnametips klik-moment:**
+- Macro-lens, licht schuin van opzij, zodat de naad goed zichtbaar is vóór en na het klikken.
+- Neem de klik apart op met een richtmicrofoon dicht bij het paneel; in de montage hard zetten.
+- Neem het moment 3 keer op en kies de schoonste.
 
 **Caption:**
 > Dit is alles wat je nodig hebt voor een nieuwe wand 🪚
-> 1️⃣ meten 2️⃣ zagen 3️⃣ High Tack erop 4️⃣ plaatsen
+> 1️⃣ meten en zagen 2️⃣ High Tack erop 3️⃣ eerste paneel waterpas 4️⃣ klik, en de naad is bijna weg
+> Toplaag die je voelt, kern van bamboe, brandklasse B1. Nooit oliën of lakken.
 > Deze week krijg je bij elk paneel een gratis montagekoker, zit vanzelf in je pakket (t/m maandag 23:59).
-> 👉 Klik hieronder voor je wand. Tag degene met wie je dit gaat doen 👇
+> 👉 Klik hieronder. Tag degene met wie je dit gaat doen 👇
 > #diy #wandpanelen #klussen #interieur #houtenwand #woonkamer #blackfriday #zelfdoen
 
-**Reactie-tip:** vraagt iemand "kan dit op tegels / in de badkamer / op een schuine wand?", geef dan een kort, eerlijk antwoord en verwijs naar de montagehandleiding. Stel bij twijfel voor om via WhatsApp mee te kijken. Beloof niets wat we niet zeker weten.
+**Wat we hier NIET zeggen:** "volledig onzichtbaar", "waterdicht", "100% waterbestendig", of dat de klik op elke ondergrond naadloos is. Wel: "vrijwel onzichtbaar op een vlakke, rechte wand".
+
+**Reactie-tip:** vraagt iemand "kan dit op tegels / in de badkamer / op een schuine wand?", geef dan een kort, eerlijk antwoord en verwijs naar de montagehandleiding. Stel bij twijfel voor om via WhatsApp mee te kijken.
 
 ---
 
