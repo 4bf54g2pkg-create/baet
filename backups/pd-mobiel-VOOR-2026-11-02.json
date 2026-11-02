@@ -1,0 +1,27 @@
+{
+  "menu": "gid://shopify/Menu/317420699914",
+  "handle": "pd-mobiel",
+  "title": "Puredeco mobiel menu (H1-test)",
+  "opgehaald": "2026-11-02",
+  "items": [
+    {"id":"gid://shopify/MenuItem/820511605002","title":"Wandpanelen","type":"HTTP","url":"/collections/wandpanelen","items":[
+      {"id":"gid://shopify/MenuItem/820511637770","title":"Hout","type":"HTTP","url":"/collections/hout-1"},
+      {"id":"gid://shopify/MenuItem/820571406602","title":"Beton ciré","type":"HTTP","url":"/products/concrete-smoke-691-betonlook"},
+      {"id":"gid://shopify/MenuItem/820571439370","title":"Travertin","type":"HTTP","url":"/products/wandpaneel-travertine-ivory-851"},
+      {"id":"gid://shopify/MenuItem/820511670538","title":"Japandi","type":"HTTP","url":"/collections/japandi"},
+      {"id":"gid://shopify/MenuItem/820511703306","title":"Leer","type":"HTTP","url":"/collections/leer"},
+      {"id":"gid://shopify/MenuItem/820511736074","title":"Art","type":"HTTP","url":"/collections/kunst"},
+      {"id":"gid://shopify/MenuItem/820511768842","title":"Doorlopend marmer","type":"HTTP","url":"/collections/doorlopend-marmer"},
+      {"id":"gid://shopify/MenuItem/820511801610","title":"Akupanelen","type":"HTTP","url":"/collections/akupanelen"},
+      {"id":"gid://shopify/MenuItem/820511834378","title":"Accessoires","type":"HTTP","url":"/collections/accessoires"},
+      {"id":"gid://shopify/MenuItem/820511867146","title":"Alle decors","type":"HTTP","url":"/collections/wandpanelen"}
+    ]},
+    {"id":"gid://shopify/MenuItem/825296191754","title":"Installatie","type":"HTTP","url":"/pages/installatie","items":[]},
+    {"id":"gid://shopify/MenuItem/820511899914","title":"Inspiratie","type":"HTTP","url":"/blogs/nieuws","items":[]},
+    {"id":"gid://shopify/MenuItem/820511932682","title":"Projecten","type":"HTTP","url":"/pages/form","items":[]},
+    {"id":"gid://shopify/MenuItem/820511965450","title":"Studio Herwen","type":"HTTP","url":"/pages/showroom","items":[]},
+    {"id":"gid://shopify/MenuItem/820511998218","title":"Samples","type":"HTTP","url":"/pages/sample","items":[]},
+    {"id":"gid://shopify/MenuItem/820512030986","title":"Veelgestelde vragen","type":"HTTP","url":"/pages/faqs","items":[]},
+    {"id":"gid://shopify/MenuItem/820512063754","title":"Contact","type":"HTTP","url":"/pages/contact","items":[]}
+  ]
+}
