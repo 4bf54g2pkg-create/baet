@@ -4277,3 +4277,10 @@ html.pbf-pop-open .pd-wa, html.pbf-pop-open .pbf-wa { display: none !important; 
   .pww__in { padding: 7.2rem 6.4rem; }
   .pww__h { font-size: 5.2rem; }
 }
+
+/* "Uitverkocht? Maakt niet uit" (artboard Uitverkocht-aanloop) */
+.pbf-uv { max-width: 52rem; margin: 1.4rem 0 0; padding: 1rem 1.2rem; border: 1px solid rgba(227, 201, 166, 0.7); background: rgba(245, 242, 236, 0.1); font-size: 1.35rem; line-height: 1.45; color: #F5F2EC; }
+.pbf-uv b { display: block; font-size: 1.45rem; color: #E3C9A6; }
+.pww__uv { margin: 1.4rem 0 0; padding: 1.2rem 1.3rem; border: 1.5px solid #8C6A4A; background: #FBF6EE; font-size: 1.3rem; line-height: 1.5; color: #3A3733; }
+.pww__uv b { display: block; font-size: 1.4rem; color: #151413; }
+[data-pdh]:not([data-stock="pre"]) .pbf-pdp--pre, [data-pdh][data-stock="pre"] .pbf-pdp--in { display: none; }

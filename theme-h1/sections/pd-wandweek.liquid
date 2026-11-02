@@ -30,6 +30,7 @@
       <li><b>+{{ bf_vip_x }}% extra</b><span>bovenop 10–20%: tot {{ settings.bf_tiers | default: '400:10,800:15,1500:20' | split: ',' | last | split: ':' | last | plus: bf_vip_x }}%</span></li>
       <li><b>Gratis montagekit</b><span>1 koker bij elk paneel, zit vanzelf in je pakket</span></li>
     </ul>
+    <div class="pww__uv"><b>Uitverkocht op Black Friday? Maakt niet uit.</b>Je bestelt met pre-order, krijgt dezelfde korting en betaalt nu maar 50%. De rest vlak vóór levering in {{ settings.pd_preorder_levering | default: 'week 2 (11–15 januari)' }}.</div>
 
     {%- form 'customer', id: 'pww-form', class: 'pww__form' -%}
       {%- if form.posted_successfully? -%}

@@ -106,7 +106,8 @@
       <div class="pbf-hero__in">
         <p class="ph-k ph-k--light">De Wandweek · Black Friday 26–30 november</p>
         <h2 class="pbf-hero__h">Word VIP: tot {{ bf_vmax }}% korting<em>en shop 12 uur eerder</em></h2>
-        <p class="pbf-hero__sub">+ gratis montagekit: 1 koker bij elk paneel. Kies eerst een gratis staal, dan weet je zeker welke wand je in de Wandweek koopt.</p>
+        <div class="pbf-uv"><b>Jouw kleur uitverkocht? Maakt niet uit.</b>Ook op pre-order krijg je de Wandweek-korting, en je betaalt nu maar 50%.</div>
+        <p class="pbf-hero__sub">+ gratis montagekit: 1 koker bij elk paneel, zit vanzelf in je pakket.</p>
         <ul class="pbf-perks"><li>Gratis staal thuis</li><li>12 uur eerder</li><li>+{{ bf_vip_x }}% extra</li><li>Gratis montagekit</li></ul>
         <div class="ph-btns">
           <a class="ph-btn ph-btn--paper" href="/pages/wandweek">Word VIP + kies je staal</a>
@@ -146,7 +147,7 @@
   <div data-bf="p1">
     <div class="pbf-band pbf-band--soft">
       <div class="ph-wrap">
-        <p class="pbf-band__t"><b>De Wandweek · 26–30 november.</b> Word VIP: tot {{ bf_vmax }}% korting en 12 uur eerder shoppen. <a href="/pages/wandweek">Word VIP →</a></p>
+        <p class="pbf-band__t"><b>De Wandweek · 26–30 november.</b> VIP's tot {{ bf_vmax }}% korting en 12 uur eerder. Uitverkocht? Maakt niet uit: korting geldt óók op pre-order. <a href="/pages/wandweek">Word VIP →</a></p>
       </div>
     </div>
   </div>
@@ -156,6 +157,7 @@
   {%- if bf_on -%}
     {%- if pre -%}
       <p class="pc-card__bfn" data-bf="vip p2">Pre-order · levering {{ bf_week }} · korting geldt</p>
+      <p class="pc-card__bfn" data-bf="p1">Wandweek-korting geldt ook · nu 50% betalen</p>
     {%- else -%}
       <span class="pc-card__bf" data-bf="vip p2">Black Friday</span>
     {%- endif -%}
@@ -163,7 +165,10 @@
 
 {%- when 'pdp' -%}
   {%- if bf_on -%}
-  <div data-bf="p1"><p class="pbf-pdp pbf-pdp--soft"><b>De Wandweek · 26–30 november.</b> VIP's krijgen tot {{ bf_vmax }}% korting en shoppen 12 uur eerder. <a href="/pages/wandweek">Word VIP →</a></p></div>
+  <div data-bf="p1">
+    <p class="pbf-pdp pbf-pdp--soft pbf-pdp--in"><b>De Wandweek · 26–30 november.</b> VIP's krijgen tot {{ bf_vmax }}% korting en shoppen 12 uur eerder. <a href="/pages/wandweek">Word VIP →</a></p>
+    <p class="pbf-pdp pbf-pdp--soft pbf-pdp--pre"><b>Uitverkocht? Maakt niet uit.</b> Bestel je in De Wandweek (26–30 nov), dan krijg je ook op pre-order de korting, en betaal je nu maar 50%. <a href="/pages/wandweek">Word VIP →</a></p>
+  </div>
   <div data-bf="vip p2"><p class="pbf-pdp"><b>Black Friday:</b> {{ bf_tier_txt }}. Gratis High Tack Montagekit: 1 koker bij elk paneel, zit vanzelf in je pakket.{% if bf_is_vip %} <b>Jij bent VIP:</b> +{{ bf_vip_x }}% extra.{% endif %}<span data-bf="vip"> Nu alleen voor VIP's; iedereen vanaf vrijdag 27 november 08:00.</span></p></div>
   {%- endif -%}
 
