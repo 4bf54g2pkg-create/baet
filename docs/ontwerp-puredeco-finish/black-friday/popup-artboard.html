@@ -13,16 +13,16 @@ h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:54px}
 .note b{color:#151413}
 .serif{font-family:'Cormorant Garamond',serif}
 /* desktop frame */
-.dk{width:1060px;height:640px;position:relative;overflow:hidden;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,.18);background:#F5F2EC url('nu-home-desktop.png') top center/cover}
+.dk{width:1060px;height:680px;position:relative;overflow:hidden;border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,.18);background:#F5F2EC url('nu-home-desktop.png') top center/cover}
 .dk:before{content:"";position:absolute;inset:0;background:rgba(21,20,19,.55)}
-.modal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:860px;height:500px;background:#F5F2EC;display:flex;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.modal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:860px;height:548px;background:#F5F2EC;display:flex;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35)}
 .m-l{flex:0 0 50%;padding:34px 40px 26px;display:flex;flex-direction:column;align-items:center;text-align:center}
 .m-r{flex:1;position:relative;background:#cbb79c url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/generated_2Fshopify_3Af9yvx9-zm.myshopify.com_2F1793565871079_0.png?v=1793565889&width=900') center 35%/cover}
 .x{position:absolute;right:14px;top:14px;width:34px;height:34px;border-radius:50%;background:#F5F2EC;display:flex;align-items:center;justify-content:center;font-size:18px;z-index:3}
 .dots{display:flex;gap:6px;margin-bottom:14px}.dots i{width:24px;height:3px;background:#DDD6CA;display:block}.dots i.on{background:#151413}
 .badge{display:inline-block;padding:6px 14px;background:#151413;color:#F5F2EC;font-size:11px;letter-spacing:.16em;font-weight:600}
 .badge.live{background:#8C6A4A}
-.h{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:42px;line-height:1.02;margin-top:14px}
+.h{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:38px;line-height:1.02;margin-top:14px}
 .h em{font-style:normal;color:#8C6A4A;display:block}
 .sub{font-size:14px;line-height:1.5;color:#3A3733;margin-top:10px;max-width:360px}
 .chips{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:14px}
@@ -62,10 +62,41 @@ h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:54px}
 .mm .card{left:12px;bottom:12px;width:150px;padding:9px 11px}.mm .card b{font-size:18px}.mm .card span{font-size:10.5px}
 .mm .x{width:30px;height:30px;font-size:15px;right:10px;top:10px}
 .col{display:flex;flex-direction:column}
+.cond{font-size:11.5px;line-height:1.45;color:#6E675E;margin-top:8px;max-width:360px}
+.cond b{color:#151413}
+.why{margin-top:8px;font-size:12px;color:#8C6A4A}
+/* hero p1 + vip page in phone */
+.hero{position:absolute;left:0;right:0;top:118px;bottom:0;background:#2B211A url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/generated_2Fshopify_3Af9yvx9-zm.myshopify.com_2F1793565871079_0.png?v=1793565889&width=600') center 30%/cover;color:#F5F2EC}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,14,10,.05) 0%,rgba(20,14,10,.5) 38%,rgba(20,14,10,.9) 100%)}
+.hero-in{position:absolute;left:0;right:0;bottom:0;padding:0 18px 18px;z-index:1}
+.hero .k{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,242,236,.85)}
+.hero .hh{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:34px;line-height:1.02;margin-top:8px}
+.hero .hh em{font-style:normal;color:#E3C9A6;display:block}
+.hero .s{font-size:12px;line-height:1.5;color:#EDE6DB;margin-top:8px}
+.hero .c{font-size:10.5px;line-height:1.45;color:rgba(245,242,236,.75);margin-top:8px}
+.hero .b1{margin-top:12px;background:#F5F2EC;color:#151413;text-align:center;padding:12px;font-size:13px}
+.hero .b2{margin-top:8px;border:1px solid rgba(245,242,236,.8);text-align:center;padding:11px;font-size:13px}
+.topb{position:absolute;left:0;right:0;top:0;height:30px;background:#151413;color:#F5F2EC;font-size:10.5px;display:flex;align-items:center;justify-content:center;z-index:2}
+.hdr{position:absolute;left:0;right:0;top:30px;height:88px;background:#F5F2EC;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:12px;z-index:2}
+.hdr .serif{font-size:17px}
+.vp{position:absolute;inset:118px 0 0 0;background:#F5F2EC;overflow:hidden}
+.vp-img{height:150px;background:#cbb79c url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/generated_2Fshopify_3Af9yvx9-zm.myshopify.com_2F1793565871079_0.png?v=1793565889&width=600') center 35%/cover}
+.vp-in{padding:16px 18px}
+.vp .k{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#6E675E}
+.vp .hh{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:30px;line-height:1.04;margin-top:6px}
+.vp .hh em{font-style:normal;color:#8C6A4A;display:block}
+.vp .perks{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px}
+.vp .perks div{border:1px solid #DDD6CA;background:#FBF9F5;padding:7px;font-size:10px;line-height:1.35;color:#6E675E}
+.vp .perks b{display:block;font-size:11px;color:#151413}
+.vp .f{border-bottom:1px solid #151413;font-size:11px;color:#8a837a;padding:9px 0 6px;margin-top:8px}
+.vp .chk{font-size:10px;line-height:1.4;margin-top:10px;display:flex;gap:6px;color:#3A3733}
+.vp .chk i{width:12px;height:12px;border:1px solid #151413;flex:none;margin-top:1px}
+.vp .go{margin-top:10px;background:#151413;color:#F5F2EC;text-align:center;padding:11px;font-size:12.5px}
+
 hr{border:0;border-top:1px solid #d4ccbf;margin:40px 0 30px}
 </style></head><body>
 <h1>Pop-up De Wandweek</h1>
-<p class="lead">Geïnspireerd op de voorbeeld-pop-up, maar dan in PureDeco-stijl: rustig, echt beeld (813 Natural Oak) en <b>stalen als het "cadeau"</b> in plaats van kerstballen. Twee stappen: eerst e-mail, dan meteen je gratis staal kiezen. Alleen voordelen die ook echt kloppen; de montagekit noemen we hier niet, zodat de tekst klopt welke kit-keuze je in stap 3 ook maakt.</p>
+<p class="lead">Versie 2: <b>"tot 25% korting" direct zichtbaar</b>, met de voorwaarde er meteen onder (VIP, vanaf € 1.500), zoals de ACM vraagt bij een "tot"-claim. Dezelfde belofte in de pop-up, de homepage-hero (fase 1) en op de VIP-pagina. Geïnspireerd op de voorbeeld-pop-up, maar dan in PureDeco-stijl: rustig, echt beeld (813 Natural Oak) en <b>stalen als het "cadeau"</b> in plaats van kerstballen. Twee stappen: eerst e-mail, dan meteen je gratis staal kiezen. Alleen voordelen die ook echt kloppen; de montagekit noemen we hier niet, zodat de tekst klopt welke kit-keuze je in stap 3 ook maakt.</p>
 
 <div class="row">
   <div class="col">
@@ -74,8 +105,8 @@ hr{border:0;border-top:1px solid #d4ccbf;margin:40px 0 30px}
       <div class="m-l">
         <div class="dots"><i class="on"></i><i></i></div>
         <span class="badge">DE WANDWEEK · BLACK FRIDAY</span>
-        <p class="h">Shop 12 uur eerder<em>+5% extra korting</em></p>
-        <p class="sub">Word VIP van De Wandweek. Je shopt al op <b>donderdag 26 november om 20:00</b>, vóór iedereen, en krijgt een gratis staal thuis.</p>
+        <p class="h">Word VIP: tot 25% korting<em>en shop 12 uur eerder</em></p>
+        <p class="cond">Iedereen krijgt 10–20% vanaf vrijdag 27 november. <b>VIP's +5% extra</b> en al op donderdag 26 november om 20:00. 25% bij een bestelling vanaf € 1.500.</p>
         <div class="chips"><span>Gratis staal thuis</span><span>12 uur eerder</span><span>+5% extra</span></div>
         <div class="inp">Je e-mailadres</div>
         <div class="btn">Zet me op de VIP-lijst</div>
@@ -129,8 +160,8 @@ hr{border:0;border-top:1px solid #d4ccbf;margin:40px 0 30px}
       </div>
       <div class="mm-in">
         <span class="badge">DE WANDWEEK · BLACK FRIDAY</span>
-        <p class="h">Shop 12 uur eerder<em>+5% extra korting</em></p>
-        <p class="sub">Word VIP: gratis staal thuis en op donderdag 26 november om 20:00 al shoppen.</p>
+        <p class="h">Word VIP: tot 25% korting<em>en shop 12 uur eerder</em></p>
+        <p class="cond">Iedereen 10–20% vanaf 27 november. VIP's +5% extra en al op 26 november om 20:00. 25% vanaf € 1.500.</p>
         <div class="inp">Je e-mailadres</div>
         <div class="btn">Zet me op de VIP-lijst</div>
         <div class="no">Nee, bedankt</div>
@@ -168,6 +199,59 @@ hr{border:0;border-top:1px solid #d4ccbf;margin:40px 0 30px}
       <b>AVG:</b> het doel staat bij het veld (VIP-toegang en tips per e-mail), afmelden kan altijd, link naar privacy.<br>
       <b>Meten:</b> GA4-events voor tonen, aanmelden en stalen bestellen vanuit de pop-up.<br>
       <b>Vervangt:</b> de eenvoudige pop-up die nu in H3 staat.
+    </p>
+  </div>
+</div>
+
+<hr>
+<div class="row">
+  <div class="col">
+    <div class="tag">Homepage · mobiel · fase 1</div><div class="t">Hero met dezelfde belofte</div>
+    <div class="ph" style="background:#F5F2EC"><div style="position:absolute;inset:0;z-index:1">
+      <div class="topb"><b>De Wandweek</b>&nbsp;· VIP's tot 25% korting →</div>
+      <div class="hdr"><span>☰</span><span class="serif">PureDeco</span><span>⌕ ◯ ⊓</span></div>
+      <div class="hero"><div class="hero-in">
+        <p class="k">De Wandweek · Black Friday 26–30 november</p>
+        <p class="hh">Word VIP: tot 25% korting<em>en shop 12 uur eerder</em></p>
+        <p class="s">Kies eerst een gratis staal, dan weet je zeker welke wand je in de Wandweek koopt.</p>
+        <p class="c">Iedereen 10–20% vanaf 27 november. VIP's +5% extra en al op 26 november om 20:00. 25% vanaf € 1.500.</p>
+        <div class="b1">Word VIP + kies je staal</div>
+        <div class="b2">Bekijk alle wandpanelen</div>
+      </div></div>
+    </div></div>
+    <p class="note" style="max-width:390px">De balk bovenin noemt het nu ook: "De Wandweek · VIP's tot 25% korting". De voorwaarde staat in de hero direct onder de kop.</p>
+  </div>
+
+  <div class="col">
+    <div class="tag">VIP-pagina /pages/wandweek · mobiel</div><div class="t">Aanmelden, met het getal bovenaan</div>
+    <div class="ph" style="background:#F5F2EC"><div style="position:absolute;inset:0;z-index:1">
+      <div class="topb"><b>De Wandweek</b>&nbsp;· VIP's tot 25% korting →</div>
+      <div class="hdr"><span>☰</span><span class="serif">PureDeco</span><span>⌕ ◯ ⊓</span></div>
+      <div class="vp"><div class="vp-img"></div><div class="vp-in">
+        <p class="k">De Wandweek · VIP</p>
+        <p class="hh">Word VIP: tot 25% korting<em>en shop 12 uur eerder</em></p>
+        <div class="perks"><div><b>Gratis staal</b>€ 6,95 verzending terug bij je bestelling</div><div><b>12 uur eerder</b>do 26 nov om 20:00</div><div><b>+5% extra</b>bovenop 10–20%: tot 25%</div></div>
+        <p class="cond" style="font-size:10px">25% bij een bestelling vanaf € 1.500. Iedereen krijgt 10–20% vanaf vrijdag 27 november 08:00.</p>
+        <div class="f">Voornaam</div><div class="f">E-mailadres</div>
+        <div class="chk"><i></i><span>Ja, stuur me de VIP-toegang en tips voor mijn wand per e-mail. Afmelden kan altijd.</span></div>
+        <div class="go">Zet me op de VIP-lijst</div>
+      </div></div>
+    </div></div>
+    <p class="note" style="max-width:390px">Het derde blokje legt uit hoe je aan 25% komt. Zo is "tot" nooit een verrassing in de kassa.</p>
+  </div>
+
+  <div class="col" style="max-width:820px;padding-top:30px">
+    <div class="tag">De staffel in één oogopslag</div><div class="t">Wat iedereen krijgt en wat VIP's krijgen</div>
+    <table style="border-collapse:collapse;font-size:16px;margin-top:6px;background:#FBF9F5">
+      <tr style="background:#151413;color:#F5F2EC"><th style="padding:10px 18px;text-align:left">Bestelling</th><th style="padding:10px 18px">Iedereen<br><small style="font-weight:400">vanaf vr 27/11 08:00</small></th><th style="padding:10px 18px">VIP<br><small style="font-weight:400">vanaf do 26/11 20:00</small></th></tr>
+      <tr><td style="padding:10px 18px;border-bottom:1px solid #DDD6CA">vanaf € 400</td><td style="padding:10px 18px;text-align:center;border-bottom:1px solid #DDD6CA">10%</td><td style="padding:10px 18px;text-align:center;border-bottom:1px solid #DDD6CA"><b>15%</b></td></tr>
+      <tr><td style="padding:10px 18px;border-bottom:1px solid #DDD6CA">vanaf € 800</td><td style="padding:10px 18px;text-align:center;border-bottom:1px solid #DDD6CA">15%</td><td style="padding:10px 18px;text-align:center;border-bottom:1px solid #DDD6CA"><b>20%</b></td></tr>
+      <tr><td style="padding:10px 18px">vanaf € 1.500</td><td style="padding:10px 18px;text-align:center">20%</td><td style="padding:10px 18px;text-align:center"><b>25%</b></td></tr>
+    </table>
+    <p class="note" style="font-size:16px;line-height:1.7;margin-top:20px">
+      <b>Waarom het getal nu wel vooraan staat:</b> een concreet getal levert meer aanmeldingen op dan alleen "12 uur eerder".<br>
+      <b>Tegen uitstel van aankopen in november:</b> de pop-up en hero sturen eerst op een gratis staal. Wie een wand van € 1.500 koopt, wil die eerst voelen, dus de wachttijd wordt nuttig gebruikt.<br>
+      <b>Te checken door jou:</b> is 25% bij € 1.500+ voor VIP's financieel in orde?
     </p>
   </div>
 </div>
