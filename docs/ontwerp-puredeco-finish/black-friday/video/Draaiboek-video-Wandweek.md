@@ -74,30 +74,31 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 
 ---
 
-## Video 1 · "Wacht met kopen. Niet met kiezen." (aanloop, 30 sec + 15 sec)
+## Video 1 · "Jij shopt 12 uur eerder." (aanloop, 30 sec + 15 sec)
 
 **Online:** 13 t/m 25 november, in de advertenties. Klaar uiterlijk 11 november.
+**Toon:** uitnodigend, nooit "wacht met kopen". Wie nu wil bestellen, moet dat gewoon kunnen.
 
 **Drie hooks (alle drie opnemen, eerste 2 seconden):**
-- **Hook A:** Spreker loopt met een paneel van 2,80 m het beeld in en zet het neer. *"Ga je dit jaar je wand doen? Wacht met kopen. Niet met kiezen."*
+- **Hook A (VIP):** Spreker zet een paneel van 2,80 m neer en kijkt in de camera. *"Black Friday begint bij ons twaalf uur eerder. Tenminste… als je VIP bent."*
 - **Hook B:** Close-up van een hand over de nerf, dan uitzoomen naar een complete wand. *"Deze wand wil je. En vanaf 26 november krijg je 'm met korting."*
-- **Hook C:** Spreker met een telefoon, scherm "uitverkocht". *"Jouw kleur uitverkocht op Black Friday? Bij ons maakt dat niks uit."*
+- **Hook C (uitverkocht):** Spreker met een telefoon, scherm "uitverkocht". *"Jouw kleur uitverkocht op Black Friday? Bij ons maakt dat niet uit."*
 
 | Tijd | Beeld | Gesproken | Tekst in beeld |
 |---|---|---|---|
-| 0–2 s | Hook A, B of C | (zie hierboven) | WACHT MET KOPEN. NIET MET KIEZEN. |
-| 2–6 s | Spreker voor wand 813, recht in de camera | "Op 26 november start De Wandweek." | DE WANDWEEK · 26–30 NOV |
-| 6–9 s | Snelle cut: kleine wand → grote wand | "Hoe groter je wand, hoe groter je korting." | tot 20% korting |
-| 9–11 s | Koker wordt opengeklikt (geluid!) | "En bij elk paneel een gratis montagekoker." | + gratis koker bij elk paneel |
-| 11–17 s | Staalpakket op de deurmat, uitpakken, staal tegen de muur | "Dus kies nú. Bestel tot vijf stalen. Hou ze tegen je eigen muur." | tot 5 stalen · € 6,95 verzending |
-| 17–23 s | Spreker voor wand 620, buigt naar de camera | "En is jouw kleur straks uitverkocht? Dan krijg je tóch de korting. Je betaalt nu maar de helft." | Uitverkocht? Toch korting · nu maar 50% |
-| 23–27 s | Spreker, glimlach | "Word VIP: vijf procent extra, en jij shopt twaalf uur eerder dan de rest." | VIP: +5% · 12 uur eerder |
-| 27–30 s | Spreker pakt het paneel weer op (loop naar hook A) | "Link staat hieronder. Welke kleur wordt het bij jou?" | puredeco.nl/wandweek · tot 25% voor VIP's vanaf € 1.500 |
+| 0–2 s | Hook A, B of C | (zie hierboven) | A: VIP? JIJ SHOPT 12 UUR EERDER · B: DEZE WAND WIL JE · C: UITVERKOCHT? MAAKT NIET UIT |
+| 2–6 s | Spreker voor wand 813, recht in de camera | "Op 26 november start De Wandweek. VIP's mogen er als eerste in." | DE WANDWEEK · VIP'S ALS EERSTE |
+| 6–9 s | Snelle cut: kleine wand → grote wand | "Hoe groter je wand, hoe groter je korting. En VIP's krijgen er vijf procent bovenop." | tot 20% · VIP +5% |
+| 9–11 s | Koker wordt opengeklikt (geluid!) | "Plus bij elk paneel een gratis montagekoker." | + gratis koker bij elk paneel |
+| 11–17 s | Staalpakket op de deurmat, uitpakken, staal tegen de muur | "Meld je aan als VIP en bestel meteen tot vijf stalen. Dan weet je zeker welke kleur het wordt." | tot 5 stalen · € 6,95 verzending |
+| 17–23 s | Spreker voor wand 620, buigt naar de camera | "En is jouw kleur uitverkocht op Black Friday? Maakt niet uit. Je krijgt tóch de korting, en je betaalt nu maar de helft." | Uitverkocht? Maakt niet uit · nu maar 50% |
+| 23–27 s | Telefoon: e-mail invullen in de pop-up, tik op "Zet me op de VIP-lijst" | "Aanmelden is gratis. Alleen je e-mailadres." | VIP-toegang · gratis aanmelden |
+| 27–30 s | Spreker, glimlach (loop naar het begin) | "Link staat hieronder. Welke kleur wordt het bij jou?" | puredeco.nl/wandweek · tot 25% voor VIP's vanaf € 1.500 |
 
-**15 sec-versie:** hook → 2–9 s → 17–23 s → eind.
+**15 sec-versie:** hook → 2–9 s → 17–23 s → 27–30 s.
 
 **Caption (Instagram/TikTok):**
-> Wacht met kopen. Niet met kiezen. 👀 Op 26 november start De Wandweek: hoe groter je wand, hoe groter je korting. Ook als je kleur uitverkocht is. Bestel nu je stalen en word VIP (link in bio). Welke kleur wordt het? 👇
+> Black Friday begint bij ons 12 uur eerder. Als je VIP bent. ✨ Op 26 november start De Wandweek: hoe groter je wand, hoe groter je korting, VIP's +5% extra. Jouw kleur uitverkocht? Maakt niet uit: je krijgt tóch de korting en betaalt nu maar de helft. Meld je gratis aan (link in bio). Welke kleur wordt het? 👇
 > #wandpanelen #interieur #woonkamer #blackfriday #japandi #houtenwand #wandinspiratie #diy
 
 ---
