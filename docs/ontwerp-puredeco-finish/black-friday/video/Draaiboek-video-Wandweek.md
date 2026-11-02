@@ -179,7 +179,7 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 | 15–20 s | Eerste paneel tegen de muur, waterpas klikt | "Drie. Het eerste paneel precies waterpas." | 3/4 · eerste paneel waterpas |
 | 20–27 s | **Extreme close-up:** tweede paneel klikt in het eerste (klik hard in de mix), hand strijkt over de naad | "Vier. En dan het mooiste: de volgende klik je erin. Kijk naar de naad… bijna niet te zien." | 4/4 · 8 mm kliksysteem · naad vrijwel onzichtbaar |
 | 27–34 s | Close-up hand over de nerf, dan de zijkant van een paneel met de lagen (toplaag + bamboekern) | "En dit is geen plaatje. De nerf voel je. Daaronder zit een kern van bamboe: stevig, en toch licht." | toplaag die je voelt · kern van bamboe · brandklasse B1 |
-| 34–37 s | Snelle cut: brede panelen naast elkaar, doek over het oppervlak | "Afnemen met een doek. Klaar. En met 122 centimeter breed staat je wand voor je het weet." | nooit oliën · 122 cm breed |
+| 34–37 s | Snelle cut: brede panelen naast elkaar, doek over het oppervlak | "Afnemen met een doek. Klaar. En met 122 centimeter breed staat je wand voor je het weet." | een doek is genoeg · 122 cm breed |
 | 37–40 s | Stilte. Langzame pan over de af wand, licht van opzij | (niets zeggen, alleen muziek) | |
 | 40–43 s | Spreker naast de wand, koker in de hand | "En deze week krijg je die koker gratis. Bij elk paneel." | + gratis koker bij elk paneel · t/m 30/11 |
 | 43–45 s | Spreker wijst naar beneden, dan terug naar het overhead-beeld (loop) | "Klik hieronder. En tag degene met wie je dit gaat doen." | 👇 KLIK HIERONDER · puredeco.nl/wandpanelen |
