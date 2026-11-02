@@ -236,7 +236,7 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 | 3–5 s | Hand klopt op een afgewerkte wand | "Deze wand." (bij hook B: "Daarom bellen aannemers ons.") | DEZE WAND. |
 | 5–10 s | Harde cuts, 1 seconde per beeld: hotel, ziekenhuis, chalet, restaurant, kantoor | "Hotels. Ziekenhuizen. Chalets. Restaurants. Kantoren. We hebben het allemaal gedaan." | HOTELS · ZORG · CHALETS · HORECA |
 | 10–14 s | Vrachtwagen wordt geladen, planning op een tablet | "En elke keer dezelfde vraag: komt het op tijd? Ja. In één keer, of per verdieping. Wanneer jij bouwt." | WANNEER JIJ BOUWT. |
-| 14–20 s | Snelle close-ups: klop op het paneel, zijkant met bamboekern, macro van de naad, paneel van 280 cm, kleurstalen | "Kwaliteitspanelen met een kern van bamboe. Naadloos. 280 centimeter per baan, geen stucwerk. En vanaf 200 m² in jouw eigen kleur." | BAMBOEKERN · NAADLOOS · 280 CM · JOUW KLEUR VANAF 200 M² |
+| 14–20 s | Snelle close-ups: klop op het paneel, zijkant met bamboekern, macro van de naad, paneel van 280 cm, kleurstalen | "Kwaliteitspanelen met een kern van bamboe. Naadloos. 280 centimeter per baan, geen stucwerk. En vanaf 250 m² in jouw eigen kleur." | BAMBOEKERN · NAADLOOS · 280 CM · JOUW KLEUR VANAF 250 M² |
 | 20–24 s | Oprichter, dichtbij | "En je hebt geen accountmanager. Je hebt mij." | JE HEBT MIJ. |
 | 24–28 s | Oprichter wijst naar beneden | "Vul het formulier hieronder in, en ik stuur je de projectsamples." | 👇 VUL HET FORMULIER IN · projectsamples |
 | 28–30 s | Hand klopt op dezelfde wand als bij de start (loop) | (niets) | puredeco.nl › Zakelijk |
@@ -252,14 +252,14 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 > ✔️ Geen accountmanager: je hebt direct de oprichter aan de lijn
 > ✔️ Kwaliteitspanelen met een bamboekern, naadloos
 > ✔️ 280 cm per baan: geen stucwerk, korte stilstand
-> ✔️ Vanaf 200 m² de toplaag in jouw eigen kleur
+> ✔️ Vanaf 250 m² de toplaag in jouw eigen kleur
 > ✔️ Nabestellen uit dezelfde serie
 > 👉 Vul het formulier in via de link en ik stuur je de projectsamples.
 > #aannemer #chaletbouw #interieurbouw #hotelinterieur #zorgbouw #recreatiebouw #architectuur #wandafwerking
 
 **Caption Instagram/TikTok:**
 > Een hotel, een ziekenhuis en een chalet. Wat ze gemeen hebben? Deze wand. 🏨🏥🏡
-> Bamboekern · naadloos · 280 cm per baan · eigen kleur vanaf 200 m²
+> Bamboekern · naadloos · 280 cm per baan · eigen kleur vanaf 250 m²
 > 👉 Vul het formulier in (link in bio / knop hieronder) en ik stuur je de projectsamples. Tag een aannemer die dit moet zien 👇
 
 **Vaste serie erbij: "Raad waar deze hangt."** Elke week een korte video (15 sec) over één project: hotel, ziekenhuis, chalet. Zelfde opening (klop op de wand), oprichter: "Raad waar deze hangt." Reveal in seconde 8. Gratis bereik en een portfolio dat niet op de website hoeft.
@@ -267,7 +267,7 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 **Alles moet kloppen. Gebruik alleen wat waar is:**
 - **Ervaring met hotels, ziekenhuizen en chaletbouwers is bevestigd door PureDeco** (2 november 2026; niet alles staat op de website). Namen, logo's en herkenbare beelden van een klant alleen met toestemming van die klant.
 - **Hook C alleen als het waar is:** de oprichter moet het paneel van 280 cm echt alleen kunnen tillen. Anders hook C laten vallen.
-- **Eigen kleur vanaf 200 m²** (besluit 2 november 2026). Let op: de website noemt nog 150 m²; die moet gelijk worden getrokken voordat de video online gaat.
+- **Eigen kleur vanaf 250 m²** (besluit 2 november 2026; staat zo in H3).
 - **Ziekenhuizen/zorg:** geen claims over hygiëne of "antibacterieel". Wel: "makkelijk schoon te maken met een vochtige doek".
 - **Geen superlatieven die we niet kunnen bewijzen** ("de beste", "uitzonderlijk"). Laat de kwaliteit zien: bamboekern, naadloze klik, 280 cm per baan.
 - **Geen vaste levertijd noemen** voor standaardpanelen. Maatwerkkleur: 10–14 weken.
