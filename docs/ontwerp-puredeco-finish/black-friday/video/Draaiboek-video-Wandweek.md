@@ -274,13 +274,15 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 4. Een High Tack-koker die wordt opengeklikt (met geluid).
 5. Telefoon in de hand: scrollen door de collectie in Black Friday-stand.
 6. Een wand van 4,20 m in één beeld (laat de schaal zien).
-9. Zakelijk: pallets met panelen, vrachtwagen die laadt, de oprichter met een tablet en een bouwtekening.
 7. Extreme close-up: twee 8 mm-panelen die in elkaar klikken (macro, met geluid).
 8. Zijkant van een paneel waarop je de lagen ziet: toplaag en bamboekern.
+9. Zakelijk: pallets met panelen, vrachtwagen die laadt, de oprichter met een tablet en een bouwtekening.
+10. Zakelijk: bestaande foto's en video's van projecten in hotels, ziekenhuizen en chalets (alleen met toestemming van de klant).
 
 ## Opleveren
 
 - **Uiterlijk 11 november:** video 1 (30 sec en 15 sec).
 - **Uiterlijk 19 november:** video 2 (met de varianten VIP-avond en laatste dag) en video 3.
+- **Video 4 (zakelijk):** los van Black Friday. Mag na 19 november, eventueel op dezelfde draaidag opnemen (oprichter + pallets) en later monteren.
 - Elke video in 9:16, 4:5 en 16:9, met en zonder ondertiteling.
 - Bestandsnamen: `WW26_V1_iedereen_30s_9x16.mp4`, `WW26_V2_live_B_4x5.mp4` enz.
