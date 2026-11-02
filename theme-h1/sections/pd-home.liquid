@@ -42,7 +42,8 @@
 
 <div class="ph ph-v4" data-ph data-max="5"{% if s.show_status %} data-days="{{ s.open_days | default: '1,2,3,4,5,6' }}" data-from="{{ s.open_from | default: 10 }}" data-to="{{ s.open_to | default: 16 }}"{% endif %}>
 
-  {%- comment -%} 1 · Hero {%- endcomment -%}
+  {%- comment -%} 1 · Hero (in de Black Friday-fases vervangen door de Wandweek-hero, snippet pd-bf) {%- endcomment -%}
+  {%- render 'pd-bf', part: 'hero' -%}
   <section class="ph-hero">
     <div class="ph-hero__img">
       {%- if hero_d != blank -%}

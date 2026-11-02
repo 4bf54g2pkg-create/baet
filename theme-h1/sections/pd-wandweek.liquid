@@ -1,0 +1,82 @@
+{%- comment -%}
+  Puredeco · VIP-pagina De Wandweek (/pages/wandweek, template page.wandweek).
+  Artboard BlackFriday-site, akkoord 2 nov 2026. Aanmelden via het Shopify-klantformulier:
+  de klant krijgt de tag uit Thema-instellingen › Puredeco · Black Friday (standaard 'wandweek-vip').
+  Marketingtoestemming alleen met het vinkje (niet vooraf aangevinkt).
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign bf_tag = settings.bf_vip_tag | default: 'wandweek-vip'
+  assign bf_vip_x = settings.bf_vip_extra | default: 5
+  assign bf_vkit = settings.bf_vip_kit_min | default: 400
+  assign p813 = all_products['813-hout-natural-oak']
+  assign img = s.image | default: p813.media[1] | default: p813.featured_media
+-%}
+<div class="pww">
+  <div class="pww__media">{{ img | image_url: width: 1400 | image_tag: loading: 'eager', widths: '600, 900, 1200, 1400', sizes: '(min-width: 990px) 45vw, 100vw', alt: 'Wandpaneel 813 Natural Oak in een woonkamer' }}</div>
+  <div class="pww__in">
+    <p class="ph-k">De Wandweek · VIP</p>
+    <h1 class="pww__h">Voel je wand eerst. Koop hem met Black Friday.</h1>
+
+    <div data-bf="vip p2">
+      <div class="pww__live">
+        <p><b>De Wandweek is begonnen.</b> <span data-bf="vip">Nu open voor VIP's, met je persoonlijke link uit de e-mail. Iedereen shopt mee vanaf vrijdag 27 november 08:00.</span><span data-bf="p2">Hoe groter je wand, hoe groter je korting, t/m maandag 30 november 23:59.</span></p>
+        <a class="ph-btn ph-btn--ink" href="/collections/wandpanelen">Shop de Wandweek</a>
+      </div>
+    </div>
+
+    <ul class="pww__perks">
+      <li><b>Gratis staal</b><span>€ 6,95 verzending terug bij je bestelling</span></li>
+      <li><b>12 uur eerder</b><span>26 november om 20:00</span></li>
+      <li><b>Meer voordeel</b><span>+{{ bf_vip_x }}% en montagekit vanaf € {{ bf_vkit | times: 100 | money_without_currency | remove: ',00' }}</span></li>
+    </ul>
+
+    {%- form 'customer', id: 'pww-form', class: 'pww__form' -%}
+      {%- if form.posted_successfully? -%}
+        <div class="pww__ok" role="status" data-pww-ok>
+          <p class="pww__ok-h">Je staat op de VIP-lijst.</p>
+          <p>Op donderdag 26 november om 20:00 mailen we je je persoonlijke link. Twee dingen om alvast te doen:</p>
+          <div class="pww__ok-btns">
+            <a class="ph-btn ph-btn--ink" href="/pages/sample">Rond je staal af</a>
+            <a class="ph-btn ph-btn--line" href="#" data-pww-ics download="wandweek-vip.ics">Zet 26/11 20:00 in je agenda</a>
+          </div>
+        </div>
+      {%- else -%}
+        <input type="hidden" name="contact[tags]" value="{{ bf_tag }},newsletter,wandweek-pagina">
+        <input type="hidden" name="contact[accepts_marketing]" value="true">
+        {%- if form.errors -%}<p class="pww__err" role="alert">{{ form.errors | default_errors }}</p>{%- endif -%}
+        <label class="pww__f"><span>Voornaam</span><input type="text" name="contact[first_name]" autocomplete="given-name" required></label>
+        <label class="pww__f"><span>E-mailadres</span><input type="email" name="contact[email]" autocomplete="email" required></label>
+        <label class="pww__check"><input type="checkbox" required> <span>Ja, stuur me de VIP-toegang en tips voor mijn wand per e-mail. Afmelden kan altijd.</span></label>
+        <button type="submit" class="ph-btn ph-btn--ink pww__go">Zet me op de VIP-lijst</button>
+        <p class="pww__s">Je gegevens gebruiken we alleen voor de Wandweek en je staal · <a href="/policies/privacy-policy">Privacy</a></p>
+      {%- endif -%}
+    {%- endform -%}
+
+    <p class="pww__note">Na het aanmelden kies je je gratis staal. Je betaalt alleen € 6,95 verzending, en die krijg je als VIP terug bij je bestelling in de Wandweek.</p>
+  </div>
+</div>
+<script>
+(function () {
+  var a = document.querySelector('[data-pww-ics]');
+  if (a) {
+    var ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//PureDeco//Wandweek//NL', 'BEGIN:VEVENT', 'UID:wandweek-2026@puredeco.nl', 'DTSTAMP:20261102T000000Z',
+      'DTSTART:20261126T190000Z', 'DTEND:20261126T200000Z', 'SUMMARY:PureDeco Wandweek: VIP-avond open', 'DESCRIPTION:Je persoonlijke link staat in je e-mail. https://puredeco.nl/pages/wandweek', 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+    a.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
+  }
+  if (document.querySelector('[data-pww-ok]')) {
+    document.querySelector('[data-pww-ok]').scrollIntoView({ block: 'center' });
+    if (window.gtag) gtag('event', 'wandweek_vip_signup', { place: 'pagina' });
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "PD · Wandweek VIP",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Beeld (standaard sfeerbeeld 813 Natural Oak)" }
+  ],
+  "presets": [{ "name": "PD · Wandweek VIP" }]
+}
+{% endschema %}

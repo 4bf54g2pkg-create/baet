@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "pd_wandweek": {
+      "type": "pd-wandweek",
+      "settings": {}
+    }
+  },
+  "order": [
+    "pd_wandweek"
+  ]
+}

@@ -200,6 +200,7 @@
   {%- if paginate.current_page > 1 and collection.products.size == 0 -%}
     <script>(function () { var u = new URL(location.href); u.searchParams.delete('page'); location.replace(u.toString()); })();</script>
   {%- endif -%}
+  {%- render 'pd-bf', part: 'col' -%}
   <section class="pc-shop" id="decors">
     <div class="ph-wrap">
 
@@ -423,7 +424,7 @@
                   endif
                 endfor
               -%}
-              {%- if pc_pre -%}<span class="pc-card__pre">Pre-order</span>{%- endif -%}
+              {%- if pc_pre -%}<span class="pc-card__pre">Pre-order</span>{%- else -%}{%- render 'pd-bf', part: 'card', pre: false -%}{%- endif -%}
               {%- if p.metafields.puredeco.decor_video != blank -%}<span class="pc-card__video">Video</span>{%- endif -%}
               {%- if swatch != blank -%}<span class="pc-card__sw{% if sw_zoom contains '1' %} is-zoom{% endif %}"><img src="{{ swatch | strip }}" alt="" loading="lazy" width="240" height="240"></span>{%- endif -%}
             </a>
@@ -449,6 +450,7 @@
                   </button>
                 {%- endif -%}
               </div>
+              {%- if pc_pre -%}{%- render 'pd-bf', part: 'card', pre: true -%}{%- endif -%}
             </div>
           </li>
         {%- endfor -%}

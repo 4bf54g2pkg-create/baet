@@ -95,6 +95,7 @@
     -%}
 
     {{ content_for_header }}
+    {%- render 'pd-bf', part: 'head' -%}
     <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
 
@@ -176,6 +177,7 @@
     -%}
 
     <div class="site-wrapper min-height-screen">
+      {%- render 'pd-bf', part: 'bar' -%}
       {% sections 'header-group' %}
 
       <main id="MainContent" class="main-content content-for-layout focus-none" role="main" tabindex="-1">
@@ -461,5 +463,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
     {%- render 'pd-wa-knop' -%}
+    {%- render 'pd-bf', part: 'popup' -%}
+    {%- render 'pd-bf', part: 'count' -%}
   </body>
 </html>

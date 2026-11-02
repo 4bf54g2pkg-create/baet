@@ -57,7 +57,7 @@
   comment
     Leverweek pre-order: productveld puredeco.levering > thema-instelling pd_preorder_levering > oude sectie-instelling.
   endcomment
-  assign pdh_pre_date = product.metafields.puredeco.levering.value | default: settings.pd_preorder_levering | default: section.settings.preorder_date | default: 'week 1 (4–8 januari)'
+  assign pdh_pre_date = product.metafields.puredeco.levering.value | default: settings.pd_preorder_levering | default: section.settings.preorder_date | default: 'week 2 (11–15 januari)'
   assign pdh_retired = false
   if product.handle == '668-glanzend-marmer-florentine-limestone'
     assign pdh_retired = true
@@ -247,6 +247,7 @@
           <s class="pdh__compare" data-pdh-compare{% unless pdh_actie and pdh_variant.compare_at_price > pdh_variant.price %} hidden{% endunless %}>{{ pdh_variant.compare_at_price | money }}</s>
           <span class="pdh__unit" data-pdh-unit>per paneel</span>
         </div>
+        {%- if pdh_is_panel -%}{%- render 'pd-bf', part: 'pdp' -%}{%- endif -%}
         {%- comment -%} Sterke punten bij de prijs, alleen voor wandpanelen {%- endcomment -%}
         {%- assign pdh_cols = product.collections | map: 'handle' | join: ',' | prepend: ',' | append: ',' -%}
         {%- if pdh_cols contains ',wandpanelen,' -%}{%- render 'pd-decors', product: product, style: 'kiezer' -%}{%- endif -%}
@@ -383,6 +384,7 @@
                 <div><dt>Oppervlak</dt><dd data-pdc-m2>–</dd></div>
                 <div><dt>Totaal</dt><dd data-pdc-sum>–</dd></div>
               </dl>
+              <div class="pdc__bf" data-pdc-bf hidden></div>
               <button type="button" class="pdc__more" data-pdc-more aria-expanded="false">Bekijk de indeling van je wand <span aria-hidden="true">▾</span></button>
               <p class="pdc__note" data-pdc-note aria-live="polite">Vul de maat van je wand in. We rekenen per wand met hele panelen en zetten het aantal klaar in je bestelling.</p>
               <div class="pdc__ship" data-pdc-ship hidden>
@@ -392,6 +394,11 @@
             </div>
           {%- endif -%}
 
+          <div class="pdh__dep" data-pdh-dep hidden>
+            <p class="pdh__dep-h">Pre-order · <span data-pdh-dep-pct>50</span>% aanbetaling</p>
+            <div class="pdh__dep-r"><span>Nu te betalen<small>bij je bestelling</small></span><b data-pdh-dep-now></b></div>
+            <div class="pdh__dep-r"><span>Restbedrag<small>vlak vóór levering in <span data-pdh-dep-week></span></small></span><b data-pdh-dep-rest></b></div>
+          </div>
           <div class="pdh__buy" data-pdh-buy>
             <div class="pdh__qty">
               <button type="button" data-pdh-minus aria-label="Eén minder">−</button>
@@ -512,7 +519,7 @@
   </div>
 
   <script type="application/json" data-pdh-variants>
-    [{%- for v in product.variants -%}{"id":{{ v.id }},"options":{{ v.options | json }},"price":{{ v.price }},"compare":{% if pdh_actie %}{{ v.compare_at_price | default: 0 }}{% else %}0{% endif %},"available":{{ v.available | json }},"tracked":{% if v.inventory_management != blank %}true{% else %}false{% endif %},"qty":{{ v.inventory_quantity | default: 0 }},"plan":{% assign pdh_pl = v.selling_plan_allocations | first %}{% if pdh_pl %}{{ pdh_pl.selling_plan.id }}{% else %}null{% endif %},"title":{{ v.title | json }}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+    [{%- for v in product.variants -%}{"id":{{ v.id }},"options":{{ v.options | json }},"price":{{ v.price }},"compare":{% if pdh_actie %}{{ v.compare_at_price | default: 0 }}{% else %}0{% endif %},"available":{{ v.available | json }},"tracked":{% if v.inventory_management != blank %}true{% else %}false{% endif %},"qty":{{ v.inventory_quantity | default: 0 }},"plan":{% assign pdh_pl = v.selling_plan_allocations | first %}{% if pdh_pl %}{{ pdh_pl.selling_plan.id }}{% else %}null{% endif %},"dep":{% if pdh_pl and pdh_pl.selling_plan.checkout_charge.value_type == 'percentage' and pdh_pl.selling_plan.checkout_charge.value < 100 %}{{ pdh_pl.selling_plan.checkout_charge.value }}{% else %}null{% endif %},"title":{{ v.title | json }}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
   </script>
 </div>
 
@@ -537,12 +544,25 @@
   }
   function total() {
     var q = Math.max(1, parseInt(qtyIn.value, 10) || 1);
+    var pay = current.price ? payNow(current.price, q) : 0;
     var el = root.querySelector('[data-pdh-total]');
-    if (el && current.price) el.textContent = money(current.price * q);
+    if (el && current.price) el.textContent = money(pay);
     var bt = root.querySelector('[data-pdh-bar-total]');
-    if (bt && current.price) bt.textContent = '· ' + money(current.price * q);
+    if (bt && current.price) bt.textContent = '· ' + money(pay);
     var kl = root.querySelector('[data-pdh-klarna]');
     if (kl && current.price) kl.textContent = money(Math.ceil(current.price * q / 3));
+  }
+  /* Pre-order met aanbetaling: knop en balk tonen het bedrag van vandaag */
+  function payNow(price, q) {
+    var amt = price * q;
+    var dep = parseFloat(root.getAttribute('data-dep')) || 0;
+    if (root.getAttribute('data-stock') !== 'pre' || !(dep > 0 && dep < 100)) return amt;
+    var B = window.PDBF, pct = B ? B.pct(amt) : 0;
+    if (pct) amt = amt - Math.round(amt * pct / 100);
+    var now = pct ? Math.round(amt * dep / 100) : Math.round(price * dep / 100) * q; /* zonder korting rondt Shopify per paneel af */
+    var a = root.querySelector('[data-pdh-dep-now]'); if (a) a.textContent = money(now);
+    var b = root.querySelector('[data-pdh-dep-rest]'); if (b) b.textContent = money(amt - now);
+    return now;
   }
   var walls = [{ w: '4,20', h: '2,60', example: true }], active = 0;
   function num(v) { var n = parseFloat(String(v).replace(',', '.')); return n > 0 ? n : 0; }
@@ -618,6 +638,28 @@
     svg.innerHTML = o.join('');
     svg.classList.toggle('is-empty', !r);
   }
+  /* Black Friday (snippet pd-bf): korting uitgerekend op de hele wand + wat er nodig is voor de volgende trede */
+  function bfLine(sum, n) {
+    var el = pdc && pdc.querySelector('[data-pdc-bf]');
+    if (!el) return;
+    var B = window.PDBF;
+    if (!B || !B.active() || !n) { el.hidden = true; return; }
+    var pct = B.pct(sum), html = '';
+    if (pct) {
+      var net = sum - Math.round(sum * pct / 100);
+      html += '<p class="pdc__bf-l"><s>' + money(sum) + '</s> <b>' + money(net) + '</b> met ' + pct + '% Black Friday' + (sum >= B.kit ? ' · + gratis montagekit (' + n + (n === 1 ? ' koker' : ' kokers') + ')' : '') + '</p>';
+    }
+    var nx = B.next(sum);
+    if (nx && current.price) {
+      var k = Math.ceil((nx.min - sum) / current.price);
+      if (k <= 3) html += '<p class="pdc__bf-n">Nog ' + k + (k === 1 ? ' paneel' : ' panelen') + ' erbij (' + money(sum + k * current.price) + ') = ' + nx.pct + '% korting</p>';
+    }
+    if (!pct && sum < B.kit && current.price) {
+      var kk = Math.ceil((B.kit - sum) / current.price);
+      if (kk <= 3 && !html) html += '<p class="pdc__bf-n">Nog ' + kk + (kk === 1 ? ' paneel' : ' panelen') + ' erbij voor de gratis montagekit</p>';
+    }
+    el.innerHTML = html; el.hidden = !html;
+  }
   function calc(fromInput) {
     if (!pdc || !current) return;
     var d = panel();
@@ -635,7 +677,7 @@
     var nEl = pdc.querySelector('[data-pdc-n]'), mEl = pdc.querySelector('[data-pdc-m2]'), sEl = pdc.querySelector('[data-pdc-sum]');
     var note = pdc.querySelector('[data-pdc-note]'), ship = pdc.querySelector('[data-pdc-ship]');
     if (!n) {
-      nEl.textContent = '–'; mEl.textContent = '–'; sEl.textContent = '–';
+      nEl.textContent = '–'; mEl.textContent = '–'; sEl.textContent = '–'; bfLine(0, 0);
       note.textContent = 'Vul de maat van je wand in. We rekenen per wand met hele panelen en zetten het aantal klaar in je bestelling.';
       ship.hidden = true;
       return;
@@ -644,6 +686,7 @@
     nEl.textContent = n;
     mEl.textContent = fmt(m2, 1) + ' m²';
     sEl.textContent = money(sum);
+    bfLine(sum, n);
     if (fromInput === true && !isExample) { qtyIn.value = n; total(); }
     var msg = isExample
       ? 'Voorbeeld voor een wand van 4,20 × 2,60 m. Vul jouw maten in; het aantal panelen gaat dan vanzelf naar je bestelling.'
@@ -924,8 +967,12 @@
     var st = stateOf(v);
     root.setAttribute('data-stock', st);
     var cta = root.querySelector('[data-pdh-cta]');
-    var ctaText = st === 'pre' ? 'Pre-order plaatsen' : (st === 'out' ? 'Tijdelijk uitverkocht' : 'In winkelmand');
-    var barText = st === 'pre' ? 'Pre-order · ' + preDate.split(' (')[0] : ctaText;
+    var dep = (st === 'pre' && v.plan && v.dep > 0 && v.dep < 100) ? v.dep : 0;
+    root.setAttribute('data-dep', dep || '');
+    var ctaText = st === 'pre' ? (dep ? 'Pre-order · betaal nu ' + dep + '%' : 'Pre-order plaatsen') : (st === 'out' ? 'Tijdelijk uitverkocht' : 'In winkelmand');
+    var barText = st === 'pre' ? (dep ? 'Pre-order · nu ' + dep + '%' : 'Pre-order · ' + preDate.split(' (')[0]) : ctaText;
+    var depBox = root.querySelector('[data-pdh-dep]');
+    if (depBox) { depBox.hidden = !dep; if (dep) { depBox.querySelector('[data-pdh-dep-pct]').textContent = dep; depBox.querySelector('[data-pdh-dep-week]').textContent = preDate.split(' (')[0]; } }
     cta.disabled = st === 'out';
     cta.classList.toggle('pdh__cta--pre', st === 'pre');
     root.querySelector('[data-pdh-cta-text]').textContent = ctaText;
@@ -975,9 +1022,18 @@
   function total() {
     if (!current) return;
     var q = Math.max(1, parseInt(qtyIn.value, 10) || 1);
-    root.querySelector('[data-pdh-total]').textContent = money(current.price * q);
+    var amt = current.price * q, pay = amt;
+    var dep = parseFloat(root.getAttribute('data-dep')) || 0;
+    if (root.getAttribute('data-stock') === 'pre' && dep > 0 && dep < 100) {
+      var B = window.PDBF, pct = B ? B.pct(amt) : 0;
+      if (pct) amt = amt - Math.round(amt * pct / 100);
+      pay = pct ? Math.round(amt * dep / 100) : Math.round(current.price * dep / 100) * q; /* zonder korting rondt Shopify per paneel af */
+      root.querySelector('[data-pdh-dep-now]').textContent = money(pay);
+      root.querySelector('[data-pdh-dep-rest]').textContent = money(amt - pay);
+    }
+    root.querySelector('[data-pdh-total]').textContent = money(pay);
     var bt = root.querySelector('[data-pdh-bar-total]');
-    if (bt) bt.textContent = '· ' + money(current.price * q);
+    if (bt) bt.textContent = '· ' + money(pay);
     var kl = root.querySelector('[data-pdh-klarna]');
     if (kl) kl.textContent = money(Math.ceil(current.price * q / 3));
   }
