@@ -1,0 +1,170 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8">
+<title>Wandweek-mails</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E8E2D7;font-family:'Hanken Grotesk',sans-serif;color:#151413;padding:48px 56px 60px;width:2200px}
+h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:56px}
+.lead{font-size:18px;color:#5b554d;margin:10px 0 30px;max-width:1900px;line-height:1.5}.lead b{color:#151413}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;align-items:start}
+.meta{background:#151413;color:#F5F2EC;padding:16px 18px;font-size:13.5px;line-height:1.5;margin-bottom:14px}
+.meta .n{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#E3C9A6}
+.meta .t{font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1.1;margin:4px 0 8px;color:#fff}
+.meta b{color:#E3C9A6;font-weight:600}
+/* e-mail */
+.mail{background:#fff;width:600px;margin:0 auto;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.inbox{background:#F7F7F7;border-bottom:1px solid #e3e3e3;padding:12px 18px;font-size:13px;color:#444}
+.inbox b{display:block;color:#111;font-size:14px}.inbox span{color:#888}
+.top{background:#151413;color:#F5F2EC;text-align:center;padding:9px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
+.logo{text-align:center;padding:22px 0 14px;font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:.2em}
+.hero{height:300px;background:#cbb79c center/cover no-repeat;position:relative}
+.hero .tag{position:absolute;left:20px;top:20px;background:#F5F2EC;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;font-weight:600}
+.pad{padding:30px 40px}
+.k{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:#8C6A4A;font-weight:600}
+.h{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:40px;line-height:1.02;margin:8px 0 12px}
+.h em{font-style:italic;color:#8C6A4A}
+p.tx{font-size:15.5px;line-height:1.6;color:#3A3733;margin-bottom:12px}
+.btn{display:block;background:#151413;color:#F5F2EC;text-align:center;padding:17px;font-weight:600;font-size:15px;letter-spacing:.04em;margin:18px 0 8px;text-decoration:none}
+.btn2{display:block;border:1.5px solid #151413;text-align:center;padding:14px;font-weight:600;font-size:14px;margin:8px 0;color:#151413}
+.perks{border-top:1px solid #E3DCCF;margin-top:8px}
+.perk{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:13px 0;border-bottom:1px solid #E3DCCF;font-size:14.5px;line-height:1.45}
+.perk i{font-style:normal;width:44px;height:44px;border-radius:50%;background:#F5F2EC;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:19px;color:#8C6A4A;font-weight:600}
+.perk b{display:block;font-size:15px}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.tiers div{background:#F5F2EC;text-align:center;padding:14px 6px}
+.tiers b{display:block;font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;line-height:1}
+.tiers span{font-size:12.5px;color:#6E675E}
+.tiers.dark div{background:#151413;color:#F5F2EC}.tiers.dark span{color:#E3C9A6}
+.ex{background:#F5F2EC;padding:14px 16px;font-size:14px;line-height:1.5;margin:10px 0}
+.ex s{color:#8b847a}.ex b{font-size:17px}
+.uv{border-left:3px solid #8C6A4A;padding:4px 0 4px 14px;margin:16px 0;font-size:14.5px;line-height:1.5}
+.uv b{display:block;font-size:15.5px}
+.steps{counter-reset:s;margin:10px 0}
+.steps div{counter-increment:s;display:grid;grid-template-columns:30px 1fr;gap:10px;padding:7px 0;font-size:14.5px;line-height:1.45}
+.steps div:before{content:counter(s);width:26px;height:26px;border-radius:50%;background:#151413;color:#fff;font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.note{background:#FBF3E6;border:1px solid #E3C9A6;padding:12px 14px;font-size:13.5px;line-height:1.5;margin:12px 0}
+.cd{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.cd div{background:#151413;color:#fff;text-align:center;padding:12px 4px}
+.cd b{display:block;font-family:'Cormorant Garamond',serif;font-size:42px;line-height:1}
+.cd span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#E3C9A6}
+.foot{background:#F5F2EC;padding:22px 40px;font-size:12px;color:#6E675E;line-height:1.6;text-align:center}
+.cap{margin-top:14px;font-size:13.5px;line-height:1.55;color:#3A3733;background:#F5F2EC;padding:14px 16px;border:1px solid #DDD6CA}
+.cap b{color:#151413}
+.rules{margin-top:36px;background:#151413;color:#F5F2EC;padding:20px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;font-size:14px;line-height:1.5}
+.rules b{display:block;color:#E3C9A6;margin-bottom:3px}
+</style></head><body>
+<h1>De Wandweek · 3 e-mails</h1>
+<p class="lead">Versturen met <b>Shopify Email</b> (gratis, al in je winkel). Doelgroep VIP = klanten met de tag <b>wandweek-vip</b> (komt automatisch uit de pop-up en de VIP-pagina, met toestemming voor e-mail). Alle knoppen met <b>?utm_source=email&utm_campaign=wandweek</b> zodat we de omzet per mail zien. Mobiel eerst: één kolom, grote knop bovenaan.</p>
+
+<div class="grid">
+
+<!-- MAIL 1 -->
+<div>
+<div class="meta"><div class="n">Mail 1 · automatisch</div><div class="t">Welkom, VIP</div>
+<b>Wanneer:</b> direct na aanmelden (automatisering "klant krijgt tag wandweek-vip")<br>
+<b>Aan:</b> elke nieuwe VIP, vanaf publicatie H3 t/m 26/11<br>
+<b>Doel:</b> stalen bestellen vóór 26/11 + inloggen onthouden</div>
+<div class="mail">
+<div class="inbox"><b>Je bent VIP. Dit krijg jij straks 🗝️</b><span>PureDeco · Do 26 november 20:00 ben jij 12 uur eerder binnen.</span></div>
+<div class="top">De Wandweek · 26 – 30 november</div>
+<div class="logo">PUREDECO</div>
+<div class="hero" style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/generated_2Fshopify_3Af9yvx9-zm.myshopify.com_2F1793565871079_0.png?v=1793565889&width=1200')"><span class="tag">Jij bent VIP</span></div>
+<div class="pad">
+<p class="k">Welkom, {{ voornaam }}</p>
+<p class="h">Je staat op de lijst.<br><em>Dit krijg jij straks.</em></p>
+<div class="perks">
+<div class="perk"><i>%</i><div><b>Tot 25% korting</b>15% vanaf € 400, 20% vanaf € 800, 25% vanaf € 1.500.</div></div>
+<div class="perk"><i>12</i><div><b>12 uur eerder binnen</b>Donderdag 26 november om 20:00. Iedereen anders pas vrijdag 08:00.</div></div>
+<div class="perk"><i>1</i><div><b>Gratis High Tack-koker bij elk paneel</b>Zit vanzelf in je pakket.</div></div>
+<div class="perk"><i>€</i><div><b>€ 6,95 staalverzending terug</b>Bestel nu tot 5 stalen. Bestel je in De Wandweek, dan krijg je de € 6,95 terug.</div></div>
+</div>
+<div class="uv"><b>Jouw kleur uitverkocht? Maakt niet uit.</b>Ook op pre-order krijg je de Wandweek-korting, en je betaalt nu maar 50%.</div>
+<a class="btn">Bestel nu je stalen (tot 5) →</a>
+<a class="btn2">Zet 26 november 20:00 in je agenda</a>
+<div class="note"><b>Belangrijk:</b> je VIP-korting werkt alleen als je bent ingelogd met dít e-mailadres. Bij de kassa kun je inloggen met een code per e-mail; een wachtwoord is niet nodig.</div>
+</div>
+<div class="foot">PureDeco · Studio Herwen · puredeco.nl<br>Je ontvangt deze mail omdat je je hebt aangemeld als VIP voor De Wandweek. <u>Afmelden</u></div>
+</div>
+<div class="cap"><b>Waarom zo:</b> de stalen zijn de grootste drempel. Wie vóór 26/11 stalen in huis heeft, koopt op de VIP-avond. De agendaknop zorgt dat ze de avond niet vergeten.</div>
+</div>
+
+<!-- MAIL 2 -->
+<div>
+<div class="meta"><div class="n">Mail 2 · ingepland</div><div class="t">Je bent binnen</div>
+<b>Wanneer:</b> donderdag 26 november <b>20:00</b> (precies als de VIP-korting start)<br>
+<b>Aan:</b> alle VIP's (tag wandweek-vip)<br>
+<b>Doel:</b> kopen op de VIP-avond</div>
+<div class="mail">
+<div class="inbox"><b>De deur is open. Alleen voor jou.</b><span>PureDeco · Tot 25% korting. Iedereen anders pas morgen om 08:00.</span></div>
+<div class="top">Nu live voor VIP's · t/m maandag 23:59</div>
+<div class="logo">PUREDECO</div>
+<div class="hero" style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/bamboepanelen-hout-813-natural-oak-detail.jpg?v=1793440327&width=1200')"><span class="tag">VIP · nu live</span></div>
+<div class="pad">
+<p class="k">{{ voornaam }}, je bent binnen</p>
+<p class="h">Black Friday is begonnen.<br><em>Voor jou 12 uur eerder.</em></p>
+<div class="tiers dark">
+<div><b>15%</b><span>vanaf € 400</span></div>
+<div><b>20%</b><span>vanaf € 800</span></div>
+<div><b>25%</b><span>vanaf € 1.500</span></div>
+</div>
+<div class="ex">Voorbeeld · 4 panelen 813 Natural Oak<br><s>€ 679,80</s> &nbsp;<b>€ 577,83</b> &nbsp;+ 4 gratis kokers</div>
+<p class="tx">Plus: <b>gratis bezorging</b> in Nederland vanaf € 500, en heb je stalen besteld? Dan krijg je de <b>€ 6,95 terug</b>.</p>
+<div class="steps">
+<div><span><b>Log in</b> met het e-mailadres waarmee je VIP werd.</span></div>
+<div><span><b>Kies je wand</b> en vul je maten in de calculator in.</span></div>
+<div><span><b>Je korting</b> zie je in je winkelwagen en bij de kassa.</span></div>
+</div>
+<a class="btn">Log in en kies je wand →</a>
+<div class="uv"><b>Is jouw kleur uitverkocht?</b>Bestel als pre-order: zelfde korting, nu 50% betalen, levering in week 2 (11–15 januari).</div>
+<p class="tx" style="font-size:14px;color:#6E675E">Morgen om 08:00 gaat de deur open voor iedereen.</p>
+</div>
+<div class="foot">PureDeco · Studio Herwen · puredeco.nl<br>Je ontvangt deze mail omdat je VIP bent voor De Wandweek. <u>Afmelden</u></div>
+</div>
+<div class="cap"><b>Waarom zo:</b> geen lange tekst. De staffel en één rekenvoorbeeld bovenaan, dan 3 stappen. "Log in" staat in de knop, want zonder inloggen geen VIP-korting.</div>
+</div>
+
+<!-- MAIL 3 -->
+<div>
+<div class="meta"><div class="n">Mail 3 · ingepland</div><div class="t">Laatste dag</div>
+<b>Wanneer:</b> maandag 30 november <b>09:00</b><br>
+<b>Aan:</b> alle nieuwsbriefabonnees (VIP's krijgen de VIP-regel erbij)<br>
+<b>Doel:</b> twijfelaars over de streep</div>
+<div class="mail">
+<div class="inbox"><b>Laatste dag: vannacht 23:59 is het voorbij</b><span>PureDeco · Tot 20% korting op je nieuwe wand (VIP tot 25%).</span></div>
+<div class="top">Laatste dag · De Wandweek</div>
+<div class="logo">PUREDECO</div>
+<div class="pad" style="padding-bottom:10px">
+<p class="k">Nog één dag</p>
+<p class="h">Vannacht om 23:59<br><em>is het voorbij.</em></p>
+<div class="cd"><div><b>14</b><span>uur</span></div><div><b>59</b><span>min</span></div><div><b>23:59</b><span>einde</span></div></div>
+</div>
+<div class="hero" style="height:230px;background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/generated_2Fshopify_3Af9yvx9-zm.myshopify.com_2F1776693455240_0.png?v=1776775314&width=1200')"></div>
+<div class="pad">
+<div class="tiers">
+<div><b>10%</b><span>vanaf € 400</span></div>
+<div><b>15%</b><span>vanaf € 800</span></div>
+<div><b>20%</b><span>vanaf € 1.500</span></div>
+</div>
+<p class="tx" style="font-size:14px"><b>VIP?</b> Log in en je krijgt 5% extra: 15, 20 of 25%.</p>
+<div class="perks">
+<div class="perk"><i>1</i><div><b>Gratis koker bij elk paneel</b>Zit vanzelf in je pakket.</div></div>
+<div class="perk"><i>€</i><div><b>Gratis bezorging vanaf € 500</b>In Nederland.</div></div>
+<div class="perk"><i>½</i><div><b>Uitverkocht? Toch korting</b>Pre-order met dezelfde korting, nu 50% betalen, levering in week 2.</div></div>
+</div>
+<a class="btn">Kies je wand →</a>
+<p class="tx" style="font-size:14px;color:#6E675E;text-align:center">Twijfel je over een kleur? Stuur ons een WhatsApp via puredeco.nl, we helpen je vandaag nog.</p>
+</div>
+<div class="foot">PureDeco · Studio Herwen · puredeco.nl<br>Je ontvangt deze mail omdat je je hebt ingeschreven voor onze nieuwsbrief. <u>Afmelden</u></div>
+</div>
+<div class="cap"><b>Waarom zo:</b> de klok bovenaan doet het werk. Echte urgentie: het eindigt echt om 23:59. Voor wie twijfelt over de kleur een laagdrempelige WhatsApp-regel in plaats van "wacht nog even".</div>
+</div>
+
+</div>
+
+<div class="rules">
+<div><b>Alleen wat klopt</b>Bedragen uit de echte kortingen. € 577,83 = 4 × € 169,95 min 15%. "Van € 679,80" alleen als 813 de 30 dagen ervoor niet goedkoper was.</div>
+<div><b>Nooit</b>"kosteloos annuleren", "op = op" bij pre-order-kleuren, "waterdicht".</div>
+<div><b>Tijden</b>Mail 2 om 20:00 en niet eerder: om 19:55 werkt de korting nog niet. Mail 3 om 09:00.</div>
+<div><b>Na akkoord</b>Ik lever per mail de onderwerpregel, voorbeeldtekst, teksten en afbeeldingen kant-en-klaar aan, plus een stappenplan voor Shopify Email. Jij plant ze in en verstuurt ze.</div>
+</div>
+</body></html>
