@@ -90,16 +90,24 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 | 10–16 s | Staalpakket valt op de deurmat, uitpakken, staal tegen de muur | "Twee. Bestel tot vijf stalen. Die zes vijfennegentig verzending? Die krijg je als VIP gewoon terug als je bestelt." | 2/3 · tot 5 stalen · € 6,95 terug bij je bestelling |
 | 16–23 s | Spreker buigt naar de camera, iets zachter (alsof het een geheim is) | "Drie, en dit is de beste. Is jouw kleur uitverkocht op Black Friday? Je krijgt tóch korting. En je betaalt nu maar de helft." | 3/3 · UITVERKOCHT? TOCH KORTING · nu maar 50% betalen |
 | 23–26 s | Koker wordt opengeklikt (geluid hard) | "Oh, en bij elk paneel een gratis montagekoker." | + gratis koker bij elk paneel |
-| 26–30 s | Spreker pakt het paneel weer op (loop naar het begin) | "Aanmelden kost tien seconden. Link hieronder. Welke kleur kies jij?" | Word VIP · puredeco.nl/wandweek · tot 25% voor VIP's vanaf € 1.500 |
+| 26–30 s | Spreker wijst met beide handen naar beneden (naar de knop onder de video), daarna pakt hij het paneel weer op (loop) | "Klik hieronder en meld je aan. Kost tien seconden. Welke kleur kies jij?" | 👇 KLIK HIERONDER EN MELD JE AAN · puredeco.nl/wandweek · tot 25% voor VIP's vanaf € 1.500 |
 
-**15 sec-versie:** 0–5 s → 16–23 s (nummer 3) → 10–16 s (stalen) → "Link hieronder." Tellers worden dan "1 ding dat je moet weten" + "en nog iets".
+**15 sec-versie:** 0–5 s → 16–23 s (nummer 3) → 10–16 s (stalen) → "Klik hieronder en meld je aan." Tellers worden dan "1 ding dat je moet weten" + "en nog iets".
+
+**De link moet direct te zien zijn:**
+- **Vanaf seconde 0** staat er een vast labeltje in beeld: **puredeco.nl/wandweek**. Bovenin, buiten de zone waar TikTok en Instagram hun knoppen en tekst zetten.
+- **In de laatste 4 seconden** een grote pijl naar beneden met **"Klik hieronder en meld je aan"**. De spreker wijst er ook naar.
+- **In de advertentie (Meta/TikTok):** knop **"Aanmelden"** onder de video, met link naar `puredeco.nl/pages/wandweek?utm_source=meta&utm_campaign=wandweek` (TikTok: `utm_source=tiktok`).
+- **Organisch (geen advertentie):** de link in de bio en als eerste, vastgezette reactie. Op Instagram een link-sticker in de Story-versie.
 
 **Caption (Instagram/TikTok):**
 > Black Friday begint bij ons 12 uur eerder… als je VIP bent 👀
 > 1️⃣ Hoe groter je wand, hoe meer korting (tot 20%, VIP +5%)
 > 2️⃣ Tot 5 stalen, en als VIP krijg je de € 6,95 verzending terug als je bestelt
 > 3️⃣ Kleur uitverkocht op Black Friday? Je krijgt tóch korting en betaalt nu maar de helft
-> + bij elk paneel een gratis montagekoker. Gratis aanmelden: link in bio. Welke kleur kies jij? 👇
+> + bij elk paneel een gratis montagekoker.
+> 👉 Klik hieronder en meld je aan (of via de link in bio): puredeco.nl/wandweek
+> Welke kleur kies jij? 👇
 > #wandpanelen #interieur #woonkamer #blackfriday #japandi #houtenwand #wandinspiratie #diy
 
 **Reactie-tip:** beantwoord elke "welke kleur"-reactie met de kleur en of die op voorraad of op pre-order is. Elke reactie geeft de video meer bereik.
