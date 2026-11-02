@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//PureDeco//Wandweek//NL
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:wandweek-vip-2026@puredeco.nl
+DTSTAMP:20261102T120000Z
+DTSTART:20261126T190000Z
+DTEND:20261126T220000Z
+SUMMARY:De Wandweek · VIP-avond PureDeco (tot 25% korting)
+DESCRIPTION:Vanaf 20:00 ben jij 12 uur eerder binnen. Log in met je VIP-e-mailadres op https://puredeco.nl/wandweek
+URL:https://puredeco.nl/wandweek
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:De Wandweek begint over 15 minuten
+END:VALARM
+END:VEVENT
+END:VCALENDAR
