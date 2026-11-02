@@ -119,7 +119,7 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 | 7–11 s | Close-up calculator: doorgestreept bedrag | "Normaal 679 euro 80. Deze week: 611 euro 82." | ~~€ 679,80~~ € 611,82 |
 | 11–14 s | Calculator: "Nog 1 paneel erbij = 15%" | "Grotere wand? Dan gaat de korting omhoog. Tot twintig procent." | 10% · 15% · 20% |
 | 14–17 s | Vier kokers op tafel, één voor één neergezet | "En die vier montagekokers? Gratis." | 4 kokers: € 0 |
-| 17–23 s | Telefoon: productpagina 620, blok "Nu te betalen" | "Kleur uitverkocht? Bestel 'm met pre-order. Zelfde korting, en je betaalt nu maar de helft." | Ook op pre-order · nu 50% |
+| 17–23 s | Telefoon: productpagina 620, blok "Nu te betalen" | "Jouw kleur uitverkocht? Maakt niet uit. Bestel 'm met pre-order: zelfde korting, en je betaalt nu maar de helft." | Ook op pre-order · nu 50% |
 | 23–27 s | Spreker | "Dus nee, je hoeft niet te wachten tot volgend jaar." | |
 | 27–30 s | Eindkaart A, B of C | Lees de eindkaart voor | A: Vanavond 20:00 · eerst VIP's / B: Nu live · t/m ma 23:59 / C: Laatste dag · vannacht 23:59 |
 
