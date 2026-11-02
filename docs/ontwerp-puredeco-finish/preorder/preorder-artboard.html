@@ -1,0 +1,131 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E8E2D7;font-family:'Hanken Grotesk',sans-serif;color:#151413;padding:48px 56px 56px;width:2300px}
+h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:54px}
+.lead{font-size:18px;color:#5b554d;margin:10px 0 34px;max-width:1300px;line-height:1.5}
+.row{display:flex;gap:34px;align-items:flex-start}
+.col{width:410px}
+.tag{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#8C6A4A;margin-bottom:6px}
+.tag.nu{color:#9a3b2e}
+.t{font-size:20px;font-weight:600;margin-bottom:12px}
+.ph{width:410px;height:820px;border-radius:38px;border:10px solid #151413;overflow:hidden;position:relative;background:#F5F2EC;box-shadow:0 20px 50px rgba(0,0,0,.18)}
+.ph>img.shot{width:390px;display:block}
+.note{font-size:14.5px;line-height:1.55;color:#3a3733;margin-top:14px}
+.note b{color:#151413}
+.in{padding:18px 20px}
+.band{background:#151413;color:#F5F2EC;font-size:11.5px;letter-spacing:.14em;text-align:center;padding:9px 0}
+.eyebrow{font-size:11px;letter-spacing:.2em;color:#6E675E;text-transform:uppercase}
+.serif{font-family:'Cormorant Garamond',serif}
+.price{font-size:30px;font-weight:500;margin-top:6px}
+.small{font-size:12.5px;color:#6E675E}
+.bf{margin-top:12px;border:1px solid #151413;padding:10px 12px;font-size:13px;line-height:1.45}
+.bf b{font-weight:600}
+.calc{margin-top:12px;background:#FBF9F5;border:1px solid #E4DDD1;padding:12px;font-size:13px;line-height:1.5}
+.calc .big{font-family:'Cormorant Garamond',serif;font-size:22px}
+.strike{text-decoration:line-through;color:#8a837a}
+.cta{margin-top:14px;background:#8C6A4A;color:#F5F2EC;text-align:center;padding:15px 10px;font-size:15px;font-weight:500}
+.stock{display:flex;gap:9px;align-items:flex-start;margin-top:12px;font-size:13.5px;line-height:1.45}
+.dot{width:9px;height:9px;border-radius:50%;background:#8C6A4A;margin-top:5px;flex:none}
+.dot.g{background:#3E7D52}
+.box{margin-top:10px;background:#EDE3D3;padding:11px 13px;font-size:12.8px;line-height:1.55}
+.box div{display:flex;gap:7px}
+.box div:before{content:'✓';color:#8C6A4A;font-weight:700}
+.cap{margin-top:9px;font-size:12.5px;color:#6E675E}
+.link{margin-top:8px;font-size:12.5px;text-decoration:underline;text-align:center}
+.bar{position:absolute;left:0;right:0;bottom:0;display:flex;gap:8px;padding:10px;background:#F5F2EC;border-top:1px solid #DDD6CA}
+.bar .s{flex:0 0 40%;border:1px solid #151413;display:flex;align-items:center;gap:8px;padding:6px;font-size:13px}
+.bar .s i{width:30px;height:30px;background:#7d6f5f;display:block}
+.bar .c{flex:1;background:#8C6A4A;color:#F5F2EC;display:flex;align-items:center;justify-content:center;font-size:13.5px}
+/* cards */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}
+.card{background:#FBF9F5}
+.card .im{height:190px;background-size:cover;background-position:center;position:relative}
+.pill{position:absolute;left:8px;top:8px;background:#F5F2EC;font-size:10.5px;padding:4px 7px;letter-spacing:.03em}
+.pill.pre{background:#8C6A4A;color:#F5F2EC}
+.pill.no{background:#151413;color:#F5F2EC}
+.card .tx{padding:9px 9px 12px;font-size:12.5px;line-height:1.4}
+.card .nm{font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.1}
+.card .pr{margin-top:4px;font-weight:600}
+.card .ln{margin-top:4px;font-size:11.5px;color:#6E675E}
+.card .ln.pre{color:#8C6A4A}
+/* cart */
+.dr{position:absolute;inset:0;background:#F5F2EC}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid #DDD6CA;font-size:19px}
+.prog{padding:12px 18px;font-size:13px}
+.prog .b{height:5px;background:#E4DDD1;margin-top:7px}
+.prog .b i{display:block;height:5px;width:91%;background:#151413}
+.it{display:flex;gap:11px;padding:12px 18px;border-bottom:1px solid #EAE4DA}
+.it .th{width:62px;height:62px;background-size:cover;background-position:center;flex:none;background-color:#ddd}
+.it .d{flex:1;font-size:13px;line-height:1.4}
+.it .d b{font-weight:600}
+.it .p{font-size:13px;text-align:right}
+.mini{display:inline-block;margin-top:4px;font-size:11px;padding:2px 6px;background:#8C6A4A;color:#F5F2EC}
+.mini.g{background:#3E7D52}
+.mix{margin:12px 18px;background:#EDE3D3;padding:11px 12px;font-size:12.8px;line-height:1.5}
+.tot{padding:6px 18px;font-size:13.5px}
+.tot div{display:flex;justify-content:space-between;padding:3px 0}
+.tot .g{font-weight:600;font-size:15px;border-top:1px solid #DDD6CA;margin-top:4px;padding-top:7px}
+.pay{margin:10px 18px;background:#151413;color:#F5F2EC;text-align:center;padding:14px;font-size:15px}
+/* mail */
+.mail{width:410px;background:#fff;border:1px solid #DDD6CA;box-shadow:0 12px 30px rgba(0,0,0,.08);margin-bottom:18px}
+.mail .mh{padding:12px 16px;border-bottom:1px solid #eee;font-size:12px;color:#6E675E}
+.mail .mh b{color:#151413;font-size:13.5px;display:block;margin-top:2px}
+.mail .mb{padding:16px;font-size:13.5px;line-height:1.55}
+.mail .mb h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:24px;margin-bottom:8px}
+.mail .pb{margin:10px 0;border-left:3px solid #8C6A4A;padding:8px 12px;background:#F7F2EA}
+.mail .btn{display:inline-block;margin-top:10px;padding:10px 14px;border:1px solid #151413;font-size:13px}
+.mail .btn.k{background:#151413;color:#fff}
+</style></head><body>
+<h1>Pre-order tijdens Black Friday</h1>
+<p class="lead">Is een decor op, dan bestelt de klant het tegen Black Friday-korting met een vaste leverweek per decor. "Uitverkocht" verdwijnt; overal staat dezelfde boodschap: pre-order · levering week 51 · korting staat vast · kosteloos annuleren tot verzending. Voorbeeld: 620 Light Brown, levering week 51 (14–18 december).</p>
+<div class="row">
+
+<div class="col"><div class="tag nu">Nu</div><div class="t">Eén datum voor alle decors</div>
+<div class="ph"><img class="shot" src="nu-620.png"></div>
+<p class="note">"Vanaf 29 december" geldt nu voor elk decor, ook als een levering eerder of later komt. Geen woord over Black Friday, en de klant ziet niet wat de korting op zijn bestelling doet.</p></div>
+
+<div class="col"><div class="tag">Voorstel · productpagina mobiel</div><div class="t">Leverweek per decor + korting vast</div>
+<div class="ph"><div class="band">BLACK FRIDAY · T/M MAANDAG 30 NOVEMBER</div><div class="in">
+<div class="eyebrow">Japandi · 620</div><div class="serif" style="font-size:34px;line-height:1.05;margin-top:4px">Light Brown</div>
+<div class="price">€ 169,95</div><div class="small">per paneel · 280 × 122 cm · € 49,75 per m²</div>
+<div class="bf"><b>Black Friday:</b> 10% vanaf € 400 · 15% vanaf € 800 · 20% vanaf € 1.500. Montagepakket gratis vanaf € 600.</div>
+<div class="calc">Jouw wand 4,20 × 2,60 m · 4 panelen<br><span class="strike">€ 679,80</span> &nbsp;<span class="big">€ 611,82</span> &nbsp;met 10% · + montagepakket</div>
+<div class="cta">Pre-order met Black Friday-korting</div>
+<div class="stock"><span class="dot"></span><span><b>Pre-order</b> · levering <b>week 51</b> (14–18 december)</span></div>
+<div class="box"><div>Je korting staat vast, ook bij levering in december</div><div>Kosteloos annuleren tot we verzenden</div><div>30 dagen bedenktijd na ontvangst</div></div>
+<div class="cap">Nog 23 pre-orders mogelijk uit deze levering</div>
+<div class="link">Liever eerst een seintje als hij op voorraad is</div>
+</div><div class="bar"><div class="s"><i></i>Gratis staal</div><div class="c">Pre-order · week 51</div></div></div>
+<p class="note">De <b>leverweek per decor</b> staat bij de knop en in de vaste balk. "Nog 23 pre-orders" (voorbeeldgetal) toont het echte maximum uit de volgende levering. Geen prijs per paneel "met korting": de korting hangt af van het totaal, dus het rekenvoorbeeld laat het zien.</p></div>
+
+<div class="col"><div class="tag">Voorstel · collectie</div><div class="t">Pre-order in plaats van "uitverkocht"</div>
+<div class="ph"><div class="band">BLACK FRIDAY · T/M MAANDAG 30 NOVEMBER</div>
+<div class="grid">
+<div class="card"><div class="im" style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/generated_2Fshopify_3Af9yvx9-zm.myshopify.com_2F1793565871079_0.png?v=1793565889&width=500')"><span class="pill">Black Friday</span></div><div class="tx"><div class="nm">813 Natural Oak</div><div class="pr">€ 169,95</div><div class="ln"><span style="color:#3E7D52">●</span> Op voorraad · 2–4 werkdagen</div></div></div>
+<div class="card"><div class="im" style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/generated_2Fshopify_3Af9yvx9-zm.myshopify.com_2F1776693455240_0.png?v=1776775314&width=500')"><span class="pill pre">Pre-order · week 51</span></div><div class="tx"><div class="nm">620 Light Brown</div><div class="pr">€ 169,95</div><div class="ln pre">● Pre-order · Black Friday-korting geldt</div></div></div>
+<div class="card"><div class="im" style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/wandpaneel-812-walnut-deep-slaapkamer.jpg?v=1793107446&width=500')"><span class="pill no">Geen korting</span></div><div class="tx"><div class="nm">812 Walnut Deep</div><div class="pr">€ 179,95</div><div class="ln">Montagepakket vanaf € 600 wel</div></div></div>
+<div class="card"><div class="im" style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/generated_2Fshopify_3Af9yvx9-zm.myshopify.com_2F1776695783544_0.png?v=1776696127&width=500')"><span class="pill">Black Friday</span></div><div class="tx"><div class="nm">821 Japandi Light</div><div class="pr">€ 139,95</div><div class="ln"><span style="color:#3E7D52">●</span> Op voorraad · 2–4 werkdagen</div></div></div>
+</div></div>
+<p class="note">Op de kaart staat meteen de <b>leverweek</b>, en dat de korting ook voor pre-orders geldt. Decors die niet meedoen (812) krijgen een eerlijk label; zo voelt niemand zich bij de kassa misleid.</p></div>
+
+<div class="col"><div class="tag">Voorstel · winkelwagen</div><div class="t">Gemengde bestelling, één levering</div>
+<div class="ph"><div class="dr">
+<div class="dh"><span>Je winkelwagen (3)</span><span>✕</span></div>
+<div class="prog">Nog <b>€ 72,30</b> tot <b>15% korting</b><div class="b"><i></i></div></div>
+<div class="it"><div class="th" style="background-image:url('https://cdn.shopify.com/s/files/1/0940/4075/2394/files/generated_2Fshopify_3Af9yvx9-zm.myshopify.com_2F1776693455240_0.png?v=1776775314&width=200')"></div><div class="d"><b>620 Light Brown</b> · 8 mm<br>4 × € 169,95<br><span class="mini">Pre-order · levering week 51</span></div><div class="p">€ 679,80</div></div>
+<div class="it"><div class="th" style="background:#c9a95c"></div><div class="d"><b>Tussenprofiel Goud</b> · 300 cm<br>2 × € 23,95<br><span class="mini g">Op voorraad</span></div><div class="p">€ 47,90</div></div>
+<div class="it"><div class="th" style="background:#e9e4dc"></div><div class="d"><b>Montagepakket</b><br>Black Friday-cadeau</div><div class="p"><span class="strike">€ 35,80</span><br>€ 0,00</div></div>
+<div class="mix">Je bestelling komt in <b>één levering in week 51</b>, zodra alles binnen is. Montagepakket en profielen liever alvast? App ons.</div>
+<div class="tot"><div><span>Subtotaal</span><span>€ 727,70</span></div><div><span>Black Friday 10%</span><span>− € 72,77</span></div><div class="g"><span>Totaal</span><span>€ 654,93</span></div></div>
+<div class="pay">Afrekenen</div>
+</div></div>
+<p class="note">De klant ziet per regel wat <b>pre-order</b> is en wat op voorraad ligt, en <b>vóór het betalen</b> dat alles samen in week 51 komt. De staffelbalk laat zien hoeveel er nog nodig is voor de volgende korting.</p></div>
+
+<div class="col"><div class="tag">Voorstel · e-mails</div><div class="t">Bevestiging en (als het nodig is) vertraging</div>
+<div class="mail"><div class="mh">Van: PureDeco · Onderwerp<b>Je pre-order #1742: 620 Light Brown, levering week 51</b></div><div class="mb"><h3>Dank je, Sanne</h3>Je bestelling staat vast tegen de Black Friday-korting.<div class="pb"><b>Pre-order:</b> 4 × 620 Light Brown 8 mm<br>Verwachte levering: <b>week 51 (14–18 december)</b><br>Montagepakket en profielen komen mee in dezelfde levering.</div>We mailen je zodra je panelen onderweg zijn. Annuleren kan kosteloos tot we verzenden.<br><span class="btn">Bekijk je bestelling</span></div></div>
+<div class="mail"><div class="mh">Van: PureDeco · Onderwerp<b>Je panelen komen later: nu week 2</b></div><div class="mb">Je 620 Light Brown komt later dan we beloofden: nu verwacht in <b>week 2 (4–8 januari)</b>. Dat had niet mogen gebeuren. Jij kiest:<br><span class="btn k">Ik wacht, stuur het montagepakket alvast</span> <span class="btn">Geld terug</span></div></div>
+<p class="note">Alleen een vertragingsmail als de week echt verschuift (meer dan 1 week). Voorbeeldnamen en ordernummer zijn fictief.</p></div>
+
+</div></body></html>
