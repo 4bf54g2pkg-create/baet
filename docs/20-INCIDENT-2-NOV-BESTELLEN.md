@@ -1,5 +1,9 @@
 # Incident 2 november 2026 — "online bestellen niet mogelijk"
 
+> **INGETROKKEN op 2 november, na aanvullende tests.** Het "bewezen defect"
+> in hoofdstuk 1 bestaat niet. Zie de correctie onderaan dit document.
+> Hoofdstuk 2 (wat wel werkt) en hoofdstuk 4 (de orderdata) blijven geldig.
+
 Aanleiding: klantmelding. Onderzoek uitgevoerd op het **live** thema
 `H2 kopie 1 nov (chat WhatsApp)` (196032332042, assets onder `/t/10/`).
 **Er is tijdens dit onderzoek niets gewijzigd.**
@@ -154,3 +158,83 @@ Wat heeft de klant precies gezien en gedaan? Mobiel of desktop, welk product,
 en waar liep het vast — knop deed niets, winkelwagen bleef leeg, of vastgelopen
 op de afrekenpagina? Dat bepaalt of het defect uit punt 1 de oorzaak is of dat
 er nog iets anders speelt in de Shop Pay-stap.
+
+---
+
+# CORRECTIE — 2 november, later op de dag
+
+**Hoofdstuk 1 van dit document is onjuist. Er is geen defect.**
+
+## Wat ik beweerde
+
+Dat `body.modal-show` bij elke klik op een koopknop wordt gezet en nooit meer
+verwijderd, waardoor de vaste koopbalk permanent onklikbaar zou worden.
+
+## Waarom dat fout was
+
+Twee denkfouten, allebei van mij.
+
+**1. Ik heb verkeerd gemeten.** Mijn browsertest klikte op de koopknop, wachtte
+vijf seconden en mat toen. Op dat moment stond de winkelwagenlade nog open. Dat
+`modal-show` dan actief is en de koopbalk verborgen, is **precies de bedoeling**
+— anders ligt die balk over de lade heen. Ik heb de lade nooit gesloten en las
+die toestand als "blijft hangen".
+
+**2. Ik heb de verkeerde bestanden geteld.** Ik telde `modal-show` in
+`layout/theme.liquid` (2× toegevoegd, 0× verwijderd) en concludeerde dat niets
+hem opruimt. Maar `modal-show` is de **eigen class van het modal-systeem van het
+thema**, en `theme.js` beheert hem. Dat is een geminificeerde bundel die ik niet
+heb geanalyseerd voordat ik mijn conclusie trok.
+
+## Wat de metingen werkelijk laten zien
+
+Test op de productpagina, mobiel:
+
+| Handeling | `modal-show` | koopbalk |
+|---|---|---|
+| begin | false | werkt |
+| lade openen via winkelwagen-icoon | true | geblokkeerd |
+| **lade sluiten** | **false** | **werkt weer** |
+| klik op de koopknop | true | geblokkeerd |
+| **lade sluiten** | **false** | **werkt weer** |
+
+Het thema ruimt de class correct op. Zowel via het winkelwagen-icoon als via de
+koopknop.
+
+## De twee "verdachte" regels vuren nergens
+
+| Pagina | `.product-form__submit` | `.add-to-cart-btn` |
+|---|---:|---:|
+| Samplepagina | 0 | 0 |
+| Collectiepagina | — | **0** |
+
+Beide `document.body.classList.add("modal-show")`-regels zijn gebonden aan
+selectors die op de geteste pagina's niet voorkomen. Ze doen daar dus niets.
+
+## De CSS-regel is een bewuste reparatie, geen fout
+
+De eigenaar heeft toegelicht dat deze regel er juist is gekomen omdat het
+chat-icoon vóór de afrekenknop van de samples stond. De regel zorgt ervoor dat
+zwevende elementen wegvallen zodra er een venster openstaat. Dat werkt.
+
+Aanvullend gemeten op de samplepagina: `#shopify-chat` **bestaat daar niet
+meer** — vervangen door de WhatsApp-knop. En bij het openen van de
+samples-widget krijgt de pagina `product-samples-widget--active`, niet
+`modal-show`. De samplesflow leunt dus helemaal niet op deze class.
+
+**Advies ingetrokken.** De twee regels blijven staan. Er wordt niets gewijzigd.
+
+## Wat hiermee weer open ligt
+
+De klantmelding is nog **niet verklaard**. Wat overeind blijft uit dit document:
+
+- Winkelwagen, lade, checkout-pagina, verzendzones en betaalmethodes werken
+  aantoonbaar (hoofdstuk 2).
+- Sinds 31 oktober 06:17 is er geen paneelorder meer binnengekomen
+  (hoofdstuk 4). Dat is een feit, maar twee dagen bij ongeveer één order per dag
+  is geen bewijs van een storing.
+- De **Shop Pay-doorverwijzing** naar `shop.app` blijft de enige onbeproefde
+  schakel; mijn omgeving blokkeert dat domein.
+
+Zonder te weten wat de klant precies zag — apparaat, product, en waar het
+vastliep — kan ik niet verder. Dat is nu de enige openstaande vraag.

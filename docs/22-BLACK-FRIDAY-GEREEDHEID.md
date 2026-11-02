@@ -3,9 +3,12 @@
 Black Friday valt op **vrijdag 27 november 2026**. Nog 3,5 week.
 **Er is niets gewijzigd tijdens dit onderzoek.**
 
-## Kort antwoord: nee, nog niet. Vier blokkades.
+## Kort antwoord: nee, nog niet. Drie blokkades.
 
-Er staat veel klaar en de opzet is goed doordacht. Maar vier dingen moeten
+> Blokkade 3 is op 2 november ingetrokken — die was gebaseerd op een
+> meetfout van mij. Blokkade 1, 2 en 4 staan.
+
+Er staat veel klaar en de opzet is goed doordacht. Maar drie dingen moeten
 eerst opgelost, en één daarvan kan je omzet kosten in plaats van opleveren.
 
 ---
@@ -92,9 +95,16 @@ Flow (idem).
 
 ---
 
-## BLOKKADE 3 — De bestelbug uit H2 zit ook in H3
+## ~~BLOKKADE 3 — De bestelbug uit H2 zit ook in H3~~ — INGETROKKEN
 
-Zie `docs/20-INCIDENT-2-NOV-BESTELLEN.md`.
+**Deze blokkade bestaat niet.** Het "defect" berustte op een meetfout van mij:
+ik mat met de winkelwagenlade nog open. Het thema ruimt `modal-show` correct
+op zodra de lade sluit, en de CSS-regel is een bewuste reparatie van de
+eigenaar. Volledige correctie in `docs/20-INCIDENT-2-NOV-BESTELLEN.md`.
+
+Er hoeft dus **niets** aan H3 te gebeuren op dit punt.
+
+De oorspronkelijke tekst stond hieronder en is onjuist:
 
 | | `modal-show` in CSS | `classList.add` in theme.liquid |
 |---|---|---|
@@ -168,7 +178,6 @@ vóór 26 november.
 | Wanneer | Wat | Wie |
 |---|---|---|
 | Deze week | Blokkade 1: stapelen uitzetten en testen met een testorder | eigenaar |
-| Deze week | Blokkade 3: `modal-show` uit H3 halen | ik, na akkoord |
 | Deze week | Testkorting van € 1 verwijderen | eigenaar |
 | Voor 20 nov | Blokkade 2: VIP-tag toekennen aan een echte doelgroep | eigenaar |
 | Voor 20 nov | Oude codes uitzetten voor de actieperiode | eigenaar |
