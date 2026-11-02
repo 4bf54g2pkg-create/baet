@@ -210,6 +210,8 @@ Zolang het nieuwe thema nog niet live staat, gebruik je deze previewlinks:
 4. Een High Tack-koker die wordt opengeklikt (met geluid).
 5. Telefoon in de hand: scrollen door de collectie in Black Friday-stand.
 6. Een wand van 4,20 m in één beeld (laat de schaal zien).
+7. Extreme close-up: twee 8 mm-panelen die in elkaar klikken (macro, met geluid).
+8. Zijkant van een paneel waarop je de lagen ziet: toplaag en bamboekern.
 
 ## Opleveren
 
