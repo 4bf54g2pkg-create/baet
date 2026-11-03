@@ -59,36 +59,45 @@ verwijder u dan uit onze lijst.*
 Aan: info@trentinoliving.nl
 Telefoon prospect: +31 6 42314944
 Vestiging: Christiaan Huijgensweg 17a, 2408 AJ Alphen aan den Rijn
+Activiteit: complete badkamerrenovaties
 
 Nog invullen: {{Naam}}, {{Functie}}, {{Telefoon}}. Verder verzendklaar.
 
-**Onderwerp:** PureDeco voor Trentino living bv - kennismaking
+**Onderwerp:** PureDeco voor Trentino living bv - wandpanelen in badkamerrenovaties
 
 Beste Joffrey,
 
 U heeft vandaag voor Trentino living bv een zakelijk account aangemaakt bij
-PureDeco. Graag stel ik mij kort voor, zodat u weet bij wie u terechtkunt.
+PureDeco. Omdat u complete badkamerrenovaties uitvoert, ga ik meteen in op wat
+voor u relevant is.
 
-PureDeco levert wandpanelen met bamboekern in het formaat 280 x 122 cm, in
-5 mm en in 8 mm naadloos, met decors in marmer, hout, travertin, metaal en
-Japanse stof. Daarbij hoort een volledige reeks afwerkprofielen: eindprofiel,
-hoekprofiel, buitenhoekprofiel en tussenprofiel.
+Onze wandpanelen bestaan uit een bamboekern met een PVC-toplaag, in het
+formaat 280 x 122 cm. Volgens onze productspecificatie zijn ze vocht- en
+waterbestendig en zijn badkamers en keukens een van de opgegeven toepassingen.
+
+Voor badkamers is vooral het verschil tussen de twee uitvoeringen van belang:
+
+**8 mm naadloos** - de panelen sluiten zonder zichtbare naad op elkaar aan.
+
+**5 mm stomp** - met zichtbare voeg, af te werken met bijpassende profielen of
+siliconenkit in de juiste kleur.
+
+Daarbij hoort een volledige reeks afwerkprofielen: eindprofiel, hoekprofiel,
+buitenhoekprofiel en tussenprofiel.
 
 Afhankelijk van uw werkwijze kunnen wij de samenwerking op twee manieren
 invullen:
 
-**Inkoop op projectbasis** - u koopt zelf in voor projecten van uw
-opdrachtgevers.
+**Inkoop op projectbasis** - u koopt in voor de renovaties die u zelf uitvoert.
 
 **Wederverkoop** - u koopt bij ons in en verkoopt door aan uw eigen klanten.
 
-Welke vorm het dichtst bij uw praktijk ligt, hoor ik graag. Daarnaast ben ik
-benieuwd of er op dit moment een project speelt, en wat u van ons nodig heeft
-om ermee te kunnen werken: stalen, projectprijzen, of materiaal voor uw
-showroom.
+Ik stuur u graag stalen, zodat u ze bij uw opdrachtgevers op tafel kunt
+leggen. Laat u weten welke decors u aanspreken, of in welke richting uw
+klanten doorgaans kiezen, dan stel ik een set samen.
 
-Een korte reactie volstaat. Spreekt u liever telefonisch, dan bel ik u op een
-moment dat u schikt.
+Speelt er op dit moment een badkamer waarvoor dit interessant is? Stuurt u mij
+de maten, dan maak ik een calculatie inclusief profielen.
 
 Met vriendelijke groet,
 
@@ -102,14 +111,25 @@ verwijder u dan uit onze lijst.*
 
 ### Notities bij deze prospect
 
-- Registratie is van vandaag. Vandaag reageren scheelt aanzienlijk in
+- Registratie is van vandaag. Dezelfde dag reageren scheelt aanzienlijk in
   responskans; na een paar dagen is de aanleiding koud.
-- Wat Trentino living bv precies doet is niet vastgesteld. De site was vanuit
-  deze sessie niet op te vragen en er staat niets over in de winkeldata, dus
-  de mail doet geen aanname over hun werkzaamheden. Weet je het wel, zet dan
-  de passende vorm voorop en schrap de andere.
-- Het opgegeven telefoonnummer is een mobiel nummer. Belt u, dan is dat de
-  directe lijn.
+- Overweeg de mail te sturen en een uur later te bellen op +31 6 42314944 met
+  "ik stuurde u zojuist een bericht". Dan is het geen koud telefoontje meer.
+- Een renovatiebedrijf bouwt dit in bij een klant en is daarvoor
+  aansprakelijk. Reken op vragen om documentatie: het B1-certificaat en een
+  onderbouwing van de vochtbestendigheid. Die claims staan op de eigen
+  productpagina's maar het onderliggende document is in de winkeldata niet
+  aangetroffen. Zorg dat je het bij de hand hebt voordat je verstuurt.
+- De mail noemt brandvertraging en B1 bewust niet. Breng dat pas ter sprake
+  als je de documentatie kunt overleggen.
+- Mogelijk relevant als bijlage of link: het blogartikel "WC Renovatie met
+  Marmerlook Wandpanelen" (handle
+  wc-renovatie-in-een-halve-dag-met-white-slate-marmerlook-wandpanelen) en de
+  projectvideo bij 670, die een montage in een toilet toont.
+- Bronnen van de gebruikte claims, beide live op puredeco.nl:
+  /products/marmer - "Vocht- en waterbestendig - Perfect voor vochtige
+  ruimtes zoals badkamers en keukens"; /products/670-glanzend-marmer-pandora-
+  slate - "Ideaal voor woonkamers, badkamers..." en "waterbestendig".
 
 ---
 
