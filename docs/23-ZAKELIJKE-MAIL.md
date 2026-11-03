@@ -1,128 +1,143 @@
-# Standaardmail zakelijke registraties
+# Zakelijke correspondentie - registraties zonder opvolging
 
 Opgesteld 3 nov 2026. Alleen claims die in de winkeldata verifieerbaar zijn.
 Niet genoemd: certificeringen, brandklassen, akoestiek, garanties, levertijden,
 voorraad, referenties of aantallen zakelijke klanten.
 
-Doel van mail 1 is niet verkopen maar uitvragen: negen van de twaalf
-geregistreerde bedrijven hebben nooit iets besteld, dus wat ze zoeken en hoe
-ze een samenwerking voor zich zien is onbekend. Mail 4 gaat pas uit nadat ze
-geantwoord hebben.
+Mail 1 verkoopt niet maar kwalificeert. Negen van de twaalf geregistreerde
+bedrijven hebben nooit besteld; welke rol zij voor ons zien is onbekend. Door
+de drie samenwerkingsvormen zelf te benoemen in plaats van ernaar te vragen,
+kiest de ontvanger er een in plaats van een open vraag te moeten beantwoorden.
+Mail 4 volgt pas na reactie.
 
 ---
 
-## MAIL 1 - nieuwe registratie, nog niet besteld
+## MAIL 1 - geregistreerd, nog niet besteld
 
-**Onderwerp:** Even kort: waar zocht u ons voor, {{Bedrijf}}?
+**Onderwerp:** PureDeco voor {{Bedrijf}} - kennismaking
 
 Beste {{Voornaam}},
 
-U heeft voor {{Bedrijf}} een zakelijk account bij PureDeco aangemaakt. Daar
-ben ik blij mee, maar ik weet nog niet waar u naar op zoek was. En ik stuur
-u liever iets bruikbaars dan een algemene brochure.
+U heeft onlangs voor {{Bedrijf}} een zakelijk account aangemaakt bij PureDeco.
+Graag stel ik mij kort voor, zodat u weet bij wie u terechtkunt.
 
-Ter herinnering: wij leveren wandpanelen met bamboekern van 280 x 122 cm, in
-5 mm en in 8 mm naadloos, in marmer-, hout-, travertin-, metaal- en
-Japanse-stoflooks.
+PureDeco levert wandpanelen met bamboekern in het formaat 280 x 122 cm, in
+5 mm en in 8 mm naadloos, met decors in marmer, hout, travertin, metaal en
+Japanse stof. Daarbij hoort een volledige reeks afwerkprofielen: eindprofiel,
+hoekprofiel, buitenhoekprofiel en tussenprofiel.
 
-Mag ik u drie korte vragen stellen? Eén regel terug is genoeg.
+Afhankelijk van uw werkwijze kunnen wij de samenwerking op drie manieren
+invullen:
 
-**1. Wat bracht u bij ons?**
-Speelt er een project, of oriënteert u zich nog?
+**Inkoop op projectbasis** - u koopt zelf in voor projecten van uw
+opdrachtgevers.
 
-**2. Hoe zou u willen samenwerken?**
-a. inkopen voor projecten van uw klanten
-b. adviseren, waarna uw klant zelf bestelt
-c. doorverkopen onder uw eigen naam
-d. iets anders
+**Advies en specificatie** - u selecteert het materiaal, uw opdrachtgever
+bestelt rechtstreeks.
 
-**3. Wat heeft u van ons nodig om dat te kunnen doen?**
-Stalen, prijzen op projectbasis, materiaal voor uw bibliotheek of showroom.
+**Wederverkoop** - u voert het assortiment onder uw eigen naam.
 
-Een antwoord als "1: badkamerproject in januari, 2: a, 3: stalen" is precies
-genoeg. Liever even bellen? Noem een moment, dan bel ik u.
+Welke vorm het dichtst bij uw praktijk ligt, hoor ik graag. Daarnaast ben ik
+benieuwd of er op dit moment een project speelt, en wat u van ons nodig heeft
+om ermee te kunnen werken: stalen, projectprijzen, of materiaal voor uw
+bibliotheek of showroom.
+
+Een korte reactie volstaat. Spreekt u liever telefonisch, noemt u dan een
+moment dat u schikt; dan bel ik u.
 
 Met vriendelijke groet,
 
 {{Naam}}
+{{Functie}}
 PureDeco
-info@puredeco.nl - puredeco.nl
+{{Telefoon}} | info@puredeco.nl | puredeco.nl
 
-*Liever geen zakelijke mail meer van ons? Eén woord terug en ik haal u van de lijst.*
+*Ontvangt u liever geen zakelijke berichten van ons, laat het mij weten; ik
+verwijder u dan uit onze lijst.*
 
 ---
 
-## MAIL 2 - opvolging, 5 tot 7 dagen later
+## MAIL 2 - opvolging, 5 tot 7 werkdagen later
 
-**Onderwerp:** Re: Even kort: waar zocht u ons voor, {{Bedrijf}}?
+**Onderwerp:** Re: PureDeco voor {{Bedrijf}} - kennismaking
 
 Beste {{Voornaam}},
 
-Korte opvolging. Misschien speelt er nu niets, dat kan.
+Kort terugkomend op mijn bericht van vorige week. Mogelijk speelt er op dit
+moment niets concreets; dat is uiteraard geen probleem.
 
-Eén vraag dan maar, want daar heb ik al genoeg aan: zoekt u materiaal voor
-projecten van klanten, of wilt u het zelf doorverkopen?
+Mocht u mij één ding willen laten weten, dan is dit het nuttigst: koopt u in
+voor projecten van opdrachtgevers, of zou u het assortiment onder eigen naam
+willen voeren? Aan dat antwoord heb ik voldoende om u gericht te kunnen
+helpen zodra het wel speelt.
 
 Met vriendelijke groet,
 
 {{Naam}}
+{{Functie}}
 PureDeco
+{{Telefoon}} | info@puredeco.nl
 
 ---
 
-## MAIL 3 - eerder besteld, al maanden stil
+## MAIL 3 - eerder besteld, sindsdien stil
 
-**Onderwerp:** Hoe beviel het, {{Bedrijf}}?
+**Onderwerp:** PureDeco - uw ervaring en de huidige collectie
 
 Beste {{Voornaam}},
 
-U heeft eerder bij ons besteld voor {{Bedrijf}}, maar daarna werd het stil.
-Daar ben ik eerlijk gezegd nieuwsgierig naar: lag het aan het product, aan de
-prijs, aan iets in het bestellen, of speelde er gewoon niets?
+U heeft eerder voor {{Bedrijf}} bij ons besteld. Sindsdien hebben wij elkaar
+niet gesproken, en dat is een gemiste kans.
 
-Ik hoor het liever dan dat ik ernaar gis. Als er iets niet goed ging, wil ik
-dat weten.
+Twee vragen. Hoe heeft u de eerdere levering ervaren, en is er iets waar wij
+scherper op moeten zijn? En speelt er op dit moment een project waarin
+wandpanelen een rol kunnen spelen?
 
-Inmiddels is het assortiment uitgebreid, onder meer met travertin en met de
-8 mm naadloze uitvoering. Speelt er een project, dan stuur ik u daar graag
-stalen van.
+De collectie is sinds uw bestelling uitgebreid, onder meer met travertin en
+met de 8 mm naadloze uitvoering. Noemt u de decors die u aanspreken, dan zorg
+ik dat u stalen ontvangt.
 
 Met vriendelijke groet,
 
 {{Naam}}
+{{Functie}}
 PureDeco
+{{Telefoon}} | info@puredeco.nl
 
 ---
 
-## MAIL 4 - pas versturen NA antwoord op mail 1
+## MAIL 4 - pas versturen NA reactie op mail 1
 
 **Onderwerp:** Voorstel voor {{Bedrijf}}
 
 Beste {{Voornaam}},
 
-Dank voor uw antwoord. Op basis daarvan het volgende.
+Dank voor uw reactie. Op basis daarvan het volgende.
 
-{{hier het voorstel, toegesneden op wat ze antwoordden}}
+{{voorstel, toegesneden op de gekozen samenwerkingsvorm}}
 
-Laat me weten:
-- om wat voor project het gaat
-- hoeveel vierkante meter u ongeveer nodig heeft
-- wanneer u het nodig heeft
+Voor een sluitende calculatie heb ik drie gegevens nodig:
 
-Dan stuur ik u een voorstel met prijzen en de decors die daarbij passen. Bij
-de panelen horen afwerkprofielen: eindprofiel, hoekprofiel, buitenhoekprofiel
-en tussenprofiel. Die reken ik meteen mee, zodat u niets mist.
+- de aard van het project
+- het aantal vierkante meter bij benadering
+- de gewenste opleverdatum
+
+Daarmee stel ik een voorstel op met prijzen en de decors die daarbij passen.
+De afwerkprofielen neem ik in die calculatie mee, zodat u bij levering niets
+mist.
 
 Met vriendelijke groet,
 
 {{Naam}}
+{{Functie}}
 PureDeco
+{{Telefoon}} | info@puredeco.nl
 
 ---
 
 ## Verzendlijst
 
-### Wel versturen - mail 1 (geregistreerd, nog niets besteld)
+### Mail 1 - geregistreerd, nog niets besteld
 
 | Bedrijf | Naam | E-mail | Sinds |
 |---|---|---|---|
@@ -139,18 +154,18 @@ PureDeco
 | - | Donny Van Rossum | dvr1980@outlook.com | 26 mei |
 | Atelume | Rachel Tiesma | info@atelume.nl | 20 mei (alleen staal 5,95) |
 
-### Wel versturen - mail 3 (eerder besteld, stil sinds juni)
+### Mail 3 - eerder besteld, stil sinds juni
 
 | Bedrijf | Naam | E-mail | Besteed | Laatste order |
 |---|---|---|---|---|
 | Nira Interior | Karin Driessen | info@nirainterior.com | 1.163,24 | 19 jun |
 | Home Studio Interior | Eva Lemmens | contact@homestudiointerior.com | 385,86 | 4 jun |
 
-### NIET versturen
+### Niet versturen
 
 | Wie | Reden |
 |---|---|
-| Beheermaatschappij Koenen B.V (info@koenendekets.nl) | bestelde 29 okt voor 2.746,70 - verdient een persoonlijk bericht, geen standaardmail |
+| Beheermaatschappij Koenen B.V (info@koenendekets.nl) | bestelde 29 okt voor 2.746,70 - persoonlijk bericht, geen standaardmail |
 | o.cadir@hotmail.com | eigen account |
 | bulut_faruk@outlook.com | intern |
 | bilalamjad1061@gmail.com | administrator |
@@ -159,24 +174,25 @@ PureDeco
 
 ---
 
-## Aandachtspunten voor verzending
+## Voor verzending
 
-1. Op twee na staan al deze contacten op NOT_SUBSCRIBED voor marketing.
-   Verstuur dit daarom als gewone zakelijke mail vanuit info@puredeco.nl,
-   een voor een of met mail-merge, en niet via een marketingtool. De
-   afmeldregel staat er bewust in.
-2. Vul {{Naam}} en {{Telefoon}} in voor verzending.
-3. Optie c in mail 1 ("doorverkopen onder uw eigen naam") suggereert dat
-   wederverkoop bespreekbaar is. Is dat niet zo, haal die regel weg voordat
-   je verstuurt.
-4. Bepaal of stalen voor zakelijke relaties gratis zijn. Staat nu neutraal.
-5. De zakelijke prijslijsten B2B 20/25/30% zijn aan geen enkele catalogus
-   gekoppeld en gelden dus voor niemand. Noem daarom geen percentage tot dat
-   is rechtgezet.
+1. Op twee na staan deze contacten op NOT_SUBSCRIBED voor marketing. Verstuur
+   daarom vanuit info@puredeco.nl als gewone zakelijke correspondentie, niet
+   via een marketingtool. De afmeldregel staat er bewust in.
+2. Vul {{Naam}}, {{Functie}} en {{Telefoon}} in.
+3. De vorm **Wederverkoop** in mail 1 stelt dat wederverkoop bespreekbaar is.
+   Is dat niet zo, haal die alinea weg voordat je verstuurt.
+4. Bepaal of stalen voor zakelijke relaties kosteloos zijn. Staat nu neutraal.
+5. De prijslijsten B2B 20/25/30% zijn aan geen enkele catalogus gekoppeld en
+   gelden dus voor niemand. Noem geen percentage tot dat is rechtgezet.
+6. Aanhef: "Beste {{Voornaam}}" past bij deze doelgroep van ontwerpstudio's.
+   Wil je formeler, gebruik dan "Geachte mevrouw {{Achternaam}}" of
+   "Geachte heer {{Achternaam}}" - maar alleen waar je zeker weet hoe iemand
+   aangesproken wil worden.
 
-## Wat je met de antwoorden doet
+## Opvolging vastleggen
 
-Noteer het antwoord op vraag 2 als klanttag in Shopify (bijvoorbeeld
-b2b-project, b2b-advies, b2b-wederverkoop). Dan kun je ze daarna als groep
-benaderen in plaats van per stuk, en weet je na deze ronde eindelijk waar
-deze lijst uit bestaat.
+Noteer de gekozen samenwerkingsvorm als klanttag in Shopify: b2b-project,
+b2b-advies of b2b-wederverkoop. Daarmee is de lijst na deze ronde als groep
+benaderbaar in plaats van per contact, en weet je eindelijk waaruit die
+twaalf registraties bestaan.
