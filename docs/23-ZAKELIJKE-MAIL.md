@@ -4,36 +4,43 @@ Opgesteld 3 nov 2026. Alleen claims die in de winkeldata verifieerbaar zijn.
 Niet genoemd: certificeringen, brandklassen, akoestiek, garanties, levertijden,
 voorraad, referenties of aantallen zakelijke klanten.
 
+Doel van mail 1 is niet verkopen maar uitvragen: negen van de twaalf
+geregistreerde bedrijven hebben nooit iets besteld, dus wat ze zoeken en hoe
+ze een samenwerking voor zich zien is onbekend. Mail 4 gaat pas uit nadat ze
+geantwoord hebben.
+
 ---
 
-## MAIL 1 — nieuwe registratie, nog niet besteld
+## MAIL 1 - nieuwe registratie, nog niet besteld
 
-**Onderwerp:** Uw zakelijke account bij PureDeco
+**Onderwerp:** Even kort: waar zocht u ons voor, {{Bedrijf}}?
 
 Beste {{Voornaam}},
 
-U heeft voor {{Bedrijf}} een zakelijk account aangemaakt bij PureDeco. Dank
-daarvoor. Ik neem even persoonlijk contact op in plaats van u een standaard
-bevestiging te sturen.
+U heeft voor {{Bedrijf}} een zakelijk account bij PureDeco aangemaakt. Daar
+ben ik blij mee, maar ik weet nog niet waar u naar op zoek was. En ik stuur
+u liever iets bruikbaars dan een algemene brochure.
 
-Waar wij mee werken: wandpanelen met bamboekern van 280 x 122 cm, in marmer-,
-hout-, travertin-, metaal- en Japanse-stoflooks. Verkrijgbaar in 5 mm en in
-8 mm naadloos, met bijpassende afwerkprofielen (eindprofiel, hoekprofiel,
-buitenhoekprofiel en tussenprofiel).
+Ter herinnering: wij leveren wandpanelen met bamboekern van 280 x 122 cm, in
+5 mm en in 8 mm naadloos, in marmer-, hout-, travertin-, metaal- en
+Japanse-stoflooks.
 
-Voor projecten maak ik liever een voorstel op maat dan dat u zelf door de
-webshop heen zoekt. Laat me drie dingen weten:
+Mag ik u drie korte vragen stellen? Eén regel terug is genoeg.
 
-- om wat voor project het gaat
-- hoeveel vierkante meter u ongeveer nodig heeft
-- wanneer u het nodig heeft
+**1. Wat bracht u bij ons?**
+Speelt er een project, of oriënteert u zich nog?
 
-Dan stuur ik u een voorstel met prijzen en de decors die daarbij passen.
+**2. Hoe zou u willen samenwerken?**
+a. inkopen voor projecten van uw klanten
+b. adviseren, waarna uw klant zelf bestelt
+c. doorverkopen onder uw eigen naam
+d. iets anders
 
-Wilt u eerst zien en voelen? Noem de decors die u aanspreken, dan stuur ik
-u stalen toe.
+**3. Wat heeft u van ons nodig om dat te kunnen doen?**
+Stalen, prijzen op projectbasis, materiaal voor uw bibliotheek of showroom.
 
-U kunt gewoon op deze mail antwoorden, of bellen op {{Telefoon}}.
+Een antwoord als "1: badkamerproject in januari, 2: a, 3: stalen" is precies
+genoeg. Liever even bellen? Noem een moment, dan bel ik u.
 
 Met vriendelijke groet,
 
@@ -45,17 +52,16 @@ info@puredeco.nl - puredeco.nl
 
 ---
 
-## MAIL 2 — opvolging, 5 tot 7 dagen later
+## MAIL 2 - opvolging, 5 tot 7 dagen later
 
-**Onderwerp:** Re: Uw zakelijke account bij PureDeco
+**Onderwerp:** Re: Even kort: waar zocht u ons voor, {{Bedrijf}}?
 
 Beste {{Voornaam}},
 
-Korte opvolging op mijn vorige bericht. Misschien speelt er nu niets, dat kan.
+Korte opvolging. Misschien speelt er nu niets, dat kan.
 
-Mocht het wel spelen: stuur me gerust een plattegrond, een foto of alleen
-de maten van de wand. Dan reken ik uit wat u nodig heeft en wat het kost.
-Daar zit u verder nergens aan vast.
+Eén vraag dan maar, want daar heb ik al genoeg aan: zoekt u materiaal voor
+projecten van klanten, of wilt u het zelf doorverkopen?
 
 Met vriendelijke groet,
 
@@ -64,18 +70,48 @@ PureDeco
 
 ---
 
-## MAIL 3 — eerder besteld, al maanden stil
+## MAIL 3 - eerder besteld, al maanden stil
 
-**Onderwerp:** Nieuwe decors bij PureDeco, {{Bedrijf}}
+**Onderwerp:** Hoe beviel het, {{Bedrijf}}?
 
 Beste {{Voornaam}},
 
-U heeft eerder bij ons besteld voor {{Bedrijf}}. Sindsdien is het assortiment
-uitgebreid, onder meer met travertin en met de 8 mm naadloze uitvoering.
+U heeft eerder bij ons besteld voor {{Bedrijf}}, maar daarna werd het stil.
+Daar ben ik eerlijk gezegd nieuwsgierig naar: lag het aan het product, aan de
+prijs, aan iets in het bestellen, of speelde er gewoon niets?
 
-Heeft u op dit moment een project lopen waar wandpanelen bij passen? Stuur me
-de maten, dan maak ik een voorstel. En wilt u de nieuwe decors eerst in handen
-hebben, dan stuur ik stalen.
+Ik hoor het liever dan dat ik ernaar gis. Als er iets niet goed ging, wil ik
+dat weten.
+
+Inmiddels is het assortiment uitgebreid, onder meer met travertin en met de
+8 mm naadloze uitvoering. Speelt er een project, dan stuur ik u daar graag
+stalen van.
+
+Met vriendelijke groet,
+
+{{Naam}}
+PureDeco
+
+---
+
+## MAIL 4 - pas versturen NA antwoord op mail 1
+
+**Onderwerp:** Voorstel voor {{Bedrijf}}
+
+Beste {{Voornaam}},
+
+Dank voor uw antwoord. Op basis daarvan het volgende.
+
+{{hier het voorstel, toegesneden op wat ze antwoordden}}
+
+Laat me weten:
+- om wat voor project het gaat
+- hoeveel vierkante meter u ongeveer nodig heeft
+- wanneer u het nodig heeft
+
+Dan stuur ik u een voorstel met prijzen en de decors die daarbij passen. Bij
+de panelen horen afwerkprofielen: eindprofiel, hoekprofiel, buitenhoekprofiel
+en tussenprofiel. Die reken ik meteen mee, zodat u niets mist.
 
 Met vriendelijke groet,
 
@@ -130,5 +166,17 @@ PureDeco
    een voor een of met mail-merge, en niet via een marketingtool. De
    afmeldregel staat er bewust in.
 2. Vul {{Naam}} en {{Telefoon}} in voor verzending.
-3. Bepaal of stalen voor zakelijke relaties gratis zijn. Staat er nu neutraal
-   in ("dan stuur ik u stalen toe").
+3. Optie c in mail 1 ("doorverkopen onder uw eigen naam") suggereert dat
+   wederverkoop bespreekbaar is. Is dat niet zo, haal die regel weg voordat
+   je verstuurt.
+4. Bepaal of stalen voor zakelijke relaties gratis zijn. Staat nu neutraal.
+5. De zakelijke prijslijsten B2B 20/25/30% zijn aan geen enkele catalogus
+   gekoppeld en gelden dus voor niemand. Noem daarom geen percentage tot dat
+   is rechtgezet.
+
+## Wat je met de antwoorden doet
+
+Noteer het antwoord op vraag 2 als klanttag in Shopify (bijvoorbeeld
+b2b-project, b2b-advies, b2b-wederverkoop). Dan kun je ze daarna als groep
+benaderen in plaats van per stuk, en weet je na deze ronde eindelijk waar
+deze lijst uit bestaat.
